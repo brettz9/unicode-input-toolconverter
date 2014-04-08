@@ -1,4 +1,19 @@
-GNU LESSER GENERAL PUBLIC LICENSE
+Note from Brett Zamir, the copyright holder:
+
+The Unicode Converter/Input Tool extension,
+which includes all of the files in this XPI distribution, with 
+the exception of the Unicode data files contained in the top 
+level data directory, which are under their own license from
+http://unicode.org , whose copyright is also included, is 
+hereby released under GNU Lesser GPL version 3 or any later 
+version (as explicitly permitted by section 6 below or 
+section 14 in the regular GPL license text).
+
+
+-------------------------------------------------
+
+
+		   GNU LESSER GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
@@ -10,7 +25,7 @@ GNU LESSER GENERAL PUBLIC LICENSE
 the terms and conditions of version 3 of the GNU General Public
 License, supplemented by the additional permissions listed below.
 
-  0. Additional Definitions.
+  0. Additional Definitions. 
 
   As used herein, "this License" refers to version 3 of the GNU Lesser
 General Public License, and the "GNU GPL" refers to version 3 of the GNU
@@ -111,7 +126,7 @@ the following:
        a copy of the Library already present on the user's computer
        system, and (b) will operate properly with a modified version
        of the Library that is interface-compatible with the Linked
-       Version.
+       Version. 
 
    e) Provide Installation Information, but only if you would otherwise
    be required to provide such information under section 6 of the
