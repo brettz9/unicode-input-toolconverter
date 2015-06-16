@@ -1,9 +1,10 @@
 {
   "name": "unicode-input-toolconverter",
   "title": "unicode-input-toolconverter",
-  "id": "jid1-62FUBLgjzUcDNQ",
+  "id": "jid1-62FUBLgjzUcDNQ@jetpack",
+  "main": "lib/main",
   "description": "a basic add-on",
-  "author": "",
+  "author": "Brett Zamir",
   "license": "MPL 2.0",
-  "version": "0.1"
+  "version": "0.1.0"
 }
