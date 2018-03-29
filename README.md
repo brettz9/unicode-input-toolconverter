@@ -10,3 +10,4 @@ character references, etc.
 # Todos
 * Convert XUL-based add-on to HTML5 (use Jamilih for greater flexibility and i18n)
 * Utilize column browser for browsing deep hierarchies such as list of blocks/scripts/categories (also use in filebrowser-enhanced!)
+* Borrow from or ideas from GPL3 https://github.com/brettz9/charpick ?
