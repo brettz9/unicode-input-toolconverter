@@ -1,2 +1,3 @@
 # 0.1.0
-- Initial commit
+
+- Initial webextensions release (re-implementation of XUL add-on)
