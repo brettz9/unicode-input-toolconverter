@@ -1,0 +1,1277 @@
+<?xml version="1.0"?>
+<!--
+Copyright 2007, 2008, 2009 Brett Zamir
+    This file is part of Unicode Input Tool/Converter.
+
+    Unicode Input Tool/Converter is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Unicode Input Tool/Converter is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Unicode Input Tool/Converter.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://charrefunicode/skin/overlay.css" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://charrefunicode/locale/charrefunicode.dtd">
+<dialog id="charrefunicode" title="&uresults.title;" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept,cancel"
+        ondialogaccept="return Unicodecharref.doOK();"
+        ondialogcancel="return Unicodecharref.doCancel();"
+		onload="centerWindowOnScreen();">
+        
+<script type="application/x-javascript" src="chrome://charrefunicode/content/common-conversion-utils.js"/>
+<script type="application/x-javascript" src="chrome://charrefunicode/content/uresults.js" />
+<stringbundleset id="stringbundleset">
+    <stringbundle id="charrefunicode-strings" src="chrome://charrefunicode/locale/charrefunicode.properties"/>
+</stringbundleset>
+
+<tabbox id="tabbox">
+	<tabs id="unicodetabs">
+		<!-- If change conversion to not be the first tab, then will need to change the script  -->
+		<tab id="charttab" label="&Charts.tab.label;"></tab>
+		<tab id="conversiontab" label="&Conversion.tab.label;"></tab>
+		<tab id="prefstab" label="&Prefs.tab.label;"></tab>
+		<tab id="dtdtab" label="&DTD.tab.label;"></tab>
+		<tab id="notestab" label="&Notes.tab.label;"></tab>
+		<tab id="abouttab" label="&About.tab.label;"></tab>
+	</tabs>
+	<tabpanels id="unicodetabpanels">
+		<tabpanel id="charts">
+			<hbox flex="1">
+				<vbox id="chart_selectchar_persist_vbox" flex="1" persist="width">
+					<groupbox id="chart_selectchar_persist" flex="1" persist="height">
+						<caption label="&caption.chart.selectchar;"/>
+						<hbox flex="1" align="center">
+							<grid flex="1"><columns><column flex="1" /><column flex="1"/></columns><rows>
+								<row tooltiptext="&desc.digits;">
+									<label value="&charhexdecchoices;" control="startset"/>
+									<textbox class="searchBox" id="startset" rows="1" value="" onchange="Unicodecharref.startset(this);" oninput="Unicodecharref.startset(this);"/>
+								</row>
+								<row>
+									<label value="&searchName;" control="searchName"/>
+									<textbox class="searchBox" id="searchName" rows="1" value="" onchange="Unicodecharref.searchUnicode(this);" oninput="Unicodecharref.searchUnicode(this);"/>
+								</row>
+								<row>
+									<label value="&searchkDefinition;" control="searchkDefinition"/>
+									<textbox class="searchBox" id="searchkDefinition" rows="1" value="" onchange="Unicodecharref.searchUnihan(this);" oninput="Unicodecharref.searchUnihan(this);"/>
+								</row>
+							</rows></grid>
+						</hbox>
+						<vbox id="menulists" flex="1">
+							<label control="menulist1" value="&chooseregion;"/>
+	<menulist id="menulist1">
+	<menupopup>
+	<menu label="&European_Scripts;"><menupopup>
+	<menuitem label="&_see_also_Comb._Marks--;" value="768"/>
+	<menu label="&Armenian;"><menupopup>
+		<menuitem label="&Armenian;" value="1328"/>
+		<menuitem label="&Armenian_Ligatures;" value="64256"/>
+		</menupopup></menu>
+	<menu label="&Coptic;"><menupopup>
+		<menuitem label="&Coptic;" value="11392"/>
+		<menuitem label="&Coptic_in_Greek_block;" value="880"/>
+		</menupopup></menu>
+	<menuitem label="&Cypriot_Syllabary;" value="67584"/>
+	<menu label="&Cyrillic;"><menupopup>
+		<menuitem label="&Cyrillic;" value="1024"/>
+		<menuitem label="&Cyrillic_Supplement;" value="1280"/>
+		<menuitem label="&Cyrillic_Extended-A;" value="11744"/>
+		<menuitem label="&Cyrillic_Extended-B;" value="42560"/>
+		</menupopup></menu>
+	<menu label="&Georgian;"><menupopup>
+		<menuitem label="&Georgian;" value="4256"/>
+		<menuitem label="&Georgian_Supplement;" value="11520"/>
+		</menupopup></menu>
+	<menuitem label="&Glagolitic;" value="11264"/>
+	<menuitem label="&Gothic;" value="66352"/>
+	<menu label="&Greek;"><menupopup>
+		<menuitem label="&Greek;" value="880"/>
+		<menuitem label="&Greek_Extended;" value="7936"/>
+		<menuitem label="&_see_also_Ancient_Greek_Numbers--;" value="65856"/>
+		<menuitem label="&_see_also_Ancient_Greek_Musical_Notation--;" value="119296"/>
+		</menupopup></menu>
+	<menu label="&Latin;"><menupopup>
+		<menuitem label="&Basic_Latin;" value="#0"/>
+		<menuitem label="&Latin-1_Supplement;" value="128"/>
+		<menuitem label="&Latin_Extended_A;" value="256"/>
+		<menuitem label="&Latin_Extended_B;" value="384"/>
+		<menuitem label="&Latin_Extended_C;" value="11360"/>
+		<menuitem label="&Latin_Extended_D;" value="42784"/>
+		<menuitem label="&Latin_Extended_Additional;" value="7680"/>
+		<menuitem label="&Latin_Ligatures;" value="64256"/>
+		<menuitem label="&Fullwidth_Latin_Letters;" value="65280"/>
+		<menuitem label="&_see_also_Phonetic_Symbols--;" value="592"/>
+		</menupopup></menu>
+	<menu label="&Linear_B;"><menupopup>
+		<menuitem label="&Linear_B_Syllabary;" value="65536"/>
+		<menuitem label="&Linear_B_Ideograms;" value="65664"/>
+		</menupopup></menu>
+	<menuitem label="&Ogham;" value="5760"/>
+	<menuitem label="&Old_Italic;" value="66304"/>
+	<menuitem label="&Phaistos_Disc;" value="66000"/>
+	<menuitem label="&Runic;" value="5792"/>
+	<menuitem label="&Shavian;" value="66640"/>
+	</menupopup></menu>
+
+	<menu label="&Phonetic_Symbols;"><menupopup>
+		<menuitem label="&IPA_Extensions;" value="592"/>
+		<menu label="&Phonetic_Extensions;"><menupopup>
+			<menuitem label="&Phonetic_Extensions;" value="7424"/>
+			<menuitem label="&Phonetic_Extensions_Supplement;" value="7552"/>
+		</menupopup></menu>
+		<menuitem label="&Modifier_Tone_Letters;" value="42752"/>
+		<menuitem label="&Spacing_Modifier_Letters;" value="688"/>
+		<menuitem label="&Super_and_Subscripts;" value="8304"/>
+		</menupopup></menu>
+
+	<menu label="&Combining_Diacritics;"><menupopup>
+		<menu label="&Combining_Diacritical_Marks;"><menupopup>
+			<menuitem label="&Combining_Diacritical_Marks;" value="768"/>
+			<menuitem label="&Combining_Diacritical_Marks_Supplement;" value="7616"/>
+		</menupopup></menu>
+		<menuitem label="&Combining_Half_Marks;" value="65056"/>
+		<menuitem label="&_see_also_Combining_Diacritical_Marks_for_Symbols--;" value="8400"/>
+		</menupopup></menu>
+
+	<menu label="&African_Scripts;"><menupopup>
+        <menu label="&Bamum;"><menupopup>
+            <menuitem label="&Bamum;" value="42656"/>
+            <menuitem label="&Bamum_Supplement;" value="92160"/>
+			</menupopup></menu>
+		<menuitem label="&Egyptian_Hieroglyphs;" value="77824"/>
+		<menu label="&Ethiopic;"><menupopup>
+			<menuitem label="&Ethiopic;" value="4608"/>
+			<menuitem label="&Ethiopic_Supplement;" value="4992"/>
+			<menuitem label="&Ethiopic_Extended;" value="11648"/>
+            <menuitem label="&Ethiopic_Extended_A;" value="43776"/>
+			</menupopup></menu>
+		<menuitem label="&N_Ko;" value="1984"/>
+		<menuitem label="&Osmanya;" value="66688"/>
+		<menuitem label="&Tifinagh;" value="11568"/>
+		<menuitem label="&Vai;" value="42240"/>
+	</menupopup></menu>
+	<menu label="&Middle_Eastern_Scripts;"><menupopup>
+		<menu label="&Arabic;"><menupopup>
+			<menuitem label="&Arabic;" value="1536"/>
+			<menuitem label="&Arabic_Supplement;" value="1872"/>
+			<menuitem label="&Arabic_Presentation_Forms_A;" value="64336"/>
+			<menuitem label="&Arabic_Presentation_Forms_B;" value="65136"/>
+			</menupopup></menu>
+		<menuitem label="&Aramaic-_Imperial;" value="67648"/>
+		<menuitem label="&Avestan;" value="68352"/>
+		<menuitem label="&Carian;" value="66208"/>
+		<menu label="&Cuneiform;"><menupopup>
+			<menuitem label="&Cuneiform;" value="73728"/>
+			<menuitem label="&Cuneiform_Numbers_and_Punctuation;" value="74752"/>
+			<menuitem label="&Old_Persian;" value="66464"/>
+			<menuitem label="&Ugaritic;" value="66432"/>
+			</menupopup></menu>
+		<menu label="&Hebrew;"><menupopup>
+			<menuitem label="&Hebrew;" value="1424"/>
+			<menuitem label="&Hebrew_Presentation_Forms;" value="64256"/>
+			</menupopup></menu>
+		<menuitem label="&Lycian;" value="66176"/>
+		<menuitem label="&Lydian;" value="67872"/>
+        <menuitem label="&Mandaic;" value="2112"/>
+        
+		<menuitem label="&Old_South_Arabian;" value="68192"/>
+		<menuitem label="&Pahlavi-_Inscriptional;" value="68448"/>
+		<menuitem label="&Parthian-_Inscriptional;" value="68416"/>
+		<menuitem label="&Phoenician;" value="67840"/>
+		<menuitem label="&Samaritan;" value="2048"/>
+		<menuitem label="&Syriac;" value="1792"/>
+	</menupopup></menu>
+	<menu label="&Central_Asian_Scripts;"><menupopup>
+		<menuitem label="&Mongolian;" value="6144"/>
+		<menuitem label="&Old_Turkic;" value="68608"/>
+		<menuitem label="&Phags-Pa;" value="43072"/>
+		<menuitem label="&Tibetan;" value="3840"/>
+	</menupopup></menu>
+
+	<menu label="&South_Asian_Scripts;"><menupopup>
+		<menuitem label="&Bengali;" value="2432"/>
+        <menuitem label="&Brahmi;" value="69632"/>
+        
+		<menu label="&Devanagari;"><menupopup>
+			<menuitem label="&Devanagari;" value="2304"/>
+			<menuitem label="&Devanagari_Extended;" value="43232"/>
+		</menupopup></menu>
+		<menuitem label="&Gujarati;" value="2688"/>
+		<menuitem label="&Gurmukhi;" value="2560"/>
+		<menuitem label="&Kaithi;" value="69760"/>
+		<menuitem label="&Kannada;" value="3200"/>
+		<menuitem label="&Kharoshthi;" value="68096"/>
+		<menuitem label="&Lepcha;" value="7168"/>
+		<menuitem label="&Limbu;" value="6400"/>
+		<menuitem label="&Malayalam;" value="3328"/>
+
+		<menuitem label="&Meetei_Mayek;" value="43968"/>
+
+		<menuitem label="&Ol_Chiki;" value="7248"/>
+		<menuitem label="&Oriya;" value="2816"/>
+		<menuitem label="&Saurashtra;" value="43136"/>
+		<menuitem label="&Sinhala;" value="3456"/>
+		<menuitem label="&Syloti_Nagri;" value="43008"/>
+		<menuitem label="&Tamil;" value="2944"/>
+		<menuitem label="&Telugu;" value="3072"/>
+		<menuitem label="&Thaana;" value="1920"/>
+		<menuitem label="&Vedic_Extensions;" value="7376"/>
+		<menuitem label="&_see_also_Common_Indic_Number_Forms--;" value="43056"/>
+	</menupopup></menu>
+	<menu label="&South_East_Asian;"><menupopup>
+		<menuitem label="&Balinese;" value="6912"/>
+        <menuitem label="&Batak;" value="7104"/>
+		<menuitem label="&Buginese;" value="6656"/>
+		<menuitem label="&Cham;" value="43520"/>
+		<menuitem label="&Javanese;" value="43392"/>
+		<menuitem label="&Kayah_Li;" value="43264"/>
+		<menu label="&Khmer;"><menupopup>
+			<menuitem label="&Khmer;" value="6016"/>
+			<menuitem label="&Khmer_Symbols;" value="6624"/>
+		</menupopup></menu>
+		<menuitem label="&Lao;" value="3712"/>
+
+		<menu label="&Myanmar;"><menupopup>
+			<menuitem label="&Myanmar;" value="4096"/>
+			<menuitem label="&Myanmar_Extended-A;" value="43616"/>
+		</menupopup></menu>
+
+		<menuitem label="&New_Tai_Lue;" value="6528"/>
+		<menuitem label="&Rejang;" value="43312"/>
+		<menuitem label="&Sundanese;" value="7040"/>
+		<menuitem label="&Tai_Le;" value="6480"/>
+		<menuitem label="&Tai_Tham;" value="6688"/>
+		<menuitem label="&Tai_Viet;" value="43648"/>
+		<menuitem label="&Thai;" value="3584"/>
+	</menupopup></menu>
+	<menu label="&Philippine_Scripts;"><menupopup>
+		<menuitem label="&Buhid;" value="5952"/>
+		<menuitem label="&Hanunoo;" value="5920"/>
+		<menuitem label="&Tagalog;" value="5888"/>
+		<menuitem label="&Tagbanwa;" value="5984"/>
+	</menupopup></menu>
+
+
+	<menu label="&East_Asian_Scripts;"><menupopup>
+		<menu label="&Bopomofo;"><menupopup>
+			<menuitem label="&Bopomofo;" value="12544"/>
+			<menuitem label="&Bopomofo_Extended;" value="12704"/>
+		</menupopup></menu>
+		<menu label="&CJK_Unified_Ideographs_--Han--;"><menupopup>
+			<menuitem label="&CJK_Unified_Ideographs_--Han--;" value="19968"/>
+			<menuitem label="&CJK_Ideographs_Ext._A;" value="13312"/>
+			<menuitem label="&CJK_Ideographs_Ext._B;" value="131072"/>
+			<menuitem label="&CJK_Ideographs_Ext._C;" value="173824"/>
+			<menuitem label="&CJK_Ideographs_Ext._D;" value="177984"/>
+		</menupopup></menu>
+		<menu label="&CJK_Compatibility_Ideographs;"><menupopup>
+			<menuitem label="&CJK_Compatibility_Ideographs;" value="63744"/>
+			<menuitem label="&CJK_Compatibility_Ideographs_Supplement;" value="194560"/>
+			<!-- extra hyphen removed also: commenting out since we incorporate: <menuitem label="&_see_also_Unihan_Database-;" value=""/>-->
+		</menupopup></menu>
+		<menu label="&CJK_Radicals_-_KangXi_Radicals;"><menupopup>
+			<menuitem label="&CJK_Radicals_-_KangXi_Radicals;" value="12032"/>
+			<menuitem label="&CJK_Radicals_Supplement;" value="11904"/>
+			<menuitem label="&CJK_Strokes;" value="12736"/>
+			<menuitem label="&Ideographic_Description_Characters;" value="12272"/>
+		</menupopup></menu>
+		<menu label="&Hangul_Jamo;"><menupopup>
+			<menuitem label="&Hangul_Jamo;" value="4352"/>
+			<menuitem label="&Hangul_Jamo_Extended-A;" value="43360"/>
+			<menuitem label="&Hangul_Jamo_Extended-B;" value="55216"/>
+			<menuitem label="&Hangul_Compatibility_Jamo;" value="12592"/>
+			<menuitem label="&Halfwidth_Jamo;" value="65280"/>
+		</menupopup></menu>
+		<menuitem label="&Hangul_Syllables;" value="44032"/>
+		<menuitem label="&Hiragana;" value="12352"/>
+		<menu label="&Katakana;"><menupopup>
+			<menuitem label="&Katakana;" value="12448"/>
+			<menuitem label="&Katakana_Phonetic_Ext.;" value="12784"/>
+            <menuitem label="&Kana_Supplement;" value="110592"/>
+			<menuitem label="&Halfwidth_Katakana;" value="65280"/>
+		</menupopup></menu>
+		<menuitem label="&Kanbun;" value="12688"/>
+		<menuitem label="&Lisu;" value="42192"/>
+		<menu label="&Yi;"><menupopup>
+			<menuitem label="&Yi_Syllables;" value="40960"/>
+			<menuitem label="&Yi_Radicals;" value="42128"/>
+		</menupopup></menu>
+	</menupopup></menu>
+	<menu label="&American_scripts;"><menupopup>
+		<menuitem label="&Cherokee;" value="5024"/>
+		<menuitem label="&Deseret;" value="66560"/>
+		<menu label="&Unified_Canadian_Aboriginal_Syllabics;"><menupopup>
+			<menuitem label="&Unified_Canadian_Aboriginal_Syllabics;" value="5120"/>
+			<menuitem label="&UCAS_Extended;" value="6320"/>
+		</menupopup></menu>
+	</menupopup></menu>
+	<menu label="&Other_Scripts;"><menupopup>
+		<menuitem label="&Alphabetic_Presentation_Forms;" value="64256"/>
+		<menuitem label="&Halfwidth_and_Fullwidth_Forms;" value="65280"/>
+		<menuitem label="&ASCII_Characters;" value="#0"/>
+	</menupopup></menu>
+	</menupopup></menulist>
+
+<label control="menulist2" value="&desc.symbolspunc;"/>
+	<menulist id="menulist2">
+	<menupopup>
+	<menu label="&Punctuation;"><menupopup>
+		<menu label="&General_Punctuation;"><menupopup>
+			<menuitem label="&General_Punctuation;" value="8192"/>
+			<menuitem label="&ASCII_Punctuation;" value="#0"/>
+			<menuitem label="&Latin-1_Punctuation;" value="128"/>
+			<menuitem label="&Small_Form_Variants;" value="65104"/>
+			<menuitem label="&Supplemental_Punctuation;" value="11776"/>
+			</menupopup></menu>
+		<menu label="&CJK_Symbols_and_Punctuation;"><menupopup>
+			<menuitem label="&CJK_Symbols_and_Punctuation;" value="12288"/>
+			<menuitem label="&CJK_Compatibility_Forms;" value="65072"/>
+			<menuitem label="&Fullwidth_ASCII_Punctuation;" value="65280"/>
+			<menuitem label="&Vertical_Forms;" value="65040"/>
+			</menupopup></menu>
+		</menupopup></menu>
+	<menu label="&Alphanumeric_Symbols;"><menupopup>
+		<menu label="&Letterlike_Symbols;"><menupopup>
+			<menuitem label="&Letterlike_Symbols;" value="8448"/>
+			<menuitem label="&Roman_Symbols;" value="65936"/>
+		</menupopup></menu>
+		<menuitem label="&Mathematical_Alphanumeric_Symbols;" value="119808"/>
+		<menu label="&Enclosed_Alphanumerics;"><menupopup>
+			<menuitem label="&Enclosed_Alphanumerics;" value="9312"/>
+			<menuitem label="&Enclosed_Alphanumeric_Supplement;" value="127232"/>
+		</menupopup></menu>
+		<menu label="&Enclosed_Alphanumerics_CJK_Letters_and_Months;"><menupopup>
+			<menuitem label="&Enclosed_Alphanumerics_CJK_Letters_and_Months;" value="12800"/>
+			<menuitem label="&Enclosed_Ideographic_Supplement;" value="127488"/>
+		</menupopup></menu>
+		<menu label="&CJK_Compatibility;"><menupopup>
+			<menuitem label="&CJK_Compatibility;" value="13056"/>
+			<menuitem label="&Additional_Squared_Symbols;" value="8448"/>
+		</menupopup></menu>
+	</menupopup></menu>
+	<menu label="&Technical_Symbols;"><menupopup>
+		<menuitem label="&APL_Symbols;" value="8960"/>
+		<menuitem label="&Control_Pictures;" value="9216"/>
+		<menuitem label="&Miscellaneous_Technical;" value="8960"/>
+		<menuitem label="&OCR;" value="9280"/>
+	</menupopup></menu>
+	<menu label="&Combining_Diacritics;"><menupopup>
+		<menuitem label="&Combining_Diacritical_Marks_for_Symbols;" value="8400"/>
+	</menupopup></menu>
+	<menu label="&Numbers_and_Digits;"><menupopup>
+		<menuitem label="&_see_also_specific_scripts--;" value=""/>
+		<menuitem label="&Aegean_Numbers;" value="65792"/>
+		<menuitem label="&Ancient_Greek_Numbers;" value="65856"/>
+		<menu label="&ASCII_Digits;"><menupopup>
+			<menuitem label="&ASCII_Digits;" value="#0"/>
+			<menuitem label="&Fullwidth_ASCII_Digits;" value="65280"/>
+		</menupopup></menu>
+		<menuitem label="&Common_Indic_Number_Forms;" value="43056"/>
+		<menuitem label="&Counting_Rod_Numerals;" value="119648"/>
+		<menuitem label="&Cuneiform_Numbers_and_Punctuation;" value="74752"/>
+		<menuitem label="&Number_Forms;" value="8528"/>
+		<menuitem label="&Rumi_Numeral_Symbols;" value="69216"/>
+		<menuitem label="&Super_and_Subscripts;" value="8304"/>
+	</menupopup></menu>
+	<menu label="&Mathematical_Symbols;"><menupopup>
+		<menu label="&Arrows;"><menupopup>
+			<menuitem label="&Arrows;" value="8592"/>
+			<menuitem label="&Supplemental_Arrows_A;" value="10224"/>
+			<menuitem label="&Supplemental_Arrows_B;" value="10496"/>
+			<menuitem label="&Additional_Arrows;" value="11008"/>
+			</menupopup></menu>
+		<menu label="&Mathematical_Alphanumeric_Symbols;"><menupopup>
+			<menuitem label="&Mathematical_Alphanumeric_Symbols;" value="119808"/>
+			<menuitem label="&Letterlike_Symbols;" value="8448"/>
+		</menupopup></menu>
+		<menu label="&Mathematical_Operators;"><menupopup>
+			<menuitem label="&Mathematical_Operators;" value="8704"/>
+			<menuitem label="&Basic_operators_Plus-_Factorial;" value="#0"/>
+			<menuitem label="&Division-_Multiplication;" value="128"/>
+			<menuitem label="&Suppl._Math_Operators;" value="10752"/>
+			<menuitem label="&Misc._Math_Symbols_A;" value="10176"/>
+			<menuitem label="&Misc._Math_Symbols_B;" value="10624"/>
+			<menuitem label="&Floors_and_Ceilings;" value="8960"/>
+		</menupopup></menu>
+		<menu label="&Geometric_Shapes;"><menupopup>
+			<menuitem label="&Geometric_Shapes;" value="9632"/>
+			<menuitem label="&Additional_Shapes;" value="11008"/>
+			<menuitem label="&Box_Drawing;" value="9472"/>
+			<menuitem label="&Block_Elements;" value="9600"/>
+		</menupopup></menu>
+	</menupopup></menu>
+	<menu label="&Other_Symbols;"><menupopup>
+    <menuitem label="&Alchemical_Symbols;" value="128768"/>
+	<menuitem label="&Ancient_Symbols;" value="65936"/>
+	<menuitem label="&Braille_Patterns;" value="10240"/>
+	<menu label="&Currency_Symbols;"><menupopup>
+		<menuitem label="&Currency_Symbols;" value="8352"/>
+		<menuitem label="&_see_also_specific_scripts--;" value=""/>
+		<menuitem label="&Dollar_Sign;" value="#0"/>
+		<menuitem label="&Euro_Sign;" value="8352"/>
+		<menuitem label="&Yen-_Pound_and_Cent;" value="128"/>
+		<menuitem label="&Fullwidth_Currency_Symbols;" value="65280"/>
+		<menuitem label="&Mark_-historic--;" value="8448"/>
+		<menuitem label="&Pfennig_-historic--;" value="8352"/>
+		<menuitem label="&Rial_Sign;" value="64336"/>
+	</menupopup></menu>
+	<menuitem label="&Dingbats;" value="9984"/>
+    
+    <menuitem label="&Emoticons;" value="128512"/>
+    
+	<menu label="&Game_Symbols;"><menupopup>
+		<menuitem label="&Chess_Checkers;" value="9728"/>
+		<menuitem label="&Domino_Tiles;" value="127024"/>
+		<menuitem label="&Japanese_Chess;" value="9728"/>
+		<menuitem label="&Mahjong_Tiles;" value="126976"/>
+        <menuitem label="&Playing_Cards;" value="127136"/>
+		<menuitem label="&Card_suits;" value="9728"/>
+	</menupopup></menu>
+	<menu label="&Miscellaneous_Symbols;"><menupopup>
+		<menuitem label="&Miscellaneous_Symbols;" value="9728"/>
+		<menuitem label="&Misc._Symbols_and_Arrows;" value="11008"/>
+        <menuitem label="&Miscellaneous_Symbols_And_Pictographs;" value="127744"/>
+	</menupopup></menu>
+	<menu label="&Musical_Symbols;"><menupopup>
+		<menuitem label="&Musical_Symbols;" value="119040"/>
+		<menuitem label="&Ancient_Greek_Musical_Notation;" value="119296"/>
+		<menuitem label="&Byzantine_Musical_Symbols;" value="118784"/>
+	</menupopup></menu>
+    
+    <menuitem label="&Transport_and_Map_Symbols;" value="128640"/>
+	<menu label="&Yijing_Symbols;"><menupopup>
+		<menuitem label="&Yijing_Mono--_Di-_and_Trigrams;" value="9728"/>
+		<menuitem label="&Yijing_Hexagram_Symbols;" value="19904"/>
+		<menuitem label="&Tai_Xuan_Jing_Symbols;" value="119552"/>
+	</menupopup></menu>
+	</menupopup></menu>
+
+	<menu label="&Specials;"><menupopup>
+	<menuitem label="&Controls-_C0;" value="#0"/>
+	<menuitem label="&Controls-_C1;" value="128"/>
+	<menuitem label="&Layout_Controls;" value="8192"/>
+	<menuitem label="&Invisible_Operators;" value="8192"/>
+	<menuitem label="&Specials;" value="65520"/>
+	<menuitem label="&Tags;" value="917504"/>
+	<menu label="&Variation_Selectors;"><menupopup>
+		<menuitem label="&Variation_Selectors;" value="65024"/>
+		<menuitem label="&Variation_Selectors_Supplement;" value="917760"/>
+	</menupopup></menu>
+	</menupopup></menu>
+	<menu label="&Private_Use;"><menupopup>
+		<menuitem label="&Private_Use_Area;" value="57344"/>
+		<menuitem label="&Suppl._Private_Use_Area_A;" value="983040"/>
+		<menuitem label="&Suppl._Private_Use_Area_B;" value="1048576"/>
+	</menupopup></menu>
+	<menu label="&Surrogates;"><menupopup>
+		<menuitem label="&High_Surrogates;" value="55296"/>
+	<!--  Not in chart, but I'm adding back as convenient -->	<menuitem label="&High_Private_Use_Surrogates;" value="56192"/>
+		<menuitem label="&Low_Surrogates;" value="56320"/>
+	</menupopup></menu>
+
+	<menu label="&Noncharacters_in_Charts;"><menupopup>
+		<menuitem label="&Reserved_range;" value="64336"/>
+		<menu label="&Noncharacters_at_end_of;"><menupopup>
+			<menuitem label="&At_End_of_BMP;" value="65520"/>
+			<menuitem label="&At_End_of_Plane_1;" value="130944"/>
+			<menuitem label="&At_End_of_Plane_2;" value="196480"/>
+			<menuitem label="&At_End_of_Plane_3;" value="262016"/>
+			<menuitem label="&At_End_of_Plane_4;" value="327552"/>
+			<menuitem label="&At_End_of_Plane_5;" value="393088"/>
+			<menuitem label="&At_End_of_Plane_6;" value="458624"/>
+			<menuitem label="&At_End_of_Plane_7;" value="524160"/>
+			<menuitem label="&At_End_of_Plane_8;" value="589696"/>
+			<menuitem label="&At_End_of_Plane_9;" value="655232"/>
+			<menuitem label="&At_End_of_Plane_10;" value="720768"/>
+			<menuitem label="&At_End_of_Plane_11;" value="786304"/>
+			<menuitem label="&At_End_of_Plane_12;" value="851840"/>
+			<menuitem label="&At_End_of_Plane_13;" value="917376"/>
+			<menuitem label="&At_End_of_Plane_14;" value="982912"/>
+			<menuitem label="&At_End_of_Plane_15;" value="1048448"/>
+			<menuitem label="&At_End_of_Plane_16;" value="1113984"/>
+			</menupopup></menu>
+		</menupopup></menu>
+
+
+		</menupopup>
+	</menulist>
+						</vbox>
+						<hbox>
+							<checkbox id="extensions.charrefunicode.onlyentsyes" label="&label.onlyentsyesq;" class="charthbox" onclick="Unicodecharref.onlyentsyesflip(event);return false;" onkeypress="Unicodecharref.onlyentsyesflip(event);return false;"/>
+						</hbox>
+					</groupbox>
+					<splitter/>
+					<groupbox id="specializedSearch" hidden="true" flex="1" persist="height">
+						<caption label="&Specialized_search;"/>
+						<tabbox id="tabboxSearch" flex="1">
+							<tabs id="searchtabs">
+								<!-- If change conversion to not be the first tab, then will need to change the script  -->
+								<tab id="regulartab" label="&Regular.tab.label;" tooltiptext="&CJK.tooltip;"></tab>
+								<tab id="cjktab" label="&CJK.tab.label;" tooltiptext="&Regular.tooltip;"></tab>
+							</tabs>
+							<tabpanels id="searchtabpanels" flex="1">
+								<tabpanel id="regularSearch">
+						<!--<groupbox>
+							<caption label="caption"/>-->
+									<hbox align="center">
+										<grid id="searchGrid"><columns><column/><column/></columns><rows id="UnicodeSearch"/></grid>
+									</hbox>
+						<!--</groupbox>-->
+								</tabpanel>
+								<tabpanel id="cjkSearch">
+						<!--<groupbox>
+							<caption label="caption"/>-->
+									<hbox align="center">
+										<grid id="searchGridCJK"><columns><column/><column/></columns><rows id="UnihanSearch"/></grid>
+									</hbox>
+						<!--</groupbox>-->
+								</tabpanel>
+							</tabpanels>
+						</tabbox>
+					</groupbox>
+					<splitter/>
+					<groupbox id="chart_layout_persist" flex="1" persist="height">
+						<caption label="&caption.chart.layout;"/>
+						<hbox>
+							<vbox><!-- Others not aligned, so... align="center" -->
+								<hbox align="center">
+									<label value="&label.norows;" control="rowsset"/>
+									<textbox flex="1" id="rowsset" rows="1" cols="1" value="" onchange="Unicodecharref.rowsset(event);"/>
+									<label value="&label.nocols;" control="colsset"/>
+									<textbox flex="1" id="colsset" rows="1" cols="1" value="" onchange="Unicodecharref.colsset(event);"/>
+								</hbox>
+								<hbox align="center">
+									<checkbox id="extensions.charrefunicode.entyes" label="&label.entq;" class="charthbox" onclick="Unicodecharref.entflip(event);return false;" onkeypress="Unicodecharref.entflip(event);return false;"/>
+									<checkbox id="extensions.charrefunicode.decyes" label="&label.decq;" class="charthbox" onclick="Unicodecharref.decflip(event);return false;" onkeypress="Unicodecharref.decflip(event);return false;"/>
+									<checkbox id="extensions.charrefunicode.hexyes" label="&label.hexq;" class="charthbox" onclick="Unicodecharref.hexflip(event);return false;" onkeypress="Unicodecharref.hexflip(event);return false;"/>
+									<checkbox id="extensions.charrefunicode.unicodeyes" label="&label.unicodeq;" class="charthbox" onclick="Unicodecharref.unicodeflip(event);return false;" onkeypress="Unicodecharref.unicodeflip(event);return false;"/>
+								</hbox>
+								<hbox align="center">
+									<!--<checkbox id="extensions.charrefunicode.xstyle" label="&label.xstyleq;" class="charthbox" onclick="Unicodecharref.xstyleflip();return false;" onkeypress="Unicodecharref.xstyleflip();return false;"/>-->
+									<checkbox id="extensions.charrefunicode.middleyes" label="&label.middleq;" class="charthbox" onclick="Unicodecharref.middleflip(event);return false;" onkeypress="Unicodecharref.middleflip(event);return false;"/>
+									<checkbox id="extensions.charrefunicode.buttonyes" label="&label.buttonq;" class="charthbox" onclick="Unicodecharref.buttonflip(event);return false;" onkeypress="Unicodecharref.buttonflip(event);return false;"/>
+								</hbox>
+								<hbox align="center">
+									<label value="&label.fontsize;"/>
+									<button class="fontsize" oncommand="Unicodecharref.tblfontsize(+1);" label="+"/>
+									<button class="fontsize" oncommand="Unicodecharref.tblfontsize(-1);" label="-"/>
+								</hbox>
+							</vbox>
+							<vbox>
+								<hbox>
+									<label value="&font.label;" control="extensions.charrefunicode.font" />
+									<textbox id="extensions.charrefunicode.font" size="12" onchange="Unicodecharref.setprefs(event);$('chart_table').style.fontFamily=this.value;"/>
+								</hbox>
+								<hbox tooltiptext="&lang.tooltiptext;">
+									<label value="&lang.label;" control="extensions.charrefunicode.lang" />
+									<textbox id="extensions.charrefunicode.lang" size="5" onchange="Unicodecharref.setprefs(event);$('chart_table').lang=this.value;" />
+								</hbox>
+							</vbox>
+						</hbox>
+					</groupbox>
+				</vbox>
+				<splitter/>
+				<vbox id="chartcontent" persist="width">
+					<vbox id="tableholder" persist="height">
+						<html:div id="tablecntnr"/>
+					</vbox>
+		<!-- Fix: this will cause the detailedCJKView to disappear (if using overflow, etc. from .detailedCJKView in overlay.css) <splitter/>-->
+					<splitter/>
+					<tabbox id="viewTabs" class="viewTabs" flex="1" persist="height">
+						<tabs>
+							<tab id="basicView" label="&basicView.tab;"/>
+							<tab id="detailedView" label="&detailedView.tab;" collapsed="true"/>
+							<tab id="detailedCJKView" label="&detailedCJKView.tab;" collapsed="true"/>
+						</tabs>
+						<tabpanels flex="1">
+							<tabpanel flex="1">
+								<vbox flex="1" align="center">
+									<hbox flex="1">
+										<vbox flex="1">
+											<checkbox id="extensions.charrefunicode.multiline" label="&button.multiline;" onclick="Unicodecharref.multiline();" onkeypress="Unicodecharref.multiline();" />
+											<checkbox tooltiptext="&ShowImg.tooltiptext;" id="extensions.charrefunicode.showImg" label="&ShowImg.checkbox.label;" onclick="return Unicodecharref.setImagePref(event);" onkeypress="return Unicodecharref.setImagePref(event);"/>
+										</vbox>
+										<label class="leftlabel" control="displayUnicodeDesc">&caption.displayUnicodeDesc;</label>
+										<textbox id="displayUnicodeDesc" flex="1"/>
+										<!-- value="&textbox.displayUnicodeDesc;" -->
+									</hbox>
+									<hbox id="unicodeImg"/>
+									<hbox id="linksection">
+										<description id="plane"/>
+										<description>&#160;</description><hbox id="pdflink"/>
+									</hbox>
+									<!-- On the mac, setting multiline="true" causes the textbox to fill up vertically the whole screen regardless of the rows attribute -->
+									<groupbox flex="1">
+										<caption label="&caption.chart.output;"/>
+										<hbox>
+											<label value="&outputtocopy;" control="inserttext"/>
+											<textbox id="inserttext" value=""/>
+											<button id="clearoutput" label="&button.clearoutput;" oncommand="document.getElementById('inserttext').value='';"/>
+										</hbox>
+										<hbox align="center">
+											<hbox><button tooltiptext="&willreplaceprecnv;" flex="1" class="outputcopybutton" label="&button.moveoutput;" oncommand="Unicodecharref.moveoutput('inserttext');"/></hbox>
+											<button label="&copyToClipboard;" oncommand="Unicodecharref.copyToClipboard('inserttext');" />
+											<button label="&addToToolbar;" oncommand="Unicodecharref.addToToolbar();"/>
+										</hbox>
+									</groupbox>
+								</vbox>
+							</tabpanel>
+							<tabpanel>
+								<vbox id="unicodeDescArea" flex="1">
+									<checkbox id="extensions.charrefunicode.showAllDetailedView" label="&showAllDetailedView.label;" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+									<hbox>
+										<label class="heading" value="&textbox.displayUnicodeDesc;"/>
+										<textbox id="displayUnicodeDesc2" flex="1"/>
+									</hbox>
+								<!--<grid>
+								<columns><column maxwidth="175" minwidth="175" flex="1"/><column minwidth="175" maxwidth="175" flex="1"/>
+										<column maxwidth="175" minwidth="175" flex="1"/><column minwidth="175" maxwidth="175" flex="1"/></columns>
+								<rows id="detailedViewRows">
+
+								<row>
+								-->
+									<vbox class="detailedViewRows" flex="1">
+										<html:div>
+			<!--<vbox><description>&Code_point;</description>
+			<textbox id="_detailedView0"/></vbox>-->
+			<!--<vbox><description>&Name;</description>
+			<textbox id="_detailedView1"/></vbox>-->
+<vbox class="detailedView">
+<description class="heading">&General_Category;</description>
+<textbox id="_detailedView2"/></vbox>
+<vbox class="detailedView"><description class="heading">&Canonical_Combining_Class;</description>
+<textbox id="_detailedView3"/></vbox>
+<vbox class="detailedView"><description class="heading">&Bidi_Class;</description>
+<textbox id="_detailedView4"/></vbox>
+<vbox class="detailedView"><description class="heading">&Decomposition_Type_and_Mapping;</description>
+<textbox id="_detailedView5"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedView"><description class="heading">&Decimal;</description>
+<textbox id="_detailedView6"/></vbox>
+<vbox class="detailedView"><description class="heading">&Digit;</description>
+<textbox id="_detailedView7"/></vbox>
+<vbox class="detailedView"><description class="heading">&Numeric;</description>
+<textbox id="_detailedView8"/></vbox>
+<vbox class="detailedView"><description class="heading">&Bidi_Mirrored;</description>
+<textbox id="_detailedView9"/></vbox>
+<!--<vbox class="detailedView"><description class="heading">&Unicode_1_Name;</description>
+<textbox id="_detailedView10"/></vbox>
+-->
+
+<!--</row><row>-->
+<vbox class="detailedView"><description class="heading">&ISO_Comment;</description>
+<textbox id="_detailedView11"/></vbox>
+<vbox class="detailedView"><description class="heading">&Simple_Uppercase_Mapping;</description>
+<textbox id="_detailedView12"/></vbox>
+<vbox class="detailedView"><description class="heading">&Simple_Lowercase_Mapping;</description>
+<textbox id="_detailedView13"/></vbox>
+<vbox class="detailedView"><description class="heading">&Simple_Titlecase_Mapping;</description>
+<textbox id="_detailedView14"/></vbox>
+										</html:div>
+									</vbox>
+								<!--</row></rows></grid>-->
+								</vbox>
+							</tabpanel>
+							<tabpanel>
+								<vbox id="displayUnihanArea" flex="1">
+									<checkbox id="extensions.charrefunicode.showAllDetailedCJKView" label="&showAllDetailedCJKView.label;" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+									<hbox>
+										<label class="heading" value="&textbox.displayUnicodeDesc;"/>
+										<textbox id="displayUnicodeDescUnihan"/>
+									</hbox>
+									<!--<grid>
+									<columns><column maxwidth="175" minwidth="175" flex="1"/><column minwidth="175" maxwidth="175" flex="1"/>
+											<column maxwidth="175" minwidth="175" flex="1"/><column minwidth="175" maxwidth="175" flex="1"/></columns>
+									<rows id="detailedCJKViewRows">
+					<row>-->
+					<!--<vbox class="detailedCJKView"><description class="heading">&Code_point;</description>
+						<textbox id="_detailedCJKView0"/></vbox>-->
+									<vbox class="detailedCJKViewRows">
+										<html:div>
+<vbox class="detailedCJKView"><description class="heading">&kCangjie;</description><textbox id="_detailedCJKView6"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kCantonese;</description><textbox id="_detailedCJKView7"/></vbox>
+<!--<vbox class="detailedCJKView"><description class="heading">&kDefinition;</description><textbox id="_detailedCJKView3"/></vbox>-->
+<vbox class="detailedCJKView"><description class="heading">&kHanYu;</description><textbox id="_detailedCJKView31"/></vbox>
+
+
+<vbox class="detailedCJKView"><description class="heading">&kHanyuPinyin;</description><textbox id="_detailedCJKView34"/></vbox>
+
+
+
+
+<vbox class="detailedCJKView"><description class="heading">&kIRGHanyuDaZidian;</description><textbox id="_detailedCJKView39"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRGKangXi;</description><textbox id="_detailedCJKView40"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kIRG_GSource;</description><textbox id="_detailedCJKView41"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRG_HSource;</description><textbox id="_detailedCJKView42"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRG_JSource;</description><textbox id="_detailedCJKView43"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRG_KSource;</description><textbox id="_detailedCJKView45"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRG_MSource;</description><textbox id="_detailedCJKView46"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRG_TSource;</description><textbox id="_detailedCJKView47"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRG_USource;</description><textbox id="_detailedCJKView48"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kMandarin;</description><textbox id="_detailedCJKView64"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kRSUnicode;</description><textbox id="_detailedCJKView78"/></vbox>
+
+
+<vbox class="detailedCJKView"><description class="heading">&kAccountingNumeric;</description><textbox id="_detailedCJKView1"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kCompatibilityVariant;</description><textbox id="_detailedCJKView11"/></vbox>
+
+
+<vbox class="detailedCJKView"><description class="heading">&kSemanticVariant;</description><textbox id="_detailedCJKView80"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kTotalStrokes;</description><textbox id="_detailedCJKView85"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kCihaiT;</description><textbox id="_detailedCJKView10"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kSBGY;</description><textbox id="_detailedCJKView79"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kJIS0213;</description><textbox id="_detailedCJKView50"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kNelson;</description><textbox id="_detailedCJKView68"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kRSAdobe_Japan1_6;</description><textbox id="_detailedCJKView73"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kCowles;</description><textbox id="_detailedCJKView12"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kMatthews;</description><textbox id="_detailedCJKView65"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kOtherNumeric;</description><textbox id="_detailedCJKView69"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kPhonetic;</description><textbox id="_detailedCJKView70"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kGSR;</description><textbox id="_detailedCJKView26"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kIRG_KPSource;</description><textbox id="_detailedCJKView44"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRG_VSource;</description><textbox id="_detailedCJKView49"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kKPS1;</description><textbox id="_detailedCJKView56"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kFenn;</description><textbox id="_detailedCJKView16"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kFennIndex;</description><textbox id="_detailedCJKView17"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kKarlgren;</description><textbox id="_detailedCJKView60"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kHKSCS;</description><textbox id="_detailedCJKView30"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kXHC1983;</description><textbox id="_detailedCJKView88"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kMeyerWempe;</description><textbox id="_detailedCJKView66"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kTraditionalVariant;</description><textbox id="_detailedCJKView86"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kVietnamese;</description><textbox id="_detailedCJKView87"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kSpecializedSemanticVariant;</description><textbox id="_detailedCJKView82"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kLau;</description><textbox id="_detailedCJKView62"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kCheungBauer;</description><textbox id="_detailedCJKView8"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kCheungBauerIndex;</description><textbox id="_detailedCJKView9"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIICore;</description><textbox id="_detailedCJKView36"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kTang;</description><textbox id="_detailedCJKView84"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kZVariant;</description><textbox id="_detailedCJKView90"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kRSKangXi;</description><textbox id="_detailedCJKView76"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kJapaneseKun;</description><textbox id="_detailedCJKView51"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kJapaneseOn;</description><textbox id="_detailedCJKView52"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kSimplifiedVariant;</description><textbox id="_detailedCJKView81"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kKangXi;</description><textbox id="_detailedCJKView59"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kKPS0;</description><textbox id="_detailedCJKView55"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kBigFive;</description><textbox id="_detailedCJKView2"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kCCCII;</description><textbox id="_detailedCJKView3"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kCNS1986;</description><textbox id="_detailedCJKView4"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kCNS1992;</description><textbox id="_detailedCJKView5"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kDaeJaweon;</description><textbox id="_detailedCJKView13"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kEACC;</description><textbox id="_detailedCJKView15"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kFourCornerCode;</description><textbox id="_detailedCJKView18"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kFrequency;</description><textbox id="_detailedCJKView19"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kGB0;</description><textbox id="_detailedCJKView20"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kGB1;</description><textbox id="_detailedCJKView21"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kGradeLevel;</description><textbox id="_detailedCJKView27"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kHDZRadBreak;</description><textbox id="_detailedCJKView28"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kHKGlyph;</description><textbox id="_detailedCJKView29"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kHangul;</description><textbox id="_detailedCJKView32"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kHanyuPinlu;</description><textbox id="_detailedCJKView33"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRGDaeJaweon;</description><textbox id="_detailedCJKView37"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIRGDaiKanwaZiten;</description><textbox id="_detailedCJKView38"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kJis0;</description><textbox id="_detailedCJKView53"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kKSC0;</description><textbox id="_detailedCJKView57"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kKorean;</description><textbox id="_detailedCJKView61"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kMainlandTelegraph;</description><textbox id="_detailedCJKView63"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kMorohashi;</description><textbox id="_detailedCJKView67"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kPrimaryNumeric;</description><textbox id="_detailedCJKView71"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kTaiwanTelegraph;</description><textbox id="_detailedCJKView83"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kXerox;</description><textbox id="_detailedCJKView89"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kGB5;</description><textbox id="_detailedCJKView23"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kJis1;</description><textbox id="_detailedCJKView54"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kPseudoGB1;</description><textbox id="_detailedCJKView72"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kGB3;</description><textbox id="_detailedCJKView22"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kGB7;</description><textbox id="_detailedCJKView24"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kGB8;</description><textbox id="_detailedCJKView25"/></vbox>
+
+<vbox class="detailedCJKView"><description class="heading">&kKSC1;</description><textbox id="_detailedCJKView58"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kIBMJapan;</description><textbox id="_detailedCJKView35"/></vbox>
+
+
+<vbox class="detailedCJKView"><description class="heading">&kRSKanWa;</description><textbox id="_detailedCJKView75"/></vbox>
+<!--</row><row>-->
+<vbox class="detailedCJKView"><description class="heading">&kRSKorean;</description><textbox id="_detailedCJKView77"/></vbox>
+<vbox class="detailedCJKView"><description class="heading">&kRSJapanese;</description><textbox id="_detailedCJKView74"/></vbox>
+									</html:div>
+									</vbox>
+					<!--</row></rows></grid>-->
+								</vbox>
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+				</vbox>
+			</hbox>
+		</tabpanel>
+		<tabpanel id="conversion" flex="1">
+			<hbox id="conversionhbox" flex="1">
+				<vbox pack="start" id="conversion_buttons_persist" persist="width">
+					<description class="dialogheader" value="&Reconvert.dialogheader.title;"/>
+					<button align="left" id="b1" class="reconvert" oncommand="Unicodecharref.charref2unicode(event);">&charref2unicode.label;</button>
+					<button align="left" id="b2" class="reconvert" oncommand="Unicodecharref.charref2htmlents(event);">&charref2htmlents.label;</button>
+					<button align="left" id="b3" class="reconvert" oncommand="Unicodecharref.unicode2charrefDec(event);">&unicode2charrefDec.label;</button>
+					<button align="left" id="b4" class="reconvert" oncommand="Unicodecharref.unicode2charrefHex(event);">&unicode2charrefHex.label;</button>
+					<button align="left" id="b3b" class="reconvert" oncommand="Unicodecharref.unicode2charrefDecSurrogate(event);" tooltiptext="&unicode2charrefSurrogate.tooltip;">&unicode2charrefDecSurrogate.label;</button>
+					<button align="left" id="b4b" class="reconvert" oncommand="Unicodecharref.unicode2charrefHexSurrogate(event);" tooltiptext="&unicode2charrefSurrogate.tooltip;">&unicode2charrefHexSurrogate.label;</button>
+
+					<button align="left" id="b5" class="reconvert" oncommand="Unicodecharref.unicode2htmlents(event);">&unicode2htmlents.label;</button>
+					<hbox>
+                        <button  flex="1" align="left" id="b6" class="reconvert" oncommand="Unicodecharref.unicode2jsescape(event);">&unicode2JSEscape.label;</button>
+                        <button  flex="1" align="left" id="b7" class="reconvert" oncommand="Unicodecharref.unicodeTo6Digit(event);">&unicodeTo6Digit.label;</button>
+                    </hbox>
+					<button align="left" id="b8" class="reconvert" oncommand="Unicodecharref.unicode2cssescape(event);">&unicode2CSSEscape.label;</button>
+
+					<button align="left" id="b9" class="reconvert" oncommand="Unicodecharref.htmlents2charrefDec(event);">&htmlents2charrefDec.label;</button>
+					<button align="left" id="b10" class="reconvert" oncommand="Unicodecharref.htmlents2charrefHex(event);">&htmlents2charrefHex.label;</button>
+					<button align="left" id="b11" class="reconvert" oncommand="Unicodecharref.htmlents2unicode(event);">&htmlents2unicode.label;</button>
+					<button align="left" id="b12" class="reconvert" oncommand="Unicodecharref.hex2dec(event);">&hex2dec.label;</button>
+					<button align="left" id="b13" class="reconvert" oncommand="Unicodecharref.dec2hex(event);">&dec2hex.label;</button>
+                    
+                    <hbox>
+                        <button align="left" id="b14" class="reconvert" flex="1" oncommand="Unicodecharref.jsescape2unicode(event);">&jsescape2unicode.label;</button>
+                        <button align="left" id="b15" class="reconvert" flex="1" oncommand="Unicodecharref.sixDigit2Unicode(event);">&sixDigit2unicode.label;</button>
+                    </hbox>
+                    
+                    <button align="left" id="b16" class="reconvert" oncommand="Unicodecharref.cssescape2unicode(event);">&cssescape2unicode.label;</button>    
+                    <hbox>
+                        <button align="left" id="b17" class="reconvert" flex="1" oncommand="Unicodecharref.unicode2CharDesc(event);">&unicode2CharDesc.label;</button>
+                        <button align="left" id="b18" class="reconvert" flex="1" oncommand="Unicodecharref.charDesc2Unicode(event);">&charDesc2Unicode.label;</button>
+                    </hbox>
+                    <html:div>
+                        <html:label for="encoding_from">&Convert_From_Encoding;</html:label>
+                        <html:select id="encoding_from" class="reconvert" multiple="multiple">
+                            <html:option>UTF-8</html:option>
+                            <html:option>ISO-8859-1</html:option>
+<html:option>Big5</html:option>
+<html:option>Big5-HKSCS</html:option>
+<html:option>EUC-JP</html:option>
+<html:option>EUC-KR</html:option>
+<html:option>GB2312</html:option>
+<html:option>GEOSTD8</html:option>
+<html:option>HZ-GB-2312</html:option>
+<html:option>IBM850</html:option>
+<html:option>IBM852</html:option>
+<html:option>IBM855</html:option>
+<html:option>IBM857</html:option>
+<html:option>IBM862</html:option>
+<html:option>IBM864</html:option>
+<html:option>IBM864i</html:option>
+<html:option>IBM866</html:option>
+<html:option>ISO-2022-CN</html:option>
+<html:option>ISO-2022-JP</html:option>
+<html:option>ISO-2022-KR</html:option>
+<html:option>ISO-8859-1</html:option>
+<html:option>ISO-8859-10</html:option>
+<html:option>ISO-8859-11</html:option>
+<html:option>ISO-8859-13</html:option>
+<html:option>ISO-8859-14</html:option>
+<html:option>ISO-8859-15</html:option>
+<html:option>ISO-8859-16</html:option>
+<html:option>ISO-8859-2</html:option>
+<html:option>ISO-8859-3</html:option>
+<html:option>ISO-8859-4</html:option>
+<html:option>ISO-8859-5</html:option>
+<html:option>ISO-8859-6</html:option>
+<html:option>ISO-8859-6-E</html:option>
+<html:option>ISO-8859-6-I</html:option>
+<html:option>ISO-8859-7</html:option>
+<html:option>ISO-8859-8</html:option>
+<html:option>ISO-8859-8-E</html:option>
+<html:option>ISO-8859-8-I</html:option>
+<html:option>ISO-8859-9</html:option>
+<html:option>ISO-IR-111</html:option>
+<html:option>KOI8-R</html:option>
+<html:option>KOI8-U</html:option>
+<html:option>Shift_JIS</html:option>
+<html:option>T.61-8bit</html:option>
+<html:option>TIS-620</html:option>
+<html:option>UTF-16</html:option>
+<html:option>UTF-16BE</html:option>
+<html:option>UTF-16LE</html:option>
+<html:option>UTF-32</html:option>
+<html:option>UTF-32BE</html:option>
+<html:option>UTF-32LE</html:option>
+<html:option>UTF-7</html:option>
+<html:option>UTF-8</html:option>
+<html:option>VISCII</html:option>
+<html:option>armscii-8</html:option>
+<html:option>gb18030</html:option>
+<html:option>us-ascii</html:option>
+<html:option>windows-1250</html:option>
+<html:option>windows-1251</html:option>
+<html:option>windows-1252</html:option>
+<html:option>windows-1253</html:option>
+<html:option>windows-1254</html:option>
+<html:option>windows-1255</html:option>
+<html:option>windows-1256</html:option>
+<html:option>windows-1257</html:option>
+<html:option>windows-1258</html:option>
+<html:option>windows-874</html:option>
+<html:option>windows-936</html:option>
+<html:option>x-euc-tw</html:option>
+<html:option>x-gbk</html:option>
+<html:option>x-imap4-modified-utf7</html:option>
+<html:option>x-johab</html:option>
+<html:option>x-mac-arabic</html:option>
+<html:option>x-mac-ce</html:option>
+<html:option>x-mac-croatian</html:option>
+<html:option>x-mac-cyrillic</html:option>
+<html:option>x-mac-devanagari</html:option>
+<html:option>x-mac-farsi</html:option>
+<html:option>x-mac-greek</html:option>
+<html:option>x-mac-gujarati</html:option>
+<html:option>x-mac-gurmukhi</html:option>
+<html:option>x-mac-hebrew</html:option>
+<html:option>x-mac-icelandic</html:option>
+<html:option>x-mac-roman</html:option>
+<html:option>x-mac-romanian</html:option>
+<html:option>x-mac-turkish</html:option>
+<html:option>x-user-defined</html:option>
+<html:option>x-viet-tcvn5712</html:option>
+<html:option>x-viet-vps</html:option>
+<html:option>x-windows-949</html:option>
+                        </html:select>
+                        <html:label for="encoding_to">&Convert_To_Encoding;</html:label>
+                        <html:select id="encoding_to" class="reconvert" multiple="multiple">
+                            <html:option>UTF-8</html:option>
+                            <html:option>ISO-8859-1</html:option>
+<html:option>Big5</html:option>
+<html:option>Big5-HKSCS</html:option>
+<html:option>EUC-JP</html:option>
+<html:option>EUC-KR</html:option>
+<html:option>GB2312</html:option>
+<html:option>GEOSTD8</html:option>
+<html:option>HZ-GB-2312</html:option>
+<html:option>IBM850</html:option>
+<html:option>IBM852</html:option>
+<html:option>IBM855</html:option>
+<html:option>IBM857</html:option>
+<html:option>IBM862</html:option>
+<html:option>IBM864</html:option>
+<html:option>IBM864i</html:option>
+<html:option>IBM866</html:option>
+<html:option>ISO-2022-CN</html:option>
+<html:option>ISO-2022-JP</html:option>
+<html:option>ISO-2022-KR</html:option>
+<html:option>ISO-8859-1</html:option>
+<html:option>ISO-8859-10</html:option>
+<html:option>ISO-8859-11</html:option>
+<html:option>ISO-8859-13</html:option>
+<html:option>ISO-8859-14</html:option>
+<html:option>ISO-8859-15</html:option>
+<html:option>ISO-8859-16</html:option>
+<html:option>ISO-8859-2</html:option>
+<html:option>ISO-8859-3</html:option>
+<html:option>ISO-8859-4</html:option>
+<html:option>ISO-8859-5</html:option>
+<html:option>ISO-8859-6</html:option>
+<html:option>ISO-8859-6-E</html:option>
+<html:option>ISO-8859-6-I</html:option>
+<html:option>ISO-8859-7</html:option>
+<html:option>ISO-8859-8</html:option>
+<html:option>ISO-8859-8-E</html:option>
+<html:option>ISO-8859-8-I</html:option>
+<html:option>ISO-8859-9</html:option>
+<html:option>ISO-IR-111</html:option>
+<html:option>KOI8-R</html:option>
+<html:option>KOI8-U</html:option>
+<html:option>Shift_JIS</html:option>
+<html:option>T.61-8bit</html:option>
+<html:option>TIS-620</html:option>
+<html:option>UTF-16</html:option>
+<html:option>UTF-16BE</html:option>
+<html:option>UTF-16LE</html:option>
+<html:option>UTF-32</html:option>
+<html:option>UTF-32BE</html:option>
+<html:option>UTF-32LE</html:option>
+<html:option>UTF-7</html:option>
+<html:option>UTF-8</html:option>
+<html:option>VISCII</html:option>
+<html:option>armscii-8</html:option>
+<html:option>gb18030</html:option>
+<html:option>us-ascii</html:option>
+<html:option>windows-1250</html:option>
+<html:option>windows-1251</html:option>
+<html:option>windows-1252</html:option>
+<html:option>windows-1253</html:option>
+<html:option>windows-1254</html:option>
+<html:option>windows-1255</html:option>
+<html:option>windows-1256</html:option>
+<html:option>windows-1257</html:option>
+<html:option>windows-1258</html:option>
+<html:option>windows-874</html:option>
+<html:option>windows-936</html:option>
+<html:option>x-euc-tw</html:option>
+<html:option>x-gbk</html:option>
+<html:option>x-imap4-modified-utf7</html:option>
+<html:option>x-johab</html:option>
+<html:option>x-mac-arabic</html:option>
+<html:option>x-mac-ce</html:option>
+<html:option>x-mac-croatian</html:option>
+<html:option>x-mac-cyrillic</html:option>
+<html:option>x-mac-devanagari</html:option>
+<html:option>x-mac-farsi</html:option>
+<html:option>x-mac-greek</html:option>
+<html:option>x-mac-gujarati</html:option>
+<html:option>x-mac-gurmukhi</html:option>
+<html:option>x-mac-hebrew</html:option>
+<html:option>x-mac-icelandic</html:option>
+<html:option>x-mac-roman</html:option>
+<html:option>x-mac-romanian</html:option>
+<html:option>x-mac-turkish</html:option>
+<html:option>x-user-defined</html:option>
+<html:option>x-viet-tcvn5712</html:option>
+<html:option>x-viet-vps</html:option>
+<html:option>x-windows-949</html:option>
+                        </html:select>
+                    </html:div>
+				</vbox>
+                <splitter/>
+				<vbox flex="1" id="toconvert_persist" persist="width">
+<!--				<description class="dialogheader" value="&uresults.value;"/> -->
+					<label id="toconvert_persist_label" control="toconvert" value="&uresults.preconverted;" />
+					<textbox flex="1" multiline="true" id="toconvert" value="&uresults.value;" persist="height"/>
+					<splitter resizeafter="flex" resizebefore="flex" />
+					<label control="converted" value="&uresults.converted;" />
+					<textbox flex="1" id="converted" persist="height" cols="2" rows="5" value="&default.textbox.value;" multiline="true" />
+					<hbox align="center" flex="1">
+						<label value="&label.fontsize;"/>
+						<button class="fontsize" label="+" oncommand="Unicodecharref.fsizetextbox(+1);"/>
+						<button class="fontsize" label="-" oncommand="Unicodecharref.fsizetextbox(-1);"/>
+						<description value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+						<button label="&moveconvertedup.label;" oncommand="Unicodecharref.moveoutput('converted');"/>
+					</hbox>
+				</vbox>
+			</hbox>
+		</tabpanel>
+		<tabpanel id="prefs" flex="1">
+			<vbox align="center" flex="1">
+				<description class="dialogheader" value="&Preferences.dialogheader.title;"/>
+				<vbox class="boxed" id="DownloadButtonBox" tooltiptext="&Download_unihan_tooltip;">
+					<button label="&DownloadUnihan;" oncommand="Unicodecharref.downloadUnihan()" />
+				</vbox>
+				<vbox class="boxed" id="DownloadProgressBox" hidden="true">
+					<label id="progress_stat"/>
+	                <progressmeter id="progress_element" mode="determined"/>
+					<button id="closeDownloadProgressBox"
+						hidden="true" label="&Close;" oncommand="Unicodecharref.closeDownloadProgressBox()" />
+				</vbox>
+				<vbox class="boxed" id="UnihanInstalled">
+					<description>&UnihanInstalled;</description>
+				</vbox>
+
+				<vbox class="boxed">
+					<label control="extensions.charrefunicode.initialTab">&initialTab.label;</label>
+                    <menulist id="extensions.charrefunicode.initialTab" oncommand="Unicodecharref.setprefs(event);">
+                        <menupopup>
+                            <menuitem id="mi_charttab" value="charttab" label="&Charts.tab.label;" />
+                            <menuitem id="mi_conversiontab" value="conversiontab" label="&Conversion.tab.label;" />
+                            <menuitem id="mi_prefstab" value="prefstab" label="&Prefs.tab.label;" />
+                            <menuitem id="mi_dtdtab" value="dtdtab" label="&DTD.tab.label;" />
+                            <menuitem id="mi_notestab" value="notestab" label="&Notes.tab.label;" />
+                            <menuitem id="mi_abouttab" value="abouttab" label="&About.tab.label;" />							
+                        </menupopup>
+                    </menulist>
+				</vbox>
+
+				
+				<vbox class="boxed">
+					<!-- Couldn't use oncommand with checkbox for some reason, so set both onclick and onkeypress -->
+					<checkbox id="extensions.charrefunicode.asciiLt128" label="&Ascii.checkbox.label;" class="prefdescription" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+				</vbox>
+
+
+				<!--<radiogroup onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;" id="extensions.charrefunicode.hexstyleLwr">
+					<description value="&xstyle.description;" class="prefdescription topofpanel"/>
+					<hbox>
+						<radio label="x" id="_1-extensions.charrefunicode.hexstyleLwr" class="indentedradio"/>
+						<radio label="X" id="_2-extensions.charrefunicode.hexstyleLwr"/>
+					</hbox>
+				</radiogroup>-->
+				<vbox class="boxed">
+					<checkbox id="extensions.charrefunicode.hexLettersUpper" label="&Hexletters.checkbox.label;" class="prefdescription topofpanel" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+				</vbox>
+				<vbox class="boxedbottom">
+					<checkbox id="extensions.charrefunicode.xhtmlentmode" label="&xhtmlentmode.label;" class="prefdescription topofpanel" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+				</vbox>
+				<vbox class="boxedbottom">
+					<checkbox id="extensions.charrefunicode.xmlentkeep" label="&xmlentmode.label;" class="prefdescription topofpanel" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+				</vbox>
+				<vbox class="boxedbottom">
+					<checkbox id="extensions.charrefunicode.ampkeep" label="&ampkeep.label;" class="prefdescription topofpanel" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+				</vbox>
+				<vbox class="boxedbottom">
+					<checkbox id="extensions.charrefunicode.ampspace" label="&ampspace.label;" class="prefdescription topofpanel" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+				</vbox>
+				<vbox class="boxedbottom">
+					<checkbox id="extensions.charrefunicode.showComplexWindow" label="&showComplexWindow.label;" class="prefdescription topofpanel" onclick="Unicodecharref.setprefs(event);Unicodecharref.testIfComplexWindow();return false;" onkeypress="Unicodecharref.setprefs(event);Unicodecharref.testIfComplexWindow();return false;"/>
+				</vbox>
+                
+                
+				<vbox class="boxedbottom">
+					<checkbox id="extensions.charrefunicode.cssUnambiguous" label="&cssUnambiguous.label;" class="prefdescription topofpanel" onclick="Unicodecharref.setprefs(event);return false;" onkeypress="Unicodecharref.setprefs(event);return false;"/>
+                    <label control="CSSWhitespace">&CSSWhitespace.label;</label>
+                    <menulist id="CSSWhitespace" oncommand="Unicodecharref.cssWhitespace(event);">
+                        <menupopup>
+                            <menuitem value="space" label="&CSS_space;" />
+                            <menuitem value="rn" label="&CSS_rn;" />
+                            <menuitem value="r" label="&CSS_r;" />
+                            <menuitem value="n" label="&CSS_n;" />
+                            <menuitem value="t" label="&CSS_t;" />
+                            <menuitem value="f" label="&CSS_f;" />
+                        </menupopup>
+                    </menulist>
+				</vbox>                
+				<button id="resetdefaultbutton" label="&resettodefault.label;" oncommand="Unicodecharref.resetdefaults();"/>
+
+			</vbox>
+		</tabpanel>
+		<tabpanel id="DTDpanel" flex="1">
+			<vbox align="center" flex="1">
+				<description class="dialogheader" value="&dialogheader.value;" />
+				<description value="&DTD.desc.value;" />
+				<description value="&DTD.desc.value2;" />
+				<textbox flex="1" cols="80" rows="5" multiline="true" id="DTDtextbox" value="&DTD.textbox.value;" onchange="Unicodecharref.registerDTD();"/>
+                <hbox>
+                <html:label for="insertEntityFile">&DTD.insertEntityFile;</html:label>
+                <html:select id="insertEntityFile" class="dtdbutton">
+<html:optgroup label="Graphic">
+<html:option value="isobox">&ent_isobox;</html:option>
+<html:option value="isonum">&ent_isonum;</html:option>
+</html:optgroup>
+
+<html:optgroup label="Math Symbols">
+<html:option value="xhtml1-symbol">&ent_xhtml1-symbol;</html:option>
+<html:option value="isoamsa">&ent_isoamsa;</html:option>
+<html:option value="isoamsb">&ent_isoamsb;</html:option>
+<html:option value="isoamsc">&ent_isoamsc;</html:option>
+<html:option value="isoamsn">&ent_isoamsn;</html:option>
+<html:option value="isoamso">&ent_isoamso;</html:option>
+<html:option value="isoamsr">&ent_isoamsr;</html:option>
+</html:optgroup>
+
+<html:optgroup label="Math Alphabets">
+<html:option value="isomfrk">&ent_isomfrk;</html:option>
+<html:option value="isomopf">&ent_isomopf;</html:option>
+<html:option value="isomscr">&ent_isomscr;</html:option>
+</html:optgroup>
+
+<html:optgroup label="MathML">
+<html:option value="mmlextra">&ent_mmlextra;</html:option>
+<html:option value="mmlalias">&ent_mmlalias;</html:option>
+</html:optgroup>
+
+<html:optgroup label="Cyrillic">
+<html:option value="isocyr1">&ent_isocyr1;</html:option>
+<html:option value="isocyr2">&ent_isocyr2;</html:option>
+</html:optgroup>
+
+<html:optgroup label="Greek">
+<html:option value="isogrk1">&ent_isogrk1;</html:option>
+<html:option value="isogrk2">&ent_isogrk2;</html:option>
+<html:option value="isogrk3">&ent_isogrk3;</html:option>
+<html:option value="isogrk4">&ent_isogrk4;</html:option>
+</html:optgroup>
+
+<html:optgroup label="Latin">
+<html:option value="isolat1">&ent_isolat1;</html:option>
+<html:option value="isolat2">&ent_isolat2;</html:option>
+<html:option value="xhtml1-lat1">&ent_xhtml1-lat1;</html:option>
+</html:optgroup>
+
+<html:optgroup label="XHTML/HTML/XML">
+<html:option value="xhtml1-lat1">&ent_xhtml1-lat1;</html:option>
+<html:option value="xhtml1-special">&ent_xhtml1-special;</html:option>
+<html:option value="xhtml1-symbol">&ent_xhtml1-symbol;</html:option>
+<html:option value="html5-uppercase">&ent_html5-uppercase;</html:option>
+<html:option value="predefined">&ent_predefined;</html:option>
+</html:optgroup>
+
+<html:optgroup label="Other">
+<html:option value="isodia">&ent_isodia;</html:option>
+<html:option value="isopub">&ent_isopub;</html:option>
+<html:option value="isotech">&ent_isotech;</html:option>
+</html:optgroup>
+
+                </html:select>
+				<button class="dtdbutton" oncommand="Unicodecharref.insertent('DTDtextbox');" label="&DTD.insertent;"/>
+                </hbox>
+				<checkbox id="extensions.charrefunicode.appendtohtmldtd" label="&appendhtml.checkbox;" onclick="Unicodecharref.append2htmlflip(event);return false;" onkeypress="Unicodecharref.append2htmlflip(event);return false;"/>
+			</vbox>
+		</tabpanel>
+		<tabpanel id="notes" flex="1">
+			<vbox align="center" flex="1">
+				<description class="dialogheader" value="&Notes.dialogheader.title;"/>
+				<hbox>
+					<vbox align="center" flex="1" id="noteDescriptionBox">
+						<description class="notesdescription notes_heading">&notespar0;</description>
+						<description class="notesdescription">&notespar1;</description>
+						<description class="notesdescription">&notespar2;</description>
+						<description class="notesdescription">&notespar3;</description>
+						<description class="notesdescription">&notespar4;</description>
+						<description class="notesdescription">&notespar5;</description>
+						<description class="notesdescription">&notespar6;</description>
+						<description class="notesdescription">&notespar7;</description>
+						<description class="notesdescription">&notespar8;</description>
+					</vbox>
+					<vbox align="center" flex="1" id="noteDescriptionBox2">
+						<description class="usage_notesdescription notes_heading">&usage_notespar0;</description>
+						<description class="usage_notesdescription">&usage_notespar1;</description>
+						<description class="usage_notesdescription">&usage_notespar2;</description>
+						<description class="usage_notesdescription">&usage_notespar3;</description>
+						<description class="usage_notesdescription">&usage_notespar4;</description>
+						<description class="usage_notesdescription">&usage_notespar5;</description>
+						<description class="usage_notesdescription">&usage_notespar6;</description>
+						<description class="usage_notesdescription">&usage_notespar7;</description>
+						<description class="usage_notesdescription">&usage_notespar8;</description>
+						<description class="usage_notesdescription">&usage_notespar9;</description>
+						<description class="usage_notesdescription">&usage_notespar10;</description>
+						<description class="usage_notesdescription">&usage_notespar10b;</description>
+						<description class="usage_notesdescription">&usage_notespar11;</description>
+					</vbox>
+				</hbox>
+			</vbox>
+		</tabpanel>
+		<tabpanel id="about" flex="1">
+			<vbox align="center" flex="1">
+				<description class="dialogheader" value="&About.dialogheader.title;"/>
+				<description class="aboutdescription firstbox">
+					&About.desc1; <html:a href="mailto:brettz9@yahoo.com" target="_top">&About.desc2;</html:a>&About.desc2b;&period;
+				</description>
+				<description class="aboutdescription">
+					&About.desc3; <button id="paypalbutton" oncommand="window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&amp;business=brettz9%40yahoo%2ecom&amp;no_shipping=0&amp;no_note=1&amp;tax=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8', 'bzamirpaypal');" label="&About.desc4;"/>&period;
+				</description>
+                <description class="aboutdescription">
+                <html:span id="world_auxiliary_language"></html:span>
+                </description>
+<!--				<description class="aboutdescription">&About.desc5;</description> -->
+			</vbox>
+		</tabpanel>
+	</tabpanels>
+</tabbox>
+
+
+</dialog>

@@ -1,0 +1,808 @@
+<!--
+Copyright 2007, 2008, 2009 Brett Zamir
+    This file is part of Unicode Input Tool/Converter.
+
+    Unicode Input Tool/Converter is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Unicode Input Tool/Converter is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Unicode Input Tool/Converter.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!ENTITY DTD.insertEntityFile "Insert Entity File">
+
+<!ENTITY ent_isobox "Box and Line Drawing">
+<!ENTITY ent_isocyr1 "Russian Cyrillic">
+<!ENTITY ent_isocyr2 "Non-Russian Cyrillic">
+<!ENTITY ent_isodia "Diacritical Marks">
+<!ENTITY ent_isolat1 "Added Latin 1">
+<!ENTITY ent_isolat2 "Added Latin 2">
+<!ENTITY ent_isonum "Numeric and Special Graphic">
+<!ENTITY ent_isopub "Publishing">
+<!ENTITY ent_isoamsa "Added Math Symbols: Arrow Relations">
+<!ENTITY ent_isoamsb "Added Math Symbols: Binary Operators">
+<!ENTITY ent_isoamsc "Added Math Symbols: Delimiters">
+<!ENTITY ent_isoamsn "Added Math Symbols: Negated Relations">
+<!ENTITY ent_isoamso "Added Math Symbols: Ordinary">
+<!ENTITY ent_isoamsr "Added Math Symbols: Relations">
+<!ENTITY ent_isogrk1 "Greek Letters">
+<!ENTITY ent_isogrk2 "Monotoniko Greek">
+<!ENTITY ent_isogrk3 "Greek Symbols">
+<!ENTITY ent_isogrk4 "Alternative Greek Symbols">
+<!ENTITY ent_isomfrk "Math Alphabets: Fraktur">
+<!ENTITY ent_isomopf "Math Alphabets: Open Face">
+<!ENTITY ent_isomscr "Math Alphabets: Script">
+<!ENTITY ent_isotech "General Technical">
+<!ENTITY ent_mmlextra "Additional MathML Symbols">
+<!ENTITY ent_mmlalias "MathML Aliases">
+<!ENTITY ent_xhtml1-lat1 "Latin for HTML">
+<!ENTITY ent_xhtml1-special "Special for HTML">
+<!ENTITY ent_xhtml1-symbol "Symbol for HTML">
+<!ENTITY ent_html5-uppercase "Uppercase aliases for HTML">
+<!ENTITY ent_predefined "Predefined XML">
+
+
+<!ENTITY Convert_From_Encoding "Convert From Encoding">
+<!ENTITY Convert_To_Encoding "Convert To Encoding">
+
+<!ENTITY kHanyuPinyin "HanyuPinyin">
+<!ENTITY kIRG_MSource "IRG_MSource">
+
+<!ENTITY Ethiopic_Extended_A "Ethiopic Extended A">
+<!ENTITY Batak "Batak">
+<!ENTITY CJK_Ideographs_Ext._D "CJK Ideographs Ext. D">
+<!ENTITY Kana_Supplement "Kana Supplement">
+<!ENTITY Alchemical_Symbols "Alchemical Symbols">
+<!ENTITY Emoticons "Emoticons">
+<!ENTITY Playing_Cards "Playing Cards">
+<!ENTITY Miscellaneous_Symbols_And_Pictographs "Miscellaneous Symbols And Pictographs">
+<!ENTITY Transport_and_Map_Symbols "Transport and Map Symbols">
+<!ENTITY Mandaic "Mandaic">
+<!ENTITY Brahmi "Brahmi">
+<!ENTITY Bamum_Supplement "Bamum Supplement">
+
+
+
+<!ENTITY font.label "Font">
+
+<!ENTITY addToToolbar "Add to Toolbar pull-down">
+
+
+<!ENTITY usage_notespar1 "The extension can be activated from the context menu (which
+also gives the advantage of being able to operate on
+highlighted text), through the Tools menu, through the 
+toolbar icon, or through the options URL in the addons menu.">
+<!ENTITY usage_notespar2 "Preferences are set as soon as you click on the items, 
+but you can revert back to the default values if you make any mistakes.">
+<!ENTITY usage_notespar3 "Closing the dialog will set the current window's position for 
+future use.">
+<!ENTITY usage_notespar4 "If you have problems with Window size, go to the 'Prefs' tab and
+hit the 'Reset to default values (besides DTD)' button. Using
+'prev set' or 'next set' can also sometimes adjust problems with
+items fitting correctly in the chart view.">
+<!ENTITY usage_notespar5 "Note that you can get extra space on the screen by not using 
+buttons. In such a case, you can still click on the items to get 
+chart output.">
+<!ENTITY usage_notespar6 "Please be aware that in the Unicode chart view, items like 
+question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) 
+may appear in place of a desired character (and some characters 
+will not or cannot be displayed at all). This is due to Firefox's 
+own present limitations in displaying such characters. To find 
+these, you could consult the images such as those at the official 
+http://www.unicode.org/charts site and also available within the 
+extension. While in the extension, you can hover your mouse over a 
+character from the desired range, and a link will appear which you 
+can click to lead to the appropriate chart and optionally view the image. 
+Or you can enable images for direct viewing, but this should not be 
+on by default to avoid taxing the Unicode server.">
+<!ENTITY usage_notespar7 "Please note that selecting the 'Only ents' option in chart view 
+will allow you to see HTML entities in the order in which the HTML 
+entities are defined (and only them). When when you are not in this 
+mode, you will see all entities defined in the custom DTD, 
+optionally excluding HTML entities, if the checkbox on the DTD page 
+to append DTD entities is unchecked.">
+<!ENTITY usage_notespar8 "You should be able to download the Unihan database (not included with the extension due to size) from within the preferences. If you have trouble, download the approximately 19MB file from http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite and place it in your Firefox profile directory.">
+<!ENTITY usage_notespar9 "Extension best used with higher resolutions but now makes some accommodations for lower resolutions. Drag the various splitters to resize subsections. Your desired size should be remembered.">
+<!ENTITY usage_notespar10 "Use control+left-click while you are hovering the cursor over the chart view to freeze the descriptions below. ">
+
+<!ENTITY usage_notespar10b "The toolbar icon can be added by going to View->Toolbars->Customize and then dragging the 'U' icon to the desired
+position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart 
+output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete.">
+
+<!ENTITY usage_notespar11 "The Unicode data within this extension is licensed as described at http://unicode.org/copyright.html">
+<!ENTITY usage_notespar12 "Translators welcome at http://tinyurl.com/UnicodeInputToolTranslators">
+
+<!ENTITY usage_notespar0 "Other Usage Notes">
+<!ENTITY notespar0 "Unicode Notes (some usage information)">
+
+
+
+
+
+
+
+<!ENTITY lang.tooltiptext "The HTML language attribute 'lang' or, in XML, the 'xml:lang' value. Has no effect on most scripts, but may affect glyph selection/font display for certain CJK characters (e.g., U+5203 in 'zh-Hans', 'zh-Hant', 'ja', or 'ko'). Note that you must use the lang attribute to see the effect outside of the chart (even our chart output box does not contain any), and there is presently a bug with xml:lang in true XML/XHTML documents: https://bugzilla.mozilla.org/show_bug.cgi?id=234485">
+<!ENTITY lang.label "lang">
+
+
+<!ENTITY initialTab.label "Initial tab to open (for key command or toolbar button activation)">
+
+
+<!ENTITY CSSWhitespace.label "CSS escape white space character to use if in ambiguous mode">
+<!ENTITY CSS_space "(space)">
+<!ENTITY CSS_rn "\r\n (carriage return and newline)">
+<!ENTITY CSS_r "\r (carriage return)">
+<!ENTITY CSS_n "\n (newline)">
+<!ENTITY CSS_t "\t (tab)">
+<!ENTITY CSS_f "\f (form feed)">
+<!ENTITY cssUnambiguous.label "Create CSS escape as 6-digit sequences not requiring whitespace (otherwise, will be as long as necessary and be followed by white space">
+
+<!ENTITY sixDigit2unicode.label "4 or 6-digit (as in PHP 6) to Unicode">
+<!ENTITY sixDigit2unicodeContext.label "4 or 6-digit escape (as in PHP 6) to Unicode">
+<!ENTITY sixDigit2unicodeContext.accesskey "6">
+
+<!ENTITY unicodeTo6DigitContext.accesskey "U">
+<!ENTITY unicodeTo6Digit.label "Unicode to 6-digit (as in PHP 6)">
+<!ENTITY unicodeTo6DigitContext.label "Unicode to 6-digit escape (as in PHP 6)">
+
+
+<!ENTITY charDesc2Unicode.accesskey "h">
+<!ENTITY charDesc2UnicodeContext.label "Character description escapes (as in PHP 6) to Unicode">
+<!ENTITY unicode2CharDescContext.label "Unicode to character description escapes (as in PHP 6)">
+<!ENTITY unicode2CharDescContext.accesskey "n">
+<!ENTITY charDesc2Unicode.label "Character description escapes to Unicode">
+<!ENTITY unicode2CharDesc.label "Unicode to character description escapes">
+
+<!ENTITY unicode2JSEscape.label "Unicode to JavaScript escape sequences">
+<!ENTITY unicode2jsescapeContext.label "Unicode to escaped JS">
+<!ENTITY unicode2jsescapeContext.accesskey "J">
+<!ENTITY unicode2CSSEscape.label "Unicode to CSS escape sequences">
+<!ENTITY unicode2cssescapeContext.accesskey "S">
+<!ENTITY unicode2cssescapeContext.label "Unicode to escaped CSS">
+
+
+<!ENTITY jsescape2unicode.label "JavaScript escape sequences to Unicode">
+<!ENTITY jsescape2unicodeContext.accesskey "J">
+<!ENTITY jsescape2unicodeContext.label "Escaped JS to Unicode">
+<!ENTITY cssescape2unicode.label "CSS escape sequences to Unicode">
+<!ENTITY cssescape2unicodeContext.accesskey "C">
+<!ENTITY cssescape2unicodeContext.label "Escaped CSS to Unicode">
+
+
+
+<!ENTITY Yijing_Symbols "Yijing Symbols">
+<!ENTITY Noncharacters_at_end_of "Noncharacters at end of ...">
+<!ENTITY _see_also_Common_Indic_Number_Forms-- "(see also Common Indic Number Forms)">
+<!ENTITY _see_also_Combining_Diacritical_Marks_for_Symbols-- "(See also Combining Diacritical Marks for Symbols)">
+<!ENTITY Roman_Symbols "Roman Symbols">
+
+
+
+
+<!ENTITY CJK_Radicals_-_KangXi_Radicals "CJK Radicals / KangXi Radicals">
+<!ENTITY CJK_Ideographs_Ext._C "CJK Ideographs Ext. C">
+<!ENTITY Bamum "Bamum">
+<!ENTITY Egyptian_Hieroglyphs "Egyptian Hieroglyphs">
+<!ENTITY Aramaic-_Imperial "Aramaic, Imperial">
+<!ENTITY Avestan "Avestan">
+<!ENTITY Old_South_Arabian "Old South Arabian">
+<!ENTITY Pahlavi-_Inscriptional "Pahlavi, Inscriptional">
+<!ENTITY Parthian-_Inscriptional "Parthian, Inscriptional">
+<!ENTITY Samaritan "Samaritan">
+<!ENTITY Old_Turkic "Old Turkic">
+<!ENTITY Devanagari_Extended "Devanagari Extended">
+<!ENTITY Kaithi "Kaithi">
+<!ENTITY Meetei_Mayek "Meetei Mayek">
+<!ENTITY Vedic_Extensions "Vedic Extensions">
+<!ENTITY Javanese "Javanese">
+<!ENTITY Myanmar_Extended-A "Myanmar Extended-A">
+<!ENTITY South_Asian_Scripts "South Asian Scripts">
+<!ENTITY Tai_Tham "Tai Tham">
+<!ENTITY Tai_Viet "Tai Viet">
+
+
+<!ENTITY Lisu "Lisu">
+<!ENTITY Hangul_Jamo_Extended-A "Hangul Jamo Extended-A">
+<!ENTITY Hangul_Jamo_Extended-B "Hangul Jamo Extended-B">
+
+<!ENTITY UCAS_Extended "UCAS Extended">
+
+<!ENTITY Common_Indic_Number_Forms "Common Indic Number Forms">
+<!ENTITY Rumi_Numeral_Symbols "Rumi Numeral Symbols">
+
+<!ENTITY Basic_operators_Plus-_Factorial "Basic operators: Plus, Factorial">
+<!ENTITY Division-_Multiplication "Division, Multiplication">
+
+
+
+<!ENTITY Unified_Canadian_Aboriginal_Syllabics "Unified Canadian Aboriginal Syllabics">
+<!ENTITY Combining_Diacritics "Combining Diacritics">
+
+<!ENTITY Yi_Syllables "Yi Syllables">
+
+<!ENTITY Alphabetic_Presentation_Forms "Alphabetic Presentation Forms">
+<!ENTITY Halfwidth_and_Fullwidth_Forms "Halfwidth and Fullwidth Forms">
+<!ENTITY ASCII_Characters "ASCII Characters">
+<!ENTITY Alphanumeric_Symbols "Alphanumeric Symbols">
+<!ENTITY Enclosed_Alphanumeric_Supplement "Enclosed Alphanumeric Supplement">
+<!ENTITY Enclosed_Ideographic_Supplement "Enclosed Ideographic Supplement">
+
+<!ENTITY Additional_Squared_Symbols "Additional Squared Symbols">
+
+
+
+
+
+
+
+
+
+
+
+<!ENTITY label.unicode "Unicode">
+<!ENTITY showAllDetailedView.label "Show all items (or only those with content)">
+<!ENTITY showAllDetailedCJKView.label "Show all items (or only those with content)">
+
+<!ENTITY showComplexWindow.label "Show specialized search options and meta-data in chart view (slower to open window)">
+
+<!ENTITY Specialized_search "Specialized search">
+<!ENTITY Code_point "Code Point">
+<!ENTITY Name "Name">
+
+
+<!ENTITY kCangjie "Cangjie">
+<!ENTITY kCantonese "Cantonese">
+<!ENTITY kDefinition "Definition">
+<!ENTITY kHanYu "HanYu">
+<!ENTITY kIRGHanyuDaZidian "IRGHanyuDaZidian">
+<!ENTITY kIRGKangXi "IRGKangXi">
+<!ENTITY kIRG_GSource "IRG GSource">
+<!ENTITY kIRG_JSource "IRG JSource">
+<!ENTITY kIRG_TSource "IRG TSource">
+<!ENTITY kMandarin "Mandarin">
+<!ENTITY kRSUnicode "RSUnicode">
+<!ENTITY kSemanticVariant "SemanticVariant">
+<!ENTITY kTotalStrokes "TotalStrokes">
+<!ENTITY kCihaiT "CihaiT">
+<!ENTITY kIRG_KSource "IRG KSource">
+<!ENTITY kSBGY "SBGY">
+<!ENTITY kJIS0213 "JIS0213">
+<!ENTITY kNelson "Nelson">
+<!ENTITY kRSAdobe_Japan1_6 "RSAdobe Japan1 6">
+<!ENTITY kCowles "Cowles">
+<!ENTITY kMatthews "Matthews">
+<!ENTITY kOtherNumeric "OtherNumeric">
+<!ENTITY kPhonetic "Phonetic">
+<!ENTITY kGSR "GSR">
+<!ENTITY kIRG_KPSource "IRG KPSource">
+<!ENTITY kIRG_VSource "IRG VSource">
+<!ENTITY kKPS1 "KPS1">
+<!ENTITY kFenn "Fenn">
+<!ENTITY kFennIndex "FennIndex">
+<!ENTITY kKarlgren "Karlgren">
+<!ENTITY kHKSCS "HKSCS">
+<!ENTITY kIRG_HSource "IRG HSource">
+<!ENTITY kXHC1983 "XHC1983">
+<!ENTITY kMeyerWempe "MeyerWempe">
+<!ENTITY kTraditionalVariant "TraditionalVariant">
+<!ENTITY kVietnamese "Vietnamese">
+<!ENTITY kSpecializedSemanticVariant "SpecializedSemanticVariant">
+<!ENTITY kLau "Lau">
+<!ENTITY kCheungBauer "CheungBauer">
+<!ENTITY kCheungBauerIndex "CheungBauerIndex">
+<!ENTITY kIICore "IICore">
+<!ENTITY kTang "Tang">
+<!ENTITY kZVariant "ZVariant">
+<!ENTITY kRSKangXi "RSKangXi">
+<!ENTITY kJapaneseKun "JapaneseKun">
+<!ENTITY kJapaneseOn "JapaneseOn">
+<!ENTITY kSimplifiedVariant "SimplifiedVariant">
+<!ENTITY kKangXi "KangXi">
+<!ENTITY kKPS0 "KPS0">
+<!ENTITY kBigFive "BigFive">
+<!ENTITY kCCCII "CCCII">
+<!ENTITY kCNS1986 "CNS1986">
+<!ENTITY kCNS1992 "CNS1992">
+<!ENTITY kDaeJaweon "DaeJaweon">
+<!ENTITY kEACC "EACC">
+<!ENTITY kFourCornerCode "FourCornerCode">
+<!ENTITY kFrequency "Frequency">
+<!ENTITY kGB0 "GB0">
+<!ENTITY kGB1 "GB1">
+<!ENTITY kGradeLevel "GradeLevel">
+<!ENTITY kHDZRadBreak "HDZRadBreak">
+<!ENTITY kHKGlyph "HKGlyph">
+<!ENTITY kHangul "Hangul">
+<!ENTITY kHanyuPinlu "HanyuPinlu">
+<!ENTITY kIRGDaeJaweon "IRGDaeJaweon">
+<!ENTITY kIRGDaiKanwaZiten "IRGDaiKanwaZiten">
+<!ENTITY kJis0 "Jis0">
+<!ENTITY kKSC0 "KSC0">
+<!ENTITY kKorean "Korean">
+<!ENTITY kMainlandTelegraph "MainlandTelegraph">
+<!ENTITY kMorohashi "Morohashi">
+<!ENTITY kPrimaryNumeric "PrimaryNumeric">
+<!ENTITY kTaiwanTelegraph "TaiwanTelegraph">
+<!ENTITY kXerox "Xerox">
+<!ENTITY kGB5 "GB5">
+<!ENTITY kJis1 "Jis1">
+<!ENTITY kPseudoGB1 "PseudoGB1">
+<!ENTITY kGB3 "GB3">
+<!ENTITY kGB8 "GB8">
+<!ENTITY kKSC1 "KSC1">
+<!ENTITY kIBMJapan "IBMJapan">
+<!ENTITY kRSKanWa "RSKanWa">
+<!ENTITY kRSJapanese "RSJapanese">
+<!ENTITY kAccountingNumeric "AccountingNumeric">
+<!ENTITY kRSKorean "RSKorean">
+<!ENTITY kGB7 "GB7">
+<!ENTITY kIRG_USource "IRG USource">
+<!ENTITY kCompatibilityVariant "CompatibilityVariant">
+
+
+<!ENTITY General_Category "General Category">
+<!ENTITY Canonical_Combining_Class "Canonical Combining Class">
+<!ENTITY Bidi_Class "Bidirectional Class">
+<!ENTITY Decomposition_Type_and_Mapping "Decomposition Type and Mapping">
+<!ENTITY Decimal "Decimal">
+<!ENTITY Digit "Digit">
+<!ENTITY Numeric "Numeric">
+<!ENTITY Bidi_Mirrored "Bidirectional Mirrored">
+<!ENTITY Unicode_1_Name "Unicode 1 Name">
+<!ENTITY ISO_Comment "ISO Comment">
+<!ENTITY Simple_Uppercase_Mapping "Simple Uppercase Mapping">
+<!ENTITY Simple_Lowercase_Mapping "Simple Lowercase Mapping">
+<!ENTITY Simple_Titlecase_Mapping "Simple Titlecase Mapping">
+
+
+<!ENTITY basicView.tab "Basic view and output">
+<!ENTITY detailedView.tab "Detailed view">
+<!ENTITY detailedCJKView.tab "Detailed view (CJK)">
+
+<!ENTITY unicode2charrefDecSurrogate.label "Unicode to Char reference (dec) as surrogate pairs">
+<!ENTITY unicode2charrefHexSurrogate.label "Unicode to Char reference (hex) as surrogate pairs">
+<!ENTITY unicode2charrefSurrogate.tooltip "Convert into surrogate pairs (Don't choose this unless you need to find out the surrogates of a (rare) higher plane character or wish to view a surrogate itself)">
+
+
+<!ENTITY DownloadUnihan "Download Unihan file (19.3 MB)">
+<!ENTITY Download_unihan_tooltip "To get the latest character descriptions for the Chinese-Japanese-Korean characters, click here to download (not included with the extension since the file size is fairly large).">
+<!ENTITY Close "Close">
+<!ENTITY UnihanInstalled "Unihan (CJK) database installed">
+<!ENTITY searchName "Search by character name: ">
+<!ENTITY searchkDefinition "Search by character description (CJK)">
+
+
+
+
+
+<!ENTITY Regular.tab.label "Regular Search (non-CJK)">
+<!ENTITY CJK.tab.label "CJK">
+<!ENTITY CJK.tooltip "Search Chinese-Japanese-Korean only">
+<!ENTITY Regular.tooltip "Search regular database (besides Chinese-Japanese-Korean)">
+
+
+<!ENTITY Additional_Arrows "Additional Arrows">
+<!ENTITY Floors_and_Ceilings "Floors and Ceilings">
+<!ENTITY Additional_Shapes "Additional Shapes">
+<!ENTITY APL_Symbols "APL Symbols">
+
+<!ENTITY ShowImg.checkbox.label "Show image?">
+<!ENTITY ShowImg.tooltiptext "Please keep this turned off unless you need to find an image, since it taxes the Unicode server.">
+
+<!ENTITY Sundanese "Sundanese">
+<!ENTITY Ol_Chiki "Ol Chiki">
+<!ENTITY Cyrillic_Extended-A "Cyrillic Extended-A">
+<!ENTITY Vai "Vai">
+<!ENTITY Cyrillic_Extended-B "Cyrillic Extended-B">
+<!ENTITY Saurashtra "Saurashtra">
+<!ENTITY Kayah_Li "Kayah Li">
+<!ENTITY Rejang "Rejang">
+<!ENTITY Cham "Cham">
+<!ENTITY Ancient_Symbols "Ancient Symbols">
+<!ENTITY Phaistos_Disc "Phaistos Disc">
+<!ENTITY Lycian "Lycian">
+<!ENTITY Carian "Carian">
+<!ENTITY Lydian "Lydian">
+<!ENTITY Mahjong_Tiles "Mahjong Tiles">
+<!ENTITY Domino_Tiles "Domino Tiles">
+
+<!ENTITY Game_Symbols "Game Symbols">
+<!ENTITY Chess_Checkers "Chess/Checkers">
+<!ENTITY Card_suits "Card suits">
+<!ENTITY Japanese_Chess "Japanese Chess">
+<!ENTITY Yijing_Mono--_Di-_and_Trigrams "Yijing Mono-, Di- and Trigrams">
+
+
+<!ENTITY copyToClipboard "Copy to clipboard">
+<!ENTITY period ".">
+
+<!ENTITY Conversion.tab.label "Conversion">
+<!ENTITY Prefs.tab.label "Prefs">
+<!ENTITY DTD.tab.label "DTD">
+<!ENTITY Charts.tab.label "Charts">
+<!ENTITY Notes.tab.label "Notes">
+<!ENTITY About.tab.label "About">
+
+<!ENTITY moveconvertedup.label "Copy 'converted' to preconverted">
+<!ENTITY Reconvert.dialogheader.title "Reconvert Options">
+<!ENTITY Preferences.dialogheader.title "Preferences">
+<!ENTITY About.dialogheader.title "About">
+<!ENTITY default.textbox.value "default">
+<!ENTITY Ascii.checkbox.label "Convert into entities if ASCIIs &lt; 128 (existing entities/char refs. will thus not be immune)?">
+<!ENTITY Hexletters.checkbox.label "Output Hexadecimal A-F (upper-case)?">
+<!--<!ENTITY xstyle.description "Style for 'X' in hexadecimal character reference output?">-->
+<!ENTITY xhtmlentmode.label "XHTML entity mode (allow &amp;apos; when creating HTML entities instead of numeric)? (It may be best to leave this unchecked.)">
+<!ENTITY xmlentmode.label "XML entity mode (when converting from (X)HTML entities, will leave &amp;amp;, &amp;lt;, &amp;gt;, &amp;quot;, and &amp;apos; unconverted)? (These entities are safe in XML without needing DTD entity declarations, so they probably don't need to be converted and are easier to read.)">
+<!ENTITY ampkeep.label "When converting from Unicode to HTML entities, will not convert &amp; so as to avoid tampering with existing HTML entities">
+<!ENTITY ampspace.label "Convert each '&amp;' which is followed by whitespace to '&amp;amp;' (for well-formed XML)?">
+<!ENTITY resettodefault.label "Reset to default values (besides DTD)?">
+
+<!ENTITY numrows "# of rows">
+<!ENTITY numcols "# of cols">
+
+<!ENTITY charref2unicode.label "Char reference to Unicode">
+<!ENTITY charref2unicodeContext.label "Char. ref. (hex. or dec.) to Unicode">
+<!ENTITY charref2unicodeContext.accesskey "C">
+<!ENTITY charref2htmlents.label "Character references to HTML entities">
+<!ENTITY charref2htmlentsContext.label "Char. ref. (hex. or dec.) to HTML ents.">
+<!ENTITY charref2htmlentsContext.accesskey "C">
+<!ENTITY unicode2charrefDec.label "Unicode to Char reference (dec)">
+<!ENTITY unicode2charrefDecContext.label "Unicode to Char. ref. (dec)">
+<!ENTITY unicode2charrefDecContext.accesskey "U">
+<!ENTITY unicode2charrefHex.label "Unicode to Char reference (hex)">
+<!ENTITY unicode2charrefHexContext.label "Unicode to Char. ref. (hex)">
+<!ENTITY unicode2charrefHexContext.accesskey "U">
+<!ENTITY unicode2htmlents.label "Unicode to HTML entities">
+<!ENTITY unicode2htmlentsContext.label "Unicode to HTML ents.">
+<!ENTITY unicode2htmlentsContext.accesskey "U">
+<!ENTITY htmlents2charrefDec.label "HTML entity to Char reference (dec)">
+<!ENTITY htmlents2charrefDecContext.label "HTML ent. to Char ref. (dec)">
+<!ENTITY htmlents2charrefDecContext.accesskey "H">
+<!ENTITY htmlents2charrefHex.label "HTML entity to Char reference (hex)">
+<!ENTITY htmlents2charrefHexContext.label "HTML ent. to Char ref. (hex)">
+<!ENTITY htmlents2charrefHexContext.accesskey "H">
+<!ENTITY htmlents2unicode.label "HTML entity to Unicode">
+<!ENTITY htmlents2unicodeContext.label "HTML ent. to Unicode">
+<!ENTITY htmlents2unicodeContext.accesskey "H">
+
+<!ENTITY launchunicode.label "Launch Unicode conversion tool">
+<!ENTITY launchunicodeContext.label "Launch Unicode conversion tool">
+<!ENTITY launchunicodeContext.accesskey "L">
+
+
+<!ENTITY unicodechart.label "Find in Unicode chart">
+<!ENTITY unicodechartContext.label "Find in Unicode chart">
+<!ENTITY unicodechartContext.accesskey "C">
+
+
+
+<!ENTITY tools-charrefunicode.label "Unicode Input Tool/Converter">
+
+<!ENTITY hex2dec.label "Hexadecimal to decimal">
+<!ENTITY hex2decContext.label "Hexadecimal to decimal">
+<!ENTITY hex2decContext.accesskey "H">
+<!ENTITY dec2hex.label "Decimal to hexadecimal">
+<!ENTITY dec2hexContext.label "Decimal to hexadecimal">
+<!ENTITY dec2hexContext.accesskey "D">
+
+<!ENTITY uresults.value "Unicode results">
+<!ENTITY uresults.title "Unicode Results">
+<!ENTITY uresults.preconverted "Preconverted:">
+<!ENTITY uresults.converted "Converted:">
+
+
+<!ENTITY button.clearoutput "Clear">
+
+<!ENTITY caption.chart.output "Chart Output">
+<!ENTITY caption.chart.selectchar "Find Character or Range">
+<!ENTITY caption.chart.layout "Chart Layout">
+
+
+<!ENTITY caption.displayUnicodeDesc "Char.<html:br />desc.:">
+<!ENTITY textbox.displayUnicodeDesc "Character description">
+<!ENTITY button.multiline "Multiline?">
+
+<!ENTITY outputtocopy "Output:">
+<!ENTITY button.moveoutput "Move output">
+<!ENTITY willreplaceprecnv "(will replace &quot;preconverted&quot; text in Conversion tab)">
+<!ENTITY charhexdecchoices "Unicode char., hex or dec num.:">
+<!ENTITY desc.digits "(if seeking char. refs. #0-9, use #n)">
+<!ENTITY chooseregion "OR Choose by Region:">
+<!ENTITY label.norows "# of Rows?">
+<!ENTITY label.nocols "# of Cols?">
+<!ENTITY label.hexq "Hex?">
+<!ENTITY label.decq "Dec?">
+<!ENTITY label.unicodeq "Unicode?">
+<!ENTITY label.entq "Ent?">
+<!ENTITY label.onlyentsyesq "Show only ents?">
+
+<!--<!ENTITY label.xstyleq "'x' style?">-->
+<!ENTITY label.middleq "Place target in middle?">
+<!ENTITY label.buttonq "Use buttons?">
+<!ENTITY label.fontsize "Font-size:">
+<!ENTITY desc.symbolspunc "OR Choose from Symbols and Punctuation:">
+
+<!ENTITY dialogheader.value "DTD">
+<!ENTITY DTD.desc.value "Add DTD entity declarations (optional) for use in conversions">
+<!ENTITY DTD.desc.value2 "Form: &lt;!ENTITY entname 'charvalue'&gt;">
+<!ENTITY DTD.textbox.value "">
+<!ENTITY DTD.insertent "Insert &lt;!ENTITY&gt;">
+<!ENTITY appendhtml.checkbox "Append to existing HTML entity set?">
+
+
+
+
+<!ENTITY Notes.dialogheader.title "Notes">
+<!ENTITY notespar1 "Unicode is a system to represent all living (and some dead) human scripts and standard symbols and punctuation. Unicode's use in HTML and XML allow all such written characters to be contained even within the same page. Many programs allow you to type or save any such characters directly in Unicode.">
+<!ENTITY notespar2 "However, because some programs still do not support Unicode fully (though if you are only using the basic English ASCII symbols, your documents will translate to Unicode with no difficulty) and will not save the text properly and perhaps also to make it easier for some to type, one may use different types of shortcuts to represent these assorted Unicode characters.">
+<!ENTITY notespar3 "One such shortcut which can be used in any HTML or XML document is the character reference. These references begin with an ampersand ('&amp;') and a hash mark ('#') and end with a semicolon (';'). In the middle can either be a decimal number (i.e., digits 0-9) or a hexadecimal number (i.e., digits 0-9 or upper or lower-case letters A-F preceded by an 'x' or 'X'). Either type will display the same, and will be displayed exactly like the Unicode character it represents.">
+<!ENTITY notespar4 "(The hexadecimal numbering system may be thought of as working somewhat like a set of playing cards. The Jack may represent '11' in some games, the Queen, '12', and so on. While there is only a single card, they represent a number greater than ten. Thus it is also with individual hexadecimal digits represented by the letters A-F.)">
+<!ENTITY notespar5 "Besides character references, another type of shortcut to represent a Unicode character (or even multiple characters) is the 'parsed general entity'.">
+<!ENTITY notespar6 "For the XML language, except for five pre-defined entities (&amp;amp; (&amp;), &amp;lt; (&lt;), &amp;gt; (&gt;), &amp;quot; (&quot;), &amp;apos; (&apos;)), you must explicitly define the entities you will use (or use a special 'PUBLIC' id which can indicate to programs reading the XML file that you will be using that language's set of entities).">
+<!ENTITY notespar7 "In HTML, there are a number of already-defined entities. One important note: although HTML uses four of XML's five predefined entities, it does not use '&amp;apos;', so you will need to use the equivalent Unicode instead (or use the character reference &amp;#x27; or &amp;#39;).">
+<!ENTITY notespar8 "You can also define your own entities in our 'DTD' section using the syntax '&lt;!ENTITY entname &quot;entvalue&quot;&gt;' so that they can be included within conversions.">
+
+
+<!ENTITY About.desc1 "This extension was developed by">
+<!ENTITY About.desc2 "Brett Zamir">
+<!ENTITY About.desc2b " and translated by Karoly Fabricz (hu-HU), Edgard Magalh&#227;es (pt-BR), Mikael Hiort af Ornäs (sv-SE)">
+
+<!ENTITY About.desc3 "If you find this extension useful, please consider a">
+<!ENTITY About.desc4 "Paypal donation">
+
+
+<!ENTITY European_Scripts "European Scripts">
+<!ENTITY _see_also_Comb._Marks-- "(see also Comb. Marks)">
+<!ENTITY Armenian "Armenian">
+<!ENTITY Armenian_Ligatures "Armenian Ligatures">
+<!ENTITY Coptic "Coptic">
+<!ENTITY Coptic_in_Greek_block "Coptic in Greek block">
+<!ENTITY Cyrillic "Cyrillic">
+<!ENTITY Cyrillic_Supplement "Cyrillic Supplement">
+<!ENTITY Georgian "Georgian">
+<!ENTITY Georgian_Supplement "Georgian Supplement">
+<!ENTITY Greek "Greek">
+<!ENTITY Greek_Extended "Greek Extended">
+<!ENTITY _see_also_Ancient_Greek_Numbers-- "(see also Ancient Greek Numbers)">
+<!ENTITY _see_also_Ancient_Greek_Musical_Notation-- "(see also Ancient Greek Musical Notation)">
+<!ENTITY Latin "Latin">
+<!ENTITY Basic_Latin "Basic Latin">
+<!ENTITY Latin-1_Supplement "Latin-1 Supplement">
+<!ENTITY Latin_Extended_A "Latin Extended A">
+<!ENTITY Latin_Extended_B "Latin Extended B">
+<!ENTITY Latin_Extended_C "Latin Extended C">
+<!ENTITY Latin_Extended_D "Latin Extended D">
+<!ENTITY Latin_Extended_Additional "Latin Extended Additional">
+<!ENTITY Latin_Ligatures "Latin Ligatures">
+<!ENTITY Fullwidth_Latin_Letters "Fullwidth Latin Letters">
+<!ENTITY Small_Form_Variants "Small Form Variants">
+<!ENTITY _see_also_Phonetic_Symbols-- "(see also Phonetic Symbols)">
+<!ENTITY African_Scripts "African Scripts">
+<!ENTITY Ethiopic "Ethiopic">
+<!ENTITY Ethiopic_Supplement "Ethiopic Supplement">
+<!ENTITY Ethiopic_Extended "Ethiopic Extended">
+
+<!--<!ENTITY Other_African_scripts "Other African scripts">-->
+<!ENTITY N_Ko "N'Ko">
+<!ENTITY Tifinagh "Tifinagh">
+<!ENTITY Middle_Eastern_Scripts "Middle Eastern Scripts">
+<!-- Removed an extra hyphen at the end to be able to comment out  <!ENTITY _see_also_Old_Persian- "(see also Old Persian)">-->
+<!ENTITY Arabic "Arabic">
+<!ENTITY Arabic_Supplement "Arabic Supplement">
+<!ENTITY Arabic_Presentation_Forms_A "Arabic Presentation Forms A">
+<!ENTITY Arabic_Presentation_Forms_B "Arabic Presentation Forms B">
+<!ENTITY Hebrew "Hebrew">
+<!ENTITY Hebrew_Presentation_Forms "Hebrew Presentation Forms">
+<!ENTITY Syriac "Syriac">
+<!ENTITY Thaana "Thaana">
+<!ENTITY American_scripts "American scripts">
+<!ENTITY Cherokee "Cherokee">
+<!ENTITY Deseret "Deseret">
+<!ENTITY Other_Scripts "Other Scripts">
+<!ENTITY Shavian "Shavian">
+<!ENTITY Osmanya "Osmanya">
+<!ENTITY Glagolitic "Glagolitic">
+<!--<!ENTITY Indic_Scripts "Indic Scripts">-->
+<!ENTITY Bengali "Bengali">
+<!ENTITY Devanagari "Devanagari">
+<!ENTITY Gujarati "Gujarati">
+<!ENTITY Gurmukhi "Gurmukhi">
+<!ENTITY Kannada "Kannada">
+<!ENTITY Limbu "Limbu">
+<!ENTITY Malayalam "Malayalam">
+<!ENTITY Oriya "Oriya">
+<!ENTITY Sinhala "Sinhala">
+<!ENTITY Syloti_Nagri "Syloti Nagri">
+<!ENTITY Tamil "Tamil">
+<!ENTITY Telugu "Telugu">
+<!ENTITY Philippine_Scripts "Philippine Scripts">
+<!ENTITY Buhid "Buhid">
+<!ENTITY Hanunoo "Hanunoo">
+<!ENTITY Tagalog "Tagalog">
+<!ENTITY Tagbanwa "Tagbanwa">
+<!ENTITY South_East_Asian "Southeast Asian">
+<!ENTITY Balinese "Balinese">
+<!ENTITY Buginese "Buginese">
+<!ENTITY Khmer "Khmer">
+<!ENTITY Khmer_Symbols "Khmer Symbols">
+<!ENTITY Lao "Lao">
+<!ENTITY Myanmar "Myanmar">
+<!ENTITY New_Tai_Lue "New Tai Lue">
+<!ENTITY Tai_Le "Tai Le">
+<!ENTITY Thai "Thai">
+<!ENTITY East_Asian_Scripts "East Asian Scripts">
+
+<!ENTITY CJK_Unified_Ideographs_--Han-- "CJK Unified Ideographs (Han)">
+<!ENTITY CJK_Ideographs_Ext._A "CJK Ideographs Ext. A">
+<!ENTITY CJK_Ideographs_Ext._B "CJK Ideographs Ext. B">
+<!ENTITY CJK_Compatibility_Ideographs "CJK Compatibility Ideographs">
+<!ENTITY CJK_Compatibility_Ideographs_Supplement "CJK Compatibility Ideographs Supplement">
+<!ENTITY Kanbun "Kanbun">
+<!ENTITY _see_also_Unihan_Database-- "(see also Unihan Database)">
+
+<!ENTITY CJK_Radicals_Supplement "CJK Radicals Supplement">
+<!--<!ENTITY KangXi_Radicals "KangXi Radicals">-->
+<!ENTITY CJK_Strokes "CJK Strokes">
+<!ENTITY Ideographic_Description_Characters "Ideographic Description Characters">
+<!--<!ENTITY Chinese-specific "Chinese-specific">-->
+<!ENTITY Bopomofo "Bopomofo">
+<!ENTITY Bopomofo_Extended "Bopomofo Extended">
+
+<!ENTITY Hiragana "Hiragana">
+<!ENTITY Katakana "Katakana">
+<!ENTITY Katakana_Phonetic_Ext. "Katakana Phonetic Extensions">
+<!ENTITY Halfwidth_Katakana "Halfwidth Katakana">
+
+<!ENTITY Hangul_Syllables "Hangul Syllables">
+<!ENTITY Hangul_Jamo "Hangul Jamo">
+<!ENTITY Hangul_Compatibility_Jamo "Hangul Compatibility Jamo">
+<!ENTITY Halfwidth_Jamo "Halfwidth Jamo">
+
+<!ENTITY Yi "Yi">
+<!ENTITY Yi_Radicals "Yi Radicals">
+<!ENTITY Central_Asian_Scripts "Central Asian Scripts">
+<!ENTITY Kharoshthi "Kharoshthi">
+<!ENTITY Mongolian "Mongolian">
+<!ENTITY Phags-Pa "Phags-Pa">
+<!ENTITY Tibetan "Tibetan">
+
+<!ENTITY Ancient_Greek_Numbers "Ancient Greek Numbers">
+<!ENTITY Ancient_Greek_Musical_Notation "Ancient Greek Musical Notation">
+<!ENTITY Cuneiform "Cuneiform">
+<!ENTITY Cuneiform_Numbers_and_Punctuation "Cuneiform Numbers and Punctuation">
+<!ENTITY Old_Persian "Old Persian">
+<!ENTITY Ugaritic "Ugaritic">
+<!ENTITY Linear_B "Linear B">
+<!ENTITY Linear_B_Syllabary "Linear B Syllabary">
+<!ENTITY Linear_B_Ideograms "Linear B Ideograms">
+
+<!ENTITY Aegean_Numbers "Aegean Numbers">
+<!ENTITY Counting_Rod_Numerals "Counting Rod Numerals">
+<!ENTITY Cypriot_Syllabary "Cypriot Syllabary">
+<!ENTITY Gothic "Gothic">
+<!ENTITY Old_Italic "Old Italic">
+<!ENTITY Ogham "Ogham">
+<!ENTITY Runic "Runic">
+<!ENTITY Phoenician "Phoenician">
+<!ENTITY Punctuation "Punctuation">
+<!ENTITY General_Punctuation "General Punctuation">
+<!ENTITY ASCII_Punctuation "ASCII Punctuation">
+<!ENTITY Latin-1_Punctuation "Latin-1 Punctuation">
+<!-- already defined: General_Punctuation "General Punctuation"-->
+<!ENTITY Supplemental_Punctuation "Supplemental Punctuation">
+<!ENTITY CJK_Symbols_and_Punctuation "CJK Symbols and Punctuation">
+<!ENTITY Fullwidth_ASCII_Punctuation "Fullwidth ASCII Punctuation">
+<!ENTITY Vertical_Forms "Vertical Forms">
+
+<!ENTITY Enclosed_Alphanumerics "Enclosed Alphanumerics">
+<!ENTITY Enclosed_Alphanumerics_CJK_Letters_and_Months "Enclosed CJK Letters and Months">
+<!ENTITY CJK_Compatibility "CJK Compatibility">
+<!ENTITY _see_also_Letterlike_Symbols-- "(see also Letterlike Symbols)">
+<!ENTITY Combining_Diacritical_Marks "Combining Diacritical Marks">
+<!ENTITY Combining_Diacritical_Marks_for_Symbols "Combining Diacritical Marks for Symbols">
+<!ENTITY Combining_Diacritical_Marks_Supplement "Combining Diacritical Marks Supplement">
+<!ENTITY Combining_Half_Marks "Combining Half Marks">
+<!ENTITY Phonetic_Symbols "Phonetic Symbols">
+<!ENTITY IPA_Extensions "IPA Extensions">
+<!ENTITY Phonetic_Extensions "Phonetic Extensions">
+<!ENTITY Phonetic_Extensions_Supplement "Phonetic Extensions Supplement">
+<!ENTITY Modifier_Tone_Letters "Modifier Tone Letters">
+<!ENTITY Spacing_Modifier_Letters "Spacing Modifier Letters">
+<!ENTITY _see_also_Super_and_Subscript-- "(see also Super and Subscript)">
+<!ENTITY Mathematical_Symbols "Mathematical Symbols">
+<!ENTITY Numbers_and_Digits "Numbers and Digits">
+<!ENTITY _see_also_specific_scripts-- "(see also specific scripts)">
+<!ENTITY ASCII_Digits "ASCII Digits">
+<!ENTITY Fullwidth_ASCII_Digits "Fullwidth ASCII Digits">
+<!ENTITY Number_Forms "Number Forms">
+<!ENTITY Super_and_Subscripts "Super and Subscripts">
+<!ENTITY Letterlike_Symbols "Letterlike Symbols">
+
+<!ENTITY Mathematical_Alphanumeric_Symbols "Mathematical Alphanumeric Symbols">
+
+<!ENTITY Arrows "Arrows">
+<!ENTITY Mathematical_Operators "Mathematical Operators">
+<!ENTITY Suppl._Math_Operators "Supplemental Math Operators">
+<!ENTITY Misc._Math_Symbols_A "Miscellaneous Math Symbols A">
+<!ENTITY Misc._Math_Symbols_B "Miscellaneous Math Symbols B">
+<!ENTITY Supplemental_Arrows_A "Supplemental Arrows A">
+<!ENTITY Supplemental_Arrows_B "Supplemental Arrows B">
+<!ENTITY Misc._Symbols_and_Arrows "Miscellaneous Symbols and Arrows">
+
+<!ENTITY Geometric_Shapes "Geometric Shapes">
+<!ENTITY Box_Drawing "Box Drawing">
+<!ENTITY Block_Elements "Block Elements">
+<!ENTITY Technical_Symbols "Technical Symbols">
+<!ENTITY Control_Pictures "Control Pictures">
+<!ENTITY Miscellaneous_Technical "Miscellaneous Technical">
+<!ENTITY OCR "Optical Character Recognition (OCR)">
+<!ENTITY Other_Symbols "Other Symbols">
+<!ENTITY Miscellaneous_Symbols "Miscellaneous Symbols">
+<!ENTITY Dingbats "Dingbats">
+<!-- already defined: Miscellaneous_Symbols "Miscellaneous Symbols"-->
+<!ENTITY Tai_Xuan_Jing_Symbols "Tai Xuan Jing Symbols">
+<!ENTITY Yijing_Hexagram_Symbols "Yijing Hexagram Symbols">
+<!ENTITY Braille_Patterns "Braille Patterns">
+
+<!-- already defined Ancient_Greek_Musical_Notation "Ancient Greek Musical Notation" -->
+<!ENTITY Byzantine_Musical_Symbols "Byzantine Musical Symbols">
+<!ENTITY Musical_Symbols "Musical Symbols">
+<!ENTITY Currency_Symbols "Currency Symbols">
+<!--already defined: _see_also_specific_scripts "(see also specific scripts)" -->
+<!ENTITY Dollar_Sign "Dollar Sign">
+<!ENTITY Euro_Sign "Euro Sign">
+<!ENTITY Yen-_Pound_and_Cent "Yen, Pound and Cent">
+<!-- already defined: Currency_Symbols "Currency Symbols"-->
+<!ENTITY Fullwidth_Currency_Symbols "Fullwidth Currency Symbols">
+<!ENTITY Mark_-historic-- "Mark (historic)">
+<!ENTITY Pfennig_-historic-- "Pfennig (historic)">
+<!ENTITY Rial_Sign "Rial Sign">
+<!ENTITY Specials "Specials">
+<!ENTITY Controls-_C0 "Controls: C0">
+<!ENTITY Controls-_C1 "Controls: C1">
+<!ENTITY Layout_Controls "Layout Controls">
+<!ENTITY Invisible_Operators "Invisible Operators">
+<!-- already defined: Specials "Specials"-->
+<!ENTITY Tags "Tags">
+<!ENTITY Variation_Selectors "Variation Selectors">
+<!ENTITY Variation_Selectors_Supplement "Variation Selectors Supplement">
+<!ENTITY Private_Use "Private Use">
+<!ENTITY Private_Use_Area "Private Use Area">
+<!ENTITY Suppl._Private_Use_Area_A "Supplementary Private Use Area-A">
+<!ENTITY Suppl._Private_Use_Area_B "Supplementary Private Use Area-B">
+<!ENTITY Surrogates "Surrogates">
+<!ENTITY High_Surrogates "High Surrogates">
+<!ENTITY High_Private_Use_Surrogates "High Private Use Surrogates">
+<!ENTITY Low_Surrogates "Low Surrogates">
+<!ENTITY Noncharacters_in_Charts "Noncharacters in Charts">
+<!ENTITY Reserved_range "Reserved range">
+<!ENTITY At_End_of_BMP "At End of BMP">
+<!ENTITY At_End_of_Plane_1 "At End of Plane 1">
+<!ENTITY At_End_of_Plane_2 "At End of Plane 2">
+<!ENTITY At_End_of_Plane_3 "At End of Plane 3">
+<!ENTITY At_End_of_Plane_4 "At End of Plane 4">
+<!ENTITY At_End_of_Plane_5 "At End of Plane 5">
+<!ENTITY At_End_of_Plane_6 "At End of Plane 6">
+<!ENTITY At_End_of_Plane_7 "At End of Plane 7">
+<!ENTITY At_End_of_Plane_8 "At End of Plane 8">
+<!ENTITY At_End_of_Plane_9 "At End of Plane 9">
+<!ENTITY At_End_of_Plane_10 "At End of Plane 10">
+<!ENTITY At_End_of_Plane_11 "At End of Plane 11">
+<!ENTITY At_End_of_Plane_12 "At End of Plane 12">
+<!ENTITY At_End_of_Plane_13 "At End of Plane 13">
+<!ENTITY At_End_of_Plane_14 "At End of Plane 14">
+<!ENTITY At_End_of_Plane_15 "At End of Plane 15">
+<!ENTITY At_End_of_Plane_16 "At End of Plane 16">
+
+
+<!ENTITY Lepcha "Lepcha">
+
+<!ENTITY CJK_Compatibility_Forms "CJK Compatibility Forms">
+

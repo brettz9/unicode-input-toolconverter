@@ -1,0 +1,13 @@
+content	charrefunicode	content/
+locale	charrefunicode	en-US	locale/en-US/
+locale	charrefunicode	hu-HU	locale/hu-HU/
+locale	charrefunicode	pt-BR	locale/pt-BR/
+locale	charrefunicode	sv-SE	locale/sv-SE/
+skin	charrefunicode	classic/1.0	skin/
+resource charrefunicode modules/
+overlay	chrome://browser/content/browser.xul	chrome://charrefunicode/content/firefoxOverlay.xul
+style	chrome://global/content/customizeToolbar.xul	chrome://charrefunicode/skin/overlay.css
+
+# Javascript XPCOM Custom Unicode Protocol Handler Component
+component {36192904-0101-11DF-BC01-4EC555D89593} components/UnicodeProtocolHandler.js
+contract @mozilla.org/network/protocol;1?name=x-unicode {36192904-0101-11DF-BC01-4EC555D89593}

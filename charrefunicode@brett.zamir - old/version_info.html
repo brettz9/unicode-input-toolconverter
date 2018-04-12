@@ -1,0 +1,311 @@
+<ul><b>Changes to 2.7</b>
+<li>Updated UI and UnicodeData.txt database to ensure all non-Unihan Unicode 6.0.0 and scripts present, as well as
+updated remote SQLite Unihan to 6.0.0, requiring a new download internal to the app (optional).</li>
+<li>Allow character encoding conversions</li>
+<li>Allow insertion of XML Entity Definition entity sets</li>
+<li>Fixed "Other, Not Assigned" category (within specialized search) to return its data</li>
+<li>Ensure blanking out meta-data when hovering on non-characters</li>
+<li>Added locale sv-SE (thanks Lakrits!)</li>
+<li>Updated to Firefox 4.0.*</li>
+<li>Added appeal for a world auxiliary language to the About tab</li>
+</ul>
+
+<ul><b>Changes to 2.6.8</b>
+<li>Added support for in-place conversions when using the context menu on 
+highlighted or non-highlighted content inside textareas or input type=text.</li>
+<li>Conversions/display can now be performed on text inside of a right-clicked link.</li>
+<li>Update to work in FF4.0b3</li>
+</ul>
+
+<ul><b>Changes to 2.6.7</b>
+<li>Fix formatting for FF 4.0b1 and update to work in FF4.0b1</li>
+</ul>
+
+<ul><b>Changes to 2.6.6</b>
+<li>Very minor corrections to naming in chart (and added back high private surrogate though not shown at unicode.org/charts and
+does not have PDF keyed by its range)</li>
+<li>Some code-cleanup (and preparation for planned in-place textbox conversions)</li>
+</ul>
+
+<ul><b>Changes to 2.6.5</b>
+<li>Added choice for font (and moved "lang" along with it)</li>
+<li>Changed default preference values (avoid converting &+space to &amp; and avoid showing complex options by default)</li>
+</ul>
+
+<ul><b>Changes to 2.6.4</b>
+<li>Small fix to ensure opening from options dialog allows refreshing of main toolbar</li>
+</ul>
+
+<ul><b>Changes to 2.6.3</b>
+<li>Added support for adding characters in output box to pull-down menu of extension's toolbar icon; </li>
+<li>right-click to delete an item (since key commands don't work in toolbars)</li>
+<li>Allowed x-unicode protocol to work with links typed directly in the URL bar</li>
+</ul>
+
+<ul><b>Changes to 2.6.2</b>
+<li>Added updated pt-BR locale</li>
+</ul>
+
+<ul><b>Changes to 2.6.2b3</b>
+<li>Added support for custom protocol:</li>
+<li>1) command to search within a CJK character definition; use the pattern "x-unicode:?searchkDefinition;string=" in </li>
+<li>HTML links to trigger the extension opening with your character!</li>
+<li>2) Added updated hu-HU locale</li>
+</ul>
+
+<ul><b>Changes to 2.6.2b2</b>
+<li>Added support for custom protocol:</li>
+<li>1) command to find character in chart; use the pattern "x-unicode:?find;char=" in HTML links to trigger the extension </li>
+<li>opening with your character!</li>
+<li>2) command to search for a character by name; use the pattern "x-unicode:?searchName;string=" in HTML links to trigger the</li>
+<li>extension opening with your character!</li>
+<li>Protocol is not a permanent one, so only use with the understanding that if it is ever standardized, it would change at</li>
+<li>least its protocol name and probably the formation of the rest of the query; if you plan to add server-side support,</li>
+<li>you should at least store the query components in variables so they can be changed later if it becomes a standard</li>
+<li>(or also if I decide I need to change the custom protocol syntax myself)</li>
+</ul>
+
+<ul><b>Changes to 2.6.2b1</b>
+<li>Major changes to layout to ensure greater visibility and flexibility across all resolutions</li>
+<li>Fixed all splitters to persist</li>
+<li>Enable full size in display of search menus (within overflow)</li>
+<li>Moved help notes from readme to the user interface</li>
+</ul>
+
+<ul><b>Changes to 2.6.1</b>
+<li>Added 'lang' attribute selection for chart view</li>
+<li>Fix: Remembers the last selected character again</li>
+<li>Fix: Most splitters should now better persist position</li>
+</ul>
+
+<ul><b>Changes to 2.6</b>
+<li>Allowed conversions to and from JavaScript and PHP-style 6-digit escape, CSS escape, and PHP-style character escape</li>
+<li>Updated chart, including adding new Unicode language groups (though not yet supported in Unicode character descriptions</li>
+<li>database): Bamum; Egyptian Hieroglyphs; Aramaic, Imperial; Avestan; Old South Arabian; Pahlavi, Inscriptional; </li>
+<li>Parthian, Inscriptional; Samaritan; Old Turkic; Devanagari Extended; Kaithi; Meetei Mayek; Vedic Extensions; Javanese;</li>
+<li>Myanmar Extended-A; Tai Tham; Tai Viet; CJK Ideographs Ext. C; Lisu; Hangul Jamo Extended-A, Hangul Jamo Extended-B; </li>
+<li>UCAS Extended; Enclosed Alphanumeric Supplement; Enclosed Ideographic Supplement; Additional Squared Symbols; </li>
+<li>Common Indic Number Forms; Rumi Numeral Symbols</li>
+<li>Added preference to set initial tab for key command and toolbar button</li>
+<li>Allowed key command or toolbar button to use currently highlighted text</li>
+<li>Fix: Triggering from options in Addons now works again</li>
+<li>Added new pt-BR localization (Edgard Dias Magalhães) and updated Hungarian (Karoly Fabricz)</li>
+</ul>
+
+<ul><b>Changes to 2.5.9</b>
+<li>Removed option to allow upper-case 'X' in hex char. references, since not permitted in XML</li>
+</ul>
+
+<ul><b>Changes to 2.5.8</b>
+<li>Added support for Korean Jamo character short names and Hangul syllable names in generated character descriptions</li>
+</ul>
+
+<ul><b>Changes to 2.5.7</b>
+<li>Fixed display when option to place target in the middle is on</li>
+<li>Code clean-up, rmv console warnings</li>
+</ul>
+
+<ul><b>Changes to 2.5.6</b>
+<li>Added button to open window and image to menu bar; removed flex on one menu</li>
+</ul>
+
+<ul><b>Changes to 2.5.5</b>
+<li>Slight changes made in hopes of fixing screen height problem for some users</li>
+<li>Placed LGPL text in each file and included license</li>
+</ul>
+
+<ul><b>Changes to 2.5.4</b>
+<li>Added tooltip to explain how to freeze character descriptions; </li>
+<li>(internally, some minor code shortening)</li>
+</ul>
+
+<ul><b>Changes to 2.5.3</b>
+<li>Improved layout flexibility</li>
+</ul>
+
+<ul><b>Changes to 2.5.2</b>
+<li>Small Hungarian localization change</li>
+</ul>
+
+<ul><b>Changes to 2.5.1</b>
+<li>Added FF3.1b2 support</li>
+<li>Error reporting when Unihan not installed</li>
+<li>Removed outdated (and large) Unihan.txt file</li>
+<li>Known issue: Hangul/Jamo characters</li>
+</ul>
+
+<ul><b>Changes to 2.5</b>
+<li>Conversions/character recognition:</li>
+<li>Bug: Fixed conversion of higher plane Unicode to give (single) character reference entity instead of surrogate pair (rarely used and conversion would still be safe)</li>
+<li>Bug: Fixed chart display when higher plane characters were given for input</li>
+<li>Bug: Now displays surrogate characters instead of replacement character, shows combining diacritics as</li>
+<li>was only possible previously by using the buttons, and probably makes visible other previously</li>
+<li>invisible characters</li>
+<li>Feature: Added option to convert higher plane Unicode into surrogate pairs (for higher plane characters)</li>
+<li>Character descriptions:</li>
+<li>Bug: Fixed plane display within links that had them (higher planes were sometimes off)</li>
+<li>Bug: Get all Unihan descriptions where available</li>
+<li>Feature: Searching of character descriptions is now done through Firefox's built-in SQLite database(much faster than before)</li>
+<li>Feature: Added separate numeric plane display for all characters</li>
+<li>Feature: Added reserved noncharacters, surrogates, and private use to individual character display</li>
+<li>Feature: Added option to download Unihan database after initial installation</li>
+<li>Update: Updated Unicode descriptions to 5.1</li>
+<li>Interface:</li>
+<li>Feature: Added meta field search and meta field display with option to hide unused metadata</li>
+<li>Feature: Added character image display option</li>
+<li>Feature: Added copy-to-clipboard</li>
+<li>Bug: Tab switching</li>
+<li>Update: Updated to new items and organization of regional/type and symbol groupings</li>
+<li>Usability: Allowed character selection to not require tab/return, but be live</li>
+<li>Usability: Added disabling of "only ents" when other fields used</li>
+<li>Usability: Added shift-alt-u to open dialog</li>
+<li>Usability: Changes row/column resize buttons to splitter</li>
+<li>Usability: Moved configuration/selection to left side of chart to allow for longer chart view</li>
+<li>Usability: Let font-size changes affect output text as well as chart text</li>
+<li>Usability: Shortened wide link for fullwidth/halfwidths</li>
+<li>Usability: "Show only ents" to avoid tabbing into the area accidentally</li>
+<li>Usability: Allowed window to be minimizable</li>
+<li>Display: added 'entities' to heading when enabled</li>
+<li>Localization: Hungarian changes from Dr. Karoly Fabricz</li>
+</ul>
+
+<ul><b>Changes to 2.1.3</b>
+<li>Fixed to allow a few character ranges (a few math symbols and one CJK ext.) to have their character descriptions and PDF link show up that weren't showing before</li>
+<li>Fixed CJK Ideograph Extension B to search the Unihan file (though many of these were only made available in a 27MB file not included (see below))</li>
+<li>Updated Unicode data files except for Unihan (those who need this updated could update by placing the Unihan.txt file from </li>
+<li>http://www.unicode.org/Public/UNIDATA/Unihan.zip into this "charrefunicode" extension's 'data' folder, but Unihan.txt is now </li>
+<li>27MB and is a bit flaky with local Ajax description display (probably since the file is so large), so you still might want to stick with</li>
+<li>the old file until such time as I might be able to get it all to work in FF's database)</li>
+<li>Localization: Made a few error strings localizable and </li>
+<li>added Hungarian changes from Dr. Karoly Fabricz</li>
+<li>Minor code improvements</li>
+<li>Cosmetic: Emphasizing Chart Finder over conversion, given its potentially broader interest to users:</li>
+<li>Moved chart tab to be the first tab</li>
+<li>Changed menu to show "Unicode Input Tool/Converter"</li>
+</ul>
+
+<ul><b>Changes to 2.1.2</b>
+<li>Added Firefox 3 RC1 support</li>
+</ul>
+
+<ul><b>Changes to 2.1.1</b>
+<li>Added Firefox 3.0b5 support</li>
+</ul>
+
+<ul><b>Changes to 2.1</b>
+<li>Added Hungarian localization - courtesy of Dr. Karoly Fabricz </li>
+</ul>
+
+<ul><b>Changes to 2.099</b>
+<li>Allow Firefox 3.0 b2</li>
+</ul>
+
+<ul><b>Changes to 2.098</b>
+<li>Allow custom DTD to be used when showing entities in chart instead of or </li>
+<li>in addition to predefined HTML entities</li>
+<li>Minor: Moved "Show only ents" option to "Find Character or Range" area.</li>
+</ul>
+
+<ul><b>Changes to 2.097</b>
+<li>Minor bug fix re: display of character descriptions for 2 subsets of Unicode</li>
+<li>added option to show only HTML entities in chart view</li>
+</ul>
+
+<ul><b>Changes to 2.096</b>
+<li>added entities as links where present</li>
+<li>added option to avoid displaying entities</li>
+</ul>
+
+<ul><b>Changes to 2.095</b>
+<li>added background-coloring for characters in chart view which have entities</li>
+<li>added entities to description where present (in DTD and/or default HTML, depending </li>
+<li>on pref set on DTD page)</li>
+</ul>
+
+<ul><b>Changes to 2.09</b>
+<li>allow u+/U+ format in chart view</li>
+<li>added link to PDF file of character images when performing mouseover of a character</li>
+<li>checks for name of mouse-overed character and displays it in text box</li>
+<li>add Find in Unicode chart context menu item to go directly to chart view</li>
+<li>made upper-case display output dependent on prefs value</li>
+<li>added checkbox to alternate whether multiline or not (useful for Unihan, for example)</li>
+</ul>
+
+<ul><b>Changes to 2.08</b>
+<li>Improved Chart UI further by adding captions, rearranging, resizing</li>
+<li>Added clear button to chart</li>
+</ul>
+
+<ul><b>Changes to 2.07</b>
+<li>Improved Chart UI by grouping items</li>
+<li>Changed default behavior to display buttons (so people know they can click them to get output)</li>
+</ul>
+
+<ul><b>Changes to 2.06:</b>
+<li>Per user request, added feature to convert unadorned ampersands to escape code for well-formed XML</li>
+<li>Per user request, added centerscreen parameter to openDialog</li>
+<li>Added clarification on DTD page about entities being used in conversions</li>
+<li>In an earlier revision, I revised the deprecated content.document.getSelection to content.window.getSelection (returns object rather than string, so also needed to convert to string)</li>
+</ul>
+
+<ul><b>Changes to 2.05:</b>
+<li>Small feature add: option to output hexadecimal a-f as A-F</li>
+</ul>
+
+<ul><b>Changes to 2.04:</b>
+<li>Fixed so that initialization will be performed correctly when invoked from addons menu's options URL</li>
+<li>Fixed upper range Unicode characters</li>
+<li>Fixed issue with chart incrementing upon each view</li>
+</ul>
+
+<ul><b>Changes to 2.03:</b>
+<li>Updated to work with FF version 3.0a7</li>
+</ul>
+
+<ul><b>Changes to 2.02:</b>
+<li>Fixed an issue on the chart display when going backwards to numbers less than zero (now goes to 1114111)</li>
+</ul>
+
+<ul><b>Changes to 2.01:</b>
+<li>Fixed preferences to allow correct storage of Unicode values</li>
+</ul>
+
+<ul><b>Changes to 2.0:</b>
+<li>Chart view:</li>
+<li>Added chart tab to allow display table of Unicode</li>
+<li>Allow control of starting character via input box</li>
+<li>Hierarchical pull-downs for start-up display, e.g., Middle Eastern, Punctuation, etc.</li>
+<li>Added items to be stored as preferences</li>
+<li>Specify # of rows, # of cols in chart</li>
+<li>Options to display hex, dec, and/or unicode</li>
+<li>Option to put in the middle by default which x-style to use for hex</li>
+<li>Added no-button option to take up less screen (though can still work as button)</li>
+<li>Added button to move output results to conversion tab</li>
+
+<li>DTD:</li>
+<li>Add DTD import (works both directions)</li>
+<li>Add option to override HTML entities or not</li>
+<li>Add button to insert ENTITY code</li>
+
+<li>Addons access:</li>
+<li>Version: Added options link via addons box</li>
+
+<li>Display:</li>
+<li>Fixed dialog headers to be plain format so as to work on the Mac, </li>
+<li>Added Font-size controls to chart and conversion screens</li>
+<li>Made dialog resizable (and with memory of last time's sizes)</li>
+<li>Added button to Tools menu</li>
+
+<li>Notes:</li>
+<li>Added notes tab as a kind of refresher on terms like "character reference"</li>
+
+<li>Conversion screen:</li>
+<li>Options to resize text and add or remove cols in textboxes</li>
+<li>Button to move converted text to preconverted box</li>
+<li>All buttons (and as sent via context menu) should now be working, and all conversion types have been added</li>
+
+<li>Preferences tab:</li>
+<li>Allow to reset to defaults (except for DTD as one might not wish that overwritten)</li>
+
+<li>Probably more I am forgetting now...</li>
+</ul>

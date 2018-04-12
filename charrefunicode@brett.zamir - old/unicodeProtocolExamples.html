@@ -1,0 +1,42 @@
+<meta http-equiv="Content-Type" content="text/html;charset=utf8"  />
+
+<a href="x-unicode:?find;char=a">Test char a</a>
+<br /><br />
+<a href="x-unicode:?find;char=丆">Test char 丆</a>
+<br /><br />
+<a href="x-unicode:?find;char=你">Test char 你 (in non-BMP)</a>
+<br /><br />
+<a href="x-unicode:?searchName;string=Latin letter">Search string "Latin letter"</a>
+<br /><br />
+<a href="x-unicode:?searchName;string=Latin%20letter">Search string "Latin letter" (urlencoded)</a>
+
+<br /><br />
+<a href="x-unicode:?searchkDefinition;string=house">Search CJK definition string "house"</a>
+
+
+<script>
+
+function $ (id) {
+	return document.getElementById(id);
+}
+
+
+function search (e) {
+	$('submit').href = 'x-unicode:?searchName;string='+encodeURIComponent(e.target.value);
+}
+function searchDef (e) {
+	$('submit2').href = 'x-unicode:?searchkDefinition;string='+encodeURIComponent(e.target.value);
+}
+function find (e) {
+	$('submit3').href = 'x-unicode:?find;char='+encodeURIComponent(e.target.value);
+}
+</script>
+<br /><br />
+<input type="text" value="" onchange="search(event);"  /> <a href="" id="submit">Search name</a>
+
+<br /><br />
+<input type="text" value="" onchange="searchDef(event);"  /> <a href="" id="submit2">Search CJK definition</a>
+
+<br /><br />
+<input type="text" value="" onchange="find(event);"  /> <a href="" id="submit3">Find character</a>
+

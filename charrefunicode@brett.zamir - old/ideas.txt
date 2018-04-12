@@ -1,0 +1,137 @@
+GENERAL
+-----------------
+NOTES RE: LOCALIZERS
+1) With new translators, be sure to explicitly mention modifying other lang. 
+	equivalent for these (the first character shown by default to users)? 
+	Should be ok with (European language) locales so far completed:
+	extensions.charrefunicode.currstartset=a
+	extensions.charrefunicode.startset=a
+2) Always update partial locales folder
+
+CODE
+1) Could use own utilities to simplify DOM calls
+2) Might be able to use <command>, etc. to reduce a lot of code here
+3) Review, comment
+4) Refactor into separate classes/objects
+5) After refactoring, make as code module to reduce reloading time
+
+HELP
+1) More attractive titles (<dialogheader/> if Mac supports now)
+2) More tooltips
+	a) Specialized search textboxes especially need
+3) See also CHART idea to be able to hide entities, etc. in chart for 
+	novices (though Windows char. identifier does show code points)
+4) Change extension name? /Unicode Solutions, ~ Skills, ~ Tricks/ as per 
+	Karoly's thoughts? Avoid Unicode in title for sake of novices: 
+	"Character Finder/Browser/Info/Converter", but taking into account 
+	existing add-ons.
+5) Intro to motivation/design considerations for extension (for laypersons)
+6) Refer to entity/escape conversions to distinguish from character set
+     conversions
+
+TOOLBAR
+1) Add option to insert a character by code point (hex or dec)
+	
+CUSTOM PROTOCOL
+1) Allow additions or changes (or standardization?) to support for custom 
+	protocol (triggered by any website), e.g., more refined searches,
+	conversions, obtaining of definitions, etc.
+2) See also META-DATA re: search links (i.e., for internal use)
+
+CONTEXT MENU
+1) Context menu: Add pref to not show context menu unless there is text 
+	context (for those who want less context-menu real estate taken up?
+2) Allow pasting of snippets (see toolbar)
+3) Allow use of custom DTD when doing conversions by context menu
+
+DIRECTIONALITY IN TEXT BOXES
+1) Add directionality-sensitivity (e.g., for Arabic, Hebrew, etc.)
+
+-----------------
+SEARCH
+1) Search to allow contains|is|is not|begins|ends?
+2) Build table browser (for searches)
+3) Prefernence and/or switch to just get single character for "find character"
+4) Visually distinguish searches from browsing character, both setting apart
+	controls and in display (also for table view?)
+5) Search all properties (e.g., white-space characters)--i.e., represented in 
+	Unicode data files, or correlate/link to (e.g., lower-case equiv. of capital);
+	see http://www.unicode.org/Public/UNIDATA/UCD.html , on fields to consider;
+	see also META-DATA re: extra meta-data
+6) Avoid opening of CJK search tab triggering change in chart
+
+CHART
+1) Website: &#x10fffe; AND &#x10ffff; should be listed as???? Others?
+2) Print chart, or copy-paste whole range (with varying amount of data)
+3) Can textboxes or at least the table be made to expand with the window 
+	being expanded? (flex?)
+4) Option to show chart as list/tree (advantages of being easily sortable 
+	and pullable), etc.
+5) Cross-check blocks.txt with own system: 
+	http://www.unicode.org/Public/UNIDATA/Blocks.txt (?)
+6) Stop field width from changing for certain characters (should be 
+	constant! Due to XHTML/XUL hybrid?)
+7) Option to hide entities entirely for the sake of novices?
+8) Automatically show new PDF link whenever changing chart results (e.g.,
+	after search)
+9) When context menu retrieves current char in chart view, get 
+	description too?
+10) Option to output directly to a document for chart output? Add as sidebar?
+11) Choice of font for chart (may be necessary with rarer characters); use
+      independent dialog to obtain font? (save size and usable in other exts)
+12) Distinguish HTML entities from XML entities by color and text
+
+META-DATA
+0) Fix range content (e.g., Hangul) to show meta-data
+1) Use multiple select to determine which meta-data fields to show?
+2) More search links besides upper/lower case ones (various types and 
+	trigger search drop-downs?); disallow input in textbox (but allow copying)?
+3) Extra metadata (and add search fields for them and search links for them 
+	and selectively show them)
+    a) Add property files' meta-data as textbox or drop-down as appropriate
+	b) See also SEARCH
+4) PINYIN META-DATA
+	a) Show pinyin, etc. optionally next to character (at least give higher 
+		priority to Mandarin?)
+	b) Paste box to display range of characters sequentially in this style (and
+		pastebox to convert pinyin, etc.)
+    c) Generate XHTML Ruby or other formats (including just hex, etc.) out 
+		of this data? (print table option; rename "printunicode" function 
+		to "displayUnicodeTable" to avoid confusion)
+5) PERSONAL OR COLLABORATIVE NOTES
+	a) Display/Search/Print own additions (mnemonics, user-added, etc.)
+	b) Allow tagging (even server-connected collaboration) to add 
+		descriptions (e.g., "slash" for "solidus")
+
+CONVERSION
+1) SURROGATES:
+	a) Could allow surrogates to be directly input and displayed (e.g., Unicode for &#xD800;), as they already 
+		can be converted (or should the conversion be restricted since a surrogate is not allowable directly); see difference in
+		converting Unicode equivalent of &#xD800;&#xDF81; vs. that with a space in the middle: &#xD800; &#xDF81;
+	b) Should surrogates be made convertable from one entity form to another (hex/dec surrogate pair to/from hex/dec single); 
+		(when converting individual surrogate to "Unicode", it will already work, though could disallow in one version of the button)
+	c) Conversion of "HTML" entity doesn't work if both surrogates together or if composite Unicode character used in non-entity form
+		Note: some validation systems should not only check for non-characters, but also surrogates without subsequent matching surrogate
+		Button consolidation
+2) Consolidate buttons into menu to ensure full bi-directionality? (but will also be less efficient as requires extra click to 
+    select "from" and "to" menus)
+3) Could consolidate HTML conversion functions in JS into one function
+4) See also META-DATA re: pinyin conversion
+5) Could make hex case independent in display vs. conversion as with xstyle formerly (?)
+6) Option to auto-convert HTML entities with upper-case 'X' to lower-case for sake of XML?
+7) Feedback in conversions, such as total number replaced
+8) Support U+ conversions?
+9) Add alternate treatment of &quot; (as with &apos;)
+10) Search by/Convert all forms of hex, etc., not just entities?
+11) Convert Unicode to HTML ents AND Hex   OR    Unicode to HTML ents AND DEC  
+		(to character references where HTML entity is not available)
+12) Batch conversion of files
+13) Convert more character sets
+
+PREFERENCES
+1) Announce how to get separate Unihan.sqlite and where to install for those having trouble?;
+	   a) Remove Unicode database to profiles folder (since some complained of size and also to quicken updating)
+
+DTD
+1) Ability to save multiple DTDs (rename as entities?) besides the built-in ones
+2) Indicate how to form an entity and how they will be used

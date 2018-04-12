@@ -1,0 +1,639 @@
+<!--Copyright 2007, 2008, 2009 Brett Zamir    This file is part of Unicode Input Tool/Converter.    Unicode Input Tool/Converter is free software: you can redistribute it and/or modify    it under the terms of the GNU Lesser General Public License as published by    the Free Software Foundation, either version 3 of the License, or    (at your option) any later version.    Unicode Input Tool/Converter is distributed in the hope that it will be useful,    but WITHOUT ANY WARRANTY; without even the implied warranty of    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the    GNU Lesser General Public License for more details.    You should have received a copy of the GNU Lesser General Public License    along with Unicode Input Tool/Converter.  If not, see <http://www.gnu.org/licenses/>.-->
+
+<!ENTITY European_Scripts "Europeiska skrivtecken">
+
+<!ENTITY usage_notespar10b "Verktygsfältsikonen kan kan läggas till genom att gå till Visa > Verktygsfält > Anpassa... och sedan dra &quot;U&quot;-ikonen till önskad position i ett verktygsfält. Dessutom har ikonen en rullgardinsmeny i vilken textstycken kan läggas till för senare återanvändning. Textstyckena läggs till m.h.a. knappen nära tabellens utdataruta. För att ta bort redan tillagda objekt, öppna rullgardinsmenyn, hovra över ett objekt (markera utan att klicka) och högerklicka på det för att ta bort det.">
+
+<!ENTITY DTD.insertEntityFile "Infoga entitetsfil">
+<!ENTITY ent_isobox "Ramelement och linjeritning">
+<!ENTITY ent_isocyr1 "Ryska kyrilliska tecken">
+<!ENTITY ent_isocyr2 "Icke-ryska kyrilliska tecken">
+<!ENTITY ent_isodia "Diakritiska tecken">
+<!ENTITY ent_isolat1 "Tillagda latinska tecken 1">
+<!ENTITY ent_isolat2 "Tillagda latinska tecken 2">
+<!ENTITY ent_isonum "Numeriska och specialgrafik">
+<!ENTITY ent_isopub "Publicering">
+<!ENTITY ent_isoamsa "Tillagda matematiska symboler: Pilrelationer">
+<!ENTITY ent_isoamsb "Tillagda matematiska symboler: Binära operatorer">
+<!ENTITY ent_isoamsc "Tillagda matematiska symboler: Avgränsare">
+<!ENTITY ent_isoamsn "Tillagda matematiska symboler: Negerade relationer">
+<!ENTITY ent_isoamso "Tillagda matematiska symboler: Vanliga">
+<!ENTITY ent_isoamsr "Tillagda matematiska symboler: Relationer">
+<!ENTITY ent_isogrk1 "Grekiska bokstäver">
+<!ENTITY ent_isogrk2 "Monotoniko-grekiska">
+<!ENTITY ent_isogrk3 "Grekiska symboler">
+<!ENTITY ent_isogrk4 "Alternativa grekiska symboler">
+<!ENTITY ent_isomfrk "Matematiska alfabet: Fraktur">
+<!ENTITY ent_isomopf "Matematiska alfabet: Open Face">
+<!ENTITY ent_isomscr "Matematiska alfabet: Script">
+<!ENTITY ent_isotech "Allmänna tekniska">
+<!ENTITY ent_mmlextra "Ytterligare MathML-symboler">
+<!ENTITY ent_mmlalias "MathML-alias">
+<!ENTITY ent_xhtml1-lat1 "Latinska tecken för HTML">
+<!ENTITY ent_xhtml1-special "Specialtecken för HTML">
+<!ENTITY ent_xhtml1-symbol "Symboler för HTML">
+<!ENTITY ent_html5-uppercase "Versala alias för HTML">
+<!ENTITY ent_predefined "Fördefinierad XML">
+<!ENTITY Convert_From_Encoding "Konvertera från kodning">
+<!ENTITY Convert_To_Encoding "Konvertera till kodning">
+<!ENTITY kHanyuPinyin "HanyuPinyin">
+<!ENTITY kIRG_MSource "IRG MSource">
+<!ENTITY Ethiopic_Extended_A "Ge'ez, utökad A">
+<!ENTITY Batak "Batak">
+<!ENTITY CJK_Ideographs_Ext._D "CJK-ideogram, utök. D">
+<!ENTITY Kana_Supplement "Kana (tillägg)">
+<!ENTITY Alchemical_Symbols "Alkemiska symboler">
+<!ENTITY Emoticons "Emotikoner">
+<!ENTITY Playing_Cards "Spelkort">
+<!ENTITY Miscellaneous_Symbols_And_Pictographs "Diverse symboler och piktogram">
+<!ENTITY Transport_and_Map_Symbols "Transport- och kartsymboler">
+<!ENTITY Mandaic "Mandeiska">
+<!ENTITY Brahmi "Brahmi">
+<!ENTITY Bamum_Supplement "Bamun (tillägg)">
+<!ENTITY font.label "Font">
+<!ENTITY addToToolbar "Lägg till i verktygsfältets rullgardinsmeny">
+
+<!ENTITY usage_notespar1 "Tillägget kan aktiveras från snabbmenyn (vilket också ger möjlighet att operera på markerad text), via Verktyg-menyn, via verktygsfältsknappen eller via inställnings-URL:en i tilläggsmenyn.">
+<!ENTITY usage_notespar2 "Inställningar anges så fort du klickar på objekten, men du kan återgå till standardvärdena om du gör något misstag.">
+<!ENTITY usage_notespar3 "Att stänga dialogen kommer att ange det aktuella fönstrets position vid framtida bruk.">
+<!ENTITY usage_notespar4 "Om du får problem med fönsterstorleken, gå till fliken &quot;Inställningar&quot; och klicka på knappen &quot;Återställ till standardvärden (förutom DTD)&quot;. Att använda &quot;Föreg. uppsättning&quot; eller &quot;Nästa uppsättning&quot; kan ibland också rätta till problem med objekt som inte visas korrekt i tabellvyn.">
+<!ENTITY usage_notespar5 "Observera att du kan få extra utrymme på skärmen genom att inte använda knappar. Väljer du bort knapparna kan du fortfarande klicka på objekten för att få tabellutdata.">
+<!ENTITY usage_notespar6 "Var medveten om att i Unicode-tabellvyn kan objekt såsom frågetecken (Firefox 2.0) eller inrutade siffror (Firefox 3.0+) visas istället för ett önskat tecken (och vissa tecken kommer inte eller kan inte visas överhuvudtaget). Detta beror på Firefox egna nuvarande begränsningar rörande visning av sådana tecken. För att hitta dessa kan du söka bland bilderna, såsom de på den officiella webbplatsen http://www.unicode.org/charts och bland de som finns tillgängliga inom själva tillägget. I tillägget kan du hovra med muspekaren över ett tecken från önskat intervall och klicka på den länk dyker upp, vilken leder dig till lämplig tabell där du kan granska bilden. Du kan även aktivera direktvisning av bilder, men detta bör vara avstängt som standard för att undvika en alltför stor belastning på Unicode-servern.">
+<!ENTITY usage_notespar7 "Var vänlig notera att valet av alternativet &quot;Visa endast entiteter&quot; i tabellvyn kommer att visa dig HTML-entiteter i den ordning i vilken HTML-entiteterna definieras (och endast dem). När du inte befinner dig i detta läge, så kommer du att se alla entiteter som finns definierade i den anpassade DTD:n, valfritt utan HTML-entiteter, om kryssrutan om att bifoga DTD-entiteter är avmarkerad på DTD-sidan.">
+<!ENTITY usage_notespar8 "Du bör kunna ladda ner databasen Unihan (medföljer inte tillägget p.g.a. dess storlek) inifrån inställningarna. Om du får problem, ladda ner filen som är ca. 18 MB stor från  http://bahai-library.com/zamir/Unihan.sqlite  och placera den i din Firefox-profilmapp.">
+<!ENTITY usage_notespar9 "Tillägget används helst med högre upplösningar, men har nu i viss mån anpassats för att också passa lägre upplösningar. Dra i de olika delningslisterna för att storleksändra undersektioner. Din önskade storlek skall kommas ihåg.">
+<!ENTITY usage_notespar10 "Använd Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför. ">
+
+<!ENTITY usage_notespar11 "Unicode-datan inom detta tillägg är licensierad enligt som beskrivs i &quot;Unicode Terms of Use&quot; (http://unicode.org/copyright.html)">
+<!ENTITY usage_notespar12 "Översättare är välkomna. Gå till http://tinyurl.com/UnicodeInputToolBabelZilla">
+<!ENTITY usage_notespar0 "Övrig användningsinformation">
+<!ENTITY notespar0 "Unicode-information (lite användningsinformation)">
+<!ENTITY lang.tooltiptext "HTML-språkattributet &quot;lang&quot; eller, i XML, värdet &quot;xml:lang&quot;. Har ingen effekt på de flesta skrivtecken, men kan påverka glyfval/fontvisning för vissa CJK-tecken (t.ex. U+5203 i &quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;ja&quot; eller &quot;ko&quot;). Observera att du måste använda lang-attributet för att se någon effekt utanför tabellen (inte heller vår tabellutdataruta innehåller lang) och det finns för närvarande en bugg för xml:lang i äkta XML/XHTML-dokument: https://bugzilla.mozilla.org/show_bug.cgi?id=234485">
+<!ENTITY lang.label "lang">
+<!ENTITY initialTab.label "Startflik (vid aktivering via kortkommando eller verktygsfältsknapp)">
+<!ENTITY CSSWhitespace.label "CSS-undantagstecken för blanksteg, att använda i tvetydigt läge">
+<!ENTITY CSS_space "(mellanslag)">
+<!ENTITY CSS_rn "\r\n (vagnretur och nyradstecken)">
+<!ENTITY CSS_r "\r (vagnretur)">
+<!ENTITY CSS_n "\n (nyradstecken)">
+<!ENTITY CSS_t "\t (tabulator)">
+<!ENTITY CSS_f "\f (sidmatning)">
+<!ENTITY cssUnambiguous.label "Skapa CSS-undantagstecken i form av 6-siffriga sekvenser som inte kräver blanksteg (annars kommer de bli så långa som det är nödvändigt och följas av blanksteg)">
+<!ENTITY sixDigit2unicode.label "4- eller 6-siffrigt (som i PHP 6) till Unicode">
+<!ENTITY sixDigit2unicodeContext.label "4- eller 6-siffrigt undantagstecken (som i PHP 6) till Unicode">
+<!ENTITY sixDigit2unicodeContext.accesskey "6">
+<!ENTITY unicodeTo6DigitContext.accesskey "U">
+<!ENTITY unicodeTo6Digit.label "Unicode till 6-siffrigt (som i PHP 6)">
+<!ENTITY unicodeTo6DigitContext.label "Unicode till 6-siffrigt undantagstecken (som i PHP 6)">
+<!ENTITY charDesc2Unicode.accesskey "T">
+<!ENTITY charDesc2UnicodeContext.label "Teckenbeskrivningsundantag (som i PHP 6) till Unicode">
+<!ENTITY unicode2CharDescContext.label "Unicode till teckenbeskrivningsundantag (som i PHP 6)">
+<!ENTITY unicode2CharDescContext.accesskey "n">
+<!ENTITY charDesc2Unicode.label "Teckenbeskrivningsundantag till Unicode">
+<!ENTITY unicode2CharDesc.label "Unicode till teckenbeskrivningsundantag">
+<!ENTITY unicode2JSEscape.label "Unicode till JavaScript-undantagstecken">
+<!ENTITY unicode2jsescapeContext.label "Unicode till undantaget JS">
+<!ENTITY unicode2jsescapeContext.accesskey "J">
+<!ENTITY unicode2CSSEscape.label "Unicode till CSS-undantagstecken">
+<!ENTITY unicode2cssescapeContext.accesskey "S">
+<!ENTITY unicode2cssescapeContext.label "Unicode till undantaget CSS">
+<!ENTITY jsescape2unicode.label "JavaScript-undantagstecken till Unicode">
+<!ENTITY jsescape2unicodeContext.accesskey "J">
+<!ENTITY jsescape2unicodeContext.label "Undantaget JS till Unicode">
+<!ENTITY cssescape2unicode.label "CSS-undantagstecken till Unicode">
+<!ENTITY cssescape2unicodeContext.accesskey "C">
+<!ENTITY cssescape2unicodeContext.label "Undantaget CSS till Unicode">
+<!ENTITY Yijing_Symbols "I Ching-symboler">
+<!ENTITY Noncharacters_at_end_of "Icke-tecken i slutet av...">
+<!ENTITY _see_also_Common_Indic_Number_Forms-- "(Se även Vanliga indiska talformat)">
+<!ENTITY _see_also_Combining_Diacritical_Marks_for_Symbols-- "(Se även Kombinerande diakritiska tecken för symboler)">
+<!ENTITY Roman_Symbols "Romerska symboler">
+<!ENTITY CJK_Radicals_-_KangXi_Radicals "CJK-radikaler / Kangxi-radikaler">
+<!ENTITY CJK_Ideographs_Ext._C "CJK-ideogram, utök. C">
+<!ENTITY Bamum "Bamun">
+<!ENTITY Egyptian_Hieroglyphs "Egyptiska hieroglyfer">
+<!ENTITY Aramaic-_Imperial "Arameiska, kejserlig">
+<!ENTITY Avestan "Avestiska">
+<!ENTITY Old_South_Arabian "Sydarabiska, äldre">
+<!ENTITY Pahlavi-_Inscriptional "Medelpersiska, inskriftlig">
+<!ENTITY Parthian-_Inscriptional "Partiska, inskriftlig">
+<!ENTITY Samaritan "Samaritanska">
+<!ENTITY Old_Turkic "Turkiska, äldre">
+<!ENTITY Devanagari_Extended "Devanāgarī, utökad">
+<!ENTITY Kaithi "Kaithi">
+<!ENTITY Meetei_Mayek "Meetei-mayek">
+<!ENTITY Vedic_Extensions "Vediska, utökningar">
+<!ENTITY Javanese "Javanesiska">
+<!ENTITY Myanmar_Extended-A "Burmesiska, utökad-A">
+<!ENTITY South_Asian_Scripts "Sydasiatiska skrivtecken">
+<!ENTITY Tai_Tham "Lanna">
+<!ENTITY Tai_Viet "Tai Viet">
+<!ENTITY Lisu "Lisu">
+<!ENTITY Hangul_Jamo_Extended-A "Hangul, jamo, utökad-A">
+<!ENTITY Hangul_Jamo_Extended-B "Hangul, jamo, utökad-B">
+<!ENTITY UCAS_Extended "UCAS, utökad">
+<!ENTITY Common_Indic_Number_Forms "Vanliga indiska talformat">
+<!ENTITY Rumi_Numeral_Symbols "Malajiska talsymboler">
+<!ENTITY Basic_operators_Plus-_Factorial "Grundläggande operatorer: Plus, fakultet">
+<!ENTITY Division-_Multiplication "Division, multiplikation">
+<!ENTITY Unified_Canadian_Aboriginal_Syllabics "Unified Canadian Aboriginal Syllabics">
+<!ENTITY Combining_Diacritics "Kombinerande diakritiska tecken">
+<!ENTITY Yi_Syllables "Yi-stavelser">
+<!ENTITY Alphabetic_Presentation_Forms "Alfabetiska presentationsformat">
+<!ENTITY Halfwidth_and_Fullwidth_Forms "Halvbreda och helbreda format">
+<!ENTITY ASCII_Characters "ASCII-tecken">
+<!ENTITY Alphanumeric_Symbols "Alfanumeriska symboler">
+<!ENTITY Enclosed_Alphanumeric_Supplement "Omslutna alfanumeriska (tillägg)">
+<!ENTITY Enclosed_Ideographic_Supplement "Omslutna ideografiska (tillägg)">
+<!ENTITY Additional_Squared_Symbols "Ytterligare obsoleta symboler">
+<!ENTITY label.unicode "Unicode">
+<!ENTITY showAllDetailedView.label "Visa alla objekt (eller endast de med innehåll)">
+<!ENTITY showAllDetailedCJKView.label "Visa alla objekt (eller endast de med innehåll)">
+<!ENTITY showComplexWindow.label "Visa specialiserade sökalternativ och metadata i tabellvyn (fönstret öppnas långsammare)">
+<!ENTITY Specialized_search "Specialiserad sökning">
+<!ENTITY Code_point "Kodpunkt">
+<!ENTITY Name "Namn">
+<!ENTITY kCangjie "Cangjie">
+<!ENTITY kCantonese "Kantonesiska">
+<!ENTITY kDefinition "Definition">
+<!ENTITY kHanYu "Hanyu">
+<!ENTITY kIRGHanyuDaZidian "IRGHanyuDaZidian">
+<!ENTITY kIRGKangXi "IRGKangxi">
+<!ENTITY kIRG_GSource "IRG GKälla">
+<!ENTITY kIRG_JSource "IRG JKälla">
+<!ENTITY kIRG_TSource "IRG TKälla">
+<!ENTITY kMandarin "Mandarin">
+<!ENTITY kRSUnicode "RSUnicode">
+<!ENTITY kSemanticVariant "SemantiskVariant">
+<!ENTITY kTotalStrokes "AntalStreck">
+<!ENTITY kCihaiT "CihaiT">
+<!ENTITY kIRG_KSource "IRG KKälla">
+<!ENTITY kSBGY "SBGY">
+<!ENTITY kJIS0213 "JIS0213">
+<!ENTITY kNelson "Nelson">
+<!ENTITY kRSAdobe_Japan1_6 "RSAdobe Japan1 6">
+<!ENTITY kCowles "Cowles">
+<!ENTITY kMatthews "Matthews">
+<!ENTITY kOtherNumeric "ÖvrigNumerisk">
+<!ENTITY kPhonetic "Fonetisk">
+<!ENTITY kGSR "GSR">
+<!ENTITY kIRG_KPSource "IRG KPKälla">
+<!ENTITY kIRG_VSource "IRG VKälla">
+<!ENTITY kKPS1 "KPS1">
+<!ENTITY kFenn "Fenn">
+<!ENTITY kFennIndex "FennIndex">
+<!ENTITY kKarlgren "Karlgren">
+<!ENTITY kHKSCS "HKSCS">
+<!ENTITY kIRG_HSource "IRG HKälla">
+<!ENTITY kXHC1983 "XHC1983">
+<!ENTITY kMeyerWempe "MeyerWempe">
+<!ENTITY kTraditionalVariant "TraditionellVariant">
+<!ENTITY kVietnamese "Vietnamesiska">
+<!ENTITY kSpecializedSemanticVariant "SpecialiseradSemantiskVariant">
+<!ENTITY kLau "Lau">
+<!ENTITY kCheungBauer "CheungBauer">
+<!ENTITY kCheungBauerIndex "CheungBauerIndex">
+<!ENTITY kIICore "IICore">
+<!ENTITY kTang "Tang">
+<!ENTITY kZVariant "ZVariant">
+<!ENTITY kRSKangXi "RSKanxi">
+<!ENTITY kJapaneseKun "JapanskaKun">
+<!ENTITY kJapaneseOn "JapanskaOn">
+<!ENTITY kSimplifiedVariant "FörenkladVariant">
+<!ENTITY kKangXi "Kangxi">
+<!ENTITY kKPS0 "KPS0">
+<!ENTITY kBigFive "DeFemStora">
+<!ENTITY kCCCII "CCCII">
+<!ENTITY kCNS1986 "CNS1986">
+<!ENTITY kCNS1992 "CNS1992">
+<!ENTITY kDaeJaweon "DaeJaweon">
+<!ENTITY kEACC "EACC">
+<!ENTITY kFourCornerCode "Fyrahörnskod">
+<!ENTITY kFrequency "Frekvens">
+<!ENTITY kGB0 "GB0">
+<!ENTITY kGB1 "GB1">
+<!ENTITY kGradeLevel "GradeLevel">
+<!ENTITY kHDZRadBreak "HDZRadBreak">
+<!ENTITY kHKGlyph "HKGlyf">
+<!ENTITY kHangul "Hangul">
+<!ENTITY kHanyuPinlu "HanyuPinlu">
+<!ENTITY kIRGDaeJaweon "IRGDaeJaweon">
+<!ENTITY kIRGDaiKanwaZiten "IRGDaiKanWaJiten">
+<!ENTITY kJis0 "Jis0">
+<!ENTITY kKSC0 "KSC0">
+<!ENTITY kKorean "Koreanska">
+<!ENTITY kMainlandTelegraph "FastlandTelegraf">
+<!ENTITY kMorohashi "Morohashi">
+<!ENTITY kPrimaryNumeric "PrimärNumerisk">
+<!ENTITY kTaiwanTelegraph "TaiwanTelegraf">
+<!ENTITY kXerox "Xerox">
+<!ENTITY kGB5 "GB5">
+<!ENTITY kJis1 "Jis1">
+<!ENTITY kPseudoGB1 "PseudoGB1">
+<!ENTITY kGB3 "GB3">
+<!ENTITY kGB8 "GB8">
+<!ENTITY kKSC1 "KSC1">
+<!ENTITY kIBMJapan "IBMJapan">
+<!ENTITY kRSKanWa "RSKanWa">
+<!ENTITY kRSJapanese "RSJapanska">
+<!ENTITY kAccountingNumeric "BokföringNumerisk">
+<!ENTITY kRSKorean "RSKoreanska">
+<!ENTITY kGB7 "GB7">
+<!ENTITY kIRG_USource "IRG UKälla">
+<!ENTITY kCompatibilityVariant "Kompatibilitetsvariant">
+<!ENTITY General_Category "Allmän kategori">
+<!ENTITY Canonical_Combining_Class "Kanonisk kombinationsklass">
+<!ENTITY Bidi_Class "Dubbelriktningsklass">
+<!ENTITY Decomposition_Type_and_Mapping "Uppdelningstyp och mappning">
+<!ENTITY Decimal "Decimal">
+<!ENTITY Digit "Siffra">
+<!ENTITY Numeric "Numerisk">
+<!ENTITY Bidi_Mirrored "Dubbelriktad, speglad">
+<!ENTITY Unicode_1_Name "Unicode 1-namn">
+<!ENTITY ISO_Comment "ISO-kommentar">
+<!ENTITY Simple_Uppercase_Mapping "Enkel mappning av VERSALER">
+<!ENTITY Simple_Lowercase_Mapping "Enkel mappning av gemener">
+<!ENTITY Simple_Titlecase_Mapping "Enkel mappning av Begynnelsebokstäver">
+<!ENTITY basicView.tab "Grundläggande vy och utdata">
+<!ENTITY detailedView.tab "Detaljerad vy">
+<!ENTITY detailedCJKView.tab "Detaljerad vy (CJK)">
+<!ENTITY unicode2charrefDecSurrogate.label "Unicode till teckenreferens (dec) som surrogatpar">
+<!ENTITY unicode2charrefHexSurrogate.label "Unicode till teckenreferens (hex) som surrogatpar">
+<!ENTITY unicode2charrefSurrogate.tooltip "Konvertera till surrogatpar (Välj inte detta såvida du inte behöver få reda på surrogaten för ett (ovanligt) högre plans-tecken eller vill granska själva surrogatet)">
+<!ENTITY DownloadUnihan "Ladda ner Unihan-databasen (17,9 MB)">
+<!ENTITY Download_unihan_tooltip "Här kan du hämta de senaste teckenbeskrivningarna för kinesiska, japanska och koreanska tecken (CJK). Klicka här för att ladda ner (medföljer inte tillägget eftersom filen är ganska stor).">
+<!ENTITY Close "Stäng">
+<!ENTITY UnihanInstalled "Unihan-databasen (CJK) är installerad">
+<!ENTITY searchName "Sök på teckennamn: ">
+<!ENTITY searchkDefinition "Sök på teckenbeskrivning (CJK)">
+<!ENTITY Regular.tab.label "Vanlig sökning (icke-CJK)">
+<!ENTITY CJK.tab.label "CJK">
+<!ENTITY CJK.tooltip "Sök endast i kinesiska-japanska-koreanska">
+<!ENTITY Regular.tooltip "Sök i vanlig databas (förutom den kinesiska-japanska-koreanska)">
+<!ENTITY Additional_Arrows "Ytterligare pilar">
+<!ENTITY Floors_and_Ceilings "Golv och tak">
+<!ENTITY Additional_Shapes "Ytterligare figurer">
+<!ENTITY APL_Symbols "APL-symboler">
+<!ENTITY ShowImg.checkbox.label "Visa bild">
+<!ENTITY ShowImg.tooltiptext "Var vänlig behåll detta inaktiverat såvida du inte behöver hitta en bild, eftersom det belastar Unicode-servern.">
+<!ENTITY Sundanese "Sundanesiska">
+<!ENTITY Ol_Chiki "Ol chiki">
+<!ENTITY Cyrillic_Extended-A "Kyrilliska, utökad-A">
+<!ENTITY Vai "Vai">
+<!ENTITY Cyrillic_Extended-B "Kyrilliska, utökad-B">
+<!ENTITY Saurashtra "Saurashtra">
+<!ENTITY Kayah_Li "Kayah li">
+<!ENTITY Rejang "Rejang">
+<!ENTITY Cham "Cham">
+<!ENTITY Ancient_Symbols "Forntida symboler">
+<!ENTITY Phaistos_Disc "Skivan i Faistos">
+<!ENTITY Lycian "Lykiska">
+<!ENTITY Carian "Kariska">
+<!ENTITY Lydian "Lydiska">
+<!ENTITY Mahjong_Tiles "Mahjong-brickor">
+<!ENTITY Domino_Tiles "Domino-brickor">
+<!ENTITY Game_Symbols "Spelsymboler">
+<!ENTITY Chess_Checkers "Schack/Dam">
+<!ENTITY Card_suits "Kortleksfärger">
+<!ENTITY Japanese_Chess "Shogi">
+<!ENTITY Yijing_Mono--_Di-_and_Trigrams "I Ching (mono-, di- och trigram)">
+<!ENTITY copyToClipboard "Kopiera till Urklipp">
+<!ENTITY period ".">
+<!ENTITY Conversion.tab.label "Konvertering">
+<!ENTITY Prefs.tab.label "Inställningar">
+<!ENTITY DTD.tab.label "DTD">
+<!ENTITY Charts.tab.label "Tabeller">
+<!ENTITY Notes.tab.label "Information">
+<!ENTITY About.tab.label "Om">
+<!ENTITY moveconvertedup.label "Kopiera &quot;Konverterade&quot; till &quot;Förkonverterade&quot;">
+<!ENTITY Reconvert.dialogheader.title "Återkonverteringsinställningar">
+<!ENTITY Preferences.dialogheader.title "Inställningar">
+<!ENTITY About.dialogheader.title "Om">
+<!ENTITY default.textbox.value "standard">
+<!ENTITY Ascii.checkbox.label "Konvertera till entiteter om antal ASCII &lt; 128 (befintliga entiteter/teckenref. kommer därmed inte vara immuna)">
+<!ENTITY Hexletters.checkbox.label "Utdata-hexadecimal A-F (versaler)">
+<!ENTITY xstyle.description "Format för &quot;X&quot; i hexadecimal teckenreferensutdata">
+<!ENTITY xhtmlentmode.label "XHTML-entitetsläge (tillåter &apos; när HTML-entiteter skapas istället för numeriskt tecken). (Det är nog bäst att lämna detta alt. inaktiverat.)">
+<!ENTITY xmlentmode.label "XML-entitetsläge (vid konvertering från (X)HTML-entiteter lämnas &amp;, &lt;, &gt;, &quot; och &apos; okonverterade). (Dessa entiteter är ofarliga i XML och behöver inga DTD-entitetsdeklarationer, så de behöver antagligen inte konverteras och är även enklare att läsa.)">
+<!ENTITY ampkeep.label "Vid konvertering från Unicode till HTML-entiteter konverteras inte &amp;, så att manipulering av befintliga HTML-entiteter undviks">
+<!ENTITY ampspace.label "Konvertera varje &quot;&amp;&quot; som följs av blanksteg till &quot;&amp;&quot; (för rätt formaterad XML).">
+<!ENTITY resettodefault.label "Återställ till standardvärden (förutom DTD).">
+<!ENTITY numrows "Antal rader">
+<!ENTITY numcols "Antal kolumner">
+<!ENTITY charref2unicode.label "Teckenreferens till Unicode">
+<!ENTITY charref2unicodeContext.label "Teckenref. (hex eller dec) till Unicode">
+<!ENTITY charref2unicodeContext.accesskey "C">
+<!ENTITY charref2htmlents.label "Teckenreferenser till HTML-entiteter">
+<!ENTITY charref2htmlentsContext.label "Teckenref. (hex eller dec) till HTML-ent.">
+<!ENTITY charref2htmlentsContext.accesskey "C">
+<!ENTITY unicode2charrefDec.label "Unicode till teckenreferens (dec)">
+<!ENTITY unicode2charrefDecContext.label "Unicode till teckenref. (dec)">
+<!ENTITY unicode2charrefDecContext.accesskey "U">
+<!ENTITY unicode2charrefHex.label "Unicode till teckenreferens (hex)">
+<!ENTITY unicode2charrefHexContext.label "Unicode till teckenref. (hex)">
+<!ENTITY unicode2charrefHexContext.accesskey "U">
+<!ENTITY unicode2htmlents.label "Unicode till HTML-entiteter">
+<!ENTITY unicode2htmlentsContext.label "Unicode till HTML-ent.">
+<!ENTITY unicode2htmlentsContext.accesskey "U">
+<!ENTITY htmlents2charrefDec.label "HTML-entitet till teckenreferens (dec)">
+<!ENTITY htmlents2charrefDecContext.label "HTML-ent. till teckenref. (dec)">
+<!ENTITY htmlents2charrefDecContext.accesskey "H">
+<!ENTITY htmlents2charrefHex.label "HTML-entitet till teckenreferens (hex)">
+<!ENTITY htmlents2charrefHexContext.label "HTML-ent. till teckenref. (hex)">
+<!ENTITY htmlents2charrefHexContext.accesskey "H">
+<!ENTITY htmlents2unicode.label "HTML-entitet till Unicode">
+<!ENTITY htmlents2unicodeContext.label "HTML-ent. till Unicode">
+<!ENTITY htmlents2unicodeContext.accesskey "H">
+<!ENTITY launchunicode.label "Kör Unicode-konverteringsverktyget">
+<!ENTITY launchunicodeContext.label "Kör Unicode-konverteringsverktyget">
+<!ENTITY launchunicodeContext.accesskey "ö">
+<!ENTITY unicodechart.label "Sök i Unicode-tabell">
+<!ENTITY unicodechartContext.label "Sök i Unicode-tabell">
+<!ENTITY unicodechartContext.accesskey "c">
+<!ENTITY tools-charrefunicode.label "Indataverktyg &amp; konverterare för Unicode">
+<!ENTITY hex2dec.label "Hexadecimal till decimal">
+<!ENTITY hex2decContext.label "Hexadecimal till decimal">
+<!ENTITY hex2decContext.accesskey "H">
+<!ENTITY dec2hex.label "Decimal till hexadecimal">
+<!ENTITY dec2hexContext.label "Decimal till hexadecimal">
+<!ENTITY dec2hexContext.accesskey "D">
+<!ENTITY uresults.value "Unicode-resultat">
+<!ENTITY uresults.title "Unicode-resultat">
+<!ENTITY uresults.preconverted "Förkonverterade:">
+<!ENTITY uresults.converted "Konverterade:">
+<!ENTITY button.clearoutput "Rensa">
+<!ENTITY caption.chart.output "Tabellutdata">
+<!ENTITY caption.chart.selectchar "Sök tecken eller intervall">
+<!ENTITY caption.chart.layout "Tabellayout">
+<!ENTITY caption.displayUnicodeDesc "Tkn-<html:br />besk.:">
+<!ENTITY textbox.displayUnicodeDesc "Teckenbeskrivning">
+<!ENTITY button.multiline "Flerradig">
+<!ENTITY outputtocopy "Utdata:">
+<!ENTITY button.moveoutput "Flytta utdata">
+<!ENTITY willreplaceprecnv "(ersätter texten &quot;Förkonverterade&quot; under fliken &quot;Konvertering&quot;)">
+<!ENTITY charhexdecchoices "Unicode-tkn, hex- eller dec-tal:">
+<!ENTITY desc.digits "(vid sökning efter teckenref. #0-9, anv. #n)">
+<!ENTITY chooseregion "ELLER välj efter region:">
+<!ENTITY label.norows "Antal rader">
+<!ENTITY label.nocols "Antal kolumner">
+<!ENTITY label.hexq "Hex">
+<!ENTITY label.decq "Dec">
+<!ENTITY label.unicodeq "Unicode">
+<!ENTITY label.entq "Entiteter">
+<!ENTITY label.onlyentsyesq "Visa endast entiteter">
+<!ENTITY label.xstyleq "&quot;x&quot;-format">
+<!ENTITY label.middleq "Placera måltecken i mitten">
+<!ENTITY label.buttonq "Använd knappar">
+<!ENTITY label.fontsize "Fontstorlek:">
+<!ENTITY desc.symbolspunc "ELLER välj bland symboler och skiljetecken:">
+<!ENTITY dialogheader.value "DTD">
+<!ENTITY DTD.desc.value "Lägg till DTD-entitetsdeklarationer (valfritt) för användning vid konvertering">
+<!ENTITY DTD.desc.value2 "Form: &lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;">
+<!ENTITY DTD.textbox.value "">
+<!ENTITY DTD.insertent "Infoga &lt;!ENTITY&gt;">
+<!ENTITY appendhtml.checkbox "Bifoga till befintlig HTML-entitetsuppsättning">
+<!ENTITY Notes.dialogheader.title "Information">
+<!ENTITY notespar1 "Unicode är ett system för att återge alla levande (och vissa döda) mänskliga skrivtecken, standardsymboler och skiljetecken. Unicodes användning i HTML och XML tillåter t.o.m. alla sådana skrivtecken att samsas på samma sida. Många program låter dig skriva eller spara alla sådana tecken direkt i Unicode.">
+<!ENTITY notespar2 "Emellertid, eftersom vissa program fortfarande inte stödjer Unicode fullt ut så kanske inte texten kommer att sparas korrekt och måhända, för att göra det enklare för en del att skriva, får du också använda olika typer av kortkommandon för att återge dessa olika Unicode-tecken (fast om du endast använder de grundläggande engelska ASCII-symbolerna, så kommer dina dokument att översättas till Unicode utan problem).">
+<!ENTITY notespar3 "Ett sådant kortkommando som kan användas i alla HTML- och XML-dokument är teckenreferensen. Dessa referenser börjar med ett et-tecken (&quot;&amp;&quot;) och ett nummertecken (&quot;#&quot;) och slutar med ett semikolon (&quot;;&quot;). Däremellan står antingen ett decimaltal (d.v.s. siffrorna 0-9) eller ett hexadecimalt tal (d.v.s. siffrorna 0-9 Och/eller versala eller gemena bokstäverna A-F, vilka föregås av ett &quot;x&quot; eller ett &quot;X&quot;). Endera typen kommer att visa detsamma och kommer att visas exakt som Unicode-tecknet den representerar.">
+<!ENTITY notespar4 "(Det hexadecimala talsystemet kan jämföras med en uppsättning spelkort. Knekten kan representera &quot;11&quot; i vissa spel, damen &quot;12&quot; och så vidare. Även om de bara är enskilda kort, så representerar de ett tal större än tio. På samma sätt är det med enskilda hexadecimala siffror som representeras av bokstäverna A-F.)">
+<!ENTITY notespar5 "Vid sidan av teckenreferenser är en annan typ av kortkommando för att återge ett Unicode-tecken (eller t.o.m. flera tecken) den &quot;parsade allmänna entiteten&quot; (parsed general entity).">
+<!ENTITY notespar6 "I XML-språket, undantaget fem fördefinierade entiteter (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;) och &apos; (&apos;)), måste du uttryckligen definiera de entiteter som du vill använda (eller använda ett särskilt &quot;PUBLIC&quot;-ID, vilket visar för program som läser XML-filen att du kommer att använda det språkets uppsättning av entiteter).">
+<!ENTITY notespar7 "I HTML finns det ett antal redan definierade entiteter. Ett viktigt påpekande: Även om HTML använder fyra av XML:s fem fördefinierade entiteter, så använder det inte &quot;&apos;&quot;. Du måste således istället använda motsvarande Unicode (eller använda någon av teckenreferenserna &amp;#x27; eller &amp;#39;).">
+<!ENTITY notespar8 "Du kan också definiera dina egna entiteter i tilläggets &quot;DTD&quot;-sektion genom att använda syntaxet &quot;&lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;&quot; så att de kan inkluderas i konverteringar.">
+<!ENTITY About.desc1 "Detta tillägg utvecklades av">
+<!ENTITY About.desc2 "Brett Zamir">
+<!ENTITY About.desc2b " och översattes av Karoly Fabricz (hu-HU), Edgard Magalh&#227;es (pt-BR) och Mikael Hiort af Ornäs (sv-SE)">
+<!ENTITY About.desc3 "Om du får användning för detta tillägg, vänligen överväg att göra en">
+<!ENTITY About.desc4 "Paypal-donation">
+<!ENTITY European_Scripts "Europeiska alfabet">
+<!ENTITY _see_also_Comb._Marks-- "(Se även Kombinerande tecken)">
+<!ENTITY Armenian "Armeniska">
+<!ENTITY Armenian_Ligatures "Armeniska ligaturer">
+<!ENTITY Coptic "Koptiska">
+<!ENTITY Coptic_in_Greek_block "Koptiska i grekiskt block">
+<!ENTITY Cyrillic "Kyrilliska">
+<!ENTITY Cyrillic_Supplement "Kyrilliska (tillägg)">
+<!ENTITY Georgian "Georgiska">
+<!ENTITY Georgian_Supplement "Georgiska (tillägg)">
+<!ENTITY Greek "Grekiska">
+<!ENTITY Greek_Extended "Grekiska, utökad">
+<!ENTITY _see_also_Ancient_Greek_Numbers-- "(Se även Forngrekiska tal)">
+<!ENTITY _see_also_Ancient_Greek_Musical_Notation-- "(Se även Forngrekisk notskrift)">
+<!ENTITY Latin "Latin">
+<!ENTITY Basic_Latin "Grundläggande latin">
+<!ENTITY Latin-1_Supplement "Latin-1 (tillägg)">
+<!ENTITY Latin_Extended_A "Latin, utökad A">
+<!ENTITY Latin_Extended_B "Latin, utökad B">
+<!ENTITY Latin_Extended_C "Latin, utökad C">
+<!ENTITY Latin_Extended_D "Latin, utökad D">
+<!ENTITY Latin_Extended_Additional "Latin, ytterligare utökad">
+<!ENTITY Latin_Ligatures "Latinska ligaturer">
+<!ENTITY Fullwidth_Latin_Letters "Helbreda latinska bokstäver">
+<!ENTITY Small_Form_Variants "Litet format (varianter)">
+<!ENTITY _see_also_Phonetic_Symbols-- "(Se även Fonetiska symboler)">
+<!ENTITY African_Scripts "Afrikanska skrivtecken">
+<!ENTITY Ethiopic "Ge'ez">
+<!ENTITY Ethiopic_Supplement "Ge'ez (tillägg)">
+<!ENTITY Ethiopic_Extended "Ge'ez, utökad">
+<!ENTITY Other_African_scripts "Övriga afrikanska skrivtecken">
+<!ENTITY N_Ko "N'Ko">
+<!ENTITY Tifinagh "Tifinagh">
+<!ENTITY Middle_Eastern_Scripts "Mellanösterns skrivtecken">
+<!ENTITY _see_also_Old_Persian- "(Se även Fornpersiska)">
+<!ENTITY Arabic "Arabiska">
+<!ENTITY Arabic_Supplement "Arabiska (tillägg)">
+<!ENTITY Arabic_Presentation_Forms_A "Arabiska presentationsformat A">
+<!ENTITY Arabic_Presentation_Forms_B "Arabiska presentationsformat B">
+<!ENTITY Hebrew "Hebreiska">
+<!ENTITY Hebrew_Presentation_Forms "Hebreiska presentationsformat">
+<!ENTITY Syriac "Syriska">
+<!ENTITY Thaana "Tāna">
+<!ENTITY American_scripts "Amerikanska skrivtecken">
+<!ENTITY Cherokee "Cherokesiska">
+<!ENTITY Deseret "Deseret-alfabetet">
+<!ENTITY Other_Scripts "Övriga skrivtecken">
+<!ENTITY Shavian "Shaviska alfabetet">
+<!ENTITY Osmanya "Osmanya-skrift">
+<!ENTITY Glagolitic "Glagolitiska alfabetet">
+<!ENTITY Indic_Scripts "Indic skrivtecken">
+<!ENTITY Bengali "Bengali">
+<!ENTITY Devanagari "Devanāgarī">
+<!ENTITY Gujarati "Gujarati">
+<!ENTITY Gurmukhi "Gurmukhi">
+<!ENTITY Kannada "Kannada">
+<!ENTITY Limbu "Limbu">
+<!ENTITY Malayalam "Malayalam">
+<!ENTITY Oriya "Oriya">
+<!ENTITY Sinhala "Singalesiska">
+<!ENTITY Syloti_Nagri "Syloti nagri">
+<!ENTITY Tamil "Tamil">
+<!ENTITY Telugu "Telugu">
+<!ENTITY Philippine_Scripts "Filippinska skrivtecken">
+<!ENTITY Buhid "Buhid">
+<!ENTITY Hanunoo "Hanunó'o">
+<!ENTITY Tagalog "Tagalog">
+<!ENTITY Tagbanwa "Tagbanwa">
+<!ENTITY South_East_Asian "Sydostasiatiska">
+<!ENTITY Balinese "Balinesiska">
+<!ENTITY Buginese "Buginesiska">
+<!ENTITY Khmer "Khmerisk skrift">
+<!ENTITY Khmer_Symbols "Khmer-symboler">
+<!ENTITY Lao "Lao">
+<!ENTITY Myanmar "Burmesiska">
+<!ENTITY New_Tai_Lue "Ny tai lü">
+<!ENTITY Tai_Le "Tai nüa">
+<!ENTITY Thai "Thailändska">
+<!ENTITY East_Asian_Scripts "Ostasiatiska skrivtecken">
+<!ENTITY CJK_Unified_Ideographs_--Han-- "CJK-enhetliga ideogram (Han)">
+<!ENTITY CJK_Ideographs_Ext._A "CJK-ideogram, utök. A">
+<!ENTITY CJK_Ideographs_Ext._B "CJK-ideogram, utök. B">
+<!ENTITY CJK_Compatibility_Ideographs "CJK, kompatibilitetsideogram">
+<!ENTITY CJK_Compatibility_Ideographs_Supplement "CJK, kompatibilitetsideogram (tillägg)">
+<!ENTITY Kanbun "Kanbun">
+<!ENTITY _see_also_Unihan_Database-- "(Se även Unihan-databasen)">
+<!ENTITY CJK_Radicals_Supplement "CJK-radikaler (tillägg)">
+<!ENTITY KangXi_Radicals "Kangxi-radikaler">
+<!ENTITY CJK_Strokes "CJK-streck">
+<!ENTITY Ideographic_Description_Characters "Ideografiska beskrivningstecken">
+<!ENTITY Chinese-specific "Kinesisk-specifika">
+<!ENTITY Bopomofo "Zhùyīn Fúhào (bopomofo)">
+<!ENTITY Bopomofo_Extended "Zhùyīn Fúhào (bopomofo), utökad">
+<!ENTITY Hiragana "Hiragana">
+<!ENTITY Katakana "Katakana">
+<!ENTITY Katakana_Phonetic_Ext. "Katakana, fonetiska utökningar">
+<!ENTITY Halfwidth_Katakana "Halvbred katakana">
+<!ENTITY Hangul_Syllables "Hangul-stavelser">
+<!ENTITY Hangul_Jamo "Hangul, jamo">
+<!ENTITY Hangul_Compatibility_Jamo "Hangul, kompatibilitetsjamo">
+<!ENTITY Halfwidth_Jamo "Halvbred jamo">
+<!ENTITY Yi "Yi">
+<!ENTITY Yi_Radicals "Yi-radikaler">
+<!ENTITY Central_Asian_Scripts "Centralasiatiska skrivtecken">
+<!ENTITY Kharoshthi "Kharoshthi">
+<!ENTITY Mongolian "Mongoliska">
+<!ENTITY Phags-Pa "&apos;Phags-pa">
+<!ENTITY Tibetan "Tibetanska">
+<!ENTITY Ancient_Greek_Numbers "Forngrekiska tal">
+<!ENTITY Ancient_Greek_Musical_Notation "Forngrekisk notskrift">
+<!ENTITY Cuneiform "Kilskrift">
+<!ENTITY Cuneiform_Numbers_and_Punctuation "Kilskrift, tal och skiljetecken">
+<!ENTITY Old_Persian "Fornpersiska">
+<!ENTITY Ugaritic "Ugaritiska alfabetet">
+<!ENTITY Linear_B "Linear B (mykensk grekiska)">
+<!ENTITY Linear_B_Syllabary "Linear B, stavelseskrift">
+<!ENTITY Linear_B_Ideograms "Linear B, ideogram">
+<!ENTITY Aegean_Numbers "Egeiska tal">
+<!ENTITY Counting_Rod_Numerals "Räknestavstaltecken">
+<!ENTITY Cypriot_Syllabary "Cypriotisk stavelseskrift">
+<!ENTITY Gothic "Gotiska">
+<!ENTITY Old_Italic "Fornitaliska">
+<!ENTITY Ogham "Ogham">
+<!ENTITY Runic "Runor">
+<!ENTITY Phoenician "Feniciska">
+<!ENTITY Punctuation "Skiljetecken">
+<!ENTITY General_Punctuation "Allmänna skiljetecken">
+<!ENTITY ASCII_Punctuation "ASCII-skiljetecken">
+<!ENTITY Latin-1_Punctuation "Latin-1-skiljetecken">
+<!-- already defined: General_Punctuation "Allmänna skiljetecken"-->
+<!ENTITY Supplemental_Punctuation "Kompletterande skiljetecken">
+<!ENTITY CJK_Symbols_and_Punctuation "CJK-symboler och skiljetecken">
+<!ENTITY Fullwidth_ASCII_Punctuation "Helbreda ASCII-skiljetecken">
+<!ENTITY Vertical_Forms "Lodräta format">
+<!ENTITY Enclosed_Alphanumerics "Omslutna alfanumeriska tecken">
+<!ENTITY Enclosed_Alphanumerics_CJK_Letters_and_Months "Omslutna CJK-bokstäver och -månader">
+<!ENTITY CJK_Compatibility "CJK-kompatibilitet">
+<!ENTITY _see_also_Letterlike_Symbols-- "(Se även Bokstavsliknande symboler)">
+<!ENTITY Combining_Diacritical_Marks "Kombinerande diakritiska tecken">
+<!ENTITY Combining_Diacritical_Marks_for_Symbols "Kombinerande diakritiska tecken för symboler">
+<!ENTITY Combining_Diacritical_Marks_Supplement "Kombinerande diakritiska tecken (tillägg)">
+<!ENTITY Combining_Half_Marks "Kombinerande halva tecken">
+<!ENTITY Phonetic_Symbols "Fonetiska symboler">
+<!ENTITY IPA_Extensions "IPA, utökningar">
+<!ENTITY Phonetic_Extensions "Fonetiska utökningar">
+<!ENTITY Phonetic_Extensions_Supplement "Fonetiska utökningar (tillägg)">
+<!ENTITY Modifier_Tone_Letters "Bestämmande tonande bokstäver">
+<!ENTITY Spacing_Modifier_Letters "Stegningsbestämmande bokstäver">
+<!ENTITY _see_also_Super_and_Subscript-- "(Se även Upphöjda och nedsänkta tecken)">
+<!ENTITY Mathematical_Symbols "Matematiska symboler">
+<!ENTITY Numbers_and_Digits "Tal och siffror">
+<!ENTITY _see_also_specific_scripts-- "(Se även specifika skrivtecken)">
+<!ENTITY ASCII_Digits "ASCII-siffror">
+<!ENTITY Fullwidth_ASCII_Digits "Helbreda ASCII-siffror">
+<!ENTITY Number_Forms "Talformat">
+<!ENTITY Super_and_Subscripts "Upphöjda och nedsänkta tecken">
+<!ENTITY Letterlike_Symbols "Bokstavsliknande symboler">
+<!ENTITY Mathematical_Alphanumeric_Symbols "Matematiska alfanumeriska symboler">
+<!ENTITY Arrows "Pilar">
+<!ENTITY Mathematical_Operators "Matematiska operatorer">
+<!ENTITY Suppl._Math_Operators "Kompletterande matematiska operatorer">
+<!ENTITY Misc._Math_Symbols_A "Diverse matematiska symboler A">
+<!ENTITY Misc._Math_Symbols_B "Diverse matematiska symboler B">
+<!ENTITY Supplemental_Arrows_A "Kompletterande pilar A">
+<!ENTITY Supplemental_Arrows_B "Kompletterande pilar B">
+<!ENTITY Misc._Symbols_and_Arrows "Diverse symboler och pilar">
+<!ENTITY Geometric_Shapes "Geometriska figurer">
+<!ENTITY Box_Drawing "Ramelement">
+<!ENTITY Block_Elements "Blockelement">
+<!ENTITY Technical_Symbols "Tekniska symboler">
+<!ENTITY Control_Pictures "Styrbilder">
+<!ENTITY Miscellaneous_Technical "Diverse tekniska">
+<!ENTITY OCR "Optisk teckenläsning (OCR)">
+<!ENTITY Other_Symbols "Övriga symboler">
+<!ENTITY Miscellaneous_Symbols "Diverse symboler">
+<!ENTITY Dingbats "Dingbats">
+<!-- already defined: Miscellaneous_Symbols "Diverse symboler"-->
+<!ENTITY Tai_Xuan_Jing_Symbols "Tai Xuan Jing-symboler">
+<!ENTITY Yijing_Hexagram_Symbols "I Chings hexagramsymboler">
+<!ENTITY Braille_Patterns "Braille-mönster">
+<!-- already defined Ancient_Greek_Musical_Notation "Forngrekisk notskrift" -->
+<!ENTITY Byzantine_Musical_Symbols "Bysantinska musiksymboler">
+<!ENTITY Musical_Symbols "Musiksymboler">
+<!ENTITY Currency_Symbols "Valutasymboler">
+<!--already defined: _see_also_specific_scripts "(Se även specifika skrivtecken)" -->
+<!ENTITY Dollar_Sign "Dollar-tecken">
+<!ENTITY Euro_Sign "Euro-tecken">
+<!ENTITY Yen-_Pound_and_Cent "Yen, pund och cent">
+<!-- already defined: Currency_Symbols "Valutasymboler"-->
+<!ENTITY Fullwidth_Currency_Symbols "Helbreda valutasymboler">
+<!ENTITY Mark_-historic-- "Mark (historiskt)">
+<!ENTITY Pfennig_-historic-- "Pfennig (historiskt)">
+<!ENTITY Rial_Sign "Rial-tecken">
+<!ENTITY Specials "Specialtecken">
+<!ENTITY Controls-_C0 "Styrtecken: C0">
+<!ENTITY Controls-_C1 "Styrtecken: C1">
+<!ENTITY Layout_Controls "Layoutkontroller">
+<!ENTITY Invisible_Operators "Osynliga operatorer">
+<!-- already defined: Specials "Specialtecken"-->
+<!ENTITY Tags "Taggar">
+<!ENTITY Variation_Selectors "Variationsväljare">
+<!ENTITY Variation_Selectors_Supplement "Variationsväljare (tillägg)">
+<!ENTITY Private_Use "Privatanvändning">
+<!ENTITY Private_Use_Area "Privatanvändningsområde">
+<!ENTITY Suppl._Private_Use_Area_A "Kompletterande privatanvändningsområde-A">
+<!ENTITY Suppl._Private_Use_Area_B "Kompletterande privatanvändningsområde-B">
+<!ENTITY Surrogates "Surrogat">
+<!ENTITY High_Surrogates "Höga surrogat">
+<!ENTITY High_Private_Use_Surrogates "Höga privatanvändningssurrogat">
+<!ENTITY Low_Surrogates "Låga surrogat">
+<!ENTITY Noncharacters_in_Charts "Icke-tecken i tabeller">
+<!ENTITY Reserved_range "Reserverat intervall">
+<!ENTITY At_End_of_BMP "I slutet av BMP (plan 0)">
+<!ENTITY At_End_of_Plane_1 "I slutet av plan 1">
+<!ENTITY At_End_of_Plane_2 "I slutet av plan 2">
+<!ENTITY At_End_of_Plane_3 "I slutet av plan 3">
+<!ENTITY At_End_of_Plane_4 "I slutet av plan 4">
+<!ENTITY At_End_of_Plane_5 "I slutet av plan 5">
+<!ENTITY At_End_of_Plane_6 "I slutet av plan 6">
+<!ENTITY At_End_of_Plane_7 "I slutet av plan 7">
+<!ENTITY At_End_of_Plane_8 "I slutet av plan 8">
+<!ENTITY At_End_of_Plane_9 "I slutet av plan 9">
+<!ENTITY At_End_of_Plane_10 "I slutet av plan 10">
+<!ENTITY At_End_of_Plane_11 "I slutet av plan 11">
+<!ENTITY At_End_of_Plane_12 "I slutet av plan 12">
+<!ENTITY At_End_of_Plane_13 "I slutet av plan 13">
+<!ENTITY At_End_of_Plane_14 "I slutet av plan 14">
+<!ENTITY At_End_of_Plane_15 "I slutet av plan 15">
+<!ENTITY At_End_of_Plane_16 "I slutet av plan 16">
+<!ENTITY Lepcha "Lepcha">
+<!ENTITY CJK_Compatibility_Forms "CJK-kompatibilitetsformer">
