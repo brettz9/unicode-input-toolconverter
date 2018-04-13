@@ -38,18 +38,14 @@ scriptMaps.forEach((scriptMap) => {
     (() => {
         let list = '';
         do {
-            // TODO: INCOMPLETE/UNTESTED
+            // TODO: Needs further nesting
             if (scriptGroup.matches('.mb,.pb,.sb')) {
                 list += `<ul>
                     <li>${scriptGroup.textContent}</li>
                 </ul>`;
-                const oldScriptGroup = scriptGroup;
-                scriptGroup = scriptGroup.nextElementSibling;
-                oldScriptGroup.remove();
-            } else {
-                scriptGroup = scriptGroup.nextElementSibling;
             }
-        } while (scriptGroup);
+            scriptGroup = scriptGroup.nextElementSibling;
+        } while (scriptGroup && !scriptGroup.matches('p.sg'));
         return list;
     })()}
         </ul>`
