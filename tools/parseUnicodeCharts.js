@@ -1,7 +1,6 @@
 /* eslint-env node */
 const fetch = require('node-fetch');
 const jsdom = require('jsdom');
-const jml = require('jamilih');
 const {JSDOM} = jsdom;
 
 const fs = require('fs-extra');
@@ -23,7 +22,7 @@ if (process.argv[2] === 'save') {
 const doc = new JSDOM(text).window.document;
 const scriptMaps = [...doc.querySelectorAll('table.map')];
 
-let html = '';
+const jamilih = [];
 scriptMaps.forEach((scriptMap) => {
     const majorHeading = scriptMap.previousElementSibling.textContent;
     // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
@@ -31,49 +30,54 @@ scriptMaps.forEach((scriptMap) => {
     const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
     // sg, mb, pb/sb
     let lastChildren;
-    html += jml.toHTML('ul', [
-        ['li', [majorHeading]],
-        ...scriptGroups.map((scriptGroup) => {
-            return ['ul', [
-                ['li', [
-                    ['b', [
-                        scriptGroup.textContent
+    jamilih.push(
+        ['li', [
+            majorHeading,
+            ...scriptGroups.map((scriptGroup) => {
+                return ['ul', [
+                    ['li', [
+                        ['b', [
+                            scriptGroup.textContent
+                        ]],
+                        ...(() => {
+                            const lists = [];
+                            do {
+                                if (scriptGroup.matches('.mb')) {
+                                    const children = [scriptGroup.textContent];
+                                    lastChildren = children;
+                                    lists.push(['ul', [
+                                        ['li', children]
+                                    ]]);
+                                } else if (scriptGroup.matches('.pb,.sb')) {
+                                    const children = [
+                                        ['i', [
+                                            scriptGroup.textContent
+                                        ]]
+                                    ];
+                                    if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
+                                        lists.push(['ul', [
+                                            ['li', children]
+                                        ]]);
+                                    } else {
+                                        lastChildren.push(['ul', [
+                                            ['li', children]
+                                        ]]);
+                                    }
+                                }
+                                scriptGroup = scriptGroup.nextElementSibling;
+                            } while (scriptGroup && !scriptGroup.matches('p.sg'));
+                            lastChildren = null;
+                            return lists;
+                        })()
                     ]]
-                ]],
-                ...(() => {
-                    const lists = [];
-                    do {
-                        if (scriptGroup.matches('.mb')) {
-                            const children = [
-                                ['li', [scriptGroup.textContent]]
-                            ];
-                            lastChildren = children;
-                            lists.push(['ul', children]);
-                        } else if (scriptGroup.matches('.pb,.sb')) {
-                            const children = [
-                                ['li', [
-                                    ['i', [
-                                        scriptGroup.textContent
-                                    ]]
-                                ]]
-                            ];
-                            if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
-                                lists.push(['ul', children]);
-                            } else {
-                                lastChildren.push(['ul', children]);
-                            }
-                        }
-                        scriptGroup = scriptGroup.nextElementSibling;
-                    } while (scriptGroup && !scriptGroup.matches('p.sg'));
-                    lastChildren = null;
-                    return lists;
-                })()
-            ]];
-        })
-    ]);
+                ]];
+            })
+        ]]
+    );
 });
 // console.log('m', majorHeading, scriptGroups);
 await fs.writeFile('browser_action/unicode-scripts.js', `
-export default ${JSON.stringify(html)};
+/* eslint-disable comma-spacing, quotes */
+export default ${JSON.stringify(['ul', jamilih], null, 4)};
 `);
 })();
