@@ -1,3 +1,4 @@
 polyfills/browser-polyfill.min.js
-lib/jml.js
 charrefunicode@brett.zamir - old
+vendor
+lib/misc-to-move

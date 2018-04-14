@@ -23,6 +23,7 @@ if (process.argv[2] === 'save') {
 const doc = new JSDOM(text).window.document;
 const scriptMaps = [...doc.querySelectorAll('table.map')];
 
+let html = '';
 scriptMaps.forEach((scriptMap) => {
     const majorHeading = scriptMap.previousElementSibling.textContent;
     // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
@@ -30,7 +31,7 @@ scriptMaps.forEach((scriptMap) => {
     const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
     // sg, mb, pb/sb
     let lastChildren;
-    const html = jml.toHTML('ul', [
+    html += jml.toHTML('ul', [
         ['li', [majorHeading]],
         ...scriptGroups.map((scriptGroup) => {
             return ['ul', [
@@ -70,7 +71,9 @@ scriptMaps.forEach((scriptMap) => {
             ]];
         })
     ]);
-    // console.log('m', majorHeading, scriptGroups);
-    console.log(html);
 });
+// console.log('m', majorHeading, scriptGroups);
+await fs.writeFile('browser_action/unicode-scripts.js', `
+export default ${JSON.stringify(html)};
+`);
 })();
