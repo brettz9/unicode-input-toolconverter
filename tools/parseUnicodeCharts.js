@@ -29,6 +29,7 @@ scriptMaps.forEach((scriptMap) => {
 
     const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
     // sg, mb, pb/sb
+    let lastChildren;
     const html = jml.toHTML('ul', [
         ['li', [majorHeading]],
         ...scriptGroups.map((scriptGroup) => {
@@ -37,11 +38,14 @@ scriptMaps.forEach((scriptMap) => {
                 ...(() => {
                     const lists = [];
                     do {
-                        // TODO: Needs further nesting
-                        if (scriptGroup.matches('.mb,.pb,.sb')) {
-                            lists.push(['ul', [
-                                ['li', [scriptGroup.textContent]]
-                            ]]);
+                        const children = [
+                            ['li', [scriptGroup.textContent]]
+                        ];
+                        if (scriptGroup.matches('.mb')) {
+                            lastChildren = children;
+                            lists.push(['ul', children]);
+                        } else if (scriptGroup.matches('.pb,.sb')) {
+                            lastChildren.push(['ul', children]);
                         }
                         scriptGroup = scriptGroup.nextElementSibling;
                     } while (scriptGroup && !scriptGroup.matches('p.sg'));
