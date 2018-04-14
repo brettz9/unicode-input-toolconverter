@@ -34,21 +34,37 @@ scriptMaps.forEach((scriptMap) => {
         ['li', [majorHeading]],
         ...scriptGroups.map((scriptGroup) => {
             return ['ul', [
-                ['li', [scriptGroup.textContent]],
+                ['li', [
+                    ['b', [
+                        scriptGroup.textContent
+                    ]]
+                ]],
                 ...(() => {
                     const lists = [];
                     do {
-                        const children = [
-                            ['li', [scriptGroup.textContent]]
-                        ];
                         if (scriptGroup.matches('.mb')) {
+                            const children = [
+                                ['li', [scriptGroup.textContent]]
+                            ];
                             lastChildren = children;
                             lists.push(['ul', children]);
                         } else if (scriptGroup.matches('.pb,.sb')) {
-                            lastChildren.push(['ul', children]);
+                            const children = [
+                                ['li', [
+                                    ['i', [
+                                        scriptGroup.textContent
+                                    ]]
+                                ]]
+                            ];
+                            if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
+                                lists.push(['ul', children]);
+                            } else {
+                                lastChildren.push(['ul', children]);
+                            }
                         }
                         scriptGroup = scriptGroup.nextElementSibling;
                     } while (scriptGroup && !scriptGroup.matches('p.sg'));
+                    lastChildren = null;
                     return lists;
                 })()
             ]];
