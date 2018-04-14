@@ -1,6 +1,7 @@
 /* eslint-env node */
 const fetch = require('node-fetch');
 const jsdom = require('jsdom');
+const jml = require('jamilih');
 const {JSDOM} = jsdom;
 
 const fs = require('fs-extra');
@@ -28,31 +29,28 @@ scriptMaps.forEach((scriptMap) => {
 
     const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
     // sg, mb, pb/sb
-    const html = `
-    <ul>
-        <li>${majorHeading}</li>
-        ${scriptGroups.map((scriptGroup) =>
-        `<ul>
-            <li>${scriptGroup.textContent}</li>
-            ${
-    (() => {
-        let list = '';
-        do {
-            // TODO: Needs further nesting
-            if (scriptGroup.matches('.mb,.pb,.sb')) {
-                list += `<ul>
-                    <li>${scriptGroup.textContent}</li>
-                </ul>`;
-            }
-            scriptGroup = scriptGroup.nextElementSibling;
-        } while (scriptGroup && !scriptGroup.matches('p.sg'));
-        return list;
-    })()}
-        </ul>`
-    ).join('\n')}
-    </ul>
-`;
+    const html = jml.toHTML('ul', [
+        ['li', [majorHeading]],
+        ...scriptGroups.map((scriptGroup) => {
+            return ['ul', [
+                ['li', [scriptGroup.textContent]],
+                ...(() => {
+                    const lists = [];
+                    do {
+                        // TODO: Needs further nesting
+                        if (scriptGroup.matches('.mb,.pb,.sb')) {
+                            lists.push(['ul', [
+                                ['li', [scriptGroup.textContent]]
+                            ]]);
+                        }
+                        scriptGroup = scriptGroup.nextElementSibling;
+                    } while (scriptGroup && !scriptGroup.matches('p.sg'));
+                    return lists;
+                })()
+            ]];
+        })
+    ]);
     // console.log('m', majorHeading, scriptGroups);
-    console.log('html', html);
+    console.log(html);
 });
 })();
