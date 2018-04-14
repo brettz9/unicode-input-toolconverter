@@ -43,45 +43,25 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Carian"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Caucasian Albanian "
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Cypriot Syllabary"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -99,12 +79,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -115,12 +90,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -131,12 +101,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -151,23 +116,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Elbasan"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -189,12 +144,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -216,23 +166,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Gothic"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -250,12 +190,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -270,12 +205,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -293,12 +223,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -309,12 +234,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -325,12 +245,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -341,12 +256,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -357,12 +267,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -373,12 +278,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -389,12 +289,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -405,12 +300,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -421,12 +311,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -437,12 +322,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -453,12 +333,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -469,12 +344,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -489,23 +359,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Linear A"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -523,12 +383,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -539,12 +394,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -559,100 +409,55 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Lycian"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Lydian"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Ogham"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Old Hungarian"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Old Italic"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Old Permic"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Phaistos Disc"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Runic"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -662,12 +467,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -685,23 +485,13 @@ export default [
                                             [
                                                 "Modifier Tone Letters"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Spacing Modifier Letters"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -711,12 +501,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -746,12 +531,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -766,23 +546,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Combining Diacritical Marks for Symbols"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -792,12 +562,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -815,12 +580,7 @@ export default [
                                             [
                                                 "Adlam"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -842,23 +602,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Bassa Vah"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -876,12 +626,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -896,23 +641,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Egyptian Hieroglyphs (1MB)"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -930,12 +665,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -946,12 +676,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -966,23 +691,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Mende Kikakui"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1000,12 +715,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -1020,45 +730,25 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "N'Ko"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Osmanya"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tifinagh"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1068,12 +758,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -1091,12 +776,7 @@ export default [
                                             [
                                                 "Anatolian Hieroglyphs"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1114,12 +794,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -1130,12 +805,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -1146,12 +816,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -1166,34 +831,19 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 " Aramaic, Imperial"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Avestan"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1211,12 +861,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -1227,12 +872,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -1243,12 +883,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -1263,23 +898,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Hatran"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1301,122 +926,67 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Mandaic"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Nabataean"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Old North Arabian"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Old South Arabian"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 " Pahlavi, Inscriptional"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 " Pahlavi, Psalter"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 " Palmyrene"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 " Parthian, Inscriptional"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Phoenician"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Samaritan"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1442,12 +1012,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -1465,23 +1030,13 @@ export default [
                                             [
                                                 "Manichaean"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Marchen"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1503,56 +1058,31 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Old Turkic"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Phags-Pa"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Soyombo"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tibetan"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1562,12 +1092,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -1585,56 +1110,31 @@ export default [
                                             [
                                                 "Ahom"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Bengali and Assamese"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Bhaiksuki"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Brahmi"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Chakma"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1656,155 +1156,85 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Grantha"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Gujarati"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Gurmukhi"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Kaithi"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Kannada"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Kharoshthi"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Khojki"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Khudawadi"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Lepcha"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Limbu"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Mahajani"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Malayalam"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Masaram Gondi"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1826,111 +1256,61 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Modi"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Mro"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Multani"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Newa"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Ol Chiki"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Oriya (Odia)"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Saurashtra"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Sharada"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Siddham"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -1952,100 +1332,55 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Sora Sompeng"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Syloti Nagri"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Takri"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tamil"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Telugu"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Thaana"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tirhuta"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Vedic Extensions"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2055,12 +1390,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -2078,23 +1408,13 @@ export default [
                                             [
                                                 "Cham"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Kayah Li"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2116,23 +1436,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Lao"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2150,12 +1460,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2170,78 +1475,43 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "New Tai Lue"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Pahawh Hmong"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Pau Cin Hau"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tai Le"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tai Tham"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tai Viet"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2251,12 +1521,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -2274,78 +1539,43 @@ export default [
                                             [
                                                 "Balinese"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Batak"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Buginese"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Buhid"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Hanunoo"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Javanese"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Rejang"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2367,23 +1597,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tagalog"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2393,12 +1613,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -2432,12 +1647,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2455,12 +1665,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2471,12 +1676,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2487,12 +1687,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2503,12 +1698,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2519,12 +1709,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2535,12 +1720,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2555,12 +1735,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2582,12 +1757,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2605,12 +1775,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2621,12 +1786,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2641,12 +1801,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2664,12 +1819,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2680,12 +1830,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2696,12 +1841,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2716,67 +1856,37 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Hangul Syllables"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Hiragana"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Kana Extended-A"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Kana Supplement"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Kanbun"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2794,12 +1904,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2814,45 +1919,25 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Lisu"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Miao"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Nushu"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2874,12 +1959,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -2897,12 +1977,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -2921,12 +1996,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -2960,34 +2030,19 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Deseret"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Osage"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3013,12 +2068,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -3041,12 +2091,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3057,12 +2102,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3106,12 +2146,7 @@ export default [
                                             [
                                                 "Braille Patterns"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3129,12 +2164,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3149,12 +2179,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3176,12 +2201,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3191,12 +2211,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -3226,12 +2241,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3242,12 +2252,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3262,12 +2267,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3289,12 +2289,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3312,12 +2307,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3328,12 +2318,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3352,12 +2337,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -3391,34 +2371,19 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Mathematical Alphanumeric Symbols"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Arabic Mathematical Alphabetic Symbols"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3440,12 +2405,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3467,12 +2427,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3498,12 +2453,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -3526,12 +2476,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3542,12 +2487,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3558,12 +2498,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3578,12 +2513,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -3606,12 +2536,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3633,89 +2558,49 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Common Indic Number Forms"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Coptic Epact Numbers"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Counting Rod Numerals"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Cuneiform Numbers and Punctuation"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Number Forms"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Rumi Numeral Symbols"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Sinhala Archaic Numbers"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3725,12 +2610,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -3760,12 +2640,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3776,12 +2651,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3792,12 +2662,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3808,12 +2673,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3828,12 +2688,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3851,12 +2706,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3871,12 +2721,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -3894,12 +2739,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3910,12 +2750,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3926,12 +2761,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3942,12 +2772,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3958,12 +2783,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -3978,12 +2798,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4001,12 +2816,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4017,12 +2827,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4033,12 +2838,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4057,12 +2857,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -4096,56 +2891,31 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Emoticons"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Miscellaneous Symbols"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Miscellaneous Symbols And Pictographs"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Supplemental Symbols and Pictographs"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4155,12 +2925,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -4178,23 +2943,13 @@ export default [
                                             [
                                                 "Alchemical Symbols"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Ancient Symbols"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4212,12 +2967,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4228,12 +2978,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4244,12 +2989,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4260,12 +3000,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4280,12 +3015,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4303,12 +3033,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4319,12 +3044,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4335,12 +3055,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4351,12 +3066,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4367,12 +3077,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4387,23 +3092,13 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Miscellaneous Symbols and Arrows"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4421,12 +3116,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4437,12 +3127,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4461,12 +3146,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -4489,12 +3169,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4505,12 +3180,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4521,34 +3191,19 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Specials"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Tags"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4574,12 +3229,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -4597,23 +3247,13 @@ export default [
                                             [
                                                 "Private Use Area"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
                                                 "Supplementary Private Use Area-A"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4623,12 +3263,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -4646,12 +3281,7 @@ export default [
                                             [
                                                 "High Surrogates"
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [
@@ -4661,12 +3291,7 @@ export default [
                                     ]
                                 ]
                             ]
-                        ]
-                    ]
-                ],
-                [
-                    "ul",
-                    [
+                        ],
                         [
                             "li",
                             [
@@ -4696,12 +3321,7 @@ export default [
                                                                     ]
                                                                 ]
                                                             ]
-                                                        ]
-                                                    ]
-                                                ],
-                                                [
-                                                    "ul",
-                                                    [
+                                                        ],
                                                         [
                                                             "li",
                                                             [
@@ -4716,12 +3336,7 @@ export default [
                                                     ]
                                                 ]
                                             ]
-                                        ]
-                                    ]
-                                ],
-                                [
-                                    "ul",
-                                    [
+                                        ],
                                         [
                                             "li",
                                             [

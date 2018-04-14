@@ -33,45 +33,49 @@ scriptMaps.forEach((scriptMap) => {
     jamilih.push(
         ['li', [
             majorHeading,
-            ...scriptGroups.map((scriptGroup) => {
-                return ['ul', [
-                    ['li', [
-                        ['b', [
-                            scriptGroup.textContent
-                        ]],
-                        ...(() => {
-                            const lists = [];
-                            do {
-                                if (scriptGroup.matches('.mb')) {
-                                    const children = [scriptGroup.textContent];
-                                    lastChildren = children;
-                                    lists.push(['ul', [
+            ['ul', scriptGroups.map((scriptGroup) => {
+                return ['li', [
+                    ['b', [
+                        scriptGroup.textContent
+                    ]],
+                    (() => {
+                        const lists = [];
+                        do {
+                            if (scriptGroup.matches('.mb')) {
+                                const children = [scriptGroup.textContent];
+                                lastChildren = children;
+                                lists.push(
+                                    ['li', children]
+                                );
+                            } else if (scriptGroup.matches('.pb,.sb')) {
+                                const children = [
+                                    ['i', [
+                                        scriptGroup.textContent
+                                    ]]
+                                ];
+                                if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
+                                    lists.push(
                                         ['li', children]
-                                    ]]);
-                                } else if (scriptGroup.matches('.pb,.sb')) {
-                                    const children = [
-                                        ['i', [
-                                            scriptGroup.textContent
-                                        ]]
-                                    ];
-                                    if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
-                                        lists.push(['ul', [
-                                            ['li', children]
-                                        ]]);
-                                    } else {
-                                        lastChildren.push(['ul', [
-                                            ['li', children]
-                                        ]]);
+                                    );
+                                } else {
+                                    if (!lastChildren[1]) {
+                                        lastChildren[1] = ['ul', []];
                                     }
+                                    lastChildren[1][1].push(
+                                        ['li', children]
+                                    );
                                 }
-                                scriptGroup = scriptGroup.nextElementSibling;
-                            } while (scriptGroup && !scriptGroup.matches('p.sg'));
-                            lastChildren = null;
-                            return lists;
-                        })()
-                    ]]
+                            }
+                            scriptGroup = scriptGroup.nextElementSibling;
+                        } while (scriptGroup && !scriptGroup.matches('p.sg'));
+                        lastChildren = null;
+                        if (!lists.length) { // Just be safe
+                            return '';
+                        }
+                        return ['ul', lists];
+                    })()
                 ]];
-            })
+            })]
         ]]
     );
 });
