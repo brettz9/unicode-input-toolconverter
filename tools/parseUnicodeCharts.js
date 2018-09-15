@@ -22,62 +22,59 @@ if (process.argv[2] === 'save') {
 const doc = new JSDOM(text).window.document;
 const scriptMaps = [...doc.querySelectorAll('table.map')];
 
-const jamilih = [];
-scriptMaps.forEach((scriptMap) => {
+const jamilih = scriptMaps.map((scriptMap) => {
     const majorHeading = scriptMap.previousElementSibling.textContent;
     // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
 
     const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
     // sg, mb, pb/sb
     let lastChildren;
-    jamilih.push(
-        ['li', [
-            majorHeading,
-            ['ul', scriptGroups.map((scriptGroup) => {
-                return ['li', [
-                    ['b', [
-                        scriptGroup.textContent
-                    ]],
-                    (() => {
-                        const lists = [];
-                        do {
-                            if (scriptGroup.matches('.mb')) {
-                                const children = [scriptGroup.textContent];
-                                lastChildren = children;
+    return ['li', [
+        majorHeading,
+        ['ul', scriptGroups.map((scriptGroup) => {
+            return ['li', [
+                ['b', [
+                    scriptGroup.textContent
+                ]],
+                (() => {
+                    const lists = [];
+                    do {
+                        if (scriptGroup.matches('.mb')) {
+                            const children = [scriptGroup.textContent];
+                            lastChildren = children;
+                            lists.push(
+                                ['li', children]
+                            );
+                        } else if (scriptGroup.matches('.pb,.sb')) {
+                            const children = [
+                                ['i', [
+                                    scriptGroup.textContent
+                                ]]
+                            ];
+                            if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
                                 lists.push(
                                     ['li', children]
                                 );
-                            } else if (scriptGroup.matches('.pb,.sb')) {
-                                const children = [
-                                    ['i', [
-                                        scriptGroup.textContent
-                                    ]]
-                                ];
-                                if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
-                                    lists.push(
-                                        ['li', children]
-                                    );
-                                } else {
-                                    if (!lastChildren[1]) {
-                                        lastChildren[1] = ['ul', []];
-                                    }
-                                    lastChildren[1][1].push(
-                                        ['li', children]
-                                    );
+                            } else {
+                                if (!lastChildren[1]) {
+                                    lastChildren[1] = ['ul', []];
                                 }
+                                lastChildren[1][1].push(
+                                    ['li', children]
+                                );
                             }
-                            scriptGroup = scriptGroup.nextElementSibling;
-                        } while (scriptGroup && !scriptGroup.matches('p.sg'));
-                        lastChildren = null;
-                        if (!lists.length) { // Just be safe
-                            return '';
                         }
-                        return ['ul', lists];
-                    })()
-                ]];
-            })]
-        ]]
-    );
+                        scriptGroup = scriptGroup.nextElementSibling;
+                    } while (scriptGroup && !scriptGroup.matches('p.sg'));
+                    lastChildren = null;
+                    if (!lists.length) { // Just be safe
+                        return '';
+                    }
+                    return ['ul', lists];
+                })()
+            ]];
+        })]
+    ]];
 });
 // console.log('m', majorHeading, scriptGroups);
 await fs.writeFile('browser_action/unicode-scripts.js', `

@@ -6,7 +6,7 @@
     "license": "MPL 2.0",
     "version": "0.1.0",
     "scripts": {
-        "static": "static -p 8000 -H '{\"Content-Type\": \"charset=utf-8\"}'",
+        "start": "static -p 8000 -H '{\"Content-Type\": \"charset=utf-8\"}'",
         "unicode-charts-save": "node tools/parseUnicodeCharts.js save",
         "unicode-charts": "node tools/parseUnicodeCharts.js",
         "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
@@ -20,7 +20,7 @@
         "copy-jquery": "cp node_modules/jquery/dist/jquery.js vendor/jquery/dist/jquery.js",
         "copy-miller-columns": "cp node_modules/miller-columns/miller-columns.css vendor/miller-columns/miller-columns.css && cp node_modules/miller-columns/dist/index-es.min.js vendor/miller-columns/dist/index-es.min.js",
         "copy-jamilih": "cp node_modules/jamilih/dist/jml-es.js vendor/jamilih/dist/jml-es.js",
-        "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js polyfills/browser-polyfill.min.js"
+        "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js polyfills/browser-polyfill.min.js && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map polyfills/browser-polyfill.min.js.map"
     },
     "homepage": "https://github.com/brettz9/unicode-input-toolconverter",
     "bugs": "https://github.com/brettz9/unicode-input-toolconverter/issues",

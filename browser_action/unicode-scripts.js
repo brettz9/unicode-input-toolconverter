@@ -136,6 +136,17 @@ export default [
                                                                 [
                                                                     "i",
                                                                     [
+                                                                        "Georgian Extended"
+                                                                    ]
+                                                                ]
+                                                            ]
+                                                        ],
+                                                        [
+                                                            "li",
+                                                            [
+                                                                [
+                                                                    "i",
+                                                                    [
                                                                         "Georgian Supplement"
                                                                     ]
                                                                 ]
@@ -695,6 +706,12 @@ export default [
                                         [
                                             "li",
                                             [
+                                                "Medefaidrin"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
                                                 "Mende Kikakui"
                                             ]
                                         ],
@@ -1062,6 +1079,12 @@ export default [
                                         [
                                             "li",
                                             [
+                                                "Old Sogdian"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
                                                 "Old Turkic"
                                             ]
                                         ],
@@ -1069,6 +1092,12 @@ export default [
                                             "li",
                                             [
                                                 "Phags-Pa"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
+                                                "Sogdian"
                                             ]
                                         ],
                                         [
@@ -1160,6 +1189,12 @@ export default [
                                         [
                                             "li",
                                             [
+                                                "Dogra"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
                                                 "Grantha"
                                             ]
                                         ],
@@ -1167,6 +1202,12 @@ export default [
                                             "li",
                                             [
                                                 "Gujarati"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
+                                                "Gunjala Gondi"
                                             ]
                                         ],
                                         [
@@ -1412,6 +1453,12 @@ export default [
                                         [
                                             "li",
                                             [
+                                                "Hanifi Rohingya"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
                                                 "Kayah Li"
                                             ]
                                         ],
@@ -1568,6 +1615,12 @@ export default [
                                             "li",
                                             [
                                                 "Javanese"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
+                                                "Makasar"
                                             ]
                                         ],
                                         [
@@ -2586,6 +2639,18 @@ export default [
                                         [
                                             "li",
                                             [
+                                                "Indic Siyaq Numbers"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
+                                                "Mayan Numerals"
+                                            ]
+                                        ],
+                                        [
+                                            "li",
+                                            [
                                                 "Number Forms"
                                             ]
                                         ],
@@ -3030,6 +3095,17 @@ export default [
                                                                     "i",
                                                                     [
                                                                         "Chess, Checkers/Draughts"
+                                                                    ]
+                                                                ]
+                                                            ]
+                                                        ],
+                                                        [
+                                                            "li",
+                                                            [
+                                                                [
+                                                                    "i",
+                                                                    [
+                                                                        "Chess Symbols"
                                                                     ]
                                                                 ]
                                                             ]
