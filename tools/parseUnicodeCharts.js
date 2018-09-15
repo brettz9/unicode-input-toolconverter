@@ -39,11 +39,13 @@ const jamilih = scriptMaps.map((scriptMap) => {
                 (() => {
                     const lists = [];
                     do {
+                        const a = scriptGroup.querySelector('a');
+                        const title = a && a.title;
                         if (scriptGroup.matches('.mb')) {
                             const children = [scriptGroup.textContent];
                             lastChildren = children;
                             lists.push(
-                                ['li', children]
+                                ['li', {title}, children]
                             );
                         } else if (scriptGroup.matches('.pb,.sb')) {
                             const children = [
@@ -53,14 +55,14 @@ const jamilih = scriptMaps.map((scriptMap) => {
                             ];
                             if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
                                 lists.push(
-                                    ['li', children]
+                                    ['li', {title}, children]
                                 );
                             } else {
                                 if (!lastChildren[1]) {
                                     lastChildren[1] = ['ul', []];
                                 }
                                 lastChildren[1][1].push(
-                                    ['li', children]
+                                    ['li', {title}, children]
                                 );
                             }
                         }
