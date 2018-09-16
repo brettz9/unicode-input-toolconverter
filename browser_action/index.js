@@ -1,7 +1,7 @@
-/* eslint-env webextensions */
-/* globals jQuery, console */
+/* eslint-env browser, webextensions */
+/* globals jQuery */
 import addMillerColumnPlugin from '/vendor/miller-columns/dist/index-es.min.js';
-import jml from '/vendor/jamilih/dist/jml-es.js';
+import {jml, body} from '/vendor/jamilih/dist/jml-es.js';
 import unicodeScripts from '/browser_action/unicode-scripts.js';
 
 (async () => {
@@ -14,7 +14,7 @@ jml('div', [
     ['div', {class: 'miller-columns', tabindex: '1'}, [
         unicodeScripts
     ]]
-], document.body);
+], body);
 /**/
 jQuery('div.miller-columns').millerColumns({
     current ($item, $cols) {
