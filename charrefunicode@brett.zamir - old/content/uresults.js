@@ -20,7 +20,7 @@ Copyright 2007, 2008, 2009 Brett Zamir
 
 (function () {
 
-var Cc = Components.classes, 
+var Cc = Components.classes,
     Ci = Components.interfaces,
     EXT_BASE = 'extensions.charrefunicode.';
 //var mainDoc = window.opener ? window.opener.document : false; // No opener if typing x-unicode protocol in Awesome Bar, and we don't want options dialog as opener
@@ -265,7 +265,7 @@ var Unicodecharref = {
 
         $('world_auxiliary_language').appendChild(
             new DOMParser().parseFromString(
-                '<div xmlns="http://www.w3.org/1999/xhtml">'+this.strs.getString('official_world_language')+'</div>', 
+                '<div xmlns="http://www.w3.org/1999/xhtml">'+this.strs.getString('official_world_language')+'</div>',
                 'application/xml'
             ).documentElement
         );
@@ -740,7 +740,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
             to = $('encoding_to').value,
             toconvert = out;
         this.classChange(el);
-        
+
         if (!from || !to) {
             return;
         }
@@ -1386,7 +1386,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         //var alink = createHTMLElement('a');
         var alink = createXULElement('label');
         var s = this.strs;
-        var [plane, privateuse, surrogate] = getAndSetCodePointInfo(kdectemp, alink, s);        
+        var [plane, privateuse, surrogate] = getAndSetCodePointInfo(kdectemp, alink, s);
 
         function placeItem (id, item) {
             var firstchld = document.getElementById(id).firstChild;
@@ -1825,7 +1825,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
                             $('_detailedCJKView'+i).value = '';
                         }
                     }
-                    
+
                     if (!cjkText) {
                         $('displayUnicodeDesc').value = notfoundval;
                         $('displayUnicodeDescUnihan').value = notfoundval;
@@ -2206,7 +2206,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         return true;
     },
     insertEntityFile : function (e) {
-        var MY_ID = 'charrefunicode@brett.zamir', 
+        var MY_ID = 'charrefunicode@brett.zamir',
             entFile = FileUtils.getFile(MY_ID, 'data/entities/' + e.target.value + '.ent'),
             data = '',
             fstream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream),
@@ -2214,7 +2214,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
             str = {}, read = 0;
         fstream.init(entFile, -1, 0, 0);
         cstream.init(fstream, 'UTF-8', 0, 0); // you can use another encoding here if you wish
-        do { 
+        do {
             read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
             data += str.value;
         } while (read != 0);
@@ -2225,22 +2225,22 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     },
     idgen: 0,
     prefs: null,
-    
+
     /* Pseudo-constants */
     Unihan: ['AccountingNumeric','BigFive','CCCII','CNS1986','CNS1992','Cangjie','Cantonese','CheungBauer','CheungBauerIndex','CihaiT','CompatibilityVariant','Cowles','DaeJaweon','EACC','Fenn','FennIndex','FourCornerCode','Frequency','GB0','GB1','GB3','GB5','GB7','GB8','GSR','GradeLevel','HDZRadBreak','HKGlyph','HKSCS','HanYu','Hangul','HanyuPinlu','HanyuPinyin','IBMJapan','IICore','IRGDaeJaweon','IRGDaiKanwaZiten','IRGHanyuDaZidian','IRGKangXi','IRG_GSource','IRG_HSource','IRG_JSource','IRG_KPSource','IRG_KSource','IRG_MSource','IRG_TSource','IRG_USource','IRG_VSource','JIS0213','JapaneseKun','JapaneseOn','Jis0','Jis1','KPS0','KPS1','KSC0','KSC1','KangXi','Karlgren','Korean','Lau','MainlandTelegraph','Mandarin','Matthews','MeyerWempe','Morohashi','Nelson','OtherNumeric','Phonetic','PrimaryNumeric','PseudoGB1','RSAdobe_Japan1_6','RSJapanese','RSKanWa','RSKangXi','RSKorean','RSUnicode','SBGY','SemanticVariant','SimplifiedVariant','SpecializedSemanticVariant','TaiwanTelegraph','Tang','TotalStrokes','TraditionalVariant','Vietnamese','XHC1983','Xerox','ZVariant'],
-    UnihanMenus : [], // Unused
-    Unicode : ['General_Category', 'Canonical_Combining_Class','Bidi_Class','Decomposition_Type_and_Mapping','Decimal','Digit','Numeric','Bidi_Mirrored','Unicode_1_Name','ISO_Comment','Simple_Uppercase_Mapping','Simple_Lowercase_Mapping','Simple_Titlecase_Mapping'],
-    UnicodeMenus : ['General_Category', 'Canonical_Combining_Class', 'Bidi_Class', 'Bidi_Mirrored', 'Digit', 'Decimal'],
+    UnihanMenus: [], // Unused
+    Unicode: ['General_Category', 'Canonical_Combining_Class','Bidi_Class','Decomposition_Type_and_Mapping','Decimal','Digit','Numeric','Bidi_Mirrored','Unicode_1_Name','ISO_Comment','Simple_Uppercase_Mapping','Simple_Lowercase_Mapping','Simple_Titlecase_Mapping'],
+    UnicodeMenus: ['General_Category', 'Canonical_Combining_Class', 'Bidi_Class', 'Bidi_Mirrored', 'Digit', 'Decimal'],
 
 
-    UnicodeMenuBidi_Class : ['L', 'LRE', 'LRO', 'R', 'AL', 'RLE', 'RLO', 'PDF', 'EN', 'ES', 'ET', 'AN', 'CS', 'NSM', 'BN', 'B', 'S', 'WS', 'ON'],
+    UnicodeMenuBidi_Class: ['L', 'LRE', 'LRO', 'R', 'AL', 'RLE', 'RLO', 'PDF', 'EN', 'ES', 'ET', 'AN', 'CS', 'NSM', 'BN', 'B', 'S', 'WS', 'ON'],
     // Also 11-36 are automated above
-    UnicodeMenuCanonical_Combining_Class : [0,1,7,8,9,10,199,200,202,204,208,210,212,214,216,218,220,222,224,226,228,230,232,233,234,240],
-    UnicodeMenuCCVNumericOnly : [84, 91, 103, 107, 118, 122, 129, 130, 132],
-    UnicodeMenuGeneral_Category : ['Lu', 'Ll', 'Lt', 'Lm', 'Lo', 'Mn', 'Mc', 'Me', 'Nd', 'Nl', 'No', 'Pc', 'Pd', 'Ps', 'Pe', 'Pi', 'Pf', 'Po', 'Sm', 'Sc', 'Sk', 'So', 'Zs', 'Zl', 'Zp', 'Cc', 'Cf', 'Cs', 'Co', 'Cn'],
-    UnicodeMenuBidi_Mirrored : ['Y', 'N'],
-    UnicodeMenuDigit : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    UnicodeMenuDecimal : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    UnicodeMenuCanonical_Combining_Class: [0,1,7,8,9,10,199,200,202,204,208,210,212,214,216,218,220,222,224,226,228,230,232,233,234,240],
+    UnicodeMenuCCVNumericOnly: [84, 91, 103, 107, 118, 122, 129, 130, 132],
+    UnicodeMenuGeneral_Category: ['Lu', 'Ll', 'Lt', 'Lm', 'Lo', 'Mn', 'Mc', 'Me', 'Nd', 'Nl', 'No', 'Pc', 'Pd', 'Ps', 'Pe', 'Pi', 'Pf', 'Po', 'Sm', 'Sc', 'Sk', 'So', 'Zs', 'Zl', 'Zp', 'Cc', 'Cf', 'Cs', 'Co', 'Cn'],
+    UnicodeMenuBidi_Mirrored: ['Y', 'N'],
+    UnicodeMenuDigit: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    UnicodeMenuDecimal: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 };
 
 // EVENTS
