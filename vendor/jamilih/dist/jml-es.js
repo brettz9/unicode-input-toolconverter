@@ -160,6 +160,7 @@ var doc = typeof document !== 'undefined' && document;
 var XmlSerializer = typeof XMLSerializer !== 'undefined' && XMLSerializer;
 
 // STATIC PROPERTIES
+
 var possibleOptions = ['$plugins', '$map' // Add any other options here
 ];
 
@@ -176,10 +177,29 @@ var ATTR_MAP = {
 var BOOL_ATTS = ['checked', 'defaultChecked', 'defaultSelected', 'disabled', 'indeterminate', 'open', // Dialog elements
 'readOnly', 'selected'];
 var ATTR_DOM = BOOL_ATTS.concat([// From JsonML
-'async', 'autofocus', 'defaultValue', 'defer', 'formnovalidate', 'hidden', 'ismap', 'multiple', 'novalidate', 'pattern', 'required', 'spellcheck', 'value', 'willvalidate']);
+'accessKey', // HTMLElement
+'async', 'autocapitalize', // HTMLElement
+'autofocus', 'contentEditable', // HTMLElement through ElementContentEditable
+'defaultValue', 'defer', 'draggable', // HTMLElement
+'formnovalidate', 'hidden', // HTMLElement
+'innerText', // HTMLElement
+'inputMode', // HTMLElement through ElementContentEditable
+'ismap', 'multiple', 'novalidate', 'pattern', 'required', 'spellcheck', // HTMLElement
+'translate', // HTMLElement
+'value', 'willvalidate']);
 // Todo: Add more to this as useful for templating
-//   to avoid setting with nullish value
-var NULLABLES = ['lang', 'max', 'min'];
+//   to avoid setting through nullish value
+var NULLABLES = ['dir', // HTMLElement
+'lang', // HTMLElement
+'max', 'min', 'title' // HTMLElement
+];
+
+var $ = function $(sel) {
+    return doc.querySelector(sel);
+};
+var $$ = function $$(sel) {
+    return [].concat(toConsumableArray(doc.querySelectorAll(sel)));
+};
 
 /**
 * Retrieve the (lower-cased) HTML name of a node
@@ -305,11 +325,13 @@ function _getType(item) {
         if (Array.isArray(item)) {
             return 'array';
         }
-        if (item.nodeType === 1) {
-            return 'element';
-        }
-        if (item.nodeType === 11) {
-            return 'fragment';
+        if ('nodeType' in item) {
+            if (item.nodeType === 1) {
+                return 'element';
+            }
+            if (item.nodeType === 11) {
+                return 'fragment';
+            }
         }
         return 'object';
     }
@@ -377,7 +399,8 @@ function _copyOrderedAtts(attArr) {
 function _childrenToJML(node) {
     return function (childNodeJML, i) {
         var cn = node.childNodes[i];
-        cn.parentNode.replaceChild(jml.apply(undefined, toConsumableArray(childNodeJML)), cn);
+        var j = Array.isArray(childNodeJML) ? jml.apply(undefined, toConsumableArray(childNodeJML)) : jml(childNodeJML);
+        cn.parentNode.replaceChild(j, cn);
     };
 }
 
@@ -493,7 +516,7 @@ var jml = function jml() {
                                     template = jml('template', template, doc.body);
                                 }
                             } else if (typeof template === 'string') {
-                                template = doc.querySelector(template);
+                                template = $(template);
                             }
                             jml(template.content.cloneNode(true), shadowRoot);
                         } else {
@@ -648,6 +671,7 @@ var jml = function jml() {
                         break;
                     }case '$document':
                     {
+                        // Todo: Conditionally create XML document
                         var _node2 = doc.implementation.createHTMLDocument();
                         if (attVal.childNodes) {
                             attVal.childNodes.forEach(_childrenToJML(_node2));
@@ -659,12 +683,17 @@ var jml = function jml() {
                                 j++;
                             }
                         } else {
+                            if (attVal.$DOCTYPE) {
+                                var dt = { $DOCTYPE: attVal.$DOCTYPE };
+                                var doctype = jml(dt);
+                                _node2.firstChild.replaceWith(doctype);
+                            }
                             var html = _node2.childNodes[1];
                             var head = html.childNodes[0];
-                            var body = html.childNodes[1];
+                            var _body = html.childNodes[1];
                             if (attVal.title || attVal.head) {
                                 var meta = doc.createElement('meta');
-                                meta.charset = 'utf-8';
+                                meta.setAttribute('charset', 'utf-8');
                                 head.appendChild(meta);
                             }
                             if (attVal.title) {
@@ -674,9 +703,10 @@ var jml = function jml() {
                                 attVal.head.forEach(_appendJML(head));
                             }
                             if (attVal.body) {
-                                attVal.body.forEach(_appendJMLOrText(body));
+                                attVal.body.forEach(_appendJMLOrText(_body));
                             }
                         }
+                        nodes[nodes.length] = _node2;
                         break;
                     }case '$DOCTYPE':
                     {
@@ -701,7 +731,7 @@ var jml = function jml() {
                                 // internalSubset: // Todo
                             };
                         } else {
-                            _node3 = doc.implementation.createDocumentType(attVal.name, attVal.publicId, attVal.systemId);
+                            _node3 = doc.implementation.createDocumentType(attVal.name, attVal.publicId || '', attVal.systemId || '');
                         }
                         nodes[nodes.length] = _node3;
                         break;
@@ -775,7 +805,7 @@ var jml = function jml() {
                             // Todo: Disable this by default unless configuration explicitly allows (for security)
                         }();
 
-                        if (_ret2 === 'break') break;
+                        break;
                     }
                 // #if IS_REMOVE
                 // Don't remove this `if` block (for sake of no-innerHTML build)
@@ -1107,8 +1137,6 @@ jml.toJML = function (dom, config) {
         dom = new DOMParser().parseFromString(dom, 'text/html'); // todo: Give option for XML once implemented and change JSDoc to allow for Element
     }
 
-    var prohibitHTMLOnly = true;
-
     var ret = [];
     var parent = ret;
     var parentIdx = 0;
@@ -1118,7 +1146,7 @@ jml.toJML = function (dom, config) {
         function DOMException() {
             return this;
         }
-        if (prohibitHTMLOnly) {
+        {
             // INVALID_STATE_ERR per section 9.3 XHTML 5: http://www.w3.org/TR/html5/the-xhtml-syntax.html
             // Since we can't instantiate without this (at least in Mozilla), this mimicks at least (good idea?)
             var e = new DOMException();
@@ -1167,7 +1195,7 @@ jml.toJML = function (dom, config) {
         }
         */
 
-        var type = node.nodeType;
+        var type = 'nodeType' in node ? node.nodeType : null;
         namespaces = Object.assign({}, namespaces);
 
         var xmlChars = /([\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFFFD]|[\uD800-\uDBFF][\uDC00-\uDFFF])*$/; // eslint-disable-line no-control-regex
@@ -1441,13 +1469,13 @@ var JamilihMap = function (_Map) {
     createClass(JamilihMap, [{
         key: 'get',
         value: function get$$1(elem) {
-            elem = typeof elem === 'string' ? doc.querySelector(elem) : elem;
+            elem = typeof elem === 'string' ? $(elem) : elem;
             return get(JamilihMap.prototype.__proto__ || Object.getPrototypeOf(JamilihMap.prototype), 'get', this).call(this, elem);
         }
     }, {
         key: 'set',
         value: function set$$1(elem, value) {
-            elem = typeof elem === 'string' ? doc.querySelector(elem) : elem;
+            elem = typeof elem === 'string' ? $(elem) : elem;
             return get(JamilihMap.prototype.__proto__ || Object.getPrototypeOf(JamilihMap.prototype), 'set', this).call(this, elem, value);
         }
     }, {
@@ -1455,7 +1483,7 @@ var JamilihMap = function (_Map) {
         value: function invoke(elem, methodName) {
             var _get;
 
-            elem = typeof elem === 'string' ? doc.querySelector(elem) : elem;
+            elem = typeof elem === 'string' ? $(elem) : elem;
 
             for (var _len3 = arguments.length, args = Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
                 args[_key3 - 2] = arguments[_key3];
@@ -1478,13 +1506,13 @@ var JamilihWeakMap = function (_WeakMap) {
     createClass(JamilihWeakMap, [{
         key: 'get',
         value: function get$$1(elem) {
-            elem = typeof elem === 'string' ? doc.querySelector(elem) : elem;
+            elem = typeof elem === 'string' ? $(elem) : elem;
             return get(JamilihWeakMap.prototype.__proto__ || Object.getPrototypeOf(JamilihWeakMap.prototype), 'get', this).call(this, elem);
         }
     }, {
         key: 'set',
         value: function set$$1(elem, value) {
-            elem = typeof elem === 'string' ? doc.querySelector(elem) : elem;
+            elem = typeof elem === 'string' ? $(elem) : elem;
             return get(JamilihWeakMap.prototype.__proto__ || Object.getPrototypeOf(JamilihWeakMap.prototype), 'set', this).call(this, elem, value);
         }
     }, {
@@ -1492,7 +1520,7 @@ var JamilihWeakMap = function (_WeakMap) {
         value: function invoke(elem, methodName) {
             var _get2;
 
-            elem = typeof elem === 'string' ? doc.querySelector(elem) : elem;
+            elem = typeof elem === 'string' ? $(elem) : elem;
 
             for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
                 args[_key4 - 2] = arguments[_key4];
@@ -1530,12 +1558,12 @@ jml.strong = function (obj) {
 };
 
 jml.symbol = jml.sym = jml.for = function (elem, sym) {
-    elem = typeof elem === 'string' ? doc.querySelector(elem) : elem;
+    elem = typeof elem === 'string' ? $(elem) : elem;
     return elem[(typeof sym === 'undefined' ? 'undefined' : _typeof(sym)) === 'symbol' ? sym : Symbol.for(sym)];
 };
 
 jml.command = function (elem, symOrMap, methodName) {
-    elem = typeof elem === 'string' ? doc.querySelector(elem) : elem;
+    elem = typeof elem === 'string' ? $(elem) : elem;
     var func = void 0;
 
     for (var _len7 = arguments.length, args = Array(_len7 > 3 ? _len7 - 3 : 0), _key7 = 3; _key7 < _len7; _key7++) {
@@ -1569,6 +1597,9 @@ jml.setWindow = function (wind) {
 };
 jml.setDocument = function (docum) {
     doc = docum;
+    if (docum && docum.body) {
+        body = docum.body;
+    }
 };
 jml.setXMLSerializer = function (xmls) {
     XmlSerializer = xmls;
@@ -1584,4 +1615,9 @@ jml.getXMLSerializer = function () {
     return XmlSerializer;
 };
 
+var body = doc && doc.body;
+
+var nbsp = '\xA0'; // Very commonly needed in templates
+
 export default jml;
+export { jml, $, $$, nbsp, body };
