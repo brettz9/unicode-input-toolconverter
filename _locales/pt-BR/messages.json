@@ -12,7 +12,7 @@
       "message": "Unicode Input Tool/Converter"
     },
     "unicode_noun": {
-      "message": "unicode"
+      "message": "Unicode"
     },
     "hex_noun": {
       "message": "hexadecimal"
@@ -21,24 +21,24 @@
       "message": "decimal"
     },
     "ent_noun": {
-      "message": "entities"
-  },
+      "message": "entidades"
+    },
     "Unicode_table_caption_title": {
-        "message": "Control + left-click when over a character to freeze or unfreeze the descriptions below"
+        "message": "Clique Control + botão esquerdo do mouse sobre um caractere para congelar ou descongelar as descrições abaixo"
     },
     "caption_format_begin": {
       "message": ", {value}"
     },
     "caption_format_end_two": {
-      "message": " and {value}"
+      "message": " e {value}"
     },
     "caption_format_end_three_plus": {
-      "message": ", and {value}"
+      "message": ", e {value}"
     },
     "Next_set": {
-        "message": "Next set"
+        "message": "Próximo conjunto"
     },
     "Prev_set": {
-        "message": "Prev set"
+        "message": "Conjunto anterior"
     }
 }

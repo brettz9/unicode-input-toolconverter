@@ -21,24 +21,24 @@
       "message": "decimal"
     },
     "ent_noun": {
-      "message": "entities"
-  },
+      "message": "entiteter"
+    },
     "Unicode_table_caption_title": {
-        "message": "Control + left-click when over a character to freeze or unfreeze the descriptions below"
+      "message": "Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför"
     },
     "caption_format_begin": {
       "message": ", {value}"
     },
     "caption_format_end_two": {
-      "message": " and {value}"
+      "message": " och {value}"
     },
     "caption_format_end_three_plus": {
-      "message": ", and {value}"
+      "message": " och {value}"
     },
     "Next_set": {
-        "message": "Next set"
+      "message": "Nästa uppsättning"
     },
     "Prev_set": {
-        "message": "Prev set"
+      "message": "Föreg. uppsättning"
     }
 }

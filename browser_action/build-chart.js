@@ -1,44 +1,16 @@
-/* eslint-env browser */
-import {jml, $, nbsp} from '/vendor/jamilih/dist/jml-es.js';
+import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
+import {getPref, setPref, configurePrefs} from './Preferences.js';
+import {i18n, replaceBrackets} from './I18n.js';
+import {fill} from './utils.js';
+import getUnicodeDesc from './getUnicodeDescription.js';
+import prefDefaultGetter from './prefDefaultGetter.js';
+
+configurePrefs({
+    prefDefaultGetter,
+    appNamespace: 'unicode-input-tool-converter-'
+});
 
 // Todo:
-const _ = (s) => s;
-
-let idgen = 0;
-
-const fill = (items, filler = null) => {
-    return new Array(items).fill(filler);
-};
-
-// Todo: Should namespace and JSON-convert when retrieving/setting
-const getPref = (pref) => {
-    switch (pref) {
-    case 'hexLettersUpper': case 'onlyentsyes': case 'middleyes':
-        return false;
-    case 'hexyes': case 'decyes': case 'unicodeyes': case 'buttonyes': case 'entyes':
-        return true;
-    case 'tblrowsset':
-        return 4;
-    case 'tblcolsset':
-        return 3;
-    case 'tblfontsize':
-        return 13;
-    case 'currstartset':
-        return 'a';
-    case 'font':
-        return '';
-    case 'lang':
-        return 'en-US';
-    }
-};
-
-// Todo:
-let Unicodecharref;
-
-// Todo:
-let j, noGetDescripts;
-export {j, noGetDescripts};
-
 const charrefunicodeConverter = {
     descripts: [],
     charrefs: []
@@ -48,100 +20,81 @@ const CharrefunicodeConsts = {
     charrefs: []
 };
 
-function defineMouseover (kent, khextemp) {
-    return function () {
-        if (!noGetDescripts) {
-            Unicodecharref.getUnicodeDesc(kent, khextemp);
+let idgen = 0;
+let _, textReceptable, chartContainer, insertText, bracketSubstitute;
+export default async function ({
+    descripts,
+    locales, insertText: it, textReceptable: tr, chartContainer: cc
+}) {
+    textReceptable = tr;
+    chartContainer = cc;
+    insertText = it;
+    _ = await i18n({locales, defaults: false});
+    bracketSubstitute = replaceBrackets(_);
+    return buildChart({descripts});
+}
+
+let lastStartCharCode;
+// Todo:
+console.log('lastStartCharCode', lastStartCharCode);
+
+export const buildChart = async function buildChart ({descripts} = {}) {
+    const [
+        startCharInMiddleOfChart,
+        cols, onlyentsyes,
+        entyes, buttonyes, decyes, hexyes, unicodeyes,
+        hexLettersUpper,
+        font, lang,
+        tblrowsset, currentStartCharCodeInitial
+    ] = await Promise.all([
+        'startCharInMiddleOfChart',
+        'tblcolsset', 'onlyentsyes',
+        'entyes', 'buttonyes', 'decyes', 'hexyes', 'unicodeyes',
+        'hexLettersUpper',
+        'font', 'lang',
+        'tblrowsset', 'currentStartCharCode'
+    ].map(getPref));
+
+    let rows = tblrowsset,
+        currentStartCharCode = currentStartCharCodeInitial;
+
+    lastStartCharCode = currentStartCharCode;
+
+    const resetCurrentStartCharCodeIfOutOfBounds = () => {
+        if (currentStartCharCode < 0) {
+            currentStartCharCode += 1114112;
+            return;
+        }
+        if (currentStartCharCode > 1114111) {
+            currentStartCharCode = 0;
         }
     };
-}
-const decreg = /^(&#|#)?([0-9][0-9]+);?$/;
-const decreg2 = /^(&#|#)([0-9]);?$/;
-const hexreg = /^(&#|#|0|U|u)?([xX+])([0-9a-fA-F]+);?$/;
 
-const conversions = {
-    hexyes: (k) => `&#${k};`,
-    decyes: (k) => {
-        const kto16 = getPref('hexLettersUpper')
-            ? k.toString(16).toUpperCase()
-            : k.toString(16);
-        return '&#x' + kto16 + ';';
-    },
-    unicodeyes: (k) => String.fromCodePoint(k)
-};
-
-export default function buildChart (descripts) {
-    // Will track where the user last left off
-    let k = getPref('currstartset');
-    j = k;
-
-    if (k < 0) {
-        k = 1114112 + parseInt(k);
-    } else if (k.toString().match(decreg)) { // Dec
-        k = k.toString().replace(decreg, '$2');
-        k = parseInt(k);
-    } else if (k.toString().match(decreg2)) { // Dec
-        k = k.toString().replace(decreg2, '$2');
-        k = parseInt(k);
-    } else if (k.toString().match(hexreg)) { // Hex
-        k = k.toString().replace(hexreg, '$3');
-        k = parseInt(k, 16);
-    } else {
-        // Convert toString in case trying to get the ASCII for a single digit number
-        const kt = k.toString().charCodeAt(0);
-        if (kt >= 0xD800 && kt < 0xF900) { // surrogate component (higher plane)
-            k = ((kt - 0xD800) * 0x400) + (k.toString().charCodeAt(1) - 0xDC00) + 0x10000;
-        } else {
-            k = kt;
-        }
+    if (startCharInMiddleOfChart) {
+        currentStartCharCode = Math.round(currentStartCharCode - ((rows * cols) / 2));
+        resetCurrentStartCharCodeIfOutOfBounds();
     }
 
-    if (k > 1114111) {
-        k = 0;
-    } else if (k < 0) { // could still be less than 0
-        k += 1114112;
-    }
-
-    let rows = getPref('tblrowsset');
-    const cols = getPref('tblcolsset');
-
-    jml($('#inserttext'), {
-        rows: rows * 20 - 10,
-        cols: cols * 20 - 10
-    });
-
-    const decyes = getPref('decyes');
-    const hexyes = getPref('hexyes');
-    const unicodeyes = getPref('unicodeyes');
-    const types = {hexyes, decyes, unicodeyes};
-    const middleyes = getPref('middleyes');
-    const entyes = getPref('entyes');
-
-    if (middleyes) {
-        k = Math.round(k - ((rows * cols) / 2));
-        if (k < 0) { // Could still be less than 0
-            k += 1114112;
-        }
-    }
-
-    const onlyentsyes = getPref('onlyentsyes');
-    let q, prev, chars, obj, remainder, newrowceil;
-    if (onlyentsyes || descripts) {
+    // Todo: Document (or better name) what's going on here
+    let q, prev, chars, obj, remainder, rowceil, colsOverRemainder;
+    const descriptsOrOnlyEnts = onlyentsyes || descripts;
+    if (descriptsOrOnlyEnts) {
         chars = descripts ? 'descripts' : 'charrefs';
         obj = descripts ? charrefunicodeConverter : CharrefunicodeConsts;
         const chrreflgth = obj[chars].length;
 
         if ((rows * cols) > chrreflgth) {
             const newrows = chrreflgth / cols;
-            newrowceil = Math.ceil(newrows);
-
-            rows = newrowceil;
+            rows = Math.ceil(newrows);
+            rowceil = rows - 1;
             remainder = (rows * cols) - chrreflgth;
+            const hasRemainder = remainder > 0;
+            colsOverRemainder = hasRemainder && cols - remainder;
         }
-        q = obj[chars].indexOf(k);
+        q = obj[chars].indexOf(currentStartCharCode);
         if (q === -1) {
             q = 0;
-            k = obj[chars][q];
+            currentStartCharCode = obj[chars][q];
         }
 
         let newq = q - (cols * rows);
@@ -150,116 +103,114 @@ export default function buildChart (descripts) {
         }
         prev = obj[chars][newq];
     } else {
-        prev = k - (cols * rows);
+        prev = currentStartCharCode - (cols * rows);
     }
 
-    // Ensure 0-9 get treated as char. ref. values rather than Unicode digits
-    if (prev >= 0 && prev <= 9) {
-        prev = `'#${prev}'`;
-    }
+    jml(textReceptable, {
+        rows: rows * 20 - 10,
+        cols: cols * 20 - 10
+    });
+    chartContainer.textContent = '';
 
-    const tablecntnr = $('#tablecntnr');
-    tablecntnr.textContent = '';
+    const types = {hexyes, decyes, unicodeyes, entyes};
+    const appliedFormats = ['decyes', 'hexyes', 'unicodeyes'].filter((t) => types[t]);
+    const displayTypes = {
+        hexyes: (k) => `&#${k};`,
+        decyes: (k) => {
+            const kto16 = hexLettersUpper
+                ? k.toString(16).toUpperCase()
+                : k.toString(16);
+            return '&#x' + kto16 + ';';
+        },
+        unicodeyes: (k) => String.fromCodePoint(k)
+    };
 
     const captioncntnt = [];
-    if (unicodeyes) {
-        captioncntnt.push(_('unicode_(noun)'));
-    }
-    if (hexyes) {
-        captioncntnt.push(_('hexadecimal_(noun)'));
-    }
-    if (decyes) {
-        captioncntnt.push(_('decimal_(noun)'));
-    }
-    if (entyes) {
-        captioncntnt.push(_('entities_(noun)'));
-    }
-
-    let captcnt = captioncntnt[0].replace(/^([a-z])(.*)$/,
-        // Make first letter of first word upper case
-        function (_, lower, remainder) {
-            return lower.toUpperCase() + remainder;
+    ['unicode', 'hex', 'dec', 'ent'].forEach((type) => {
+        if (types[type + 'yes']) {
+            captioncntnt.push(_(type + '_noun'));
         }
-    );
+    });
 
-    // Build caption further
-    for (let l = 1; l < captioncntnt.length - 1; l++) {
-        captcnt += _('comma') + ' ' + captioncntnt[l];
-    }
-    if (captioncntnt.length > 2) {
-        // <SPACE> is needed at beginning in Hungarian and beginning spaces are lost if don't put such a placeholder
-        captcnt += _('commaspaceand').replace(/<SPACE>/, ' ') + ' ' + captioncntnt[captioncntnt.length - 1];
-    } else if (captioncntnt.length === 2) {
-        captcnt += ' ' + _('and') + ' ' + captioncntnt[captioncntnt.length - 1];
-    }
+    // Todo: Replace this with a `Fluent.js` type plural awareness?
+    // Make first letter of first word upper case
+    const captionContent = captioncntnt[0].replace(/^[a-z]/, (s) => s.toUpperCase()) +
+        captioncntnt.slice(1, -1).reduce((s, value) => {
+            return s + bracketSubstitute('caption_format_begin', {value});
+        }, '') + (
+        captioncntnt.length === 2
+            ? bracketSubstitute('caption_format_end_two', {
+                value: captioncntnt.pop()
+            })
+            : captioncntnt.length > 2
+                ? bracketSubstitute('caption_format_end_three_plus', {
+                    value: captioncntnt.pop()
+                })
+                : '');
 
-    const buttonyes = getPref('buttonyes');
-
-    const tempcharrefs = CharrefunicodeConsts.charrefs;
-    const tempents = CharrefunicodeConsts.ents;
     console.log('rows', rows);
     jml('table', {
         id: 'chart_table',
         class: 'unicodetablecell',
         style: {
-            'font-family': getPref('font')
+            'font-family': font
         },
         // Not sure if this will require fixing if xml:lang bug is fixed: https://bugzilla.mozilla.org/show_bug.cgi?id=234485
-        lang: getPref('lang')
+        lang
     }, [
         ['caption', {
             class: 'dialogheader',
             title: _('Unicode_table_caption_title')
         }, [
-            captcnt
+            captionContent
         ]],
         ...fill(rows).map((row, j) => {
             return ['tr', fill(cols).map((col, i) => {
-                if (
-                    (descripts || onlyentsyes) &&
-                    j === (newrowceil - 1) &&
-                    remainder > 0 &&
-                    i === (cols - remainder)
-                ) {
+                // Todo: Document what this check is
+                if (j === rowceil && i === colsOverRemainder) {
                     return '';
                 }
 
-                let kent = '', kent0 = '';
-                const charRefIdx = tempcharrefs.indexOf(k);
-                if (charRefIdx > -1) { // If recognized multiple char ent. (won't convert these to decimal)
-                    kent0 = '&' + tempents[charRefIdx] + ';';
-                    kent = '(' + kent0 + ') ';
-                }
+                const charRefIdx = CharrefunicodeConsts.charrefs.indexOf(currentStartCharCode);
+                const hasEntity = charRefIdx > -1;
+                const entity = hasEntity
+                    // If recognized multiple char ent. (won't convert these to decimal)
+                    ? '&' + CharrefunicodeConsts.ents[charRefIdx] + ';'
+                    : '';
 
-                const khextemp = k.toString(16).toUpperCase().padStart(4, '0');
-
-                if (k >= 1114111) {
-                    k = 0;
-                } else if (onlyentsyes || descripts) {
+                resetCurrentStartCharCodeIfOutOfBounds();
+                // Todo: Document what's going on here
+                if (descriptsOrOnlyEnts) {
                     q++;
                     if (q >= obj[chars].length) {
                         q = 0;
                     }
-                    k = obj[chars][q];
+                    currentStartCharCode = obj[chars][q];
                 } else {
-                    k++;
+                    currentStartCharCode++;
                 }
 
                 return ['td', {
-                    class: (charRefIdx > -1 ? 'entity ' : '') + 'unicodetablecell',
+                    class: (hasEntity ? 'entity ' : '') + 'unicodetablecell',
                     $on: {
-                        mouseover: defineMouseover(kent, khextemp),
+                        mouseover: (function (entity, currentStartCharCode) {
+                            return function () {
+                                if (!this.$noGetDescripts) {
+                                    getUnicodeDesc(entity, currentStartCharCode);
+                                }
+                            };
+                        })(entity, currentStartCharCode),
                         // trying dblclick worked but might not be obvious to
                         //   user and single clicks still activated; relying on
                         //   right button doesn't work
                         click (e) {
                             if (e.ctrlKey) {
-                                noGetDescripts = !noGetDescripts;
+                                this.$noGetDescripts = !this.$noGetDescripts;
                             }
                         }
                     }
                 }, [
-                    ...['decyes', 'hexyes', 'unicodeyes'].filter((t) => types[t]).flatMap((type, i, arr) => {
+                    ...appliedFormats.flatMap((type, i, arr) => {
                         const name = type.replace('yes', '');
                         const isMiddle = i === 1 && arr.length === 2;
                         const isFinal = i === 2;
@@ -267,15 +218,19 @@ export default function buildChart (descripts) {
                             class: buttonyes ? 'buttonyes' : null,
                             name,
                             id: '_' + idgen++,
+                            dataset: {
+                                value: displayTypes[type](currentStartCharCode)
+                            },
                             $on: {
-                                click ({ctrlKey, target}) {
+                                click ({ctrlKey, target: {dataset: {value}}}) {
                                     if (!ctrlKey) {
-                                        Unicodecharref.insertText('inserttext', target.dataset.value);
+                                        insertText({textReceptable, value});
                                     }
                                 }
                             }
                         }, [
-                            conversions[type](k)
+                            // Todo: Add substitute character if detect is an invisible?
+                            displayTypes[type](currentStartCharCode)
                         ]];
                         const container = isFinal ? jml('div', {
                             class: 'centered'
@@ -289,23 +244,20 @@ export default function buildChart (descripts) {
                             container
                         ];
                     }),
-                    ...(entyes && charRefIdx > -1
+                    ...(entyes && hasEntity
                         ? [
                             ['a', {
-                                dataset: {
-                                    value: kent0
-                                },
                                 href: '#',
                                 $on: {
                                     click (e) {
                                         e.preventDefault();
                                         if (!e.ctrlKey) {
-                                            Unicodecharref.insertText('inserttext', kent0);
+                                            insertText({textReceptable, value: entity});
                                         }
                                     }
                                 }
                             }, [
-                                kent0
+                                entity
                             ]],
                             ' '
                         ]
@@ -321,10 +273,13 @@ export default function buildChart (descripts) {
                 ['a', {
                     href: '#',
                     $on: {
-                        click () {
-                            Unicodecharref.k(prev);
-                            Unicodecharref.middleyes(false);
-                            Unicodecharref.printunicode(descripts);
+                        async click (e) {
+                            e.preventDefault();
+                            await Promise.all([
+                                setPref('currentStartCharCode', prev),
+                                setPref('startCharInMiddleOfChart', false)
+                            ]);
+                            buildChart(descripts);
                         }
                     }
                 }, [
@@ -334,14 +289,13 @@ export default function buildChart (descripts) {
                 ['a', {
                     href: '#',
                     $on: {
-                        click (e) {
-                            const next = (k >= 0 && k <= 9)
-                                ? `'#${k}'`
-                                : k;
-                            Unicodecharref.k(next);
-                            Unicodecharref.middleyes(false);
-                            Unicodecharref.printunicode(descripts);
+                        async click (e) {
                             e.preventDefault();
+                            await Promise.all([
+                                setPref('currentStartCharCode', currentStartCharCode),
+                                setPref('startCharInMiddleOfChart', false)
+                            ]);
+                            buildChart(descripts);
                         }
                     }
                 }, [
@@ -349,13 +303,8 @@ export default function buildChart (descripts) {
                 ]]
             ]]
         ]]
-    ], tablecntnr);
-
-    /*  This was making the current preferences increment each time the window opened, even if it had not been changed
-        this.setCurrstartset(k);
-    */
+    ], chartContainer);
 
     // Todo: Restore
-    // this.resizecells(false, null);
-    // window.sizeToContent();
-}
+    // this.resizecells({sizeToContent: true});
+};

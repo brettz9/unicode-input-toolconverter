@@ -5,6 +5,7 @@
   },
   "env": {
     "node": false,
+    "browser": true,
     "webextensions": true
   },
   "rules": {

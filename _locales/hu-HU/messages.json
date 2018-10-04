@@ -12,33 +12,33 @@
       "message": "Unicode Input Tool/Converter"
     },
     "unicode_noun": {
-      "message": "unicode"
+      "message": "unikód"
     },
     "hex_noun": {
-      "message": "hexadecimal"
+      "message": "hexadecimális"
     },
     "dec_noun": {
-      "message": "decimal"
+      "message": "decimális"
     },
     "ent_noun": {
-      "message": "entities"
-  },
+      "message": "egyedek"
+    },
     "Unicode_table_caption_title": {
-        "message": "Control + left-click when over a character to freeze or unfreeze the descriptions below"
+      "message": "Az alábbi leírások rögzítéséhez/feloldásához Control + kattintás valamely karakter fölött a bal egérgombbal"
     },
     "caption_format_begin": {
       "message": ", {value}"
     },
     "caption_format_end_two": {
-      "message": " and {value}"
+      "message": " és {value}"
     },
     "caption_format_end_three_plus": {
-      "message": ", and {value}"
+      "message": " és {value}"
     },
     "Next_set": {
-        "message": "Next set"
+      "message": "Következő készlet"
     },
     "Prev_set": {
-        "message": "Prev set"
+      "message": "Előző készlet"
     }
 }

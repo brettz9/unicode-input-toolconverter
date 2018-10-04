@@ -1,24 +1,39 @@
 /* eslint-env browser */
-/* globals Components, FileUtils, buildChart, getAndSetCodePointInfo, Hangul, getJamo, fixFromCharCode, charrefunicodeDb, charrefunicodeConverter, CharrefunicodeConsts */
-/*
-Copyright 2007, 2008, 2009 Brett Zamir
-    This file is part of Unicode Input Tool/Converter.
-
-    Unicode Input Tool/Converter is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Unicode Input Tool/Converter is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public License
-    along with Unicode Input Tool/Converter.  If not, see <http://www.gnu.org/licenses/>.
-*/
+/* globals Components, FileUtils, buildChart, getAndSetCodePointInfo, Hangul, getJamo, charrefunicodeDb, charrefunicodeConverter, CharrefunicodeConsts */
 
 // See http://www.unicode.org/Public/UNIDATA/ for data use
+
+/*
+// Todo: Handle these for `buildUnicode` `currentStartCharCode` (`setCurrstartset`); see also
+//        `setPref('currentStartCharCode'...`
+if (k < 0) {
+    k = 1114112 + parseInt(k);
+} else if (currentStartCharCode.toString().match(decreg) || currentStartCharCode.toString().match(decreg2)) { // Dec
+    currentStartCharCode = currentStartCharCode.toString().replace(decreg, '$2');
+    currentStartCharCode = parseInt(currentStartCharCode, 10);
+} else if (currentStartCharCode.toString().match(hexreg)) { // Hex
+    currentStartCharCode = currentStartCharCode.toString().replace(hexreg, '$3');
+    currentStartCharCode = parseInt(currentStartCharCode, 16);
+} else {
+    // Convert toString in case trying to get the ASCII for a single digit number
+    const kt = currentStartCharCode.toString().charCodeAt(0);
+    if (kt >= 0xD800 && kt < 0xF900) { // surrogate component (higher plane)
+        currentStartCharCode = ((kt - 0xD800) * 0x400) + (currentStartCharCode.toString().charCodeAt(1) - 0xDC00) + 0x10000;
+    } else {
+        currentStartCharCode = kt;
+    }
+}
+resetCurrentStartCharCodeIfOutOfBounds();
+
+//
+//
+// Ensure 0-9 get treated as char. ref. values rather than Unicode digits
+if (prev >= 0 && prev <= 9) {
+    prev = `'#${prev}'`;
+}
+*/
+import {$, $$} from '/vendor/jamilih/dist/jml-es.js';
+import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
 
 (function () {
 const Cc = Components.classes,
@@ -45,11 +60,6 @@ function createXULElement (el) {
     return document.createElementNS(xulns, el);
 }
 
-function $ (id, doc) {
-    doc = doc || document;
-    return doc.getElementById(id);
-}
-
 function log (msg) {
     const console = Cc['@mozilla.org/consoleservice;1'].getService(Ci.nsIConsoleService);
     console.logStringMessage(msg);
@@ -57,8 +67,8 @@ function log (msg) {
 
 const Unicodecharref = {
     downloadUnihan () {
-        $('DownloadButtonBox').hidden = true;
-        $('DownloadProgressBox').hidden = false;
+        $('#DownloadButtonBox').hidden = true;
+        $('#DownloadProgressBox').hidden = false;
 
         const that = this;
         const aFileURL = 'http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite';
@@ -113,8 +123,8 @@ const Unicodecharref = {
         persist.saveURI(url, null, null, null, '', file);
     },
     closeDownloadProgressBox () {
-        $('closeDownloadProgressBox').hidden = false;
-        $('DownloadProgressBox').hidden = true;
+        $('#closeDownloadProgressBox').hidden = false;
+        $('#DownloadProgressBox').hidden = true;
     },
     makeDropMenuRows (type) {
         // const s = this.strs;
@@ -231,15 +241,15 @@ const Unicodecharref = {
     },
     testIfComplexWindow () { // Fix: Should also create the detailedView and detailedCJKView's content dynamically (and thus fully conditionally rather than hiding)
         if (this.prefs.getBoolPref(EXT_BASE + 'showComplexWindow')) {
-            $('specializedSearch').hidden = false;
+            $('#specializedSearch').hidden = false;
             this.makeRows('Unihan');
             this.makeRows('Unicode');
-            $('detailedView').collapsed = false;
-            $('detailedCJKView').collapsed = false;
+            $('#detailedView').collapsed = false;
+            $('#detailedCJKView').collapsed = false;
         } else {
-            $('specializedSearch').hidden = true;
-            $('detailedView').collapsed = true;
-            $('detailedCJKView').collapsed = true;
+            $('#specializedSearch').hidden = true;
+            $('#detailedView').collapsed = true;
+            $('#detailedCJKView').collapsed = true;
         }
     },
     setupBoolChecked () {
@@ -257,9 +267,9 @@ const Unicodecharref = {
         this.branch = this.prefs.getBranch(EXT_BASE);
         this.branchDefault = this.prefs.getDefaultBranch(EXT_BASE);
         // this.refreshToolbarDropdown(); // redundant?
-        this.strs = $('charrefunicode-strings');
+        this.strs = $('#charrefunicode-strings');
 
-        $('world_auxiliary_language').appendChild(
+        $('#world_auxiliary_language').appendChild(
             new DOMParser().parseFromString(
                 '<div xmlns="http://www.w3.org/1999/xhtml">' + this.strs.getString('official_world_language') + '</div>',
                 'application/xml'
@@ -274,12 +284,12 @@ const Unicodecharref = {
                 'SELECT code_pt FROM ' + 'Unihan' + ' WHERE code_pt = "3400"'
             );
             this.unihanDb_exists = true;
-            $('DownloadButtonBox').hidden = true;
-            $('UnihanInstalled').hidden = false;
+            $('#DownloadButtonBox').hidden = true;
+            $('#UnihanInstalled').hidden = false;
         } catch (e) {
             log(e);
-            $('DownloadButtonBox').hidden = false;
-            $('UnihanInstalled').hidden = true;
+            $('#DownloadButtonBox').hidden = false;
+            $('#UnihanInstalled').hidden = true;
         }
         try {
             // charrefunicodeDb.connect('data/Jamo.sqlite', 'jamo');
@@ -288,22 +298,22 @@ const Unicodecharref = {
         }
 
         // document.documentElement.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-        $('tabbox').maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
-        $('unicodetabs').maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
+        $('#tabbox').maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
+        $('#unicodetabs').maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
         /**
-        $('tabbox').maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
-        $('conversionhbox').maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
+        $('#tabbox').maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
+        $('#conversionhbox').maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
 
-        $('noteDescriptionBox2').height = $('noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
-$('tabbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-$('unicodetabs').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('unicodetabpanels').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('chartcontent').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
-$('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
+        $('#noteDescriptionBox2').height = $('#noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
+$('#tabbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
+$('#unicodetabs').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+$('#unicodetabpanels').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+$('#chartcontent').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
+$('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
 
         // */
-        // $('tableholder').maxWidth = window.screen.availWidth-(window.screen.availWidth*50/100);
-        // $('tableholder').width = window.screen.availWidth-(window.screen.availWidth*50/100);
+        // $('#tableholder').maxWidth = window.screen.availWidth-(window.screen.availWidth*50/100);
+        // $('#tableholder').width = window.screen.availWidth-(window.screen.availWidth*50/100);
         //      window.sizeToContent();
 
         this.testIfComplexWindow();
@@ -330,7 +340,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
             }
             switch (queryType) {
             case 'find':
-                toconvert = unicodeQueryObj['char'];
+                toconvert = unicodeQueryObj.char;
                 targetid = 'context-unicodechart';
                 break;
             case 'searchName':
@@ -358,37 +368,37 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
 
         if (!this.prefs.getBoolPref(EXT_BASE + 'multiline')) {
             $(EXT_BASE + 'multiline').checked = false;
-            $('displayUnicodeDesc').setAttribute('multiline', false);
-            $('displayUnicodeDesc').setAttribute('rows', 1);
+            $('#displayUnicodeDesc').setAttribute('multiline', false);
+            $('#displayUnicodeDesc').setAttribute('rows', 1);
         } else {
             $(EXT_BASE + 'multiline').checked = true;
-            $('displayUnicodeDesc').setAttribute('multiline', true);
-            $('displayUnicodeDesc').setAttribute('rows', 3);
+            $('#displayUnicodeDesc').setAttribute('multiline', true);
+            $('#displayUnicodeDesc').setAttribute('rows', 3);
         }
 
         this.setupBoolChecked('asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'xmlentkeep', 'ampkeep',
             'ampspace', 'showComplexWindow', 'showAllDetailedView', 'showAllDetailedCJKView',
-            'appendtohtmldtd', 'hexyes', 'onlyentsyes', 'entyes', 'decyes', 'unicodeyes', 'middleyes',
+            'appendtohtmldtd', 'hexyes', 'onlyentsyes', 'entyes', 'decyes', 'unicodeyes', 'startCharInMiddleOfChart',
             'buttonyes', 'cssUnambiguous');
 
         switch (this.prefs.getCharPref(EXT_BASE + 'cssWhitespace')) {
         case ' ':
-            $('CSSWhitespace').selectedIndex = 0;
+            $('#CSSWhitespace').selectedIndex = 0;
             break;
         case '\r\n':
-            $('CSSWhitespace').selectedIndex = 1;
+            $('#CSSWhitespace').selectedIndex = 1;
             break;
         case '\r':
-            $('CSSWhitespace').selectedIndex = 2;
+            $('#CSSWhitespace').selectedIndex = 2;
             break;
         case '\n':
-            $('CSSWhitespace').selectedIndex = 3;
+            $('#CSSWhitespace').selectedIndex = 3;
             break;
         case '\t':
-            $('CSSWhitespace').selectedIndex = 4;
+            $('#CSSWhitespace').selectedIndex = 4;
             break;
         case '\f':
-            $('CSSWhitespace').selectedIndex = 5;
+            $('#CSSWhitespace').selectedIndex = 5;
             break;
         }
 
@@ -402,10 +412,10 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
             $(EXT_BASE + 'xstyle').checked = true;
         } */
 
-        this.resizecells(true, 0); // Set the size per the prefs (don't increase or decrease the value)
+        this.resizecells(); // Set the size per the prefs (don't increase or decrease the value)
 
-        $('rowsset').value = this.prefs.getIntPref(EXT_BASE + 'tblrowsset');
-        $('colsset').value = this.prefs.getIntPref(EXT_BASE + 'tblcolsset');
+        $('#rowsset').value = this.prefs.getIntPref(EXT_BASE + 'tblrowsset');
+        $('#colsset').value = this.prefs.getIntPref(EXT_BASE + 'tblcolsset');
 
         // Save copies in case decide to reset later (i.e., not append to HTML entities, then wish to append to them again)
         // Do the following since can't copy arrays by value
@@ -425,11 +435,11 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
 
         const DTDtxtbxval = this.branch.getComplexValue('DTDtextbox', Ci.nsIPrefLocalizedString).data;
 
-        $('DTDtextbox').value = DTDtxtbxval;
+        $('#DTDtextbox').value = DTDtxtbxval;
         this.registerDTD();
 
         //  toconvert = charreftoconvert.replace(/\n/g, ' ');
-        $('toconvert').value = toconvert;
+        $('#toconvert').value = toconvert;
 
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
@@ -440,63 +450,63 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
 
         switch (targetid) {
         case 'context-charrefunicode1':
-            out = this.charref2unicodeval(toconvert, $('b1'));
+            out = this.charref2unicodeval(toconvert, $('#b1'));
             break;
         case 'context-charrefunicode2':
-            out = this.charref2htmlentsval(toconvert, $('b2'));
+            out = this.charref2htmlentsval(toconvert, $('#b2'));
             break;
         case 'context-charrefunicode3':
-            out = this.unicode2charrefDecval(toconvert, $('b3'));
+            out = this.unicode2charrefDecval(toconvert, $('#b3'));
             break;
         case 'context-charrefunicode4':
-            out = this.unicode2charrefHexval(toconvert, $('b4'));
+            out = this.unicode2charrefHexval(toconvert, $('#b4'));
             break;
         case 'context-charrefunicode5':
-            out = this.unicode2htmlentsval(toconvert, $('b5'));
+            out = this.unicode2htmlentsval(toconvert, $('#b5'));
             break;
         case 'context-charrefunicode6':
-            out = this.unicode2jsescapeval(toconvert, $('b6'));
+            out = this.unicode2jsescapeval(toconvert, $('#b6'));
             break;
         case 'context-charrefunicode7':
-            out = this.unicodeTo6DigitVal(toconvert, $('b7'));
+            out = this.unicodeTo6DigitVal(toconvert, $('#b7'));
             break;
         case 'context-charrefunicode8':
-            out = this.unicode2cssescapeval(toconvert, $('b8'));
+            out = this.unicode2cssescapeval(toconvert, $('#b8'));
             break;
         case 'context-charrefunicode9':
-            out = this.htmlents2charrefDecval(toconvert, $('b9'));
+            out = this.htmlents2charrefDecval(toconvert, $('#b9'));
             break;
         case 'context-charrefunicode10':
-            out = this.htmlents2charrefHexval(toconvert, $('b10'));
+            out = this.htmlents2charrefHexval(toconvert, $('#b10'));
             break;
         case 'context-charrefunicode11':
-            out = this.htmlents2unicodeval(toconvert, $('b11'));
+            out = this.htmlents2unicodeval(toconvert, $('#b11'));
             break;
         case 'context-charrefunicode12':
-            out = this.hex2decval(toconvert, $('b12'));
+            out = this.hex2decval(toconvert, $('#b12'));
             break;
         case 'context-charrefunicode13':
-            out = this.dec2hexval(toconvert, $('b13'));
+            out = this.dec2hexval(toconvert, $('#b13'));
             break;
         case 'context-charrefunicode14':
-            out = this.jsescape2unicodeval(toconvert, $('b14'));
+            out = this.jsescape2unicodeval(toconvert, $('#b14'));
             break;
         case 'context-charrefunicode15':
-            out = this.sixDigit2UnicodeVal(toconvert, $('b15'));
+            out = this.sixDigit2UnicodeVal(toconvert, $('#b15'));
             break;
         case 'context-charrefunicode16':
-            out = this.cssescape2unicodeval(toconvert, $('b16'));
+            out = this.cssescape2unicodeval(toconvert, $('#b16'));
             break;
         case 'context-charrefunicode17':
-            out = this.unicode2CharDescVal(toconvert, $('b17'));
+            out = this.unicode2CharDescVal(toconvert, $('#b17'));
             break;
         case 'context-charrefunicode18':
-            out = this.charDesc2UnicodeVal(toconvert, $('b18'));
+            out = this.charDesc2UnicodeVal(toconvert, $('#b18'));
             break;
         case 'context-unicodechart':
             this.disableEnts();
-            $('startset').value = toconvert;
-            $('tabbox').selectedTab = $('charttab');
+            $('#startset').value = toconvert;
+            $('#tabbox').selectedTab = $('#charttab');
             if (toconvert !== '') {
                 this.setCurrstartset(toconvert);
                 buildChart();
@@ -524,15 +534,15 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
 
         if (customProtocol) {
         } else if (!args) { // options menu
-            $('tabbox').selectedTab = $('prefstab');
+            $('#tabbox').selectedTab = $('#prefstab');
         } else if (args[2] !== undefined) { // Keyboard invocation or button
-            // $('unicodetabs').selectedIndex = 0; // Fix: set by preference
-            $('tabbox').selectedTab = $(this.prefs.getCharPref('extensions.charrefunicode.initialTab'));
+            // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
+            $('#tabbox').selectedTab = $(this.prefs.getCharPref('extensions.charrefunicode.initialTab'));
         } else if (targetid !== 'context-unicodechart' && targetid !== 'tools-charrefunicode') {
-            $('tabbox').selectedTab = $('conversiontab');
+            $('#tabbox').selectedTab = $('#conversiontab');
         }
 
-        $('extensions.charrefunicode.initialTab').selectedItem = $('mi_' + this.prefs.getCharPref('extensions.charrefunicode.initialTab'));
+        $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_' + this.prefs.getCharPref('extensions.charrefunicode.initialTab'));
 
         if (targetid !== 'searchName' && targetid !== 'searchkDefinition') {
             if (toconvert) { // Seemed to become necessarily suddenly
@@ -542,9 +552,9 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         }
         this.tblfontsize(0); // Draw with the preferences value
 
-        $('menulists').addEventListener('command',
+        $('#menulists').addEventListener('command',
             function (e) {
-                // const tmp = that.branch.getComplexValue('currstartset', Ci.nsIPrefLocalizedString).data;
+                // const tmp = that.branch.getComplexValue('currentStartCharCode', Ci.nsIPrefLocalizedString).data;
                 that.disableEnts();
                 that.setCurrstartset(e.target.value);
                 buildChart();
@@ -552,7 +562,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
             },
             true);
 
-        $('converted').value = out;
+        $('#converted').value = out;
         /*
         if (converttypeid != 0) {
             $(converttypeid).className='buttonactive';
@@ -619,16 +629,17 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         $(EXT_BASE + 'showAllDetailedView').checked = true;
         $(EXT_BASE + 'showAllDetailedCJKView').checked = true;
 
+        let temp1;
         function langFont (langOrFont) { // Fix: needs to get default!
             const deflt = that.branchDefault.getComplexValue(langOrFont, Ci.nsIPrefLocalizedString).data;
             $(EXT_BASE + langOrFont).value = deflt;
-            const temp1 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
+            temp1 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
             temp1.data = deflt;
             that.prefs.setComplexValue(EXT_BASE + langOrFont, Ci.nsIPrefLocalizedString, temp1);
             return deflt;
         }
-        $('chart_table').lang = langFont('lang');
-        $('chart_table').style.fontFamily = langFont('font');
+        $('#chart_table').lang = langFont('lang');
+        $('#chart_table').style.fontFamily = langFont('font');
 
         // this.prefs.setBoolPref(EXT_BASE + 'hexstyleLwr', true);
         // $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
@@ -644,7 +655,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
                       Ci.nsIPrefLocalizedString,
                       temp0);
 
-        $('DTDtextbox').value = '';
+        $('#DTDtextbox').value = '';
         */
 
         temp1 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
@@ -656,26 +667,26 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
 
         this.setCurrstartset(this.branchDefault.getComplexValue('startset', Ci.nsIPrefLocalizedString).data);
 
-        $('displayUnicodeDesc').setAttribute('multiline', false);
-        $('displayUnicodeDesc').setAttribute('rows', 1);
+        $('#displayUnicodeDesc').setAttribute('multiline', false);
+        $('#displayUnicodeDesc').setAttribute('rows', 1);
 
         // These get activated in buildChart(); below
         this.prefs.setIntPref(EXT_BASE + 'tblrowsset', 4);
-        $('rowsset').value = 4;
+        $('#rowsset').value = 4;
         this.prefs.setIntPref(EXT_BASE + 'tblcolsset', 3);
-        $('colsset').value = 3;
+        $('#colsset').value = 3;
 
         this.setBoolChecked(['entyes', 'hexyes', 'decyes', 'unicodeyes', 'buttonyes'], true);
-        this.setBoolChecked(['onlyentsyes', 'middleyes'], false);
+        this.setBoolChecked(['onlyentsyes', 'startCharInMiddleOfChart'], false);
 
         // this.prefs.setCharPref(EXT_BASE + 'xstyle', 'x');
         // $(EXT_BASE + 'xstyle').checked = true;
 
         this.prefs.setCharPref('extensions.charrefunicode.initialTab', 'charttab');
-        $('extensions.charrefunicode.initialTab').selectedItem = $('mi_charttab');
+        $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_charttab');
 
         this.prefs.setIntPref(EXT_BASE + 'tblfontsize', 13);
-        this.resizecells(true, 0);
+        this.resizecells();
 
         buildChart();
         this.prefs.setIntPref(EXT_BASE + 'window.outer.height', 0);
@@ -716,8 +727,8 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
 
     // UI Bridges
     convertEncoding (out, el) {
-        const from = $('encoding_from').value,
-            to = $('encoding_to').value,
+        const from = $('#encoding_from').value,
+            to = $('#encoding_to').value,
             toconvert = out;
         this.classChange(el);
 
@@ -733,12 +744,13 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
             const replacementChar = Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER; // Fix: could customize
             const is = Cc['@mozilla.org/intl/converter-input-stream;1'].createInstance(Ci.nsIConverterInputStream);
             is.init(os, to, 1024, replacementChar);
-            const str = {}, output = '';
-            while (is.readString(4096, str) != 0) {
+            const str = {};
+            let output = '';
+            while (is.readString(4096, str) !== 0) {
                 output += str.value;
             }
             os.close();
-            $('converted').value = output;
+            $('#converted').value = output;
         } catch (e) {
             alert(this.strs.getString('chars_could_not_be_converted'));
         }
@@ -747,7 +759,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         cv.charset = to;
         const unicode_str = cv.ConvertToUnicode(toconvert);
         cv.charset = from;
-        $('converted').value = cv.ConvertFromUnicode(unicode_str);
+        $('#converted').value = cv.ConvertFromUnicode(unicode_str);
         */
     },
     charref2unicodeval (out, el) {
@@ -792,60 +804,60 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     },
 
     unicodeTo6Digit (e) {
-        const toconvert = $('toconvert').value;
+        const toconvert = $('#toconvert').value;
         this.unicodeTo6DigitVal(toconvert, e.target);
         return false;
     },
     unicodeTo6DigitVal (toconvert, el) {
         this.classChange(el);
         const val = charrefunicodeConverter.unicodeTo6DigitVal(toconvert);
-        $('converted').value = val;
+        $('#converted').value = val;
         return val;
     },
     charref2unicode (e) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.charref2unicodeval(toconvert, e.target);
+        $('#converted').value = this.charref2unicodeval(toconvert, e.target);
         return false;
     },
     charref2htmlents (e) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.charref2htmlentsval(toconvert, e.target);
+        $('#converted').value = this.charref2htmlentsval(toconvert, e.target);
         return false;
     },
     unicode2charrefDec (e, leaveSurrogates) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.unicode2charrefDecval(toconvert, e.target, leaveSurrogates);
+        $('#converted').value = this.unicode2charrefDecval(toconvert, e.target, leaveSurrogates);
         return false;
     },
     unicode2charrefDecSurrogate (e) {
         this.unicode2charrefDec(e, true);
     },
     unicode2charrefHex (e, leaveSurrogates) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.unicode2charrefHexval(toconvert, e.target, leaveSurrogates);
+        $('#converted').value = this.unicode2charrefHexval(toconvert, e.target, leaveSurrogates);
         return false;
     },
     unicode2charrefHexSurrogate (e) {
         this.unicode2charrefHex(e, true);
     },
     unicode2htmlents (e) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.unicode2htmlentsval(toconvert, e.target);
+        $('#converted').value = this.unicode2htmlentsval(toconvert, e.target);
         return false;
     },
     /**
@@ -858,7 +870,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     unicode2CharDescVal (toconvert, el) {
         this.classChange(el);
         const val = charrefunicodeConverter.unicode2CharDescVal(toconvert);
-        $('converted').value = val;
+        $('#converted').value = val;
         return val;
     },
     /**
@@ -871,49 +883,49 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     charDesc2UnicodeVal (toconvert, el) {
         this.classChange(el);
         const val = charrefunicodeConverter.charDesc2UnicodeVal(toconvert);
-        $('converted').value = val;
+        $('#converted').value = val;
         return val;
     },
     charDesc2Unicode (e) {
-        const toconvert = $('toconvert').value;
+        const toconvert = $('#toconvert').value;
         this.charDesc2UnicodeVal(toconvert, e.target);
         return false;
     },
     unicode2CharDesc (e) {
-        const toconvert = $('toconvert').value;
+        const toconvert = $('#toconvert').value;
         this.unicode2CharDescVal(toconvert, e.target);
         return false;
     },
     unicode2jsescapeval (toconvert, el) {
         this.classChange(el);
         const val = charrefunicodeConverter.unicode2jsescapeval(toconvert);
-        $('converted').value = val;
+        $('#converted').value = val;
         return val;
     },
     unicode2jsescape (e) {
-        const toconvert = $('toconvert').value;
+        const toconvert = $('#toconvert').value;
         this.unicode2jsescapeval(toconvert, e.target);
         return false;
     },
     cssescape2unicode (e) {
-        const toconvert = $('toconvert').value;
-        $('converted').value = this.cssescape2unicodeval(toconvert, e.target);
+        const toconvert = $('#toconvert').value;
+        $('#converted').value = this.cssescape2unicodeval(toconvert, e.target);
         return false;
     },
     sixDigit2UnicodeVal (toconvert, el) {
         this.classChange(el);
         const val = charrefunicodeConverter.sixDigit2UnicodeVal(toconvert);
-        $('converted').value = val;
+        $('#converted').value = val;
         return val;
     },
     sixDigit2Unicode (e) {
-        const toconvert = $('toconvert').value;
+        const toconvert = $('#toconvert').value;
         this.sixDigit2UnicodeVal(toconvert, e.target);
         return false;
     },
     jsescape2unicode (e) {
-        const toconvert = $('toconvert').value;
-        $('converted').value = this.jsescape2unicodeval(toconvert, e.target);
+        const toconvert = $('#toconvert').value;
+        $('#converted').value = this.jsescape2unicodeval(toconvert, e.target);
         return false;
     },
     cssescape2unicodeval (toconvert, el) {
@@ -930,63 +942,62 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     unicode2cssescapeval (toconvert, el) {
         this.classChange(el);
         const val = charrefunicodeConverter.unicode2cssescapeval(toconvert);
-        $('converted').value = val;
+        $('#converted').value = val;
         return val;
     },
     unicode2cssescape (e) {
-        const toconvert = $('toconvert').value;
+        const toconvert = $('#toconvert').value;
         this.unicode2cssescapeval(toconvert, e.target);
         return false;
     },
     // In this method and others like it, boolpref should be moved instead to
     //   converter function since it should be consistent across the app
     htmlents2charrefDec (e) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.htmlents2charrefDecval(toconvert, e.target);
+        $('#converted').value = this.htmlents2charrefDecval(toconvert, e.target);
         return false;
     },
     htmlents2charrefHex (e) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.htmlents2charrefHexval(toconvert, e.target);
+        $('#converted').value = this.htmlents2charrefHexval(toconvert, e.target);
         return false;
     },
     htmlents2unicode (e) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.htmlents2unicodeval(toconvert, e.target);
+        $('#converted').value = this.htmlents2unicodeval(toconvert, e.target);
         return false;
     },
     hex2dec (e) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.hex2decval(toconvert, e.target);
+        $('#converted').value = this.hex2decval(toconvert, e.target);
         return false;
     },
     dec2hex (e) {
-        let toconvert = $('toconvert').value;
+        let toconvert = $('#toconvert').value;
         if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
-        $('converted').value = this.dec2hexval(toconvert, e.target);
+        $('#converted').value = this.dec2hexval(toconvert, e.target);
         return false;
     },
     // End UI bridges
 
-    noGetDescripts: false,
     setImagePref (ev) {
         this.setprefs(ev);
-        if ($('unicodeImg').firstChild) {
-            $('unicodeImg').removeChild($('unicodeImg').firstChild);
+        if ($('#unicodeImg').firstChild) {
+            $('#unicodeImg').removeChild($('#unicodeImg').firstChild);
         }
         return false;
     },
@@ -1026,25 +1037,25 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         }
 
         let hangul = false;
-        let i, pattern, file;
+        let i; // file;
         // If Unihan
         if ((kdectemp > 0x3400 && kdectemp <= 0x4DB5) || (kdectemp > 0x4E00 && kdectemp <= 0x9FC3) || // 0x9FBB
-            (0xF900 <= kdectemp && kdectemp < 0xFB00) ||
+            (kdectemp > 0xF900 && kdectemp < 0xFB00) ||
             // If not using the 27MB updated file, this range (CJK Ideograph Extension B) will not be valid:
-            (0x20000 <= kdectemp && kdectemp <= 0x2A6D6) ||
+            (kdectemp > 0x20000 && kdectemp <= 0x2A6D6) ||
             (kdectemp >= 0x2F800 && kdectemp < 0x2FA1F)
         ) {
-            pattern = new RegExp('^U\\+(' + khextemp + ')\\t(.*)\\t(.*)$', 'mg');
-            file = 'Unihan.txt';
+            // pattern = new RegExp('^U\\+(' + khextemp + ')\\t(.*)\\t(.*)$', 'mg');
+            // file = 'Unihan.txt';
             this.UnihanType = true;
-            // $('pdflink').appendChild(alink);
+            // $('#pdflink').appendChild(alink);
         } else if (kdectemp > 0xAC00 && kdectemp <= 0xD7A3) {
-            pattern = new RegExp('^' + khextemp + '\\s*;\\s*(.*)$', 'm');
-            file = 'HangulSyllableType.txt';
+            // pattern = new RegExp('^' + khextemp + '\\s*;\\s*(.*)$', 'm');
+            // file = 'HangulSyllableType.txt';
             hangul = true;
             if (this.UnihanType) {
                 for (i = 0; i < this.Unihan.length; i++) {
-                    $('searchk' + this.Unihan[i]).value = '';
+                    $('#searchk' + this.Unihan[i]).value = '';
                 }
             }
             this.UnihanType = false;
@@ -1058,278 +1069,278 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
             }
             */
         } else {
-            pattern = new RegExp('^' + khextemp + ';([^;]*);', 'm');
-            file = 'UnicodeData.txt';
+            // pattern = new RegExp('^' + khextemp + ';([^;]*);', 'm');
+            // file = 'UnicodeData.txt';
             if (this.UnihanType) {
                 for (i = 1; i <= 13; i++) {
-                    $('_detailedCJKView' + i).value = '';
+                    $('#_detailedCJKView' + i).value = '';
                 }
                 for (i = 15; i <= 90; i++) {
-                    $('_detailedCJKView' + i).value = '';
+                    $('#_detailedCJKView' + i).value = '';
                 }
             }
             this.UnihanType = false;
         }
 
-        let temp, col, notfoundval, table, result, statement;
-        if (1) { // !this.UnihanType && !hangul) {
-            if (!this.UnihanType && !hangul && $('viewTabs').selectedTab == $('detailedCJKView')) {
-                $('viewTabs').selectedTab = $('detailedView');
-            }
-            table = 'Unicode';
-            let search = false;
-            let cjkText;
+        let temp, notfoundval, table, result, statement;
 
-            if (kdectemp >= 0x3400 && kdectemp <= 0x4DB5) {
-                search = '3400';
-                if (kdectemp != 0x3400 && kdectemp != 0x4DB5) {
-                    cjkText = s.getString('CJK_Ideograph_Extension_A');
-                } else if (kdectemp == 0x4DB5) {
-                    search = '4DB5';
-                }
-            } else if (kdectemp >= 0x4E00 && kdectemp <= 0x9FC3) {
-                search = '4E00';
-                if (kdectemp != 0x4E00 && kdectemp != 0x9FC3) {
-                    cjkText = s.getString('CJK_Ideograph');
-                } else if (kdectemp == 0x9FC3) {
-                    search = '9FC3';
-                }
-            } else if (kdectemp >= 0xF900 && kdectemp < 0xFB00) { // Should have individual code point
-                search = true;
-            } else if (kdectemp >= 0x20000 && kdectemp <= 0x2A6D6) {
-                search = '20000';
-                if (kdectemp != 0x20000 && kdectemp != 0x2A6D6) {
-                    cjkText = s.getString('CJK_Ideograph_Extension_B');
-                } else if (kdectemp == 0x2A6D6) {
-                    search = '2A6D6';
-                }
-            } else if (kdectemp >= 0x2F800 && kdectemp < 0x2FA1F) { // Should have individual code point
-                search = true;
-            } else if (hangul) {
-                // search = 'AC00';
-                // if (kdectemp != 0xAC00 && kdectemp != 0xD7A3) {
-                cjkText = s.getString('Hangul_Syllable');
-                cjkText += ' ';
-
-                cjkText += Hangul.getHangulName(kdectemp);
-                /* }
-                else if (kdectemp == 0xD7A3) {
-                    search = 'D7A3';
-                } */
-            }
-            if (search) {
-                if (search === true) {
-                    search = khextemp;
-                }
-                statement = charrefunicodeDb.dbConn.createStatement(
-                    'SELECT * FROM ' + table + ' WHERE Code_Point = "' + search + '"'
-                );
-            } else {
-                statement = charrefunicodeDb.dbConn.createStatement(
-                    'SELECT * FROM ' + table + ' WHERE Code_Point = "' + khextemp + '"'
-                );
-            }
-            try {
-                // $('displayUnicodeDesc').value= s.getString('retrieving_description');
-                while (statement.executeStep()) {
-                    if (!cjkText) {
-                        result = statement.getUTF8String(1);
-                        if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
-                            try {
-                                const jamo = getJamo(charrefunicodeDb, kdectemp);
-                                result += ' (' + jamo + ')';
-                            } catch (e) {
-                            }
-                        }
-                    } else {
-                        result = cjkText;
-                    }
-                    for (i = 2; i <= 14; i++) {
-                        temp = statement.getUTF8String(i); // Fix: display data more readably, etc.
-                        if (i === 10) {
-                            if (temp) {
-                                result += ';\u00a0\u00a0\u00a0\u00a0\n' + s.getString('searchUnicode_1_Name') +
-                                s.getString('colon') + ' ' + temp;
-                            }
-                            continue;
-                        }
-                        if (temp) {
-                            if (hideMissing) {
-                                $('_detailedView' + i).parentNode.hidden = false;
-                            }
-                            switch (i) {
-                            case 2:
-                                temp = s.getString('General_Category' + temp);
-                                break;
-                            case 3:
-                                if (temp < 11 || temp > 132) {
-                                    temp = s.getString('Canonical_Combining_Class' + temp); // 199, 200, 204, 208, 210, 212 do not have members yet and others from 11 to 132 do not have name listed
-                                }
-                                break;
-                            case 4:
-                                temp = s.getString('Bidi_Class' + temp);
-                                break;
-                            case 9:
-                                temp = (temp === 'Y') ? s.getString('Bidi_MirroredY') : s.getString('Bidi_MirroredN'); // Only two choices
-                                break;
-                            case 12:
-                            case 13:
-                            case 14:
-                                const a = createHTMLElement('a');
-                                a.href = 'javascript:void(0)';
-
-                                a.addEventListener('click', function (e) {
-                                    that.startset({value: e.target.innerHTML.charCodeAt(0)});
-                                    that.noGetDescripts = false; // Probably want to start checking again since move to new page
-                                });
-                                const tempno = parseInt(temp, 16);
-                                a.innerHTML = fixFromCharCode(tempno);
-                                a.className = 'text-link';
-                                const view = $('_detailedView' + i);
-                                this.removeViewChildren(i);
-
-                                const box = createXULElement('description'); // necessary to avoid CSS wrapping warning
-                                box.appendChild(a);
-                                box.appendChild(document.createTextNode(' (' + temp + ')'));
-                                view.appendChild(box);
-
-                                // alert(new XMLSerializer().serializeToString(view));
-                                break;
-                            default:
-                                break;
-                            }
-                            if (i <= 11) {
-                                $('_detailedView' + i).value = temp;
-                            }
-                        } else if (i <= 11) {
-                            $('_detailedView' + i).parentNode.hidden = hideMissing;
-                            $('_detailedView' + i).value = '';
-                        } else {
-                            $('_detailedView' + i).parentNode.hidden = hideMissing;
-                            this.removeViewChildren(i);
-                        }
-                    }
-                    break;
-                }
-                if (!this.UnihanType && result != null) {
-                    $('displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
-                    $('displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
-                // Fix: remove this duplicate also in catch, etc.
-                } else if (surrogate) {
-                    $('displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
-                    $('displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
-                } else if (privateuse) {
-                    $('displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
-                    $('displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
-                } else if ( // Catch noncharacters
-                    (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
-                    (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
-                    (kdectemp >= 0x1FFFE && kdectemp <= 0x1FFFF) ||
-                    (kdectemp >= 0x2FFFE && kdectemp <= 0x2FFFF) ||
-                    (kdectemp >= 0x3FFFE && kdectemp <= 0x3FFFF) ||
-                    (kdectemp >= 0x4FFFE && kdectemp <= 0x4FFFF) ||
-                    (kdectemp >= 0x5FFFE && kdectemp <= 0x5FFFF) ||
-                    (kdectemp >= 0x6FFFE && kdectemp <= 0x6FFFF) ||
-                    (kdectemp >= 0x7FFFE && kdectemp <= 0x7FFFF) ||
-                    (kdectemp >= 0x8FFFE && kdectemp <= 0x8FFFF) ||
-                    (kdectemp >= 0x9FFFE && kdectemp <= 0x9FFFF) ||
-                    (kdectemp >= 0xAFFFE && kdectemp <= 0xAFFFF) ||
-                    (kdectemp >= 0xBFFFE && kdectemp <= 0xBFFFF) ||
-                    (kdectemp >= 0xCFFFE && kdectemp <= 0xCFFFF) ||
-                    (kdectemp >= 0xDFFFE && kdectemp <= 0xDFFFF) ||
-                    (kdectemp >= 0xEFFFE && kdectemp <= 0xEFFFF) ||
-                    (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
-                    (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
-                ) {
-                    $('displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
-                    $('displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
-                } else if (!this.UnihanType) {
-                    notfoundval = 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Not_found');
-                    $('displayUnicodeDesc').value = notfoundval;
-                    $('displayUnicodeDesc2').value = notfoundval;
-                    for (let i = 2; i <= 14; i++) {
-                        if (i === 10) { continue; }
-                        try {
-                            $('_detailedView' + i).value = '';
-                            $('_detailedView' + i).parentNode.hidden = hideMissing;
-                            this.removeViewChildren(i);
-                        } catch (e) {
-                            alert('2' + e + i);
-                        }
-                    }
-                }
-            } catch (e) {
-                if (surrogate) {
-                    $('displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
-                    $('displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
-                } else if (privateuse) {
-                    $('displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
-                    $('displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
-                } else if ( // Catch noncharacters
-                    (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
-                    (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
-                    (kdectemp >= 0x1FFFE && kdectemp <= 0x1FFFF) ||
-                    (kdectemp >= 0x2FFFE && kdectemp <= 0x2FFFF) ||
-                    (kdectemp >= 0x3FFFE && kdectemp <= 0x3FFFF) ||
-                    (kdectemp >= 0x4FFFE && kdectemp <= 0x4FFFF) ||
-                    (kdectemp >= 0x5FFFE && kdectemp <= 0x5FFFF) ||
-                    (kdectemp >= 0x6FFFE && kdectemp <= 0x6FFFF) ||
-                    (kdectemp >= 0x7FFFE && kdectemp <= 0x7FFFF) ||
-                    (kdectemp >= 0x8FFFE && kdectemp <= 0x8FFFF) ||
-                    (kdectemp >= 0x9FFFE && kdectemp <= 0x9FFFF) ||
-                    (kdectemp >= 0xAFFFE && kdectemp <= 0xAFFFF) ||
-                    (kdectemp >= 0xBFFFE && kdectemp <= 0xBFFFF) ||
-                    (kdectemp >= 0xCFFFE && kdectemp <= 0xCFFFF) ||
-                    (kdectemp >= 0xDFFFE && kdectemp <= 0xDFFFF) ||
-                    (kdectemp >= 0xEFFFE && kdectemp <= 0xEFFFF) ||
-                    (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
-                    (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
-                ) {
-                    $('displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
-                    $('displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
-                } else {
-                    notfoundval = 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Not_found');
-                    $('displayUnicodeDesc').value = notfoundval;
-                    $('displayUnicodeDesc2').value = notfoundval;
-                    for (let i = 2; i <= 14; i++) {
-                        if (i === 10) { continue; }
-                        try {
-                            $('_detailedView' + i).value = '';
-                            $('_detailedView' + i).parentNode.hidden = hideMissing;
-                            this.removeViewChildren(i);
-                        } catch (e) {
-                            alert('3' + e + i);
-                        }
-                    }
-                }
-            } finally {
-                statement.reset();
-            }
-            // const canreturn = true;
+        if (!this.UnihanType && !hangul && $('#viewTabs').selectedTab === $('#detailedCJKView')) {
+            $('#viewTabs').selectedTab = $('#detailedView');
         }
+        table = 'Unicode';
+        let search = false;
+        let cjkText;
+
+        if (kdectemp >= 0x3400 && kdectemp <= 0x4DB5) {
+            search = '3400';
+            if (kdectemp !== 0x3400 && kdectemp !== 0x4DB5) {
+                cjkText = s.getString('CJK_Ideograph_Extension_A');
+            } else if (kdectemp === 0x4DB5) {
+                search = '4DB5';
+            }
+        } else if (kdectemp >= 0x4E00 && kdectemp <= 0x9FC3) {
+            search = '4E00';
+            if (kdectemp !== 0x4E00 && kdectemp !== 0x9FC3) {
+                cjkText = s.getString('CJK_Ideograph');
+            } else if (kdectemp === 0x9FC3) {
+                search = '9FC3';
+            }
+        } else if (kdectemp >= 0xF900 && kdectemp < 0xFB00) { // Should have individual code point
+            search = true;
+        } else if (kdectemp >= 0x20000 && kdectemp <= 0x2A6D6) {
+            search = '20000';
+            if (kdectemp !== 0x20000 && kdectemp !== 0x2A6D6) {
+                cjkText = s.getString('CJK_Ideograph_Extension_B');
+            } else if (kdectemp === 0x2A6D6) {
+                search = '2A6D6';
+            }
+        } else if (kdectemp >= 0x2F800 && kdectemp < 0x2FA1F) { // Should have individual code point
+            search = true;
+        } else if (hangul) {
+            // search = 'AC00';
+            // if (kdectemp != 0xAC00 && kdectemp != 0xD7A3) {
+            cjkText = s.getString('Hangul_Syllable');
+            cjkText += ' ';
+
+            cjkText += Hangul.getHangulName(kdectemp);
+            /* }
+            else if (kdectemp == 0xD7A3) {
+                search = 'D7A3';
+            } */
+        }
+        if (search) {
+            if (search === true) {
+                search = khextemp;
+            }
+            statement = charrefunicodeDb.dbConn.createStatement(
+                'SELECT * FROM ' + table + ' WHERE Code_Point = "' + search + '"'
+            );
+        } else {
+            statement = charrefunicodeDb.dbConn.createStatement(
+                'SELECT * FROM ' + table + ' WHERE Code_Point = "' + khextemp + '"'
+            );
+        }
+        try {
+            // $('#displayUnicodeDesc').value= s.getString('retrieving_description');
+            while (statement.executeStep()) {
+                if (!cjkText) {
+                    result = statement.getUTF8String(1);
+                    if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
+                        try {
+                            const jamo = getJamo(charrefunicodeDb, kdectemp);
+                            result += ' (' + jamo + ')';
+                        } catch (e) {
+                        }
+                    }
+                } else {
+                    result = cjkText;
+                }
+                for (i = 2; i <= 14; i++) {
+                    temp = statement.getUTF8String(i); // Fix: display data more readably, etc.
+                    if (i === 10) {
+                        if (temp) {
+                            result += ';\u00a0\u00a0\u00a0\u00a0\n' + s.getString('searchUnicode_1_Name') +
+                            s.getString('colon') + ' ' + temp;
+                        }
+                        continue;
+                    }
+                    if (temp) {
+                        if (hideMissing) {
+                            $('#_detailedView' + i).parentNode.hidden = false;
+                        }
+                        switch (i) {
+                        case 2:
+                            temp = s.getString('General_Category' + temp);
+                            break;
+                        case 3:
+                            if (temp < 11 || temp > 132) {
+                                temp = s.getString('Canonical_Combining_Class' + temp); // 199, 200, 204, 208, 210, 212 do not have members yet and others from 11 to 132 do not have name listed
+                            }
+                            break;
+                        case 4:
+                            temp = s.getString('Bidi_Class' + temp);
+                            break;
+                        case 9:
+                            temp = (temp === 'Y') ? s.getString('Bidi_MirroredY') : s.getString('Bidi_MirroredN'); // Only two choices
+                            break;
+                        case 12:
+                        case 13:
+                        case 14:
+                            const a = createHTMLElement('a');
+                            a.href = 'javascript:void(0)';
+
+                            a.addEventListener('click', function (e) {
+                                that.startset({value: e.target.innerHTML.charCodeAt()});
+                                that.noGetDescripts = false; // Probably want to start checking again since move to new page
+                            });
+                            const tempno = parseInt(temp, 16);
+                            a.innerHTML = String.fromCodePoint(tempno);
+                            a.className = 'text-link';
+                            const view = $('#_detailedView' + i);
+                            this.removeViewChildren(i);
+
+                            const box = createXULElement('description'); // necessary to avoid CSS wrapping warning
+                            box.append(a);
+                            box.append(' (' + temp + ')');
+                            view.append(box);
+
+                            // alert(new XMLSerializer().serializeToString(view));
+                            break;
+                        default:
+                            break;
+                        }
+                        if (i <= 11) {
+                            $('#_detailedView' + i).value = temp;
+                        }
+                    } else if (i <= 11) {
+                        $('#_detailedView' + i).parentNode.hidden = hideMissing;
+                        $('#_detailedView' + i).value = '';
+                    } else {
+                        $('#_detailedView' + i).parentNode.hidden = hideMissing;
+                        this.removeViewChildren(i);
+                    }
+                }
+                break;
+            }
+            if (!this.UnihanType && result != null) {
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
+            // Fix: remove this duplicate also in catch, etc.
+            } else if (surrogate) {
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
+            } else if (privateuse) {
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
+            } else if ( // Catch noncharacters
+                (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
+                (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
+                (kdectemp >= 0x1FFFE && kdectemp <= 0x1FFFF) ||
+                (kdectemp >= 0x2FFFE && kdectemp <= 0x2FFFF) ||
+                (kdectemp >= 0x3FFFE && kdectemp <= 0x3FFFF) ||
+                (kdectemp >= 0x4FFFE && kdectemp <= 0x4FFFF) ||
+                (kdectemp >= 0x5FFFE && kdectemp <= 0x5FFFF) ||
+                (kdectemp >= 0x6FFFE && kdectemp <= 0x6FFFF) ||
+                (kdectemp >= 0x7FFFE && kdectemp <= 0x7FFFF) ||
+                (kdectemp >= 0x8FFFE && kdectemp <= 0x8FFFF) ||
+                (kdectemp >= 0x9FFFE && kdectemp <= 0x9FFFF) ||
+                (kdectemp >= 0xAFFFE && kdectemp <= 0xAFFFF) ||
+                (kdectemp >= 0xBFFFE && kdectemp <= 0xBFFFF) ||
+                (kdectemp >= 0xCFFFE && kdectemp <= 0xCFFFF) ||
+                (kdectemp >= 0xDFFFE && kdectemp <= 0xDFFFF) ||
+                (kdectemp >= 0xEFFFE && kdectemp <= 0xEFFFF) ||
+                (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
+                (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
+            ) {
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
+            } else if (!this.UnihanType) {
+                notfoundval = 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Not_found');
+                $('#displayUnicodeDesc').value = notfoundval;
+                $('#displayUnicodeDesc2').value = notfoundval;
+                for (let i = 2; i <= 14; i++) {
+                    if (i === 10) { continue; }
+                    try {
+                        $('#_detailedView' + i).value = '';
+                        $('#_detailedView' + i).parentNode.hidden = hideMissing;
+                        this.removeViewChildren(i);
+                    } catch (e) {
+                        alert('2' + e + i);
+                    }
+                }
+            }
+        } catch (e) {
+            if (surrogate) {
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
+            } else if (privateuse) {
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
+            } else if ( // Catch noncharacters
+                (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
+                (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
+                (kdectemp >= 0x1FFFE && kdectemp <= 0x1FFFF) ||
+                (kdectemp >= 0x2FFFE && kdectemp <= 0x2FFFF) ||
+                (kdectemp >= 0x3FFFE && kdectemp <= 0x3FFFF) ||
+                (kdectemp >= 0x4FFFE && kdectemp <= 0x4FFFF) ||
+                (kdectemp >= 0x5FFFE && kdectemp <= 0x5FFFF) ||
+                (kdectemp >= 0x6FFFE && kdectemp <= 0x6FFFF) ||
+                (kdectemp >= 0x7FFFE && kdectemp <= 0x7FFFF) ||
+                (kdectemp >= 0x8FFFE && kdectemp <= 0x8FFFF) ||
+                (kdectemp >= 0x9FFFE && kdectemp <= 0x9FFFF) ||
+                (kdectemp >= 0xAFFFE && kdectemp <= 0xAFFFF) ||
+                (kdectemp >= 0xBFFFE && kdectemp <= 0xBFFFF) ||
+                (kdectemp >= 0xCFFFE && kdectemp <= 0xCFFFF) ||
+                (kdectemp >= 0xDFFFE && kdectemp <= 0xDFFFF) ||
+                (kdectemp >= 0xEFFFE && kdectemp <= 0xEFFFF) ||
+                (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
+                (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
+            ) {
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
+            } else {
+                notfoundval = 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Not_found');
+                $('#displayUnicodeDesc').value = notfoundval;
+                $('#displayUnicodeDesc2').value = notfoundval;
+                for (let i = 2; i <= 14; i++) {
+                    if (i === 10) { continue; }
+                    try {
+                        $('#_detailedView' + i).value = '';
+                        $('#_detailedView' + i).parentNode.hidden = hideMissing;
+                        this.removeViewChildren(i);
+                    } catch (e) {
+                        alert('3' + e + i);
+                    }
+                }
+            }
+        } finally {
+            statement.reset();
+        }
+        // const canreturn = true;
+
         if (this.unihanDb_exists) {
             table = 'Unihan';
 
-            if ((this.UnihanType) && $('viewTabs').selectedTab == $('detailedView')) {
-                $('viewTabs').selectedTab = $('detailedCJKView');
+            if ((this.UnihanType) && $('#viewTabs').selectedTab === $('#detailedView')) {
+                $('#viewTabs').selectedTab = $('#detailedCJKView');
             }
             statement = charrefunicodeDb.dbConnUnihan.createStatement(
                 'SELECT * FROM ' + table + ' WHERE code_pt = "' + khextemp + '"'
             );
             try {
-                // $('displayUnicodeDesc').value= s.getString('retrieving_description');
+                // $('#displayUnicodeDesc').value= s.getString('retrieving_description');
                 while (statement.executeStep()) {
                     result = statement.getUTF8String(14); // Fix: display data more readably, with heading, etc. (and conditional)
                     if (result === null && !cjkText) {
                         result = s.getString('No_definition');
                     }
                     // Fix: Display meta-data in table (get to be stable by right-clicking)
-                    // $('_detailedCJKView' + 3).value = result ? result : '';
+                    // $('#_detailedCJKView' + 3).value = result ? result : '';
                     for (i = 1; i <= 13; i++) {
                         temp = statement.getUTF8String(i); // Fix: display data more readably, etc.
                         if (temp) {
                             if (hideMissingUnihan) {
-                                $('_detailedCJKView' + i).parentNode.hidden = false;
+                                $('#_detailedCJKView' + i).parentNode.hidden = false;
                             }
                             // result += '; ' + temp;
                             switch (i) {
@@ -1341,10 +1352,10 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
                             default:
                                 break;
                             }
-                            $('_detailedCJKView' + i).value = temp;
+                            $('#_detailedCJKView' + i).value = temp;
                         } else {
-                            $('_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
-                            $('_detailedCJKView' + i).value = '';
+                            $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
+                            $('#_detailedCJKView' + i).value = '';
                         }
                     }
                     for (i = 15; i <= 90; i++) {
@@ -1355,7 +1366,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
                         }
                         if (temp) {
                             if (hideMissingUnihan) {
-                                $('_detailedCJKView' + i).parentNode.hidden = false;
+                                $('#_detailedCJKView' + i).parentNode.hidden = false;
                             }
                             switch (i) {
                             case 4:
@@ -1366,21 +1377,21 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
                             default:
                                 break;
                             }
-                            $('_detailedCJKView' + i).value = temp;
+                            $('#_detailedCJKView' + i).value = temp;
                         } else {
-                            $('_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
-                            $('_detailedCJKView' + i).value = '';
+                            $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
+                            $('#_detailedCJKView' + i).value = '';
                         }
                     }
                     break;
                 }
 
-                if (result != '' && result != null) {
+                if (result !== '' && result !== null && result !== undefined) {
                     // Commenting out to show general category under definition
-                    // $('displayUnicodeDesc2').value = kent+'U+' + khextemp+s.getString('colon')+' ' + result;
-                    $('displayUnicodeDescUnihan').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
-                    $('displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
-                    $('displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
+                    // $('#displayUnicodeDesc2').value = kent+'U+' + khextemp+s.getString('colon')+' ' + result;
+                    $('#displayUnicodeDescUnihan').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
+                    $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
+                    $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
                 } else {
                     notfoundval = 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Not_found');
 
@@ -1388,34 +1399,34 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
                         for (let i = 2; i <= 14; i++) {
                             if (i === 10) { continue; }
                             try {
-                                $('_detailedView' + i).value = '';
-                                $('_detailedView' + i).parentNode.hidden = hideMissing;
+                                $('#_detailedView' + i).value = '';
+                                $('#_detailedView' + i).parentNode.hidden = hideMissing;
                                 this.removeViewChildren(i);
                             } catch (e) {
                                 alert('1' + e + i);
                             }
                         }
                         for (i = 1; i <= 13; i++) {
-                            $('_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
-                            $('_detailedCJKView' + i).value = '';
+                            $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
+                            $('#_detailedCJKView' + i).value = '';
                         }
                         for (i = 15; i <= 90; i++) {
-                            $('_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
-                            $('_detailedCJKView' + i).value = '';
+                            $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
+                            $('#_detailedCJKView' + i).value = '';
                         }
                     }
 
                     if (!cjkText) {
-                        $('displayUnicodeDesc').value = notfoundval;
-                        $('displayUnicodeDescUnihan').value = notfoundval;
-                        $('displayUnicodeDesc2').value = notfoundval;
+                        $('#displayUnicodeDesc').value = notfoundval;
+                        $('#displayUnicodeDescUnihan').value = notfoundval;
+                        $('#displayUnicodeDesc2').value = notfoundval;
                     } else {
                         const finalval = kent + 'U+' + khextemp + s.getString('colon') + ' ' + cjkText + ' ' +
                             (hangul ? '' : s.getString('left_parenth') + s.getString('No_definition') + s.getString('right_parenth'));
-                        $('displayUnicodeDesc').value = finalval;
-                        $('displayUnicodeDesc2').value = finalval;
-                        $('displayUnicodeDescUnihan').value = finalval;
-                        // $('displayUnicodeDesc2').value = notfoundval;
+                        $('#displayUnicodeDesc').value = finalval;
+                        $('#displayUnicodeDesc2').value = finalval;
+                        $('#displayUnicodeDescUnihan').value = finalval;
+                        // $('#displayUnicodeDesc2').value = notfoundval;
                     }
                 }
             } catch (e) {
@@ -1427,46 +1438,17 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         } // Excised Ajax code...
     },
     removeViewChildren (i) {
-        const view = $('_detailedView' + i);
+        const view = $('#_detailedView' + i);
         while (view.firstChild) {
             view.removeChild(view.firstChild);
         }
-    },
-    insertText (id, evval) {
-        const textarea = $(id);
-        const length = textarea.value.length;
-        const start = textarea.selectionStart;
-        const end = textarea.selectionEnd;
-
-        // if (end > 0 || 1) {
-        textarea.focus();
-        const pre = textarea.value.substring(0, start);
-        // const selected = textarea.value.substring(start, end);
-        const post = textarea.value.substring(end, length);
-
-        textarea.value = pre + evval + post;
-
-        textarea.selectionStart = length - post.length;
-        textarea.selectionEnd = length - post.length;
-        /* }
-        else {
-// Although textarea.focus(); should be here (above the "if" actually), it seems to put the cursor at the beginning instead of end
-// textarea.focus();
-            textarea.value = textarea.value + evval;
-            textarea.selectionStart = length;
-            textarea.selectionEnd = length;
-        }
-        */
-        // Save values for manipulation by entity addition function, 'insertent'
-        this.selst = textarea.selectionStart;
-        this.selend = textarea.selectionEnd;
     },
     fsizetextbox (size) { // Changes font-size
         const txtbxsize = this.prefs.getIntPref(EXT_BASE + 'fsizetextbox') + size;
         this.prefs.setIntPref(EXT_BASE + 'fsizetextbox', txtbxsize);
 
-        $('toconvert').style.fontSize = txtbxsize + 'px';
-        $('converted').style.fontSize = txtbxsize + 'px';
+        $('#toconvert').style.fontSize = txtbxsize + 'px';
+        $('#converted').style.fontSize = txtbxsize + 'px';
         if (size > 0) {
             // On Mac at least, resizing for reducing font size, causes button to
             // go off screen
@@ -1477,33 +1459,20 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         const fsize = this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + size;
         // const tds = createHTMLElement('td');
         this.prefs.setIntPref(EXT_BASE + 'tblfontsize', fsize);
-        this.resizecells(true, size);
+        this.resizecells({sizeToContent: size > 0});
     },
-    resizecells (windowrsz, size) {
-        let xpathresultobj;
-        try {
-            xpathresultobj = document.evaluate(
-                "//*[@name='dec' or @name='hex' or @name='unicode']",
-                /* contextNode */ document.documentElement,
-                /* Namespace URL mapping */ function () { return null; },
-                XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-                /* Same XPathResult object */ null
-            );
-        } catch (e) {
-            alert(e);
-        }
-
-        for (let i = 0; i < xpathresultobj.snapshotLength; i++) {
-            const tempid = xpathresultobj.snapshotItem(i);
-            // This is apparently necessary as the XPath expression does not seem to me to be able to allow manipulation of the original node
-            $(tempid.id).style.fontSize =
-                            this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
-        }
-        $('inserttext').style.fontSize =
-                            this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
-        // $('displayUnicodeDesc').style.fontSize =
-        // this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
-        if (size > 0 && windowrsz) {
+    resizecells ({sizeToContent} = {}) {
+        $$(
+            "*[name='dec'],*[name='hex'],*[name='unicode']"
+        ).forEach((control) => {
+            control.style.fontSize =
+                this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
+        });
+        $('#insertText').style.fontSize =
+            this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
+        // $('#displayUnicodeDesc').style.fontSize =
+        //     this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
+        if (sizeToContent) {
             // On Mac at least, resizing for reducing font size, causes button to
             // go off screen
             window.sizeToContent();
@@ -1579,7 +1548,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     },
     colsset (e) {
         this.setCurrstartset(this.j);
-        if (e.target.value != null && e.target.value != '') {
+        if (e.target.value != null && e.target.value !== '') {
             this.prefs.setIntPref(EXT_BASE + 'tblcolsset', e.target.value);
         }
         buildChart();
@@ -1587,7 +1556,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     startset (tbx, descripts) {
         this.disableEnts();
         let data;
-        if (tbx.value != null && tbx.value != '') {
+        if (tbx.value != null && tbx.value !== '') {
             data = tbx.value;
         } else {
             // Only used when the field is manually changed to blank (default start set)
@@ -1606,7 +1575,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
         charrefunicodeConverter.searchUnicode(obj, table, nochart, strict);
         if (!nochart) {
-            const tmp = this.branch.getComplexValue('currstartset', Ci.nsIPrefLocalizedString).data;
+            const tmp = this.branch.getComplexValue('currentStartCharCode', Ci.nsIPrefLocalizedString).data;
             this.startset(obj, true); // Could remember last description (?)
             this.setCurrstartset(tmp); // Set it back as it was before the search
         }
@@ -1627,9 +1596,9 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         return true;
     },
     moveoutput (movedid) {
-        const inserttext = $(movedid);
-        $('unicodetabs').selectedIndex = 1;
-        $('toconvert').value = inserttext.value;
+        const insertText = $(movedid);
+        $('#unicodetabs').selectedIndex = 1;
+        $('#toconvert').value = insertText.value;
     },
     append2htmlflip (e) {
         this.setprefs(e);
@@ -1639,7 +1608,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         // Cannot use back-reference inside char. class, so need to do twice
         const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/g;
 
-        const text = $('DTDtextbox').value;
+        const text = $('#DTDtextbox').value;
 
         const temp0 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
         temp0.data = text;
@@ -1662,9 +1631,11 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         this.copyarray(this.orignewents, charrefunicodeConverter.newents); // Start off blank in case items erased
         this.copyarray(this.orignewcharrefs, charrefunicodeConverter.newcharrefs); // Start off blank in case items erased
 
+        const decreg = /^(&#|#)?([0-9][0-9]+);?$/;
+        // const decreg2 = /^(&#|#)([0-9]);?$/;
+        const hexreg = /^(&#|#|0|U|u)?([xX+])([0-9a-fA-F]+);?$/;
+
         while ((result = pattern.exec(text)) !== null) {
-            const decreg = /^(&#)([0-9]+);$/;
-            const hexreg = /^(&#[xX])([0-9a-fA-F]+);$/;
             let m = result[3];
             let addreg = true;
             if (m.match(decreg)) { // Dec
@@ -1676,7 +1647,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
             } else if (m.length > 1) { // If replacing with Unicode sequence longer than one character, assume only wish to convert from entity (not from Unicode)
                 addreg = false;
             } else {
-                m = m.charCodeAt(0);
+                m = m.charCodeAt();
             }
             if (addreg) {
                 charrefunicodeConverter.shiftcount += 1; // Used to ensure apos or amp is detected in same position
@@ -1692,10 +1663,10 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
      * Sets the preference for whether to display the chosen character in the middle of the chart (or beginning)
      * @param {Boolean} bool Whether to set to true or not
      */
-    middleyes (bool) {
+    startCharInMiddleOfChart (bool) {
         // Commented this out because while it will always change (unlike now), the value will be misleading
-        // $(EXT_BASE + 'middleyes').checked = bool;
-        this.prefs.setBoolPref(EXT_BASE + 'middleyes', bool);
+        // $(EXT_BASE + 'startCharInMiddleOfChart').checked = bool;
+        this.prefs.setBoolPref(EXT_BASE + 'startCharInMiddleOfChart', bool);
     },
     /**
      * Sets a value in preferences at which the Unicode chart view will begin on next start-up
@@ -1704,7 +1675,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     setCurrstartset (value) {
         const temp1 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
         temp1.data = value;
-        this.prefs.setComplexValue(EXT_BASE + 'currstartset',
+        this.prefs.setComplexValue(EXT_BASE + 'currentStartCharCode',
             Ci.nsIPrefLocalizedString,
             temp1
         );
@@ -1713,8 +1684,11 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     k (setval) {
         this.setCurrstartset(setval);
     },
-    insertent (id) {
-        this.insertText(id, '<!ENTITY  "">\n');
+    insertent () {
+        insertIntoOrOverExisting({
+            textReceptable: $('#DTDtextbox'),
+            value: '<!ENTITY  "">\n'
+        });
         /* The following works but may be annoying if trying to insert multiple entities at a time (thus the addition of the newline)
         // Bring cursor back a little
         textarea.selectionStart = this.selst - 5;
@@ -1726,7 +1700,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
      * @param {Event} e The event (not in use)
      */
     multiline (e) {
-        const display = $('displayUnicodeDesc');
+        const display = $('#displayUnicodeDesc');
         if (this.prefs.getBoolPref(EXT_BASE + 'multiline') === false) {
             this.prefs.setBoolPref(EXT_BASE + 'multiline', true);
             display.setAttribute('multiline', true);
@@ -1739,7 +1713,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     },
     addToToolbar () {
         const dropdownArr = JSON.parse(this.branch.getComplexValue('dropdownArr', Ci.nsIPrefLocalizedString).data || '[]');
-        dropdownArr.push($('inserttext').value);
+        dropdownArr.push($('#insertText').value);
         const str = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
         str.data = JSON.stringify(dropdownArr);
         this.branch.setComplexValue('dropdownArr', Ci.nsIPrefLocalizedString, str);
@@ -1752,7 +1726,7 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
     refreshToolbarDropdown () {
         // SETUP
         const dropdownArr = JSON.parse(this.branch.getComplexValue('dropdownArr', Ci.nsIPrefLocalizedString).data || '[]');
-        const toolbarbuttonPopup = $('charrefunicode-toolbar-chars', mainDoc);
+        const toolbarbuttonPopup = mainDoc.querySelector('#charrefunicode-toolbar-chars');
         if (!toolbarbuttonPopup) {
             return false;
         }
@@ -1784,10 +1758,10 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
         do {
             read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
             data += str.value;
-        } while (read != 0);
+        } while (read !== 0);
         cstream.close(); // this closes fstream
 
-        $('DTDtextbox').value += '\n' + data;
+        $('#DTDtextbox').value += '\n' + data;
         this.registerDTD();
     },
     idgen: 0,
@@ -1811,13 +1785,13 @@ $('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.s
 
 // EVENTS
 window.addEventListener('load', function (e) {
-    $('encoding_from').addEventListener('click', function (e) {
-        Unicodecharref.convertEncoding($('toconvert').value, this);
+    $('#encoding_from').addEventListener('click', function (e) {
+        Unicodecharref.convertEncoding($('#toconvert').value, this);
     });
-    $('encoding_to').addEventListener('click', function (e) {
-        Unicodecharref.convertEncoding($('toconvert').value, this);
+    $('#encoding_to').addEventListener('click', function (e) {
+        Unicodecharref.convertEncoding($('#toconvert').value, this);
     });
-    $('insertEntityFile').addEventListener('change', function (e) {
+    $('#insertEntityFile').addEventListener('change', function (e) {
         Unicodecharref.insertEntityFile(e);
     });
     Unicodecharref.initialize(e);

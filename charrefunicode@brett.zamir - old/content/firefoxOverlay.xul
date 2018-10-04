@@ -24,10 +24,10 @@ Copyright 2007, 2008, 2009 Brett Zamir
   <script type="application/x-javascript" src="chrome://charrefunicode/content/common-conversion-utils.js"/>
   <script type="application/x-javascript" src="chrome://charrefunicode/content/overlay.js"/>
 
-  
+
   <keyset>
 	<key key="u" modifiers="shift alt" oncommand="charrefunicode.openDialog();" />
-  </keyset>  
+  </keyset>
 
   <stringbundleset id="stringbundleset">
     <stringbundle id="charrefunicode-strings" src="chrome://charrefunicode/locale/charrefunicode.properties"/>
@@ -43,7 +43,7 @@ Copyright 2007, 2008, 2009 Brett Zamir
 
 
   <menupopup id="contentAreaContextMenu">
-  
+
 	<menu label="&label.unicode;"><menupopup>
     <menuitem id="context-charrefunicode1" label="&charref2unicodeContext.label;"
               accesskey="&charref2unicodeContext.accesskey;"
@@ -51,83 +51,83 @@ Copyright 2007, 2008, 2009 Brett Zamir
             oncommand="charrefunicode.onMenuItemCommand(event)"/>
     <menuitem id="context-charrefunicode2" label="&charref2htmlentsContext.label;"
               accesskey="&charref2htmlentsContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 	<menuitem id="context-charrefunicode3" label="&unicode2charrefDecContext.label;"
               accesskey="&unicode2charrefDecContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-charrefunicode4" label="&unicode2charrefHex.label;"
               accesskey="&unicode2charrefHexContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-charrefunicode5" label="&unicode2htmlentsContext.label;"
               accesskey="&unicode2htmlentsContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-charrefunicode6" label="&unicode2jsescapeContext.label;"
               accesskey="&unicode2jsescapeContext.accesskey;"
-              insertafter="context-stop" 
-			oncommand="charrefunicode.onMenuItemCommand(event)"/>            
+              insertafter="context-stop"
+			oncommand="charrefunicode.onMenuItemCommand(event)"/>
         <menuitem id="context-charrefunicode7" label="&unicodeTo6DigitContext.label;"
               accesskey="&unicodeTo6DigitContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
             oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-charrefunicode8" label="&unicode2cssescapeContext.label;"
               accesskey="&unicode2cssescapeContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 
 		<menuitem id="context-charrefunicode9" label="&htmlents2charrefDecContext.label;"
               accesskey="&htmlents2charrefDecContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-charrefunicode10" label="&htmlents2charrefHexContext.label;"
               accesskey="&htmlents2charrefHexContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-charrefunicode11" label="&htmlents2unicodeContext.label;"
               accesskey="&htmlents2unicodeContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-charrefunicode12" label="&hex2decContext.label;"
               accesskey="&hex2decContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-charrefunicode13" label="&dec2hexContext.label;"
               accesskey="&dec2hexContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
         <menuitem id="context-charrefunicode14" label="&jsescape2unicodeContext.label;"
               accesskey="&jsescape2unicodeContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
         <menuitem id="context-charrefunicode15" label="&sixDigit2unicodeContext.label;"
               accesskey="&sixDigit2unicodeContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
             oncommand="charrefunicode.onMenuItemCommand(event)"/>
         <menuitem id="context-charrefunicode16" label="&cssescape2unicodeContext.label;"
               accesskey="&cssescape2unicodeContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 
         <menuitem id="context-charrefunicode17" label="&unicode2CharDescContext.label;"
               accesskey="&unicode2CharDescContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
         <menuitem id="context-charrefunicode18" label="&charDesc2UnicodeContext.label;"
               accesskey="&charDesc2Unicode.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 
-            
+
 		<menuitem id="context-unicodechart" label="&unicodechartContext.label;"
               accesskey="&unicodechartContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 		<menuitem id="context-launchunicode" label="&launchunicodeContext.label;"
               accesskey="&launchunicodeContext.accesskey;"
-              insertafter="context-stop" 
+              insertafter="context-stop"
 			oncommand="charrefunicode.onMenuItemCommand(event)"/>
 	</menupopup></menu>
   </menupopup>
@@ -135,5 +135,5 @@ Copyright 2007, 2008, 2009 Brett Zamir
     <menuitem id="tools-charrefunicode" label="&tools-charrefunicode.label;" class="menuitem-iconic"
               oncommand="charrefunicode.onMenuItemCommand(event);" image="chrome://charrefunicode/skin/openWindow16.png"/>
   </menupopup>
-  
+
 </overlay>
