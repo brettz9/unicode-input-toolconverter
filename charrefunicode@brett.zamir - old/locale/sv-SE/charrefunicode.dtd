@@ -299,16 +299,9 @@
 <!ENTITY Yijing_Mono--_Di-_and_Trigrams "I Ching (mono-, di- och trigram)">
 <!ENTITY copyToClipboard "Kopiera till Urklipp">
 <!ENTITY period ".">
-<!ENTITY Conversion.tab.label "Konvertering">
-<!ENTITY Prefs.tab.label "Inställningar">
-<!ENTITY DTD.tab.label "DTD">
-<!ENTITY Charts.tab.label "Tabeller">
-<!ENTITY Notes.tab.label "Information">
-<!ENTITY About.tab.label "Om">
 <!ENTITY moveconvertedup.label "Kopiera &quot;Konverterade&quot; till &quot;Förkonverterade&quot;">
 <!ENTITY Reconvert.dialogheader.title "Återkonverteringsinställningar">
 <!ENTITY Preferences.dialogheader.title "Inställningar">
-<!ENTITY About.dialogheader.title "Om">
 <!ENTITY default.textbox.value "standard">
 <!ENTITY Ascii.checkbox.label "Konvertera till entiteter om antal ASCII &lt; 128 (befintliga entiteter/teckenref. kommer därmed inte vara immuna)">
 <!ENTITY Hexletters.checkbox.label "Utdata-hexadecimal A-F (versaler)">
@@ -401,11 +394,7 @@
 <!ENTITY notespar6 "I XML-språket, undantaget fem fördefinierade entiteter (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;) och &apos; (&apos;)), måste du uttryckligen definiera de entiteter som du vill använda (eller använda ett särskilt &quot;PUBLIC&quot;-ID, vilket visar för program som läser XML-filen att du kommer att använda det språkets uppsättning av entiteter).">
 <!ENTITY notespar7 "I HTML finns det ett antal redan definierade entiteter. Ett viktigt påpekande: Även om HTML använder fyra av XML:s fem fördefinierade entiteter, så använder det inte &quot;&apos;&quot;. Du måste således istället använda motsvarande Unicode (eller använda någon av teckenreferenserna &amp;#x27; eller &amp;#39;).">
 <!ENTITY notespar8 "Du kan också definiera dina egna entiteter i tilläggets &quot;DTD&quot;-sektion genom att använda syntaxet &quot;&lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;&quot; så att de kan inkluderas i konverteringar.">
-<!ENTITY About.desc1 "Detta tillägg utvecklades av">
-<!ENTITY About.desc2 "Brett Zamir">
-<!ENTITY About.desc2b " och översattes av Karoly Fabricz (hu-HU), Edgard Magalh&#227;es (pt-BR) och Mikael Hiort af Ornäs (sv-SE)">
-<!ENTITY About.desc3 "Om du får användning för detta tillägg, vänligen överväg att göra en">
-<!ENTITY About.desc4 "Paypal-donation">
+
 <!ENTITY European_Scripts "Europeiska alfabet">
 <!ENTITY _see_also_Comb._Marks-- "(Se även Kombinerande tecken)">
 <!ENTITY Armenian "Armeniska">

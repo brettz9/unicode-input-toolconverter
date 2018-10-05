@@ -1,44 +1,95 @@
 {
     "extensionName": {
-      "message": "Unicode Input Tool/Converter"
+        "message": "Unicode Input Tool/Converter"
     },
     "extensionShortName": {
-      "message": "Unicode Tool"
+        "message": "Unicode Tool"
     },
     "extensionDescription": {
-      "message": "Add-on for selecting Unicode characters by variety of means and converting between various representations"
+        "message": "Add-on for selecting Unicode characters by variety of means and converting between various representations"
     },
     "browser_action_title": {
-      "message": "Unicode Input Tool/Converter"
+        "message": "Unicode Input Tool/Converter"
     },
     "unicode_noun": {
-      "message": "unicode"
+        "message": "unicode"
     },
     "hex_noun": {
-      "message": "hexadecimal"
+        "message": "hexadecimal"
     },
     "dec_noun": {
-      "message": "decimal"
+        "message": "decimal"
     },
     "ent_noun": {
-      "message": "entiteter"
+        "message": "entiteter"
     },
     "Unicode_table_caption_title": {
-      "message": "Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför"
+        "message": "Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför"
     },
     "caption_format_begin": {
-      "message": ", {value}"
+        "message": ", {value}"
     },
     "caption_format_end_two": {
-      "message": " och {value}"
+        "message": " och {value}"
     },
     "caption_format_end_three_plus": {
-      "message": " och {value}"
+        "message": " och {value}"
     },
     "Next_set": {
-      "message": "Nästa uppsättning"
+        "message": "Nästa uppsättning"
     },
     "Prev_set": {
-      "message": "Föreg. uppsättning"
+        "message": "Föreg. uppsättning"
+    },
+    "Conversion_tab_label": {
+        "message": "Konvertering"
+    },
+    "Prefs_tab_label": {
+        "message": "Inställningar"
+    },
+    "DTD_tab_label": {
+        "message": "DTD"
+    },
+    "Charts_tab_label": {
+        "message": "Tabeller"
+    },
+    "Notes_tab_label": {
+        "message": "Information"
+    },
+    "About_tab_label": {
+        "message": "Om"
+    },
+    "About_dialogheader_title": {
+        "message": "Om"
+    },
+    "About_developer_and_contributors": {
+        "message": "{About_developer} {About_developer_link} {About_contributors}"
+    },
+    "About_developer": {
+        "message": "Detta tillägg utvecklades av"
+    },
+    "About_developer_linkText": {
+        "message": "Brett Zamir"
+    },
+    "About_contributors": {
+        "message": " och översattes av Karoly Fabricz (hu-HU), Edgard Magalhães (pt-BR) och Mikael Hiort af Ornäs (sv-SE)."
+    },
+    "About_paypal": {
+        "message": "Om du får användning för detta tillägg, vänligen överväg att göra en {About_paypal_button}."
+    },
+    "About_paypal_buttonText": {
+        "message": "Paypal-donation"
+    },
+    "About_ial": {
+        "message": "Skaparen av detta tillägg vill bjuda in dig att betänka (och främja) idén om ett officiellt {About_ial_wikipedia_link}, så att världens alla folk en dag skall kunna kommunicera med varandra från tidig ålder och ägna sin energi åt mer produktiva (så väl som förståelseökande och kostnadsbesparande) områden än att behöva lära sig ett flertal lingua franca (geografiskt specifika gemensamma huvudspråk) och därmed göra dem fria att göra andra saker, såsom studier av vilka lokala eller andra språk de kan tänkas vilja lära sig: {About_ial_onetongue_link}."
+    },
+    "About_ial_wikipedia_linkText": {
+        "message": "internationellt hjälpspråk"
+    },
+    "About_ial_wikipedia_linkURL": {
+        "message": "http://sv.wikipedia.org/wiki/International_Auxiliary_Language_Association"
+    },
+    "About_ial_onetongue_linkText": {
+        "message": "World Auxiliary Language website"
     }
 }

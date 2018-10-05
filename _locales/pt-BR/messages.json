@@ -1,44 +1,95 @@
 {
     "extensionName": {
-      "message": "Unicode Input Tool/Converter"
+        "message": "Unicode Input Tool/Converter"
     },
     "extensionShortName": {
-      "message": "Unicode Tool"
+        "message": "Unicode Tool"
     },
     "extensionDescription": {
-      "message": "Add-on for selecting Unicode characters by variety of means and converting between various representations"
+        "message": "Add-on for selecting Unicode characters by variety of means and converting between various representations"
     },
     "browser_action_title": {
-      "message": "Unicode Input Tool/Converter"
+        "message": "Unicode Input Tool/Converter"
     },
     "unicode_noun": {
-      "message": "Unicode"
+        "message": "Unicode"
     },
     "hex_noun": {
-      "message": "hexadecimal"
+        "message": "hexadecimal"
     },
     "dec_noun": {
-      "message": "decimal"
+        "message": "decimal"
     },
     "ent_noun": {
-      "message": "entidades"
+        "message": "entidades"
     },
     "Unicode_table_caption_title": {
         "message": "Clique Control + botão esquerdo do mouse sobre um caractere para congelar ou descongelar as descrições abaixo"
     },
     "caption_format_begin": {
-      "message": ", {value}"
+        "message": ", {value}"
     },
     "caption_format_end_two": {
-      "message": " e {value}"
+        "message": " e {value}"
     },
     "caption_format_end_three_plus": {
-      "message": ", e {value}"
+        "message": ", e {value}"
     },
     "Next_set": {
         "message": "Próximo conjunto"
     },
     "Prev_set": {
         "message": "Conjunto anterior"
+    },
+    "Conversion_tab_label": {
+        "message": "Conversão"
+    },
+    "Prefs_tab_label": {
+        "message": "Preferências"
+    },
+    "DTD_tab_label": {
+        "message": "DTD"
+    },
+    "Charts_tab_label": {
+        "message": "Gráficos"
+    },
+    "Notes_tab_label": {
+        "message": "Notas"
+    },
+    "About_tab_label": {
+        "message": "Sobre"
+    },
+    "About_dialogheader_title": {
+        "message": "Sobre"
+    },
+    "About_developer_and_contributors": {
+        "message": "{About_developer} {About_developer_link} {About_contributors}"
+    },
+    "About_developer": {
+        "message": "Esta extensão foi desenvolvida por"
+    },
+    "About_developer_linkText": {
+        "message": "Brett Zamir"
+    },
+    "About_contributors": {
+        "message": " e traduzida por Karoly Fabricz (hu-HU), Edgard Dias Magalhães (pt-BR), Mikael Hiort af Ornäs (sv-SE)."
+    },
+    "About_paypal": {
+        "message": "Se você achar esta extensão útil, por favor, pense em fazer uma {About_paypal_button}."
+    },
+    "About_paypal_buttonText": {
+        "message": "doação ao PayPal"
+    },
+    "About_ial": {
+        "message": "O autor da extensão gostaria que você conheça (e promova) a idéia de uma {About_ial_wikipedia_link}, de modo que os povos do mundo serão um dia capazes de se intercomunicar devido a um ensino precoce de línguas e gastar suas energias em coisas mais produtivas (bem como mais sensíveis e econômicas) do que aprender várias línguas francas, deixando-os livres para fazer outras coisas como estudar uma língua local ou quaisquer outras que eles queiram aprender: {About_ial_onetongue_link}"
+    },
+    "About_ial_wikipedia_linkText": {
+        "message": "língua auxiliar internacional"
+    },
+    "About_ial_wikipedia_linkURL": {
+        "message": "http://pt.wikipedia.org/wiki/Língua_auxiliar_internacional"
+    },
+    "About_ial_onetongue_linkText": {
+        "message": "World Auxiliary Language website"
     }
 }

@@ -17,7 +17,7 @@ Copyright 2007, 2008, 2009 Brett Zamir
 -->
 
 
-<!ENTITY DTD.insertEntityFile "Elemfájl beillesztése"> 
+<!ENTITY DTD.insertEntityFile "Elemfájl beillesztése">
 
 
 <!ENTITY ent_isobox "keretek és vonalak">
@@ -340,11 +340,11 @@ Copyright 2007, 2008, 2009 Brett Zamir
 <!ENTITY basicView.tab "Alapvető nézet és kimenet">
 <!ENTITY detailedView.tab "Részletes nézet">
 <!ENTITY detailedCJKView.tab "Részletes nézet (CJK)">
-<!ENTITY unicode2charrefDecSurrogate.label "Unikódból karakterhivatkozásba 
+<!ENTITY unicode2charrefDecSurrogate.label "Unikódból karakterhivatkozásba
 (dec) helyettesítőpárként">
-<!ENTITY unicode2charrefHexSurrogate.label "Unikódból karakterhivatkozásba 
+<!ENTITY unicode2charrefHexSurrogate.label "Unikódból karakterhivatkozásba
 (hex) helyettesítőpárként">
-<!ENTITY unicode2charrefSurrogate.tooltip "Átalakítás helyettesítőpárokká  
+<!ENTITY unicode2charrefSurrogate.tooltip "Átalakítás helyettesítőpárokká
 (Csak akkor válassza, ha egy magasabb síkba tartozó (ritka) karakter helyettesítőjét keresi, vagy ha magát a helyettesítőt kívánja megtekinteni)">
 <!ENTITY DownloadUnihan "Az Unihan-állomány letöltése (19,3 Mb)">
 <!ENTITY Download_unihan_tooltip "A kínai, japán, koreai karakterek legújabb leírását ide kattintva letöltheti (a kiegészítő nem tartalmazza, mert az állomány mérete ige nagy).">
@@ -385,16 +385,9 @@ Copyright 2007, 2008, 2009 Brett Zamir
 <!ENTITY Yijing_Mono_and_Digrams "Csidzsin monogramok és digramok">
 <!ENTITY copyToClipboard "Másolás a vágólapra">
 <!ENTITY period ".">
-<!ENTITY Conversion.tab.label "Átalakítás">
-<!ENTITY Prefs.tab.label "Beállítások">
-<!ENTITY DTD.tab.label "DTD">
-<!ENTITY Charts.tab.label "Diagramok">
-<!ENTITY Notes.tab.label "Megjegyzések">
-<!ENTITY About.tab.label "Névjegy">
 <!ENTITY moveconvertedup.label "&apos;Átalakított&apos; másolása előzetesen átalakított formába">
 <!ENTITY Reconvert.dialogheader.title "Újrakonvertálási lehetőségek">
 <!ENTITY Preferences.dialogheader.title "Beállítások">
-<!ENTITY About.dialogheader.title "Névjegy">
 <!ENTITY default.textbox.value "alapbeállítás">
 <!ENTITY Ascii.checkbox.label "Átalakítás egyedekké, ha az ASCII-k &lt; 128 (a meglévő egyedek/karakterhivatkozások így nem lesznek immunisak)">
 <!ENTITY Hexletters.checkbox.label "A kimenet hexadecimális A-F (nagybetűs)">
@@ -487,11 +480,7 @@ Copyright 2007, 2008, 2009 Brett Zamir
 <!ENTITY notespar6 "XML esetén az öt előre meghatározott egyeden (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;), &apos; (&apos;)) kívül explicit módon megadhat egyedeket (vagy használhatja a speciális PUBLIC azonosítót, mellyel jelezheti az XML-állományt olvasó programnak, hogy a nyelv saját egyedkészletét fogja használni).">
 <!ENTITY notespar7 "HTML-ben egy sor előre meghatározott egyed létezik. Fontos azonban megjegyezni, hogy noha a HTML az XML öt előre meghatározott egyede közül négyet használ, nem használja az &apos;&amp;apos;&apos;-t, így ennek helyén a neki megfelelő unikódot (vagy az &amp;#x27;, ill. &amp;#39; karakterhivatkozás közül valamelyiket) kell használnia.">
 <!ENTITY notespar8 "Ugyancsak megadhatja saját egyedeit a &apos;DTD&apos;-szakaszban az &apos;&lt;!ENTITY egyednév &quot;egyedérték&quot;&gt;&apos; szintaxissal, melyeket így az átalakítás során felhasználhat.">
-<!ENTITY About.desc1 "Ezt a kiegészítőt">
-<!ENTITY About.desc2 "Brett Zamir készítette">
-<!ENTITY About.desc2b " és Fábricz Károly (hu-HU), Edgard Magalh&#227;es (pt-BR), Mikael Hiort af Ornäs (sv-SE) fordította.">
-<!ENTITY About.desc3 "Ha a kiegészítőt hasznosnak találja, vegye fontolóra">
-<!ENTITY About.desc4 "egy Paypal-adomány lehetőségét.">
+
 <!ENTITY European_Scripts "Európai ábécék">
 <!ENTITY _see_also_Comb._Marks-- "(lásd még: kombinált jelek)">
 <!ENTITY Armenian "Örmény">

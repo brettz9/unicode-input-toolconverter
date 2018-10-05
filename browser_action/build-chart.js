@@ -1,9 +1,10 @@
 import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {getPref, setPref, configurePrefs} from './Preferences.js';
-import {i18n, replaceBrackets} from './I18n.js';
 import {fill} from './utils.js';
 import getUnicodeDesc from './getUnicodeDescription.js';
 import prefDefaultGetter from './prefDefaultGetter.js';
+
+// import * as Utils './common-conversion-utils.js';
 
 configurePrefs({
     prefDefaultGetter,
@@ -21,16 +22,16 @@ const CharrefunicodeConsts = {
 };
 
 let idgen = 0;
-let _, textReceptable, chartContainer, insertText, bracketSubstitute;
+let _, textReceptable, chartContainer, insertText;
 export default async function ({
+    _: i18n,
     descripts,
-    locales, insertText: it, textReceptable: tr, chartContainer: cc
+    insertText: it, textReceptable: tr, chartContainer: cc
 }) {
     textReceptable = tr;
     chartContainer = cc;
     insertText = it;
-    _ = await i18n({locales, defaults: false});
-    bracketSubstitute = replaceBrackets(_);
+    _ = i18n;
     return buildChart({descripts});
 }
 
@@ -136,14 +137,14 @@ export const buildChart = async function buildChart ({descripts} = {}) {
     // Make first letter of first word upper case
     const captionContent = captioncntnt[0].replace(/^[a-z]/, (s) => s.toUpperCase()) +
         captioncntnt.slice(1, -1).reduce((s, value) => {
-            return s + bracketSubstitute('caption_format_begin', {value});
+            return s + _('caption_format_begin', {value});
         }, '') + (
         captioncntnt.length === 2
-            ? bracketSubstitute('caption_format_end_two', {
+            ? _('caption_format_end_two', {
                 value: captioncntnt.pop()
             })
             : captioncntnt.length > 2
-                ? bracketSubstitute('caption_format_end_three_plus', {
+                ? _('caption_format_end_three_plus', {
                     value: captioncntnt.pop()
                 })
                 : '');

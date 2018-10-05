@@ -92,9 +92,9 @@ const Unicodecharref = {
                 const percentComplete = ((aCurTotalProgress / aMaxTotalProgress) * 100).toFixed(2);
                 // <label id="progress_stat"/>
                 // <progressmeter id="progress_element" mode="determined"/>
-                const ele = document.getElementById('progress_element');
+                const ele = $('#progress_element');
                 ele.value = percentComplete;
-                const stat = document.getElementById('progress_stat');
+                const stat = $('#progress_stat');
 
                 stat.value = s.getString('download_progress') + ' ' + percentComplete + s.getString('percentSign');
             },
@@ -107,13 +107,13 @@ const Unicodecharref = {
                         );
                         alert(s.getString('Finished_download'));
                         that.unihanDb_exists = true;
-                        document.getElementById('closeDownloadProgressBox').hidden = false;
-                        document.getElementById('UnihanInstalled').hidden = false;
+                        $('#closeDownloadProgressBox').hidden = false;
+                        $('#UnihanInstalled').hidden = false;
                     } catch (e) {
-                        document.getElementById('closeDownloadProgressBox').hidden = true;
-                        document.getElementById('UnihanInstalled').hidden = true;
-                        document.getElementById('DownloadProgressBox').hidden = true;
-                        document.getElementById('DownloadButtonBox').hidden = false;
+                        $('#closeDownloadProgressBox').hidden = true;
+                        $('#UnihanInstalled').hidden = true;
+                        $('#DownloadProgressBox').hidden = true;
+                        $('#DownloadButtonBox').hidden = false;
                         alert(s.getString('Problem_downloading'));
                         log(e);
                     }
@@ -142,9 +142,9 @@ const Unicodecharref = {
                         textbox.setAttribute('cols', '2');
                         textbox.addEventListener('change', function (e) {Unicodecharref['search' + type](e);});
                         textbox.addEventListener('input', function (e) {Unicodecharref['search' + type](e);});
-                        row.appendChild(label);
-                        row.appendChild(textbox);
-                        $(type+'Search').appendChild(row);
+                        row.append(label);
+                        row.append(textbox);
+                        $(type+'Search').append(row);
                 }
         }
         catch(e) {
@@ -161,7 +161,7 @@ const Unicodecharref = {
                 const label = createXULElement('label');
                 label.setAttribute('value', s.getString(prefix + this[type][i]));
                 label.setAttribute('control', prefix + this[type][i]);
-                row.appendChild(label);
+                row.append(label);
                 if (type === 'Unicode') { // Fix: make block for Unihan if need that
                     const menuIdx = this.UnicodeMenus.indexOf(this[type][i]);
                     if (menuIdx !== -1) {
@@ -187,7 +187,7 @@ const Unicodecharref = {
                                 menuitem.setAttribute('label', s.getString(match + this['UnicodeMenu' + match][j]));
                                 menuitem.setAttribute('tooltiptext', s.getString(match + this['UnicodeMenu' + match][j]));
                                 menuitem.setAttribute('value', this['UnicodeMenu' + match][j]);
-                                menupopup.appendChild(menuitem);
+                                menupopup.append(menuitem);
                             }
                             if (match === 'Canonical_Combining_Class') {
                                 for (j = 11; j <= 36; j++) { // Other Non-Numeric not listed in UnicodeMenuCCVNumericOnly
@@ -195,20 +195,20 @@ const Unicodecharref = {
                                     menuitem.setAttribute('label', j);
                                     menuitem.setAttribute('tooltiptext', j);
                                     menuitem.setAttribute('value', j);
-                                    menupopup.appendChild(menuitem);
+                                    menupopup.append(menuitem);
                                 }
                                 for (j = 0; j < this['UnicodeMenu' + 'CCVNumericOnly'].length; j++) {
                                     menuitem = createXULElement('menuitem');
                                     menuitem.setAttribute('label', this['UnicodeMenu' + 'CCVNumericOnly'][j]);
                                     menuitem.setAttribute('tooltiptext', this['UnicodeMenu' + 'CCVNumericOnly'][j]);
                                     menuitem.setAttribute('value', this['UnicodeMenu' + 'CCVNumericOnly'][j]);
-                                    menupopup.appendChild(menuitem);
+                                    menupopup.append(menuitem);
                                 }
                             }
-                            menulist.appendChild(menupopup);
+                            menulist.append(menupopup);
                             menulist.setAttribute('id', prefix + this[type][i]);
-                            row.appendChild(menulist);
-                            document.getElementById(type + 'Search').appendChild(row);
+                            row.append(menulist);
+                            $('#' + type + 'Search').append(row);
                             continue;
                         default:
                             break;
@@ -219,8 +219,8 @@ const Unicodecharref = {
                 textbox.setAttribute('id', prefix + this[type][i]);
                 textbox.setAttribute('rows', '1');
                 textbox.setAttribute('cols', '2');
-                row.appendChild(textbox);
-                document.getElementById(type + 'Search').appendChild(row);
+                row.append(textbox);
+                $('#' + type + 'Search').append(row);
             }
         } catch (e) {
             alert('1:' + type + i + e + this[type][i]);
@@ -229,15 +229,16 @@ const Unicodecharref = {
         let tabpanel = type === 'Unicode' ? 'regularSearch' : 'cjkSearch';
         tabpanel = 'tabboxSearch';
 
-        $(tabpanel).addEventListener('change', function (e) { Unicodecharref['search' + type](e.target); });
-        $(tabpanel).addEventListener('input', function (e) { Unicodecharref['search' + type](e.target); });
-        $(tabpanel).addEventListener('select',
-            function (e) {
-                if (e.target.nodeName !== 'menulist' && e.target.nodeName !== 'textbox') { return; }
-                Unicodecharref['search' + type](e.target);
-            },
-            false
-        ); // Triggered initially which sets preference to "Lu"
+        $(tabpanel).addEventListener('change', function (e) {
+            Unicodecharref['search' + type](e.target);
+        });
+        $(tabpanel).addEventListener('input', function (e) {
+            Unicodecharref['search' + type](e.target);
+        });
+        $(tabpanel).addEventListener('select', function (e) {
+            if (e.target.nodeName !== 'menulist' && e.target.nodeName !== 'textbox') { return; }
+            Unicodecharref['search' + type](e.target);
+        }); // Triggered initially which sets preference to "Lu"
     },
     testIfComplexWindow () { // Fix: Should also create the detailedView and detailedCJKView's content dynamically (and thus fully conditionally rather than hiding)
         if (this.prefs.getBoolPref(EXT_BASE + 'showComplexWindow')) {
@@ -269,13 +270,6 @@ const Unicodecharref = {
         // this.refreshToolbarDropdown(); // redundant?
         this.strs = $('#charrefunicode-strings');
 
-        $('#world_auxiliary_language').appendChild(
-            new DOMParser().parseFromString(
-                '<div xmlns="http://www.w3.org/1999/xhtml">' + this.strs.getString('official_world_language') + '</div>',
-                'application/xml'
-            ).documentElement
-        );
-
         // charrefunicodeDb.connect('data/Unicode.sqlite');
         this.unihanDb_exists = false;
         try {
@@ -298,16 +292,16 @@ const Unicodecharref = {
         }
 
         // document.documentElement.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-        $('#tabbox').maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
-        $('#unicodetabs').maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
+        $('#unicodetabpanels').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
+        $('#unicodetabs').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
         /**
-        $('#tabbox').maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
-        $('#conversionhbox').maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
+        $('#unicodetabpanels').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
+        $('#conversionhbox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
 
         $('#noteDescriptionBox2').height = $('#noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
-$('#tabbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
+$('#unicodetabpanels').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
 $('#unicodetabs').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('#unicodetabpanels').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+$('#unicodetabpanels').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
 $('#chartcontent').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
 $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
 
@@ -506,7 +500,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         case 'context-unicodechart':
             this.disableEnts();
             $('#startset').value = toconvert;
-            $('#tabbox').selectedTab = $('#charttab');
+            $('#unicodetabpanels').selectTab($('#charts'));
             if (toconvert !== '') {
                 this.setCurrstartset(toconvert);
                 buildChart();
@@ -534,12 +528,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
         if (customProtocol) {
         } else if (!args) { // options menu
-            $('#tabbox').selectedTab = $('#prefstab');
+            $('#unicodetabpanels').selectTab($('#prefs'));
         } else if (args[2] !== undefined) { // Keyboard invocation or button
             // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
-            $('#tabbox').selectedTab = $(this.prefs.getCharPref('extensions.charrefunicode.initialTab'));
+            $('#unicodetabpanels').selectTab($(this.prefs.getCharPref('extensions.charrefunicode.initialTab')));
         } else if (targetid !== 'context-unicodechart' && targetid !== 'tools-charrefunicode') {
-            $('#tabbox').selectedTab = $('#conversiontab');
+            $('#unicodetabpanels').selectTab($('#conversion'));
         }
 
         $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_' + this.prefs.getCharPref('extensions.charrefunicode.initialTab'));
@@ -682,7 +676,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         // this.prefs.setCharPref(EXT_BASE + 'xstyle', 'x');
         // $(EXT_BASE + 'xstyle').checked = true;
 
-        this.prefs.setCharPref('extensions.charrefunicode.initialTab', 'charttab');
+        this.prefs.setCharPref('extensions.charrefunicode.initialTab', 'charts');
         $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_charttab');
 
         this.prefs.setIntPref(EXT_BASE + 'tblfontsize', 13);
@@ -705,24 +699,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
     },
     classChange (el) {
-        let xpathresultobj;
-        try {
-            xpathresultobj = document.evaluate("//*[@class='buttonactive']", document.documentElement, function () { return null; }, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-        } catch (e) {
-            alert(e);
-        }
+        const activeButton = $("*[class='buttonactive']");
+        activeButton.className = 'reconvert';
 
-        if (xpathresultobj.singleNodeValue !== null) {
-            // This is apparently necessary as the XPath expression does not seem to me to be able to allow manipulation of the original node
-            $(xpathresultobj.singleNodeValue.id).className = 'reconvert';
-        }
         el.className = 'buttonactive';
-        /*
-        // If want this loop (set type above to ORDERED_NODE_SNAPSHOT_TYPE)
-        for (const i = 0; i < xpathresultobj.snapshotLength; i++) {
-            xpathresultobj.snapshotitem(i).classname='reconvert';
-        }
-        */
     },
 
     // UI Bridges
@@ -1013,27 +993,27 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         const s = this.strs;
         const [plane, privateuse, surrogate] = getAndSetCodePointInfo(kdectemp, alink, s);
 
-        function placeItem (id, item) {
-            const firstchld = document.getElementById(id).firstChild;
+        function placeItem (sel, item) {
+            const firstchld = $(sel).firstChild;
             if (firstchld != null) {
-                document.getElementById(id).replaceChild(item, firstchld);
+                $(sel).replaceChild(item, firstchld);
             } else {
-                document.getElementById(id).appendChild(item);
+                $(sel).append(item);
             }
         }
         // Handle PDF link
-        placeItem('pdflink', alink);
+        placeItem('#pdflink', alink);
 
         // Handle plane #
-        const planeText = document.createTextNode(s.getFormattedString('plane_num', [plane]) + '\u00a0');
-        placeItem('plane', planeText);
+        const planeText = s.getFormattedString('plane_num', [plane]) + '\u00a0';
+        placeItem('#plane', planeText);
 
         if (this.prefs.getBoolPref(EXT_BASE + 'showImg')) {
             const img = createXULElement('image');
             // img.width = '80';
             // img.height = '80';
             img.setAttribute('src', 'http://www.unicode.org/cgi-bin/refglyph?1-' + Number(kdectemp).toString(16));
-            placeItem('unicodeImg', img);
+            placeItem('#unicodeImg', img);
         }
 
         let hangul = false;
@@ -1048,7 +1028,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             // pattern = new RegExp('^U\\+(' + khextemp + ')\\t(.*)\\t(.*)$', 'mg');
             // file = 'Unihan.txt';
             this.UnihanType = true;
-            // $('#pdflink').appendChild(alink);
+            // $('#pdflink').append(alink);
         } else if (kdectemp > 0xAC00 && kdectemp <= 0xD7A3) {
             // pattern = new RegExp('^' + khextemp + '\\s*;\\s*(.*)$', 'm');
             // file = 'HangulSyllableType.txt';
@@ -1085,7 +1065,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         let temp, notfoundval, table, result, statement;
 
         if (!this.UnihanType && !hangul && $('#viewTabs').selectedTab === $('#detailedCJKView')) {
-            $('#viewTabs').selectedTab = $('#detailedView');
+            $('#viewTabs').selectTab($('#detailedView'));
         }
         table = 'Unicode';
         let search = false;
@@ -1322,7 +1302,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             table = 'Unihan';
 
             if ((this.UnihanType) && $('#viewTabs').selectedTab === $('#detailedView')) {
-                $('#viewTabs').selectedTab = $('#detailedCJKView');
+                $('#viewTabs').selectTab($('#detailedCJKView'));
             }
             statement = charrefunicodeDb.dbConnUnihan.createStatement(
                 'SELECT * FROM ' + table + ' WHERE code_pt = "' + khextemp + '"'
@@ -1440,7 +1420,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     removeViewChildren (i) {
         const view = $('#_detailedView' + i);
         while (view.firstChild) {
-            view.removeChild(view.firstChild);
+            view.firstChild.remove();
         }
     },
     fsizetextbox (size) { // Changes font-size
@@ -1741,7 +1721,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             const menuitem = mainDoc.createElementNS(xulns, 'menuitem');
             menuitem.setAttribute('label', item);
             menuitem.setAttribute('value', item);
-            toolbarbuttonPopup.appendChild(menuitem);
+            toolbarbuttonPopup.append(menuitem);
         }
         return true;
     },

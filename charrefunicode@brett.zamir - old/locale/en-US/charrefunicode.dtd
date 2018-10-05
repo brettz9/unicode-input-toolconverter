@@ -77,52 +77,49 @@ Copyright 2007, 2008, 2009 Brett Zamir
 
 <!ENTITY usage_notespar1 "The extension can be activated from the context menu (which
 also gives the advantage of being able to operate on
-highlighted text), through the Tools menu, through the 
+highlighted text), through the Tools menu, through the
 toolbar icon, or through the options URL in the addons menu.">
-<!ENTITY usage_notespar2 "Preferences are set as soon as you click on the items, 
+<!ENTITY usage_notespar2 "Preferences are set as soon as you click on the items,
 but you can revert back to the default values if you make any mistakes.">
-<!ENTITY usage_notespar3 "Closing the dialog will set the current window's position for 
+<!ENTITY usage_notespar3 "Closing the dialog will set the current window's position for
 future use.">
 <!ENTITY usage_notespar4 "If you have problems with Window size, go to the 'Prefs' tab and
 hit the 'Reset to default values (besides DTD)' button. Using
 'prev set' or 'next set' can also sometimes adjust problems with
 items fitting correctly in the chart view.">
-<!ENTITY usage_notespar5 "Note that you can get extra space on the screen by not using 
-buttons. In such a case, you can still click on the items to get 
+<!ENTITY usage_notespar5 "Note that you can get extra space on the screen by not using
+buttons. In such a case, you can still click on the items to get
 chart output.">
-<!ENTITY usage_notespar6 "Please be aware that in the Unicode chart view, items like 
-question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) 
-may appear in place of a desired character (and some characters 
-will not or cannot be displayed at all). This is due to Firefox's 
-own present limitations in displaying such characters. To find 
-these, you could consult the images such as those at the official 
-http://www.unicode.org/charts site and also available within the 
-extension. While in the extension, you can hover your mouse over a 
-character from the desired range, and a link will appear which you 
-can click to lead to the appropriate chart and optionally view the image. 
-Or you can enable images for direct viewing, but this should not be 
+<!ENTITY usage_notespar6 "Please be aware that in the Unicode chart view, items like
+question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+)
+may appear in place of a desired character (and some characters
+will not or cannot be displayed at all). This is due to Firefox's
+own present limitations in displaying such characters. To find
+these, you could consult the images such as those at the official
+http://www.unicode.org/charts site and also available within the
+extension. While in the extension, you can hover your mouse over a
+character from the desired range, and a link will appear which you
+can click to lead to the appropriate chart and optionally view the image.
+Or you can enable images for direct viewing, but this should not be
 on by default to avoid taxing the Unicode server.">
-<!ENTITY usage_notespar7 "Please note that selecting the 'Only ents' option in chart view 
-will allow you to see HTML entities in the order in which the HTML 
-entities are defined (and only them). When when you are not in this 
-mode, you will see all entities defined in the custom DTD, 
-optionally excluding HTML entities, if the checkbox on the DTD page 
+<!ENTITY usage_notespar7 "Please note that selecting the 'Only ents' option in chart view
+will allow you to see HTML entities in the order in which the HTML
+entities are defined (and only them). When when you are not in this
+mode, you will see all entities defined in the custom DTD,
+optionally excluding HTML entities, if the checkbox on the DTD page
 to append DTD entities is unchecked.">
 <!ENTITY usage_notespar8 "You should be able to download the Unihan database (not included with the extension due to size) from within the preferences. If you have trouble, download the approximately 19MB file from http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite and place it in your Firefox profile directory.">
 <!ENTITY usage_notespar9 "Extension best used with higher resolutions but now makes some accommodations for lower resolutions. Drag the various splitters to resize subsections. Your desired size should be remembered.">
 <!ENTITY usage_notespar10 "Use control+left-click while you are hovering the cursor over the chart view to freeze the descriptions below. ">
 
 <!ENTITY usage_notespar10b "The toolbar icon can be added by going to View->Toolbars->Customize and then dragging the 'U' icon to the desired
-position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart 
+position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart
 output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete.">
 
 <!ENTITY usage_notespar11 "The Unicode data within this extension is licensed as described at http://unicode.org/copyright.html">
 <!ENTITY usage_notespar12 "Translators welcome at http://tinyurl.com/UnicodeInputToolTranslators">
 
 <!ENTITY usage_notespar0 "Other Usage Notes">
-<!ENTITY notespar0 "Unicode Notes (some usage information)">
-
-
 
 
 
@@ -423,17 +420,10 @@ output box. To delete items already added, while viewing the toolbar icon items,
 <!ENTITY copyToClipboard "Copy to clipboard">
 <!ENTITY period ".">
 
-<!ENTITY Conversion.tab.label "Conversion">
-<!ENTITY Prefs.tab.label "Prefs">
-<!ENTITY DTD.tab.label "DTD">
-<!ENTITY Charts.tab.label "Charts">
-<!ENTITY Notes.tab.label "Notes">
-<!ENTITY About.tab.label "About">
-
 <!ENTITY moveconvertedup.label "Copy 'converted' to preconverted">
 <!ENTITY Reconvert.dialogheader.title "Reconvert Options">
 <!ENTITY Preferences.dialogheader.title "Preferences">
-<!ENTITY About.dialogheader.title "About">
+
 <!ENTITY default.textbox.value "default">
 <!ENTITY Ascii.checkbox.label "Convert into entities if ASCIIs &lt; 128 (existing entities/char refs. will thus not be immune)?">
 <!ENTITY Hexletters.checkbox.label "Output Hexadecimal A-F (upper-case)?">
@@ -540,6 +530,7 @@ output box. To delete items already added, while viewing the toolbar icon items,
 
 
 <!ENTITY Notes.dialogheader.title "Notes">
+<!ENTITY notespar0 "Unicode Notes (some usage information)">
 <!ENTITY notespar1 "Unicode is a system to represent all living (and some dead) human scripts and standard symbols and punctuation. Unicode's use in HTML and XML allow all such written characters to be contained even within the same page. Many programs allow you to type or save any such characters directly in Unicode.">
 <!ENTITY notespar2 "However, because some programs still do not support Unicode fully (though if you are only using the basic English ASCII symbols, your documents will translate to Unicode with no difficulty) and will not save the text properly and perhaps also to make it easier for some to type, one may use different types of shortcuts to represent these assorted Unicode characters.">
 <!ENTITY notespar3 "One such shortcut which can be used in any HTML or XML document is the character reference. These references begin with an ampersand ('&amp;') and a hash mark ('#') and end with a semicolon (';'). In the middle can either be a decimal number (i.e., digits 0-9) or a hexadecimal number (i.e., digits 0-9 or upper or lower-case letters A-F preceded by an 'x' or 'X'). Either type will display the same, and will be displayed exactly like the Unicode character it represents.">
@@ -548,14 +539,6 @@ output box. To delete items already added, while viewing the toolbar icon items,
 <!ENTITY notespar6 "For the XML language, except for five pre-defined entities (&amp;amp; (&amp;), &amp;lt; (&lt;), &amp;gt; (&gt;), &amp;quot; (&quot;), &amp;apos; (&apos;)), you must explicitly define the entities you will use (or use a special 'PUBLIC' id which can indicate to programs reading the XML file that you will be using that language's set of entities).">
 <!ENTITY notespar7 "In HTML, there are a number of already-defined entities. One important note: although HTML uses four of XML's five predefined entities, it does not use '&amp;apos;', so you will need to use the equivalent Unicode instead (or use the character reference &amp;#x27; or &amp;#39;).">
 <!ENTITY notespar8 "You can also define your own entities in our 'DTD' section using the syntax '&lt;!ENTITY entname &quot;entvalue&quot;&gt;' so that they can be included within conversions.">
-
-
-<!ENTITY About.desc1 "This extension was developed by">
-<!ENTITY About.desc2 "Brett Zamir">
-<!ENTITY About.desc2b " and translated by Karoly Fabricz (hu-HU), Edgard Magalh&#227;es (pt-BR), Mikael Hiort af Ornäs (sv-SE)">
-
-<!ENTITY About.desc3 "If you find this extension useful, please consider a">
-<!ENTITY About.desc4 "Paypal donation">
 
 
 <!ENTITY European_Scripts "European Scripts">
@@ -805,4 +788,3 @@ output box. To delete items already added, while viewing the toolbar icon items,
 <!ENTITY Lepcha "Lepcha">
 
 <!ENTITY CJK_Compatibility_Forms "CJK Compatibility Forms">
-

@@ -322,16 +322,9 @@ Copyright 2007, 2008, 2009 Brett Zamir
 <!ENTITY Yijing_Mono--_Di-_and_Trigrams "Monogramas, Diagramas e Triagramas Yijing">
 <!ENTITY copyToClipboard "Copiar para a área de transferência">
 <!ENTITY period ".">
-<!ENTITY Conversion.tab.label "Conversão">
-<!ENTITY Prefs.tab.label "Preferências">
-<!ENTITY DTD.tab.label "DTD">
-<!ENTITY Charts.tab.label "Gráficos">
-<!ENTITY Notes.tab.label "Notas">
-<!ENTITY About.tab.label "Sobre">
 <!ENTITY moveconvertedup.label "Copiar 'convertido' para pré-convertido">
 <!ENTITY Reconvert.dialogheader.title "Opções de reconversão">
 <!ENTITY Preferences.dialogheader.title "Preferências">
-<!ENTITY About.dialogheader.title "Sobre">
 <!ENTITY default.textbox.value "Padrão">
 <!ENTITY Ascii.checkbox.label "Converter em entidades se ASCII &lt; 128? (entidades existentes/caracteres de referência não estarão imunes)">
 <!ENTITY Hexletters.checkbox.label "Saída hexadecimal A-F (maiúsculas)?">
@@ -424,11 +417,7 @@ Copyright 2007, 2008, 2009 Brett Zamir
 <!ENTITY notespar6 "Para a linguagem XML, exceto para cinco entidades pré-definidas (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; ( &quot;), ' (')), você deve definir explicitamente as entidades que você vai usar (ou usar uma identidade 'PUBLICA' especial que pode indicar para os programas de leitura do arquivo XML a linguagem do conjunto de entidades que você está usando).">
 <!ENTITY notespar7 "Em HTML, existem uma série de entidades já definidas. Uma observação importante: apesar do HTML usar quatro das cinco entidades XML pré-definidas, ele não usa ''', então você precisa usar no lugar o Unicode equivalente (ou utilizar a referência de caracteres ' ou ').">
 <!ENTITY notespar8 "Você também pode definir suas próprias entidades em nossa seção &quot;DTD&quot; usando a sintaxe '&lt;! ENTITY Entname &quot;entvalue&quot;&gt;' para que eles possam ser incluídos dentro de conversões.">
-<!ENTITY About.desc1 "Esta extensão foi desenvolvida por">
-<!ENTITY About.desc2 "Brett Zamir">
-<!ENTITY About.desc2b "e traduzida por Karoly Fabricz (hu-HU), Edgard Dias Magalhães (pt-BR), Mikael Hiort af Ornäs (sv-SE)">
-<!ENTITY About.desc3 "Se você achar esta extensão útil, por favor, pense em fazer uma">
-<!ENTITY About.desc4 "doação ao PayPal">
+
 <!ENTITY European_Scripts "Alfabetos Europeus">
 <!ENTITY _see_also_Comb._Marks-- "(veja também Marcas Combinadas)">
 <!ENTITY Armenian "Armênio">

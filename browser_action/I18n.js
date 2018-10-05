@@ -47,11 +47,11 @@ const promiseChainForValues = (values, cb) => {
  * @returns {Promise} Promise that 1) resolves to a function which checks a key
  *  against an object of strings or 2) rejects if no strings are found
  */
-export const i18n = async function getLocales ({locales, defaults}) {
+export const i18n = async function i18n ({locales, defaults}) {
     const strings = await promiseChainForValues(locales, async function getLocale (locale) {
         const url = `../_locales/${locale}/messages.json`;
         try {
-            return (await fetch(url)).json();
+            return await (await fetch(url)).json();
         } catch (err) {
             if (!locale.includes('-')) {
                 throw new Error('Locale not available');
@@ -60,23 +60,54 @@ export const i18n = async function getLocales ({locales, defaults}) {
             return getLocale(locale.replace(/-.*$/, ''));
         }
     });
-    return (key) => {
-        return key in strings && strings[key] && 'message' in strings[key]
-            ? strings[key].message
-            : typeof defaults === 'function'
-                ? defaults(key, strings)
-                : defaults === false
-                    ? (() => {
-                        throw new Error();
-                    })()
-                    : defaults;
-    };
-};
+    return (key, substitutions, {dom} = {}) => {
+        const bracketRegex = /\{([^}]*)\}/g;
+        let returnsDOM = false;
+        const str = (
+            key in strings && strings[key] && 'message' in strings[key]
+                ? strings[key].message
+                : typeof defaults === 'function'
+                    ? defaults(key, strings)
+                    : defaults === false
+                        ? (() => {
+                            throw new Error();
+                        })()
+                        : defaults
 
-export const replaceBrackets = function (_) {
-    return function (key, replacements) {
-        return _(key).replace(/\{([^}]*)\}/g, (_, bracketValue) => {
-            return replacements[bracketValue];
-        });
+        );
+        // Give chance to avoid this block when known to contain DOM
+        if (!dom) {
+            // Run this loop to optimize non-DOM substitutions
+            const ret = str.replace(bracketRegex, (_, key) => {
+                const substitution = substitutions[key];
+                returnsDOM = returnsDOM || (substitution && substitution.nodeType === 1);
+                return substitution;
+            });
+            if (!returnsDOM) {
+                return ret;
+            }
+        }
+        const nodes = [];
+        let result;
+        let previousIndex = 0;
+        while ((result = bracketRegex.exec(str)) !== null) {
+            const {lastIndex} = bracketRegex;
+            const [bracketedKey, key] = result;
+            const substitution = substitutions[key];
+            const startBracketPos = lastIndex - bracketedKey.length;
+            if (startBracketPos > previousIndex) {
+                nodes.push(str.slice(previousIndex, startBracketPos));
+            }
+            nodes.push(substitution);
+            previousIndex = lastIndex;
+        }
+        if (previousIndex !== str.length) { // Get text at end
+            nodes.push(str.slice(previousIndex));
+        }
+
+        const container = document.createElement('span');
+        // console.log('nodes', nodes);
+        container.append(...nodes);
+        return container;
     };
 };

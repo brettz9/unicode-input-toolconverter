@@ -1,44 +1,95 @@
 {
     "extensionName": {
-      "message": "Unicode Input Tool/Converter"
+        "message": "Unicode Input Tool/Converter"
     },
     "extensionShortName": {
-      "message": "Unicode Tool"
+        "message": "Unicode Tool"
     },
     "extensionDescription": {
-      "message": "Add-on for selecting Unicode characters by variety of means and converting between various representations"
+        "message": "Add-on for selecting Unicode characters by variety of means and converting between various representations"
     },
     "browser_action_title": {
-      "message": "Unicode Input Tool/Converter"
+        "message": "Unicode Input Tool/Converter"
     },
     "unicode_noun": {
-      "message": "unikód"
+        "message": "unikód"
     },
     "hex_noun": {
-      "message": "hexadecimális"
+        "message": "hexadecimális"
     },
     "dec_noun": {
-      "message": "decimális"
+        "message": "decimális"
     },
     "ent_noun": {
-      "message": "egyedek"
+        "message": "egyedek"
     },
     "Unicode_table_caption_title": {
-      "message": "Az alábbi leírások rögzítéséhez/feloldásához Control + kattintás valamely karakter fölött a bal egérgombbal"
+        "message": "Az alábbi leírások rögzítéséhez/feloldásához Control + kattintás valamely karakter fölött a bal egérgombbal"
     },
     "caption_format_begin": {
-      "message": ", {value}"
+        "message": ", {value}"
     },
     "caption_format_end_two": {
-      "message": " és {value}"
+        "message": " és {value}"
     },
     "caption_format_end_three_plus": {
-      "message": " és {value}"
+        "message": " és {value}"
     },
     "Next_set": {
-      "message": "Következő készlet"
+        "message": "Következő készlet"
     },
     "Prev_set": {
-      "message": "Előző készlet"
+        "message": "Előző készlet"
+    },
+    "Conversion_tab_label": {
+        "message": "Átalakítás"
+    },
+    "Prefs_tab_label": {
+        "message": "Beállítások"
+    },
+    "DTD_tab_label": {
+        "message": "DTD"
+    },
+    "Charts_tab_label": {
+        "message": "Diagramok"
+    },
+    "Notes_tab_label": {
+        "message": "Megjegyzések"
+    },
+    "About_tab_label": {
+        "message": "Névjegy"
+    },
+    "About_dialogheader_title": {
+        "message": "Névjegy"
+    },
+    "About_developer_and_contributors": {
+        "message": "{About_developer} {About_developer_link} {About_contributors}"
+    },
+    "About_developer": {
+        "message": "Ezt a kiegészítőt"
+    },
+    "About_developer_linkText": {
+        "message": "Brett Zamir készítette"
+    },
+    "About_contributors": {
+        "message": " és Fábricz Károly (hu-HU), Edgard Magalh&#227;es (pt-BR), Mikael Hiort af Ornäs (sv-SE) fordította."
+    },
+    "About_paypal": {
+        "message": "Ha a kiegészítőt hasznosnak találja, vegye fontolóra {About_paypal_button}."
+    },
+    "About_paypal_buttonText": {
+        "message": "egy Paypal-adomány lehetőségét"
+    },
+    "About_ial": {
+        "message": "A kiegészítő szerzője szeretné, ha csatlakozna egy hivatalos {About_ial_wikipedia_link} kijelölésére vonatkozó kezdeményezéshez (és támogatná azt), mellyel az emberiség korai nyelvelsajátítás alapján zökkenőmentesen kommunikálhatna, így energiáit hasznosabb (értelmesebb és takarékosabb) területeken kamatoztathatná, mint ha számos közös nyelven próbál értekezni, így erőforrásai szabadulnának föl egyéb dolgokra, például helyi és távoli nyelvek elsajátítására: {About_ial_onetongue_link}."
+    },
+    "About_ial_wikipedia_linkText": {
+        "message": "kiegészítő világnyelv"
+    },
+    "About_ial_wikipedia_linkURL": {
+        "message": "http://en.wikipedia.org/wiki/International_auxiliary_language"
+    },
+    "About_ial_onetongue_linkText": {
+        "message": "World Auxiliary Language website"
     }
 }
