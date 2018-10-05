@@ -34,9 +34,7 @@ const promiseChainForValues = (values, cb) => {
         try {
             return await p; // We'd short-circuit here instead if we could
         } catch (err) {
-            const ret = cb(value);
-            console.log('r', await ret);
-            return ret;
+            return cb(value);
         }
     }, Promise.reject(new Error('Intentionally reject so as to begin checking chain')));
 };

@@ -74,11 +74,11 @@
     "About_contributors": {
         "message": " och översattes av Karoly Fabricz (hu-HU), Edgard Magalhães (pt-BR) och Mikael Hiort af Ornäs (sv-SE)."
     },
-    "About_paypal": {
-        "message": "Om du får användning för detta tillägg, vänligen överväg att göra en {About_paypal_button}."
+    "About_donation": {
+        "message": "Om du får användning för detta tillägg, vänligen överväg att göra en {About_donation_button}."
     },
-    "About_paypal_buttonText": {
-        "message": "Paypal-donation"
+    "About_donation_buttonText": {
+        "message": "donation"
     },
     "About_ial": {
         "message": "Skaparen av detta tillägg vill bjuda in dig att betänka (och främja) idén om ett officiellt {About_ial_wikipedia_link}, så att världens alla folk en dag skall kunna kommunicera med varandra från tidig ålder och ägna sin energi åt mer produktiva (så väl som förståelseökande och kostnadsbesparande) områden än att behöva lära sig ett flertal lingua franca (geografiskt specifika gemensamma huvudspråk) och därmed göra dem fria att göra andra saker, såsom studier av vilka lokala eller andra språk de kan tänkas vilja lära sig: {About_ial_onetongue_link}."

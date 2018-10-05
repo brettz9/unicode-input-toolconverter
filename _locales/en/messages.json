@@ -72,13 +72,13 @@
         "message": "Brett Zamir"
     },
     "About_contributors": {
-        "message": " and translated by Karoly Fabricz (hu-HU), Edgard Magalhães (pt-BR), Mikael Hiort af Ornäs (sv-SE)."
+        "message": " and translated by Karoly Fabricz (hu-HU), Edgard Magalhães (pt-BR), and Mikael Hiort af Ornäs (sv-SE)."
     },
-    "About_paypal": {
-        "message": "If you find this extension useful, please consider a {About_paypal_button}."
+    "About_donation": {
+        "message": "If you find this extension useful, please consider a {About_donation_button}."
     },
-    "About_paypal_buttonText": {
-        "message": "Paypal donation"
+    "About_donation_buttonText": {
+        "message": "Donation"
     },
     "About_ial": {
         "message": "The author of the extension wishes to invite you to consider (and promote) the idea of an official {About_ial_wikipedia_link}, so that the peoples of the world will one day all be able to inter-communicate due to early language instruction and spend their energies on more productive (as well as understanding-raising and cost-saving) areas than learning multiple lingua francas, freeing them up to do other things such as study whatever local or other language they may wish to learn: {About_ial_onetongue_link}"
@@ -91,5 +91,1832 @@
     },
     "About_ial_onetongue_linkText": {
         "message": "World Auxiliary Language website"
+    },
+    "Notes_dialogheader_title": {
+        "message": "Notes"
+    },
+    "DTD_insertEntityFile": {
+        "message": "Insert Entity File"
+    },
+    "ent_isobox": {
+        "message": "Box and Line Drawing"
+    },
+    "ent_isocyr1": {
+        "message": "Russian Cyrillic"
+    },
+    "ent_isocyr2": {
+        "message": "Non-Russian Cyrillic"
+    },
+    "ent_isodia": {
+        "message": "Diacritical Marks"
+    },
+    "ent_isolat1": {
+        "message": "Added Latin 1"
+    },
+    "ent_isolat2": {
+        "message": "Added Latin 2"
+    },
+    "ent_isonum": {
+        "message": "Numeric and Special Graphic"
+    },
+    "ent_isopub": {
+        "message": "Publishing"
+    },
+    "ent_isoamsa": {
+        "message": "Added Math Symbols: Arrow Relations"
+    },
+    "ent_isoamsb": {
+        "message": "Added Math Symbols: Binary Operators"
+    },
+    "ent_isoamsc": {
+        "message": "Added Math Symbols: Delimiters"
+    },
+    "ent_isoamsn": {
+        "message": "Added Math Symbols: Negated Relations"
+    },
+    "ent_isoamso": {
+        "message": "Added Math Symbols: Ordinary"
+    },
+    "ent_isoamsr": {
+        "message": "Added Math Symbols: Relations"
+    },
+    "ent_isogrk1": {
+        "message": "Greek Letters"
+    },
+    "ent_isogrk2": {
+        "message": "Monotoniko Greek"
+    },
+    "ent_isogrk3": {
+        "message": "Greek Symbols"
+    },
+    "ent_isogrk4": {
+        "message": "Alternative Greek Symbols"
+    },
+    "ent_isomfrk": {
+        "message": "Math Alphabets: Fraktur"
+    },
+    "ent_isomopf": {
+        "message": "Math Alphabets: Open Face"
+    },
+    "ent_isomscr": {
+        "message": "Math Alphabets: Script"
+    },
+    "ent_isotech": {
+        "message": "General Technical"
+    },
+    "ent_mmlextra": {
+        "message": "Additional MathML Symbols"
+    },
+    "ent_mmlalias": {
+        "message": "MathML Aliases"
+    },
+    "ent_xhtml1_lat1": {
+        "message": "Latin for HTML"
+    },
+    "ent_xhtml1_special": {
+        "message": "Special for HTML"
+    },
+    "ent_xhtml1_symbol": {
+        "message": "Symbol for HTML"
+    },
+    "ent_html5_uppercase": {
+        "message": "Uppercase aliases for HTML"
+    },
+    "ent_predefined": {
+        "message": "Predefined XML"
+    },
+    "Convert_From_Encoding": {
+        "message": "Convert From Encoding"
+    },
+    "Convert_To_Encoding": {
+        "message": "Convert To Encoding"
+    },
+    "kHanyuPinyin": {
+        "message": "HanyuPinyin"
+    },
+    "kIRG_MSource": {
+        "message": "IRG_MSource"
+    },
+    "Ethiopic_Extended_A": {
+        "message": "Ethiopic Extended A"
+    },
+    "Batak": {
+        "message": "Batak"
+    },
+    "CJK_Ideographs_Ext__D": {
+        "message": "CJK Ideographs Ext. D"
+    },
+    "Kana_Supplement": {
+        "message": "Kana Supplement"
+    },
+    "Alchemical_Symbols": {
+        "message": "Alchemical Symbols"
+    },
+    "Emoticons": {
+        "message": "Emoticons"
+    },
+    "Playing_Cards": {
+        "message": "Playing Cards"
+    },
+    "Miscellaneous_Symbols_And_Pictographs": {
+        "message": "Miscellaneous Symbols And Pictographs"
+    },
+    "Transport_and_Map_Symbols": {
+        "message": "Transport and Map Symbols"
+    },
+    "Mandaic": {
+        "message": "Mandaic"
+    },
+    "Brahmi": {
+        "message": "Brahmi"
+    },
+    "Bamum_Supplement": {
+        "message": "Bamum Supplement"
+    },
+    "font_label": {
+        "message": "Font"
+    },
+    "addToToolbar": {
+        "message": "Add to Toolbar pull-down"
+    },
+    "usage_notespar8": {
+        "message": "You should be able to download the Unihan database (not included with the extension due to size) from within the preferences. If you have trouble, download the approximately 19MB file from http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite and place it in your Firefox profile directory."
+    },
+    "usage_notespar9": {
+        "message": "Extension best used with higher resolutions but now makes some accommodations for lower resolutions. Drag the various splitters to resize subsections. Your desired size should be remembered."
+    },
+    "usage_notespar10": {
+        "message": "Use control+left-click while you are hovering the cursor over the chart view to freeze the descriptions below. "
+    },
+    "usage_notespar11": {
+        "message": "The Unicode data within this extension is licensed as described at http://unicode.org/copyright.html"
+    },
+    "usage_notespar12": {
+        "message": "Translators welcome at http://tinyurl.com/UnicodeInputToolTranslators"
+    },
+    "usage_notespar0": {
+        "message": "Other Usage Notes"
+    },
+    "notespar0": {
+        "message": "Unicode Notes (some usage information)"
+    },
+    "notespar1": {
+        "message": "Unicode is a system to represent all living (and some dead) human scripts and standard symbols and punctuation. Unicode's use in HTML and XML allow all such written characters to be contained even within the same page. Many programs allow you to type or save any such characters directly in Unicode."
+    },
+    "notespar2": {
+        "message": "However, because some programs still do not support Unicode fully (though if you are only using the basic English ASCII symbols, your documents will translate to Unicode with no difficulty) and will not save the text properly and perhaps also to make it easier for some to type, one may use different types of shortcuts to represent these assorted Unicode characters."
+    },
+    "notespar3": {
+        "message": "One such shortcut which can be used in any HTML or XML document is the character reference. These references begin with an ampersand ('&amp;') and a hash mark ('#') and end with a semicolon (';'). In the middle can either be a decimal number (i.e., digits 0-9) or a hexadecimal number (i.e., digits 0-9 or upper or lower-case letters A-F preceded by an 'x' or 'X'). Either type will display the same, and will be displayed exactly like the Unicode character it represents."
+    },
+    "notespar4": {
+        "message": "(The hexadecimal numbering system may be thought of as working somewhat like a set of playing cards. The Jack may represent '11' in some games, the Queen, '12', and so on. While there is only a single card, they represent a number greater than ten. Thus it is also with individual hexadecimal digits represented by the letters A-F.)"
+    },
+    "notespar5": {
+        "message": "Besides character references, another type of shortcut to represent a Unicode character (or even multiple characters) is the 'parsed general entity'."
+    },
+    "notespar6": {
+        "message": "For the XML language, except for five pre-defined entities (&amp;amp; (&amp;), &amp;lt; (&lt;), &amp;gt; (&gt;), &amp;quot; (&quot;), &amp;apos; (&apos;)), you must explicitly define the entities you will use (or use a special 'PUBLIC' id which can indicate to programs reading the XML file that you will be using that language's set of entities)."
+    },
+    "notespar7": {
+        "message": "In HTML, there are a number of already-defined entities. One important note: although HTML uses four of XML's five predefined entities, it does not use '&amp;apos;', so you will need to use the equivalent Unicode instead (or use the character reference &amp;#x27; or &amp;#39;)."
+    },
+    "notespar8": {
+        "message": "You can also define your own entities in our 'DTD' section using the syntax '&lt;!ENTITY entname &quot;entvalue&quot;&gt;' so that they can be included within conversions."
+    },
+    "usage_notespar1": {
+        "message": "The extension can be activated from the context menu (which also gives the advantage of being able to operate on highlighted text), through the Tools menu, through the toolbar icon, or through the options URL in the addons menu."
+    },
+    "usage_notespar2": {
+        "message": "Preferences are set as soon as you click on the items, but you can revert back to the default values if you make any mistakes."
+    },
+    "usage_notespar3": {
+        "message": "Closing the dialog will set the current window's position for future use."
+    },
+    "usage_notespar4": {
+        "message": "If you have problems with Window size, go to the 'Prefs' tab and hit the 'Reset to default values (besides DTD)' button. Using 'prev set' or 'next set' can also sometimes adjust problems with items fitting correctly in the chart view."
+    },
+    "usage_notespar5": {
+        "message": "Note that you can get extra space on the screen by not using buttons. In such a case, you can still click on the items to get chart output."
+    },
+    "usage_notespar6": {
+        "message": "Please be aware that in the Unicode chart view, items like question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) may appear in place of a desired character (and some characters will not or cannot be displayed at all). This is due to Firefox's own present limitations in displaying such characters. To find these, you could consult the images such as those at the official http://www.unicode.org/charts site and also available within the extension. While in the extension, you can hover your mouse over a character from the desired range, and a link will appear which you can click to lead to the appropriate chart and optionally view the image. Or you can enable images for direct viewing, but this should not be on by default to avoid taxing the Unicode server."
+    },
+    "usage_notespar7": {
+        "message": "Please note that selecting the 'Only ents' option in chart view will allow you to see HTML entities in the order in which the HTML entities are defined (and only them). When when you are not in this mode, you will see all entities defined in the custom DTD, optionally excluding HTML entities, if the checkbox on the DTD page to append DTD entities is unchecked."
+    },
+    "usage_notespar10b": {
+        "message": "The toolbar icon can be added by going to View->Toolbars->Customize and then dragging the 'U' icon to the desired position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete."
+    },
+    "lang_tooltiptext": {
+        "message": "The HTML language attribute 'lang' or, in XML, the 'xml:lang' value. Has no effect on most scripts, but may affect glyph selection/font display for certain CJK characters (e.g., U+5203 in 'zh-Hans', 'zh-Hant', 'ja', or 'ko'). Note that you must use the lang attribute to see the effect outside of the chart (even our chart output box does not contain any), and there is presently a bug with xml:lang in true XML/XHTML documents: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+    },
+    "lang_label": {
+        "message": "lang"
+    },
+    "initialTab_label": {
+        "message": "Initial tab to open (for key command or toolbar button activation)"
+    },
+    "CSSWhitespace_label": {
+        "message": "CSS escape white space character to use if in ambiguous mode"
+    },
+    "CSS_space": {
+        "message": "(space)"
+    },
+    "CSS_rn": {
+        "message": "\r\n (carriage return and newline)"
+    },
+    "CSS_r": {
+        "message": "\r (carriage return)"
+    },
+    "CSS_n": {
+        "message": "\n (newline)"
+    },
+    "CSS_t": {
+        "message": "\t (tab)"
+    },
+    "CSS_f": {
+        "message": "\f (form feed)"
+    },
+    "cssUnambiguous_label": {
+        "message": "Create CSS escape as 6-digit sequences not requiring whitespace (otherwise, will be as long as necessary and be followed by white space"
+    },
+    "sixDigit2unicode_label": {
+        "message": "4 or 6-digit (as in PHP 6) to Unicode"
+    },
+    "sixDigit2unicodeContext_label": {
+        "message": "4 or 6-digit escape (as in PHP 6) to Unicode"
+    },
+    "sixDigit2unicodeContext_accesskey": {
+        "message": "6"
+    },
+    "unicodeTo6DigitContext_accesskey": {
+        "message": "U"
+    },
+    "unicodeTo6Digit_label": {
+        "message": "Unicode to 6-digit (as in PHP 6)"
+    },
+    "unicodeTo6DigitContext_label": {
+        "message": "Unicode to 6-digit escape (as in PHP 6)"
+    },
+    "charDesc2Unicode_accesskey": {
+        "message": "h"
+    },
+    "charDesc2UnicodeContext_label": {
+        "message": "Character description escapes (as in PHP 6) to Unicode"
+    },
+    "unicode2CharDescContext_label": {
+        "message": "Unicode to character description escapes (as in PHP 6)"
+    },
+    "unicode2CharDescContext_accesskey": {
+        "message": "n"
+    },
+    "charDesc2Unicode_label": {
+        "message": "Character description escapes to Unicode"
+    },
+    "unicode2CharDesc_label": {
+        "message": "Unicode to character description escapes"
+    },
+    "unicode2JSEscape_label": {
+        "message": "Unicode to JavaScript escape sequences"
+    },
+    "unicode2jsescapeContext_label": {
+        "message": "Unicode to escaped JS"
+    },
+    "unicode2jsescapeContext_accesskey": {
+        "message": "J"
+    },
+    "unicode2CSSEscape_label": {
+        "message": "Unicode to CSS escape sequences"
+    },
+    "unicode2cssescapeContext_accesskey": {
+        "message": "S"
+    },
+    "unicode2cssescapeContext_label": {
+        "message": "Unicode to escaped CSS"
+    },
+    "jsescape2unicode_label": {
+        "message": "JavaScript escape sequences to Unicode"
+    },
+    "jsescape2unicodeContext_accesskey": {
+        "message": "J"
+    },
+    "jsescape2unicodeContext_label": {
+        "message": "Escaped JS to Unicode"
+    },
+    "cssescape2unicode_label": {
+        "message": "CSS escape sequences to Unicode"
+    },
+    "cssescape2unicodeContext_accesskey": {
+        "message": "C"
+    },
+    "cssescape2unicodeContext_label": {
+        "message": "Escaped CSS to Unicode"
+    },
+    "copyToClipboard": {
+        "message": "Copy to clipboard"
+    },
+    "period": {
+        "message": "."
+    },
+    "moveconvertedup_label": {
+        "message": "Copy 'converted' to preconverted"
+    },
+    "Reconvert_dialogheader_title": {
+        "message": "Reconvert Options"
+    },
+    "Preferences_dialogheader_title": {
+        "message": "Preferences"
+    },
+    "default_textbox_value": {
+        "message": "default"
+    },
+    "Ascii_checkbox_label": {
+        "message": "Convert into entities if ASCIIs &lt; 128 (existing entities/char refs. will thus not be immune)?"
+    },
+    "Hexletters_checkbox_label": {
+        "message": "Output Hexadecimal A-F (upper-case)?"
+    },
+    "xhtmlentmode_label": {
+        "message": "XHTML entity mode (allow &amp;apos; when creating HTML entities instead of numeric)? (It may be best to leave this unchecked.)"
+    },
+    "xmlentmode_label": {
+        "message": "XML entity mode (when converting from (X)HTML entities, will leave &amp;amp;, &amp;lt;, &amp;gt;, &amp;quot;, and &amp;apos; unconverted)? (These entities are safe in XML without needing DTD entity declarations, so they probably don't need to be converted and are easier to read.)"
+    },
+    "ampkeep_label": {
+        "message": "When converting from Unicode to HTML entities, will not convert &amp; so as to avoid tampering with existing HTML entities"
+    },
+    "ampspace_label": {
+        "message": "Convert each '&amp;' which is followed by whitespace to '&amp;amp;' (for well-formed XML)?"
+    },
+    "resettodefault_label": {
+        "message": "Reset to default values (besides DTD)?"
+    },
+    "numrows": {
+        "message": "# of rows"
+    },
+    "numcols": {
+        "message": "# of cols"
+    },
+    "charref2unicode_label": {
+        "message": "Char reference to Unicode"
+    },
+    "charref2unicodeContext_label": {
+        "message": "Char. ref. (hex. or dec.) to Unicode"
+    },
+    "charref2unicodeContext_accesskey": {
+        "message": "C"
+    },
+    "charref2htmlents_label": {
+        "message": "Character references to HTML entities"
+    },
+    "charref2htmlentsContext_label": {
+        "message": "Char. ref. (hex. or dec.) to HTML ents."
+    },
+    "charref2htmlentsContext_accesskey": {
+        "message": "C"
+    },
+    "unicode2charrefDec_label": {
+        "message": "Unicode to Char reference (dec)"
+    },
+    "unicode2charrefDecContext_label": {
+        "message": "Unicode to Char. ref. (dec)"
+    },
+    "unicode2charrefDecContext_accesskey": {
+        "message": "U"
+    },
+    "unicode2charrefHex_label": {
+        "message": "Unicode to Char reference (hex)"
+    },
+    "unicode2charrefHexContext_label": {
+        "message": "Unicode to Char. ref. (hex)"
+    },
+    "unicode2charrefHexContext_accesskey": {
+        "message": "U"
+    },
+    "unicode2htmlents_label": {
+        "message": "Unicode to HTML entities"
+    },
+    "unicode2htmlentsContext_label": {
+        "message": "Unicode to HTML ents."
+    },
+    "unicode2htmlentsContext_accesskey": {
+        "message": "U"
+    },
+    "htmlents2charrefDec_label": {
+        "message": "HTML entity to Char reference (dec)"
+    },
+    "htmlents2charrefDecContext_label": {
+        "message": "HTML ent. to Char ref. (dec)"
+    },
+    "htmlents2charrefDecContext_accesskey": {
+        "message": "H"
+    },
+    "htmlents2charrefHex_label": {
+        "message": "HTML entity to Char reference (hex)"
+    },
+    "htmlents2charrefHexContext_label": {
+        "message": "HTML ent. to Char ref. (hex)"
+    },
+    "htmlents2charrefHexContext_accesskey": {
+        "message": "H"
+    },
+    "htmlents2unicode_label": {
+        "message": "HTML entity to Unicode"
+    },
+    "htmlents2unicodeContext_label": {
+        "message": "HTML ent. to Unicode"
+    },
+    "htmlents2unicodeContext_accesskey": {
+        "message": "H"
+    },
+    "launchunicode_label": {
+        "message": "Launch Unicode conversion tool"
+    },
+    "launchunicodeContext_label": {
+        "message": "Launch Unicode conversion tool"
+    },
+    "launchunicodeContext_accesskey": {
+        "message": "L"
+    },
+    "unicodechart_label": {
+        "message": "Find in Unicode chart"
+    },
+    "unicodechartContext_label": {
+        "message": "Find in Unicode chart"
+    },
+    "unicodechartContext_accesskey": {
+        "message": "C"
+    },
+    "tools_charrefunicode.label": {
+        "message": "Unicode Input Tool/Converter"
+    },
+    "hex2dec_label": {
+        "message": "Hexadecimal to decimal"
+    },
+    "hex2decContext_label": {
+        "message": "Hexadecimal to decimal"
+    },
+    "hex2decContext_accesskey": {
+        "message": "H"
+    },
+    "dec2hex_label": {
+        "message": "Decimal to hexadecimal"
+    },
+    "dec2hexContext_label": {
+        "message": "Decimal to hexadecimal"
+    },
+    "dec2hexContext_accesskey": {
+        "message": "D"
+    },
+    "uresults_value": {
+        "message": "Unicode results"
+    },
+    "uresults_title": {
+        "message": "Unicode Results"
+    },
+    "uresults_preconverted": {
+        "message": "Preconverted:"
+    },
+    "uresults_converted": {
+        "message": "Converted:"
+    },
+    "button_clearoutput": {
+        "message": "Clear"
+    },
+    "caption_chart_output": {
+        "message": "Chart Output"
+    },
+    "caption_chart_selectchar": {
+        "message": "Find Character or Range"
+    },
+    "caption_chart_layout": {
+        "message": "Chart Layout"
+    },
+    "caption_displayUnicodeDesc": {
+        "message": "Char.<html:br />desc.:"
+    },
+    "textbox_displayUnicodeDesc": {
+        "message": "Character description"
+    },
+    "button_multiline": {
+        "message": "Multiline?"
+    },
+    "outputtocopy": {
+        "message": "Output:"
+    },
+    "button_moveoutput": {
+        "message": "Move output"
+    },
+    "willreplaceprecnv": {
+        "message": "(will replace &quot;preconverted&quot; text in Conversion tab)"
+    },
+    "charhexdecchoices": {
+        "message": "Unicode char., hex or dec num.:"
+    },
+    "desc_digits": {
+        "message": "(if seeking char. refs. #0-9, use #n)"
+    },
+    "chooseregion": {
+        "message": "OR Choose by Region:"
+    },
+    "label_norows": {
+        "message": "# of Rows?"
+    },
+    "label_nocols": {
+        "message": "# of Cols?"
+    },
+    "label_hexq": {
+        "message": "Hex?"
+    },
+    "label_decq": {
+        "message": "Dec?"
+    },
+    "label_unicodeq": {
+        "message": "Unicode?"
+    },
+    "label_entq": {
+        "message": "Ent?"
+    },
+    "label_onlyentsyesq": {
+        "message": "Show only ents?"
+    },
+    "label_middleq": {
+        "message": "Place target in middle?"
+    },
+    "label_buttonq": {
+        "message": "Use buttons?"
+    },
+    "label_fontsize": {
+        "message": "Font-size:"
+    },
+    "desc_symbolspunc": {
+        "message": "OR Choose from Symbols and Punctuation:"
+    },
+    "dialogheader_value": {
+        "message": "DTD"
+    },
+    "DTD_desc_value": {
+        "message": "Add DTD entity declarations (optional) for use in conversions"
+    },
+    "DTD_desc_value2": {
+        "message": "Form: &lt;!ENTITY entname 'charvalue'&gt;"
+    },
+    "DTD_textbox_value": {
+        "message": ""
+    },
+    "DTD_insertent": {
+        "message": "Insert &lt;!ENTITY&gt;"
+    },
+    "appendhtml_checkbox": {
+        "message": "Append to existing HTML entity set?"
+    },
+    "label_unicode": {
+        "message": "Unicode"
+    },
+    "showAllDetailedView_label": {
+        "message": "Show all items (or only those with content)"
+    },
+    "showAllDetailedCJKView_label": {
+        "message": "Show all items (or only those with content)"
+    },
+    "showComplexWindow_label": {
+        "message": "Show specialized search options and meta-data in chart view (slower to open window)"
+    },
+    "Specialized_search": {
+        "message": "Specialized search"
+    },
+    "basicView_tab": {
+        "message": "Basic view and output"
+    },
+    "detailedView_tab": {
+        "message": "Detailed view"
+    },
+    "detailedCJKView_tab": {
+        "message": "Detailed view (CJK)"
+    },
+    "unicode2charrefDecSurrogate_label": {
+        "message": "Unicode to Char reference (dec) as surrogate pairs"
+    },
+    "unicode2charrefHexSurrogate_label": {
+        "message": "Unicode to Char reference (hex) as surrogate pairs"
+    },
+    "unicode2charrefSurrogate_tooltip": {
+        "message": "Convert into surrogate pairs (Don't choose this unless you need to find out the surrogates of a (rare) higher plane character or wish to view a surrogate itself)"
+    },
+    "DownloadUnihan": {
+        "message": "Download Unihan file (19.3 MB)"
+    },
+    "Download_unihan_tooltip": {
+        "message": "To get the latest character descriptions for the Chinese-Japanese-Korean characters, click here to download (not included with the extension since the file size is fairly large)."
+    },
+    "Close": {
+        "message": "Close"
+    },
+    "UnihanInstalled": {
+        "message": "Unihan (CJK) database installed"
+    },
+    "searchName": {
+        "message": "Search by character name: "
+    },
+    "searchkDefinition": {
+        "message": "Search by character description (CJK)"
+    },
+    "Regular_tab_label": {
+        "message": "Regular Search (non-CJK)"
+    },
+    "Yijing_Symbols": {
+        "message": "Yijing Symbols"
+    },
+    "Noncharacters_at_end_of": {
+        "message": "Noncharacters at end of ..."
+    },
+    "_see_also_Common_Indic_Number_Forms__": {
+        "message": "(see also Common Indic Number Forms)"
+    },
+    "_see_also_Combining_Diacritical_Marks_for_Symbols__": {
+        "message": "(See also Combining Diacritical Marks for Symbols)"
+    },
+    "Roman_Symbols": {
+        "message": "Roman Symbols"
+    },
+    "CJK_Radicals___KangXi_Radicals": {
+        "message": "CJK Radicals / KangXi Radicals"
+    },
+    "CJK_Ideographs_Ext__C": {
+        "message": "CJK Ideographs Ext. C"
+    },
+    "Bamum": {
+        "message": "Bamum"
+    },
+    "Egyptian_Hieroglyphs": {
+        "message": "Egyptian Hieroglyphs"
+    },
+    "Aramaic__Imperial": {
+        "message": "Aramaic, Imperial"
+    },
+    "Avestan": {
+        "message": "Avestan"
+    },
+    "Old_South_Arabian": {
+        "message": "Old South Arabian"
+    },
+    "Pahlavi__Inscriptional": {
+        "message": "Pahlavi, Inscriptional"
+    },
+    "Parthian__Inscriptional": {
+        "message": "Parthian, Inscriptional"
+    },
+    "Samaritan": {
+        "message": "Samaritan"
+    },
+    "Old_Turkic": {
+        "message": "Old Turkic"
+    },
+    "Devanagari_Extended": {
+        "message": "Devanagari Extended"
+    },
+    "Kaithi": {
+        "message": "Kaithi"
+    },
+    "Meetei_Mayek": {
+        "message": "Meetei Mayek"
+    },
+    "Vedic_Extensions": {
+        "message": "Vedic Extensions"
+    },
+    "Javanese": {
+        "message": "Javanese"
+    },
+    "Myanmar_Extended_A": {
+        "message": "Myanmar Extended-A"
+    },
+    "South_Asian_Scripts": {
+        "message": "South Asian Scripts"
+    },
+    "Tai_Tham": {
+        "message": "Tai Tham"
+    },
+    "Tai_Viet": {
+        "message": "Tai Viet"
+    },
+    "Lisu": {
+        "message": "Lisu"
+    },
+    "Hangul_Jamo_Extended_A": {
+        "message": "Hangul Jamo Extended-A"
+    },
+    "Hangul_Jamo_Extended_B": {
+        "message": "Hangul Jamo Extended-B"
+    },
+    "UCAS_Extended": {
+        "message": "UCAS Extended"
+    },
+    "Common_Indic_Number_Forms": {
+        "message": "Common Indic Number Forms"
+    },
+    "Rumi_Numeral_Symbols": {
+        "message": "Rumi Numeral Symbols"
+    },
+    "Basic_operators_Plus__Factorial": {
+        "message": "Basic operators: Plus, Factorial"
+    },
+    "Division__Multiplication": {
+        "message": "Division, Multiplication"
+    },
+    "Unified_Canadian_Aboriginal_Syllabics": {
+        "message": "Unified Canadian Aboriginal Syllabics"
+    },
+    "Combining_Diacritics": {
+        "message": "Combining Diacritics"
+    },
+    "Yi_Syllables": {
+        "message": "Yi Syllables"
+    },
+    "Alphabetic_Presentation_Forms": {
+        "message": "Alphabetic Presentation Forms"
+    },
+    "Halfwidth_and_Fullwidth_Forms": {
+        "message": "Halfwidth and Fullwidth Forms"
+    },
+    "ASCII_Characters": {
+        "message": "ASCII Characters"
+    },
+    "Alphanumeric_Symbols": {
+        "message": "Alphanumeric Symbols"
+    },
+    "Enclosed_Alphanumeric_Supplement": {
+        "message": "Enclosed Alphanumeric Supplement"
+    },
+    "Enclosed_Ideographic_Supplement": {
+        "message": "Enclosed Ideographic Supplement"
+    },
+    "Additional_Squared_Symbols": {
+        "message": "Additional Squared Symbols"
+    },
+    "CJK_tab_label": {
+        "message": "CJK"
+    },
+    "CJK_tooltip": {
+        "message": "Search Chinese-Japanese-Korean only"
+    },
+    "Regular_tooltip": {
+        "message": "Search regular database (besides Chinese-Japanese-Korean)"
+    },
+    "ShowImg_checkbox_label": {
+        "message": "Show image?"
+    },
+    "ShowImg_tooltiptext": {
+        "message": "Please keep this turned off unless you need to find an image, since it taxes the Unicode server."
+    },
+
+
+    "Code_point": {
+        "message": "Code Point"
+    },
+    "Name": {
+        "message": "Name"
+    },
+    "kCangjie": {
+        "message": "Cangjie"
+    },
+    "kCantonese": {
+        "message": "Cantonese"
+    },
+    "kDefinition": {
+        "message": "Definition"
+    },
+    "kHanYu": {
+        "message": "HanYu"
+    },
+    "kIRGHanyuDaZidian": {
+        "message": "IRGHanyuDaZidian"
+    },
+    "kIRGKangXi": {
+        "message": "IRGKangXi"
+    },
+    "kIRG_GSource": {
+        "message": "IRG GSource"
+    },
+    "kIRG_JSource": {
+        "message": "IRG JSource"
+    },
+    "kIRG_TSource": {
+        "message": "IRG TSource"
+    },
+    "kMandarin": {
+        "message": "Mandarin"
+    },
+    "kRSUnicode": {
+        "message": "RSUnicode"
+    },
+    "kSemanticVariant": {
+        "message": "SemanticVariant"
+    },
+    "kTotalStrokes": {
+        "message": "TotalStrokes"
+    },
+    "kCihaiT": {
+        "message": "CihaiT"
+    },
+    "kIRG_KSource": {
+        "message": "IRG KSource"
+    },
+    "kSBGY": {
+        "message": "SBGY"
+    },
+    "kJIS0213": {
+        "message": "JIS0213"
+    },
+    "kNelson": {
+        "message": "Nelson"
+    },
+    "kRSAdobe_Japan1_6": {
+        "message": "RSAdobe Japan1 6"
+    },
+    "kCowles": {
+        "message": "Cowles"
+    },
+    "kMatthews": {
+        "message": "Matthews"
+    },
+    "kOtherNumeric": {
+        "message": "OtherNumeric"
+    },
+    "kPhonetic": {
+        "message": "Phonetic"
+    },
+    "kGSR": {
+        "message": "GSR"
+    },
+    "kIRG_KPSource": {
+        "message": "IRG KPSource"
+    },
+    "kIRG_VSource": {
+        "message": "IRG VSource"
+    },
+    "kKPS1": {
+        "message": "KPS1"
+    },
+    "kFenn": {
+        "message": "Fenn"
+    },
+    "kFennIndex": {
+        "message": "FennIndex"
+    },
+    "kKarlgren": {
+        "message": "Karlgren"
+    },
+    "kHKSCS": {
+        "message": "HKSCS"
+    },
+    "kIRG_HSource": {
+        "message": "IRG HSource"
+    },
+    "kXHC1983": {
+        "message": "XHC1983"
+    },
+    "kMeyerWempe": {
+        "message": "MeyerWempe"
+    },
+    "kTraditionalVariant": {
+        "message": "TraditionalVariant"
+    },
+    "kVietnamese": {
+        "message": "Vietnamese"
+    },
+    "kSpecializedSemanticVariant": {
+        "message": "SpecializedSemanticVariant"
+    },
+    "kLau": {
+        "message": "Lau"
+    },
+    "kCheungBauer": {
+        "message": "CheungBauer"
+    },
+    "kCheungBauerIndex": {
+        "message": "CheungBauerIndex"
+    },
+    "kIICore": {
+        "message": "IICore"
+    },
+    "kTang": {
+        "message": "Tang"
+    },
+    "kZVariant": {
+        "message": "ZVariant"
+    },
+    "kRSKangXi": {
+        "message": "RSKangXi"
+    },
+    "kJapaneseKun": {
+        "message": "JapaneseKun"
+    },
+    "kJapaneseOn": {
+        "message": "JapaneseOn"
+    },
+    "kSimplifiedVariant": {
+        "message": "SimplifiedVariant"
+    },
+    "kKangXi": {
+        "message": "KangXi"
+    },
+    "kKPS0": {
+        "message": "KPS0"
+    },
+    "kBigFive": {
+        "message": "BigFive"
+    },
+    "kCCCII": {
+        "message": "CCCII"
+    },
+    "kCNS1986": {
+        "message": "CNS1986"
+    },
+    "kCNS1992": {
+        "message": "CNS1992"
+    },
+    "kDaeJaweon": {
+        "message": "DaeJaweon"
+    },
+    "kEACC": {
+        "message": "EACC"
+    },
+    "kFourCornerCode": {
+        "message": "FourCornerCode"
+    },
+    "kFrequency": {
+        "message": "Frequency"
+    },
+    "kGB0": {
+        "message": "GB0"
+    },
+    "kGB1": {
+        "message": "GB1"
+    },
+    "kGradeLevel": {
+        "message": "GradeLevel"
+    },
+    "kHDZRadBreak": {
+        "message": "HDZRadBreak"
+    },
+    "kHKGlyph": {
+        "message": "HKGlyph"
+    },
+    "kHangul": {
+        "message": "Hangul"
+    },
+    "kHanyuPinlu": {
+        "message": "HanyuPinlu"
+    },
+    "kIRGDaeJaweon": {
+        "message": "IRGDaeJaweon"
+    },
+    "kIRGDaiKanwaZiten": {
+        "message": "IRGDaiKanwaZiten"
+    },
+    "kJis0": {
+        "message": "Jis0"
+    },
+    "kKSC0": {
+        "message": "KSC0"
+    },
+    "kKorean": {
+        "message": "Korean"
+    },
+    "kMainlandTelegraph": {
+        "message": "MainlandTelegraph"
+    },
+    "kMorohashi": {
+        "message": "Morohashi"
+    },
+    "kPrimaryNumeric": {
+        "message": "PrimaryNumeric"
+    },
+    "kTaiwanTelegraph": {
+        "message": "TaiwanTelegraph"
+    },
+    "kXerox": {
+        "message": "Xerox"
+    },
+    "kGB5": {
+        "message": "GB5"
+    },
+    "kJis1": {
+        "message": "Jis1"
+    },
+    "kPseudoGB1": {
+        "message": "PseudoGB1"
+    },
+    "kGB3": {
+        "message": "GB3"
+    },
+    "kGB8": {
+        "message": "GB8"
+    },
+    "kKSC1": {
+        "message": "KSC1"
+    },
+    "kIBMJapan": {
+        "message": "IBMJapan"
+    },
+    "kRSKanWa": {
+        "message": "RSKanWa"
+    },
+    "kRSJapanese": {
+        "message": "RSJapanese"
+    },
+    "kAccountingNumeric": {
+        "message": "AccountingNumeric"
+    },
+    "kRSKorean": {
+        "message": "RSKorean"
+    },
+    "kGB7": {
+        "message": "GB7"
+    },
+    "kIRG_USource": {
+        "message": "IRG USource"
+    },
+    "kCompatibilityVariant": {
+        "message": "CompatibilityVariant"
+    },
+    "General_Category": {
+        "message": "General Category"
+    },
+    "Canonical_Combining_Class": {
+        "message": "Canonical Combining Class"
+    },
+    "Bidi_Class": {
+        "message": "Bidirectional Class"
+    },
+    "Decomposition_Type_and_Mapping": {
+        "message": "Decomposition Type and Mapping"
+    },
+    "Decimal": {
+        "message": "Decimal"
+    },
+    "Digit": {
+        "message": "Digit"
+    },
+    "Numeric": {
+        "message": "Numeric"
+    },
+    "Bidi_Mirrored": {
+        "message": "Bidirectional Mirrored"
+    },
+    "Unicode_1_Name": {
+        "message": "Unicode 1 Name"
+    },
+    "ISO_Comment": {
+        "message": "ISO Comment"
+    },
+    "Simple_Uppercase_Mapping": {
+        "message": "Simple Uppercase Mapping"
+    },
+    "Simple_Lowercase_Mapping": {
+        "message": "Simple Lowercase Mapping"
+    },
+    "Simple_Titlecase_Mapping": {
+        "message": "Simple Titlecase Mapping"
+    },
+
+    "Additional_Arrows": {
+        "message": "Additional Arrows"
+    },
+    "Floors_and_Ceilings": {
+        "message": "Floors and Ceilings"
+    },
+    "Additional_Shapes": {
+        "message": "Additional Shapes"
+    },
+    "APL_Symbols": {
+        "message": "APL Symbols"
+    },
+    "Sundanese": {
+        "message": "Sundanese"
+    },
+    "Ol_Chiki": {
+        "message": "Ol Chiki"
+    },
+    "Cyrillic_Extended_A": {
+        "message": "Cyrillic Extended-A"
+    },
+    "Vai": {
+        "message": "Vai"
+    },
+    "Cyrillic_Extended_B": {
+        "message": "Cyrillic Extended-B"
+    },
+    "Saurashtra": {
+        "message": "Saurashtra"
+    },
+    "Kayah_Li": {
+        "message": "Kayah Li"
+    },
+    "Rejang": {
+        "message": "Rejang"
+    },
+    "Cham": {
+        "message": "Cham"
+    },
+    "Ancient_Symbols": {
+        "message": "Ancient Symbols"
+    },
+    "Phaistos_Disc": {
+        "message": "Phaistos Disc"
+    },
+    "Lycian": {
+        "message": "Lycian"
+    },
+    "Carian": {
+        "message": "Carian"
+    },
+    "Lydian": {
+        "message": "Lydian"
+    },
+    "Mahjong_Tiles": {
+        "message": "Mahjong Tiles"
+    },
+    "Domino_Tiles": {
+        "message": "Domino Tiles"
+    },
+    "Game_Symbols": {
+        "message": "Game Symbols"
+    },
+    "Chess_Checkers": {
+        "message": "Chess/Checkers"
+    },
+    "Card_suits": {
+        "message": "Card suits"
+    },
+    "Japanese_Chess": {
+        "message": "Japanese Chess"
+    },
+    "Yijing_Mono___Di__and_Trigrams": {
+        "message": "Yijing Mono-, Di- and Trigrams"
+    },
+    "European_Scripts": {
+        "message": "European Scripts"
+    },
+    "_see_also_Comb._Marks__": {
+        "message": "(see also Comb. Marks)"
+    },
+    "Armenian": {
+        "message": "Armenian"
+    },
+    "Armenian_Ligatures": {
+        "message": "Armenian Ligatures"
+    },
+    "Coptic": {
+        "message": "Coptic"
+    },
+    "Coptic_in_Greek_block": {
+        "message": "Coptic in Greek block"
+    },
+    "Cyrillic": {
+        "message": "Cyrillic"
+    },
+    "Cyrillic_Supplement": {
+        "message": "Cyrillic Supplement"
+    },
+    "Georgian": {
+        "message": "Georgian"
+    },
+    "Georgian_Supplement": {
+        "message": "Georgian Supplement"
+    },
+    "Greek": {
+        "message": "Greek"
+    },
+    "Greek_Extended": {
+        "message": "Greek Extended"
+    },
+    "_see_also_Ancient_Greek_Numbers__": {
+        "message": "(see also Ancient Greek Numbers)"
+    },
+    "_see_also_Ancient_Greek_Musical_Notation__": {
+        "message": "(see also Ancient Greek Musical Notation)"
+    },
+    "Latin": {
+        "message": "Latin"
+    },
+    "Basic_Latin": {
+        "message": "Basic Latin"
+    },
+    "Latin_1_Supplement": {
+        "message": "Latin-1 Supplement"
+    },
+    "Latin_Extended_A": {
+        "message": "Latin Extended A"
+    },
+    "Latin_Extended_B": {
+        "message": "Latin Extended B"
+    },
+    "Latin_Extended_C": {
+        "message": "Latin Extended C"
+    },
+    "Latin_Extended_D": {
+        "message": "Latin Extended D"
+    },
+    "Latin_Extended_Additional": {
+        "message": "Latin Extended Additional"
+    },
+    "Latin_Ligatures": {
+        "message": "Latin Ligatures"
+    },
+    "Fullwidth_Latin_Letters": {
+        "message": "Fullwidth Latin Letters"
+    },
+    "Small_Form_Variants": {
+        "message": "Small Form Variants"
+    },
+    "_see_also_Phonetic_Symbols__": {
+        "message": "(see also Phonetic Symbols)"
+    },
+    "African_Scripts": {
+        "message": "African Scripts"
+    },
+    "Ethiopic": {
+        "message": "Ethiopic"
+    },
+    "Ethiopic_Supplement": {
+        "message": "Ethiopic Supplement"
+    },
+    "Ethiopic_Extended": {
+        "message": "Ethiopic Extended"
+    },
+    "Other_African_scripts": {
+        "message": "Other African scripts"
+    },
+    "N_Ko": {
+        "message": "N'Ko"
+    },
+    "Tifinagh": {
+        "message": "Tifinagh"
+    },
+    "Middle_Eastern_Scripts": {
+        "message": "Middle Eastern Scripts"
+    },
+    "Arabic": {
+        "message": "Arabic"
+    },
+    "Arabic_Supplement": {
+        "message": "Arabic Supplement"
+    },
+    "Arabic_Presentation_Forms_A": {
+        "message": "Arabic Presentation Forms A"
+    },
+    "Arabic_Presentation_Forms_B": {
+        "message": "Arabic Presentation Forms B"
+    },
+    "Hebrew": {
+        "message": "Hebrew"
+    },
+    "Hebrew_Presentation_Forms": {
+        "message": "Hebrew Presentation Forms"
+    },
+    "Syriac": {
+        "message": "Syriac"
+    },
+    "Thaana": {
+        "message": "Thaana"
+    },
+    "American_scripts": {
+        "message": "American scripts"
+    },
+    "Cherokee": {
+        "message": "Cherokee"
+    },
+    "Deseret": {
+        "message": "Deseret"
+    },
+    "Other_Scripts": {
+        "message": "Other Scripts"
+    },
+    "Shavian": {
+        "message": "Shavian"
+    },
+    "Osmanya": {
+        "message": "Osmanya"
+    },
+    "Glagolitic": {
+        "message": "Glagolitic"
+    },
+    "Bengali": {
+        "message": "Bengali"
+    },
+    "Devanagari": {
+        "message": "Devanagari"
+    },
+    "Gujarati": {
+        "message": "Gujarati"
+    },
+    "Gurmukhi": {
+        "message": "Gurmukhi"
+    },
+    "Kannada": {
+        "message": "Kannada"
+    },
+    "Limbu": {
+        "message": "Limbu"
+    },
+    "Malayalam": {
+        "message": "Malayalam"
+    },
+    "Oriya": {
+        "message": "Oriya"
+    },
+    "Sinhala": {
+        "message": "Sinhala"
+    },
+    "Syloti_Nagri": {
+        "message": "Syloti Nagri"
+    },
+    "Tamil": {
+        "message": "Tamil"
+    },
+    "Telugu": {
+        "message": "Telugu"
+    },
+    "Philippine_Scripts": {
+        "message": "Philippine Scripts"
+    },
+    "Buhid": {
+        "message": "Buhid"
+    },
+    "Hanunoo": {
+        "message": "Hanunoo"
+    },
+    "Tagalog": {
+        "message": "Tagalog"
+    },
+    "Tagbanwa": {
+        "message": "Tagbanwa"
+    },
+    "South_East_Asian": {
+        "message": "Southeast Asian"
+    },
+    "Balinese": {
+        "message": "Balinese"
+    },
+    "Buginese": {
+        "message": "Buginese"
+    },
+    "Khmer": {
+        "message": "Khmer"
+    },
+    "Khmer_Symbols": {
+        "message": "Khmer Symbols"
+    },
+    "Lao": {
+        "message": "Lao"
+    },
+    "Myanmar": {
+        "message": "Myanmar"
+    },
+    "New_Tai_Lue": {
+        "message": "New Tai Lue"
+    },
+    "Tai_Le": {
+        "message": "Tai Le"
+    },
+    "Thai": {
+        "message": "Thai"
+    },
+    "East_Asian_Scripts": {
+        "message": "East Asian Scripts"
+    },
+    "CJK_Unified_Ideographs___Han__": {
+        "message": "CJK Unified Ideographs (Han)"
+    },
+    "CJK_Ideographs_Ext__A": {
+        "message": "CJK Ideographs Ext. A"
+    },
+    "CJK_Ideographs_Ext__B": {
+        "message": "CJK Ideographs Ext. B"
+    },
+    "CJK_Compatibility_Ideographs": {
+        "message": "CJK Compatibility Ideographs"
+    },
+    "CJK_Compatibility_Ideographs_Supplement": {
+        "message": "CJK Compatibility Ideographs Supplement"
+    },
+    "Kanbun": {
+        "message": "Kanbun"
+    },
+    "_see_also_Unihan_Database__": {
+        "message": "(see also Unihan Database)"
+    },
+    "CJK_Radicals_Supplement": {
+        "message": "CJK Radicals Supplement"
+    },
+    "CJK_Strokes": {
+        "message": "CJK Strokes"
+    },
+    "Ideographic_Description_Characters": {
+        "message": "Ideographic Description Characters"
+    },
+    "Bopomofo": {
+        "message": "Bopomofo"
+    },
+    "Bopomofo_Extended": {
+        "message": "Bopomofo Extended"
+    },
+    "Hiragana": {
+        "message": "Hiragana"
+    },
+    "Katakana": {
+        "message": "Katakana"
+    },
+    "Katakana_Phonetic_Ext_": {
+        "message": "Katakana Phonetic Extensions"
+    },
+    "Halfwidth_Katakana": {
+        "message": "Halfwidth Katakana"
+    },
+    "Hangul_Syllables": {
+        "message": "Hangul Syllables"
+    },
+    "Hangul_Jamo": {
+        "message": "Hangul Jamo"
+    },
+    "Hangul_Compatibility_Jamo": {
+        "message": "Hangul Compatibility Jamo"
+    },
+    "Halfwidth_Jamo": {
+        "message": "Halfwidth Jamo"
+    },
+    "Yi": {
+        "message": "Yi"
+    },
+    "Yi_Radicals": {
+        "message": "Yi Radicals"
+    },
+    "Central_Asian_Scripts": {
+        "message": "Central Asian Scripts"
+    },
+    "Kharoshthi": {
+        "message": "Kharoshthi"
+    },
+    "Mongolian": {
+        "message": "Mongolian"
+    },
+    "Phags_Pa": {
+        "message": "Phags-Pa"
+    },
+    "Tibetan": {
+        "message": "Tibetan"
+    },
+    "Ancient_Greek_Numbers": {
+        "message": "Ancient Greek Numbers"
+    },
+    "Ancient_Greek_Musical_Notation": {
+        "message": "Ancient Greek Musical Notation"
+    },
+    "Cuneiform": {
+        "message": "Cuneiform"
+    },
+    "Cuneiform_Numbers_and_Punctuation": {
+        "message": "Cuneiform Numbers and Punctuation"
+    },
+    "Old_Persian": {
+        "message": "Old Persian"
+    },
+    "Ugaritic": {
+        "message": "Ugaritic"
+    },
+    "Linear_B": {
+        "message": "Linear B"
+    },
+    "Linear_B_Syllabary": {
+        "message": "Linear B Syllabary"
+    },
+    "Linear_B_Ideograms": {
+        "message": "Linear B Ideograms"
+    },
+    "Aegean_Numbers": {
+        "message": "Aegean Numbers"
+    },
+    "Counting_Rod_Numerals": {
+        "message": "Counting Rod Numerals"
+    },
+    "Cypriot_Syllabary": {
+        "message": "Cypriot Syllabary"
+    },
+    "Gothic": {
+        "message": "Gothic"
+    },
+    "Old_Italic": {
+        "message": "Old Italic"
+    },
+    "Ogham": {
+        "message": "Ogham"
+    },
+    "Runic": {
+        "message": "Runic"
+    },
+    "Phoenician": {
+        "message": "Phoenician"
+    },
+    "Punctuation": {
+        "message": "Punctuation"
+    },
+    "General_Punctuation": {
+        "message": "General Punctuation"
+    },
+    "ASCII_Punctuation": {
+        "message": "ASCII Punctuation"
+    },
+    "Latin_1_Punctuation": {
+        "message": "Latin-1 Punctuation"
+    },
+    "Supplemental_Punctuation": {
+        "message": "Supplemental Punctuation"
+    },
+    "CJK_Symbols_and_Punctuation": {
+        "message": "CJK Symbols and Punctuation"
+    },
+    "Fullwidth_ASCII_Punctuation": {
+        "message": "Fullwidth ASCII Punctuation"
+    },
+    "Vertical_Forms": {
+        "message": "Vertical Forms"
+    },
+    "Enclosed_Alphanumerics": {
+        "message": "Enclosed Alphanumerics"
+    },
+    "Enclosed_Alphanumerics_CJK_Letters_and_Months": {
+        "message": "Enclosed CJK Letters and Months"
+    },
+    "CJK_Compatibility": {
+        "message": "CJK Compatibility"
+    },
+    "_see_also_Letterlike_Symbols__": {
+        "message": "(see also Letterlike Symbols)"
+    },
+    "Combining_Diacritical_Marks": {
+        "message": "Combining Diacritical Marks"
+    },
+    "Combining_Diacritical_Marks_for_Symbols": {
+        "message": "Combining Diacritical Marks for Symbols"
+    },
+    "Combining_Diacritical_Marks_Supplement": {
+        "message": "Combining Diacritical Marks Supplement"
+    },
+    "Combining_Half_Marks": {
+        "message": "Combining Half Marks"
+    },
+    "Phonetic_Symbols": {
+        "message": "Phonetic Symbols"
+    },
+    "IPA_Extensions": {
+        "message": "IPA Extensions"
+    },
+    "Phonetic_Extensions": {
+        "message": "Phonetic Extensions"
+    },
+    "Phonetic_Extensions_Supplement": {
+        "message": "Phonetic Extensions Supplement"
+    },
+    "Modifier_Tone_Letters": {
+        "message": "Modifier Tone Letters"
+    },
+    "Spacing_Modifier_Letters": {
+        "message": "Spacing Modifier Letters"
+    },
+    "_see_also_Super_and_Subscript__": {
+        "message": "(see also Super and Subscript)"
+    },
+    "Mathematical_Symbols": {
+        "message": "Mathematical Symbols"
+    },
+    "Numbers_and_Digits": {
+        "message": "Numbers and Digits"
+    },
+    "_see_also_specific_scripts__": {
+        "message": "(see also specific scripts)"
+    },
+    "ASCII_Digits": {
+        "message": "ASCII Digits"
+    },
+    "Fullwidth_ASCII_Digits": {
+        "message": "Fullwidth ASCII Digits"
+    },
+    "Number_Forms": {
+        "message": "Number Forms"
+    },
+    "Super_and_Subscripts": {
+        "message": "Super and Subscripts"
+    },
+    "Letterlike_Symbols": {
+        "message": "Letterlike Symbols"
+    },
+    "Mathematical_Alphanumeric_Symbols": {
+        "message": "Mathematical Alphanumeric Symbols"
+    },
+    "Arrows": {
+        "message": "Arrows"
+    },
+    "Mathematical_Operators": {
+        "message": "Mathematical Operators"
+    },
+    "Suppl__Math_Operators": {
+        "message": "Supplemental Math Operators"
+    },
+    "Misc__Math_Symbols_A": {
+        "message": "Miscellaneous Math Symbols A"
+    },
+    "Misc__Math_Symbols_B": {
+        "message": "Miscellaneous Math Symbols B"
+    },
+    "Supplemental_Arrows_A": {
+        "message": "Supplemental Arrows A"
+    },
+    "Supplemental_Arrows_B": {
+        "message": "Supplemental Arrows B"
+    },
+    "Misc__Symbols_and_Arrows": {
+        "message": "Miscellaneous Symbols and Arrows"
+    },
+    "Geometric_Shapes": {
+        "message": "Geometric Shapes"
+    },
+    "Box_Drawing": {
+        "message": "Box Drawing"
+    },
+    "Block_Elements": {
+        "message": "Block Elements"
+    },
+    "Technical_Symbols": {
+        "message": "Technical Symbols"
+    },
+    "Control_Pictures": {
+        "message": "Control Pictures"
+    },
+    "Miscellaneous_Technical": {
+        "message": "Miscellaneous Technical"
+    },
+    "OCR": {
+        "message": "Optical Character Recognition (OCR)"
+    },
+    "Other_Symbols": {
+        "message": "Other Symbols"
+    },
+    "Miscellaneous_Symbols": {
+        "message": "Miscellaneous Symbols"
+    },
+    "Dingbats": {
+        "message": "Dingbats"
+    },
+    "Tai_Xuan_Jing_Symbols": {
+        "message": "Tai Xuan Jing Symbols"
+    },
+    "Yijing_Hexagram_Symbols": {
+        "message": "Yijing Hexagram Symbols"
+    },
+    "Braille_Patterns": {
+        "message": "Braille Patterns"
+    },
+    "Byzantine_Musical_Symbols": {
+        "message": "Byzantine Musical Symbols"
+    },
+    "Musical_Symbols": {
+        "message": "Musical Symbols"
+    },
+    "Currency_Symbols": {
+        "message": "Currency Symbols"
+    },
+    "Dollar_Sign": {
+        "message": "Dollar Sign"
+    },
+    "Euro_Sign": {
+        "message": "Euro Sign"
+    },
+    "Yen__Pound_and_Cent": {
+        "message": "Yen, Pound and Cent"
+    },
+    "Fullwidth_Currency_Symbols": {
+        "message": "Fullwidth Currency Symbols"
+    },
+    "Mark__historic__": {
+        "message": "Mark (historic)"
+    },
+    "Pfennig__historic__": {
+        "message": "Pfennig (historic)"
+    },
+    "Rial_Sign": {
+        "message": "Rial Sign"
+    },
+    "Specials": {
+        "message": "Specials"
+    },
+    "Controls__C0": {
+        "message": "Controls: C0"
+    },
+    "Controls__C1": {
+        "message": "Controls: C1"
+    },
+    "Layout_Controls": {
+        "message": "Layout Controls"
+    },
+    "Invisible_Operators": {
+        "message": "Invisible Operators"
+    },
+    "Tags": {
+        "message": "Tags"
+    },
+    "Variation_Selectors": {
+        "message": "Variation Selectors"
+    },
+    "Variation_Selectors_Supplement": {
+        "message": "Variation Selectors Supplement"
+    },
+    "Private_Use": {
+        "message": "Private Use"
+    },
+    "Private_Use_Area": {
+        "message": "Private Use Area"
+    },
+    "Suppl__Private_Use_Area_A": {
+        "message": "Supplementary Private Use Area-A"
+    },
+    "Suppl__Private_Use_Area_B": {
+        "message": "Supplementary Private Use Area-B"
+    },
+    "Surrogates": {
+        "message": "Surrogates"
+    },
+    "High_Surrogates": {
+        "message": "High Surrogates"
+    },
+    "High_Private_Use_Surrogates": {
+        "message": "High Private Use Surrogates"
+    },
+    "Low_Surrogates": {
+        "message": "Low Surrogates"
+    },
+    "Noncharacters_in_Charts": {
+        "message": "Noncharacters in Charts"
+    },
+    "Reserved_range": {
+        "message": "Reserved range"
+    },
+    "At_End_of_BMP": {
+        "message": "At End of BMP"
+    },
+    "At_End_of_Plane_1": {
+        "message": "At End of Plane 1"
+    },
+    "At_End_of_Plane_2": {
+        "message": "At End of Plane 2"
+    },
+    "At_End_of_Plane_3": {
+        "message": "At End of Plane 3"
+    },
+    "At_End_of_Plane_4": {
+        "message": "At End of Plane 4"
+    },
+    "At_End_of_Plane_5": {
+        "message": "At End of Plane 5"
+    },
+    "At_End_of_Plane_6": {
+        "message": "At End of Plane 6"
+    },
+    "At_End_of_Plane_7": {
+        "message": "At End of Plane 7"
+    },
+    "At_End_of_Plane_8": {
+        "message": "At End of Plane 8"
+    },
+    "At_End_of_Plane_9": {
+        "message": "At End of Plane 9"
+    },
+    "At_End_of_Plane_10": {
+        "message": "At End of Plane 10"
+    },
+    "At_End_of_Plane_11": {
+        "message": "At End of Plane 11"
+    },
+    "At_End_of_Plane_12": {
+        "message": "At End of Plane 12"
+    },
+    "At_End_of_Plane_13": {
+        "message": "At End of Plane 13"
+    },
+    "At_End_of_Plane_14": {
+        "message": "At End of Plane 14"
+    },
+    "At_End_of_Plane_15": {
+        "message": "At End of Plane 15"
+    },
+    "At_End_of_Plane_16": {
+        "message": "At End of Plane 16"
+    },
+    "Lepcha": {
+        "message": "Lepcha"
+    },
+    "CJK_Compatibility_Forms": {
+        "message": "CJK Compatibility Forms"
     }
 }

@@ -36,8 +36,9 @@ export default async function ({
 }
 
 let lastStartCharCode;
+
 // Todo:
-console.log('lastStartCharCode', lastStartCharCode);
+lastStartCharCode; // eslint-disable-line no-unused-expressions
 
 export const buildChart = async function buildChart ({descripts} = {}) {
     const [
@@ -149,7 +150,6 @@ export const buildChart = async function buildChart ({descripts} = {}) {
                 })
                 : '');
 
-    console.log('rows', rows);
     jml('table', {
         id: 'chart_table',
         class: 'unicodetablecell',

@@ -74,10 +74,10 @@
     "About_contributors": {
         "message": " e traduzida por Karoly Fabricz (hu-HU), Edgard Dias Magalhães (pt-BR), Mikael Hiort af Ornäs (sv-SE)."
     },
-    "About_paypal": {
-        "message": "Se você achar esta extensão útil, por favor, pense em fazer uma {About_paypal_button}."
+    "About_donation": {
+        "message": "Se você achar esta extensão útil, por favor, pense em fazer uma {About_donation_button}."
     },
-    "About_paypal_buttonText": {
+    "About_donation_buttonText": {
         "message": "doação ao PayPal"
     },
     "About_ial": {

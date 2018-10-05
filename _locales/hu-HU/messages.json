@@ -74,10 +74,10 @@
     "About_contributors": {
         "message": " és Fábricz Károly (hu-HU), Edgard Magalh&#227;es (pt-BR), Mikael Hiort af Ornäs (sv-SE) fordította."
     },
-    "About_paypal": {
-        "message": "Ha a kiegészítőt hasznosnak találja, vegye fontolóra {About_paypal_button}."
+    "About_donation": {
+        "message": "Ha a kiegészítőt hasznosnak találja, vegye fontolóra {About_donation_button}."
     },
-    "About_paypal_buttonText": {
+    "About_donation_buttonText": {
         "message": "egy Paypal-adomány lehetőségét"
     },
     "About_ial": {

@@ -14,9 +14,13 @@ await addMillerColumnPlugin(jQuery, {stylesheets: [
 
 // Todo:
 const lang = new URL(location).searchParams.get('lang');
-const locales = lang ? [lang] : navigator.languages; // ['sv-SE']; // ['pt-BR']; // ['hu-HU'];
-if (!locales.includes('en-US')) { // Ensure there is at least one working language!
-    locales.push('en-US');
+const locales = lang ? [lang] : [...navigator.languages]; // ['sv-SE']; // ['pt-BR']; // ['hu-HU'];
+const engPos = locales.indexOf('en-US');
+if (engPos > -1) {
+    locales[engPos] = 'en'; // Optimize for English (and avoid console errors)
+}
+if (!locales.includes('en')) { // Ensure there is at least one working language!
+    locales.push('en');
 }
 const _ = await i18n({locales, defaults: false});
 
@@ -63,7 +67,10 @@ jml('div', [
             id: 'notes',
             title: _('Notes_tab_label'),
             class: 'tabpanel'
-        }, []],
+        }, [
+            ['h2', [_('Notes_dialogheader_title')]],
+            []
+        ]],
         ['div', {
             id: 'about',
             title: _('About_tab_label'),
@@ -82,19 +89,19 @@ jml('div', [
                     ])
                 }),
                 ' ',
-                _('About_paypal', {
-                    About_paypal_button: jml('button', {
-                        id: 'paypalbutton',
+                _('About_donation', {
+                    About_donation_button: jml('button', {
+                        id: 'donationbutton',
                         $on: {
                             click () {
                                 window.open(
                                     'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=brettz9%40yahoo%2ecom&no_shipping=0&no_note=1&tax=0&currency_code=USD&bn=PP%2dDonationsBF&charset=UTF%2d8',
-                                    'bzamirpaypal'
+                                    'bzamirdonation'
                                 );
                             }
                         }
                     }, [
-                        _('About_paypal_buttonText')
+                        _('About_donation_buttonText')
                     ])
                 })
             ]],
@@ -145,8 +152,10 @@ await getBuildChart({
 
         // Save values for manipulation by entity addition function, 'insertent'
         // Todo: Fix and use
+        /*
         this.selst = textReceptable.selectionStart;
         this.selend = textReceptable.selectionEnd;
+        */
     }
 });
 })();
