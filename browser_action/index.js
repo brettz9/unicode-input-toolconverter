@@ -60,7 +60,206 @@ jml('div', [
             id: 'prefs',
             title: _('Prefs_tab_label'),
             class: 'tabpanel'
-        }, []],
+        }, [
+            ['h2', {class: 'dialogheader'}, [_('Preferences_dialogheader_title')]],
+            ['div', {
+                id: 'DownloadButtonBox',
+                class: 'boxed',
+                tooltiptext: _('Download_unihan_tooltip')
+            }, [
+                ['button', {
+                    $on: {
+                        click () {
+                            Unicodecharref.downloadUnihan();
+                        }
+                    }
+                }, [_('DownloadUnihan')]]
+            ]],
+            ['div', {
+                id: 'DownloadProgressBox',
+                class: 'boxed',
+                hidden: true
+            }, [
+                ['label', {id: 'progress_stat'}, [
+                    // Todo: ['progressmeter', {id: 'progress_element', mode: 'determined'}]
+                ]],
+                ['button', {
+                    id: 'closeDownloadProgressBox',
+                    hidden: true,
+                    $on: {
+                        click () {
+                            Unicodecharref.closeDownloadProgressBox();
+                        }
+                    }
+                }, [_('Close')]]
+            ]],
+            ['div', {id: 'UnihanInstalled', class: 'boxed'}, [
+                _('UnihanInstalled')
+            ]],
+            ['div', {class: 'boxed'}, [
+                ['label', [
+                    _('initialTab_label'),
+                    ['select', {id: 'initialTab', $on: {
+                        click (e) {
+                            Unicodecharref.setprefs(e);
+                        }
+                    }}, [
+                        ['option', {id: 'mi_charttab', value: 'charts'}, [_('Charts_tab_label')]],
+                        ['option', {id: 'mi_conversiontab', value: 'conversion'}, [_('Conversion_tab_label')]],
+                        ['option', {id: 'mi_prefstab', value: 'prefs'}, [_('Prefs_tab_label')]],
+                        ['option', {id: 'mi_dtdtab', value: 'DTDpanel'}, [_('DTD_tab_label')]],
+                        ['option', {id: 'mi_notestab', value: 'notes'}, [_('Notes_tab_label')]],
+                        ['option', {id: 'mi_abouttab', value: 'about'}, [_('About_tab_label')]]
+                    ]]
+                ]]
+            ]],
+            ['div', {class: 'boxed'}, [
+                ['label', [
+                    _('Ascii_checkbox_label'),
+                    ['input', {
+                        type: 'checkbox',
+                        id: 'asciiLt128',
+                        class: 'prefdescription',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.setprefs(e);
+                            }
+                        }
+                    }]
+                ]]
+            ]],
+            ['div', {class: 'boxed'}, [
+                ['label', [
+                    _('Hexletters_checkbox_label'),
+                    ['input', {
+                        type: 'checkbox',
+                        id: 'hexLettersUpper',
+                        class: 'prefdescription topofpanel',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.setprefs(e);
+                            }
+                        }
+                    }]
+                ]]
+            ]],
+            ['div', {class: 'boxedbottom'}, [
+                ['label', [
+                    _('xhtmlentmode_label'),
+                    ['input', {
+                        type: 'checkbox',
+                        id: 'xhtmlentmode',
+                        class: 'prefdescription topofpanel',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.setprefs(e);
+                            }
+                        }
+                    }]
+                ]]
+            ]],
+            ['div', {class: 'boxedbottom'}, [
+                ['label', [
+                    _('xhtmlentmode_label'),
+                    ['input', {
+                        type: 'checkbox',
+                        id: 'xmlentkeep',
+                        class: 'prefdescription topofpanel',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.setprefs(e);
+                            }
+                        }
+                    }]
+                ]]
+            ]],
+            ['div', {class: 'boxedbottom'}, [
+                ['label', [
+                    _('ampkeep_label'),
+                    ['input', {
+                        type: 'checkbox',
+                        id: 'ampkeep',
+                        class: 'prefdescription topofpanel',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.setprefs(e);
+                            }
+                        }
+                    }]
+                ]]
+            ]],
+            ['div', {class: 'boxedbottom'}, [
+                ['label', [
+                    _('ampspace_label'),
+                    ['input', {
+                        type: 'checkbox',
+                        id: 'ampspace',
+                        class: 'prefdescription topofpanel',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.setprefs(e);
+                            }
+                        }
+                    }]
+                ]]
+            ]],
+            ['div', {class: 'boxedbottom'}, [
+                ['label', [
+                    _('showComplexWindow_label'),
+                    ['input', {
+                        type: 'checkbox',
+                        id: 'showComplexWindow',
+                        class: 'prefdescription topofpanel',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.setprefs(e);
+                                Unicodecharref.testIfComplexWindow();
+                            }
+                        }
+                    }]
+                ]]
+            ]],
+            ['div', {class: 'boxedbottom'}, [
+                ['label', [
+                    _('cssUnambiguous_label'),
+                    ['input', {
+                        type: 'checkbox',
+                        id: 'cssUnambiguous',
+                        class: 'prefdescription topofpanel',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.setprefs(e);
+                            }
+                        }
+                    }]
+                ]],
+                ['label', [
+                    _('CSSWhitespace_label'),
+                    ['select', {
+                        id: 'CSSWhitespace',
+                        $on: {
+                            click (e) {
+                                Unicodecharref.cssWhitespace(e);
+                            }
+                        }
+                    }, [
+                        ['option', {value: 'space'}, [_('CSS_space')]],
+                        ['option', {value: 'rn'}, [_('CSS_rn')]],
+                        ['option', {value: 'r'}, [_('CSS_r')]],
+                        ['option', {value: 'n'}, [_('CSS_n')]],
+                        ['option', {value: 't'}, [_('CSS_t')]],
+                        ['option', {value: 'f'}, [_('CSS_f')]]
+                    ]]
+                ]]
+            ]],
+            ['button', {id: 'resetdefaultbutton', $on: {
+                click () {
+                    Unicodecharref.resetdefaults();
+                }
+            }}, [
+                _('resettodefault_label')
+            ]]
+        ]],
         ['div', {
             id: 'DTDpanel',
             title: _('DTD_tab_label'),
