@@ -134,9 +134,16 @@ radiogroup {
     border-right-width: 1px;
 }
 
-.detailedView, .detailedCJKView {
+.detailedView {
     overflow: auto;
-    height: 70px;
+    height: 550px;
+    width: 200px;
+    max-width: 200px;
+}
+
+.detailedCJKView {
+    overflow: auto;
+    height: 50px;
     width: 200px;
     max-width: 200px;
 }
