@@ -239,6 +239,30 @@
     "addToToolbar": {
         "message": "Add to Toolbar pull-down"
     },
+    "usage_note_heading": {
+        "message": "Other Usage Notes"
+    },
+    "usage_notespar1": {
+        "message": "The extension can be activated from the context menu (which also gives the advantage of being able to operate on highlighted text), through the Tools menu, through the toolbar icon, or through the options URL in the addons menu."
+    },
+    "usage_notespar2": {
+        "message": "Preferences are set as soon as you click on the items, but you can revert back to the default values if you make any mistakes."
+    },
+    "usage_notespar3": {
+        "message": "Closing the dialog will set the current window's position for future use."
+    },
+    "usage_notespar4": {
+        "message": "If you have problems with Window size, go to the 'Prefs' tab and hit the 'Reset to default values (besides DTD)' button. Using 'prev set' or 'next set' can also sometimes adjust problems with items fitting correctly in the chart view."
+    },
+    "usage_notespar5": {
+        "message": "Note that you can get extra space on the screen by not using buttons. In such a case, you can still click on the items to get chart output."
+    },
+    "usage_notespar6": {
+        "message": "Please be aware that in the Unicode chart view, items like question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) may appear in place of a desired character (and some characters will not or cannot be displayed at all). This is due to Firefox's own present limitations in displaying such characters. To find these, you could consult the images such as those at the official http://www.unicode.org/charts site and also available within the extension. While in the extension, you can hover your mouse over a character from the desired range, and a link will appear which you can click to lead to the appropriate chart and optionally view the image. Or you can enable images for direct viewing, but this should not be on by default to avoid taxing the Unicode server."
+    },
+    "usage_notespar7": {
+        "message": "Please note that selecting the 'Only ents' option in chart view will allow you to see HTML entities in the order in which the HTML entities are defined (and only them). When when you are not in this mode, you will see all entities defined in the custom DTD, optionally excluding HTML entities, if the checkbox on the DTD page to append DTD entities is unchecked."
+    },
     "usage_notespar8": {
         "message": "You should be able to download the Unihan database (not included with the extension due to size) from within the preferences. If you have trouble, download the approximately 19MB file from http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite and place it in your Firefox profile directory."
     },
@@ -249,15 +273,15 @@
         "message": "Use control+left-click while you are hovering the cursor over the chart view to freeze the descriptions below. "
     },
     "usage_notespar11": {
-        "message": "The Unicode data within this extension is licensed as described at http://unicode.org/copyright.html"
+        "message": "The toolbar icon can be added by going to View->Toolbars->Customize and then dragging the 'U' icon to the desired position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete."
     },
     "usage_notespar12": {
+        "message": "The Unicode data within this extension is licensed as described at http://unicode.org/copyright.html"
+    },
+    "usage_notespar13": {
         "message": "Translators welcome at http://tinyurl.com/UnicodeInputToolTranslators"
     },
-    "usage_notespar0": {
-        "message": "Other Usage Notes"
-    },
-    "notespar0": {
+    "note_heading": {
         "message": "Unicode Notes (some usage information)"
     },
     "notespar1": {
@@ -283,30 +307,6 @@
     },
     "notespar8": {
         "message": "You can also define your own entities in our 'DTD' section using the syntax '&lt;!ENTITY entname &quot;entvalue&quot;&gt;' so that they can be included within conversions."
-    },
-    "usage_notespar1": {
-        "message": "The extension can be activated from the context menu (which also gives the advantage of being able to operate on highlighted text), through the Tools menu, through the toolbar icon, or through the options URL in the addons menu."
-    },
-    "usage_notespar2": {
-        "message": "Preferences are set as soon as you click on the items, but you can revert back to the default values if you make any mistakes."
-    },
-    "usage_notespar3": {
-        "message": "Closing the dialog will set the current window's position for future use."
-    },
-    "usage_notespar4": {
-        "message": "If you have problems with Window size, go to the 'Prefs' tab and hit the 'Reset to default values (besides DTD)' button. Using 'prev set' or 'next set' can also sometimes adjust problems with items fitting correctly in the chart view."
-    },
-    "usage_notespar5": {
-        "message": "Note that you can get extra space on the screen by not using buttons. In such a case, you can still click on the items to get chart output."
-    },
-    "usage_notespar6": {
-        "message": "Please be aware that in the Unicode chart view, items like question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) may appear in place of a desired character (and some characters will not or cannot be displayed at all). This is due to Firefox's own present limitations in displaying such characters. To find these, you could consult the images such as those at the official http://www.unicode.org/charts site and also available within the extension. While in the extension, you can hover your mouse over a character from the desired range, and a link will appear which you can click to lead to the appropriate chart and optionally view the image. Or you can enable images for direct viewing, but this should not be on by default to avoid taxing the Unicode server."
-    },
-    "usage_notespar7": {
-        "message": "Please note that selecting the 'Only ents' option in chart view will allow you to see HTML entities in the order in which the HTML entities are defined (and only them). When when you are not in this mode, you will see all entities defined in the custom DTD, optionally excluding HTML entities, if the checkbox on the DTD page to append DTD entities is unchecked."
-    },
-    "usage_notespar10b": {
-        "message": "The toolbar icon can be added by going to View->Toolbars->Customize and then dragging the 'U' icon to the desired position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete."
     },
     "lang_tooltiptext": {
         "message": "The HTML language attribute 'lang' or, in XML, the 'xml:lang' value. Has no effect on most scripts, but may affect glyph selection/font display for certain CJK characters (e.g., U+5203 in 'zh-Hans', 'zh-Hant', 'ja', or 'ko'). Note that you must use the lang attribute to see the effect outside of the chart (even our chart output box does not contain any), and there is presently a bug with xml:lang in true XML/XHTML documents: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"

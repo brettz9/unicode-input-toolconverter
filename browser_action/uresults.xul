@@ -751,36 +751,3 @@
 			<checkbox id="extensions.charrefunicode.appendtohtmldtd" label="&appendhtml.checkbox;" onclick="Unicodecharref.append2htmlflip(event);return false;" onkeypress="Unicodecharref.append2htmlflip(event);return false;"/>
 		</vbox>
 	</tabpanel>
-	<tabpanel id="notes" flex="1">
-		<vbox align="center" flex="1">
-			<description class="dialogheader" value="&Notes.dialogheader.title;"/>
-			<hbox>
-				<vbox align="center" flex="1" id="noteDescriptionBox">
-					<description class="notesdescription notes_heading">&notespar0;</description>
-					<description class="notesdescription">&notespar1;</description>
-					<description class="notesdescription">&notespar2;</description>
-					<description class="notesdescription">&notespar3;</description>
-					<description class="notesdescription">&notespar4;</description>
-					<description class="notesdescription">&notespar5;</description>
-					<description class="notesdescription">&notespar6;</description>
-					<description class="notesdescription">&notespar7;</description>
-					<description class="notesdescription">&notespar8;</description>
-				</vbox>
-				<vbox align="center" flex="1" id="noteDescriptionBox2">
-					<description class="usage_notesdescription notes_heading">&usage_notespar0;</description>
-					<description class="usage_notesdescription">&usage_notespar1;</description>
-					<description class="usage_notesdescription">&usage_notespar2;</description>
-					<description class="usage_notesdescription">&usage_notespar3;</description>
-					<description class="usage_notesdescription">&usage_notespar4;</description>
-					<description class="usage_notesdescription">&usage_notespar5;</description>
-					<description class="usage_notesdescription">&usage_notespar6;</description>
-					<description class="usage_notesdescription">&usage_notespar7;</description>
-					<description class="usage_notesdescription">&usage_notespar8;</description>
-					<description class="usage_notesdescription">&usage_notespar9;</description>
-					<description class="usage_notesdescription">&usage_notespar10;</description>
-					<description class="usage_notesdescription">&usage_notespar10b;</description>
-					<description class="usage_notesdescription">&usage_notespar11;</description>
-				</vbox>
-			</hbox>
-		</vbox>
-	</tabpanel>

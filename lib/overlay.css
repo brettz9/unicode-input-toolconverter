@@ -1,0 +1,6 @@
+#charrefunicode-toolbar-openWindow {
+  list-style-image: url("/icons/openWindow24.png");
+}
+toolbar[iconsize="small"] #charrefunicode-toolbar-openWindow {
+  list-style-image: url("/icons/openWindow16.png");
+}

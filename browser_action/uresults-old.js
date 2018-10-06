@@ -292,16 +292,16 @@ const Unicodecharref = {
         }
 
         // document.documentElement.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-        $('#unicodetabpanels').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
+        $('#unicodeTabBox').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
         $('#unicodetabs').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
         /**
-        $('#unicodetabpanels').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
+        $('#unicodeTabBox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
         $('#conversionhbox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
 
         $('#noteDescriptionBox2').height = $('#noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
-$('#unicodetabpanels').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
+$('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
 $('#unicodetabs').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('#unicodetabpanels').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+$('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
 $('#chartcontent').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
 $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
 
@@ -500,7 +500,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         case 'context-unicodechart':
             this.disableEnts();
             $('#startset').value = toconvert;
-            $('#unicodetabpanels').selectTab($('#charts'));
+            $('#unicodeTabBox').selectTab($('#charts'));
             if (toconvert !== '') {
                 this.setCurrstartset(toconvert);
                 buildChart();
@@ -528,12 +528,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
         if (customProtocol) {
         } else if (!args) { // options menu
-            $('#unicodetabpanels').selectTab($('#prefs'));
+            $('#unicodeTabBox').selectTab($('#prefs'));
         } else if (args[2] !== undefined) { // Keyboard invocation or button
             // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
-            $('#unicodetabpanels').selectTab($(this.prefs.getCharPref('extensions.charrefunicode.initialTab')));
+            $('#unicodeTabBox').selectTab($(this.prefs.getCharPref('extensions.charrefunicode.initialTab')));
         } else if (targetid !== 'context-unicodechart' && targetid !== 'tools-charrefunicode') {
-            $('#unicodetabpanels').selectTab($('#conversion'));
+            $('#unicodeTabBox').selectTab($('#conversion'));
         }
 
         $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_' + this.prefs.getCharPref('extensions.charrefunicode.initialTab'));

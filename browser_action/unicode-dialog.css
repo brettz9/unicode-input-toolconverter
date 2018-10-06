@@ -1,0 +1,248 @@
+/*
+Copyright 2007-2018 Brett Zamir
+    This file is part of Unicode Input Tool/Converter.
+
+    Unicode Input Tool/Converter is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Unicode Input Tool/Converter is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with Unicode Input Tool/Converter.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+.searchBox {
+    min-height: 20px;
+}
+#rowsset, #colsset {
+    max-width: 50px;
+}
+#clearoutput {
+    width: 50px;
+}
+#inserttext {
+    min-height: 30px;
+}
+#inserttext, #displayUnicodeDesc {
+    width: 500px;
+}
+.entity {
+    background-color: yellow;
+}
+/*
+.leftlabel {
+    float:left;
+    width: 15%;
+}
+#displayUnicodeDesc {
+    float:left;
+}
+*/
+a.text-link {
+    color: blue;
+    text-decoration: underline;
+}
+
+table.unicodetablecell {
+    border-collapse: collapse;
+    min-width: 500px;
+    width: 500px;
+    max-width: 500px;
+}
+td.unicodetablecell {
+    border-style: inset;
+    overflow:auto;
+    max-height: 20px !important;
+	height:20px !important;
+	min-height:20px !important;
+}
+.outputcopybutton {
+    width: 100px;
+}
+.fontsize, .charthbox, .dtdbutton {
+    display: inline; /* Doesn't seem to work on Mac at least */
+}
+.centered {
+    text-align: center;
+}
+button.reconvert {
+    color: black;
+}
+.buttonactive {
+    color: red;
+}
+/* Since the dialogheader doesn't seem to work on the Mac (and since I may switch away in the future away from a "dialog" window proper), I've changed it to a description tag with a "dialogheader" class and styled it similarly */
+.dialogheader {
+    text-align: center;
+    font-size: large;
+    background-color: aqua;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.aboutdescription {
+    display: block;
+    margin-bottom: 20px;
+    text-indent: 20px;
+}
+.prefdescription {
+    display: block;
+    margin-bottom: 20px;
+}
+.notesdescription, .usage_notesdescription {
+    display: block;
+    margin-bottom: 20px;
+    text-indent: 20px;
+    width: 450px;
+}
+
+.aboutdescription, .prefdescription, .conversionhbox {
+    width: 600px;
+}
+.indentedradio {
+    margin-left: 70px;
+}
+.firstbox {
+    margin-top: 30px;
+}
+
+#resetdefaultbutton {
+    margin-top: 20px;
+}
+radiogroup {
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-right-width: 1px;
+}
+.boxed {
+    border-style: solid;
+    border-width: 1px;
+}
+.boxedbottom {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-style: solid;
+    border-right-width: 1px;
+}
+
+.detailedView, .detailedCJKView {
+    overflow: auto;
+    height: 70px;
+    width: 200px;
+    max-width: 200px;
+}
+.detailedView > .description.heading, .detailedCJKView > .description.heading  {
+    display: block;
+}
+
+.heading {
+    font-weight: bold;
+}
+
+#viewTabs {
+    overflow: auto;
+    min-height: 20px;
+}
+#searchGrid {
+    /* Makes longer (along with change below), but no dropmarkers  overflow-y:auto;max-height:180px;width:400px;overflow-x:hidden;*/
+    overflow: auto;
+    max-width: 400px;
+    width: 400px;
+}
+#searchGridCJK {
+    overflow: auto;
+    min-width: 330px;
+}
+
+.searchMenu {
+    /* -moz-box-flex: 1; */
+}
+
+#chart_selectchar_persist_vbox {
+    overflow: auto;
+    min-width: 20px;
+    /* max-height: 630px; */
+}
+#chart_selectchar_persist {
+    overflow: auto;
+    min-height: 20px;
+}
+#chart_layout_persist {
+    overflow: auto;
+    min-height: 20px;
+}
+
+.noteDescriptionBox {
+    overflow: auto;
+}
+
+#tabbox {
+    overflow: auto;
+    /* max-width: 1050px;
+    max-height: 710px; */
+}
+#chartcontent {
+    overflow: auto;
+    min-width: 30px;
+}
+#tableholder {
+    overflow: auto;
+    min-height: 20px;
+}
+
+.detailedViewRows, .detailedCJKViewRows {
+    min-height: 150px;
+}
+
+
+#unicodeDescArea {
+    overflow: auto;
+}
+#displayUnihanArea {
+    overflow: auto;
+}
+#displayUnicodeDesc2, #displayUnicodeDescUnihan {
+    width: 500px;
+    max-width: 500px;
+    min-width: 500px;
+}
+
+#conversion_buttons_persist {
+    min-width: 20px;
+    overflow: auto;
+}
+
+.tab {
+    float: left;
+    width: 100px;
+    padding: 6px;
+    border-radius: 5px 5px;
+}
+.tab[data-selected] {
+    border-collapse: collapse;
+    border: black outset 1px;
+    background-color: lightblue;
+}
+.tab[data-selected]:hover {
+    background-color: blue;
+}
+.tab:not([data-selected]) {
+    border-collapse: collapse;
+    border: black inset 1px;
+    background-color: lightgray;
+}
+.tab:not([data-selected]):hover {
+    background-color: blue;
+}
+.tabpanel:not([data-selected]) {
+    display: none;
+}
