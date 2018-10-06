@@ -1,4 +1,5 @@
 // Todo: Move to own library, bearing in mind need for path setting or change
+// Todo: Allow literal brackets (with or without substitutions of the same name present)
 /**
 Example:
 
@@ -42,8 +43,14 @@ const promiseChainForValues = (values, cb) => {
 /**
  * Get
  * @param {string[]} locales BCP-47 language strings
- * @returns {Promise} Promise that 1) resolves to a function which checks a key
- *  against an object of strings or 2) rejects if no strings are found
+ * @returns {Promise} Promise that 1) resolves to a function which a) checks a key
+ *  against an object of strings, b) optionally accepts an object of substitutions
+ *  which are used when finding text within curly brackets (pipe symbol not allowed
+ *  in its keys); the substitutions may be DOM elements as well as strings and may
+ *  be functions which return the same (being provided the text after the pipe within
+ *  brackets as the single argument), and c) optionally accepts a config object, with
+ *  the optional key "dom" which if set to `true` optimizes when DOM elements are
+ *  present; or 2) rejects if no strings are found
  */
 export const i18n = async function i18n ({locales, defaults}) {
     const strings = await promiseChainForValues(locales, async function getLocale (locale) {
@@ -59,7 +66,7 @@ export const i18n = async function i18n ({locales, defaults}) {
         }
     });
     return (key, substitutions, {dom} = {}) => {
-        const bracketRegex = /\{([^}]*)\}/g;
+        const bracketRegex = /\{([^}]*?)(?:\|([^}]*))?\}/g;
         let returnsDOM = false;
         const str = (
             key in strings && strings[key] && 'message' in strings[key]
@@ -79,8 +86,11 @@ export const i18n = async function i18n ({locales, defaults}) {
         // Give chance to avoid this block when known to contain DOM
         if (!dom) {
             // Run this loop to optimize non-DOM substitutions
-            const ret = str.replace(bracketRegex, (_, key) => {
-                const substitution = substitutions[key];
+            const ret = str.replace(bracketRegex, (_, key, arg) => {
+                let substitution = substitutions[key];
+                if (typeof substitution === 'function') {
+                    substitution = substitution(arg);
+                }
                 returnsDOM = returnsDOM || (substitution && substitution.nodeType === 1);
                 return substitution;
             });
@@ -93,8 +103,11 @@ export const i18n = async function i18n ({locales, defaults}) {
         let previousIndex = 0;
         while ((result = bracketRegex.exec(str)) !== null) {
             const {lastIndex} = bracketRegex;
-            const [bracketedKey, key] = result;
-            const substitution = substitutions[key];
+            const [bracketedKey, key, arg] = result;
+            let substitution = substitutions[key];
+            if (typeof substitution === 'function') {
+                substitution = substitution(arg);
+            }
             const startBracketPos = lastIndex - bracketedKey.length;
             if (startBracketPos > previousIndex) {
                 nodes.push(str.slice(previousIndex, startBracketPos));

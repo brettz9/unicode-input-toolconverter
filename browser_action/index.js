@@ -4,12 +4,13 @@ import {jml, body, $, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {i18n} from './I18n.js';
 import {fill} from './utils.js';
 import {makeTabBox} from './widgets.js';
+import {code, link} from './templates.js';
 import addMillerColumnPlugin from '/vendor/miller-columns/dist/index-es.min.js';
-import unicodeScripts from '/browser_action/unicode-scripts.js';
-import getBuildChart from '/browser_action/build-chart.js';
-import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
-import encodings from '/browser_action/encodings.js';
-import unihanFieldInfo from '/browser_action/unicode/unihanFieldInfo.js';
+import unicodeScripts from './unicode-scripts.js';
+import getBuildChart from './build-chart.js';
+import insertIntoOrOverExisting from './insertIntoOrOverExisting.js';
+import encodings from './encodings.js';
+import unihanFieldInfo from './unicode/unihanFieldInfo.js';
 
 (async () => {
 await addMillerColumnPlugin(jQuery, {stylesheets: [
@@ -103,26 +104,13 @@ jml('div', [
                         ]]
                     ]],
                     ['div', {id: 'menulists'}, [
-                        ['label', [
-                            _('chooseregion'),
+                        ['fieldset', [
+                            ['legend', [_('chooseregion')]],
                             ['div', {class: 'miller-breadcrumbs'}],
                             ['div', {class: 'miller-columns', tabindex: '1'}, [
                                 unicodeScripts
                             ]]
                         ]]
-                    ]],
-                    ['div', [
-                        ['label', [_('label_onlyentsyesq')]],
-                        ['input', {
-                            type: 'checkbox',
-                            id: 'onlyentsyes',
-                            class: 'charthbox',
-                            $on: {
-                                click (e) {
-                                    Unicodecharref.onlyentsyesflip(e);
-                                }
-                            }
-                        }]
                     ]]
                 ]],
                 // ['splitter'],
@@ -178,6 +166,19 @@ jml('div', [
                     ['fieldset', [
                         ['legend', [_('caption_chart_layout')]],
                         ['div', [
+                            ['div', [
+                                ['label', [_('label_onlyentsyesq')]],
+                                ['input', {
+                                    type: 'checkbox',
+                                    id: 'onlyentsyes',
+                                    class: 'charthbox',
+                                    $on: {
+                                        click (e) {
+                                            Unicodecharref.onlyentsyesflip(e);
+                                        }
+                                    }
+                                }]
+                            ]],
                             ['div', [
                                 ['div', [
                                     ['label', [
@@ -853,7 +854,7 @@ jml('div', [
             ]],
             ['div', {class: 'boxedbottom'}, [
                 ['label', [
-                    _('xhtmlentmode_label'),
+                    _('xhtmlentmode_label', {code}),
                     ['input', {
                         type: 'checkbox',
                         id: 'xhtmlentmode',
@@ -868,7 +869,7 @@ jml('div', [
             ]],
             ['div', {class: 'boxedbottom'}, [
                 ['label', [
-                    _('xhtmlentmode_label'),
+                    _('xmlentmode_label', {code}),
                     ['input', {
                         type: 'checkbox',
                         id: 'xmlentkeep',
@@ -883,7 +884,7 @@ jml('div', [
             ]],
             ['div', {class: 'boxedbottom'}, [
                 ['label', [
-                    _('ampkeep_label'),
+                    _('ampkeep_label', {code}),
                     ['input', {
                         type: 'checkbox',
                         id: 'ampkeep',
@@ -898,7 +899,7 @@ jml('div', [
             ]],
             ['div', {class: 'boxedbottom'}, [
                 ['label', [
-                    _('ampspace_label'),
+                    _('ampspace_label', {code}),
                     ['input', {
                         type: 'checkbox',
                         id: 'ampspace',
@@ -980,7 +981,7 @@ jml('div', [
             ]],
             ...fill(2).map((__, i) => {
                 return ['p', [
-                    _(`DTD_desc_value${i + 1}`)
+                    _(`DTD_desc_value${i + 1}`, {code})
                 ]];
             }),
             ['textarea', {id: 'DTDtextbox', style: 'width: 400px; height: 300px;', $on: {
@@ -1050,7 +1051,7 @@ jml('div', [
             ['button', {class: 'dtdbutton', $on: {click () {
                 Unicodecharref.insertent('DTDtextbox');
             }}}, [
-                _('DTD_insertent')
+                _('DTD_insertent', {code})
             ]],
             ['label', [
                 _('appendhtml_checkbox'),
@@ -1079,7 +1080,7 @@ jml('div', [
                     ['h3', [_('note_heading')]],
                     ...fill(8).map((__, i) => {
                         return ['div', {class: 'notesdescription'}, [
-                            _(`notespar${i + 1}`)
+                            _(`notespar${i + 1}`, {code})
                         ]];
                     })
                 ]],
@@ -1087,7 +1088,7 @@ jml('div', [
                     ['h3', [_('usage_note_heading')]],
                     ...fill(13).map((__, i) => {
                         return ['div', {class: 'usage_notesdescription'}, [
-                            _(`usage_notespar${i + 1}`)
+                            _(`usage_notespar${i + 1}`, {code, link})
                         ]];
                     })
                 ]]

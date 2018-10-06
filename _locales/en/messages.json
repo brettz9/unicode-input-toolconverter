@@ -264,28 +264,28 @@
         "message": "Note that you can get extra space on the screen by not using buttons. In such a case, you can still click on the items to get chart output."
     },
     "usage_notespar6": {
-        "message": "Please be aware that in the Unicode chart view, items like question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) may appear in place of a desired character (and some characters will not or cannot be displayed at all). This is due to Firefox's own present limitations in displaying such characters. To find these, you could consult the images such as those at the official http://www.unicode.org/charts site and also available within the extension. While in the extension, you can hover your mouse over a character from the desired range, and a link will appear which you can click to lead to the appropriate chart and optionally view the image. Or you can enable images for direct viewing, but this should not be on by default to avoid taxing the Unicode server."
+        "message": "Please be aware that in the Unicode chart view, items like question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) may appear in place of a desired character (and some characters will not or cannot be displayed at all). This is due to Firefox's own present limitations in displaying such characters. To find these, you could consult the images such as those at the official {link|http://www.unicode.org/charts} site and also available within the extension. While in the extension, you can hover your mouse over a character from the desired range, and a link will appear which you can click to lead to the appropriate chart and optionally view the image. Or you can enable images for direct viewing, but this should not be on by default to avoid taxing the Unicode server."
     },
     "usage_notespar7": {
         "message": "Please note that selecting the 'Only ents' option in chart view will allow you to see HTML entities in the order in which the HTML entities are defined (and only them). When when you are not in this mode, you will see all entities defined in the custom DTD, optionally excluding HTML entities, if the checkbox on the DTD page to append DTD entities is unchecked."
     },
     "usage_notespar8": {
-        "message": "You should be able to download the Unihan database (not included with the extension due to size) from within the preferences. If you have trouble, download the approximately 19MB file from http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite and place it in your Firefox profile directory."
+        "message": "You should be able to download the Unihan database (not included with the extension due to size) from within the preferences. If you have trouble, download the approximately 19MB file from {link|http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite} and place it in your Firefox profile directory."
     },
     "usage_notespar9": {
         "message": "Extension best used with higher resolutions but now makes some accommodations for lower resolutions. Drag the various splitters to resize subsections. Your desired size should be remembered."
     },
     "usage_notespar10": {
-        "message": "Use control+left-click while you are hovering the cursor over the chart view to freeze the descriptions below. "
+        "message": "Use {code|control+left-click} while you are hovering the cursor over the chart view to freeze the descriptions below. "
     },
     "usage_notespar11": {
-        "message": "The toolbar icon can be added by going to View->Toolbars->Customize and then dragging the 'U' icon to the desired position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete."
+        "message": "The toolbar icon can be added by going to {code|View->Toolbars->Customize} and then dragging the 'U' icon to the desired position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete."
     },
     "usage_notespar12": {
-        "message": "The Unicode data within this extension is licensed as described at http://unicode.org/copyright.html"
+        "message": "The Unicode data within this extension is licensed as described at {link|http://unicode.org/copyright.html}"
     },
     "usage_notespar13": {
-        "message": "Translators welcome at http://tinyurl.com/UnicodeInputToolTranslators"
+        "message": "Translators welcome at {link|http://tinyurl.com/UnicodeInputToolTranslators}"
     },
     "note_heading": {
         "message": "Unicode Notes (some usage information)"
@@ -297,7 +297,7 @@
         "message": "However, because some programs still do not support Unicode fully (though if you are only using the basic English ASCII symbols, your documents will translate to Unicode with no difficulty) and will not save the text properly and perhaps also to make it easier for some to type, one may use different types of shortcuts to represent these assorted Unicode characters."
     },
     "notespar3": {
-        "message": "One such shortcut which can be used in any HTML or XML document is the character reference. These references begin with an ampersand ('&') and a hash mark ('#') and end with a semicolon (';'). In the middle can either be a decimal number (i.e., digits 0-9) or a hexadecimal number (i.e., digits 0-9 or upper or lower-case letters A-F preceded by an 'x' or 'X'). Either type will display the same, and will be displayed exactly like the Unicode character it represents."
+        "message": "One such shortcut which can be used in any HTML or XML document is the character reference. These references begin with an ampersand ({code|&}) and a hash mark ({code|#}) and end with a semicolon ({code|;}). In the middle can either be a decimal number (i.e., digits 0-9) or a hexadecimal number (i.e., digits 0-9 or upper or lower-case letters A-F preceded by an {code|x} or {code|X}). Either type will display the same, and will be displayed exactly like the Unicode character it represents."
     },
     "notespar4": {
         "message": "(The hexadecimal numbering system may be thought of as working somewhat like a set of playing cards. The Jack may represent '11' in some games, the Queen, '12', and so on. While there is only a single card, they represent a number greater than ten. Thus it is also with individual hexadecimal digits represented by the letters A-F.)"
@@ -306,13 +306,13 @@
         "message": "Besides character references, another type of shortcut to represent a Unicode character (or even multiple characters) is the 'parsed general entity'."
     },
     "notespar6": {
-        "message": "For the XML language, except for five pre-defined entities (&amp; (&), &lt; (<), &gt; (>), &quot; (\"), &apos; (')), you must explicitly define the entities you will use (or use a special 'PUBLIC' id which can indicate to programs reading the XML file that you will be using that language's set of entities)."
+        "message": "For the XML language, except for five pre-defined entities ({code|&amp;} (&), {code|&lt;} (<), {code|&gt;} (>), {code|&quot;} (\"), {code|&apos;} (')), you must explicitly define the entities you will use (or use a special 'PUBLIC' id which can indicate to programs reading the XML file that you will be using that language's set of entities)."
     },
     "notespar7": {
-        "message": "In HTML, there are a number of already-defined entities. One important note: although HTML uses four of XML's five predefined entities, it does not use '&apos;', so you will need to use the equivalent Unicode instead (or use the character reference &#x27; or &#39;)."
+        "message": "In HTML, there are a number of already-defined entities. One important note: although HTML uses four of XML's five predefined entities, it does not use {code|&apos;}, so you will need to use the equivalent Unicode instead (or use the character reference {code|&#x27;} or {code|&#39;})."
     },
     "notespar8": {
-        "message": "You can also define your own entities in our 'DTD' section using the syntax '<!ENTITY entname &quot;entvalue&quot;>' so that they can be included within conversions."
+        "message": "You can also define your own entities in our 'DTD' section using the syntax {code|<!ENTITY entname \"entvalue\">} so that they can be included within conversions."
     },
     "lang_tooltiptext": {
         "message": "The HTML language attribute 'lang' or, in XML, the 'xml:lang' value. Has no effect on most scripts, but may affect glyph selection/font display for certain CJK characters (e.g., U+5203 in 'zh-Hans', 'zh-Hant', 'ja', or 'ko'). Note that you must use the lang attribute to see the effect outside of the chart (even our chart output box does not contain any), and there is presently a bug with xml:lang in true XML/XHTML documents: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
@@ -444,16 +444,16 @@
         "message": "Output Hexadecimal A-F (upper-case)?"
     },
     "xhtmlentmode_label": {
-        "message": "XHTML entity mode (allow &apos; when creating HTML entities instead of numeric)? (It may be best to leave this unchecked.)"
+        "message": "XHTML entity mode (allow {code|&apos;} when creating HTML entities instead of numeric)? (It may be best to leave this unchecked.)"
     },
     "xmlentmode_label": {
-        "message": "XML entity mode (when converting from (X)HTML entities, will leave &amp;, &lt;, &gt;, &quot;, and &apos; unconverted)? (These entities are safe in XML without needing DTD entity declarations, so they probably don't need to be converted and are easier to read.)"
+        "message": "XML entity mode (when converting from (X)HTML entities, will leave {code|&amp;}, {code|&lt;}, {code|&gt;}, {code|&quot;}, and {code|&apos;} unconverted)? (These entities are safe in XML without needing DTD entity declarations, so they probably don't need to be converted and are easier to read.)"
     },
     "ampkeep_label": {
-        "message": "When converting from Unicode to HTML entities, will not convert `&` so as to avoid tampering with existing HTML entities"
+        "message": "When converting from Unicode to HTML entities, will not convert {code|&} so as to avoid tampering with existing HTML entities"
     },
     "ampspace_label": {
-        "message": "Convert each '&' which is followed by whitespace to '&amp;' (for well-formed XML)?"
+        "message": "Convert each '&' which is followed by whitespace to {code|&amp;} (for well-formed XML)?"
     },
     "resettodefault_label": {
         "message": "Reset to default values (besides DTD)?"
@@ -666,13 +666,13 @@
         "message": "Add DTD entity declarations (optional) for use in conversions"
     },
     "DTD_desc_value2": {
-        "message": "Form: <!ENTITY entname 'charvalue'>"
+        "message": "Form: {code|<!ENTITY entname 'charvalue'>}"
     },
     "DTD_textbox_value": {
         "message": ""
     },
     "DTD_insertent": {
-        "message": "Insert <!ENTITY>"
+        "message": "Insert {code|<!ENTITY>}"
     },
     "appendhtml_checkbox": {
         "message": "Append to existing HTML entity set?"
