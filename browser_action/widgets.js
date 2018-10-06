@@ -1,20 +1,20 @@
 import {jml, $$} from '/vendor/jamilih/dist/jml-es.js';
 
 export const makeTabBox = function (sel) {
-    $$(sel).forEach(function (tabBox) {
-        tabBox.$getTabs = function () {
+    $$(sel).forEach(function (tabbox) {
+        tabbox.$getTabs = function () {
             return [...this.querySelector('.tabs').children].filter((child) => {
                 return child.classList.contains('tab');
             });
         };
-        tabBox.$getTabPanels = function () {
+        tabbox.$getTabPanels = function () {
             return [...this.children].filter((tabPanel) => {
                 return tabPanel.classList.contains('tabpanel');
             });
         };
-        tabBox.$selectTab = function (tab) {
-            const tabs = tabBox.$getTabs();
-            tabBox.$getTabPanels().forEach((tabPanel, i) => {
+        tabbox.$selectTab = function (tab) {
+            const tabs = tabbox.$getTabs();
+            tabbox.$getTabPanels().forEach((tabPanel, i) => {
                 const childTab = tabs[i];
                 if (tab === childTab) {
                     childTab.dataset.selected = true;
@@ -25,21 +25,22 @@ export const makeTabBox = function (sel) {
                 }
             });
         };
-        tabBox.$selectedTab = function (tab) {
-            return tabBox.$getTabPanels().find(({dataset: {selected}}) => {
+        tabbox.$selectedTab = function (tab) {
+            return tabbox.$getTabPanels().find(({dataset: {selected}}) => {
                 return selected;
             });
         };
-        tabBox.querySelector('.tabs').prepend(...tabBox.$getTabPanels().map((tabPanel) => {
+        tabbox.querySelector('.tabs').prepend(...tabbox.$getTabPanels().map(({dataset}) => {
             return jml('div', {
                 class: 'tab',
-                dataset: {selected: tabPanel.dataset.selected},
+                title: dataset.title,
+                dataset: {selected: dataset.selected},
                 $on: {
                     click () {
-                        tabBox.$selectTab(this);
+                        tabbox.$selectTab(this);
                     }
                 }
-            }, [tabPanel.title]);
+            }, [dataset.label]);
         }), jml('br', {style: 'clear: left;'}));
     });
 };

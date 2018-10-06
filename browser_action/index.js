@@ -9,6 +9,7 @@ import unicodeScripts from '/browser_action/unicode-scripts.js';
 import getBuildChart from '/browser_action/build-chart.js';
 import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
 import encodings from '/browser_action/encodings.js';
+import unihanFieldInfo from '/browser_action/unicode/unihanFieldInfo.js';
 
 (async () => {
 await addMillerColumnPlugin(jQuery, {stylesheets: [
@@ -28,34 +29,552 @@ if (!locales.includes('en')) { // Ensure there is at least one working language!
 }
 const _ = await i18n({locales, defaults: false});
 
+document.title = _('uresults_title');
 jml('div', [
     ['div', {
         id: 'unicodeTabBox',
-        class: 'tabBox'
+        class: 'tabbox'
     }, [
         ['div', {class: 'tabs'}],
         ['div', {
             id: 'charts',
-            title: _('Charts_tab_label'),
-            dataset: {selected: true},
+            dataset: {
+                selected: true,
+                label: _('Charts_tab_label')
+            },
             class: 'tabpanel'
         }, [
-            ['div', {class: 'miller-breadcrumbs'}],
-            ['div', {class: 'miller-columns', tabindex: '1'}, [
-                unicodeScripts
+            ['div', {id: 'chart_selectchar_persist_vbox'}, [
+                ['div', {id: 'chart_selectchar_persist'}, [
+                    ['fieldset', [
+                        ['legend', [_('caption_chart_selectchar')]],
+                        ['div', [
+                            ['div', {title: _('desc_digits')}, [
+                                ['label', [
+                                    _('charhexdecchoices'),
+                                    ['input', {
+                                        id: 'startset',
+                                        class: 'searchBox',
+                                        $on: {
+                                            change () {
+                                                Unicodecharref.startset(this);
+                                            },
+                                            input () {
+                                                Unicodecharref.startset(this);
+                                            }
+                                        }
+                                    }]
+                                ]]
+                            ]],
+                            ['div', [
+                                ['label', [
+                                    _('searchName')
+                                ]],
+                                ['input', {
+                                    id: 'searchName',
+                                    class: 'searchBox',
+                                    $on: {
+                                        change () {
+                                            Unicodecharref.searchUnicode(this);
+                                        },
+                                        input () {
+                                            Unicodecharref.searchUnicode(this);
+                                        }
+                                    }
+                                }]
+                            ]],
+                            ['div', [
+                                ['label', [
+                                    _('searchkDefinition')
+                                ]],
+                                ['input', {
+                                    id: 'searchkDefinition',
+                                    class: 'searchBox',
+                                    $on: {
+                                        change () {
+                                            Unicodecharref.searchUnihan(this);
+                                        },
+                                        input () {
+                                            Unicodecharref.searchUnihan(this);
+                                        }
+                                    }
+                                }]
+                            ]]
+                        ]]
+                    ]],
+                    ['div', {id: 'menulists'}, [
+                        ['label', [
+                            _('chooseregion'),
+                            ['div', {class: 'miller-breadcrumbs'}],
+                            ['div', {class: 'miller-columns', tabindex: '1'}, [
+                                unicodeScripts
+                            ]]
+                        ]]
+                    ]],
+                    ['div', [
+                        ['label', [_('label_onlyentsyesq')]],
+                        ['input', {
+                            type: 'checkbox',
+                            id: 'onlyentsyes',
+                            class: 'charthbox',
+                            $on: {
+                                click (e) {
+                                    Unicodecharref.onlyentsyesflip(e);
+                                }
+                            }
+                        }]
+                    ]]
+                ]],
+                // ['splitter'],
+                ['div', {id: 'specializedSearch', hidden: true}, [
+                    ['fieldset', [
+                        ['legend', [_('Specialized_search')]],
+                        ['div', {
+                            id: 'tabboxSearch',
+                            class: 'tabbox'
+                        }, [
+                            ['div', {class: 'tabs'}, []],
+                            ['div', {
+                                id: 'regularSearch',
+                                dataset: {
+                                    label: _('Regular_tab_label'),
+                                    title: _('Regular_tooltip'),
+                                    selected: true
+                                },
+                                class: 'tabpanel'
+                            }, [
+                                ['div', [
+                                    ['div', {
+                                        id: 'searchGrid'
+                                    }, [
+                                        ['div', {
+                                            id: 'UnicodeSearch'
+                                        }]
+                                    ]]
+                                ]]
+                            ]],
+                            ['div', {
+                                id: 'cjkSearch',
+                                dataset: {
+                                    label: _('CJK_tab_label'),
+                                    title: _('CJK_tooltip'),
+                                    selected: true
+                                },
+                                class: 'tabpanel'
+                            }, [
+                                ['div', [
+                                    ['div', {id: 'searchGridCJK'}, [
+                                        ['div', {
+                                            id: 'UnihanSearch'
+                                        }]
+                                    ]]
+                                ]]
+                            ]]
+                        ]]
+                    ]]
+                ]],
+                // ['splitter'],
+                ['div', {id: 'chart_layout_persist'}, [
+                    ['fieldset', [
+                        ['legend', [_('caption_chart_layout')]],
+                        ['div', [
+                            ['div', [
+                                ['div', [
+                                    ['label', [
+                                        _('label_norows'),
+                                        ['input', {
+                                            id: 'rowsset',
+                                            $on: {
+                                                change (e) {
+                                                    Unicodecharref.rowsset(e);
+                                                }
+                                            }
+                                        }]
+                                    ]],
+                                    ['label', [
+                                        _('label_nocols'),
+                                        ['input', {
+                                            id: 'colsset',
+                                            $on: {
+                                                change (e) {
+                                                    Unicodecharref.colsset(e);
+                                                }
+                                            }
+                                        }]
+                                    ]]
+                                ]],
+                                ['div', [
+                                    ['label', [
+                                        _('label_entq'),
+                                        ['input', {
+                                            type: 'checkbox',
+                                            id: 'entyes',
+                                            class: 'charthbox',
+                                            $on: {
+                                                click (e) {
+                                                    Unicodecharref.entflip(e);
+                                                }
+                                            }
+                                        }]
+                                    ]],
+                                    ['label', [
+                                        _('label_decq'),
+                                        ['input', {
+                                            type: 'checkbox',
+                                            id: 'decyes',
+                                            class: 'charthbox',
+                                            $on: {
+                                                click (e) {
+                                                    Unicodecharref.decflip(e);
+                                                }
+                                            }
+                                        }]
+                                    ]],
+                                    ['label', [
+                                        _('label_hexq'),
+                                        ['input', {
+                                            type: 'checkbox',
+                                            id: 'hexyes',
+                                            class: 'charthbox',
+                                            $on: {
+                                                click (e) {
+                                                    Unicodecharref.hexflip(e);
+                                                }
+                                            }
+                                        }]
+                                    ]],
+                                    ['label', [
+                                        _('label_unicodeq'),
+                                        ['input', {
+                                            type: 'checkbox',
+                                            id: 'unicodeyes',
+                                            class: 'charthbox',
+                                            $on: {
+                                                click (e) {
+                                                    Unicodecharref.unicodeflip(e);
+                                                }
+                                            }
+                                        }]
+                                    ]]
+                                ]],
+                                ['div', [
+                                    ['label', [
+                                        _('label_middleq'),
+                                        ['input', {
+                                            type: 'checkbox',
+                                            id: 'middleyes',
+                                            class: 'charthbox',
+                                            $on: {
+                                                click (e) {
+                                                    Unicodecharref.middleflip(e);
+                                                }
+                                            }
+                                        }]
+                                    ]],
+                                    ['label', [
+                                        _('label_buttonq'),
+                                        ['input', {
+                                            type: 'checkbox',
+                                            id: 'buttonyes',
+                                            class: 'charthbox',
+                                            $on: {
+                                                click (e) {
+                                                    Unicodecharref.buttonflip(e);
+                                                }
+                                            }
+                                        }]
+                                    ]]
+                                ]],
+                                ['div', [
+                                    ['label', [_('label_fontsize')]],
+                                    ['button', {class: 'fontsize', $on: {
+                                        click () {
+                                            Unicodecharref.tblfontsize(+1);
+                                        }
+                                    }}, [_('plus')]],
+                                    ['button', {class: 'fontsize', $on: {
+                                        click () {
+                                            Unicodecharref.tblfontsize(-1);
+                                        }
+                                    }}, [_('minus')]]
+                                ]]
+                            ]],
+                            ['div', [
+                                ['div', [
+                                    ['label', [
+                                        _('font_label'),
+                                        ['input', {
+                                            id: 'font',
+                                            size: '12',
+                                            $on: {
+                                                change (e) {
+                                                    Unicodecharref.setprefs(e);
+                                                    $('#chart_table').style.fontFamily = this.value;
+                                                }
+                                            }
+                                        }]
+                                    ]]
+                                ]],
+                                ['div', {
+                                    title: _('lang_tooltiptext')
+                                }, [
+                                    ['label', [
+                                        _('lang_label'),
+                                        ['input', {
+                                            id: 'lang',
+                                            size: '5',
+                                            $on: {
+                                                change (e) {
+                                                    Unicodecharref.setprefs(e);
+                                                    $('#chart_table').lang = this.value;
+                                                }
+                                            }
+                                        }]
+                                    ]]
+                                ]]
+                            ]]
+                        ]]
+                    ]]
+                ]]
             ]],
-
-            ['div', {
-                id: 'chartContainer'
-            }],
-            ['input', {
-                id: 'insertText'
-            }]
+            // ['splitter'],
+            ['div', {id: 'chartcontent'}, [
+                ['div', {
+                    id: 'tableholder'
+                }, [
+                    ['div', {
+                        id: 'chartContainer'
+                    }]
+                ]],
+                // ['splitter']
+                ['div', {
+                    id: 'viewTabs',
+                    class: 'tabbox viewTabs'
+                }, [
+                    ['div', {class: 'tabs'}],
+                    ['div', {
+                        id: 'basicView',
+                        dataset: {
+                            selected: true,
+                            label: _('basicView_tab')
+                        },
+                        class: 'tabpanel'
+                    }, [
+                        ['div', [
+                            ['div', [
+                                ['div', [
+                                    ['label', [
+                                        _('button_multiline'),
+                                        ['input', {
+                                            id: 'multiline',
+                                            type: 'checkbox',
+                                            $on: {
+                                                click () {
+                                                    Unicodecharref.multiline();
+                                                }
+                                            }
+                                        }]
+                                    ]],
+                                    ['label', [
+                                        _('ShowImg_checkbox_label'),
+                                        ['input', {
+                                            id: 'showImg',
+                                            title: _('ShowImg_tooltiptext'),
+                                            type: 'checkbox',
+                                            $on: {
+                                                click (e) {
+                                                    Unicodecharref.setImagePref(e);
+                                                }
+                                            }
+                                        }]
+                                    ]]
+                                ]],
+                                ['label', {
+                                    class: 'leftlabel'
+                                }, [
+                                    _('caption_displayUnicodeDesc'),
+                                    ['input', {
+                                        id: 'displayUnicodeDesc'
+                                    }]
+                                ]]
+                            ]],
+                            ['div', {id: 'unicodeImg'}],
+                            ['div', {id: 'linksection'}, [
+                                ['div', {id: 'plane'}],
+                                ' ',
+                                ['div', {id: 'pdflink'}]
+                            ]],
+                            ['div', [
+                                ['fieldset', [
+                                    ['legend', [_('caption_chart_output')]],
+                                    ['div', [
+                                        ['label', [
+                                            _('outputtocopy'),
+                                            ['input', {
+                                                id: 'insertText'
+                                            }]
+                                        ]],
+                                        ['button', {id: 'clearoutput', $on: {
+                                            click () {
+                                                $('#insertText').value = '';
+                                            }
+                                        }}, [
+                                            _('button_clearoutput')
+                                        ]]
+                                    ]],
+                                    ['div', [
+                                        ['div', [
+                                            ['button', {
+                                                tooltiptext: _('willreplaceprecnv'),
+                                                class: 'outputcopybutton',
+                                                $on: {
+                                                    click () {
+                                                        Unicodecharref.moveoutput('insertText');
+                                                    }
+                                                }
+                                            }, [
+                                                _('button_moveoutput')
+                                            ]]
+                                        ]],
+                                        ['button', {$on: {
+                                            click () {
+                                                Unicodecharref.copyToClipboard('insertText');
+                                            }
+                                        }}, [
+                                            _('copyToClipboard')
+                                        ]],
+                                        ['button', {$on: {
+                                            click () {
+                                                Unicodecharref.addToToolbar();
+                                            }
+                                        }}, [
+                                            _('addToToolbar')
+                                        ]]
+                                    ]]
+                                ]]
+                            ]]
+                        ]]
+                    ]],
+                    ['div', {
+                        id: 'detailedView',
+                        dataset: {
+                            label: _('detailedView_tab')
+                        },
+                        class: 'tabpanel'
+                    }, [
+                        ['div', {id: 'unicodeDescArea'}, [
+                            ['label', [
+                                _('showAllDetailedView_label'),
+                                ['input', {
+                                    type: 'checkbox',
+                                    id: 'showAllDetailedView',
+                                    $on: {
+                                        click (e) {
+                                            Unicodecharref.setprefs(e);
+                                        }
+                                    }
+                                }]
+                            ]],
+                            ['div', [
+                                ['label', {class: 'heading'}, [
+                                    _('textbox_displayUnicodeDesc'),
+                                    ['input', {
+                                        id: 'displayUnicodeDesc2'
+                                    }]
+                                ]]
+                            ]]
+                        ]],
+                        ['div', {class: 'detailedViewRows'}, [
+                            ['div', [
+                                ['div', {class: 'detailedView'}, [
+                                    ['h2', [_('General_Category')]],
+                                    ['input', {
+                                        id: '_detailedView2'
+                                    }],
+                                    ...[
+                                        'Canonical_Combining_Class',
+                                        'Bidi_Class',
+                                        'Decomposition_Type_and_Mapping',
+                                        'Decimal',
+                                        'Digit',
+                                        'Numeric',
+                                        'Bidi_Mirrored',
+                                        'ISO_Comment',
+                                        // 'Unicode_1_Name',
+                                        'Simple_Uppercase_Mapping',
+                                        'Simple_Lowercase_Mapping',
+                                        'Simple_Titlecase_Mapping'
+                                    ].map((key, i) => {
+                                        return ['div', {
+                                            class: 'detailedView'
+                                        }, [
+                                            ['label', {
+                                                class: 'heading'
+                                            }, [
+                                                _(key),
+                                                ['input', {
+                                                    id: `_detailedView${i + 3}`
+                                                }]
+                                            ]]
+                                        ]];
+                                    })
+                                ]]
+                            ]]
+                        ]]
+                    ]],
+                    ['div', {
+                        id: 'detailedCJKView',
+                        dataset: {
+                            label: _('detailedCJKView_tab')
+                        },
+                        class: 'tabpanel'
+                    }, [
+                        ['div', {id: 'displayUnihanArea'}, [
+                            ['label', [
+                                _('showAllDetailedCJKView_label'),
+                                ['input', {
+                                    type: 'checkbox',
+                                    id: 'showAllDetailedCJKView',
+                                    $on: {
+                                        click (e) {
+                                            Unicodecharref.setprefs(e);
+                                        }
+                                    }
+                                }]
+                            ]],
+                            ['div', [
+                                ['label', {
+                                    class: 'heading'
+                                }, [
+                                    _('textbox_displayUnicodeDesc'),
+                                    ['input', {id: 'displayUnicodeDescUnihan'}]
+                                ]]
+                            ]],
+                            ['div', {class: 'detailedCJKViewRows'}, [
+                                ['div', [
+                                    ...unihanFieldInfo.map(([key, num]) => {
+                                        return ['div', {class: 'detailedCJKView'}, [
+                                            ['label', {class: 'heading'}, [
+                                                _(key),
+                                                ['input', {
+                                                    id: `_detailedCJKView${num}`
+                                                }]
+                                            ]]
+                                        ]];
+                                    })
+                                ]]
+                            ]]
+                        ]]
+                    ]]
+                ]]
+            ]]
         ]],
         ['div', {
             id: 'conversion',
-            title: _('Conversion_tab_label'),
-            class: 'tabpanel'
+            class: 'tabpanel',
+            dataset: {
+                label: _('Conversion_tab_label')
+            }
         }, [
             ['div', {id: 'conversionhbox'}, [
                 ['div', {id: 'conversion_buttons_persist'}, [ // vbox
@@ -245,8 +764,10 @@ jml('div', [
         ]],
         ['div', {
             id: 'prefs',
-            title: _('Prefs_tab_label'),
-            class: 'tabpanel'
+            class: 'tabpanel',
+            dataset: {
+                label: _('Prefs_tab_label')
+            }
         }, [
             ['h2', {class: 'dialogheader'}, [_('Preferences_dialogheader_title')]],
             ['div', {
@@ -449,16 +970,17 @@ jml('div', [
         ]],
         ['div', {
             id: 'DTDpanel',
-            title: _('DTD_tab_label'),
-            class: 'tabpanel'
+            class: 'tabpanel',
+            dataset: {
+                label: _('DTD_tab_label')
+            }
         }, [
             ['h2', {class: 'dialogheader'}, [
                 _('dialogheader_value')
             ]],
             ...fill(2).map((__, i) => {
-                i++;
                 return ['p', [
-                    _(`DTD_desc_value${i}`)
+                    _(`DTD_desc_value${i + 1}`)
                 ]];
             }),
             ['textarea', {id: 'DTDtextbox', style: 'width: 400px; height: 300px;', $on: {
@@ -546,26 +1068,26 @@ jml('div', [
         ]],
         ['div', {
             id: 'notes',
-            title: _('Notes_tab_label'),
-            class: 'tabpanel'
+            class: 'tabpanel',
+            dataset: {
+                label: _('Notes_tab_label')
+            }
         }, [
             ['h2', {class: 'dialogheader'}, [_('Notes_dialogheader_title')]],
             ['section', [
                 ['div', {class: 'noteDescriptionBox'}, [
                     ['h3', [_('note_heading')]],
                     ...fill(8).map((__, i) => {
-                        i++;
                         return ['div', {class: 'notesdescription'}, [
-                            _(`notespar${i}`)
+                            _(`notespar${i + 1}`)
                         ]];
                     })
                 ]],
                 ['div', {class: 'noteDescriptionBox'}, [
                     ['h3', [_('usage_note_heading')]],
                     ...fill(13).map((__, i) => {
-                        i++;
                         return ['div', {class: 'usage_notesdescription'}, [
-                            _(`usage_notespar${i}`)
+                            _(`usage_notespar${i + 1}`)
                         ]];
                     })
                 ]]
@@ -573,8 +1095,10 @@ jml('div', [
         ]],
         ['div', {
             id: 'about',
-            title: _('About_tab_label'),
-            class: 'tabpanel'
+            class: 'tabpanel',
+            dataset: {
+                label: _('About_tab_label')
+            }
         }, [
             ['h2', {class: 'dialogheader'}, [_('About_dialogheader_title')]],
             ['section', [
@@ -635,7 +1159,7 @@ jQuery('div.miller-columns').millerColumns({
     // current ($item, $cols) { console.log('User selected:', $item); }
 });
 
-makeTabBox('.tabBox');
+makeTabBox('.tabbox');
 
 await getBuildChart({
     _,

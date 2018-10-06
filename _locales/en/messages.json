@@ -600,7 +600,7 @@
         "message": "Chart Layout"
     },
     "caption_displayUnicodeDesc": {
-        "message": "Char.<html:br />desc.:"
+        "message": "Char. desc.:"
     },
     "textbox_displayUnicodeDesc": {
         "message": "Character description"

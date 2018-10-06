@@ -13,9 +13,10 @@ character references, etc.
 - Convert
     [XUL-based add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/)
     to HTML5 (use Jamilih for greater flexibility and i18n)
+- Conversion to/from 6-digit JavaScript escapes
 - Utilize column browser for browsing deep hierarchies such as list of
     blocks/scripts/categories (also use in filebrowser-enhanced!);
     See <https://github.com/brettz9/miller-columns> or possibly
     <https://bitbucket.org/brettz9/colbrowser>
-- Borrow from or ideas from GPL3 <https://github.com/brettz9/charpick>?
+- Borrow from or ideas from GPL3-licensed <https://github.com/brettz9/charpick>?
 - Get i18n completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
