@@ -1,6 +1,6 @@
 /* eslint-env browser, webextensions */
 /* globals jQuery, Unicodecharref */
-import {jml, body, $} from '/vendor/jamilih/dist/jml-es.js';
+import {jml, body, $, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {i18n} from './I18n.js';
 import {fill} from './utils.js';
 import {makeTabBox} from './widgets.js';
@@ -8,6 +8,7 @@ import addMillerColumnPlugin from '/vendor/miller-columns/dist/index-es.min.js';
 import unicodeScripts from '/browser_action/unicode-scripts.js';
 import getBuildChart from '/browser_action/build-chart.js';
 import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
+import encodings from '/browser_action/encodings.js';
 
 (async () => {
 await addMillerColumnPlugin(jQuery, {stylesheets: [
@@ -55,7 +56,193 @@ jml('div', [
             id: 'conversion',
             title: _('Conversion_tab_label'),
             class: 'tabpanel'
-        }, []],
+        }, [
+            ['div', {id: 'conversionhbox'}, [
+                ['div', {id: 'conversion_buttons_persist'}, [ // vbox
+                    ['div', [
+                        ['h2', {class: 'dialogheader'}, [
+                            _('Reconvert_dialogheader_title')
+                        ]],
+                        ['button', {id: 'b1', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.charref2unicode(e);
+                            }
+                        }}, [_('charref2unicode_label')]],
+                        ['button', {id: 'b2', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.charref2htmlents(e);
+                            }
+                        }}, [_('charref2htmlents_label')]],
+                        ['button', {id: 'b3', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.unicode2charrefDec(e);
+                            }
+                        }}, [_('unicode2charrefDec_label')]],
+                        ['button', {id: 'b4', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.unicode2charrefHex(e);
+                            }
+                        }}, [_('unicode2charrefHex_label')]],
+                        ['button', {
+                            id: 'b3b',
+                            class: 'reconvert',
+                            title: _('unicode2charrefSurrogate_tooltip'),
+                            $on: {
+                                click (e) {
+                                    Unicodecharref.unicode2charrefDecSurrogate(e);
+                                }
+                            }
+                        }, [_('unicode2charrefDecSurrogate_label')]],
+                        ['button', {
+                            id: 'b4b',
+                            class: 'reconvert',
+                            title: _('unicode2charrefSurrogate_tooltip'),
+                            $on: {
+                                click (e) {
+                                    Unicodecharref.unicode2charrefHexSurrogate(e);
+                                }
+                            }
+                        }, [_('unicode2charrefHexSurrogate_label')]],
+                        ['button', {id: 'b5', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.unicode2htmlents(e);
+                            }
+                        }}, [_('unicode2htmlents_label')]],
+                        ['div', [
+                            ['button', {id: 'b6', class: 'reconvert', $on: {
+                                click (e) {
+                                    Unicodecharref.unicode2jsescape(e);
+                                }
+                            }}, [_('unicode2JSEscape_label')]],
+                            ['button', {id: 'b7', class: 'reconvert', $on: {
+                                click (e) {
+                                    Unicodecharref.unicodeTo6Digit(e);
+                                }
+                            }}, [_('unicodeTo6Digit_label')]]
+                        ]],
+                        ['button', {id: 'b8', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.unicode2cssescape(e);
+                            }
+                        }}, [_('unicode2CSSEscape_label')]],
+                        ['button', {id: 'b9', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.htmlents2charrefDec(e);
+                            }
+                        }}, [_('htmlents2charrefDec_label')]],
+                        ['button', {id: 'b10', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.htmlents2charrefHex(e);
+                            }
+                        }}, [_('htmlents2charrefHex_label')]],
+                        ['button', {id: 'b11', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.htmlents2unicode(e);
+                            }
+                        }}, [_('htmlents2unicode_label')]],
+                        ['button', {id: 'b12', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.hex2dec(e);
+                            }
+                        }}, [_('hex2dec_label')]],
+                        ['button', {id: 'b13', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.dec2hex(e);
+                            }
+                        }}, [_('dec2hex_label')]],
+                        ['div', [
+                            ['button', {id: 'b14', class: 'reconvert', $on: {
+                                click (e) {
+                                    Unicodecharref.jsescape2unicode(e);
+                                }
+                            }}, [_('jsescape2unicode_label')]],
+                            ['button', {id: 'b15', class: 'reconvert', $on: {
+                                click (e) {
+                                    Unicodecharref.sixDigit2Unicode(e);
+                                }
+                            }}, [_('sixDigit2unicode_label')]]
+                        ]],
+                        ['button', {id: 'b16', class: 'reconvert', $on: {
+                            click (e) {
+                                Unicodecharref.cssescape2unicode(e);
+                            }
+                        }}, [_('cssescape2unicode_label')]],
+                        ['div', [
+                            ['button', {id: 'b17', class: 'reconvert', $on: {
+                                click (e) {
+                                    Unicodecharref.unicode2CharDesc(e);
+                                }
+                            }}, [_('unicode2CharDesc_label')]],
+                            ['button', {id: 'b18', class: 'reconvert', $on: {
+                                click (e) {
+                                    Unicodecharref.charDesc2Unicode(e);
+                                }
+                            }}, [_('charDesc2Unicode_label')]]
+                        ]],
+                        ['label', [
+                            _('Convert_From_Encoding'),
+                            ['select', {
+                                id: 'encoding_from',
+                                class: 'reconvert',
+                                multiple: 'multiple'
+                            }, encodings.map((option) => {
+                                return ['option', [option]];
+                            })]
+                        ]],
+                        ['label', [
+                            _('Convert_To_Encoding'),
+                            ['select', {
+                                id: 'encoding_to',
+                                class: 'reconvert',
+                                multiple: 'multiple'
+                            }, encodings.map((option) => {
+                                return ['option', [option]];
+                            })]
+                        ]]
+                    ]]
+                ]],
+                // ['splitter'],
+                ['div', {id: 'toconvert_persist'}, [
+                    // ['h2', {class: 'dialogheader'}, [ _('uresults_value') ]],
+                    ['div', {id: 'toconvert_persist_label'}, [
+                        _('uresults_preconverted'),
+                        ['textarea', {id: 'toconvert'}, [
+                            _('uresults_value')
+                        ]]
+                    ]],
+                    // ['splitter'],
+                    ['label', [
+                        _('uresults_converted'),
+                        ['textarea', {id: 'converted', style: 'width: 300px; height: 200px;'}, [
+                            _('default_textbox_value')
+                        ]]
+                    ]],
+                    ['div', [
+                        _('label_fontsize'),
+                        ['button', {class: 'fontsize', $on: {
+                            click () {
+                                Unicodecharref.fsizetextbox(+1);
+                            }
+                        }}, [
+                            _('plus')
+                        ]],
+                        ['button', {class: 'fontsize', $on: {
+                            click () {
+                                Unicodecharref.fsizetextbox(-1);
+                            }
+                        }}, [
+                            _('minus')
+                        ]],
+                        nbsp.repeat(7),
+                        ['button', {$on: {click () {
+                            Unicodecharref.moveoutput('converted');
+                        }}}, [
+                            _('moveconvertedup_label')
+                        ]]
+                    ]]
+                ]]
+            ]]
+        ]],
         ['div', {
             id: 'prefs',
             title: _('Prefs_tab_label'),
@@ -65,7 +252,7 @@ jml('div', [
             ['div', {
                 id: 'DownloadButtonBox',
                 class: 'boxed',
-                tooltiptext: _('Download_unihan_tooltip')
+                title: _('Download_unihan_tooltip')
             }, [
                 ['button', {
                     $on: {

@@ -11,6 +11,12 @@
     "browser_action_title": {
         "message": "Unicode Input Tool/Converter"
     },
+    "plus": {
+        "message": "+"
+    },
+    "minus": {
+        "message": "-"
+    },
     "unicode_noun": {
         "message": "Unicode"
     },

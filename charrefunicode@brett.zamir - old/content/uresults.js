@@ -297,20 +297,20 @@ var Unicodecharref = {
 $('tabbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*3/100);
 $('unicodetabs').maxWidth = window.screen.availWidth-(window.screen.availWidth*3/100);
 /**
-        $('tabbox').maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
-        $('conversionhbox').maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
+        $('tabbox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
+        $('conversionhbox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
 
-        $('noteDescriptionBox2').height = $('noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
-$('tabbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-$('unicodetabs').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('unicodetabpanels').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('chartcontent').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
-$('chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
+        $('noteDescriptionBox2').style.height = $('noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
+$('tabbox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
+$('unicodetabs').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+$('unicodetabpanels').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+$('chartcontent').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
+$('chart_selectchar_persist_vbox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
 
 //*/
-//        $('tableholder').maxWidth = window.screen.availWidth-(window.screen.availWidth*50/100);
-//        $('tableholder').width = window.screen.availWidth-(window.screen.availWidth*50/100);
-  //      window.sizeToContent();
+//        $('tableholder').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*50/100);
+//        $('tableholder').style.width = window.screen.availWidth-(window.screen.availWidth*50/100);
+//      window.sizeToContent();
 
         this.testIfComplexWindow();
 
