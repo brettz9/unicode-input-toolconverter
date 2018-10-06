@@ -14,6 +14,8 @@ character references, etc.
     [XUL-based add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/)
     to HTML5 (use Jamilih for greater flexibility and i18n)
 - Conversion to/from 6-digit JavaScript escapes
+- When browsing by script, have option to update its location when one uses
+    next/prev
 - Utilize column browser for browsing deep hierarchies such as list of
     blocks/scripts/categories (also use in filebrowser-enhanced!);
     See <https://github.com/brettz9/miller-columns> or possibly
