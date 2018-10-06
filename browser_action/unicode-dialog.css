@@ -251,3 +251,12 @@ code {
     border: 1px dotted black;
     background-color: lightgray;
 }
+
+.vbox {
+    display: flex;
+    flex-direction: column;
+}
+.hbox {
+    display: flex;
+    flex-direction: row;
+}
