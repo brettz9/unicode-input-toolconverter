@@ -68,11 +68,14 @@ export const i18n = async function i18n ({locales, defaults}) {
                     ? defaults(key, strings)
                     : defaults === false
                         ? (() => {
-                            throw new Error();
+                            throw new Error(`Key not found: ${key}`);
                         })()
                         : defaults
 
         );
+        if (!substitutions) {
+            return str;
+        }
         // Give chance to avoid this block when known to contain DOM
         if (!dom) {
             // Run this loop to optimize non-DOM substitutions
