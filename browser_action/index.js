@@ -5,9 +5,10 @@ import {i18n} from './I18n.js';
 import {fill} from './utils.js';
 import {makeTabBox} from './widgets.js';
 import {code, link} from './templates.js';
+import {setPref} from './Preferences.js';
 import addMillerColumnPlugin from '/vendor/miller-columns/dist/index-es.min.js';
 import unicodeScripts from './unicode-scripts.js';
-import getBuildChart from './build-chart.js';
+import getBuildChart, {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './insertIntoOrOverExisting.js';
 import encodings from './encodings.js';
 import unihanFieldInfo from './unicode/unihanFieldInfo.js';
@@ -1159,7 +1160,15 @@ jml('div', [
 ], body);
 
 jQuery('div.miller-columns').millerColumns({
-    // current ($item, $cols) { console.log('User selected:', $item); }
+    async current ($item, $cols) {
+        if (!$item) { // Todo: Is this an error?
+            return;
+        }
+        // console.log('User selected:', $item);
+        const title = $item[0].getAttribute('title');
+        await setPref('currentStartCharCode', parseInt(title.replace(/-.*$/, ''), 16));
+        buildChart(); // Todo: descripts?
+    }
 });
 
 makeTabBox('.tabbox');
