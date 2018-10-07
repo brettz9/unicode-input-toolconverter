@@ -35,6 +35,7 @@ document.title = _('uresults_title');
 jml('div', [
     ['div', {
         id: 'unicodeTabBox',
+        style: 'width: 700px;',
         class: 'tabbox'
     }, [
         ['div', {class: 'tabs'}],
@@ -47,7 +48,7 @@ jml('div', [
             class: 'tabpanel'
         }, [
             ['div', {class: 'hbox'}, [
-                ['div', {id: 'chart_selectchar_persist_vbox', class: 'vbox'}, [
+                ['div', {id: 'chart_selectchar_persist_vbox', class: 'vbox chartBox'}, [
                     ['div', {id: 'chart_selectchar_persist'}, [
                         ['fieldset', [
                             ['legend', [_('caption_chart_selectchar')]],
@@ -71,37 +72,37 @@ jml('div', [
                                 ]],
                                 ['div', [
                                     ['label', [
-                                        _('searchName')
-                                    ]],
-                                    ['input', {
-                                        id: 'searchName',
-                                        class: 'searchBox',
-                                        $on: {
-                                            change () {
-                                                Unicodecharref.searchUnicode(this);
-                                            },
-                                            input () {
-                                                Unicodecharref.searchUnicode(this);
+                                        _('searchName'),
+                                        ['input', {
+                                            id: 'searchName',
+                                            class: 'searchBox',
+                                            $on: {
+                                                change () {
+                                                    Unicodecharref.searchUnicode(this);
+                                                },
+                                                input () {
+                                                    Unicodecharref.searchUnicode(this);
+                                                }
                                             }
-                                        }
-                                    }]
+                                        }]
+                                    ]]
                                 ]],
                                 ['div', [
                                     ['label', [
-                                        _('searchkDefinition')
-                                    ]],
-                                    ['input', {
-                                        id: 'searchkDefinition',
-                                        class: 'searchBox',
-                                        $on: {
-                                            change () {
-                                                Unicodecharref.searchUnihan(this);
-                                            },
-                                            input () {
-                                                Unicodecharref.searchUnihan(this);
+                                        _('searchkDefinition'),
+                                        ['input', {
+                                            id: 'searchkDefinition',
+                                            class: 'searchBox',
+                                            $on: {
+                                                change () {
+                                                    Unicodecharref.searchUnihan(this);
+                                                },
+                                                input () {
+                                                    Unicodecharref.searchUnihan(this);
+                                                }
                                             }
-                                        }
-                                    }]
+                                        }]
+                                    ]]
                                 ]]
                             ]]
                         ]],
@@ -168,23 +169,25 @@ jml('div', [
                         ['fieldset', [
                             ['legend', [_('caption_chart_layout')]],
                             ['div', {class: 'vbox'}, [
-                                ['div', {class: 'hbox'}, [
-                                    ['label', [_('label_onlyentsyesq')]],
-                                    ['input', {
-                                        type: 'checkbox',
-                                        id: 'onlyentsyes',
-                                        class: 'charthbox',
-                                        $on: {
-                                            click (e) {
-                                                Unicodecharref.onlyentsyesflip(e);
+                                ['div', {class: 'hbox chartLayout'}, [
+                                    ['label', [
+                                        ['input', {
+                                            type: 'checkbox',
+                                            id: 'onlyentsyes',
+                                            class: 'charthbox',
+                                            $on: {
+                                                click (e) {
+                                                    Unicodecharref.onlyentsyesflip(e);
+                                                }
                                             }
-                                        }
-                                    }]
+                                        }],
+                                        _('label_onlyentsyesq')
+                                    ]]
                                 ]],
                                 ['div', [
-                                    ['div', {class: 'hbox'}, [
+                                    ['div', {class: 'hbox chartLayout'}, [
                                         ['label', [
-                                            _('label_norows'),
+                                            _('label_norows'), nbsp.repeat(2),
                                             ['input', {
                                                 id: 'rowsset',
                                                 $on: {
@@ -194,8 +197,9 @@ jml('div', [
                                                 }
                                             }]
                                         ]],
+                                        nbsp.repeat(4),
                                         ['label', [
-                                            _('label_nocols'),
+                                            _('label_nocols'), nbsp.repeat(2),
                                             ['input', {
                                                 id: 'colsset',
                                                 $on: {
@@ -207,8 +211,7 @@ jml('div', [
                                         ]]
                                     ]],
                                     ['div', {class: 'hbox'}, [
-                                        ['label', [
-                                            _('label_entq'),
+                                        ['label', {class: 'chartLayout'}, [
                                             ['input', {
                                                 type: 'checkbox',
                                                 id: 'entyes',
@@ -218,10 +221,11 @@ jml('div', [
                                                         Unicodecharref.entflip(e);
                                                     }
                                                 }
-                                            }]
+                                            }],
+                                            _('label_entq')
                                         ]],
+                                        nbsp.repeat(3),
                                         ['label', [
-                                            _('label_decq'),
                                             ['input', {
                                                 type: 'checkbox',
                                                 id: 'decyes',
@@ -231,10 +235,11 @@ jml('div', [
                                                         Unicodecharref.decflip(e);
                                                     }
                                                 }
-                                            }]
+                                            }],
+                                            _('label_decq')
                                         ]],
+                                        nbsp.repeat(3),
                                         ['label', [
-                                            _('label_hexq'),
                                             ['input', {
                                                 type: 'checkbox',
                                                 id: 'hexyes',
@@ -244,10 +249,11 @@ jml('div', [
                                                         Unicodecharref.hexflip(e);
                                                     }
                                                 }
-                                            }]
+                                            }],
+                                            _('label_hexq')
                                         ]],
+                                        nbsp.repeat(3),
                                         ['label', [
-                                            _('label_unicodeq'),
                                             ['input', {
                                                 type: 'checkbox',
                                                 id: 'unicodeyes',
@@ -257,12 +263,12 @@ jml('div', [
                                                         Unicodecharref.unicodeflip(e);
                                                     }
                                                 }
-                                            }]
+                                            }],
+                                            _('label_unicodeq')
                                         ]]
                                     ]],
                                     ['div', {class: 'hbox'}, [
-                                        ['label', [
-                                            _('label_middleq'),
+                                        ['label', {class: 'chartLayout'}, [
                                             ['input', {
                                                 type: 'checkbox',
                                                 id: 'middleyes',
@@ -272,10 +278,11 @@ jml('div', [
                                                         Unicodecharref.middleflip(e);
                                                     }
                                                 }
-                                            }]
+                                            }],
+                                            _('label_middleq')
                                         ]],
-                                        ['label', [
-                                            _('label_buttonq'),
+                                        nbsp.repeat(3),
+                                        ['label', {class: 'chartLayout'}, [
                                             ['input', {
                                                 type: 'checkbox',
                                                 id: 'buttonyes',
@@ -285,16 +292,19 @@ jml('div', [
                                                         Unicodecharref.buttonflip(e);
                                                     }
                                                 }
-                                            }]
+                                            }],
+                                            _('label_buttonq')
                                         ]]
                                     ]],
-                                    ['div', {class: 'hbox'}, [
+                                    ['div', {class: 'hbox chartLayout'}, [
                                         ['label', [_('label_fontsize')]],
+                                        nbsp.repeat(2),
                                         ['button', {class: 'fontsize', $on: {
                                             click () {
                                                 Unicodecharref.tblfontsize(+1);
                                             }
                                         }}, [_('plus')]],
+                                        nbsp,
                                         ['button', {class: 'fontsize', $on: {
                                             click () {
                                                 Unicodecharref.tblfontsize(-1);
@@ -303,9 +313,10 @@ jml('div', [
                                     ]]
                                 ]],
                                 ['div', {class: 'vbox'}, [
-                                    ['div', {class: 'hbox'}, [
+                                    ['div', {class: 'hbox chartLayout'}, [
                                         ['label', [
                                             _('font_label'),
+                                            nbsp.repeat(2),
                                             ['input', {
                                                 id: 'font',
                                                 size: '12',
@@ -324,6 +335,7 @@ jml('div', [
                                     }, [
                                         ['label', [
                                             _('lang_label'),
+                                            nbsp.repeat(2),
                                             ['input', {
                                                 id: 'lang',
                                                 size: '5',
@@ -342,7 +354,7 @@ jml('div', [
                     ]]
                 ]],
                 // ['splitter'],
-                ['div', {id: 'chartcontent', class: 'vbox'}, [
+                ['div', {id: 'chartcontent', class: 'vbox chartBox'}, [
                     ['div', {
                         id: 'tableholder',
                         class: 'vbox'
@@ -367,8 +379,7 @@ jml('div', [
                         }, [
                             ['div', {class: 'vbox'}, [
                                 ['div', {class: 'hbox'}, [
-                                    ['label', {class: 'vbox'}, [
-                                        _('button_multiline'),
+                                    ['label', [
                                         ['input', {
                                             id: 'multiline',
                                             type: 'checkbox',
@@ -377,10 +388,11 @@ jml('div', [
                                                     Unicodecharref.multiline();
                                                 }
                                             }
-                                        }]
+                                        }],
+                                        _('button_multiline')
                                     ]],
+                                    nbsp.repeat(3),
                                     ['label', [
-                                        _('ShowImg_checkbox_label'),
                                         ['input', {
                                             id: 'showImg',
                                             title: _('ShowImg_tooltiptext'),
@@ -390,13 +402,15 @@ jml('div', [
                                                     Unicodecharref.setImagePref(e);
                                                 }
                                             }
-                                        }]
+                                        }],
+                                        _('ShowImg_checkbox_label')
                                     ]]
                                 ]],
                                 ['label', {
                                     class: 'leftlabel'
                                 }, [
                                     _('caption_displayUnicodeDesc'),
+                                    nbsp.repeat(2),
                                     ['input', {
                                         id: 'displayUnicodeDesc'
                                     }]
@@ -414,19 +428,21 @@ jml('div', [
                                     ['div', {class: 'hbox'}, [
                                         ['label', [
                                             _('outputtocopy'),
-                                            ['input', {
+                                            ['textarea', {
                                                 id: 'insertText'
                                             }]
                                         ]],
-                                        ['button', {id: 'clearoutput', $on: {
-                                            click () {
-                                                $('#insertText').value = '';
-                                            }
-                                        }}, [
-                                            _('button_clearoutput')
+                                        ['div', [
+                                            ['button', {id: 'clearoutput', $on: {
+                                                click () {
+                                                    $('#insertText').value = '';
+                                                }
+                                            }}, [
+                                                _('button_clearoutput')
+                                            ]]
                                         ]]
                                     ]],
-                                    ['div', {class: 'hbox'}, [
+                                    ['div', {id: 'outputButtons', class: 'hbox'}, [
                                         ['div', {class: 'hbox'}, [
                                             ['button', {
                                                 tooltiptext: _('willreplaceprecnv'),
@@ -440,6 +456,7 @@ jml('div', [
                                                 _('button_moveoutput')
                                             ]]
                                         ]],
+                                        nbsp.repeat(2),
                                         ['button', {$on: {
                                             click () {
                                                 Unicodecharref.copyToClipboard('insertText');
@@ -447,6 +464,7 @@ jml('div', [
                                         }}, [
                                             _('copyToClipboard')
                                         ]],
+                                        nbsp.repeat(2),
                                         ['button', {$on: {
                                             click () {
                                                 Unicodecharref.addToToolbar();
@@ -467,7 +485,6 @@ jml('div', [
                         }, [
                             ['div', {id: 'unicodeDescArea', class: 'vbox'}, [
                                 ['label', [
-                                    _('showAllDetailedView_label'),
                                     ['input', {
                                         type: 'checkbox',
                                         id: 'showAllDetailedView',
@@ -476,11 +493,14 @@ jml('div', [
                                                 Unicodecharref.setprefs(e);
                                             }
                                         }
-                                    }]
+                                    }],
+                                    _('showAllDetailedView_label')
                                 ]],
-                                ['div', {class: 'hbox'}, [
-                                    ['label', {class: 'heading'}, [
-                                        _('textbox_displayUnicodeDesc'),
+                                ['div', {id: 'displayUnicodeDescContainer', class: 'displayUnicodeDescContainer hbox'}, [
+                                    ['label', [
+                                        ['h3', [
+                                            _('textbox_displayUnicodeDesc')
+                                        ]],
                                         ['input', {
                                             id: 'displayUnicodeDesc2'
                                         }]
@@ -489,12 +509,9 @@ jml('div', [
                             ]],
                             ['div', {class: 'detailedViewRows vbox'}, [
                                 ['div', [
-                                    ['div', {class: 'detailedView vbox'}, [
-                                        ['h2', [_('General_Category')]],
-                                        ['input', {
-                                            id: '_detailedView2'
-                                        }],
+                                    ['div', {class: 'detailedViewContainer vbox'}, [
                                         ...[
+                                            'General_Category',
                                             'Canonical_Combining_Class',
                                             'Bidi_Class',
                                             'Decomposition_Type_and_Mapping',
@@ -515,8 +532,9 @@ jml('div', [
                                                     class: 'heading'
                                                 }, [
                                                     _(key),
+                                                    nbsp.repeat(2),
                                                     ['input', {
-                                                        id: `_detailedView${i + 3}`
+                                                        id: `_detailedView${i + 2}`
                                                     }]
                                                 ]]
                                             ]];
@@ -534,7 +552,6 @@ jml('div', [
                         }, [
                             ['div', {id: 'displayUnihanArea', class: 'vbox'}, [
                                 ['label', [
-                                    _('showAllDetailedCJKView_label'),
                                     ['input', {
                                         type: 'checkbox',
                                         id: 'showAllDetailedCJKView',
@@ -543,13 +560,12 @@ jml('div', [
                                                 Unicodecharref.setprefs(e);
                                             }
                                         }
-                                    }]
+                                    }],
+                                    _('showAllDetailedCJKView_label')
                                 ]],
-                                ['div', {class: 'hbox'}, [
-                                    ['label', {
-                                        class: 'heading'
-                                    }, [
-                                        _('textbox_displayUnicodeDesc'),
+                                ['div', {class: 'hbox displayUnicodeDescContainer'}, [
+                                    ['label', [
+                                        ['h3', [_('textbox_displayUnicodeDesc')]],
                                         ['input', {id: 'displayUnicodeDescUnihan'}]
                                     ]]
                                 ]],
@@ -559,6 +575,7 @@ jml('div', [
                                             return ['div', {class: 'detailedCJKView vbox'}, [
                                                 ['label', {class: 'heading'}, [
                                                     _(key),
+                                                    nbsp.repeat(2),
                                                     ['input', {
                                                         id: `_detailedCJKView${num}`
                                                     }]
@@ -581,7 +598,7 @@ jml('div', [
             }
         }, [
             ['div', {id: 'conversionhbox', class: 'hbox'}, [
-                ['div', {id: 'conversion_buttons_persist', class: 'vbox'}, [
+                ['div', {id: 'conversion_buttons_persist', class: 'vbox conversionSection'}, [
                     ['h2', {class: 'dialogheader'}, [
                         _('Reconvert_dialogheader_title')
                     ]],
@@ -701,45 +718,60 @@ jml('div', [
                             }
                         }}, [_('charDesc2Unicode_label')]]
                     ]],
-                    ['label', [
-                        _('Convert_From_Encoding'),
-                        ['select', {
-                            id: 'encoding_from',
-                            class: 'reconvert',
-                            multiple: 'multiple'
-                        }, encodings.map((option) => {
-                            return ['option', [option]];
-                        })]
-                    ]],
-                    ['label', [
-                        _('Convert_To_Encoding'),
-                        ['select', {
-                            id: 'encoding_to',
-                            class: 'reconvert',
-                            multiple: 'multiple'
-                        }, encodings.map((option) => {
-                            return ['option', [option]];
-                        })]
+                    ['fieldset', {id: 'convertEncoding'}, [
+                        ['div', {id: 'convertFromEncoding'}, [
+                            ['label', [
+                                _('Convert_From_Encoding'),
+                                nbsp.repeat(2),
+                                ['select', {
+                                    id: 'encoding_from',
+                                    class: 'reconvert',
+                                    multiple: 'multiple'
+                                }, encodings.map((option) => {
+                                    return ['option', [option]];
+                                })]
+                            ]]
+                        ]],
+                        ['label', [
+                            _('Convert_To_Encoding'),
+                            nbsp.repeat(2),
+                            ['select', {
+                                id: 'encoding_to',
+                                class: 'reconvert',
+                                multiple: 'multiple'
+                            }, encodings.map((option) => {
+                                return ['option', [option]];
+                            })]
+                        ]]
                     ]]
                 ]],
                 // ['splitter'],
-                ['div', {id: 'toconvert_persist', class: 'vbox'}, [
+                ['div', {id: 'toconvert_persist', class: 'vbox conversionSection'}, [
                     // ['h2', {class: 'dialogheader'}, [ _('uresults_value') ]],
-                    ['div', {id: 'toconvert_persist_label'}, [
+                    ['label', {id: 'toconvert_persist_label'}, [
                         _('uresults_preconverted'),
-                        ['textarea', {id: 'toconvert'}, [
-                            _('uresults_value')
+                        ['div', [
+                            ['textarea', {
+                                id: 'toconvert',
+                                placeholder: _('toconvert_placeholder'),
+                                class: 'convertBox'
+                            }]
                         ]]
                     ]],
                     // ['splitter'],
                     ['label', [
                         _('uresults_converted'),
-                        ['textarea', {id: 'converted', style: 'width: 300px; height: 200px;'}, [
-                            _('default_textbox_value')
+                        ['div', [
+                            ['textarea', {
+                                id: 'converted',
+                                class: 'convertBox',
+                                placeholder: _('converted_value_placeholder')
+                            }]
                         ]]
                     ]],
                     ['div', {class: 'hbox'}, [
                         _('label_fontsize'),
+                        nbsp.repeat(2),
                         ['button', {class: 'fontsize', $on: {
                             click () {
                                 Unicodecharref.fsizetextbox(+1);
@@ -747,6 +779,7 @@ jml('div', [
                         }}, [
                             _('plus')
                         ]],
+                        nbsp,
                         ['button', {class: 'fontsize', $on: {
                             click () {
                                 Unicodecharref.fsizetextbox(-1);
@@ -774,41 +807,43 @@ jml('div', [
             ['h2', {class: 'dialogheader'}, [_('Preferences_dialogheader_title')]],
             ['div', {
                 id: 'DownloadButtonBox',
-                class: 'boxed vbox',
+                class: 'bottomboxed vbox',
                 title: _('Download_unihan_tooltip')
             }, [
-                ['button', {
-                    $on: {
-                        click () {
-                            Unicodecharref.downloadUnihan();
+                ['div', [
+                    ['button', {
+                        $on: {
+                            click () {
+                                Unicodecharref.downloadUnihan();
+                            }
                         }
-                    }
-                }, [_('DownloadUnihan')]]
-            ]],
-            ['div', {
-                id: 'DownloadProgressBox',
-                class: 'boxed vbox',
-                hidden: true
-            }, [
-                ['label', {id: 'progress_stat'}, [
-                    // Todo: ['progressmeter', {id: 'progress_element', mode: 'determined'}]
+                    }, [_('DownloadUnihan')]]
                 ]],
-                ['button', {
-                    id: 'closeDownloadProgressBox',
-                    hidden: true,
-                    $on: {
-                        click () {
-                            Unicodecharref.closeDownloadProgressBox();
+                ['div', {
+                    id: 'DownloadProgressBox',
+                    class: 'vbox',
+                    hidden: true
+                }, [
+                    ['label', {id: 'progress_stat'}, [
+                        // Todo: ['progressmeter', {id: 'progress_element', mode: 'determined'}]
+                    ]],
+                    ['button', {
+                        id: 'closeDownloadProgressBox',
+                        hidden: true,
+                        $on: {
+                            click () {
+                                Unicodecharref.closeDownloadProgressBox();
+                            }
                         }
-                    }
-                }, [_('Close')]]
-            ]],
-            ['div', {id: 'UnihanInstalled', class: 'boxed vbox'}, [
-                _('UnihanInstalled')
+                    }, [_('Close')]]
+                ]],
+                ['div', {id: 'UnihanInstalled', class: 'vbox'}, [
+                    _('UnihanInstalled')
+                ]]
             ]],
             ['div', {class: 'boxed vbox'}, [
                 ['label', [
-                    _('initialTab_label'),
+                    _('initialTab_label'), nbsp.repeat(3),
                     ['select', {id: 'initialTab', $on: {
                         click (e) {
                             Unicodecharref.setprefs(e);
@@ -823,128 +858,128 @@ jml('div', [
                     ]]
                 ]]
             ]],
-            ['div', {class: 'boxed vbox'}, [
+            ['div', {class: 'boxedbottom vbox'}, [
                 ['label', [
-                    _('Ascii_checkbox_label'),
                     ['input', {
                         type: 'checkbox',
                         id: 'asciiLt128',
-                        class: 'prefdescription',
                         $on: {
                             click (e) {
                                 Unicodecharref.setprefs(e);
                             }
                         }
-                    }]
+                    }],
+                    _('Ascii_checkbox_label')
                 ]]
             ]],
-            ['div', {class: 'boxed vbox'}, [
+            ['div', {class: 'boxedbottom vbox'}, [
                 ['label', [
-                    _('Hexletters_checkbox_label'),
                     ['input', {
                         type: 'checkbox',
                         id: 'hexLettersUpper',
-                        class: 'prefdescription topofpanel',
+                        class: 'topofpanel',
                         $on: {
                             click (e) {
                                 Unicodecharref.setprefs(e);
                             }
                         }
-                    }]
+                    }],
+                    _('Hexletters_checkbox_label')
                 ]]
             ]],
             ['div', {class: 'boxedbottom vbox'}, [
                 ['label', [
-                    _('xhtmlentmode_label', {code}),
                     ['input', {
                         type: 'checkbox',
                         id: 'xhtmlentmode',
-                        class: 'prefdescription topofpanel',
+                        class: 'topofpanel',
                         $on: {
                             click (e) {
                                 Unicodecharref.setprefs(e);
                             }
                         }
-                    }]
+                    }],
+                    _('xhtmlentmode_label', {code})
                 ]]
             ]],
             ['div', {class: 'boxedbottom vbox'}, [
                 ['label', [
-                    _('xmlentmode_label', {code}),
                     ['input', {
                         type: 'checkbox',
                         id: 'xmlentkeep',
-                        class: 'prefdescription topofpanel',
+                        class: 'topofpanel',
                         $on: {
                             click (e) {
                                 Unicodecharref.setprefs(e);
                             }
                         }
-                    }]
+                    }],
+                    _('xmlentmode_label', {code})
                 ]]
             ]],
             ['div', {class: 'boxedbottom vbox'}, [
                 ['label', [
-                    _('ampkeep_label', {code}),
                     ['input', {
                         type: 'checkbox',
                         id: 'ampkeep',
-                        class: 'prefdescription topofpanel',
+                        class: 'topofpanel',
                         $on: {
                             click (e) {
                                 Unicodecharref.setprefs(e);
                             }
                         }
-                    }]
+                    }],
+                    _('ampkeep_label', {code})
                 ]]
             ]],
             ['div', {class: 'boxedbottom vbox'}, [
                 ['label', [
-                    _('ampspace_label', {code}),
                     ['input', {
                         type: 'checkbox',
                         id: 'ampspace',
-                        class: 'prefdescription topofpanel',
+                        class: 'topofpanel',
                         $on: {
                             click (e) {
                                 Unicodecharref.setprefs(e);
                             }
                         }
-                    }]
+                    }],
+                    _('ampspace_label', {code})
                 ]]
             ]],
             ['div', {class: 'boxedbottom vbox'}, [
                 ['label', [
-                    _('showComplexWindow_label'),
                     ['input', {
                         type: 'checkbox',
                         id: 'showComplexWindow',
-                        class: 'prefdescription topofpanel',
+                        class: 'topofpanel',
                         $on: {
                             click (e) {
                                 Unicodecharref.setprefs(e);
                                 Unicodecharref.testIfComplexWindow();
                             }
                         }
-                    }]
+                    }],
+                    _('showComplexWindow_label')
                 ]]
             ]],
             ['div', {class: 'boxedbottom vbox'}, [
                 ['label', [
-                    _('cssUnambiguous_label'),
                     ['input', {
                         type: 'checkbox',
                         id: 'cssUnambiguous',
-                        class: 'prefdescription topofpanel',
+                        class: 'topofpanel',
                         $on: {
                             click (e) {
                                 Unicodecharref.setprefs(e);
                             }
                         }
-                    }]
+                    }],
+                    _('cssUnambiguous_label')
                 ]],
+                ['br'],
                 ['label', [
-                    _('CSSWhitespace_label'),
+                    _('CSSWhitespace_label'), nbsp.repeat(3),
                     ['select', {
                         id: 'CSSWhitespace',
                         $on: {
@@ -962,12 +997,14 @@ jml('div', [
                     ]]
                 ]]
             ]],
-            ['button', {id: 'resetdefaultbutton', $on: {
-                click () {
-                    Unicodecharref.resetdefaults();
-                }
-            }}, [
-                _('resettodefault_label')
+            ['div', {style: 'text-align: center;'}, [
+                ['button', {id: 'resetdefaultbutton', $on: {
+                    click () {
+                        Unicodecharref.resetdefaults();
+                    }
+                }}, [
+                    _('resettodefault_label')
+                ]]
             ]]
         ]],
         ['div', {
@@ -985,89 +1022,94 @@ jml('div', [
                     _(`DTD_desc_value${i + 1}`, {code})
                 ]];
             }),
-            ['textarea', {id: 'DTDtextbox', style: 'width: 400px; height: 300px;', $on: {
-                change () {
-                    Unicodecharref.registerDTD();
-                }
-            }}, [
-                _('DTD_textbox_value')
-            ]],
             ['div', {class: 'hbox'}, [
-                ['label', [
-                    _('DTD_insertEntityFile'),
-                    ['select', {
-                        id: 'insertEntityFile',
-                        class: 'dtdbutton'
-                    }, [
-                        ['optgroup', {label: 'Graphic'}, [
-                            ['option', {value: 'isobox'}, [_('ent_isobox')]],
-                            ['option', {value: 'isonum'}, [_('ent_isonum')]]
-                        ]],
-                        ['optgroup', {label: 'Math Symbols'}, [
-                            ['option', {value: 'xhtml1-symbol'}, [_('ent_xhtml1_symbol')]],
-                            ['option', {value: 'isoamsa'}, [_('ent_isoamsa')]],
-                            ['option', {value: 'isoamsb'}, [_('ent_isoamsb')]],
-                            ['option', {value: 'isoamsc'}, [_('ent_isoamsc')]],
-                            ['option', {value: 'isoamsn'}, [_('ent_isoamsn')]],
-                            ['option', {value: 'isoamso'}, [_('ent_isoamso')]],
-                            ['option', {value: 'isoamsr'}, [_('ent_isoamsr')]]
-                        ]],
-                        ['optgroup', {label: 'Math Alphabets'}, [
-                            ['option', {value: 'isomfrk'}, [_('ent_isomfrk')]],
-                            ['option', {value: 'isomopf'}, [_('ent_isomopf')]],
-                            ['option', {value: 'isomscr'}, [_('ent_isomscr')]]
-                        ]],
-                        ['optgroup', {label: 'MathML'}, [
-                            ['option', {value: 'mmlextra'}, [_('ent_mmlextra')]],
-                            ['option', {value: 'mmlalias'}, [_('ent_mmlalias')]]
-                        ]],
-                        ['optgroup', {label: 'Cyrillic'}, [
-                            ['option', {value: 'isocyr1'}, [_('ent_isocyr1')]],
-                            ['option', {value: 'isocyr2'}, [_('ent_isocyr2')]]
-                        ]],
-                        ['optgroup', {label: 'Greek'}, [
-                            ['option', {value: 'isogrk1'}, [_('ent_isogrk1')]],
-                            ['option', {value: 'isogrk2'}, [_('ent_isogrk2')]],
-                            ['option', {value: 'isogrk3'}, [_('ent_isogrk3')]],
-                            ['option', {value: 'isogrk4'}, [_('ent_isogrk4')]]
-                        ]],
-                        ['optgroup', {label: 'Latin'}, [
-                            ['option', {value: 'isolat1'}, [_('ent_isolat1')]],
-                            ['option', {value: 'isolat2'}, [_('ent_isolat2')]],
-                            ['option', {value: 'xhtml1-lat1'}, [_('ent_xhtml1_lat1')]]
-                        ]],
-                        ['optgroup', {label: 'XHTML/HTML/XML'}, [
-                            ['option', {value: 'xhtml1-lat1'}, [_('ent_xhtml1_lat1')]],
-                            ['option', {value: 'xhtml1-special'}, [_('ent_xhtml1_special')]],
-                            ['option', {value: 'xhtml1-symbol'}, [_('ent_xhtml1_symbol')]],
-                            ['option', {value: 'html5-uppercase'}, [_('ent_html5_uppercase')]],
-                            ['option', {value: 'predefined'}, [_('ent_predefined')]]
-                        ]],
-                        ['optgroup', {label: 'Other'}, [
-                            ['option', {value: 'isodia'}, [_('ent_isodia')]],
-                            ['option', {value: 'isopub'}, [_('ent_isopub')]],
-                            ['option', {value: 'isotech'}, [_('ent_isotech')]]
+                ['textarea', {id: 'DTDtextbox', $on: {
+                    change () {
+                        Unicodecharref.registerDTD();
+                    }
+                }}, [
+                    _('DTD_textbox_value')
+                ]],
+                ['div', {class: 'vbox'}, [
+                    ['div', {class: 'hbox'}, [
+                        ['label', [
+                            _('DTD_insertEntityFile'), nbsp.repeat(2),
+                            ['select', {
+                                id: 'insertEntityFile',
+                                class: 'dtdbutton'
+                            }, [
+                                ['optgroup', {label: 'Graphic'}, [
+                                    ['option', {value: 'isobox'}, [_('ent_isobox')]],
+                                    ['option', {value: 'isonum'}, [_('ent_isonum')]]
+                                ]],
+                                ['optgroup', {label: 'Math Symbols'}, [
+                                    ['option', {value: 'xhtml1-symbol'}, [_('ent_xhtml1_symbol')]],
+                                    ['option', {value: 'isoamsa'}, [_('ent_isoamsa')]],
+                                    ['option', {value: 'isoamsb'}, [_('ent_isoamsb')]],
+                                    ['option', {value: 'isoamsc'}, [_('ent_isoamsc')]],
+                                    ['option', {value: 'isoamsn'}, [_('ent_isoamsn')]],
+                                    ['option', {value: 'isoamso'}, [_('ent_isoamso')]],
+                                    ['option', {value: 'isoamsr'}, [_('ent_isoamsr')]]
+                                ]],
+                                ['optgroup', {label: 'Math Alphabets'}, [
+                                    ['option', {value: 'isomfrk'}, [_('ent_isomfrk')]],
+                                    ['option', {value: 'isomopf'}, [_('ent_isomopf')]],
+                                    ['option', {value: 'isomscr'}, [_('ent_isomscr')]]
+                                ]],
+                                ['optgroup', {label: 'MathML'}, [
+                                    ['option', {value: 'mmlextra'}, [_('ent_mmlextra')]],
+                                    ['option', {value: 'mmlalias'}, [_('ent_mmlalias')]]
+                                ]],
+                                ['optgroup', {label: 'Cyrillic'}, [
+                                    ['option', {value: 'isocyr1'}, [_('ent_isocyr1')]],
+                                    ['option', {value: 'isocyr2'}, [_('ent_isocyr2')]]
+                                ]],
+                                ['optgroup', {label: 'Greek'}, [
+                                    ['option', {value: 'isogrk1'}, [_('ent_isogrk1')]],
+                                    ['option', {value: 'isogrk2'}, [_('ent_isogrk2')]],
+                                    ['option', {value: 'isogrk3'}, [_('ent_isogrk3')]],
+                                    ['option', {value: 'isogrk4'}, [_('ent_isogrk4')]]
+                                ]],
+                                ['optgroup', {label: 'Latin'}, [
+                                    ['option', {value: 'isolat1'}, [_('ent_isolat1')]],
+                                    ['option', {value: 'isolat2'}, [_('ent_isolat2')]],
+                                    ['option', {value: 'xhtml1-lat1'}, [_('ent_xhtml1_lat1')]]
+                                ]],
+                                ['optgroup', {label: 'XHTML/HTML/XML'}, [
+                                    ['option', {value: 'xhtml1-lat1'}, [_('ent_xhtml1_lat1')]],
+                                    ['option', {value: 'xhtml1-special'}, [_('ent_xhtml1_special')]],
+                                    ['option', {value: 'xhtml1-symbol'}, [_('ent_xhtml1_symbol')]],
+                                    ['option', {value: 'html5-uppercase'}, [_('ent_html5_uppercase')]],
+                                    ['option', {value: 'predefined'}, [_('ent_predefined')]]
+                                ]],
+                                ['optgroup', {label: 'Other'}, [
+                                    ['option', {value: 'isodia'}, [_('ent_isodia')]],
+                                    ['option', {value: 'isopub'}, [_('ent_isopub')]],
+                                    ['option', {value: 'isotech'}, [_('ent_isotech')]]
+                                ]]
+                            ]]
                         ]]
+                    ]],
+                    ['div', {style: 'text-align: center; margin-top: 10px;'}, [
+                        ['button', {class: 'dtdbutton', $on: {click () {
+                            Unicodecharref.insertent('DTDtextbox');
+                        }}}, [
+                            _('DTD_insertent', {code})
+                        ]]
+                    ]],
+                    ['label', {style: 'margin-top: 10px;'}, [
+                        ['input', {
+                            id: 'appendtohtmldtd',
+                            type: 'checkbox',
+                            $on: {
+                                click (e) {
+                                    Unicodecharref.append2htmlflip(e);
+                                }
+                            }
+                        }],
+                        _('appendhtml_checkbox')
                     ]]
                 ]]
-            ]],
-            ['button', {class: 'dtdbutton', $on: {click () {
-                Unicodecharref.insertent('DTDtextbox');
-            }}}, [
-                _('DTD_insertent', {code})
-            ]],
-            ['label', [
-                _('appendhtml_checkbox'),
-                ['input', {
-                    id: 'appendtohtmldtd',
-                    type: 'checkbox',
-                    $on: {
-                        click (e) {
-                            e.preventDefault();
-                            Unicodecharref.append2htmlflip(e);
-                        }
-                    }
-                }]
             ]]
         ]],
         ['div', {
@@ -1159,18 +1201,6 @@ jml('div', [
     ]]
 ], body);
 
-jQuery('div.miller-columns').millerColumns({
-    async current ($item, $cols) {
-        if (!$item) { // Todo: Is this an error?
-            return;
-        }
-        // console.log('User selected:', $item);
-        const title = $item[0].getAttribute('title');
-        await setPref('currentStartCharCode', parseInt(title.replace(/-.*$/, ''), 16));
-        buildChart(); // Todo: descripts?
-    }
-});
-
 makeTabBox('.tabbox');
 
 await getBuildChart({
@@ -1187,6 +1217,18 @@ await getBuildChart({
         this.selst = textReceptable.selectionStart;
         this.selend = textReceptable.selectionEnd;
         */
+    }
+});
+jQuery('div.miller-columns').millerColumns({
+    async current ($item, $cols) {
+        if (!$item) { // Todo: Is this an error?
+            return;
+        }
+        // console.log('User selected:', $item);
+        const title = $item[0].getAttribute('title');
+        await setPref('currentStartCharCode', parseInt(title.replace(/-.*$/, ''), 16));
+        // Free to use `buildChart` now that we have passed set-up
+        buildChart(); // Todo: descripts?
     }
 });
 })();

@@ -243,7 +243,7 @@
         "message": "Font"
     },
     "addToToolbar": {
-        "message": "Add to Toolbar pull-down"
+        "message": "Add Character(s) to Toolbar pull-down"
     },
     "usage_note_heading": {
         "message": "Other Usage Notes"
@@ -318,7 +318,7 @@
         "message": "The HTML language attribute 'lang' or, in XML, the 'xml:lang' value. Has no effect on most scripts, but may affect glyph selection/font display for certain CJK characters (e.g., U+5203 in 'zh-Hans', 'zh-Hant', 'ja', or 'ko'). Note that you must use the lang attribute to see the effect outside of the chart (even our chart output box does not contain any), and there is presently a bug with xml:lang in true XML/XHTML documents: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
     },
     "lang_label": {
-        "message": "lang"
+        "message": "\"lang\""
     },
     "initialTab_label": {
         "message": "Initial tab to open (for key command or toolbar button activation)"
@@ -422,20 +422,17 @@
     "copyToClipboard": {
         "message": "Copy to clipboard"
     },
-    "period": {
-        "message": "."
-    },
     "moveconvertedup_label": {
         "message": "Copy 'converted' to preconverted"
     },
     "Reconvert_dialogheader_title": {
-        "message": "Reconvert Options"
+        "message": "Convert options"
     },
     "Preferences_dialogheader_title": {
         "message": "Preferences"
     },
-    "default_textbox_value": {
-        "message": "default"
+    "converted_value_placeholder": {
+        "message": "Converted text"
     },
     "Ascii_checkbox_label": {
         "message": "Convert into entities if ASCIIs < 128 (existing entities/char refs. will thus not be immune)?"
@@ -575,8 +572,8 @@
     "dec2hexContext_accesskey": {
         "message": "D"
     },
-    "uresults_value": {
-        "message": "Unicode results"
+    "toconvert_placeholder": {
+        "message": "Unicode to convert"
     },
     "uresults_title": {
         "message": "Unicode Results"
@@ -654,7 +651,7 @@
         "message": "Use buttons?"
     },
     "label_fontsize": {
-        "message": "Font-size:"
+        "message": "Font-size"
     },
     "desc_symbolspunc": {
         "message": "OR Choose from Symbols and Punctuation:"
@@ -663,7 +660,7 @@
         "message": "DTD"
     },
     "DTD_desc_value1": {
-        "message": "Add DTD entity declarations (optional) for use in conversions"
+        "message": "Add DTD entity declarations (optional) for use in conversions."
     },
     "DTD_desc_value2": {
         "message": "Form: {code|<!ENTITY entname 'charvalue'>}"
@@ -726,7 +723,7 @@
         "message": "Search by character name: "
     },
     "searchkDefinition": {
-        "message": "Search by character description (CJK)"
+        "message": "Search by character description (CJK): "
     },
     "Regular_tab_label": {
         "message": "Regular Search (non-CJK)"

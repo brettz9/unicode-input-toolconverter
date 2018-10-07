@@ -16,6 +16,13 @@ Copyright 2007-2018 Brett Zamir
     along with Unicode Input Tool/Converter.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/*
+Find and load font(s) to capture as many as possible by default
+#tableholder {
+    font-family: 'Arial Unicode MS';
+}
+*/
+
 .searchBox {
     min-height: 20px;
 }
@@ -23,13 +30,15 @@ Copyright 2007-2018 Brett Zamir
     max-width: 50px;
 }
 #clearoutput {
+    margin-top: 2em;
+    height: 50px;
     width: 50px;
 }
-#inserttext {
-    min-height: 30px;
+#insertText {
+    height: 70px;
 }
-#inserttext, #displayUnicodeDesc {
-    width: 500px;
+#insertText, #displayUnicodeDesc {
+    width: 400px;
 }
 .entity {
     background-color: yellow;
@@ -67,11 +76,21 @@ td.unicodetablecell {
 .fontsize, .charthbox, .dtdbutton {
     display: inline; /* Doesn't seem to work on Mac at least */
 }
+.dtdbutton {
+    width: 100px;
+    padding-bottom: 7px;
+}
+#DTDtextbox {
+    width: 50%;
+    height: 300px;
+    margin-right: 10px;
+}
 .centered {
     text-align: center;
 }
 button.reconvert {
     color: black;
+    margin: 2px;
 }
 .buttonactive {
     color: red;
@@ -91,19 +110,23 @@ button.reconvert {
     margin-bottom: 20px;
     text-indent: 20px;
 }
-.prefdescription {
-    display: block;
-    margin-bottom: 20px;
-}
 .notesdescription, .usage_notesdescription {
     display: block;
     margin-bottom: 20px;
     text-indent: 20px;
-    width: 450px;
+}
+.chartLayout {
+    margin-bottom: 10px;
+}
+#convertEncoding {
+    margin-top: 10px;
+}
+#convertFromEncoding {
+    margin-bottom: 10px;
 }
 
 .aboutdescription, .prefdescription, .conversionhbox {
-    width: 600px;
+
 }
 .indentedradio {
     margin-left: 70px;
@@ -111,7 +134,15 @@ button.reconvert {
 .firstbox {
     margin-top: 30px;
 }
-
+.chartBox {
+    width: 50%;
+}
+#DownloadButtonBox {
+    text-align: center;
+}
+#DownloadButtonBox > div {
+    margin-bottom: 3px;
+}
 #resetdefaultbutton {
     margin-top: 20px;
 }
@@ -121,11 +152,16 @@ radiogroup {
     border-right-style: solid;
     border-right-width: 1px;
 }
+#outputButtons {
+    margin-top: 5px;
+}
 .boxed {
     border-style: solid;
     border-width: 1px;
+    padding: 5px;
 }
-.boxedbottom {
+.boxed, .boxedbottom {
+    padding: 5px;
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-left-style: solid;
@@ -134,18 +170,14 @@ radiogroup {
     border-right-width: 1px;
 }
 
-.detailedView {
+.detailedViewContainer {
     overflow: auto;
     height: 550px;
-    width: 200px;
-    max-width: 200px;
 }
 
-.detailedCJKView {
+.detailedView, .detailedCJKView {
     overflow: auto;
     height: 50px;
-    width: 200px;
-    max-width: 200px;
 }
 .detailedView > .description.heading, .detailedCJKView > .description.heading  {
     display: block;
@@ -176,20 +208,42 @@ radiogroup {
 
 #chart_selectchar_persist_vbox {
     overflow: auto;
-    min-width: 20px;
+    margin-right: 10px;
     /* max-height: 630px; */
 }
 #chart_selectchar_persist {
     overflow: auto;
+    margin-top: 10px;
     min-height: 20px;
 }
 #chart_layout_persist {
     overflow: auto;
     min-height: 20px;
 }
+#charts {
+    /* Make this bigger than rest of tabbox */
+    min-width: 1000px;
+}
 
+#toconvert_persist {
+    margin-top: 10px;
+}
 .noteDescriptionBox {
     overflow: auto;
+    width: 50%;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.convertBox {
+    width: 100%;
+    height: 200px;
+}
+.conversionSection {
+    width: 50%;
+}
+#conversion_buttons_persist {
+    margin-right: 10px;
 }
 
 #tabbox {
@@ -199,13 +253,20 @@ radiogroup {
 }
 #chartcontent {
     overflow: auto;
-    min-width: 30px;
+    min-width: 500px;
 }
 #tableholder {
     overflow: auto;
     min-height: 20px;
 }
-
+#displayUnicodeDescContainer h3, #displayUnihanArea h3 {
+    /* Override Chrome default styling of 1em */
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+}
+.displayUnicodeDescContainer {
+    margin-bottom: 10px;
+}
 .detailedViewRows, .detailedCJKViewRows {
     min-height: 150px;
 }
@@ -218,9 +279,9 @@ radiogroup {
     overflow: auto;
 }
 #displayUnicodeDesc2, #displayUnicodeDescUnihan {
-    width: 500px;
+    width: 480px;
     max-width: 500px;
-    min-width: 500px;
+    min-width: 480px;
 }
 
 #conversion_buttons_persist {
@@ -228,11 +289,29 @@ radiogroup {
     overflow: auto;
 }
 
-.tab {
-    float: left;
+#unicodeTabBox > .tabs > .tab {
     width: 100px;
     padding: 6px;
     border-radius: 5px 5px;
+}
+#tabboxSearch > .tabs > .tab {
+    width: 100px;
+    padding: 6px;
+    border-radius: 5px 5px;
+}
+#viewTabs > .tabs > .tab {
+    width: 150px;
+    height: 1em;
+    padding: 6px;
+    border-radius: 5px 5px;
+}
+#viewTabs > .tabs {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tab {
+    float: left;
 }
 .tab[data-selected] {
     border-collapse: collapse;
