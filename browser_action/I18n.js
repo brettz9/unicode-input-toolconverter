@@ -75,7 +75,7 @@ export const i18n = async function i18n ({locales, defaults}) {
                     ? defaults(key, strings)
                     : defaults === false
                         ? (() => {
-                            throw new Error(`Key not found: ${key}`);
+                            throw new Error(`Key not found: (${key})`);
                         })()
                         : defaults
 

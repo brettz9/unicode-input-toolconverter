@@ -1,37 +1,30 @@
-/* globals Components, CharrefunicodeConsts */
 // TO-DO: make in-place context-menu-activated textbox conversions
 // To-do: move at least this file into module, and move as much of uresults.js too
 
 import {getPref} from './Preferences.js';
+import {getHangulName, getHangulFromName} from './unicode/Hangul.js';
+import {CharrefunicodeConsts} from './unicode/unicodeUtils.js';
 
 let _;
 export const setL10n = (l10n) => {
     _ = l10n;
 };
 
-const FileUtils = {}, Hangul = {};
-Components.utils['import']('resource://charrefunicode/unicode_utils.js');
-Components.utils['import']('resource://charrefunicode/file_utils.js', FileUtils);
-Components.utils['import']('resource://charrefunicode/Hangul.js', Hangul);
-
-const Cc = Components.classes,
-    Ci = Components.interfaces;
-
 /**
  * Ought to try IndexedDB for this for possible future migration to HTML5
  */
-const charrefunicodeDb = {
+export const charrefunicodeDb = {
     dbConn: null,
     dbConnUnihan: null,
     connect (dbfile, key) {
+        /*
+        // Todo: Reimplement
         if (typeof dbfile === 'string' && key !== 'unihan') {
             const tempfilename = dbfile; // Can have forward slashes for sub-directories
             // The following is what we normally want to use, but here we can put our data within the extension because
             //   it should not be edited by the user anyways (whereby they'd want their data to be retained after an update)
-            /* dbfile = Cc['@mozilla.org/file/directory_service;1']
-                                    .getService(Ci.nsIProperties)
-                                    .get('ProfD', Ci.nsILocalFile);
-            dbfile.append(tempfilename); */
+            // dbfile = Cc['@mozilla.org/file/directory_service;1'].getService(Ci.nsIProperties).get('ProfD', Ci.nsILocalFile);
+            // dbfile.append(tempfilename);
             const MY_ID = 'charrefunicode@brett.zamir';
             dbfile = FileUtils.getFile(MY_ID, tempfilename);
         } else {
@@ -49,6 +42,7 @@ const charrefunicodeDb = {
         } else {
             this.dbConn = storageService.openDatabase(dbfile);
         }
+        */
     }
 };
 try {
@@ -61,7 +55,7 @@ try {
 /**
  * @namespace Converts from one string form to another
  */
-const charrefunicodeConverter = {
+export const charrefunicodeConverter = {
     charref2unicodeval (out) {
         out = out.replace(this.decim, function (match, match1) {
             return String.fromCodePoint(match1);
@@ -303,7 +297,7 @@ const charrefunicodeConverter = {
             // Fix: Can/Will Hangul syllables be expressible this way?
             } else if (temp > 0xAC00 && temp <= 0xD7A3) {
                 try {
-                    val += '\\C{' + Hangul.getHangulName(temp) + '}';
+                    val += '\\C{' + getHangulName(temp) + '}';
                 } catch (e) {
                     val += toconvert.charAt(i);
                 }
@@ -512,7 +506,7 @@ const charrefunicodeConverter = {
         this.searchUnicode({id, value}, table, 'noChart=true', 'strict=true');
         if (!this.descripts[0] && value.length <= 7) { // Try Hangul (if possible size for Hangul)
             // Fix: Is Hangul allowed in PHP 6 Unicode escape names?
-            const ret = Hangul.getHangulFromName(value);
+            const ret = getHangulFromName(value);
             return ret ? ret.charCodeAt(0) : false;
         }
         return this.descripts[0];
@@ -618,7 +612,3 @@ const charrefunicodeConverter = {
     newents: [],
     newcharrefs: []
 };
-
-// EXPORTS
-this.charrefunicodeConverter = charrefunicodeConverter;
-this.charrefunicodeDb = charrefunicodeDb;

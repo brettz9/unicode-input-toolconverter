@@ -1,5 +1,4 @@
 /* eslint-env browser */
-/* globals Components, FileUtils, buildChart, getAndSetCodePointInfo, Hangul, getJamo, charrefunicodeDb, charrefunicodeConverter, CharrefunicodeConsts */
 
 // See http://www.unicode.org/Public/UNIDATA/ for data use
 
@@ -33,27 +32,17 @@ if (prev >= 0 && prev <= 9) {
 }
 */
 import {$, $$} from '/vendor/jamilih/dist/jml-es.js';
-import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
 import {getPref, setPref} from './Preferences.js';
+import {getJamo, getAndSetCodePointInfo, CharrefunicodeConsts} from './unicode/unicodeUtils.js';
+import {getHangulName} from './unicode/Hangul.js';
+import {buildChart} from './build-chart.js';
+import {charrefunicodeConverter, charrefunicodeDb} from './common-conversion-utils.js';
+import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
 
 let _;
 export const setL10n = (l10n) => {
     _ = l10n;
 };
-
-(function () {
-const Cc = Components.classes,
-    Ci = Components.interfaces;
-// const mainDoc = window.opener ? window.opener.document : false; // No opener if typing x-unicode protocol in Awesome Bar, and we don't want options dialog as opener
-const wm = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
-const enumerator = wm.getXULWindowEnumerator('navigator:browser');
-let mainDoc;
-while (enumerator.hasMoreElements()) {
-    mainDoc = enumerator.getNext().QueryInterface(Components.interfaces.nsIXULWindow).docShell.contentViewer.DOMDocument;
-    if (mainDoc.documentElement.id === 'main-window') { // Ensure this is the main window, and not the options dialog
-        break;
-    }
-}
 
 const xulns = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
     htmlns = 'http://www.w3.org/1999/xhtml';
@@ -73,6 +62,9 @@ const Unicodecharref = {
         const that = this;
         const aFileURL = 'http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite';
 
+        const Components = 'todo';
+        const Cc = Components.classes,
+            Ci = Components.interfaces;
         const ios = Cc['@mozilla.org/network/io-service;1'].getService(Components.interfaces.nsIIOService);
         const url = ios.newURI(aFileURL, null, null);
         const file = Cc['@mozilla.org/file/directory_service;1'].getService(Ci.nsIProperties).get('ProfD', Ci.nsILocalFile);
@@ -224,8 +216,8 @@ const Unicodecharref = {
             alert('1:' + type + i + e + this[type][i]);
         }
         // Add handlers for textboxes
-        let tabpanel = type === 'Unicode' ? 'regularSearch' : 'cjkSearch';
-        tabpanel = 'tabboxSearch';
+        let tabpanel = type === 'Unicode' ? '#regularSearch' : '#cjkSearch';
+        tabpanel = '#tabboxSearch';
 
         $(tabpanel).addEventListener('change', function (e) {
             Unicodecharref['search' + type](e.target);
@@ -238,8 +230,8 @@ const Unicodecharref = {
             Unicodecharref['search' + type](e.target);
         }); // Triggered initially which sets preference to "Lu"
     },
-    testIfComplexWindow () { // Fix: Should also create the detailedView and detailedCJKView's content dynamically (and thus fully conditionally rather than hiding)
-        if (getPref('showComplexWindow')) {
+    async testIfComplexWindow () { // Fix: Should also create the detailedView and detailedCJKView's content dynamically (and thus fully conditionally rather than hiding)
+        if (await getPref('showComplexWindow')) {
             $('#specializedSearch').hidden = false;
             this.makeRows('Unihan');
             this.makeRows('Unicode');
@@ -251,15 +243,14 @@ const Unicodecharref = {
             $('#detailedCJKView').collapsed = true;
         }
     },
-    setupBoolChecked () {
-        const els = arguments;
-        for (let i = 0; i < els.length; i++) {
-            if (getPref(els[i])) {
-                $(els[i]).checked = true;
+    setupBoolChecked (...els) {
+        els.forEach(async (el) => {
+            if (await getPref(el)) {
+                $('#' + el).checked = true;
             }
-        }
+        });
     },
-    initialize (e) {
+    async initialize () {
         const that = this, args = window.arguments;
         // this.refreshToolbarDropdown(); // redundant?
 
@@ -286,16 +277,16 @@ const Unicodecharref = {
 
         // document.documentElement.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
         $('#unicodeTabBox').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
-        $('#unicodetabs').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
+        $('#unicodeTabBox > .tabs').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
         /**
         $('#unicodeTabBox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
         $('#conversionhbox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
 
         $('#noteDescriptionBox2').height = $('#noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
 $('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-$('#unicodetabs').maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+$('#unicodetabs').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
 $('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('#chartcontent').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
+$('#chartcontent').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
 $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
 
         // */
@@ -345,13 +336,16 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             toconvert = args[0].toString(); // Need the conversion to string since content.window.getSelection() passed here gives an object, unlike the now deprecated content.document.getSelection() which returns a string. (Discovered deprecated status via Console extension: https://addons.mozilla.org/en-US/firefox/addon/1815 )
             targetid = args[1];
         } else {
+            const Components = 'todo';
+            const Cc = Components.classes,
+                Ci = Components.interfaces;
             const wm = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
             const browserWin = wm.getMostRecentWindow('navigator:browser');
             toconvert = browserWin.content.getSelection().toString();
             targetid = toconvert ? 'context-charrefunicode1' : ''; // Fix: replace with preference
         }
 
-        if (!getPref('multiline')) {
+        if (!(await getPref('multiline'))) {
             $('#multiline').checked = false;
             $('#displayUnicodeDesc').setAttribute('multiline', false);
             $('#displayUnicodeDesc').setAttribute('rows', 1);
@@ -361,12 +355,13 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             $('#displayUnicodeDesc').setAttribute('rows', 3);
         }
 
+        // Todo: Grab this list programmatically
         this.setupBoolChecked('asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'xmlentkeep', 'ampkeep',
             'ampspace', 'showComplexWindow', 'showAllDetailedView', 'showAllDetailedCJKView',
             'appendtohtmldtd', 'hexyes', 'onlyentsyes', 'entyes', 'decyes', 'unicodeyes', 'startCharInMiddleOfChart',
             'buttonyes', 'cssUnambiguous');
 
-        switch (getPref('cssWhitespace')) {
+        switch (await getPref('cssWhitespace')) {
         case ' ':
             $('#CSSWhitespace').selectedIndex = 0;
             break;
@@ -387,20 +382,20 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             break;
         }
 
-        /* if (getPref('hexstyleLwr')) {
+        /* if (await getPref('hexstyleLwr')) {
             $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
         }
         else {
             $(EXT_BASE + 'hexstyleLwr').selectedIndex = 1;
         } */
-        /* if (getPref('xstyle') === 'x') {
+        /* if ((await getPref('xstyle')) === 'x') {
             $(EXT_BASE + 'xstyle').checked = true;
         } */
 
         this.resizecells(); // Set the size per the prefs (don't increase or decrease the value)
 
-        $('#rowsset').value = getPref('tblrowsset');
-        $('#colsset').value = getPref('tblcolsset');
+        $('#rowsset').value = await getPref('tblrowsset');
+        $('#colsset').value = await getPref('tblcolsset');
 
         // Save copies in case decide to reset later (i.e., not append to HTML entities, then wish to append to them again)
         // Do the following since can't copy arrays by value
@@ -415,10 +410,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         this.copyarray(charrefunicodeConverter.newents, this.orignewents);
         this.copyarray(charrefunicodeConverter.newcharrefs, this.orignewcharrefs);
 
-        $('lang').value = getPref('lang');
-        $('font').value = getPref('font');
+        $('#lang').value = await getPref('lang');
+        $('#font').value = await getPref('font');
 
-        const DTDtxtbxval = getPref('DTDtextbox');
+        const DTDtxtbxval = await getPref('DTDtextbox');
 
         $('#DTDtextbox').value = DTDtxtbxval;
         this.registerDTD();
@@ -426,7 +421,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         //  toconvert = charreftoconvert.replace(/\n/g, ' ');
         $('#toconvert').value = toconvert;
 
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
 
@@ -491,7 +486,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         case 'context-unicodechart':
             this.disableEnts();
             $('#startset').value = toconvert;
-            $('#unicodeTabBox').selectTab($('#charts'));
+            $('#unicodeTabBox').$selectTab($('#charts'));
             if (toconvert !== '') {
                 this.setCurrstartset(toconvert);
                 buildChart();
@@ -519,15 +514,15 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
         if (customProtocol) {
         } else if (!args) { // options menu
-            $('#unicodeTabBox').selectTab($('#prefs'));
+            $('#unicodeTabBox').$selectTab($('#prefs'));
         } else if (args[2] !== undefined) { // Keyboard invocation or button
             // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
-            $('#unicodeTabBox').selectTab($(getPref('initialTab')));
+            $('#unicodeTabBox').$selectTab($(await getPref('initialTab')));
         } else if (targetid !== 'context-unicodechart' && targetid !== 'tools-charrefunicode') {
-            $('#unicodeTabBox').selectTab($('#conversion'));
+            $('#unicodeTabBox').$selectTab($('#conversion'));
         }
 
-        $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_' + getPref('initialTab'));
+        $('#initialTab').selectedItem = $('#mi_' + await getPref('initialTab'));
 
         if (targetid !== 'searchName' && targetid !== 'searchkDefinition') {
             if (toconvert) { // Seemed to become necessarily suddenly
@@ -554,8 +549,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
         */
         // Set window size to that set last time hit "ok"
-        const outerh = getPref('outerHeight');
-        const outerw = getPref('outerWidth');
+        const outerh = await getPref('outerHeight');
+        const outerw = await getPref('outerWidth');
         if (outerh > 0) {
             window.outerHeight = outerh;
         }
@@ -565,6 +560,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     copyToClipboard (id) {
         const text = $(id).value;
+        const Components = 'todo';
+        const Cc = Components.classes,
+            Ci = Components.interfaces;
         const gClipboardHelper = Cc['@mozilla.org/widget/clipboardhelper;1'].getService(Ci.nsIClipboardHelper);
         gClipboardHelper.copyString(text);
     },
@@ -601,7 +599,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             break;
         }
     },
-    resetdefaults () {
+    async resetdefaults () {
         const that = this;
         /* If make changes here, also change the default/preferences charrefunicode.js file */
         this.setBoolChecked(['asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'multiline'], false);
@@ -613,6 +611,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         $('#showAllDetailedCJKView').checked = true;
 
         function langFont (langOrFont) { // Fix: needs to get default!
+            const Components = 'todo';
+            const Ci = Components.interfaces;
             const deflt = that.branchDefault.getComplexValue(langOrFont, Ci.nsIPrefLocalizedString).data;
             $('#' + langOrFont).value = deflt;
             setPref(langOrFont, deflt);
@@ -635,7 +635,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
         setPref('startset', 'a'.charCodeAt() - 1); // Don't really need to reset since user can't currently change this (only for blank string entry)
 
-        this.setCurrstartset(getPref('startset'));
+        this.setCurrstartset(await getPref('startset'));
 
         $('#displayUnicodeDesc').setAttribute('multiline', false);
         $('#displayUnicodeDesc').setAttribute('rows', 1);
@@ -693,6 +693,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
 
         try {
+            const Components = 'todo';
+            const Cc = Components.classes,
+                Ci = Components.interfaces;
             const cnv = Cc['@mozilla.org/intl/scriptableunicodeconverter'].createInstance(Ci.nsIScriptableUnicodeConverter);
             cnv.charset = from; // The charset to use
             const os = cnv.convertToInputStream(toconvert);
@@ -770,25 +773,25 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         $('#converted').value = val;
         return val;
     },
-    charref2unicode (e) {
+    async charref2unicode (e) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.charref2unicodeval(toconvert, e.target);
         return false;
     },
-    charref2htmlents (e) {
+    async charref2htmlents (e) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.charref2htmlentsval(toconvert, e.target);
         return false;
     },
-    unicode2charrefDec (e, leaveSurrogates) {
+    async unicode2charrefDec (e, leaveSurrogates) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.unicode2charrefDecval(toconvert, e.target, leaveSurrogates);
@@ -797,9 +800,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     unicode2charrefDecSurrogate (e) {
         this.unicode2charrefDec(e, true);
     },
-    unicode2charrefHex (e, leaveSurrogates) {
+    async unicode2charrefHex (e, leaveSurrogates) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.unicode2charrefHexval(toconvert, e.target, leaveSurrogates);
@@ -808,9 +811,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     unicode2charrefHexSurrogate (e) {
         this.unicode2charrefHex(e, true);
     },
-    unicode2htmlents (e) {
+    async unicode2htmlents (e) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.unicode2htmlentsval(toconvert, e.target);
@@ -908,41 +911,41 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     // In this method and others like it, boolpref should be moved instead to
     //   converter function since it should be consistent across the app
-    htmlents2charrefDec (e) {
+    async htmlents2charrefDec (e) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.htmlents2charrefDecval(toconvert, e.target);
         return false;
     },
-    htmlents2charrefHex (e) {
+    async htmlents2charrefHex (e) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.htmlents2charrefHexval(toconvert, e.target);
         return false;
     },
-    htmlents2unicode (e) {
+    async htmlents2unicode (e) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.htmlents2unicodeval(toconvert, e.target);
         return false;
     },
-    hex2dec (e) {
+    async hex2dec (e) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.hex2decval(toconvert, e.target);
         return false;
     },
-    dec2hex (e) {
+    async dec2hex (e) {
         let toconvert = $('#toconvert').value;
-        if (getPref('ampspace')) {
+        if (await getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.dec2hexval(toconvert, e.target);
@@ -957,10 +960,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
         return false;
     },
-    getUnicodeDesc (kent, khextemp) {
+    async getUnicodeDesc (kent, khextemp) {
         const that = this;
-        const hideMissing = !getPref('showAllDetailedView');
-        const hideMissingUnihan = !getPref('showAllDetailedCJKView');
+        const hideMissing = !(await getPref('showAllDetailedView'));
+        const hideMissingUnihan = !(await getPref('showAllDetailedCJKView'));
 
         const kdectemp = parseInt(khextemp, 16);
 
@@ -984,7 +987,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         const planeText = _('plane_num', {plane}) + '\u00a0';
         placeItem('#plane', planeText);
 
-        if (getPref('showImg')) {
+        if (await getPref('showImg')) {
             const img = createXULElement('image');
             // img.width = '80';
             // img.height = '80';
@@ -1041,7 +1044,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         let temp, notfoundval, table, result, statement;
 
         if (!this.UnihanType && !hangul && $('#viewTabs').selectedTab === $('#detailedCJKView')) {
-            $('#viewTabs').selectTab($('#detailedView'));
+            $('#viewTabs').$selectTab($('#detailedView'));
         }
         table = 'Unicode';
         let search = false;
@@ -1078,7 +1081,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             cjkText = _('Hangul_Syllable');
             cjkText += ' ';
 
-            cjkText += Hangul.getHangulName(kdectemp);
+            cjkText += getHangulName(kdectemp);
             /* }
             else if (kdectemp == 0xD7A3) {
                 search = 'D7A3';
@@ -1278,7 +1281,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             table = 'Unihan';
 
             if ((this.UnihanType) && $('#viewTabs').selectedTab === $('#detailedView')) {
-                $('#viewTabs').selectTab($('#detailedCJKView'));
+                $('#viewTabs').$selectTab($('#detailedCJKView'));
             }
             statement = charrefunicodeDb.dbConnUnihan.createStatement(
                 'SELECT * FROM ' + table + ' WHERE code_pt = "' + khextemp + '"'
@@ -1399,8 +1402,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             view.firstChild.remove();
         }
     },
-    fontsizetextbox (size) { // Changes font-size
-        const txtbxsize = getPref('fontsizetextbox') + size;
+    async fontsizetextbox (size) { // Changes font-size
+        const txtbxsize = await getPref('fontsizetextbox') + size;
         setPref('fontsizetextbox', txtbxsize);
 
         $('#toconvert').style.fontSize = txtbxsize + 'px';
@@ -1411,23 +1414,23 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             window.sizeToContent();
         }
     },
-    tblfontsize (size) { // Changes font-size of chart table cells
-        const fsize = getPref('tblfontsize') + size;
+    async tblfontsize (size) { // Changes font-size of chart table cells
+        const fsize = await getPref('tblfontsize') + size;
         // const tds = createHTMLElement('td');
         setPref('tblfontsize', fsize);
         this.resizecells({sizeToContent: size > 0});
     },
-    resizecells ({sizeToContent} = {}) {
+    async resizecells ({sizeToContent} = {}) {
         $$(
             "*[name='dec'],*[name='hex'],*[name='unicode']"
-        ).forEach((control) => {
+        ).forEach(async (control) => {
             control.style.fontSize =
-                getPref('tblfontsize') + 'px';
+                await getPref('tblfontsize') + 'px';
         });
         $('#insertText').style.fontSize =
-            getPref('tblfontsize') + 'px';
+            await getPref('tblfontsize') + 'px';
         // $('#displayUnicodeDesc').style.fontSize =
-        //     getPref('tblfontsize') + 'px';
+        //     await getPref('tblfontsize') + 'px';
         if (sizeToContent) {
             // On Mac at least, resizing for reducing font size, causes button to
             // go off screen
@@ -1488,7 +1491,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     /* xstyleflip () {
         this.setCurrstartset(this.j);
         const currxstyle = 'x';
-        const prevxstyle = getPref('xstyle');
+        const prevxstyle = await getPref('xstyle');
         if (prevxstyle === 'x') {
             currxstyle = 'X';
         }
@@ -1509,14 +1512,14 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
         buildChart();
     },
-    startset (tbx, descripts) {
+    async startset (tbx, descripts) {
         this.disableEnts();
         let data;
         if (tbx.value != null && tbx.value !== '') {
             data = tbx.value;
         } else {
             // Only used when the field is manually changed to blank (default start set)
-            data = getPref('startset');
+            data = await getPref('startset');
         }
         this.setCurrstartset(data);
 
@@ -1528,10 +1531,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     disableEnts () {
         this.setBoolChecked('onlyentsyes', false);
     },
-    searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
+    async searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
         charrefunicodeConverter.searchUnicode(obj, table, nochart, strict);
         if (!nochart) {
-            const tmp = getPref('currentStartCharCode');
+            const tmp = await getPref('currentStartCharCode');
             this.startset(obj, true); // Could remember last description (?)
             this.setCurrstartset(tmp); // Set it back as it was before the search
         }
@@ -1560,7 +1563,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         this.setprefs(e);
         this.registerDTD(); // (in case DTD not also changed, still need to reset)
     },
-    registerDTD () {
+    async registerDTD () {
         // Cannot use back-reference inside char. class, so need to do twice
         const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/g;
 
@@ -1570,7 +1573,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         let result;
 
         // Reset in case charrefs or ents array deleted before and now want to go back to their original values.
-        if (getPref('appendtohtmldtd')) {
+        if (await getPref('appendtohtmldtd')) {
             this.copyarray(this.origents, CharrefunicodeConsts.ents);
             this.copyarray(this.origcharrefs, CharrefunicodeConsts.charrefs);
         } else {
@@ -1644,9 +1647,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
      * Display the Unicode description box size (multline or not) according to user preferences
      * @param {Event} e The event (not in use)
      */
-    multiline (e) {
+    async multiline (e) {
         const display = $('#displayUnicodeDesc');
-        if (getPref('multiline') === false) {
+        if (await getPref('multiline') === false) {
             setPref('multiline', true);
             display.setAttribute('multiline', true);
             display.setAttribute('rows', 3);
@@ -1656,8 +1659,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             display.setAttribute('rows', 1);
         }
     },
-    addToToolbar () {
-        const dropdownArr = getPref('dropdownArr');
+    async addToToolbar () {
+        const dropdownArr = await getPref('dropdownArr');
         dropdownArr.push($('#insertText').value);
         setPref('dropdownArr', dropdownArr);
         if (this.refreshToolbarDropdown()) {
@@ -1666,10 +1669,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             alert(_('problemAddingToolbarItem'));
         }
     },
-    refreshToolbarDropdown () {
+    async refreshToolbarDropdown () {
         // SETUP
-        const dropdownArr = getPref('dropdownArr');
-        const toolbarbuttonPopup = mainDoc.querySelector('#charrefunicode-toolbar-chars');
+        const dropdownArr = await getPref('dropdownArr');
+        const toolbarbuttonPopup = $('#charrefunicode-toolbar-chars');
         if (!toolbarbuttonPopup) {
             return false;
         }
@@ -1681,7 +1684,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
         // ADD NEW CONTENTS
         for (const item of dropdownArr) {
-            const menuitem = mainDoc.createElementNS(xulns, 'menuitem');
+            const menuitem = document.createElementNS(xulns, 'menuitem');
             menuitem.setAttribute('label', item);
             menuitem.setAttribute('value', item);
             toolbarbuttonPopup.append(menuitem);
@@ -1689,8 +1692,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         return true;
     },
     insertEntityFile (e) {
+        const Components = 'todo';
+        const Cc = Components.classes,
+            Ci = Components.interfaces;
         const MY_ID = 'charrefunicode@brett.zamir',
-            entFile = FileUtils.getFile(MY_ID, 'data/entities/' + e.target.value + '.ent'),
+            // entFile = FileUtils.getFile(MY_ID, 'data/entities/' + e.target.value + '.ent'),
+            entFile = fetch(MY_ID, 'data/entities/' + e.target.value + '.ent'),
             fstream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream),
             cstream = Cc['@mozilla.org/intl/converter-input-stream;1'].createInstance(Ci.nsIConverterInputStream),
             str = {};
@@ -1725,34 +1732,4 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     UnicodeMenuDigit: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     UnicodeMenuDecimal: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 };
-
-// EVENTS
-window.addEventListener('load', function (e) {
-    $('#encoding_from').addEventListener('click', function (e) {
-        Unicodecharref.convertEncoding($('#toconvert').value, this);
-    });
-    $('#encoding_to').addEventListener('click', function (e) {
-        Unicodecharref.convertEncoding($('#toconvert').value, this);
-    });
-    $('#insertEntityFile').addEventListener('change', function (e) {
-        Unicodecharref.insertEntityFile(e);
-    });
-    Unicodecharref.initialize(e);
-});
-/* The following works, but if used will not allow user to cancel to get out of the current window size and
- * will go back to the last window size; if use this, don't need code in "doOk" (besides return true)
-window.addEventListener(
-                        'resize',
-                        function(e) {
-                            Unicodecharref.prefs.
-                                setIntPref(EXT_BASE + 'outerHeight',
-                                    window.outerHeight);
-                            Unicodecharref.prefs.
-                                setIntPref(EXT_BASE + 'outerWidth',
-                                    window.outerWidth);
-                        },
-                        false);
-*/
-// EXPORTS
-this.Unicodecharref = Unicodecharref;
-}());
+export default Unicodecharref;

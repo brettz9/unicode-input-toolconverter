@@ -1,21 +1,13 @@
 import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {getPref, setPref} from './Preferences.js';
 import {fill} from './utils.js';
+import {CharrefunicodeConsts} from './unicode/unicodeUtils.js';
+import {charrefunicodeConverter} from './common-conversion-utils.js';
 import getUnicodeDesc from './getUnicodeDescription.js';
 
 // import * as Utils './common-conversion-utils.js';
 // setL10n(_); // One for each file
 // setL10n(_);
-
-// Todo:
-const charrefunicodeConverter = {
-    descripts: [],
-    charrefs: []
-};
-const CharrefunicodeConsts = {
-    ents: [],
-    charrefs: []
-};
 
 let idgen = 0;
 let _, textReceptable, chartContainer, insertText;

@@ -1,5 +1,5 @@
 /* eslint-env browser, webextensions */
-/* globals jQuery, Unicodecharref */
+/* globals jQuery */
 import {jml, body, $, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {i18n} from './I18n.js';
 import {fill} from './utils.js';
@@ -13,6 +13,7 @@ import insertIntoOrOverExisting from './insertIntoOrOverExisting.js';
 import encodings from './encodings.js';
 import unihanFieldInfo from './unicode/unihanFieldInfo.js';
 import prefDefaultGetter from './prefDefaultGetter.js';
+import Unicodecharref, {setL10n} from './uresults.js';
 
 (async () => {
 await addMillerColumnPlugin(jQuery, {stylesheets: [
@@ -32,7 +33,9 @@ if (engPos > -1) {
 if (!locales.includes('en')) { // Ensure there is at least one working language!
     locales.push('en');
 }
+
 const _ = await i18n({locales, defaults: false});
+setL10n(_);
 configurePrefs({
     l10n: _,
     prefDefaultGetter,
@@ -279,7 +282,7 @@ jml('div', [
                                         ['label', {class: 'chartLayout'}, [
                                             ['input', {
                                                 type: 'checkbox',
-                                                id: 'middleyes',
+                                                id: 'startCharInMiddleOfChart',
                                                 class: 'charthbox',
                                                 $on: {
                                                     click (e) {
@@ -1227,6 +1230,7 @@ await getBuildChart({
         */
     }
 });
+
 jQuery('div.miller-columns').millerColumns({
     async current ($item, $cols) {
         if (!$item) { // Todo: Is this an error?
@@ -1239,4 +1243,26 @@ jQuery('div.miller-columns').millerColumns({
         buildChart(); // Todo: descripts?
     }
 });
+
+// EVENTS
+$('#encoding_from').addEventListener('click', function (e) {
+    Unicodecharref.convertEncoding($('#toconvert').value, this);
+});
+$('#encoding_to').addEventListener('click', function (e) {
+    Unicodecharref.convertEncoding($('#toconvert').value, this);
+});
+$('#insertEntityFile').addEventListener('change', function (e) {
+    Unicodecharref.insertEntityFile(e);
+});
+Unicodecharref.initialize();
+/**
+* The following works, but if used will not allow user to cancel to
+* get out of the current window size and will go back to the last
+* window size; if use this, don't need code in "doOk" (besides
+* return true)
+window.addEventListener('resize', function (e) {
+    setPref('outerHeight', window.outerHeight);
+    setPref('outerWidth', window.outerWidth);
+});
+*/
 })();
