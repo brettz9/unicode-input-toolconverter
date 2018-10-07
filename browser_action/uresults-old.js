@@ -36,6 +36,11 @@ import {$, $$} from '/vendor/jamilih/dist/jml-es.js';
 import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
 import {getPref, setPref} from './Preferences.js';
 
+let _;
+export const setL10n = (l10n) => {
+    _ = l10n;
+};
+
 (function () {
 const Cc = Components.classes,
     Ci = Components.interfaces;
@@ -80,7 +85,7 @@ const Unicodecharref = {
 
         const {STATE_STOP} = Ci.nsIWebProgressListener;
         // const {STATE_IS_WINDOW} = Ci.nsIWebProgressListener;
-        const s = that.strs;
+
         const persist = Cc['@mozilla.org/embedding/browser/nsWebBrowserPersist;1'].createInstance(Ci.nsIWebBrowserPersist);
         persist.progressListener = {
             onProgressChange (aWebProgress, aRequest, aCurSelfProgress, aMaxSelfProgress, aCurTotalProgress, aMaxTotalProgress) {
@@ -91,7 +96,7 @@ const Unicodecharref = {
                 ele.value = percentComplete;
                 const stat = $('#progress_stat');
 
-                stat.value = s.getString('download_progress') + ' ' + percentComplete + s.getString('percentSign');
+                stat.value = _('download_progress') + ' ' + percentComplete + _('percentSign');
             },
             onStateChange (aWebProgress, aRequest, aFlag, aStatus) {
                 if (aFlag & STATE_STOP) { //  && aFlag & STATE_IS_WINDOW
@@ -100,7 +105,7 @@ const Unicodecharref = {
                         /* const statement = */ charrefunicodeDb.dbConnUnihan.createStatement( // Just to test database
                             'SELECT code_pt FROM ' + 'Unihan' + ' WHERE code_pt = "3400"'
                         );
-                        alert(s.getString('Finished_download'));
+                        alert(_('Finished_download'));
                         that.unihanDb_exists = true;
                         $('#closeDownloadProgressBox').hidden = false;
                         $('#UnihanInstalled').hidden = false;
@@ -109,7 +114,7 @@ const Unicodecharref = {
                         $('#UnihanInstalled').hidden = true;
                         $('#DownloadProgressBox').hidden = true;
                         $('#DownloadButtonBox').hidden = false;
-                        alert(s.getString('Problem_downloading'));
+                        alert(_('Problem_downloading'));
                         console.log(e);
                     }
                 }
@@ -122,17 +127,16 @@ const Unicodecharref = {
         $('#DownloadProgressBox').hidden = true;
     },
     makeDropMenuRows (type) {
-        // const s = this.strs;
         /* const prefix = (type === 'Unihan') ? 'searchk' : 'search';
         try {
                 for (const i=0; i < this[type].length; i++) {
                         const row = createXULElement('row');
                         const label = createXULElement('label');
 
-                        label.setAttribute('value', s.getString(prefix+this[type][i]));
-                        label.setAttribute('control', prefix+this[type][i]);
+                        label.setAttribute('value', _(prefix + this[type][i]));
+                        label.setAttribute('control', prefix + this[type][i]);
                         const textbox = createXULElement('textbox');
-                        textbox.setAttribute('id', prefix+this[type][i]);
+                        textbox.setAttribute('id', prefix + this[type][i]);
                         textbox.setAttribute('rows', '1');
                         textbox.setAttribute('cols', '2');
                         textbox.addEventListener('change', function (e) {Unicodecharref['search' + type](e);});
@@ -147,14 +151,13 @@ const Unicodecharref = {
         } */
     },
     makeRows (type) {
-        const s = this.strs;
         const prefix = (type === 'Unihan') ? 'searchk' : 'search';
         let i;
         try {
             for (i = 0; i < this[type].length; i++) {
                 const row = createXULElement('row');
                 const label = createXULElement('label');
-                label.setAttribute('value', s.getString(prefix + this[type][i]));
+                label.setAttribute('value', _(prefix + this[type][i]));
                 label.setAttribute('control', prefix + this[type][i]);
                 row.append(label);
                 if (type === 'Unicode') { // Fix: make block for Unihan if need that
@@ -179,8 +182,8 @@ const Unicodecharref = {
                             menupopup = createXULElement('menupopup');
                             for (j = 0; j < this['UnicodeMenu' + match].length; j++) {
                                 menuitem = createXULElement('menuitem');
-                                menuitem.setAttribute('label', s.getString(match + this['UnicodeMenu' + match][j]));
-                                menuitem.setAttribute('tooltiptext', s.getString(match + this['UnicodeMenu' + match][j]));
+                                menuitem.setAttribute('label', _(match + this['UnicodeMenu' + match][j]));
+                                menuitem.setAttribute('tooltiptext', _(match + this['UnicodeMenu' + match][j]));
                                 menuitem.setAttribute('value', this['UnicodeMenu' + match][j]);
                                 menupopup.append(menuitem);
                             }
@@ -259,7 +262,6 @@ const Unicodecharref = {
     initialize (e) {
         const that = this, args = window.arguments;
         // this.refreshToolbarDropdown(); // redundant?
-        this.strs = $('#charrefunicode-strings');
 
         // charrefunicodeDb.connect('data/Unicode.sqlite');
         this.unihanDb_exists = false;
@@ -706,7 +708,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             os.close();
             $('#converted').value = output;
         } catch (e) {
-            alert(this.strs.getString('chars_could_not_be_converted'));
+            alert(_('chars_could_not_be_converted'));
         }
         /*
         const cv = Cc['@mozilla.org/intl/scriptableunicodeconverter'].getService(Ci.nsIScriptableUnicodeConverter);
@@ -964,8 +966,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
         // const alink = createHTMLElement('a');
         const alink = createXULElement('label');
-        const s = this.strs;
-        const [plane, privateuse, surrogate] = getAndSetCodePointInfo(kdectemp, alink, s);
+
+        const [plane, privateuse, surrogate] = getAndSetCodePointInfo(kdectemp, alink, _);
 
         function placeItem (sel, item) {
             const firstchld = $(sel).firstChild;
@@ -979,7 +981,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         placeItem('#pdflink', alink);
 
         // Handle plane #
-        const planeText = s.getFormattedString('plane_num', [plane]) + '\u00a0';
+        const planeText = _('plane_num', {plane}) + '\u00a0';
         placeItem('#plane', planeText);
 
         if (getPref('showImg')) {
@@ -1048,14 +1050,14 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         if (kdectemp >= 0x3400 && kdectemp <= 0x4DB5) {
             search = '3400';
             if (kdectemp !== 0x3400 && kdectemp !== 0x4DB5) {
-                cjkText = s.getString('CJK_Ideograph_Extension_A');
+                cjkText = _('CJK_Ideograph_Extension_A');
             } else if (kdectemp === 0x4DB5) {
                 search = '4DB5';
             }
         } else if (kdectemp >= 0x4E00 && kdectemp <= 0x9FC3) {
             search = '4E00';
             if (kdectemp !== 0x4E00 && kdectemp !== 0x9FC3) {
-                cjkText = s.getString('CJK_Ideograph');
+                cjkText = _('CJK_Ideograph');
             } else if (kdectemp === 0x9FC3) {
                 search = '9FC3';
             }
@@ -1064,7 +1066,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         } else if (kdectemp >= 0x20000 && kdectemp <= 0x2A6D6) {
             search = '20000';
             if (kdectemp !== 0x20000 && kdectemp !== 0x2A6D6) {
-                cjkText = s.getString('CJK_Ideograph_Extension_B');
+                cjkText = _('CJK_Ideograph_Extension_B');
             } else if (kdectemp === 0x2A6D6) {
                 search = '2A6D6';
             }
@@ -1073,7 +1075,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         } else if (hangul) {
             // search = 'AC00';
             // if (kdectemp != 0xAC00 && kdectemp != 0xD7A3) {
-            cjkText = s.getString('Hangul_Syllable');
+            cjkText = _('Hangul_Syllable');
             cjkText += ' ';
 
             cjkText += Hangul.getHangulName(kdectemp);
@@ -1095,7 +1097,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             );
         }
         try {
-            // $('#displayUnicodeDesc').value= s.getString('retrieving_description');
+            // $('#displayUnicodeDesc').value = _('retrieving_description');
             while (statement.executeStep()) {
                 if (!cjkText) {
                     result = statement.getUTF8String(1);
@@ -1113,8 +1115,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                     temp = statement.getUTF8String(i); // Fix: display data more readably, etc.
                     if (i === 10) {
                         if (temp) {
-                            result += ';\u00a0\u00a0\u00a0\u00a0\n' + s.getString('searchUnicode_1_Name') +
-                            s.getString('colon') + ' ' + temp;
+                            result += ';\u00a0\u00a0\u00a0\u00a0\n' + _('searchUnicode_1_Name') +
+                            _('colon') + ' ' + temp;
                         }
                         continue;
                     }
@@ -1124,18 +1126,18 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                         }
                         switch (i) {
                         case 2:
-                            temp = s.getString('General_Category' + temp);
+                            temp = _('General_Category' + temp);
                             break;
                         case 3:
                             if (temp < 11 || temp > 132) {
-                                temp = s.getString('Canonical_Combining_Class' + temp); // 199, 200, 204, 208, 210, 212 do not have members yet and others from 11 to 132 do not have name listed
+                                temp = _('Canonical_Combining_Class' + temp); // 199, 200, 204, 208, 210, 212 do not have members yet and others from 11 to 132 do not have name listed
                             }
                             break;
                         case 4:
-                            temp = s.getString('Bidi_Class' + temp);
+                            temp = _('Bidi_Class' + temp);
                             break;
                         case 9:
-                            temp = (temp === 'Y') ? s.getString('Bidi_MirroredY') : s.getString('Bidi_MirroredN'); // Only two choices
+                            temp = (temp === 'Y') ? _('Bidi_MirroredY') : _('Bidi_MirroredN'); // Only two choices
                             break;
                         case 12:
                         case 13:
@@ -1177,15 +1179,15 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                 break;
             }
             if (!this.UnihanType && result != null) {
-                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
-                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
             // Fix: remove this duplicate also in catch, etc.
             } else if (surrogate) {
-                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
-                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + surrogate;
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + surrogate;
             } else if (privateuse) {
-                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
-                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
             } else if ( // Catch noncharacters
                 (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
                 (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
@@ -1206,10 +1208,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                 (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
                 (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
             ) {
-                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
-                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
             } else if (!this.UnihanType) {
-                notfoundval = 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Not_found');
+                notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
                 $('#displayUnicodeDesc').value = notfoundval;
                 $('#displayUnicodeDesc2').value = notfoundval;
                 for (let i = 2; i <= 14; i++) {
@@ -1225,11 +1227,11 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             }
         } catch (e) {
             if (surrogate) {
-                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
-                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + surrogate;
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + surrogate;
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + surrogate;
             } else if (privateuse) {
-                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
-                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Private_use_character');
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
             } else if ( // Catch noncharacters
                 (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
                 (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
@@ -1250,10 +1252,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                 (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
                 (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
             ) {
-                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
-                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Noncharacter');
+                $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
+                $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
             } else {
-                notfoundval = 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Not_found');
+                notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
                 $('#displayUnicodeDesc').value = notfoundval;
                 $('#displayUnicodeDesc2').value = notfoundval;
                 for (let i = 2; i <= 14; i++) {
@@ -1282,11 +1284,11 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                 'SELECT * FROM ' + table + ' WHERE code_pt = "' + khextemp + '"'
             );
             try {
-                // $('#displayUnicodeDesc').value= s.getString('retrieving_description');
+                // $('#displayUnicodeDesc').value= _('retrieving_description');
                 while (statement.executeStep()) {
                     result = statement.getUTF8String(14); // Fix: display data more readably, with heading, etc. (and conditional)
                     if (result === null && !cjkText) {
-                        result = s.getString('No_definition');
+                        result = _('No_definition');
                     }
                     // Fix: Display meta-data in table (get to be stable by right-clicking)
                     // $('#_detailedCJKView' + 3).value = result ? result : '';
@@ -1342,12 +1344,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
                 if (result !== '' && result !== null && result !== undefined) {
                     // Commenting out to show general category under definition
-                    // $('#displayUnicodeDesc2').value = kent+'U+' + khextemp+s.getString('colon')+' ' + result;
-                    $('#displayUnicodeDescUnihan').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
-                    $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
-                    $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + s.getString('colon') + ' ' + result;
+                    // $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon')+' ' + result;
+                    $('#displayUnicodeDescUnihan').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
+                    $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
+                    $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
                 } else {
-                    notfoundval = 'U+' + khextemp + s.getString('colon') + ' ' + s.getString('Not_found');
+                    notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
 
                     if (!cjkText || hangul) {
                         for (let i = 2; i <= 14; i++) {
@@ -1375,8 +1377,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                         $('#displayUnicodeDescUnihan').value = notfoundval;
                         $('#displayUnicodeDesc2').value = notfoundval;
                     } else {
-                        const finalval = kent + 'U+' + khextemp + s.getString('colon') + ' ' + cjkText + ' ' +
-                            (hangul ? '' : s.getString('left_parenth') + s.getString('No_definition') + s.getString('right_parenth'));
+                        const finalval = kent + 'U+' + khextemp + _('colon') + ' ' + cjkText + ' ' +
+                            (hangul ? '' : _('left_parenth') + _('No_definition') + _('right_parenth'));
                         $('#displayUnicodeDesc').value = finalval;
                         $('#displayUnicodeDesc2').value = finalval;
                         $('#displayUnicodeDescUnihan').value = finalval;
@@ -1659,9 +1661,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         dropdownArr.push($('#insertText').value);
         setPref('dropdownArr', dropdownArr);
         if (this.refreshToolbarDropdown()) {
-            alert(this.strs.getString('yourItemAdded'));
+            alert(_('yourItemAdded'));
         } else {
-            alert(this.strs.getString('problemAddingToolbarItem'));
+            alert(_('problemAddingToolbarItem'));
         }
     },
     refreshToolbarDropdown () {

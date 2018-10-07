@@ -16,7 +16,9 @@ import prefDefaultGetter from './prefDefaultGetter.js';
 
 (async () => {
 await addMillerColumnPlugin(jQuery, {stylesheets: [
-    'unicode-dialog.css', // Per our widget "standard", allow for injecting of others
+    // Per our widget "standard", allow for injecting of others
+    ['/icons/openWindow24.png', {favicon: true}],
+    'unicode-dialog.css',
     '/vendor/miller-columns/miller-columns.css'
 ]});
 
