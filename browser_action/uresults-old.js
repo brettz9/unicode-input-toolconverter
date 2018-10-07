@@ -34,11 +34,11 @@ if (prev >= 0 && prev <= 9) {
 */
 import {$, $$} from '/vendor/jamilih/dist/jml-es.js';
 import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
+import {getPref, setPref} from './Preferences.js';
 
 (function () {
 const Cc = Components.classes,
-    Ci = Components.interfaces,
-    EXT_BASE = 'extensions.charrefunicode.';
+    Ci = Components.interfaces;
 // const mainDoc = window.opener ? window.opener.document : false; // No opener if typing x-unicode protocol in Awesome Bar, and we don't want options dialog as opener
 const wm = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
 const enumerator = wm.getXULWindowEnumerator('navigator:browser');
@@ -58,11 +58,6 @@ function createHTMLElement (el) {
 }
 function createXULElement (el) {
     return document.createElementNS(xulns, el);
-}
-
-function log (msg) {
-    const console = Cc['@mozilla.org/consoleservice;1'].getService(Ci.nsIConsoleService);
-    console.logStringMessage(msg);
 }
 
 const Unicodecharref = {
@@ -115,7 +110,7 @@ const Unicodecharref = {
                         $('#DownloadProgressBox').hidden = true;
                         $('#DownloadButtonBox').hidden = false;
                         alert(s.getString('Problem_downloading'));
-                        log(e);
+                        console.log(e);
                     }
                 }
             }
@@ -241,7 +236,7 @@ const Unicodecharref = {
         }); // Triggered initially which sets preference to "Lu"
     },
     testIfComplexWindow () { // Fix: Should also create the detailedView and detailedCJKView's content dynamically (and thus fully conditionally rather than hiding)
-        if (this.prefs.getBoolPref(EXT_BASE + 'showComplexWindow')) {
+        if (getPref('showComplexWindow')) {
             $('#specializedSearch').hidden = false;
             this.makeRows('Unihan');
             this.makeRows('Unicode');
@@ -256,17 +251,13 @@ const Unicodecharref = {
     setupBoolChecked () {
         const els = arguments;
         for (let i = 0; i < els.length; i++) {
-            if (this.prefs.getBoolPref(EXT_BASE + els[i])) {
-                $(EXT_BASE + els[i]).checked = true;
+            if (getPref(els[i])) {
+                $(els[i]).checked = true;
             }
         }
     },
     initialize (e) {
         const that = this, args = window.arguments;
-        this.prefs = Cc['@mozilla.org/preferences-service;1'].getService(Ci.nsIPrefService);
-        // This branch must be set in both the properties file and prefs js file: http://developer.mozilla.org/en/docs/Code_snippets:Preferences#nsIPrefLocalizedString
-        this.branch = this.prefs.getBranch(EXT_BASE);
-        this.branchDefault = this.prefs.getDefaultBranch(EXT_BASE);
         // this.refreshToolbarDropdown(); // redundant?
         this.strs = $('#charrefunicode-strings');
 
@@ -281,7 +272,7 @@ const Unicodecharref = {
             $('#DownloadButtonBox').hidden = true;
             $('#UnihanInstalled').hidden = false;
         } catch (e) {
-            log(e);
+            console.log(e);
             $('#DownloadButtonBox').hidden = false;
             $('#UnihanInstalled').hidden = true;
         }
@@ -358,14 +349,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             targetid = toconvert ? 'context-charrefunicode1' : ''; // Fix: replace with preference
         }
 
-        // this.prefs = Cc['@mozilla.org/preferences-service;1'].getService(Ci.nsIPrefBranch);
-
-        if (!this.prefs.getBoolPref(EXT_BASE + 'multiline')) {
-            $(EXT_BASE + 'multiline').checked = false;
+        if (!getPref('multiline')) {
+            $('#multiline').checked = false;
             $('#displayUnicodeDesc').setAttribute('multiline', false);
             $('#displayUnicodeDesc').setAttribute('rows', 1);
         } else {
-            $(EXT_BASE + 'multiline').checked = true;
+            $('#multiline').checked = true;
             $('#displayUnicodeDesc').setAttribute('multiline', true);
             $('#displayUnicodeDesc').setAttribute('rows', 3);
         }
@@ -375,7 +364,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             'appendtohtmldtd', 'hexyes', 'onlyentsyes', 'entyes', 'decyes', 'unicodeyes', 'startCharInMiddleOfChart',
             'buttonyes', 'cssUnambiguous');
 
-        switch (this.prefs.getCharPref(EXT_BASE + 'cssWhitespace')) {
+        switch (getPref('cssWhitespace')) {
         case ' ':
             $('#CSSWhitespace').selectedIndex = 0;
             break;
@@ -396,20 +385,20 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             break;
         }
 
-        /* if (this.prefs.getBoolPref(EXT_BASE + 'hexstyleLwr')) {
+        /* if (getPref('hexstyleLwr')) {
             $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
         }
         else {
             $(EXT_BASE + 'hexstyleLwr').selectedIndex = 1;
         } */
-        /* if (this.prefs.getCharPref(EXT_BASE + 'xstyle') === 'x') {
+        /* if (getPref('xstyle') === 'x') {
             $(EXT_BASE + 'xstyle').checked = true;
         } */
 
         this.resizecells(); // Set the size per the prefs (don't increase or decrease the value)
 
-        $('#rowsset').value = this.prefs.getIntPref(EXT_BASE + 'tblrowsset');
-        $('#colsset').value = this.prefs.getIntPref(EXT_BASE + 'tblcolsset');
+        $('#rowsset').value = getPref('tblrowsset');
+        $('#colsset').value = getPref('tblcolsset');
 
         // Save copies in case decide to reset later (i.e., not append to HTML entities, then wish to append to them again)
         // Do the following since can't copy arrays by value
@@ -424,10 +413,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         this.copyarray(charrefunicodeConverter.newents, this.orignewents);
         this.copyarray(charrefunicodeConverter.newcharrefs, this.orignewcharrefs);
 
-        $(EXT_BASE + 'lang').value = this.branch.getComplexValue('lang', Ci.nsIPrefLocalizedString).data;
-        $(EXT_BASE + 'font').value = this.branch.getComplexValue('font', Ci.nsIPrefLocalizedString).data;
+        $('lang').value = getPref('lang');
+        $('font').value = getPref('font');
 
-        const DTDtxtbxval = this.branch.getComplexValue('DTDtextbox', Ci.nsIPrefLocalizedString).data;
+        const DTDtxtbxval = getPref('DTDtextbox');
 
         $('#DTDtextbox').value = DTDtxtbxval;
         this.registerDTD();
@@ -435,7 +424,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         //  toconvert = charreftoconvert.replace(/\n/g, ' ');
         $('#toconvert').value = toconvert;
 
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
 
@@ -531,12 +520,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             $('#unicodeTabBox').selectTab($('#prefs'));
         } else if (args[2] !== undefined) { // Keyboard invocation or button
             // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
-            $('#unicodeTabBox').selectTab($(this.prefs.getCharPref('extensions.charrefunicode.initialTab')));
+            $('#unicodeTabBox').selectTab($(getPref('initialTab')));
         } else if (targetid !== 'context-unicodechart' && targetid !== 'tools-charrefunicode') {
             $('#unicodeTabBox').selectTab($('#conversion'));
         }
 
-        $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_' + this.prefs.getCharPref('extensions.charrefunicode.initialTab'));
+        $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_' + getPref('initialTab'));
 
         if (targetid !== 'searchName' && targetid !== 'searchkDefinition') {
             if (toconvert) { // Seemed to become necessarily suddenly
@@ -563,8 +552,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
         */
         // Set window size to that set last time hit "ok"
-        const outerh = this.prefs.getIntPref(EXT_BASE + 'outerHeight');
-        const outerw = this.prefs.getIntPref(EXT_BASE + 'outerWidth');
+        const outerh = getPref('outerHeight');
+        const outerw = getPref('outerWidth');
         if (outerh > 0) {
             window.outerHeight = outerh;
         }
@@ -586,26 +575,24 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     setprefs (e) {
         switch (e.target.nodeName) {
         case 'textbox':
-            const temp1 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
-            temp1.data = e.target.value;
-            this.prefs.setComplexValue(
-                EXT_BASE + e.target.id.replace(EXT_BASE, ''),
-                Ci.nsIPrefLocalizedString, temp1
+            setPref(
+                e.target.id,
+                e.target.value
             );
             break;
         case 'menuitem':
-            this.prefs.setCharPref(e.target.parentNode.parentNode.id, e.target.value); // Could use @label or position as default value
+            setPref(e.target.parentNode.parentNode.id, e.target.value); // Could use @label or position as default value
             break;
         case 'checkbox':
             // Apparently hasn't changed yet, so use the opposite
-            this.prefs.setBoolPref(e.target.id, Boolean(!e.target.checked));
+            setPref(e.target.id, Boolean(!e.target.checked));
             break;
         case 'radio':
             let radioid;
             const result = e.target.id.match(/^_([0-9])+-(.*)$/);
             if (result !== null) {
                 radioid = result[2]; // Extract preference name
-                this.prefs.setBoolPref(radioid, result[1] === '1');
+                setPref(radioid, result[1] === '1');
             }
             break;
         default:
@@ -618,73 +605,60 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         this.setBoolChecked(['asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'multiline'], false);
         this.setBoolChecked(['xmlentkeep', 'ampkeep', 'appendtohtmldtd', 'cssUnambiguous'], true);
 
-        $(EXT_BASE + 'ampspace').checked = false;
-        $(EXT_BASE + 'showComplexWindow').checked = false;
-        $(EXT_BASE + 'showAllDetailedView').checked = true;
-        $(EXT_BASE + 'showAllDetailedCJKView').checked = true;
+        $('#ampspace').checked = false;
+        $('#showComplexWindow').checked = false;
+        $('#showAllDetailedView').checked = true;
+        $('#showAllDetailedCJKView').checked = true;
 
-        let temp1;
         function langFont (langOrFont) { // Fix: needs to get default!
             const deflt = that.branchDefault.getComplexValue(langOrFont, Ci.nsIPrefLocalizedString).data;
-            $(EXT_BASE + langOrFont).value = deflt;
-            temp1 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
-            temp1.data = deflt;
-            that.prefs.setComplexValue(EXT_BASE + langOrFont, Ci.nsIPrefLocalizedString, temp1);
+            $('#' + langOrFont).value = deflt;
+            setPref(langOrFont, deflt);
             return deflt;
         }
         $('#chart_table').lang = langFont('lang');
         $('#chart_table').style.fontFamily = langFont('font');
 
-        // this.prefs.setBoolPref(EXT_BASE + 'hexstyleLwr', true);
+        // setPref('hexstyleLwr', true);
         // $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
 
-        this.prefs.setIntPref(EXT_BASE + 'fontsizetextbox', 13);
+        setPref('fontsizetextbox', 13);
         this.fontsizetextbox(0);
 
         /*
         Easy enough to manually remove DTD -- wouldn't want to lose that data
-        const temp0 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
-        temp0.data = '';
-        this.prefs.setComplexValue(EXT_BASE + 'DTDtextbox',
-                      Ci.nsIPrefLocalizedString,
-                      temp0);
-
+        setPref('DTDtextbox', '');
         $('#DTDtextbox').value = '';
         */
 
-        temp1 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
-        temp1.data = '#0';
-        this.prefs.setComplexValue(EXT_BASE + 'startset',
-            Ci.nsIPrefLocalizedString,
-            temp1
-        ); // Don't really need to reset since user can't currently change this (only for blank string entry)
+        setPref('startset', 'a'.charCodeAt() - 1); // Don't really need to reset since user can't currently change this (only for blank string entry)
 
-        this.setCurrstartset(this.branchDefault.getComplexValue('startset', Ci.nsIPrefLocalizedString).data);
+        this.setCurrstartset(getPref('startset'));
 
         $('#displayUnicodeDesc').setAttribute('multiline', false);
         $('#displayUnicodeDesc').setAttribute('rows', 1);
 
         // These get activated in buildChart(); below
-        this.prefs.setIntPref(EXT_BASE + 'tblrowsset', 4);
+        setPref('tblrowsset', 4);
         $('#rowsset').value = 4;
-        this.prefs.setIntPref(EXT_BASE + 'tblcolsset', 3);
+        setPref('tblcolsset', 3);
         $('#colsset').value = 3;
 
         this.setBoolChecked(['entyes', 'hexyes', 'decyes', 'unicodeyes', 'buttonyes'], true);
         this.setBoolChecked(['onlyentsyes', 'startCharInMiddleOfChart'], false);
 
-        // this.prefs.setCharPref(EXT_BASE + 'xstyle', 'x');
-        // $(EXT_BASE + 'xstyle').checked = true;
+        // setPref('xstyle', 'x');
+        // $('#xstyle').checked = true;
 
-        this.prefs.setCharPref('extensions.charrefunicode.initialTab', 'charts');
+        setPref('initialTab', 'charts');
         $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_charttab');
 
-        this.prefs.setIntPref(EXT_BASE + 'tblfontsize', 13);
+        setPref('tblfontsize', 13);
         this.resizecells();
 
         buildChart();
-        this.prefs.setIntPref(EXT_BASE + 'outerHeight', 0);
-        this.prefs.setIntPref(EXT_BASE + 'outerWidth', 0);
+        setPref('outerHeight', 0);
+        setPref('outerWidth', 0);
     },
     /**
      * Set a boolean preference (and its checked state in the interface) to a given boolean value
@@ -694,8 +668,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     setBoolChecked (els, value) {
         els = typeof els === 'string' ? [els] : els;
         for (let i = 0; i < els.length; i++) {
-            this.prefs.setBoolPref(EXT_BASE + els[i], value);
-            $(EXT_BASE + els[i]).checked = value;
+            setPref(els[i], value);
+            $('#' + els[i]).checked = value;
         }
     },
     classChange (el) {
@@ -796,7 +770,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     charref2unicode (e) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.charref2unicodeval(toconvert, e.target);
@@ -804,7 +778,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     charref2htmlents (e) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.charref2htmlentsval(toconvert, e.target);
@@ -812,7 +786,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     unicode2charrefDec (e, leaveSurrogates) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.unicode2charrefDecval(toconvert, e.target, leaveSurrogates);
@@ -823,7 +797,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     unicode2charrefHex (e, leaveSurrogates) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.unicode2charrefHexval(toconvert, e.target, leaveSurrogates);
@@ -834,7 +808,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     unicode2htmlents (e) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.unicode2htmlentsval(toconvert, e.target);
@@ -934,7 +908,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     //   converter function since it should be consistent across the app
     htmlents2charrefDec (e) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.htmlents2charrefDecval(toconvert, e.target);
@@ -942,7 +916,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     htmlents2charrefHex (e) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.htmlents2charrefHexval(toconvert, e.target);
@@ -950,7 +924,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     htmlents2unicode (e) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.htmlents2unicodeval(toconvert, e.target);
@@ -958,7 +932,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     hex2dec (e) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.hex2decval(toconvert, e.target);
@@ -966,7 +940,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     dec2hex (e) {
         let toconvert = $('#toconvert').value;
-        if (this.prefs.getBoolPref(EXT_BASE + 'ampspace')) {
+        if (getPref('ampspace')) {
             toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
         }
         $('#converted').value = this.dec2hexval(toconvert, e.target);
@@ -983,8 +957,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     getUnicodeDesc (kent, khextemp) {
         const that = this;
-        const hideMissing = !this.prefs.getBoolPref(EXT_BASE + 'showAllDetailedView');
-        const hideMissingUnihan = !this.prefs.getBoolPref(EXT_BASE + 'showAllDetailedCJKView');
+        const hideMissing = !getPref('showAllDetailedView');
+        const hideMissingUnihan = !getPref('showAllDetailedCJKView');
 
         const kdectemp = parseInt(khextemp, 16);
 
@@ -1008,7 +982,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         const planeText = s.getFormattedString('plane_num', [plane]) + '\u00a0';
         placeItem('#plane', planeText);
 
-        if (this.prefs.getBoolPref(EXT_BASE + 'showImg')) {
+        if (getPref('showImg')) {
             const img = createXULElement('image');
             // img.width = '80';
             // img.height = '80';
@@ -1424,8 +1398,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
     },
     fontsizetextbox (size) { // Changes font-size
-        const txtbxsize = this.prefs.getIntPref(EXT_BASE + 'fontsizetextbox') + size;
-        this.prefs.setIntPref(EXT_BASE + 'fontsizetextbox', txtbxsize);
+        const txtbxsize = getPref('fontsizetextbox') + size;
+        setPref('fontsizetextbox', txtbxsize);
 
         $('#toconvert').style.fontSize = txtbxsize + 'px';
         $('#converted').style.fontSize = txtbxsize + 'px';
@@ -1436,9 +1410,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
     },
     tblfontsize (size) { // Changes font-size of chart table cells
-        const fsize = this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + size;
+        const fsize = getPref('tblfontsize') + size;
         // const tds = createHTMLElement('td');
-        this.prefs.setIntPref(EXT_BASE + 'tblfontsize', fsize);
+        setPref('tblfontsize', fsize);
         this.resizecells({sizeToContent: size > 0});
     },
     resizecells ({sizeToContent} = {}) {
@@ -1446,12 +1420,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             "*[name='dec'],*[name='hex'],*[name='unicode']"
         ).forEach((control) => {
             control.style.fontSize =
-                this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
+                getPref('tblfontsize') + 'px';
         });
         $('#insertText').style.fontSize =
-            this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
+            getPref('tblfontsize') + 'px';
         // $('#displayUnicodeDesc').style.fontSize =
-        //     this.prefs.getIntPref(EXT_BASE + 'tblfontsize') + 'px';
+        //     getPref('tblfontsize') + 'px';
         if (sizeToContent) {
             // On Mac at least, resizing for reducing font size, causes button to
             // go off screen
@@ -1507,29 +1481,29 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             value = '\f';
             break;
         }
-        this.prefs.setCharPref(EXT_BASE + 'cssWhitespace', value);
+        setPref('cssWhitespace', value);
     },
     /* xstyleflip () {
         this.setCurrstartset(this.j);
         const currxstyle = 'x';
-        const prevxstyle = this.prefs.getCharPref(EXT_BASE + 'xstyle');
+        const prevxstyle = getPref('xstyle');
         if (prevxstyle === 'x') {
             currxstyle = 'X';
         }
-        this.prefs.setCharPref(EXT_BASE + 'xstyle', currxstyle);
+        setPref('xstyle', currxstyle);
         buildChart();
     }, */
     rowsset (e) {
         this.setCurrstartset(this.j);
         if (e.target.value != null && e.target.value !== '') {
-            this.prefs.setIntPref(EXT_BASE + 'tblrowsset', e.target.value);
+            setPref('tblrowsset', e.target.value);
         }
         buildChart();
     },
     colsset (e) {
         this.setCurrstartset(this.j);
         if (e.target.value != null && e.target.value !== '') {
-            this.prefs.setIntPref(EXT_BASE + 'tblcolsset', e.target.value);
+            setPref('tblcolsset', e.target.value);
         }
         buildChart();
     },
@@ -1540,7 +1514,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             data = tbx.value;
         } else {
             // Only used when the field is manually changed to blank (default start set)
-            data = this.branch.getComplexValue('startset', Ci.nsIPrefLocalizedString).data;
+            data = getPref('startset');
         }
         this.setCurrstartset(data);
 
@@ -1555,7 +1529,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
         charrefunicodeConverter.searchUnicode(obj, table, nochart, strict);
         if (!nochart) {
-            const tmp = this.branch.getComplexValue('currentStartCharCode', Ci.nsIPrefLocalizedString).data;
+            const tmp = getPref('currentStartCharCode');
             this.startset(obj, true); // Could remember last description (?)
             this.setCurrstartset(tmp); // Set it back as it was before the search
         }
@@ -1566,13 +1540,13 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         } */
     },
     doOK () {
-        this.prefs.setIntPref(EXT_BASE + 'outerHeight', window.outerHeight);
-        this.prefs.setIntPref(EXT_BASE + 'outerWidth', window.outerWidth);
+        setPref('outerHeight', window.outerHeight);
+        setPref('outerWidth', window.outerWidth);
         return false;
     },
     doCancel () {
-        this.prefs.setIntPref(EXT_BASE + 'outerHeight', window.outerHeight);
-        this.prefs.setIntPref(EXT_BASE + 'outerWidth', window.outerWidth);
+        setPref('outerHeight', window.outerHeight);
+        setPref('outerWidth', window.outerWidth);
         return true;
     },
     moveoutput (movedid) {
@@ -1589,18 +1563,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/g;
 
         const text = $('#DTDtextbox').value;
-
-        const temp0 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
-        temp0.data = text;
-        this.prefs.setComplexValue(EXT_BASE + 'DTDtextbox',
-            Ci.nsIPrefLocalizedString,
-            temp0
-        );
+        setPref('DTDtextbox', text);
 
         let result;
 
         // Reset in case charrefs or ents array deleted before and now want to go back to their original values.
-        if (this.prefs.getBoolPref(EXT_BASE + 'appendtohtmldtd')) {
+        if (getPref('appendtohtmldtd')) {
             this.copyarray(this.origents, CharrefunicodeConsts.ents);
             this.copyarray(this.origcharrefs, CharrefunicodeConsts.charrefs);
         } else {
@@ -1646,19 +1614,14 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     startCharInMiddleOfChart (bool) {
         // Commented this out because while it will always change (unlike now), the value will be misleading
         // $(EXT_BASE + 'startCharInMiddleOfChart').checked = bool;
-        this.prefs.setBoolPref(EXT_BASE + 'startCharInMiddleOfChart', bool);
+        setPref('startCharInMiddleOfChart', bool);
     },
     /**
      * Sets a value in preferences at which the Unicode chart view will begin on next start-up
      * @value The value to which to set the current starting value
      */
     setCurrstartset (value) {
-        const temp1 = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
-        temp1.data = value;
-        this.prefs.setComplexValue(EXT_BASE + 'currentStartCharCode',
-            Ci.nsIPrefLocalizedString,
-            temp1
-        );
+        setPref('currentStartCharCode', value);
     },
     // Some of these defaults may become irrelevant due to the /default/preferences/charrefunicode.js file's settings
     k (setval) {
@@ -1681,22 +1644,20 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
      */
     multiline (e) {
         const display = $('#displayUnicodeDesc');
-        if (this.prefs.getBoolPref(EXT_BASE + 'multiline') === false) {
-            this.prefs.setBoolPref(EXT_BASE + 'multiline', true);
+        if (getPref('multiline') === false) {
+            setPref('multiline', true);
             display.setAttribute('multiline', true);
             display.setAttribute('rows', 3);
         } else {
-            this.prefs.setBoolPref(EXT_BASE + 'multiline', false);
+            setPref('multiline', false);
             display.setAttribute('multiline', false);
             display.setAttribute('rows', 1);
         }
     },
     addToToolbar () {
-        const dropdownArr = JSON.parse(this.branch.getComplexValue('dropdownArr', Ci.nsIPrefLocalizedString).data || '[]');
+        const dropdownArr = getPref('dropdownArr');
         dropdownArr.push($('#insertText').value);
-        const str = Cc['@mozilla.org/pref-localizedstring;1'].createInstance(Ci.nsIPrefLocalizedString);
-        str.data = JSON.stringify(dropdownArr);
-        this.branch.setComplexValue('dropdownArr', Ci.nsIPrefLocalizedString, str);
+        setPref('dropdownArr', dropdownArr);
         if (this.refreshToolbarDropdown()) {
             alert(this.strs.getString('yourItemAdded'));
         } else {
@@ -1705,7 +1666,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     refreshToolbarDropdown () {
         // SETUP
-        const dropdownArr = JSON.parse(this.branch.getComplexValue('dropdownArr', Ci.nsIPrefLocalizedString).data || '[]');
+        const dropdownArr = getPref('dropdownArr');
         const toolbarbuttonPopup = mainDoc.querySelector('#charrefunicode-toolbar-chars');
         if (!toolbarbuttonPopup) {
             return false;

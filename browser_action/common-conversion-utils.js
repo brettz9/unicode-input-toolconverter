@@ -1,4 +1,4 @@
-/* globals Components, fixFromCharCode, CharrefunicodeConsts */
+/* globals Components, CharrefunicodeConsts */
 // TO-DO: make in-place context-menu-activated textbox conversions
 // To-do: move at least this file into module, and move as much of uresults.js too
 
@@ -64,9 +64,9 @@ try {
 const charrefunicodeConverter = {
     charref2unicodeval (out) {
         out = out.replace(this.decim, function (match, match1) {
-            return fixFromCharCode(match1);
+            return String.fromCodePoint(match1);
         }).replace(this.hexadec, function (match, match1) {
-            return fixFromCharCode(parseInt(match1, 16));
+            return String.fromCodePoint(parseInt(match1, 16));
         });
         return out;
     },
@@ -256,7 +256,7 @@ const charrefunicodeConverter = {
                     return that.newcharrefs[that.newents.indexOf(match1)];
                 }
                 if (CharrefunicodeConsts.ents.indexOf(match1) !== -1) { // If recognized single char. ent.
-                    return fixFromCharCode(b);
+                    return String.fromCodePoint(b);
                 }
                 // If unrecognized
                 return '&' + match1 + ';';
@@ -323,7 +323,7 @@ const charrefunicodeConverter = {
     charDesc2UnicodeVal (toconvert) {
         return toconvert.replace(/\\C\{([^}]*)\}/g, (n, n1) => {
             const unicodeVal = this.lookupUnicodeValueByCharName(n1);
-            return unicodeVal ? fixFromCharCode(unicodeVal) : '\uFFFD'; // Replacement character if not found?
+            return unicodeVal ? String.fromCodePoint(unicodeVal) : '\uFFFD'; // Replacement character if not found?
         });
     },
     cssescape2unicodeval (toconvert) {
@@ -358,7 +358,7 @@ const charrefunicodeConverter = {
                     i += hexEsc[0].length - 1; // We want to skip the whole structure
                     const hex = hexEsc[1] + (hexEsc[3] || ''); // [3] only if is 6-digit
                     const dec = parseInt(hex, 16);
-                    const hexStr = fixFromCharCode(dec);
+                    const hexStr = String.fromCodePoint(dec);
 
                     // \u000 is disallowed in CSS 2.1 (behavior undefined) and above 0x10FFFF is
                     //    beyond valid Unicode; fix: disallow non-characters too?
@@ -407,7 +407,7 @@ const charrefunicodeConverter = {
                     case 'u':
                         hexChrs = (/^[a-fA-F\d]{6}|[a-fA-F\d]{4}/).exec(toconvert.slice(i + 2));
                         if (hexChrs) {
-                            unicode += fixFromCharCode(parseInt(hexChrs[0], 16));
+                            unicode += String.fromCodePoint(parseInt(hexChrs[0], 16));
                             i += hexChrs[0].length; // 4 or 6
                             break;
                         }
