@@ -5,13 +5,14 @@ import {i18n} from './I18n.js';
 import {fill} from './utils.js';
 import {makeTabBox} from './widgets.js';
 import {code, link} from './templates.js';
-import {setPref} from './Preferences.js';
+import {setPref, configurePrefs} from './Preferences.js';
 import addMillerColumnPlugin from '/vendor/miller-columns/dist/index-es.min.js';
 import unicodeScripts from './unicode-scripts.js';
 import getBuildChart, {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './insertIntoOrOverExisting.js';
 import encodings from './encodings.js';
 import unihanFieldInfo from './unicode/unihanFieldInfo.js';
+import prefDefaultGetter from './prefDefaultGetter.js';
 
 (async () => {
 await addMillerColumnPlugin(jQuery, {stylesheets: [
@@ -30,6 +31,11 @@ if (!locales.includes('en')) { // Ensure there is at least one working language!
     locales.push('en');
 }
 const _ = await i18n({locales, defaults: false});
+configurePrefs({
+    l10n: _,
+    prefDefaultGetter,
+    appNamespace: 'unicode-input-tool-converter-'
+});
 
 document.title = _('uresults_title');
 jml('div', [
@@ -774,7 +780,7 @@ jml('div', [
                         nbsp.repeat(2),
                         ['button', {class: 'fontsize', $on: {
                             click () {
-                                Unicodecharref.fsizetextbox(+1);
+                                Unicodecharref.fontsizetextbox(+1);
                             }
                         }}, [
                             _('plus')
@@ -782,7 +788,7 @@ jml('div', [
                         nbsp,
                         ['button', {class: 'fontsize', $on: {
                             click () {
-                                Unicodecharref.fsizetextbox(-1);
+                                Unicodecharref.fontsizetextbox(-1);
                             }
                         }}, [
                             _('minus')

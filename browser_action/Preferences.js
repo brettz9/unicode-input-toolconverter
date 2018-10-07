@@ -1,7 +1,8 @@
 // Todo: Move to own library
-let appNS, getPrefDefault;
-export const configurePrefs = ({appNamespace, prefDefaultGetter}) => {
+let appNS, getPrefDefault, _;
+export const configurePrefs = ({appNamespace, prefDefaultGetter, l10n}) => {
     appNS = appNamespace;
+    _ = l10n;
     getPrefDefault = prefDefaultGetter;
 };
 
@@ -12,7 +13,7 @@ export const configurePrefs = ({appNamespace, prefDefaultGetter}) => {
  */
 export const getPref = async (key) => {
     const result = localStorage.getItem(appNS + key);
-    return result === null ? getPrefDefault(key) : JSON.parse(result);
+    return result === null ? getPrefDefault(key, _) : JSON.parse(result);
 };
 
 /**

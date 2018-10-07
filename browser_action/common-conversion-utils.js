@@ -2,38 +2,20 @@
 // TO-DO: make in-place context-menu-activated textbox conversions
 // To-do: move at least this file into module, and move as much of uresults.js too
 
+import {getPref} from './Preferences.js';
+
+let _;
+export const setL10n = (l10n) => {
+    _ = l10n;
+};
+
 const FileUtils = {}, Hangul = {};
 Components.utils['import']('resource://charrefunicode/unicode_utils.js');
 Components.utils['import']('resource://charrefunicode/file_utils.js', FileUtils);
 Components.utils['import']('resource://charrefunicode/Hangul.js', Hangul);
 
-const EXT_BASE = 'extensions.charrefunicode.',
-    Cc = Components.classes,
+const Cc = Components.classes,
     Ci = Components.interfaces;
-
-/**
- * If we move to HTML5 (or JS code module), this might simply obtain a JavaScript file
- * of property variables based on locale
- */
-function _s (str) {
-    const strs = document.getElementById('charrefunicode-strings');
-    return strs.getString(str);
-}
-
-/**
- * If we move to HTML5, this could query localStorage instead
- */
-const _getPrefs = (function () {
-const prefs = Cc['@mozilla.org/preferences-service;1'].getService(Ci.nsIPrefService);
-return function _getPrefs (pref) {
-    switch (pref) {
-    case 'cssWhitespace':
-        return prefs.getCharPref(EXT_BASE + pref);
-    default:
-        return prefs.getBoolPref(EXT_BASE + pref);
-    }
-};
-}());
 
 /**
  * Ought to try IndexedDB for this for possible future migration to HTML5
@@ -90,7 +72,7 @@ const charrefunicodeConverter = {
     },
     charref2htmlentsval (out) {
         const that = this;
-        const xhtmlentmode = _getPrefs('xhtmlentmode'); // If true, should allow conversion to &apos;
+        const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
 
         out = out.replace(this.decim, function (match, match1) {
             const matched = CharrefunicodeConsts.charrefs.indexOf(parseInt(match1, 10));
@@ -118,7 +100,7 @@ const charrefunicodeConverter = {
                 out += '&#' + temp + ';';
                 i += 1; // Skip the next surrogate
                 continue;
-            } else if (temp >= 128 || _getPrefs('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
+            } else if (temp >= 128 || getPref('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
                 out += '&#' + temp + ';';
             } else {
                 out += unicodeToConvert.charAt(i);
@@ -136,16 +118,16 @@ const charrefunicodeConverter = {
             beginEscape = '\\u';
             endEscape = '';
         } else if (type === 'css') {
-            cssUnambiguous = _getPrefs('cssUnambiguous');
+            cssUnambiguous = getPref('cssUnambiguous');
             xstyle = '';
             beginEscape = '\\';
-            endEscape = cssUnambiguous ? '' : _getPrefs('cssWhitespace');
+            endEscape = cssUnambiguous ? '' : getPref('cssWhitespace');
         } else {
             xstyle = 'x';
             beginEscape = '&#';
             endEscape = ';';
             /*
-            if (!_getPrefs('hexstyleLwr')) {
+            if (!getPref('hexstyleLwr')) {
                 xstyle = 'X';
             }
             */
@@ -158,7 +140,7 @@ const charrefunicodeConverter = {
                 temp = ((temp - 0xD800) * 0x400) + (unicodeToConvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
                 hexletters = temp.toString(16);
                 i += 1; // Skip the next surrogate
-                if (_getPrefs('hexLettersUpper')) {
+                if (getPref('hexLettersUpper')) {
                     hexletters = hexletters.toUpperCase();
                 }
                 if ((type === 'php' || cssUnambiguous) && hexletters.length < 6) {
@@ -166,9 +148,9 @@ const charrefunicodeConverter = {
                 }
                 out += beginEscape + xstyle + hexletters + endEscape;
                 continue;
-            } else if (temp >= 128 || _getPrefs('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
+            } else if (temp >= 128 || getPref('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
                 hexletters = temp.toString(16);
-                if (_getPrefs('hexLettersUpper')) {
+                if (getPref('hexLettersUpper')) {
                     hexletters = hexletters.toUpperCase();
                 }
                 if (type === 'javascript' && hexletters.length < 4) {
@@ -200,8 +182,8 @@ const charrefunicodeConverter = {
         }
 
         let out = '';
-        const xhtmlentmode = _getPrefs('xhtmlentmode'); // If true, should allow conversion to &apos;
-        const ampkeep = _getPrefs('ampkeep'); // If true, will not convert '&' to '&amp;'
+        const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
+        const ampkeep = getPref('ampkeep'); // If true, will not convert '&' to '&amp;'
 
         for (let i = 0; i < unicodeToConvert.length; i++) {
             const charcodeati = unicodeToConvert.charCodeAt(i);
@@ -217,7 +199,7 @@ const charrefunicodeConverter = {
     },
     htmlents2charrefDecval (out) {
         const that = this;
-        const xmlentkeep = _getPrefs('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+        const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
         return out.replace(this.htmlent, function (match, match1) {
             if (!xmlentkeep ||
                 (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
@@ -238,10 +220,10 @@ const charrefunicodeConverter = {
     htmlents2charrefHexval (out) {
         const that = this;
         const xstyle = 'x';
-        /* if (!_getPrefs('hexstyleLwr')) {
+        /* if (!getPref('hexstyleLwr')) {
             xstyle = 'X';
         } */
-        const xmlentkeep = _getPrefs('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+        const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
         return out.replace(this.htmlent, function (match, match1) {
             if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
                 const b = CharrefunicodeConsts.charrefs[CharrefunicodeConsts.ents.indexOf(match1)];
@@ -251,7 +233,7 @@ const charrefunicodeConverter = {
                     return that.newcharrefs[c];
                 } else if (CharrefunicodeConsts.ents.indexOf(match1) !== -1) { // If recognized single char. ent.
                     let hexletters = b.toString(16);
-                    if (_getPrefs('hexLettersUpper')) {
+                    if (getPref('hexLettersUpper')) {
                         hexletters = hexletters.toUpperCase();
                     }
                     return '&#' + xstyle + hexletters + ';';
@@ -265,7 +247,7 @@ const charrefunicodeConverter = {
     },
     htmlents2unicodeval (out) {
         const that = this;
-        const xmlentkeep = _getPrefs('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+        const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
         return out.replace(this.htmlent, function (match, match1) {
             if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
                 const b = CharrefunicodeConsts.charrefs[CharrefunicodeConsts.ents.indexOf(match1)];
@@ -290,12 +272,12 @@ const charrefunicodeConverter = {
     },
     dec2hexval (out) {
         const xstyle = 'x';
-        /* if (!_getPrefs('hexstyleLwr')) {
+        /* if (!getPref('hexstyleLwr')) {
             xstyle = 'X';
         } */
         return out.replace(this.decim, function (match, match1) {
             let hexletters = Number(match1).toString(16);
-            if (_getPrefs('hexLettersUpper')) {
+            if (getPref('hexLettersUpper')) {
                 hexletters = hexletters.toUpperCase();
             }
             return '&#' + xstyle + hexletters + ';';
@@ -325,7 +307,7 @@ const charrefunicodeConverter = {
                 } catch (e) {
                     val += toconvert.charAt(i);
                 }
-            } else if (temp >= 128 || _getPrefs('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
+            } else if (temp >= 128 || getPref('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
                 charDesc = this.getCharDescForCodePoint(temp);
                 if (!charDesc) { // Skip if no description in database
                     val += toconvert.charAt(i);
@@ -557,7 +539,7 @@ const charrefunicodeConverter = {
         this.descripts = [];
 
         if (table === 'Unihan' && !nochart && !charrefunicodeDb[conn]) {
-            alert(_s('need_download_unihan'));
+            alert(_('need_download_unihan'));
             return;
         }
 

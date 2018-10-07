@@ -563,8 +563,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
         */
         // Set window size to that set last time hit "ok"
-        const outerh = this.prefs.getIntPref(EXT_BASE + 'window.outer.height');
-        const outerw = this.prefs.getIntPref(EXT_BASE + 'window.outer.width');
+        const outerh = this.prefs.getIntPref(EXT_BASE + 'outerHeight');
+        const outerw = this.prefs.getIntPref(EXT_BASE + 'outerWidth');
         if (outerh > 0) {
             window.outerHeight = outerh;
         }
@@ -638,8 +638,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         // this.prefs.setBoolPref(EXT_BASE + 'hexstyleLwr', true);
         // $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
 
-        this.prefs.setIntPref(EXT_BASE + 'fsizetextbox', 13);
-        this.fsizetextbox(0);
+        this.prefs.setIntPref(EXT_BASE + 'fontsizetextbox', 13);
+        this.fontsizetextbox(0);
 
         /*
         Easy enough to manually remove DTD -- wouldn't want to lose that data
@@ -683,8 +683,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         this.resizecells();
 
         buildChart();
-        this.prefs.setIntPref(EXT_BASE + 'window.outer.height', 0);
-        this.prefs.setIntPref(EXT_BASE + 'window.outer.width', 0);
+        this.prefs.setIntPref(EXT_BASE + 'outerHeight', 0);
+        this.prefs.setIntPref(EXT_BASE + 'outerWidth', 0);
     },
     /**
      * Set a boolean preference (and its checked state in the interface) to a given boolean value
@@ -1423,9 +1423,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             view.firstChild.remove();
         }
     },
-    fsizetextbox (size) { // Changes font-size
-        const txtbxsize = this.prefs.getIntPref(EXT_BASE + 'fsizetextbox') + size;
-        this.prefs.setIntPref(EXT_BASE + 'fsizetextbox', txtbxsize);
+    fontsizetextbox (size) { // Changes font-size
+        const txtbxsize = this.prefs.getIntPref(EXT_BASE + 'fontsizetextbox') + size;
+        this.prefs.setIntPref(EXT_BASE + 'fontsizetextbox', txtbxsize);
 
         $('#toconvert').style.fontSize = txtbxsize + 'px';
         $('#converted').style.fontSize = txtbxsize + 'px';
@@ -1566,13 +1566,13 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         } */
     },
     doOK () {
-        this.prefs.setIntPref(EXT_BASE + 'window.outer.height', window.outerHeight);
-        this.prefs.setIntPref(EXT_BASE + 'window.outer.width', window.outerWidth);
+        this.prefs.setIntPref(EXT_BASE + 'outerHeight', window.outerHeight);
+        this.prefs.setIntPref(EXT_BASE + 'outerWidth', window.outerWidth);
         return false;
     },
     doCancel () {
-        this.prefs.setIntPref(EXT_BASE + 'window.outer.height', window.outerHeight);
-        this.prefs.setIntPref(EXT_BASE + 'window.outer.width', window.outerWidth);
+        this.prefs.setIntPref(EXT_BASE + 'outerHeight', window.outerHeight);
+        this.prefs.setIntPref(EXT_BASE + 'outerWidth', window.outerWidth);
         return true;
     },
     moveoutput (movedid) {
@@ -1782,10 +1782,10 @@ window.addEventListener(
                         'resize',
                         function(e) {
                             Unicodecharref.prefs.
-                                setIntPref(EXT_BASE + 'window.outer.height',
+                                setIntPref(EXT_BASE + 'outerHeight',
                                     window.outerHeight);
                             Unicodecharref.prefs.
-                                setIntPref(EXT_BASE + 'window.outer.width',
+                                setIntPref(EXT_BASE + 'outerWidth',
                                     window.outerWidth);
                         },
                         false);

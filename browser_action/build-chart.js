@@ -1,15 +1,10 @@
 import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
-import {getPref, setPref, configurePrefs} from './Preferences.js';
+import {getPref, setPref} from './Preferences.js';
 import {fill} from './utils.js';
 import getUnicodeDesc from './getUnicodeDescription.js';
-import prefDefaultGetter from './prefDefaultGetter.js';
 
 // import * as Utils './common-conversion-utils.js';
-
-configurePrefs({
-    prefDefaultGetter,
-    appNamespace: 'unicode-input-tool-converter-'
-});
+// setL10n(_);
 
 // Todo:
 const charrefunicodeConverter = {

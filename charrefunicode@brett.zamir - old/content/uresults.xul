@@ -626,8 +626,8 @@ Copyright 2007, 2008, 2009 Brett Zamir
 					<textbox flex="1" id="converted" persist="height" cols="2" rows="5" value="&default.textbox.value;" multiline="true" />
 					<hbox align="center" flex="1">
 						<label value="&label.fontsize;"/>
-						<button class="fontsize" label="+" oncommand="Unicodecharref.fsizetextbox(+1);"/>
-						<button class="fontsize" label="-" oncommand="Unicodecharref.fsizetextbox(-1);"/>
+						<button class="fontsize" label="+" oncommand="Unicodecharref.fontsizetextbox(+1);"/>
+						<button class="fontsize" label="-" oncommand="Unicodecharref.fontsizetextbox(-1);"/>
 						<description value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
 						<button label="&moveconvertedup.label;" oncommand="Unicodecharref.moveoutput('converted');"/>
 					</hbox>

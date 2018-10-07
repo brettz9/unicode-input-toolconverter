@@ -1,4 +1,8 @@
 {
+    "langCode": {
+        "message": "en",
+        "description": "The default for the font language code field"
+    },
     "extensionName": {
         "message": "Unicode Input Tool/Converter"
     },
@@ -16,6 +20,10 @@
     },
     "minus": {
         "message": "-"
+    },
+    "startCharCode": {
+        "message": "a",
+        "description": "This is the character that will be the default for the chart browser; should reflect a common character used by the language of the locale."
     },
     "unicode_noun": {
         "message": "unicode"
