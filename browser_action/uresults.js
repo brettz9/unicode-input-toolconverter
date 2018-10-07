@@ -15,6 +15,7 @@ if (k < 0) {
     currentStartCharCode = parseInt(currentStartCharCode, 16);
 } else {
     // Convert toString in case trying to get the ASCII for a single digit number
+    // Todo: Review `charCodeAt` on whether need modern substitutions
     const kt = currentStartCharCode.toString().charCodeAt(0);
     if (kt >= 0xD800 && kt < 0xF900) { // surrogate component (higher plane)
         currentStartCharCode = ((kt - 0xD800) * 0x400) + (currentStartCharCode.toString().charCodeAt(1) - 0xDC00) + 0x10000;
@@ -36,12 +37,13 @@ import {getPref, setPref} from './Preferences.js';
 import {getJamo, getAndSetCodePointInfo, CharrefunicodeConsts} from './unicode/unicodeUtils.js';
 import {getHangulName} from './unicode/Hangul.js';
 import {buildChart} from './build-chart.js';
-import {charrefunicodeConverter, charrefunicodeDb} from './common-conversion-utils.js';
+import {charrefunicodeConverter, charrefunicodeDb, setL10n as setUtilsL10n} from './common-conversion-utils.js';
 import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
 
 let _;
 export const setL10n = (l10n) => {
     _ = l10n;
+    setUtilsL10n(l10n);
 };
 
 const xulns = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
@@ -121,22 +123,22 @@ const Unicodecharref = {
     makeDropMenuRows (type) {
         /* const prefix = (type === 'Unihan') ? 'searchk' : 'search';
         try {
-                for (const i=0; i < this[type].length; i++) {
-                        const row = createXULElement('row');
-                        const label = createXULElement('label');
+            for (const i=0; i < this[type].length; i++) {
+                const row = createXULElement('row');
+                const label = createXULElement('label');
 
-                        label.setAttribute('value', _(prefix + this[type][i]));
-                        label.setAttribute('control', prefix + this[type][i]);
-                        const textbox = createXULElement('textbox');
-                        textbox.setAttribute('id', prefix + this[type][i]);
-                        textbox.setAttribute('rows', '1');
-                        textbox.setAttribute('cols', '2');
-                        textbox.addEventListener('change', function (e) {Unicodecharref['search' + type](e);});
-                        textbox.addEventListener('input', function (e) {Unicodecharref['search' + type](e);});
-                        row.append(label);
-                        row.append(textbox);
-                        $(type+'Search').append(row);
-                }
+                label.setAttribute('value', _(prefix + this[type][i]));
+                label.setAttribute('control', prefix + this[type][i]);
+                const textbox = createXULElement('textbox');
+                textbox.setAttribute('id', prefix + this[type][i]);
+                textbox.setAttribute('rows', '1');
+                textbox.setAttribute('cols', '2');
+                textbox.addEventListener('change', function (e) {Unicodecharref['search' + type](e);});
+                textbox.addEventListener('input', function (e) {Unicodecharref['search' + type](e);});
+                row.append(label);
+                row.append(textbox);
+                $(type+'Search').append(row);
+            }
         }
         catch(e) {
             alert(this[type][i])
@@ -633,7 +635,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         $('#DTDtextbox').value = '';
         */
 
-        setPref('startset', 'a'.charCodeAt() - 1); // Don't really need to reset since user can't currently change this (only for blank string entry)
+        setPref('startset', 'a'.codePointAt() - 1); // Don't really need to reset since user can't currently change this (only for blank string entry)
 
         this.setCurrstartset(await getPref('startset'));
 
@@ -1149,7 +1151,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                             a.href = 'javascript:void(0)';
 
                             a.addEventListener('click', function (e) {
-                                that.startset({value: e.target.innerHTML.charCodeAt()});
+                                that.startset({value: e.target.innerHTML.codePointAt()});
                                 that.noGetDescripts = false; // Probably want to start checking again since move to new page
                             });
                             const tempno = parseInt(temp, 16);
@@ -1597,6 +1599,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             } else if (m.match(hexreg)) { // Hex
                 m = m.replace(hexreg, '$2');
                 m = parseInt(m, 16);
+            // Todo: Fix this so it can handle surrogate pairs
             } else if (m.length > 1) { // If replacing with Unicode sequence longer than one character, assume only wish to convert from entity (not from Unicode)
                 addreg = false;
             } else {

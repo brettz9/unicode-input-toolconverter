@@ -162,11 +162,11 @@ export function getHangulFromName (name) {
 export function getJamoForIndex (index, type) {
     switch (type) {
     case 'l':
-        return String.fromCharCode(lBase + index);
+        return String.fromCodePoint(lBase + index);
     case 'v':
-        return String.fromCharCode(vBase + index);
+        return String.fromCodePoint(vBase + index);
     case 't':
-        return String.fromCharCode(tBase + index);
+        return String.fromCodePoint(tBase + index);
     default:
         throw new TypeError('Unexpected type passed to getJamoCodePointForName');
     }

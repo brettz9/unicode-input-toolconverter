@@ -1,5 +1,6 @@
 // TO-DO: make in-place context-menu-activated textbox conversions
 // To-do: move at least this file into module, and move as much of uresults.js too
+// Todo: Review `fromCharCode`, `charCodeAt`, and `charAt` on whether need modern substitutions
 
 import {getPref} from './Preferences.js';
 import {getHangulName, getHangulFromName} from './unicode/Hangul.js';
@@ -280,6 +281,7 @@ export const charrefunicodeConverter = {
 
     unicode2CharDescVal (toconvert) {
         let val = '', charDesc;
+        // Todo: Redo with `codePointAt`
         for (let i = 0; i < toconvert.length; i++) {
             let temp = toconvert.charCodeAt(i);
             if (temp >= 0xD800 && temp < 0xF900) { // surrogate

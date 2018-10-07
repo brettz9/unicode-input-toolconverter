@@ -2,12 +2,8 @@ import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {getPref, setPref} from './Preferences.js';
 import {fill} from './utils.js';
 import {CharrefunicodeConsts} from './unicode/unicodeUtils.js';
-import {charrefunicodeConverter} from './common-conversion-utils.js';
+import {setL10n, charrefunicodeConverter} from './common-conversion-utils.js';
 import getUnicodeDesc from './getUnicodeDescription.js';
-
-// import * as Utils './common-conversion-utils.js';
-// setL10n(_); // One for each file
-// setL10n(_);
 
 let idgen = 0;
 let _, textReceptable, chartContainer, insertText;
@@ -20,6 +16,7 @@ export default async function ({
     chartContainer = cc;
     insertText = it;
     _ = i18n;
+    setL10n(_);
     return buildChart({descripts});
 }
 

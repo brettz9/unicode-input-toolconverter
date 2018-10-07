@@ -8,6 +8,7 @@ export const CharrefunicodeConsts = {
     /* eslint-enable comma-spacing */
 };
 
+// Todo: Reimplement
 export function getJamo (charrefunicodeDb, code) { // expects decimal string or number
     const codePt = typeof code === 'number' ? Math.round(code).toString(16) : code;
     try {

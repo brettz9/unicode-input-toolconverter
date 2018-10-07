@@ -32,7 +32,7 @@ export default async function (key, _) {
     case 'initialTab':
         return 'charttab';
     case 'defaultStartCharCode': case 'currentStartCharCode':
-        return _('startCharCode').charCodeAt() - 1; // 'a'
+        return _('startCharCode').codePointAt() - 1; // 'a'
     case 'lang':
         return _('langCode'); // 'en'
     case 'dropdownArr':
