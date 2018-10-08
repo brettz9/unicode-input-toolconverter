@@ -38,6 +38,7 @@ import {Jamo, getAndSetCodePointInfo, CharrefunicodeConsts} from './unicode/unic
 import {getHangulName} from './unicode/Hangul.js';
 import {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from '/browser_action/templatesElementCustomization/insertIntoOrOverExisting.js';
+import {getPrefDefaults} from './preferences/prefDefaults.js';
 
 let _, charrefunicodeConverter, charrefunicodeDb, jmo;
 export const shareVars = ({_: l10n, charrefunicodeConverter: _uc, charrefunicodeDb: _db}) => {
@@ -248,9 +249,7 @@ const Unicodecharref = {
     },
     setupBoolChecked (...els) {
         els.forEach(async (el) => {
-            if (await getPref(el)) {
-                $('#' + el).checked = true;
-            }
+            $('#' + el).checked = await getPref(el);
         });
     },
     async initialize () {
@@ -349,20 +348,16 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
 
         if (!(await getPref('multiline'))) {
-            $('#multiline').checked = false;
             $('#displayUnicodeDesc').setAttribute('multiline', false);
             $('#displayUnicodeDesc').setAttribute('rows', 1);
         } else {
-            $('#multiline').checked = true;
             $('#displayUnicodeDesc').setAttribute('multiline', true);
             $('#displayUnicodeDesc').setAttribute('rows', 3);
         }
 
-        // Todo: Grab this list programmatically
-        this.setupBoolChecked('asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'xmlentkeep', 'ampkeep',
-            'ampspace', 'showComplexWindow', 'showAllDetailedView', 'showAllDetailedCJKView',
-            'appendtohtmldtd', 'hexyes', 'onlyentsyes', 'entyes', 'decyes', 'unicodeyes', 'startCharInMiddleOfChart',
-            'buttonyes', 'cssUnambiguous');
+        this.setupBoolChecked(...Object.entries(getPrefDefaults()).filter(([key, value]) => {
+            return typeof value === 'boolean';
+        }).map(([key]) => key));
 
         switch (await getPref('cssWhitespace')) {
         case ' ':
@@ -604,7 +599,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     async resetdefaults () {
         const that = this;
-        /* If make changes here, also change the default/preferences charrefunicode.js file */
+        // Todo: Change to programmatic setting
+        // If make changes here, also change the default/preferences charrefunicode.js file
         this.setBoolChecked(['asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'multiline'], false);
         this.setBoolChecked(['xmlentkeep', 'ampkeep', 'appendtohtmldtd', 'cssUnambiguous'], true);
 

@@ -1,9 +1,8 @@
 // Todo: Move to own library
-let appNS, getPrefDefault, _;
-export const configurePrefs = ({appNamespace, prefDefaultGetter, l10n}) => {
+let appNS, prefDefaults;
+export const configurePrefs = ({appNamespace, prefDefaults: _prefDefaults}) => {
     appNS = appNamespace;
-    _ = l10n;
-    getPrefDefault = prefDefaultGetter;
+    prefDefaults = _prefDefaults;
 };
 
 /**
@@ -13,7 +12,7 @@ export const configurePrefs = ({appNamespace, prefDefaultGetter, l10n}) => {
  */
 export const getPref = async (key) => {
     const result = localStorage.getItem(appNS + key);
-    return result === null ? getPrefDefault(key, _) : JSON.parse(result);
+    return result === null ? prefDefaults.getPrefDefault(key) : JSON.parse(result);
 };
 
 /**
@@ -25,3 +24,18 @@ export const getPref = async (key) => {
 export const setPref = async (key, val) => {
     return localStorage.setItem(appNS + key, JSON.stringify(val));
 };
+
+/**
+ * Get parsed default value for a preference
+ * @param {string} key Preference key
+ * @returns {boolean|number|string}
+ */
+export class PrefDefaults {
+    constructor ({_, defaults}) {
+        this._ = _;
+        this.defaults = defaults;
+    }
+    async getPrefDefault (key) {
+        return this.defaults[key];
+    }
+}
