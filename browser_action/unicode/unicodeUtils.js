@@ -8,17 +8,24 @@ export const CharrefunicodeConsts = {
     /* eslint-enable comma-spacing */
 };
 
+class UnicodeDBUtil {
+    constructor ({charrefunicodeDb}) {
+        this.charrefunicodeDb = charrefunicodeDb;
+    }
+}
 // Todo: Reimplement
-export function getJamo (charrefunicodeDb, code) { // expects decimal string or number
-    const codePt = typeof code === 'number' ? Math.round(code).toString(16) : code;
-    try {
-        const stmt = charrefunicodeDb.dbJamo.createStatement(
-            'SELECT `jamo_short_name` FROM Jamo WHERE `code_pt` = "' + codePt.toUpperCase() + '"'
-        );
-        stmt.executeStep();
-        return stmt.getUTF8String(0);
-    } catch (e) {
-        throw new Error(codePt.toUpperCase() + e);
+export class Jamo extends UnicodeDBUtil {
+    getJamo (code) { // expects decimal string or number
+        const codePt = typeof code === 'number' ? Math.round(code).toString(16) : code;
+        try {
+            const stmt = this.charrefunicodeDb.dbJamo.createStatement(
+                'SELECT `jamo_short_name` FROM Jamo WHERE `code_pt` = "' + codePt.toUpperCase() + '"'
+            );
+            stmt.executeStep();
+            return stmt.getUTF8String(0);
+        } catch (e) {
+            throw new Error(codePt.toUpperCase() + e);
+        }
     }
 }
 export function getAndSetCodePointInfo (num, alink, _) {

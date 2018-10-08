@@ -2,21 +2,21 @@ import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {getPref, setPref} from './Preferences.js';
 import {fill} from './utils.js';
 import {CharrefunicodeConsts} from './unicode/unicodeUtils.js';
-import {setL10n, charrefunicodeConverter} from './common-conversion-utils.js';
 import getUnicodeDesc from './getUnicodeDescription.js';
 
 let idgen = 0;
-let _, textReceptable, chartContainer, insertText;
+let _, textReceptable, chartContainer, insertText, charrefunicodeConverter;
 export default async function ({
     _: i18n,
     descripts,
-    insertText: it, textReceptable: tr, chartContainer: cc
+    insertText: it, textReceptable: tr, chartContainer: cc,
+    charrefunicodeConverter: uc
 }) {
     textReceptable = tr;
     chartContainer = cc;
     insertText = it;
+    charrefunicodeConverter = uc;
     _ = i18n;
-    setL10n(_);
     return buildChart({descripts});
 }
 

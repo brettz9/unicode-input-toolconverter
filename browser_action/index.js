@@ -6,14 +6,16 @@ import {fill} from './utils.js';
 import {makeTabBox} from './widgets.js';
 import {code, link} from './templates.js';
 import {setPref, configurePrefs} from './Preferences.js';
-import addMillerColumnPlugin from '/node_modules/miller-columns/dist/index-es.js';
-import unicodeScripts from './unicode-scripts.js';
+import addMillerColumnPlugin from '/node_modules/miller-columns/dist/index-es.js'; // Todo: Switch to vendor version
 import getBuildChart, {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './insertIntoOrOverExisting.js';
-import encodings from './encodings.js';
-import unihanFieldInfo from './unicode/unihanFieldInfo.js';
 import prefDefaultGetter from './prefDefaultGetter.js';
-import Unicodecharref, {setL10n} from './uresults.js';
+import encodings from './encodings.js';
+import unicodeScripts from './unicode/unicode-scripts.js';
+import charrefunicodeDb from './unicode/charrefunicodeDb.js';
+import unihanFieldInfo from './unicode/unihanFieldInfo.js';
+import UnicodeConverter from './unicode/UnicodeConverter.js';
+import Unicodecharref, {shareVars as uresultsShareVars} from './uresults.js';
 
 (async () => {
 await addMillerColumnPlugin(jQuery, {stylesheets: [
@@ -35,7 +37,10 @@ if (!locales.includes('en')) { // Ensure there is at least one working language!
 }
 
 const _ = await i18n({locales, defaults: false});
-setL10n(_);
+const charrefunicodeConverter = new UnicodeConverter({
+    _, charrefunicodeDb
+});
+uresultsShareVars({_, charrefunicodeConverter, charrefunicodeDb});
 configurePrefs({
     l10n: _,
     prefDefaultGetter,
@@ -1216,6 +1221,7 @@ makeTabBox('.tabbox');
 
 await getBuildChart({
     _,
+    charrefunicodeConverter,
     textReceptable: $('#insertText'),
     chartContainer: $('#chartContainer'),
     // Todo: Get working

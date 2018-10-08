@@ -1,10 +1,6 @@
-// TO-DO: make in-place context-menu-activated textbox conversions
-// To-do: move at least this file into module, and move as much of uresults.js too
-// Todo: Review `fromCharCode`, `charCodeAt`, and `charAt` on whether need modern substitutions
-
-import {getPref} from './Preferences.js';
-import {getHangulName, getHangulFromName} from './unicode/Hangul.js';
-import {CharrefunicodeConsts} from './unicode/unicodeUtils.js';
+import {getPref} from '../Preferences.js';
+import {getHangulName, getHangulFromName} from './Hangul.js';
+import {CharrefunicodeConsts} from './unicodeUtils.js';
 
 let _;
 export const setL10n = (l10n) => {
@@ -12,79 +8,46 @@ export const setL10n = (l10n) => {
 };
 
 /**
- * Ought to try IndexedDB for this for possible future migration to HTML5
- */
-export const charrefunicodeDb = {
-    dbConn: null,
-    dbConnUnihan: null,
-    connect (dbfile, key) {
-        /*
-        // Todo: Reimplement
-        if (typeof dbfile === 'string' && key !== 'unihan') {
-            const tempfilename = dbfile; // Can have forward slashes for sub-directories
-            // The following is what we normally want to use, but here we can put our data within the extension because
-            //   it should not be edited by the user anyways (whereby they'd want their data to be retained after an update)
-            // dbfile = Cc['@mozilla.org/file/directory_service;1'].getService(Ci.nsIProperties).get('ProfD', Ci.nsILocalFile);
-            // dbfile.append(tempfilename);
-            const MY_ID = 'charrefunicode@brett.zamir';
-            dbfile = FileUtils.getFile(MY_ID, tempfilename);
-        } else {
-            dbfile = FileUtils.getProfFile(dbfile);
-        }
-        if (!dbfile.exists()) { // if it doesn't exist, create  // || !file.isDirectory()
-            throw new Error(`Database ${dbfile.path} doesn't exist`);
-            // dbfile.create(Ci.nsIFile.NORMAL_FILE_TYPE, 0777); // DIRECTORY_TYPE
-        }
-        const storageService = Cc['@mozilla.org/storage/service;1'].getService(Ci.mozIStorageService);
-        if (key === 'unihan') {
-            this.dbConnUnihan = storageService.openDatabase(dbfile);
-        } else if (key === 'jamo') {
-            this.dbJamo = storageService.openDatabase(dbfile);
-        } else {
-            this.dbConn = storageService.openDatabase(dbfile);
-        }
-        */
-    }
-};
-try {
-    charrefunicodeDb.connect('data/Unicode.sqlite');
-    charrefunicodeDb.connect('Unihan6.sqlite', 'unihan');
-    charrefunicodeDb.connect('data/Jamo.sqlite', 'jamo');
-} catch (e) {
-}
-
-/**
  * @namespace Converts from one string form to another
  */
-export const charrefunicodeConverter = {
+const decim = /&#([0-9]*);/g;
+const hexadec = /&#[xX]([0-9a-fA-F]*);/g;
+const htmlent = /&([_a-zA-Z][-0-9_a-zA-Z]*);/g; /* Unicode complete version? */
+
+export default class UnicodeConverter {
+    constructor ({charrefunicodeDb}) {
+        this.charrefunicodeDb = charrefunicodeDb;
+        this.shiftcount = 0;
+        this.newents = [];
+        this.newcharrefs = [];
+    }
     charref2unicodeval (out) {
-        out = out.replace(this.decim, function (match, match1) {
+        out = out.replace(decim, function (match, match1) {
             return String.fromCodePoint(match1);
-        }).replace(this.hexadec, function (match, match1) {
+        }).replace(hexadec, function (match, match1) {
             return String.fromCodePoint(parseInt(match1, 16));
         });
         return out;
-    },
+    }
     charref2htmlentsval (out) {
-        const that = this;
         const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
 
-        out = out.replace(this.decim, function (match, match1) {
+        out = out.replace(decim, (match, match1) => {
             const matched = CharrefunicodeConsts.charrefs.indexOf(parseInt(match1, 10));
-            if (matched !== -1 && (matched !== (98 + that.shiftcount) || xhtmlentmode)) {
+            if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
                 return '&' + CharrefunicodeConsts.ents[matched] + ';';
             } else {
                 return match;
             }
-        }).replace(this.hexadec, function (match, match1) {
+        }).replace(hexadec, (match, match1) => {
             const matched = CharrefunicodeConsts.charrefs.indexOf(parseInt('0x' + match1, 16));
-            if (matched !== -1 && (matched !== (98 + that.shiftcount) || xhtmlentmode)) {
+            if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
                 return '&' + CharrefunicodeConsts.ents[matched] + ';';
             }
             return match;
         });
         return out;
-    },
+    }
     unicode2charrefDecval (unicodeToConvert, leaveSurrogates) {
         let out = '';
         for (let i = 0; i < unicodeToConvert.length; i++) {
@@ -102,7 +65,7 @@ export const charrefunicodeConverter = {
             }
         }
         return out;
-    },
+    }
     unicode2charrefHexval (unicodeToConvert, leaveSurrogates, type) {
         // alert(unicodeToConvert + '::' + leaveSurrogates + '::' + type);
         let out = '';
@@ -159,7 +122,7 @@ export const charrefunicodeConverter = {
             }
         }
         return out;
-    },
+    }
     unicode2htmlentsval (unicodeToConvert) {
         function pregQuote (str) {
             // http://kevin.vanzonneveld.net
@@ -191,16 +154,15 @@ export const charrefunicodeConverter = {
             }
         }
         return out;
-    },
+    }
     htmlents2charrefDecval (out) {
-        const that = this;
         const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
-        return out.replace(this.htmlent, function (match, match1) {
+        return out.replace(htmlent, (match, match1) => {
             if (!xmlentkeep ||
                 (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
                     match1 !== 'gt' && match1 !== 'amp')) {
-                if (that.newents.indexOf(match1) !== -1) { // If recognized multiple char ent. (won't convert these to decimal)
-                    return that.newcharrefs[that.newents.indexOf(match1)];
+                if (this.newents.indexOf(match1) !== -1) { // If recognized multiple char ent. (won't convert these to decimal)
+                    return this.newcharrefs[this.newents.indexOf(match1)];
                 } else if (CharrefunicodeConsts.ents.indexOf(match1) !== -1) { // If recognized single char. ent.
                     return '&#' + CharrefunicodeConsts.charrefs[CharrefunicodeConsts.ents.indexOf(match1)] + ';';
                 } else { // If unrecognized
@@ -210,22 +172,21 @@ export const charrefunicodeConverter = {
                 return '&' + match1 + ';';
             }
         });
-    },
+    }
 
     htmlents2charrefHexval (out) {
-        const that = this;
         const xstyle = 'x';
         /* if (!getPref('hexstyleLwr')) {
             xstyle = 'X';
         } */
         const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
-        return out.replace(this.htmlent, function (match, match1) {
+        return out.replace(htmlent, (match, match1) => {
             if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
                 const b = CharrefunicodeConsts.charrefs[CharrefunicodeConsts.ents.indexOf(match1)];
-                const c = that.newents.indexOf(match1);
+                const c = this.newents.indexOf(match1);
 
                 if (c !== -1) { // If recognized multiple char. ent. (won't convert these to hexadecimal)
-                    return that.newcharrefs[c];
+                    return this.newcharrefs[c];
                 } else if (CharrefunicodeConsts.ents.indexOf(match1) !== -1) { // If recognized single char. ent.
                     let hexletters = b.toString(16);
                     if (getPref('hexLettersUpper')) {
@@ -239,16 +200,15 @@ export const charrefunicodeConverter = {
                 return '&' + match1 + ';';
             }
         });
-    },
+    }
     htmlents2unicodeval (out) {
-        const that = this;
         const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
-        return out.replace(this.htmlent, function (match, match1) {
+        return out.replace(htmlent, (match, match1) => {
             if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
                 const b = CharrefunicodeConsts.charrefs[CharrefunicodeConsts.ents.indexOf(match1)];
 
-                if (that.newents.indexOf(match1) !== -1) { // If recognized multiple char ent.
-                    return that.newcharrefs[that.newents.indexOf(match1)];
+                if (this.newents.indexOf(match1) !== -1) { // If recognized multiple char ent.
+                    return this.newcharrefs[this.newents.indexOf(match1)];
                 }
                 if (CharrefunicodeConsts.ents.indexOf(match1) !== -1) { // If recognized single char. ent.
                     return String.fromCodePoint(b);
@@ -259,25 +219,25 @@ export const charrefunicodeConverter = {
                 return '&' + match1 + ';';
             }
         });
-    },
+    }
     hex2decval (out) {
-        return out.replace(this.hexadec, function (match, match1) {
+        return out.replace(hexadec, function (match, match1) {
             return '&#' + parseInt(match1, 16) + ';';
         });
-    },
+    }
     dec2hexval (out) {
         const xstyle = 'x';
         /* if (!getPref('hexstyleLwr')) {
             xstyle = 'X';
         } */
-        return out.replace(this.decim, function (match, match1) {
+        return out.replace(decim, function (match, match1) {
             let hexletters = Number(match1).toString(16);
             if (getPref('hexLettersUpper')) {
                 hexletters = hexletters.toUpperCase();
             }
             return '&#' + xstyle + hexletters + ';';
         });
-    },
+    }
 
     unicode2CharDescVal (toconvert) {
         let val = '', charDesc;
@@ -315,13 +275,13 @@ export const charrefunicodeConverter = {
             }
         }
         return val;
-    },
+    }
     charDesc2UnicodeVal (toconvert) {
         return toconvert.replace(/\\C\{([^}]*)\}/g, (n, n1) => {
             const unicodeVal = this.lookupUnicodeValueByCharName(n1);
             return unicodeVal ? String.fromCodePoint(unicodeVal) : '\uFFFD'; // Replacement character if not found?
         });
-    },
+    }
     cssescape2unicodeval (toconvert) {
         // See:
         // http://www.w3.org/TR/CSS21/syndata.html#characters
@@ -386,7 +346,7 @@ export const charrefunicodeConverter = {
             i++;
         }
         return unicode;
-    },
+    }
     jsescape2unicodeval (toconvert, mode) {
         let unicode = '', hexChrs;
         for (let i = 0; i < toconvert.length; i++) {
@@ -452,20 +412,19 @@ export const charrefunicodeConverter = {
             }
         }
         return unicode;
-    },
-
+    }
     unicode2jsescapeval (toconvert) {
         return this.unicode2charrefHexval(toconvert, true, 'javascript');
-    },
+    }
     unicodeTo6DigitVal (toconvert) {
         return this.unicode2charrefHexval(toconvert, false, 'php');
-    },
+    }
     unicode2cssescapeval (toconvert) {
         return this.unicode2charrefHexval(toconvert, false, 'css');
-    },
+    }
     sixDigit2UnicodeVal (toconvert) {
         return this.jsescape2unicodeval(toconvert, 'php');
-    },
+    }
 
     /**
      * Obtain a Unicode character description for a given decimal-expressed code point
@@ -480,7 +439,7 @@ export const charrefunicodeConverter = {
             let hex = dec.toString(16).toUpperCase();
             hex = hex.length < 4 ? new Array(5 - hex.length).join(0) + hex : hex;
 
-            statement = charrefunicodeDb.dbConn.createStatement(
+            statement = this.charrefunicodeDb.dbConn.createStatement(
                 'SELECT `Name` FROM Unicode WHERE `Code_Point` = "' + hex + '"'
             );
             while (statement.executeStep()) { // put in while in case expand to allow LIKE checks (e.g., to get a list
@@ -496,7 +455,7 @@ export const charrefunicodeConverter = {
         } finally {
             statement.reset();
         }
-    },
+    }
     /**
      * Search for a Unicode character value matching a given description
      */
@@ -512,7 +471,7 @@ export const charrefunicodeConverter = {
             return ret ? ret.charCodeAt(0) : false;
         }
         return this.descripts[0];
-    },
+    }
     // Used for conversions, so included here (also used externally)
     searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
         if (!table) {
@@ -534,7 +493,7 @@ export const charrefunicodeConverter = {
         const conn = (table === 'Unihan') ? 'dbConnUnihan' : 'dbConn';
         this.descripts = [];
 
-        if (table === 'Unihan' && !nochart && !charrefunicodeDb[conn]) {
+        if (table === 'Unihan' && !nochart && !this.charrefunicodeDb[conn]) {
             alert(_('need_download_unihan'));
             return;
         }
@@ -551,7 +510,7 @@ export const charrefunicodeConverter = {
 
         let statement;
         try {
-            // charrefunicodeDb[conn].createFunction('regx', 2, regex);
+            // this.charrefunicodeDb[conn].createFunction('regx', 2, regex);
             let likeBegin = 'LIKE "%';
             let likeEnd = '%"';
             if (strict) {
@@ -561,7 +520,7 @@ export const charrefunicodeConverter = {
 
             if (nameDesc === 'General_Category' && nameDescVal === 'Cn') {
                 try {
-                    statement = charrefunicodeDb[conn].createStatement(
+                    statement = this.charrefunicodeDb[conn].createStatement(
                         'SELECT `' + cpCol + '`, Name FROM ' + table
                     );
                     for (let i = 0; i < 0x10FFFE; i++) {
@@ -588,7 +547,7 @@ export const charrefunicodeConverter = {
                     alert(e);
                 }
             } else {
-                statement = charrefunicodeDb[conn].createStatement(
+                statement = this.charrefunicodeDb[conn].createStatement(
                     'SELECT `' + cpCol + '` FROM ' + table + ' WHERE `' + nameDesc +
                     '` ' + likeBegin + nameDescVal + likeEnd
                 );
@@ -606,11 +565,5 @@ export const charrefunicodeConverter = {
         } finally {
             statement.reset();
         }
-    },
-    decim: /&#([0-9]*);/g,
-    hexadec: /&#[xX]([0-9a-fA-F]*);/g,
-    htmlent: /&([_a-zA-Z][-0-9_a-zA-Z]*);/g, /* Unicode complete version? */
-    shiftcount: 0,
-    newents: [],
-    newcharrefs: []
+    }
 };

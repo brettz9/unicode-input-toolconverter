@@ -79,7 +79,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
     ]];
 });
 // console.log('m', majorHeading, scriptGroups);
-await fs.writeFile('browser_action/unicode-scripts.js', `
+await fs.writeFile('browser_action/unicode/unicode-scripts.js', `
 /* eslint-disable comma-spacing, quotes */
 export default ${JSON.stringify(['ul', jamilih], null, 4)};
 `);

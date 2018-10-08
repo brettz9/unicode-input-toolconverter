@@ -34,16 +34,17 @@ if (prev >= 0 && prev <= 9) {
 */
 import {$, $$} from '/vendor/jamilih/dist/jml-es.js';
 import {getPref, setPref} from './Preferences.js';
-import {getJamo, getAndSetCodePointInfo, CharrefunicodeConsts} from './unicode/unicodeUtils.js';
+import {Jamo, getAndSetCodePointInfo, CharrefunicodeConsts} from './unicode/unicodeUtils.js';
 import {getHangulName} from './unicode/Hangul.js';
 import {buildChart} from './build-chart.js';
-import {charrefunicodeConverter, charrefunicodeDb, setL10n as setUtilsL10n} from './common-conversion-utils.js';
 import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
 
-let _;
-export const setL10n = (l10n) => {
+let _, charrefunicodeConverter, charrefunicodeDb, jmo;
+export const shareVars = ({_: l10n, charrefunicodeConverter: _uc, charrefunicodeDb: _db}) => {
     _ = l10n;
-    setUtilsL10n(l10n);
+    charrefunicodeConverter = _uc;
+    charrefunicodeDb = _db;
+    jmo = new Jamo({charrefunicodeDb});
 };
 
 const xulns = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
@@ -1108,7 +1109,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                     result = statement.getUTF8String(1);
                     if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
                         try {
-                            const jamo = getJamo(charrefunicodeDb, kdectemp);
+                            const jamo = jmo.getJamo(kdectemp);
                             result += ' (' + jamo + ')';
                         } catch (e) {
                         }
