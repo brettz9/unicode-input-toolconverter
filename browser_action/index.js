@@ -82,6 +82,7 @@ jQuery('div.miller-columns').millerColumns({
         return '';
     },
     */
+    delay: 100, // Shorten delay until we can figure out how to fix jumpiness
     scroll () {
         // Due to an overflow within an overflow, we have to also force this scroll left
         $('#chart_selectchar_persist').scrollLeft = 2000;

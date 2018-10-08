@@ -396,17 +396,15 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         $('#colsset').value = await getPref('tblcolsset');
 
         // Save copies in case decide to reset later (i.e., not append to HTML entities, then wish to append to them again)
-        // Do the following since can't copy arrays by value
-        // Must define outside of copyarray function
         this.origents = [];
         this.origcharrefs = [];
         this.orignewents = [];
         this.orignewcharrefs = [];
 
-        this.copyarray(CharrefunicodeConsts.ents, this.origents);
-        this.copyarray(CharrefunicodeConsts.charrefs, this.origcharrefs);
-        this.copyarray(charrefunicodeConverter.newents, this.orignewents);
-        this.copyarray(charrefunicodeConverter.newcharrefs, this.orignewcharrefs);
+        this.origents = CharrefunicodeConsts.ents.concat();
+        this.origcharrefs = CharrefunicodeConsts.charrefs.concat();
+        this.orignewents = charrefunicodeConverter.newents.concat();
+        this.orignewcharrefs = charrefunicodeConverter.newcharrefs.concat();
 
         $('#lang').value = await getPref('lang');
         $('#font').value = await getPref('font');
@@ -563,12 +561,6 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             Ci = Components.interfaces;
         const gClipboardHelper = Cc['@mozilla.org/widget/clipboardhelper;1'].getService(Ci.nsIClipboardHelper);
         gClipboardHelper.copyString(text);
-    },
-    copyarray (a, b) {
-        b.length = 0;
-        for (let i = 0; i < a.length; i++) {
-            b[i] = a[i];
-        }
     },
     setprefs (e) {
         switch (e.target.nodeName) {
@@ -1573,15 +1565,15 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
         // Reset in case charrefs or ents array deleted before and now want to go back to their original values.
         if (await getPref('appendtohtmldtd')) {
-            this.copyarray(this.origents, CharrefunicodeConsts.ents);
-            this.copyarray(this.origcharrefs, CharrefunicodeConsts.charrefs);
+            CharrefunicodeConsts.ents = this.origents.concat();
+            CharrefunicodeConsts.charrefs = this.origcharrefs.concat();
         } else {
             CharrefunicodeConsts.ents = [];
             CharrefunicodeConsts.charrefs = [];
         }
 
-        this.copyarray(this.orignewents, charrefunicodeConverter.newents); // Start off blank in case items erased
-        this.copyarray(this.orignewcharrefs, charrefunicodeConverter.newcharrefs); // Start off blank in case items erased
+        charrefunicodeConverter.newents = this.orignewents.concat(); // Start off blank in case items erased
+        charrefunicodeConverter.newcharrefs = this.orignewcharrefs.concat(); // Start off blank in case items erased
 
         const decreg = /^(&#|#)?([0-9][0-9]+);?$/;
         // const decreg2 = /^(&#|#)([0-9]);?$/;
