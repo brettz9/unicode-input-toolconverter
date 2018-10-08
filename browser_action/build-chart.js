@@ -1,18 +1,16 @@
-import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
-import {getPref, setPref} from './Preferences.js';
-import {fill} from './utils.js';
+import {jml} from '/vendor/jamilih/dist/jml-es.js';
+import {getPref, setPref} from '/vendor/easy-prefs/index-es.js';
 import {CharrefunicodeConsts} from './unicode/unicodeUtils.js';
-import getUnicodeDesc from './getUnicodeDescription.js';
+import buildChartTemplate from './templates/build-chart.js';
 
-let idgen = 0;
-let _, textReceptable, chartContainer, insertText, charrefunicodeConverter;
+let _, textReceptacle, chartContainer, insertText, charrefunicodeConverter;
 export default async function ({
     _: i18n,
     descripts,
-    insertText: it, textReceptable: tr, chartContainer: cc,
+    insertText: it, textReceptacle: tr, chartContainer: cc,
     charrefunicodeConverter: uc
 }) {
-    textReceptable = tr;
+    textReceptacle = tr;
     chartContainer = cc;
     insertText = it;
     charrefunicodeConverter = uc;
@@ -42,23 +40,23 @@ export const buildChart = async function buildChart ({descripts} = {}) {
         'tblrowsset', 'currentStartCharCode'
     ].map(getPref));
 
-    let rows = tblrowsset,
-        currentStartCharCode = currentStartCharCodeInitial;
+    const current = {startCharCode: currentStartCharCodeInitial};
+    let rows = tblrowsset;
 
-    lastStartCharCode = currentStartCharCode;
+    lastStartCharCode = current.startCharCode;
 
     const resetCurrentStartCharCodeIfOutOfBounds = () => {
-        if (currentStartCharCode < 0) {
-            currentStartCharCode += 1114112;
+        if (current.startCharCode < 0) {
+            current.startCharCode += 1114112;
             return;
         }
-        if (currentStartCharCode > 1114111) {
-            currentStartCharCode = 0;
+        if (current.startCharCode > 1114111) {
+            current.startCharCode = 0;
         }
     };
 
     if (startCharInMiddleOfChart) {
-        currentStartCharCode = Math.round(currentStartCharCode - ((rows * cols) / 2));
+        current.startCharCode = Math.round(current.startCharCode - ((rows * cols) / 2));
         resetCurrentStartCharCodeIfOutOfBounds();
     }
 
@@ -78,10 +76,10 @@ export const buildChart = async function buildChart ({descripts} = {}) {
             const hasRemainder = remainder > 0;
             colsOverRemainder = hasRemainder && cols - remainder;
         }
-        q = obj[chars].indexOf(currentStartCharCode);
+        q = obj[chars].indexOf(current.startCharCode);
         if (q === -1) {
             q = 0;
-            currentStartCharCode = obj[chars][q];
+            current.startCharCode = obj[chars][q];
         }
 
         let newq = q - (cols * rows);
@@ -90,10 +88,10 @@ export const buildChart = async function buildChart ({descripts} = {}) {
         }
         prev = obj[chars][newq];
     } else {
-        prev = currentStartCharCode - (cols * rows);
+        prev = current.startCharCode - (cols * rows);
     }
 
-    jml(textReceptable, {
+    jml(textReceptacle, {
         rows: rows * 20 - 10,
         cols: cols * 20 - 10
     });
@@ -135,161 +133,15 @@ export const buildChart = async function buildChart ({descripts} = {}) {
                 })
                 : '');
 
-    jml('table', {
-        id: 'chart_table',
-        class: 'unicodetablecell',
-        style: {
-            'font-family': font
-        },
-        // Not sure if this will require fixing if xml:lang bug is fixed: https://bugzilla.mozilla.org/show_bug.cgi?id=234485
-        lang
-    }, [
-        ['caption', {
-            class: 'dialogheader',
-            title: _('Unicode_table_caption_title')
-        }, [
-            captionContent
-        ]],
-        ...fill(rows).map((row, j) => {
-            return ['tr', fill(cols).map((col, i) => {
-                // Todo: Document what this check is
-                if (j === rowceil && i === colsOverRemainder) {
-                    return '';
-                }
-
-                const charRefIdx = CharrefunicodeConsts.charrefs.indexOf(currentStartCharCode);
-                const hasEntity = charRefIdx > -1;
-                const entity = hasEntity
-                    // If recognized multiple char ent. (won't convert these to decimal)
-                    ? '&' + CharrefunicodeConsts.ents[charRefIdx] + ';'
-                    : '';
-
-                resetCurrentStartCharCodeIfOutOfBounds();
-                // Todo: Document what's going on here
-                if (descriptsOrOnlyEnts) {
-                    q++;
-                    if (q >= obj[chars].length) {
-                        q = 0;
-                    }
-                    currentStartCharCode = obj[chars][q];
-                } else {
-                    currentStartCharCode++;
-                }
-
-                return ['td', {
-                    class: (hasEntity ? 'entity ' : '') + 'unicodetablecell',
-                    $on: {
-                        mouseover: (function (entity, currentStartCharCode) {
-                            return function () {
-                                if (!this.$noGetDescripts) {
-                                    getUnicodeDesc(entity, currentStartCharCode);
-                                }
-                            };
-                        })(entity, currentStartCharCode),
-                        // trying dblclick worked but might not be obvious to
-                        //   user and single clicks still activated; relying on
-                        //   right button doesn't work
-                        click (e) {
-                            if (e.ctrlKey) {
-                                this.$noGetDescripts = !this.$noGetDescripts;
-                            }
-                        }
-                    }
-                }, [
-                    ...appliedFormats.flatMap((type, i, arr) => {
-                        const name = type.replace('yes', '');
-                        const isMiddle = i === 1 && arr.length === 2;
-                        const isFinal = i === 2;
-                        const button = [(buttonyes ? 'button' : 'div'), {
-                            class: buttonyes ? 'buttonyes' : null,
-                            name,
-                            id: '_' + idgen++,
-                            dataset: {
-                                value: displayTypes[type](currentStartCharCode)
-                            },
-                            $on: {
-                                click ({ctrlKey, target: {dataset: {value}}}) {
-                                    if (!ctrlKey) {
-                                        insertText({textReceptable, value});
-                                    }
-                                }
-                            }
-                        }, [
-                            // Todo: Add substitute character if detect is an invisible?
-                            displayTypes[type](currentStartCharCode)
-                        ]];
-                        const container = isFinal ? jml('div', {
-                            class: 'centered'
-                        }, [button]) : button;
-                        return [
-                            isMiddle
-                                ? nbsp.repeat(3)
-                                : isFinal
-                                    ? ['br']
-                                    : '',
-                            container
-                        ];
-                    }),
-                    ...(entyes && hasEntity
-                        ? [
-                            ['a', {
-                                href: '#',
-                                $on: {
-                                    click (e) {
-                                        e.preventDefault();
-                                        if (!e.ctrlKey) {
-                                            insertText({textReceptable, value: entity});
-                                        }
-                                    }
-                                }
-                            }, [
-                                entity
-                            ]],
-                            ' '
-                        ]
-                        : [''])
-                ]];
-            })];
-        }),
-        ['tr', [
-            ['td', {
-                class: 'centered',
-                colspan: cols
-            }, [
-                ['a', {
-                    href: '#',
-                    $on: {
-                        async click (e) {
-                            e.preventDefault();
-                            await Promise.all([
-                                setPref('currentStartCharCode', prev),
-                                setPref('startCharInMiddleOfChart', false)
-                            ]);
-                            buildChart(descripts);
-                        }
-                    }
-                }, [
-                    _('Prev_set')
-                ]],
-                ' ' + nbsp + ' ',
-                ['a', {
-                    href: '#',
-                    $on: {
-                        async click (e) {
-                            e.preventDefault();
-                            await Promise.all([
-                                setPref('currentStartCharCode', currentStartCharCode),
-                                setPref('startCharInMiddleOfChart', false)
-                            ]);
-                            buildChart(descripts);
-                        }
-                    }
-                }, [
-                    _('Next_set')
-                ]]
-            ]]
-        ]]
-    ], chartContainer);
+    buildChartTemplate({
+        _, rows, cols, CharrefunicodeConsts, current,
+        resetCurrentStartCharCodeIfOutOfBounds, descriptsOrOnlyEnts,
+        q, obj, chars, textReceptacle, entyes, buildChart, descripts,
+        chartContainer,
+        setPref, insertText, buttonyes, font, lang, prev,
+        rowceil, colsOverRemainder, appliedFormats, displayTypes,
+        captionContent
+    });
 
     // Todo: Restore
     // this.resizecells({sizeToContent: true});

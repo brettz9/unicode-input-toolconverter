@@ -1,4 +1,4 @@
-import {getPref} from '../Preferences.js';
+import {getPref} from '/vendor/easy-prefs/index-es.js';
 import {getHangulName, getHangulFromName} from './Hangul.js';
 import {CharrefunicodeConsts} from './unicodeUtils.js';
 

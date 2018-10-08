@@ -10,6 +10,7 @@ character references, etc.
 # Possible to-dos
 
 - Consider License liberalization
+- Various modules, some already in `vendor`, could be moved to own npm package
 - Convert
     [XUL-based add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/)
     to HTML5 (use Jamilih for greater flexibility and i18n)

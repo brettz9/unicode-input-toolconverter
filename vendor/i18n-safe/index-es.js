@@ -1,4 +1,4 @@
-// Todo: Move to own library, bearing in mind need for path setting or change
+// Todo: Move to own library
 // Todo: Allow literal brackets (with or without substitutions of the same name present)
 /**
 Example:
@@ -52,9 +52,9 @@ const promiseChainForValues = (values, cb) => {
  *  the optional key "dom" which if set to `true` optimizes when DOM elements are
  *  present; or 2) rejects if no strings are found
  */
-export const i18n = async function i18n ({locales, defaults}) {
+export const i18n = async function i18n ({locales, defaults, localesBasePath}) {
     const strings = await promiseChainForValues(locales, async function getLocale (locale) {
-        const url = `../_locales/${locale}/messages.json`;
+        const url = `${localesBasePath.replace(/\/$/, '')}/_locales/${locale}/messages.json`;
         try {
             return await (await fetch(url)).json();
         } catch (err) {

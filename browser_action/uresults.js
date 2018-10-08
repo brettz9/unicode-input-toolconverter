@@ -33,11 +33,11 @@ if (prev >= 0 && prev <= 9) {
 }
 */
 import {$, $$} from '/vendor/jamilih/dist/jml-es.js';
-import {getPref, setPref} from './Preferences.js';
+import {getPref, setPref} from '/vendor/easy-prefs/index-es.js';
 import {Jamo, getAndSetCodePointInfo, CharrefunicodeConsts} from './unicode/unicodeUtils.js';
 import {getHangulName} from './unicode/Hangul.js';
 import {buildChart} from './build-chart.js';
-import insertIntoOrOverExisting from '/browser_action/insertIntoOrOverExisting.js';
+import insertIntoOrOverExisting from '/browser_action/templatesElementCustomization/insertIntoOrOverExisting.js';
 
 let _, charrefunicodeConverter, charrefunicodeDb, jmo;
 export const shareVars = ({_: l10n, charrefunicodeConverter: _uc, charrefunicodeDb: _db}) => {
@@ -1638,7 +1638,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     },
     insertent () {
         insertIntoOrOverExisting({
-            textReceptable: $('#DTDtextbox'),
+            textReceptacle: $('#DTDtextbox'),
             value: '<!ENTITY  "">\n'
         });
         /* The following works but may be annoying if trying to insert multiple entities at a time (thus the addition of the newline)
