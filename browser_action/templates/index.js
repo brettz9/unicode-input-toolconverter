@@ -87,7 +87,17 @@ export default function (_) {
                                     ['legend', [_('chooseregion')]],
                                     ['div', {class: 'miller-breadcrumbs'}],
                                     ['div', {class: 'miller-columns', tabindex: '1'}, [
-                                        unicodeScripts
+                                        unicodeScripts(_)
+                                        /*
+                                        // Avoid erring on missing
+                                        unicodeScripts((...args) => {
+                                            try {
+                                                return _(...args);
+                                            } catch (err) {
+                                                return args[0];
+                                            }
+                                        })
+                                        */
                                     ]]
                                 ]]
                             ]]

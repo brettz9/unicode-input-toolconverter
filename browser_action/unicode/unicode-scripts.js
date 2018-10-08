@@ -1,6 +1,7 @@
 
-/* eslint-disable comma-spacing, quotes */
-export default [
+/* eslint-disable comma-spacing, quotes, indent */
+export default function (_) {
+    return [
     "ul",
     [
         [
@@ -4477,3 +4478,4 @@ export default [
         ]
     ]
 ];
+}
