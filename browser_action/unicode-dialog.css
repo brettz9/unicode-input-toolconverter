@@ -216,6 +216,10 @@ radiogroup {
     margin-top: 10px;
     min-height: 20px;
 }
+.miller-columns {
+    overflow: hidden !important;
+}
+
 #chart_layout_persist {
     overflow: auto;
     min-height: 20px;

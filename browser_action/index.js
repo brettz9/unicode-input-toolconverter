@@ -6,7 +6,7 @@ import {fill} from './utils.js';
 import {makeTabBox} from './widgets.js';
 import {code, link} from './templates.js';
 import {setPref, configurePrefs} from './Preferences.js';
-import addMillerColumnPlugin from '/vendor/miller-columns/dist/index-es.min.js';
+import addMillerColumnPlugin from '/node_modules/miller-columns/dist/index-es.js';
 import unicodeScripts from './unicode-scripts.js';
 import getBuildChart, {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './insertIntoOrOverExisting.js';
@@ -1232,12 +1232,25 @@ await getBuildChart({
 });
 
 jQuery('div.miller-columns').millerColumns({
+    /*
+    preview () {
+        // $('#chart_selectchar_persist').scrollLeft = 2000;
+        return '';
+    },
+    */
+    scroll () {
+        // Due to an overflow within an overflow, we have to also force this scroll left
+        $('#chart_selectchar_persist').scrollLeft = 2000;
+    },
     async current ($item, $cols) {
         if (!$item) { // Todo: Is this an error?
             return;
         }
         // console.log('User selected:', $item);
         const title = $item[0].getAttribute('title');
+        if (!title) {
+            return;
+        }
         await setPref('currentStartCharCode', parseInt(title.replace(/-.*$/, ''), 16));
         // Free to use `buildChart` now that we have passed set-up
         buildChart(); // Todo: descripts?
