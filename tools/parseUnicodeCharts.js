@@ -1,10 +1,14 @@
 /* eslint-env node */
 const fetch = require('node-fetch');
 const jsdom = require('jsdom');
-const {JSDOM} = jsdom;
-
 const fs = require('fs-extra');
 const path = require('path');
+
+// For `localize` `true`, need to provide strings for all
+//  possible; could auto-add to locale files if missing
+const localize = true;
+
+const {JSDOM} = jsdom;
 
 (async () => {
 let text;
@@ -22,11 +26,14 @@ if (process.argv[2] === 'save') {
 const doc = new JSDOM(text).window.document;
 const scriptMaps = [...doc.querySelectorAll('table.map')];
 
-const localize = false; // Works if `true`, but will need to provide strings for all possible; could auto-add to locale files if missing
 const uniqueTextPlaceholder = localize ? '___placeholder___' : ''; // We know it is not present inside Unicode script names!
 
+const cleanupText = (txt) => {
+    return txt.trim().replace(/\s\((?:\d\.?\d*)MB\)$/, '');
+};
+
 const jamilih = scriptMaps.map((scriptMap) => {
-    const majorHeading = scriptMap.previousElementSibling.textContent;
+    const majorHeading = cleanupText(scriptMap.previousElementSibling.textContent);
     // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
 
     const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
@@ -37,7 +44,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
         ['ul', scriptGroups.map((scriptGroup) => {
             return ['li', [
                 ['b', [
-                    uniqueTextPlaceholder + scriptGroup.textContent
+                    uniqueTextPlaceholder + cleanupText(scriptGroup.textContent)
                 ]],
                 (() => {
                     const lists = [];
@@ -45,7 +52,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
                         const a = scriptGroup.querySelector('a');
                         const title = a && a.title;
                         if (scriptGroup.matches('.mb')) {
-                            const children = [uniqueTextPlaceholder + scriptGroup.textContent];
+                            const children = [uniqueTextPlaceholder + cleanupText(scriptGroup.textContent)];
                             lastChildren = children;
                             lists.push(
                                 ['li', {title}, children]
@@ -53,7 +60,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
                         } else if (scriptGroup.matches('.pb,.sb')) {
                             const children = [
                                 ['i', [
-                                    uniqueTextPlaceholder + scriptGroup.textContent
+                                    uniqueTextPlaceholder + cleanupText(scriptGroup.textContent)
                                 ]]
                             ];
                             if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
@@ -88,18 +95,37 @@ await fs.writeFile('browser_action/unicode/unicode-scripts.js', `
 /* eslint-disable comma-spacing, quotes, indent */
 export default function (_) {
     return ` + (localize
-    ? JSON.stringify(['ul', jamilih], null, 4).replace(
-        new RegExp(
-            '^(\\s*)"' + uniqueTextPlaceholder + '(.*)"(,)?$',
-            'gm'
-        ),
-        (_, initialWS, key, possibleComma = '') => {
-            return initialWS + '_("' +
-                key.replace(/\\n/g, '').replace(/\s\s*/g, ' ') // Getting some extra WS
-                    .replace(/\W/g, '_') + // Make safe for Chrome locales
-                '")' + possibleComma;
-        }
-    )
+    ? await (async () => {
+        const localesDir = '_locales';
+        const dirs = (await fs.readdir(localesDir)).filter((f) => !f.includes('.'));
+        const localeFiles = dirs.map((dir) => path.join(localesDir, dir, 'messages.json'));
+        const localeFileContents = (await Promise.all(localeFiles.map((localeFile) => {
+            return fs.readFile(localeFile, 'utf-8');
+        }))).map((fileContents) => {
+            return JSON.parse(fileContents);
+        });
+        let i = 0;
+        return JSON.stringify(['ul', jamilih], null, 4).replace(
+            new RegExp(
+                '^(\\s*)"' + uniqueTextPlaceholder + '(.*)"(,)?$',
+                'gm'
+            ),
+            (_, initialWS, key, possibleComma = '') => {
+                const chromeSafeLocaleKey = key.replace(/\\n/g, '').replace(/\s\s*/g, ' ') // Getting some extra WS
+                    .replace(/\W/g, '_');
+                // Todo: Instead of this block, for all of
+                //   `localeFileContents`, insert `chromeSafeLocaleKey` if not present;
+                //   but first rename any similar ones if present; also hard-code each
+                //   locale to make sure no other l10n errors for missing keys, script
+                //   or otherwise
+                if (!(chromeSafeLocaleKey in localeFileContents[0])) {
+                    i++;
+                    console.log(i, chromeSafeLocaleKey, key);
+                }
+                return `${initialWS}_("${chromeSafeLocaleKey}")${possibleComma}`;
+            }
+        );
+    })()
     : JSON.stringify(['ul', jamilih], null, 4)
 ) +
     `;

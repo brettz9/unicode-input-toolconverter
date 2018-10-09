@@ -17,7 +17,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "European Scripts"
+                                        _("European_Scripts")
                                     ]
                                 ],
                                 [
@@ -29,7 +29,7 @@ export default function (_) {
                                                 "title": "0530-058F"
                                             },
                                             [
-                                                "Armenian",
+                                                _("Armenian"),
                                                 [
                                                     "ul",
                                                     [
@@ -42,7 +42,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Armenian Ligatures"
+                                                                        _("Armenian_Ligatures")
                                                                     ]
                                                                 ]
                                                             ]
@@ -57,7 +57,7 @@ export default function (_) {
                                                 "title": "102A0-102DF"
                                             },
                                             [
-                                                "Carian"
+                                                _("Carian")
                                             ]
                                         ],
                                         [
@@ -66,7 +66,7 @@ export default function (_) {
                                                 "title": "10530-1056F"
                                             },
                                             [
-                                                "Caucasian Albanian "
+                                                _("Caucasian_Albanian")
                                             ]
                                         ],
                                         [
@@ -75,7 +75,7 @@ export default function (_) {
                                                 "title": "10800-1083F"
                                             },
                                             [
-                                                "Cypriot Syllabary"
+                                                _("Cypriot_Syllabary")
                                             ]
                                         ],
                                         [
@@ -84,7 +84,7 @@ export default function (_) {
                                                 "title": "0400-04FF"
                                             },
                                             [
-                                                "Cyrillic",
+                                                _("Cyrillic"),
                                                 [
                                                     "ul",
                                                     [
@@ -97,7 +97,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Cyrillic Supplement"
+                                                                        _("Cyrillic_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -111,7 +111,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Cyrillic Extended-A"
+                                                                        _("Cyrillic_Extended_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -125,7 +125,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Cyrillic Extended-B"
+                                                                        _("Cyrillic_Extended_B")
                                                                     ]
                                                                 ]
                                                             ]
@@ -139,7 +139,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Cyrillic Extended-C"
+                                                                        _("Cyrillic_Extended_C")
                                                                     ]
                                                                 ]
                                                             ]
@@ -154,7 +154,7 @@ export default function (_) {
                                                 "title": "10500-1052F"
                                             },
                                             [
-                                                "Elbasan"
+                                                _("Elbasan")
                                             ]
                                         ],
                                         [
@@ -163,7 +163,7 @@ export default function (_) {
                                                 "title": "10A0-10FF"
                                             },
                                             [
-                                                "Georgian",
+                                                _("Georgian"),
                                                 [
                                                     "ul",
                                                     [
@@ -176,7 +176,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Georgian Extended"
+                                                                        _("Georgian_Extended")
                                                                     ]
                                                                 ]
                                                             ]
@@ -190,7 +190,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Georgian Supplement"
+                                                                        _("Georgian_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -205,7 +205,7 @@ export default function (_) {
                                                 "title": "2C00-2C5F"
                                             },
                                             [
-                                                "Glagolitic",
+                                                _("Glagolitic"),
                                                 [
                                                     "ul",
                                                     [
@@ -218,7 +218,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Glagolitic Supplement"
+                                                                        _("Glagolitic_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -233,7 +233,7 @@ export default function (_) {
                                                 "title": "10330-1034F"
                                             },
                                             [
-                                                "Gothic"
+                                                _("Gothic")
                                             ]
                                         ],
                                         [
@@ -242,7 +242,7 @@ export default function (_) {
                                                 "title": "0370-03FF"
                                             },
                                             [
-                                                "Greek",
+                                                _("Greek"),
                                                 [
                                                     "ul",
                                                     [
@@ -255,7 +255,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Greek Extended"
+                                                                        _("Greek_Extended")
                                                                     ]
                                                                 ]
                                                             ]
@@ -269,7 +269,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ancient Greek Numbers"
+                                                                        _("Ancient_Greek_Numbers")
                                                                     ]
                                                                 ]
                                                             ]
@@ -284,7 +284,7 @@ export default function (_) {
                                                 "title": "0000-007F"
                                             },
                                             [
-                                                "Latin",
+                                                _("Latin"),
                                                 [
                                                     "ul",
                                                     [
@@ -297,7 +297,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Basic Latin (ASCII)"
+                                                                        _("Basic_Latin__ASCII_")
                                                                     ]
                                                                 ]
                                                             ]
@@ -311,7 +311,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin-1 Supplement"
+                                                                        _("Latin_1_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -325,7 +325,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin Extended-A"
+                                                                        _("Latin_Extended_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -339,7 +339,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin Extended-B"
+                                                                        _("Latin_Extended_B")
                                                                     ]
                                                                 ]
                                                             ]
@@ -353,7 +353,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin Extended-C"
+                                                                        _("Latin_Extended_C")
                                                                     ]
                                                                 ]
                                                             ]
@@ -367,7 +367,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin Extended-D"
+                                                                        _("Latin_Extended_D")
                                                                     ]
                                                                 ]
                                                             ]
@@ -381,7 +381,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin Extended-E"
+                                                                        _("Latin_Extended_E")
                                                                     ]
                                                                 ]
                                                             ]
@@ -395,7 +395,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin Extended Additional"
+                                                                        _("Latin_Extended_Additional")
                                                                     ]
                                                                 ]
                                                             ]
@@ -409,7 +409,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin Ligatures"
+                                                                        _("Latin_Ligatures")
                                                                     ]
                                                                 ]
                                                             ]
@@ -423,7 +423,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Fullwidth Latin Letters"
+                                                                        _("Fullwidth_Latin_Letters")
                                                                     ]
                                                                 ]
                                                             ]
@@ -437,7 +437,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "IPA Extensions"
+                                                                        _("IPA_Extensions")
                                                                     ]
                                                                 ]
                                                             ]
@@ -451,7 +451,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Phonetic Extensions"
+                                                                        _("Phonetic_Extensions")
                                                                     ]
                                                                 ]
                                                             ]
@@ -465,7 +465,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Phonetic Extensions Supplement"
+                                                                        _("Phonetic_Extensions_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -480,7 +480,7 @@ export default function (_) {
                                                 "title": "10600-1077F"
                                             },
                                             [
-                                                "Linear A"
+                                                _("Linear_A")
                                             ]
                                         ],
                                         [
@@ -489,7 +489,7 @@ export default function (_) {
                                                 "title": null
                                             },
                                             [
-                                                "Linear B",
+                                                _("Linear_B"),
                                                 [
                                                     "ul",
                                                     [
@@ -502,7 +502,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Linear B Syllabary"
+                                                                        _("Linear_B_Syllabary")
                                                                     ]
                                                                 ]
                                                             ]
@@ -516,7 +516,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Linear B Ideograms"
+                                                                        _("Linear_B_Ideograms")
                                                                     ]
                                                                 ]
                                                             ]
@@ -530,7 +530,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Aegean Numbers"
+                                                                        _("Aegean_Numbers")
                                                                     ]
                                                                 ]
                                                             ]
@@ -545,7 +545,7 @@ export default function (_) {
                                                 "title": "10280-1029F"
                                             },
                                             [
-                                                "Lycian"
+                                                _("Lycian")
                                             ]
                                         ],
                                         [
@@ -554,7 +554,7 @@ export default function (_) {
                                                 "title": "10920-1093F"
                                             },
                                             [
-                                                "Lydian"
+                                                _("Lydian")
                                             ]
                                         ],
                                         [
@@ -563,7 +563,7 @@ export default function (_) {
                                                 "title": "1680-169F"
                                             },
                                             [
-                                                "Ogham"
+                                                _("Ogham")
                                             ]
                                         ],
                                         [
@@ -572,7 +572,7 @@ export default function (_) {
                                                 "title": "10C80-10CFF"
                                             },
                                             [
-                                                "Old Hungarian"
+                                                _("Old_Hungarian")
                                             ]
                                         ],
                                         [
@@ -581,7 +581,7 @@ export default function (_) {
                                                 "title": "10300-1032F"
                                             },
                                             [
-                                                "Old Italic"
+                                                _("Old_Italic")
                                             ]
                                         ],
                                         [
@@ -590,7 +590,7 @@ export default function (_) {
                                                 "title": "10350-1037F"
                                             },
                                             [
-                                                "Old Permic"
+                                                _("Old_Permic")
                                             ]
                                         ],
                                         [
@@ -599,7 +599,7 @@ export default function (_) {
                                                 "title": "101D0-101FF"
                                             },
                                             [
-                                                "Phaistos Disc"
+                                                _("Phaistos_Disc")
                                             ]
                                         ],
                                         [
@@ -608,7 +608,7 @@ export default function (_) {
                                                 "title": "16A0-16FF"
                                             },
                                             [
-                                                "Runic"
+                                                _("Runic")
                                             ]
                                         ],
                                         [
@@ -617,7 +617,7 @@ export default function (_) {
                                                 "title": "10450-1047F"
                                             },
                                             [
-                                                "Shavian"
+                                                _("Shavian")
                                             ]
                                         ]
                                     ]
@@ -630,7 +630,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Modifier Letters"
+                                        _("Modifier_Letters")
                                     ]
                                 ],
                                 [
@@ -642,7 +642,7 @@ export default function (_) {
                                                 "title": "A700-A71F"
                                             },
                                             [
-                                                "Modifier Tone Letters"
+                                                _("Modifier_Tone_Letters")
                                             ]
                                         ],
                                         [
@@ -651,7 +651,7 @@ export default function (_) {
                                                 "title": "02B0-02FF"
                                             },
                                             [
-                                                "Spacing Modifier Letters"
+                                                _("Spacing_Modifier_Letters")
                                             ]
                                         ],
                                         [
@@ -660,7 +660,7 @@ export default function (_) {
                                                 "title": "2070-209F"
                                             },
                                             [
-                                                "Superscripts and Subscripts"
+                                                _("Superscripts_and_Subscripts")
                                             ]
                                         ]
                                     ]
@@ -673,7 +673,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Combining Marks"
+                                        _("Combining_Marks")
                                     ]
                                 ],
                                 [
@@ -685,7 +685,7 @@ export default function (_) {
                                                 "title": "0300-036F"
                                             },
                                             [
-                                                "Combining Diacritical Marks",
+                                                _("Combining_Diacritical_Marks"),
                                                 [
                                                     "ul",
                                                     [
@@ -698,7 +698,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Combining Diacritical Marks Extended"
+                                                                        _("Combining_Diacritical_Marks_Extended")
                                                                     ]
                                                                 ]
                                                             ]
@@ -712,7 +712,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Combining Diacritical Marks Supplement"
+                                                                        _("Combining_Diacritical_Marks_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -727,7 +727,7 @@ export default function (_) {
                                                 "title": "20D0-20FF"
                                             },
                                             [
-                                                "Combining Diacritical Marks for Symbols"
+                                                _("Combining_Diacritical_Marks_for_Symbols")
                                             ]
                                         ],
                                         [
@@ -736,7 +736,7 @@ export default function (_) {
                                                 "title": "FE20-FE2F"
                                             },
                                             [
-                                                "Combining Half Marks"
+                                                _("Combining_Half_Marks")
                                             ]
                                         ]
                                     ]
@@ -749,7 +749,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "African Scripts"
+                                        _("African_Scripts")
                                     ]
                                 ],
                                 [
@@ -761,7 +761,7 @@ export default function (_) {
                                                 "title": "1E900-1E95F"
                                             },
                                             [
-                                                "Adlam"
+                                                _("Adlam")
                                             ]
                                         ],
                                         [
@@ -770,7 +770,7 @@ export default function (_) {
                                                 "title": "A6A0-A6FF"
                                             },
                                             [
-                                                "Bamum",
+                                                _("Bamum"),
                                                 [
                                                     "ul",
                                                     [
@@ -783,7 +783,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Bamum Supplement"
+                                                                        _("Bamum_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -798,7 +798,7 @@ export default function (_) {
                                                 "title": "16AD0-16AFF"
                                             },
                                             [
-                                                "Bassa Vah"
+                                                _("Bassa_Vah")
                                             ]
                                         ],
                                         [
@@ -807,7 +807,7 @@ export default function (_) {
                                                 "title": "2C80-2CFF"
                                             },
                                             [
-                                                "Coptic ",
+                                                _("Coptic"),
                                                 [
                                                     "ul",
                                                     [
@@ -820,7 +820,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Coptic in Greek block"
+                                                                        _("Coptic_in_Greek_block")
                                                                     ]
                                                                 ]
                                                             ]
@@ -834,7 +834,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Coptic Epact Numbers"
+                                                                        _("Coptic_Epact_Numbers")
                                                                     ]
                                                                 ]
                                                             ]
@@ -849,7 +849,7 @@ export default function (_) {
                                                 "title": "13000-1342F"
                                             },
                                             [
-                                                "Egyptian Hieroglyphs (1MB)"
+                                                _("Egyptian_Hieroglyphs")
                                             ]
                                         ],
                                         [
@@ -858,7 +858,7 @@ export default function (_) {
                                                 "title": "1200-137F"
                                             },
                                             [
-                                                "Ethiopic",
+                                                _("Ethiopic"),
                                                 [
                                                     "ul",
                                                     [
@@ -871,7 +871,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ethiopic Supplement"
+                                                                        _("Ethiopic_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -885,7 +885,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ethiopic Extended"
+                                                                        _("Ethiopic_Extended")
                                                                     ]
                                                                 ]
                                                             ]
@@ -899,7 +899,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ethiopic Extended-A"
+                                                                        _("Ethiopic_Extended_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -914,7 +914,7 @@ export default function (_) {
                                                 "title": "16E40-16E9F"
                                             },
                                             [
-                                                "Medefaidrin"
+                                                _("Medefaidrin")
                                             ]
                                         ],
                                         [
@@ -923,7 +923,7 @@ export default function (_) {
                                                 "title": "1E800-1E8DF"
                                             },
                                             [
-                                                "Mende Kikakui"
+                                                _("Mende_Kikakui")
                                             ]
                                         ],
                                         [
@@ -932,7 +932,7 @@ export default function (_) {
                                                 "title": null
                                             },
                                             [
-                                                "Meroitic",
+                                                _("Meroitic"),
                                                 [
                                                     "ul",
                                                     [
@@ -945,7 +945,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Meroitic Cursive"
+                                                                        _("Meroitic_Cursive")
                                                                     ]
                                                                 ]
                                                             ]
@@ -959,7 +959,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Meroitic Hieroglyphs"
+                                                                        _("Meroitic_Hieroglyphs")
                                                                     ]
                                                                 ]
                                                             ]
@@ -974,7 +974,7 @@ export default function (_) {
                                                 "title": "07C0-07FF"
                                             },
                                             [
-                                                "N'Ko"
+                                                _("N_Ko")
                                             ]
                                         ],
                                         [
@@ -983,7 +983,7 @@ export default function (_) {
                                                 "title": "10480-104AF"
                                             },
                                             [
-                                                "Osmanya"
+                                                _("Osmanya")
                                             ]
                                         ],
                                         [
@@ -992,7 +992,7 @@ export default function (_) {
                                                 "title": "2D30-2D7F"
                                             },
                                             [
-                                                "Tifinagh"
+                                                _("Tifinagh")
                                             ]
                                         ],
                                         [
@@ -1001,7 +1001,7 @@ export default function (_) {
                                                 "title": "A500-A63F"
                                             },
                                             [
-                                                "Vai"
+                                                _("Vai")
                                             ]
                                         ]
                                     ]
@@ -1014,7 +1014,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Middle Eastern Scripts"
+                                        _("Middle_Eastern_Scripts")
                                     ]
                                 ],
                                 [
@@ -1026,7 +1026,7 @@ export default function (_) {
                                                 "title": "14400-1467F"
                                             },
                                             [
-                                                "Anatolian Hieroglyphs"
+                                                _("Anatolian_Hieroglyphs")
                                             ]
                                         ],
                                         [
@@ -1035,7 +1035,7 @@ export default function (_) {
                                                 "title": "0600-06FF"
                                             },
                                             [
-                                                "Arabic",
+                                                _("Arabic"),
                                                 [
                                                     "ul",
                                                     [
@@ -1048,7 +1048,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Arabic Supplement"
+                                                                        _("Arabic_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1062,7 +1062,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Arabic Extended-A"
+                                                                        _("Arabic_Extended_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1076,7 +1076,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Arabic Presentation Forms-A"
+                                                                        _("Arabic_Presentation_Forms_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1090,7 +1090,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Arabic Presentation Forms-B"
+                                                                        _("Arabic_Presentation_Forms_B")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1105,7 +1105,7 @@ export default function (_) {
                                                 "title": "10840-1085F"
                                             },
                                             [
-                                                " Aramaic, Imperial"
+                                                _("Aramaic__Imperial")
                                             ]
                                         ],
                                         [
@@ -1114,7 +1114,7 @@ export default function (_) {
                                                 "title": "10B00-10B3F"
                                             },
                                             [
-                                                "Avestan"
+                                                _("Avestan")
                                             ]
                                         ],
                                         [
@@ -1123,7 +1123,7 @@ export default function (_) {
                                                 "title": "12000-123FF"
                                             },
                                             [
-                                                "Cuneiform (1MB)",
+                                                _("Cuneiform"),
                                                 [
                                                     "ul",
                                                     [
@@ -1136,7 +1136,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Cuneiform Numbers and Punctuation"
+                                                                        _("Cuneiform_Numbers_and_Punctuation")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1150,7 +1150,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Early Dynastic Cuneiform"
+                                                                        _("Early_Dynastic_Cuneiform")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1164,7 +1164,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Old Persian"
+                                                                        _("Old_Persian")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1178,7 +1178,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ugaritic"
+                                                                        _("Ugaritic")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1193,7 +1193,7 @@ export default function (_) {
                                                 "title": "108E0-108FF"
                                             },
                                             [
-                                                "Hatran"
+                                                _("Hatran")
                                             ]
                                         ],
                                         [
@@ -1202,7 +1202,7 @@ export default function (_) {
                                                 "title": "0590-05FF"
                                             },
                                             [
-                                                "Hebrew",
+                                                _("Hebrew"),
                                                 [
                                                     "ul",
                                                     [
@@ -1215,7 +1215,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Hebrew Presentation Forms"
+                                                                        _("Hebrew_Presentation_Forms")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1230,7 +1230,7 @@ export default function (_) {
                                                 "title": "0840-085F"
                                             },
                                             [
-                                                "Mandaic"
+                                                _("Mandaic")
                                             ]
                                         ],
                                         [
@@ -1239,7 +1239,7 @@ export default function (_) {
                                                 "title": "10880-108AF"
                                             },
                                             [
-                                                "Nabataean"
+                                                _("Nabataean")
                                             ]
                                         ],
                                         [
@@ -1248,7 +1248,7 @@ export default function (_) {
                                                 "title": "10A80-10A9F"
                                             },
                                             [
-                                                "Old North Arabian"
+                                                _("Old_North_Arabian")
                                             ]
                                         ],
                                         [
@@ -1257,7 +1257,7 @@ export default function (_) {
                                                 "title": "10A60-10A7F"
                                             },
                                             [
-                                                "Old South Arabian"
+                                                _("Old_South_Arabian")
                                             ]
                                         ],
                                         [
@@ -1266,7 +1266,7 @@ export default function (_) {
                                                 "title": "10B60-10B7F"
                                             },
                                             [
-                                                " Pahlavi, Inscriptional"
+                                                _("Pahlavi__Inscriptional")
                                             ]
                                         ],
                                         [
@@ -1275,7 +1275,7 @@ export default function (_) {
                                                 "title": "10B80-10BAF"
                                             },
                                             [
-                                                " Pahlavi, Psalter"
+                                                _("Pahlavi__Psalter")
                                             ]
                                         ],
                                         [
@@ -1284,7 +1284,7 @@ export default function (_) {
                                                 "title": "10860-1087F"
                                             },
                                             [
-                                                " Palmyrene"
+                                                _("Palmyrene")
                                             ]
                                         ],
                                         [
@@ -1293,7 +1293,7 @@ export default function (_) {
                                                 "title": "10B40-10B5F"
                                             },
                                             [
-                                                " Parthian, Inscriptional"
+                                                _("Parthian__Inscriptional")
                                             ]
                                         ],
                                         [
@@ -1302,7 +1302,7 @@ export default function (_) {
                                                 "title": "10900-1091F"
                                             },
                                             [
-                                                "Phoenician"
+                                                _("Phoenician")
                                             ]
                                         ],
                                         [
@@ -1311,7 +1311,7 @@ export default function (_) {
                                                 "title": "0800-083F"
                                             },
                                             [
-                                                "Samaritan"
+                                                _("Samaritan")
                                             ]
                                         ],
                                         [
@@ -1320,7 +1320,7 @@ export default function (_) {
                                                 "title": "0700-074F"
                                             },
                                             [
-                                                "Syriac",
+                                                _("Syriac"),
                                                 [
                                                     "ul",
                                                     [
@@ -1333,7 +1333,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Syriac Supplement"
+                                                                        _("Syriac_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1352,7 +1352,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Central Asian Scripts"
+                                        _("Central_Asian_Scripts")
                                     ]
                                 ],
                                 [
@@ -1364,7 +1364,7 @@ export default function (_) {
                                                 "title": "10AC0-10AFF"
                                             },
                                             [
-                                                "Manichaean"
+                                                _("Manichaean")
                                             ]
                                         ],
                                         [
@@ -1373,7 +1373,7 @@ export default function (_) {
                                                 "title": "11C70-11CBF"
                                             },
                                             [
-                                                "Marchen"
+                                                _("Marchen")
                                             ]
                                         ],
                                         [
@@ -1382,7 +1382,7 @@ export default function (_) {
                                                 "title": "1800-18AF"
                                             },
                                             [
-                                                "Mongolian",
+                                                _("Mongolian"),
                                                 [
                                                     "ul",
                                                     [
@@ -1395,7 +1395,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Mongolian Supplement"
+                                                                        _("Mongolian_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1410,7 +1410,7 @@ export default function (_) {
                                                 "title": "10F00-10F2F"
                                             },
                                             [
-                                                "Old Sogdian"
+                                                _("Old_Sogdian")
                                             ]
                                         ],
                                         [
@@ -1419,7 +1419,7 @@ export default function (_) {
                                                 "title": "10C00-10C4F"
                                             },
                                             [
-                                                "Old Turkic"
+                                                _("Old_Turkic")
                                             ]
                                         ],
                                         [
@@ -1428,7 +1428,7 @@ export default function (_) {
                                                 "title": "A840-A87F"
                                             },
                                             [
-                                                "Phags-Pa"
+                                                _("Phags_Pa")
                                             ]
                                         ],
                                         [
@@ -1437,7 +1437,7 @@ export default function (_) {
                                                 "title": "10F30-10F6F"
                                             },
                                             [
-                                                "Sogdian"
+                                                _("Sogdian")
                                             ]
                                         ],
                                         [
@@ -1446,7 +1446,7 @@ export default function (_) {
                                                 "title": "11A50–11AAF"
                                             },
                                             [
-                                                "Soyombo"
+                                                _("Soyombo")
                                             ]
                                         ],
                                         [
@@ -1455,7 +1455,7 @@ export default function (_) {
                                                 "title": "0F00-0FFF"
                                             },
                                             [
-                                                "Tibetan"
+                                                _("Tibetan")
                                             ]
                                         ],
                                         [
@@ -1464,7 +1464,7 @@ export default function (_) {
                                                 "title": "11A00–11A4F"
                                             },
                                             [
-                                                "Zanabazar Square"
+                                                _("Zanabazar_Square")
                                             ]
                                         ]
                                     ]
@@ -1477,7 +1477,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "South Asian Scripts"
+                                        _("South_Asian_Scripts")
                                     ]
                                 ],
                                 [
@@ -1489,7 +1489,7 @@ export default function (_) {
                                                 "title": "11700-1173F"
                                             },
                                             [
-                                                "Ahom"
+                                                _("Ahom")
                                             ]
                                         ],
                                         [
@@ -1498,7 +1498,7 @@ export default function (_) {
                                                 "title": "0980-09FF"
                                             },
                                             [
-                                                "Bengali and Assamese"
+                                                _("Bengali_and_Assamese")
                                             ]
                                         ],
                                         [
@@ -1507,7 +1507,7 @@ export default function (_) {
                                                 "title": "11C00-11C6F"
                                             },
                                             [
-                                                "Bhaiksuki"
+                                                _("Bhaiksuki")
                                             ]
                                         ],
                                         [
@@ -1516,7 +1516,7 @@ export default function (_) {
                                                 "title": "11000-1107F"
                                             },
                                             [
-                                                "Brahmi"
+                                                _("Brahmi")
                                             ]
                                         ],
                                         [
@@ -1525,7 +1525,7 @@ export default function (_) {
                                                 "title": "11100-1114F"
                                             },
                                             [
-                                                "Chakma"
+                                                _("Chakma")
                                             ]
                                         ],
                                         [
@@ -1534,7 +1534,7 @@ export default function (_) {
                                                 "title": "0900-097F"
                                             },
                                             [
-                                                "Devanagari",
+                                                _("Devanagari"),
                                                 [
                                                     "ul",
                                                     [
@@ -1547,7 +1547,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Devanagari Extended"
+                                                                        _("Devanagari_Extended")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1562,7 +1562,7 @@ export default function (_) {
                                                 "title": "11800-1184F"
                                             },
                                             [
-                                                "Dogra"
+                                                _("Dogra")
                                             ]
                                         ],
                                         [
@@ -1571,7 +1571,7 @@ export default function (_) {
                                                 "title": "11300-1137F"
                                             },
                                             [
-                                                "Grantha"
+                                                _("Grantha")
                                             ]
                                         ],
                                         [
@@ -1580,7 +1580,7 @@ export default function (_) {
                                                 "title": "0A80-0AFF"
                                             },
                                             [
-                                                "Gujarati"
+                                                _("Gujarati")
                                             ]
                                         ],
                                         [
@@ -1589,7 +1589,7 @@ export default function (_) {
                                                 "title": "11D60-11DAF"
                                             },
                                             [
-                                                "Gunjala Gondi"
+                                                _("Gunjala_Gondi")
                                             ]
                                         ],
                                         [
@@ -1598,7 +1598,7 @@ export default function (_) {
                                                 "title": "0A00-0A7F"
                                             },
                                             [
-                                                "Gurmukhi"
+                                                _("Gurmukhi")
                                             ]
                                         ],
                                         [
@@ -1607,7 +1607,7 @@ export default function (_) {
                                                 "title": "11080-110CF"
                                             },
                                             [
-                                                "Kaithi"
+                                                _("Kaithi")
                                             ]
                                         ],
                                         [
@@ -1616,7 +1616,7 @@ export default function (_) {
                                                 "title": "0C80-0CFF"
                                             },
                                             [
-                                                "Kannada"
+                                                _("Kannada")
                                             ]
                                         ],
                                         [
@@ -1625,7 +1625,7 @@ export default function (_) {
                                                 "title": "10A00-10A5F"
                                             },
                                             [
-                                                "Kharoshthi"
+                                                _("Kharoshthi")
                                             ]
                                         ],
                                         [
@@ -1634,7 +1634,7 @@ export default function (_) {
                                                 "title": "11200-1124F"
                                             },
                                             [
-                                                "Khojki"
+                                                _("Khojki")
                                             ]
                                         ],
                                         [
@@ -1643,7 +1643,7 @@ export default function (_) {
                                                 "title": "112B0-112FF"
                                             },
                                             [
-                                                "Khudawadi"
+                                                _("Khudawadi")
                                             ]
                                         ],
                                         [
@@ -1652,7 +1652,7 @@ export default function (_) {
                                                 "title": "1C00-1C4F"
                                             },
                                             [
-                                                "Lepcha"
+                                                _("Lepcha")
                                             ]
                                         ],
                                         [
@@ -1661,7 +1661,7 @@ export default function (_) {
                                                 "title": "1900-194F"
                                             },
                                             [
-                                                "Limbu"
+                                                _("Limbu")
                                             ]
                                         ],
                                         [
@@ -1670,7 +1670,7 @@ export default function (_) {
                                                 "title": "11150-1117F"
                                             },
                                             [
-                                                "Mahajani"
+                                                _("Mahajani")
                                             ]
                                         ],
                                         [
@@ -1679,7 +1679,7 @@ export default function (_) {
                                                 "title": "0D00-0D7F"
                                             },
                                             [
-                                                "Malayalam"
+                                                _("Malayalam")
                                             ]
                                         ],
                                         [
@@ -1688,7 +1688,7 @@ export default function (_) {
                                                 "title": "11D00–11D5F"
                                             },
                                             [
-                                                "Masaram Gondi"
+                                                _("Masaram_Gondi")
                                             ]
                                         ],
                                         [
@@ -1697,7 +1697,7 @@ export default function (_) {
                                                 "title": "ABC0-ABFF"
                                             },
                                             [
-                                                "Meetei Mayek",
+                                                _("Meetei_Mayek"),
                                                 [
                                                     "ul",
                                                     [
@@ -1710,7 +1710,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Meetei Mayek Extensions"
+                                                                        _("Meetei_Mayek_Extensions")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1725,7 +1725,7 @@ export default function (_) {
                                                 "title": "11600-1165F"
                                             },
                                             [
-                                                "Modi"
+                                                _("Modi")
                                             ]
                                         ],
                                         [
@@ -1734,7 +1734,7 @@ export default function (_) {
                                                 "title": "16A40-16A6F"
                                             },
                                             [
-                                                "Mro"
+                                                _("Mro")
                                             ]
                                         ],
                                         [
@@ -1743,7 +1743,7 @@ export default function (_) {
                                                 "title": "11280-112AF"
                                             },
                                             [
-                                                "Multani"
+                                                _("Multani")
                                             ]
                                         ],
                                         [
@@ -1752,7 +1752,7 @@ export default function (_) {
                                                 "title": "11400-1147F"
                                             },
                                             [
-                                                "Newa"
+                                                _("Newa")
                                             ]
                                         ],
                                         [
@@ -1761,7 +1761,7 @@ export default function (_) {
                                                 "title": "1C50-1C7F"
                                             },
                                             [
-                                                "Ol Chiki"
+                                                _("Ol_Chiki")
                                             ]
                                         ],
                                         [
@@ -1770,7 +1770,7 @@ export default function (_) {
                                                 "title": "0B00-0B7F"
                                             },
                                             [
-                                                "Oriya (Odia)"
+                                                _("Oriya__Odia_")
                                             ]
                                         ],
                                         [
@@ -1779,7 +1779,7 @@ export default function (_) {
                                                 "title": "A880-A8DF"
                                             },
                                             [
-                                                "Saurashtra"
+                                                _("Saurashtra")
                                             ]
                                         ],
                                         [
@@ -1788,7 +1788,7 @@ export default function (_) {
                                                 "title": "11180-111DF"
                                             },
                                             [
-                                                "Sharada"
+                                                _("Sharada")
                                             ]
                                         ],
                                         [
@@ -1797,7 +1797,7 @@ export default function (_) {
                                                 "title": "11580-115FF"
                                             },
                                             [
-                                                "Siddham"
+                                                _("Siddham")
                                             ]
                                         ],
                                         [
@@ -1806,7 +1806,7 @@ export default function (_) {
                                                 "title": "0D80-0DFF"
                                             },
                                             [
-                                                "Sinhala",
+                                                _("Sinhala"),
                                                 [
                                                     "ul",
                                                     [
@@ -1819,7 +1819,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Sinhala Archaic Numbers"
+                                                                        _("Sinhala_Archaic_Numbers")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1834,7 +1834,7 @@ export default function (_) {
                                                 "title": "110D0-110FF"
                                             },
                                             [
-                                                "Sora Sompeng"
+                                                _("Sora_Sompeng")
                                             ]
                                         ],
                                         [
@@ -1843,7 +1843,7 @@ export default function (_) {
                                                 "title": "A800-A82F"
                                             },
                                             [
-                                                "Syloti Nagri"
+                                                _("Syloti_Nagri")
                                             ]
                                         ],
                                         [
@@ -1852,7 +1852,7 @@ export default function (_) {
                                                 "title": "11680-116CF"
                                             },
                                             [
-                                                "Takri"
+                                                _("Takri")
                                             ]
                                         ],
                                         [
@@ -1861,7 +1861,7 @@ export default function (_) {
                                                 "title": "0B80-0BFF"
                                             },
                                             [
-                                                "Tamil"
+                                                _("Tamil")
                                             ]
                                         ],
                                         [
@@ -1870,7 +1870,7 @@ export default function (_) {
                                                 "title": "0C00-0C7F"
                                             },
                                             [
-                                                "Telugu"
+                                                _("Telugu")
                                             ]
                                         ],
                                         [
@@ -1879,7 +1879,7 @@ export default function (_) {
                                                 "title": "0780-07BF"
                                             },
                                             [
-                                                "Thaana"
+                                                _("Thaana")
                                             ]
                                         ],
                                         [
@@ -1888,7 +1888,7 @@ export default function (_) {
                                                 "title": "11480-114DF"
                                             },
                                             [
-                                                "Tirhuta"
+                                                _("Tirhuta")
                                             ]
                                         ],
                                         [
@@ -1897,7 +1897,7 @@ export default function (_) {
                                                 "title": "1CD0-1CFF"
                                             },
                                             [
-                                                "Vedic Extensions"
+                                                _("Vedic_Extensions")
                                             ]
                                         ],
                                         [
@@ -1906,7 +1906,7 @@ export default function (_) {
                                                 "title": "118A0-118FF"
                                             },
                                             [
-                                                "Warang Citi"
+                                                _("Warang_Citi")
                                             ]
                                         ]
                                     ]
@@ -1919,7 +1919,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Southeast Asian Scripts"
+                                        _("Southeast_Asian_Scripts")
                                     ]
                                 ],
                                 [
@@ -1931,7 +1931,7 @@ export default function (_) {
                                                 "title": "AA00-AA5F"
                                             },
                                             [
-                                                "Cham"
+                                                _("Cham")
                                             ]
                                         ],
                                         [
@@ -1940,7 +1940,7 @@ export default function (_) {
                                                 "title": "10D00-10D3F"
                                             },
                                             [
-                                                "Hanifi Rohingya"
+                                                _("Hanifi_Rohingya")
                                             ]
                                         ],
                                         [
@@ -1949,7 +1949,7 @@ export default function (_) {
                                                 "title": "A900-A92F"
                                             },
                                             [
-                                                "Kayah Li"
+                                                _("Kayah_Li")
                                             ]
                                         ],
                                         [
@@ -1958,7 +1958,7 @@ export default function (_) {
                                                 "title": "1780-17FF"
                                             },
                                             [
-                                                "Khmer",
+                                                _("Khmer"),
                                                 [
                                                     "ul",
                                                     [
@@ -1971,7 +1971,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Khmer Symbols"
+                                                                        _("Khmer_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1986,7 +1986,7 @@ export default function (_) {
                                                 "title": "0E80-0EFF"
                                             },
                                             [
-                                                "Lao"
+                                                _("Lao")
                                             ]
                                         ],
                                         [
@@ -1995,7 +1995,7 @@ export default function (_) {
                                                 "title": "1000-109F"
                                             },
                                             [
-                                                "Myanmar",
+                                                _("Myanmar"),
                                                 [
                                                     "ul",
                                                     [
@@ -2008,7 +2008,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Myanmar Extended-A"
+                                                                        _("Myanmar_Extended_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2022,7 +2022,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Myanmar Extended-B"
+                                                                        _("Myanmar_Extended_B")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2037,7 +2037,7 @@ export default function (_) {
                                                 "title": "1980-19DF"
                                             },
                                             [
-                                                "New Tai Lue"
+                                                _("New_Tai_Lue")
                                             ]
                                         ],
                                         [
@@ -2046,7 +2046,7 @@ export default function (_) {
                                                 "title": "16B00-16B8F"
                                             },
                                             [
-                                                "Pahawh Hmong"
+                                                _("Pahawh_Hmong")
                                             ]
                                         ],
                                         [
@@ -2055,7 +2055,7 @@ export default function (_) {
                                                 "title": "11AC0-11AFF"
                                             },
                                             [
-                                                "Pau Cin Hau"
+                                                _("Pau_Cin_Hau")
                                             ]
                                         ],
                                         [
@@ -2064,7 +2064,7 @@ export default function (_) {
                                                 "title": "1950-197F"
                                             },
                                             [
-                                                "Tai Le"
+                                                _("Tai_Le")
                                             ]
                                         ],
                                         [
@@ -2073,7 +2073,7 @@ export default function (_) {
                                                 "title": "1A20-1AAF"
                                             },
                                             [
-                                                "Tai Tham"
+                                                _("Tai_Tham")
                                             ]
                                         ],
                                         [
@@ -2082,7 +2082,7 @@ export default function (_) {
                                                 "title": "AA80-AADF"
                                             },
                                             [
-                                                "Tai Viet"
+                                                _("Tai_Viet")
                                             ]
                                         ],
                                         [
@@ -2091,7 +2091,7 @@ export default function (_) {
                                                 "title": "0E00-0E7F"
                                             },
                                             [
-                                                "Thai"
+                                                _("Thai")
                                             ]
                                         ]
                                     ]
@@ -2104,7 +2104,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Indonesia & Oceania Scripts"
+                                        _("Indonesia___Oceania_Scripts")
                                     ]
                                 ],
                                 [
@@ -2116,7 +2116,7 @@ export default function (_) {
                                                 "title": "1B00-1B7F"
                                             },
                                             [
-                                                "Balinese"
+                                                _("Balinese")
                                             ]
                                         ],
                                         [
@@ -2125,7 +2125,7 @@ export default function (_) {
                                                 "title": "1BC0-1BFF"
                                             },
                                             [
-                                                "Batak"
+                                                _("Batak")
                                             ]
                                         ],
                                         [
@@ -2134,7 +2134,7 @@ export default function (_) {
                                                 "title": "1A00-1A1F"
                                             },
                                             [
-                                                "Buginese"
+                                                _("Buginese")
                                             ]
                                         ],
                                         [
@@ -2143,7 +2143,7 @@ export default function (_) {
                                                 "title": "1740-175F"
                                             },
                                             [
-                                                "Buhid"
+                                                _("Buhid")
                                             ]
                                         ],
                                         [
@@ -2152,7 +2152,7 @@ export default function (_) {
                                                 "title": "1720-173F"
                                             },
                                             [
-                                                "Hanunoo"
+                                                _("Hanunoo")
                                             ]
                                         ],
                                         [
@@ -2161,7 +2161,7 @@ export default function (_) {
                                                 "title": "A980-A9DF"
                                             },
                                             [
-                                                "Javanese"
+                                                _("Javanese")
                                             ]
                                         ],
                                         [
@@ -2170,7 +2170,7 @@ export default function (_) {
                                                 "title": "11EE0-11EFF"
                                             },
                                             [
-                                                "Makasar"
+                                                _("Makasar")
                                             ]
                                         ],
                                         [
@@ -2179,7 +2179,7 @@ export default function (_) {
                                                 "title": "A930-A95F"
                                             },
                                             [
-                                                "Rejang"
+                                                _("Rejang")
                                             ]
                                         ],
                                         [
@@ -2188,7 +2188,7 @@ export default function (_) {
                                                 "title": "A930-A95F"
                                             },
                                             [
-                                                "Sundanese",
+                                                _("Sundanese"),
                                                 [
                                                     "ul",
                                                     [
@@ -2201,7 +2201,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Sundanese Supplement"
+                                                                        _("Sundanese_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2216,7 +2216,7 @@ export default function (_) {
                                                 "title": "1700-171F"
                                             },
                                             [
-                                                "Tagalog"
+                                                _("Tagalog")
                                             ]
                                         ],
                                         [
@@ -2225,7 +2225,7 @@ export default function (_) {
                                                 "title": "1760-177F"
                                             },
                                             [
-                                                "Tagbanwa"
+                                                _("Tagbanwa")
                                             ]
                                         ]
                                     ]
@@ -2238,7 +2238,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "East Asian Scripts"
+                                        _("East_Asian_Scripts")
                                     ]
                                 ],
                                 [
@@ -2250,7 +2250,7 @@ export default function (_) {
                                                 "title": "3100-312F"
                                             },
                                             [
-                                                "Bopomofo",
+                                                _("Bopomofo"),
                                                 [
                                                     "ul",
                                                     [
@@ -2263,7 +2263,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Bopomofo Extended"
+                                                                        _("Bopomofo_Extended")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2278,7 +2278,7 @@ export default function (_) {
                                                 "title": "4E00-9FFF"
                                             },
                                             [
-                                                "CJK Unified Ideographs (Han) (35MB)",
+                                                _("CJK_Unified_Ideographs__Han_"),
                                                 [
                                                     "ul",
                                                     [
@@ -2291,7 +2291,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK  Extension-A (6MB)"
+                                                                        _("CJK_Extension_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2305,7 +2305,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK Extension B (40MB)"
+                                                                        _("CJK_Extension_B")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2319,7 +2319,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK Extension C (3MB)"
+                                                                        _("CJK_Extension_C")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2333,7 +2333,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK Extension D"
+                                                                        _("CJK_Extension_D")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2347,7 +2347,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK Extension E (3.5MB)"
+                                                                        _("CJK_Extension_E")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2361,7 +2361,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK Extension F (4MB)"
+                                                                        _("CJK_Extension_F")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2375,7 +2375,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "(see also Unihan Database)"
+                                                                        _("_see_also_Unihan_Database_")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2390,7 +2390,7 @@ export default function (_) {
                                                 "title": "F900-FAFF"
                                             },
                                             [
-                                                "CJK Compatibility Ideographs",
+                                                _("CJK_Compatibility_Ideographs"),
                                                 [
                                                     "ul",
                                                     [
@@ -2403,7 +2403,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK Compatibility Ideographs Supplement"
+                                                                        _("CJK_Compatibility_Ideographs_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2418,7 +2418,7 @@ export default function (_) {
                                                 "title": "2F00-2FDF"
                                             },
                                             [
-                                                " CJK Radicals / KangXi Radicals",
+                                                _("CJK_Radicals___KangXi_Radicals"),
                                                 [
                                                     "ul",
                                                     [
@@ -2431,7 +2431,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK Radicals Supplement"
+                                                                        _("CJK_Radicals_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2445,7 +2445,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "CJK Strokes"
+                                                                        _("CJK_Strokes")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2459,7 +2459,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ideographic Description Characters"
+                                                                        _("Ideographic_Description_Characters")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2474,7 +2474,7 @@ export default function (_) {
                                                 "title": "1100-11FF"
                                             },
                                             [
-                                                "Hangul Jamo",
+                                                _("Hangul_Jamo"),
                                                 [
                                                     "ul",
                                                     [
@@ -2487,7 +2487,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Hangul Jamo Extended-A"
+                                                                        _("Hangul_Jamo_Extended_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2501,7 +2501,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Hangul Jamo Extended-B"
+                                                                        _("Hangul_Jamo_Extended_B")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2515,7 +2515,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Hangul Compatibility Jamo"
+                                                                        _("Hangul_Compatibility_Jamo")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2529,7 +2529,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Halfwidth Jamo"
+                                                                        _("Halfwidth_Jamo")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2544,7 +2544,7 @@ export default function (_) {
                                                 "title": "AC00-D7AF"
                                             },
                                             [
-                                                "Hangul Syllables"
+                                                _("Hangul_Syllables")
                                             ]
                                         ],
                                         [
@@ -2553,7 +2553,7 @@ export default function (_) {
                                                 "title": "3040-309F"
                                             },
                                             [
-                                                "Hiragana"
+                                                _("Hiragana")
                                             ]
                                         ],
                                         [
@@ -2562,7 +2562,7 @@ export default function (_) {
                                                 "title": "1B100–1B12F"
                                             },
                                             [
-                                                "Kana Extended-A"
+                                                _("Kana_Extended_A")
                                             ]
                                         ],
                                         [
@@ -2571,7 +2571,7 @@ export default function (_) {
                                                 "title": "1B000-1B0FF"
                                             },
                                             [
-                                                "Kana Supplement"
+                                                _("Kana_Supplement")
                                             ]
                                         ],
                                         [
@@ -2580,7 +2580,7 @@ export default function (_) {
                                                 "title": "3190-319F"
                                             },
                                             [
-                                                "Kanbun"
+                                                _("Kanbun")
                                             ]
                                         ],
                                         [
@@ -2589,7 +2589,7 @@ export default function (_) {
                                                 "title": "30A0-30FF"
                                             },
                                             [
-                                                "Katakana",
+                                                _("Katakana"),
                                                 [
                                                     "ul",
                                                     [
@@ -2602,7 +2602,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Katakana Phonetic Extensions"
+                                                                        _("Katakana_Phonetic_Extensions")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2616,7 +2616,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Halfwidth Katakana"
+                                                                        _("Halfwidth_Katakana")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2631,7 +2631,7 @@ export default function (_) {
                                                 "title": "A4D0-A4FF"
                                             },
                                             [
-                                                "Lisu"
+                                                _("Lisu")
                                             ]
                                         ],
                                         [
@@ -2640,7 +2640,7 @@ export default function (_) {
                                                 "title": "16F00-16F9F"
                                             },
                                             [
-                                                "Miao"
+                                                _("Miao")
                                             ]
                                         ],
                                         [
@@ -2649,7 +2649,7 @@ export default function (_) {
                                                 "title": "1B170–1B2FF"
                                             },
                                             [
-                                                "Nushu"
+                                                _("Nushu")
                                             ]
                                         ],
                                         [
@@ -2658,7 +2658,7 @@ export default function (_) {
                                                 "title": "17000-187FF"
                                             },
                                             [
-                                                "Tangut",
+                                                _("Tangut"),
                                                 [
                                                     "ul",
                                                     [
@@ -2671,7 +2671,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Tangut Components"
+                                                                        _("Tangut_Components")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2686,7 +2686,7 @@ export default function (_) {
                                                 "title": null
                                             },
                                             [
-                                                "Yi",
+                                                _("Yi"),
                                                 [
                                                     "ul",
                                                     [
@@ -2699,7 +2699,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Yi Syllables"
+                                                                        _("Yi_Syllables")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2713,7 +2713,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Yi Radicals"
+                                                                        _("Yi_Radicals")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2732,7 +2732,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "American Scripts"
+                                        _("American_Scripts")
                                     ]
                                 ],
                                 [
@@ -2744,7 +2744,7 @@ export default function (_) {
                                                 "title": "13A0-13FF"
                                             },
                                             [
-                                                "Cherokee",
+                                                _("Cherokee"),
                                                 [
                                                     "ul",
                                                     [
@@ -2757,7 +2757,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Cherokee Supplement"
+                                                                        _("Cherokee_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2772,7 +2772,7 @@ export default function (_) {
                                                 "title": "10400-1044F"
                                             },
                                             [
-                                                "Deseret"
+                                                _("Deseret")
                                             ]
                                         ],
                                         [
@@ -2781,7 +2781,7 @@ export default function (_) {
                                                 "title": "104B0-104FF"
                                             },
                                             [
-                                                "Osage"
+                                                _("Osage")
                                             ]
                                         ],
                                         [
@@ -2790,7 +2790,7 @@ export default function (_) {
                                                 "title": "1400-167F"
                                             },
                                             [
-                                                "Unified Canadian Aboriginal Syllabics",
+                                                _("Unified_Canadian_Aboriginal_Syllabics"),
                                                 [
                                                     "ul",
                                                     [
@@ -2803,7 +2803,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "UCAS Extended"
+                                                                        _("UCAS_Extended")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2822,7 +2822,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Other"
+                                        _("Other")
                                     ]
                                 ],
                                 [
@@ -2837,7 +2837,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "Alphabetic Presentation Forms"
+                                                        _("Alphabetic_Presentation_Forms")
                                                     ]
                                                 ]
                                             ]
@@ -2851,7 +2851,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "ASCII Characters"
+                                                        _("ASCII_Characters")
                                                     ]
                                                 ]
                                             ]
@@ -2865,7 +2865,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "Halfwidth and Fullwidth Forms"
+                                                        _("Halfwidth_and_Fullwidth_Forms")
                                                     ]
                                                 ]
                                             ]
@@ -2891,7 +2891,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Notational Systems"
+                                        _("Notational_Systems")
                                     ]
                                 ],
                                 [
@@ -2903,7 +2903,7 @@ export default function (_) {
                                                 "title": "2800-28FF"
                                             },
                                             [
-                                                "Braille Patterns"
+                                                _("Braille_Patterns")
                                             ]
                                         ],
                                         [
@@ -2912,7 +2912,7 @@ export default function (_) {
                                                 "title": "1D100-1D1FF"
                                             },
                                             [
-                                                "Musical Symbols",
+                                                _("Musical_Symbols"),
                                                 [
                                                     "ul",
                                                     [
@@ -2925,7 +2925,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ancient Greek Musical Notation"
+                                                                        _("Ancient_Greek_Musical_Notation")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2939,7 +2939,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Byzantine Musical Symbols"
+                                                                        _("Byzantine_Musical_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2954,7 +2954,7 @@ export default function (_) {
                                                 "title": "1BC00-1BC9F"
                                             },
                                             [
-                                                "Duployan",
+                                                _("Duployan"),
                                                 [
                                                     "ul",
                                                     [
@@ -2967,7 +2967,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Shorthand Format Controls"
+                                                                        _("Shorthand_Format_Controls")
                                                                     ]
                                                                 ]
                                                             ]
@@ -2982,7 +2982,7 @@ export default function (_) {
                                                 "title": "1D800-1DAAF"
                                             },
                                             [
-                                                "Sutton SignWriting"
+                                                _("Sutton_SignWriting")
                                             ]
                                         ]
                                     ]
@@ -2995,7 +2995,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Punctuation"
+                                        _("Punctuation")
                                     ]
                                 ],
                                 [
@@ -3007,7 +3007,7 @@ export default function (_) {
                                                 "title": "2000-206F"
                                             },
                                             [
-                                                "General Punctuation",
+                                                _("General_Punctuation"),
                                                 [
                                                     "ul",
                                                     [
@@ -3020,7 +3020,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "ASCII Punctuation"
+                                                                        _("ASCII_Punctuation")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3034,7 +3034,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Latin-1 Punctuation"
+                                                                        _("Latin_1_Punctuation")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3048,7 +3048,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Supplemental Punctuation"
+                                                                        _("Supplemental_Punctuation")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3063,7 +3063,7 @@ export default function (_) {
                                                 "title": "3000-303F"
                                             },
                                             [
-                                                "CJK Symbols and Punctuation",
+                                                _("CJK_Symbols_and_Punctuation"),
                                                 [
                                                     "ul",
                                                     [
@@ -3076,7 +3076,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ideographic Symbols and Punctuation"
+                                                                        _("Ideographic_Symbols_and_Punctuation")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3091,7 +3091,7 @@ export default function (_) {
                                                 "title": "FE30-FE4F"
                                             },
                                             [
-                                                "CJK Compatibility Forms",
+                                                _("CJK_Compatibility_Forms"),
                                                 [
                                                     "ul",
                                                     [
@@ -3104,7 +3104,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Halfwidth and Fullwidth Forms"
+                                                                        _("Halfwidth_and_Fullwidth_Forms")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3118,7 +3118,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Small Form Variants"
+                                                                        _("Small_Form_Variants")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3132,7 +3132,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Vertical Forms"
+                                                                        _("Vertical_Forms")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3151,7 +3151,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Alphanumeric Symbols"
+                                        _("Alphanumeric_Symbols")
                                     ]
                                 ],
                                 [
@@ -3163,7 +3163,7 @@ export default function (_) {
                                                 "title": "2100-214F"
                                             },
                                             [
-                                                "Letterlike Symbols",
+                                                _("Letterlike_Symbols"),
                                                 [
                                                     "ul",
                                                     [
@@ -3176,7 +3176,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Roman Symbols"
+                                                                        _("Roman_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3191,7 +3191,7 @@ export default function (_) {
                                                 "title": "1D400-1D7FF"
                                             },
                                             [
-                                                "Mathematical Alphanumeric Symbols"
+                                                _("Mathematical_Alphanumeric_Symbols")
                                             ]
                                         ],
                                         [
@@ -3200,7 +3200,7 @@ export default function (_) {
                                                 "title": "1EE00-1EEFF"
                                             },
                                             [
-                                                "Arabic Mathematical Alphabetic Symbols"
+                                                _("Arabic_Mathematical_Alphabetic_Symbols")
                                             ]
                                         ],
                                         [
@@ -3209,7 +3209,7 @@ export default function (_) {
                                                 "title": "2460-24FF"
                                             },
                                             [
-                                                "Enclosed Alphanumerics",
+                                                _("Enclosed_Alphanumerics"),
                                                 [
                                                     "ul",
                                                     [
@@ -3222,7 +3222,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Enclosed Alphanumeric Supplement"
+                                                                        _("Enclosed_Alphanumeric_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3237,7 +3237,7 @@ export default function (_) {
                                                 "title": "3200-32FF"
                                             },
                                             [
-                                                "Enclosed CJK Letters and Months",
+                                                _("Enclosed_CJK_Letters_and_Months"),
                                                 [
                                                     "ul",
                                                     [
@@ -3250,7 +3250,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Enclosed Ideographic Supplement"
+                                                                        _("Enclosed_Ideographic_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3265,7 +3265,7 @@ export default function (_) {
                                                 "title": "3300-33FF"
                                             },
                                             [
-                                                "CJK Compatibility",
+                                                _("CJK_Compatibility"),
                                                 [
                                                     "ul",
                                                     [
@@ -3278,7 +3278,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Additional Squared Symbols"
+                                                                        _("Additional_Squared_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3297,7 +3297,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Technical Symbols"
+                                        _("Technical_Symbols")
                                     ]
                                 ],
                                 [
@@ -3312,7 +3312,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "APL symbols"
+                                                        _("APL_symbols")
                                                     ]
                                                 ]
                                             ]
@@ -3326,7 +3326,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "Control Pictures"
+                                                        _("Control_Pictures")
                                                     ]
                                                 ]
                                             ]
@@ -3340,7 +3340,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "Miscellaneous Technical"
+                                                        _("Miscellaneous_Technical")
                                                     ]
                                                 ]
                                             ]
@@ -3354,7 +3354,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "Optical Character Recognition (OCR)"
+                                                        _("Optical_Character_Recognition__OCR_")
                                                     ]
                                                 ]
                                             ]
@@ -3369,7 +3369,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Numbers & Digits"
+                                        _("Numbers___Digits")
                                     ]
                                 ],
                                 [
@@ -3384,7 +3384,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "(see also specific scripts)"
+                                                        _("_see_also_specific_scripts_")
                                                     ]
                                                 ]
                                             ]
@@ -3395,7 +3395,7 @@ export default function (_) {
                                                 "title": "0030-0039"
                                             },
                                             [
-                                                "ASCII Digits",
+                                                _("ASCII_Digits"),
                                                 [
                                                     "ul",
                                                     [
@@ -3408,7 +3408,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Fullwidth ASCII Digits"
+                                                                        _("Fullwidth_ASCII_Digits")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3423,7 +3423,7 @@ export default function (_) {
                                                 "title": "A830-A83F"
                                             },
                                             [
-                                                "Common Indic Number Forms"
+                                                _("Common_Indic_Number_Forms")
                                             ]
                                         ],
                                         [
@@ -3432,7 +3432,7 @@ export default function (_) {
                                                 "title": "102E0-102FF"
                                             },
                                             [
-                                                "Coptic Epact Numbers"
+                                                _("Coptic_Epact_Numbers")
                                             ]
                                         ],
                                         [
@@ -3441,7 +3441,7 @@ export default function (_) {
                                                 "title": "1D360-1D37F"
                                             },
                                             [
-                                                "Counting Rod Numerals"
+                                                _("Counting_Rod_Numerals")
                                             ]
                                         ],
                                         [
@@ -3450,7 +3450,7 @@ export default function (_) {
                                                 "title": "12400-1247F"
                                             },
                                             [
-                                                "Cuneiform Numbers and Punctuation"
+                                                _("Cuneiform_Numbers_and_Punctuation")
                                             ]
                                         ],
                                         [
@@ -3459,7 +3459,7 @@ export default function (_) {
                                                 "title": "1EC70-1ECBF"
                                             },
                                             [
-                                                "Indic Siyaq Numbers"
+                                                _("Indic_Siyaq_Numbers")
                                             ]
                                         ],
                                         [
@@ -3468,7 +3468,7 @@ export default function (_) {
                                                 "title": "1D2E0-1D2FF"
                                             },
                                             [
-                                                "Mayan Numerals"
+                                                _("Mayan_Numerals")
                                             ]
                                         ],
                                         [
@@ -3477,7 +3477,7 @@ export default function (_) {
                                                 "title": "2150-218F"
                                             },
                                             [
-                                                "Number Forms"
+                                                _("Number_Forms")
                                             ]
                                         ],
                                         [
@@ -3486,7 +3486,7 @@ export default function (_) {
                                                 "title": "10E60-10E7F"
                                             },
                                             [
-                                                "Rumi Numeral Symbols"
+                                                _("Rumi_Numeral_Symbols")
                                             ]
                                         ],
                                         [
@@ -3495,7 +3495,7 @@ export default function (_) {
                                                 "title": "111E0-111FF"
                                             },
                                             [
-                                                "Sinhala Archaic Numbers"
+                                                _("Sinhala_Archaic_Numbers")
                                             ]
                                         ],
                                         [
@@ -3504,7 +3504,7 @@ export default function (_) {
                                                 "title": "2070-209F"
                                             },
                                             [
-                                                "Super and Subscripts"
+                                                _("Super_and_Subscripts")
                                             ]
                                         ]
                                     ]
@@ -3517,7 +3517,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        " Mathematical Symbols"
+                                        _("Mathematical_Symbols")
                                     ]
                                 ],
                                 [
@@ -3529,7 +3529,7 @@ export default function (_) {
                                                 "title": "2190-21FF"
                                             },
                                             [
-                                                "Arrows",
+                                                _("Arrows"),
                                                 [
                                                     "ul",
                                                     [
@@ -3542,7 +3542,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Supplemental Arrows-A"
+                                                                        _("Supplemental_Arrows_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3556,7 +3556,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Supplemental Arrows-B"
+                                                                        _("Supplemental_Arrows_B")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3570,7 +3570,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Supplemental Arrows-C"
+                                                                        _("Supplemental_Arrows_C")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3584,7 +3584,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Additional Arrows"
+                                                                        _("Additional_Arrows")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3598,7 +3598,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Miscellaneous Symbols and Arrows"
+                                                                        _("Miscellaneous_Symbols_and_Arrows")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3613,7 +3613,7 @@ export default function (_) {
                                                 "title": "1D400-1D7FF"
                                             },
                                             [
-                                                "Mathematical Alphanumeric Symbols",
+                                                _("Mathematical_Alphanumeric_Symbols"),
                                                 [
                                                     "ul",
                                                     [
@@ -3626,7 +3626,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Arabic Mathematical Alphabetic Symbols"
+                                                                        _("Arabic_Mathematical_Alphabetic_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3640,7 +3640,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Letterlike Symbols"
+                                                                        _("Letterlike_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3655,7 +3655,7 @@ export default function (_) {
                                                 "title": "2200-22FF"
                                             },
                                             [
-                                                "Mathematical Operators",
+                                                _("Mathematical_Operators"),
                                                 [
                                                     "ul",
                                                     [
@@ -3668,7 +3668,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Basic operators: Plus, Factorial, Division, Multiplication"
+                                                                        _("Basic_operators__Plus__Factorial__Division__Multiplication")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3682,7 +3682,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Supplemental Mathematical Operators"
+                                                                        _("Supplemental_Mathematical_Operators")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3696,7 +3696,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Miscellaneous Mathematical Symbols-A"
+                                                                        _("Miscellaneous_Mathematical_Symbols_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3710,7 +3710,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Miscellaneous Mathematical Symbols-B"
+                                                                        _("Miscellaneous_Mathematical_Symbols_B")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3724,7 +3724,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Floors and Ceilings"
+                                                                        _("Floors_and_Ceilings")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3738,7 +3738,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Invisible Operators"
+                                                                        _("Invisible_Operators")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3753,7 +3753,7 @@ export default function (_) {
                                                 "title": "25A0-25FF"
                                             },
                                             [
-                                                "Geometric Shapes",
+                                                _("Geometric_Shapes"),
                                                 [
                                                     "ul",
                                                     [
@@ -3766,7 +3766,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Additional Shapes"
+                                                                        _("Additional_Shapes")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3780,7 +3780,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Box Drawing"
+                                                                        _("Box_Drawing")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3794,7 +3794,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Block Elements"
+                                                                        _("Block_Elements")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3808,7 +3808,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Geometric Shapes Extended"
+                                                                        _("Geometric_Shapes_Extended")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3827,7 +3827,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Emoji & Pictographs"
+                                        _("Emoji___Pictographs")
                                     ]
                                 ],
                                 [
@@ -3839,7 +3839,7 @@ export default function (_) {
                                                 "title": "2700-27BF"
                                             },
                                             [
-                                                "Dingbats",
+                                                _("Dingbats"),
                                                 [
                                                     "ul",
                                                     [
@@ -3852,7 +3852,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Ornamental Dingbats"
+                                                                        _("Ornamental_Dingbats")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3867,7 +3867,7 @@ export default function (_) {
                                                 "title": "1F600-1F64F"
                                             },
                                             [
-                                                "Emoticons"
+                                                _("Emoticons")
                                             ]
                                         ],
                                         [
@@ -3876,7 +3876,7 @@ export default function (_) {
                                                 "title": "2600-26FF"
                                             },
                                             [
-                                                "Miscellaneous Symbols"
+                                                _("Miscellaneous_Symbols")
                                             ]
                                         ],
                                         [
@@ -3885,7 +3885,7 @@ export default function (_) {
                                                 "title": "1F300-1F5FF"
                                             },
                                             [
-                                                "Miscellaneous Symbols And Pictographs"
+                                                _("Miscellaneous_Symbols_And_Pictographs")
                                             ]
                                         ],
                                         [
@@ -3894,7 +3894,7 @@ export default function (_) {
                                                 "title": "1F900-1F9FF"
                                             },
                                             [
-                                                "Supplemental Symbols and Pictographs"
+                                                _("Supplemental_Symbols_and_Pictographs")
                                             ]
                                         ],
                                         [
@@ -3903,7 +3903,7 @@ export default function (_) {
                                                 "title": "1F680-1F6FF"
                                             },
                                             [
-                                                "Transport and Map Symbols"
+                                                _("Transport_and_Map_Symbols")
                                             ]
                                         ]
                                     ]
@@ -3916,7 +3916,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Other Symbols"
+                                        _("Other_Symbols")
                                     ]
                                 ],
                                 [
@@ -3928,7 +3928,7 @@ export default function (_) {
                                                 "title": "1F700-1F77F"
                                             },
                                             [
-                                                "Alchemical Symbols"
+                                                _("Alchemical_Symbols")
                                             ]
                                         ],
                                         [
@@ -3937,7 +3937,7 @@ export default function (_) {
                                                 "title": "10190-101CF"
                                             },
                                             [
-                                                "Ancient Symbols"
+                                                _("Ancient_Symbols")
                                             ]
                                         ],
                                         [
@@ -3946,7 +3946,7 @@ export default function (_) {
                                                 "title": "20A0-20CF"
                                             },
                                             [
-                                                "Currency Symbols",
+                                                _("Currency_Symbols"),
                                                 [
                                                     "ul",
                                                     [
@@ -3959,7 +3959,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "(see also specific scripts)"
+                                                                        _("_see_also_specific_scripts_")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3973,7 +3973,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Dollar Sign, Euro Sign"
+                                                                        _("Dollar_Sign__Euro_Sign")
                                                                     ]
                                                                 ]
                                                             ]
@@ -3987,7 +3987,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Yen, Pound and Cent"
+                                                                        _("Yen__Pound_and_Cent")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4001,7 +4001,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Fullwidth Currency Symbols"
+                                                                        _("Fullwidth_Currency_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4015,7 +4015,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Rial Sign"
+                                                                        _("Rial_Sign")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4030,7 +4030,7 @@ export default function (_) {
                                                 "title": null
                                             },
                                             [
-                                                "Game Symbols",
+                                                _("Game_Symbols"),
                                                 [
                                                     "ul",
                                                     [
@@ -4043,7 +4043,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Chess, Checkers/Draughts"
+                                                                        _("Chess__Checkers_Draughts")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4057,7 +4057,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Chess Symbols"
+                                                                        _("Chess_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4071,7 +4071,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Domino Tiles"
+                                                                        _("Domino_Tiles")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4085,7 +4085,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Japanese Chess"
+                                                                        _("Japanese_Chess")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4099,7 +4099,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Mahjong Tiles"
+                                                                        _("Mahjong_Tiles")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4113,7 +4113,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Playing Cards"
+                                                                        _("Playing_Cards")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4127,7 +4127,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Card suits"
+                                                                        _("Card_suits")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4142,7 +4142,7 @@ export default function (_) {
                                                 "title": "2B00-2BFF"
                                             },
                                             [
-                                                "Miscellaneous Symbols and Arrows"
+                                                _("Miscellaneous_Symbols_and_Arrows")
                                             ]
                                         ],
                                         [
@@ -4151,7 +4151,7 @@ export default function (_) {
                                                 "title": null
                                             },
                                             [
-                                                "Yijing Symbols",
+                                                _("Yijing_Symbols"),
                                                 [
                                                     "ul",
                                                     [
@@ -4164,7 +4164,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Yijing Mono-, Di- and Trigrams"
+                                                                        _("Yijing_Mono___Di__and_Trigrams")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4178,7 +4178,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Yijing Hexagram Symbols"
+                                                                        _("Yijing_Hexagram_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4192,7 +4192,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Tai Xuan Jing Symbols"
+                                                                        _("Tai_Xuan_Jing_Symbols")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4211,7 +4211,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Specials"
+                                        _("Specials")
                                     ]
                                 ],
                                 [
@@ -4226,7 +4226,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "Controls:\tC0,\tC1"
+                                                        _("Controls__tC0__tC1")
                                                     ]
                                                 ]
                                             ]
@@ -4240,7 +4240,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "Layout Controls"
+                                                        _("Layout_Controls")
                                                     ]
                                                 ]
                                             ]
@@ -4254,7 +4254,7 @@ export default function (_) {
                                                 [
                                                     "i",
                                                     [
-                                                        "Invisible Operators"
+                                                        _("Invisible_Operators")
                                                     ]
                                                 ]
                                             ]
@@ -4265,7 +4265,7 @@ export default function (_) {
                                                 "title": "FFF0-FFFF"
                                             },
                                             [
-                                                "Specials"
+                                                _("Specials")
                                             ]
                                         ],
                                         [
@@ -4274,7 +4274,7 @@ export default function (_) {
                                                 "title": "E0000-E007F"
                                             },
                                             [
-                                                "Tags"
+                                                _("Tags")
                                             ]
                                         ],
                                         [
@@ -4283,7 +4283,7 @@ export default function (_) {
                                                 "title": "FE00-FE0F"
                                             },
                                             [
-                                                "Variation Selectors",
+                                                _("Variation_Selectors"),
                                                 [
                                                     "ul",
                                                     [
@@ -4296,7 +4296,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Variation Selectors Supplement"
+                                                                        _("Variation_Selectors_Supplement")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4315,7 +4315,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Private Use"
+                                        _("Private_Use")
                                     ]
                                 ],
                                 [
@@ -4327,7 +4327,7 @@ export default function (_) {
                                                 "title": "E000-F8FF"
                                             },
                                             [
-                                                "Private Use Area"
+                                                _("Private_Use_Area")
                                             ]
                                         ],
                                         [
@@ -4336,7 +4336,7 @@ export default function (_) {
                                                 "title": "F0000-FFFFD"
                                             },
                                             [
-                                                "Supplementary Private Use Area-A"
+                                                _("Supplementary_Private_Use_Area_A")
                                             ]
                                         ],
                                         [
@@ -4345,7 +4345,7 @@ export default function (_) {
                                                 "title": "100000-10FFFD"
                                             },
                                             [
-                                                "Supplementary Private Use Area-B"
+                                                _("Supplementary_Private_Use_Area_B")
                                             ]
                                         ]
                                     ]
@@ -4358,7 +4358,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Surrogates"
+                                        _("Surrogates")
                                     ]
                                 ],
                                 [
@@ -4370,7 +4370,7 @@ export default function (_) {
                                                 "title": "D800-DBFF"
                                             },
                                             [
-                                                "High Surrogates"
+                                                _("High_Surrogates")
                                             ]
                                         ],
                                         [
@@ -4379,7 +4379,7 @@ export default function (_) {
                                                 "title": "DC00-DFFF"
                                             },
                                             [
-                                                "Low Surrogates"
+                                                _("Low_Surrogates")
                                             ]
                                         ]
                                     ]
@@ -4392,7 +4392,7 @@ export default function (_) {
                                 [
                                     "b",
                                     [
-                                        "Noncharacters in Charts"
+                                        _("Noncharacters_in_Charts")
                                     ]
                                 ],
                                 [
@@ -4404,7 +4404,7 @@ export default function (_) {
                                                 "title": null
                                             },
                                             [
-                                                "Noncharacters in blocks",
+                                                _("Noncharacters_in_blocks"),
                                                 [
                                                     "ul",
                                                     [
@@ -4417,7 +4417,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Range in Arabic Presentation Forms-A"
+                                                                        _("Range_in_Arabic_Presentation_Forms_A")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4431,7 +4431,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "Range in Specials"
+                                                                        _("Range_in_Specials")
                                                                     ]
                                                                 ]
                                                             ]
@@ -4446,7 +4446,7 @@ export default function (_) {
                                                 "title": null
                                             },
                                             [
-                                                "Noncharacters at end of ...",
+                                                _("Noncharacters_at_end_of____"),
                                                 [
                                                     "ul",
                                                     [
@@ -4459,7 +4459,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        "BMP, \n                    Plane 1, \n                    Plane 2, \n                    Plane 3, \n                    Plane 4, \n                    Plane 5, \n                    Plane 6, \n                    Plane 7, \n                    Plane 8,\n                    Plane 9, \n                    Plane 10, \n                    Plane 11, \n                    Plane 12, \n                    Plane 13,\n                    Plane 14, \n                    Plane 15, \n                    Plane 16"
+                                                                        _("BMP__Plane_1__Plane_2__Plane_3__Plane_4__Plane_5__Plane_6__Plane_7__Plane_8__Plane_9__Plane_10__Plane_11__Plane_12__Plane_13__Plane_14__Plane_15__Plane_16")
                                                                     ]
                                                                 ]
                                                             ]
