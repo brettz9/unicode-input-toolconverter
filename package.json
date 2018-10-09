@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "scripts": {
         "start": "static -p 8000 -H '{\"Content-Type\": \"charset=utf-8\"}'",
-        "unicode-charts-save": "node tools/parseUnicodeCharts.js save",
+        "unicode-charts-retrieve": "node tools/parseUnicodeCharts.js retrieve",
         "unicode-charts": "node tools/parseUnicodeCharts.js",
         "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
         "webext": "npm run eslint && web-ext run --browser-console -f firefox",
