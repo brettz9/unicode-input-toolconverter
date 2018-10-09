@@ -297,7 +297,7 @@ export default function (_) {
                                                                 [
                                                                     "i",
                                                                     [
-                                                                        _("Basic_Latin__ASCII_")
+                                                                        _("Basic_Latin")
                                                                     ]
                                                                 ]
                                                             ]
@@ -1770,7 +1770,7 @@ export default function (_) {
                                                 "title": "0B00-0B7F"
                                             },
                                             [
-                                                _("Oriya__Odia_")
+                                                _("Oriya")
                                             ]
                                         ],
                                         [

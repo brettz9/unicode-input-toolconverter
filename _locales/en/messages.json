@@ -212,25 +212,13 @@
         "message": "IRG_MSource"
     },
     "Ethiopic_Extended_A": {
-        "message": "Ethiopic Extended A"
+        "message": "Ethiopic Extended-A"
     },
     "Batak": {
         "message": "Batak"
     },
-    "CJK_Ideographs_Ext__D": {
-        "message": "CJK Ideographs Ext. D"
-    },
     "Kana_Supplement": {
         "message": "Kana Supplement"
-    },
-    "Alchemical_Symbols": {
-        "message": "Alchemical Symbols"
-    },
-    "Emoticons": {
-        "message": "Emoticons"
-    },
-    "Playing_Cards": {
-        "message": "Playing Cards"
     },
     "Miscellaneous_Symbols_And_Pictographs": {
         "message": "Miscellaneous Symbols And Pictographs"
@@ -739,7 +727,7 @@
     "Yijing_Symbols": {
         "message": "Yijing Symbols"
     },
-    "Noncharacters_at_end_of": {
+    "Noncharacters_at_end_of____": {
         "message": "Noncharacters at end of ..."
     },
     "_see_also_Common_Indic_Number_Forms__": {
@@ -829,8 +817,8 @@
     "Rumi_Numeral_Symbols": {
         "message": "Rumi Numeral Symbols"
     },
-    "Basic_operators_Plus__Factorial": {
-        "message": "Basic operators: Plus, Factorial"
+    "Basic_operators__Plus__Factorial__Division__Multiplication": {
+        "message": "Basic operators: Plus, Factorial, Division, Multiplication"
     },
     "Division__Multiplication": {
         "message": "Division, Multiplication"
@@ -880,8 +868,6 @@
     "ShowImg_tooltiptext": {
         "message": "Please keep this turned off unless you need to find an image, since it taxes the Unicode server."
     },
-
-
     "Code_point": {
         "message": "Code Point"
     },
@@ -1191,8 +1177,6 @@
     "Simple_Titlecase_Mapping": {
         "message": "Simple Titlecase Mapping"
     },
-
-
     "chars_could_not_be_converted": {
         "message": "The characters could not be converted to that character set"
     },
@@ -1202,20 +1186,11 @@
     "searchkIRG_MSource": {
         "message": "IRG_MSource:"
     },
-    "Batak": {
-        "message": "Batak"
-    },
-    "Ethiopic_Extended_A": {
-        "message": "Ethiopic Extended A"
-    },
     "problemAddingToolbarItem": {
         "message": "Your item could not be added to the toolbar icon pull-down since the icon is not visible"
     },
     "CJK_Ideographs_Ext__D": {
         "message": "CJK Ideographs Ext. D"
-    },
-    "Kana_Supplement": {
-        "message": "Kana Supplement"
     },
     "Alchemical_Symbols": {
         "message": "Alchemical Symbols"
@@ -1225,21 +1200,6 @@
     },
     "Playing_Cards": {
         "message": "Playing Cards"
-    },
-    "Miscellaneous_Symbols_And_Pictographs": {
-        "message": "Miscellaneous Symbols And Pictographs"
-    },
-    "Transport_and_Map_Symbols": {
-        "message": "Transport and Map Symbols"
-    },
-    "Mandaic": {
-        "message": "Mandaic"
-    },
-    "Brahmi": {
-        "message": "Brahmi"
-    },
-    "Bamum_Supplement": {
-        "message": "Bamum Supplement"
     },
     "dropdownArr": {
         "message": "[]"
@@ -1252,120 +1212,6 @@
     },
     "lang": {
         "message": "en-US"
-    },
-    "Bamum": {
-        "message": "Bamum"
-    },
-    "Egyptian_Hieroglyphs": {
-        "message": "Egyptian Hieroglyphs"
-    },
-    "Aramaic__Imperial": {
-        "message": "Aramaic, Imperial"
-    },
-    "Avestan": {
-        "message": "Avestan"
-    },
-    "Old_South_Arabian": {
-        "message": "Old South Arabian"
-    },
-    "Pahlavi__Inscriptional": {
-        "message": "Pahlavi, Inscriptional"
-    },
-    "Parthian__Inscriptional": {
-        "message": "Parthian, Inscriptional"
-    },
-    "Samaritan": {
-        "message": "Samaritan"
-    },
-    "Old_Turkic": {
-        "message": "Old Turkic"
-    },
-    "Devanagari_Extended": {
-        "message": "Devanagari Extended"
-    },
-    "Kaithi": {
-        "message": "Kaithi"
-    },
-    "Meetei_Mayek": {
-        "message": "Meetei Mayek"
-    },
-    "Vedic_Extensions": {
-        "message": "Vedic Extensions"
-    },
-    "Javanese": {
-        "message": "Javanese"
-    },
-    "Myanmar_Extended_A": {
-        "message": "Myanmar Extended-A"
-    },
-    "South_Asian_Scripts": {
-        "message": "South Asian Scripts"
-    },
-    "Tai_Tham": {
-        "message": "Tai Tham"
-    },
-    "Tai_Viet": {
-        "message": "Tai Viet"
-    },
-    "CJK_Ideographs_Ext__C": {
-        "message": "CJK Ideographs Ext. C"
-    },
-    "CJK_Radicals___KangXi_Radicals": {
-        "message": "CJK Radicals / KangXi Radicals"
-    },
-    "Lisu": {
-        "message": "Lisu"
-    },
-    "Hangul_Jamo_Extended_A": {
-        "message": "Hangul Jamo Extended-A"
-    },
-    "Hangul_Jamo_Extended_A": {
-        "message": "Hangul Jamo Extended-B"
-    },
-    "UCAS_Extended": {
-        "message": "UCAS Extended"
-    },
-    "Common_Indic_Number_Forms": {
-        "message": "Common Indic Number Forms"
-    },
-    "Rumi_Numeral_Symbols": {
-        "message": "Rumi Numeral Symbols"
-    },
-    "Basic_operators_Plus__Factorial": {
-        "message": "Basic operators: Plus, Factorial"
-    },
-    "Division__Multiplication": {
-        "message": "Division, Multiplication"
-    },
-    "Unified_Canadian_Aboriginal_Syllabics": {
-        "message": "Unified Canadian Aboriginal Syllabics"
-    },
-    "Yi_Syllables": {
-        "message": "Yi Syllables"
-    },
-    "Combining_Diacritics": {
-        "message": "Combining Diacritics"
-    },
-    "Alphabetic_Presentation_Forms": {
-        "message": "Alphabetic Presentation Forms"
-    },
-    "Halfwidth_and_Fullwidth_Forms": {
-        "message": "Halfwidth and Fullwidth Forms"
-    },
-    "ASCII_Characters": {
-        "message": "ASCII Characters"
-    },
-    "Alphanumeric_Symbols": {
-        "message": "Alphanumeric Symbols"
-    },
-    "Enclosed_Alphanumeric_Supplement": {
-        "message": "Enclosed Alphanumeric Supplement"
-    },
-    "Enclosed_Ideographic_Supplement": {
-        "message": "Enclosed Ideographic Supplement"
-    },
-    "Additional_Squared_Symbols": {
-        "message": "Additional Squared Symbols"
     },
     "need_download_unihan": {
         "message": "In order to access CJK (Chinese-Korean-Japanese) characters, you must download the approximately 19.3MB Unihan database. See the button at the top of the preferences tab."
@@ -1994,23 +1840,8 @@
     "Problem_downloading": {
         "message": "There was a problem downloading the file. If trying it again doesn't work, you can find the file at http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite and place it in your Firefox user profile directory."
     },
-    "Sundanese": {
-        "message": "Sundanese"
-    },
     "Ol_Chiki": {
         "message": "Ol Chiki"
-    },
-    "Cyrillic_Extended_A": {
-        "message": "Cyrillic Extended-A"
-    },
-    "Vai": {
-        "message": "Vai"
-    },
-    "Cyrillic_Extended_B": {
-        "message": "Cyrillic Extended-B"
-    },
-    "Saurashtra": {
-        "message": "Saurashtra"
     },
     "Kayah_Li": {
         "message": "Kayah Li"
@@ -2117,9 +1948,6 @@
     "startset": {
         "message": "a"
     },
-    "European_Scripts": {
-        "message": "European Scripts"
-    },
     "_see_also_Comb__Marks_-": {
         "message": "(see also Comb. Marks)"
     },
@@ -2169,16 +1997,16 @@
         "message": "Latin-1 Supplement"
     },
     "Latin_Extended_A": {
-        "message": "Latin Extended A"
+        "message": "Latin Extended-A"
     },
     "Latin_Extended_B": {
-        "message": "Latin Extended B"
+        "message": "Latin Extended-B"
     },
     "Latin_Extended_C": {
-        "message": "Latin Extended C"
+        "message": "Latin Extended-C"
     },
     "Latin_Extended_D": {
-        "message": "Latin Extended D"
+        "message": "Latin Extended-D"
     },
     "Latin_Extended_Additional": {
         "message": "Latin Extended Additional"
@@ -2226,10 +2054,10 @@
         "message": "Arabic Supplement"
     },
     "Arabic_Presentation_Forms_A": {
-        "message": "Arabic Presentation Forms A"
+        "message": "Arabic Presentation Forms-A"
     },
     "Arabic_Presentation_Forms_B": {
-        "message": "Arabic Presentation Forms B"
+        "message": "Arabic Presentation Forms-B"
     },
     "Hebrew": {
         "message": "Hebrew"
@@ -2243,8 +2071,8 @@
     "Thaana": {
         "message": "Thaana"
     },
-    "American_scripts": {
-        "message": "American scripts"
+    "American_Scripts": {
+        "message": "American Scripts"
     },
     "Cherokee": {
         "message": "Cherokee"
@@ -2348,7 +2176,7 @@
     "East_Asian_Scripts": {
         "message": "East Asian Scripts"
     },
-    "CJK_Unified_Ideographs__-Han--": {
+    "CJK_Unified_Ideographs__Han_": {
         "message": "CJK Unified Ideographs (Han)"
     },
     "CJK_Ideographs_Ext__A": {
@@ -2366,7 +2194,7 @@
     "Kanbun": {
         "message": "Kanbun"
     },
-    "_see_also_Unihan_Database_-": {
+    "_see_also_Unihan_Database_": {
         "message": "(see also Unihan Database)"
     },
     "CJK_Radicals_Supplement": {
@@ -2390,7 +2218,7 @@
     "Katakana": {
         "message": "Katakana"
     },
-    "Katakana_Phonetic_Ext_": {
+    "Katakana_Phonetic_Extensions": {
         "message": "Katakana Phonetic Extensions"
     },
     "Halfwidth_Katakana": {
@@ -2507,7 +2335,7 @@
     "Enclosed_Alphanumerics": {
         "message": "Enclosed Alphanumerics"
     },
-    "Enclosed_Alphanumerics_CJK_Letters_and_Months": {
+    "Enclosed_CJK_Letters_and_Months": {
         "message": "Enclosed CJK Letters and Months"
     },
     "CJK_Compatibility": {
@@ -2555,7 +2383,7 @@
     "Numbers_and_Digits": {
         "message": "Numbers and Digits"
     },
-    "_see_also_specific_scripts_-": {
+    "_see_also_specific_scripts_": {
         "message": "(see also specific scripts)"
     },
     "ASCII_Digits": {
@@ -2592,12 +2420,12 @@
         "message": "Miscellaneous Math Symbols B"
     },
     "Supplemental_Arrows_A": {
-        "message": "Supplemental Arrows A"
+        "message": "Supplemental Arrows-A"
     },
     "Supplemental_Arrows_B": {
-        "message": "Supplemental Arrows B"
+        "message": "Supplemental Arrows-B"
     },
-    "Misc__Symbols_and_Arrows": {
+    "Miscellaneous_Symbols_and_Arrows": {
         "message": "Miscellaneous Symbols and Arrows"
     },
     "Geometric_Shapes": {
@@ -2618,7 +2446,7 @@
     "Miscellaneous_Technical": {
         "message": "Miscellaneous Technical"
     },
-    "OCR": {
+    "Optical_Character_Recognition__OCR_": {
         "message": "Optical Character Recognition (OCR)"
     },
     "Other_Symbols": {
@@ -2699,11 +2527,11 @@
     "Private_Use_Area": {
         "message": "Private Use Area"
     },
-    "Suppl__Private_Use_Area_A": {
-        "message": "Supplementary Private Use Area A"
+    "Supplementary_Private_Use_Area_A": {
+        "message": "Supplementary Private Use Area-A"
     },
-    "Suppl__Private_Use_Area_B": {
-        "message": "Supplementary Private Use Area B"
+    "Supplementary_Private_Use_Area_B": {
+        "message": "Supplementary Private Use Area-B"
     },
     "Surrogates": {
         "message": "Surrogates"
@@ -2717,8 +2545,8 @@
     "Low_Surrogates": {
         "message": "Low Surrogates"
     },
-    "Noncharacters_in_Charts": {
-        "message": "Noncharacters in Charts"
+    "Noncharacters_in_blocks": {
+        "message": "Noncharacters in blocks"
     },
     "Reserved_range": {
         "message": "Reserved range"
@@ -2780,8 +2608,6 @@
     "Lepcha": {
         "message": "Lepcha"
     },
-
-
     "Additional_Arrows": {
         "message": "Additional Arrows"
     },
@@ -2791,14 +2617,11 @@
     "Additional_Shapes": {
         "message": "Additional Shapes"
     },
-    "APL_Symbols": {
-        "message": "APL Symbols"
+    "APL_symbols": {
+        "message": "APL symbols"
     },
     "Sundanese": {
         "message": "Sundanese"
-    },
-    "Ol_Chiki": {
-        "message": "Ol Chiki"
     },
     "Cyrillic_Extended_A": {
         "message": "Cyrillic Extended-A"
@@ -2812,41 +2635,11 @@
     "Saurashtra": {
         "message": "Saurashtra"
     },
-    "Kayah_Li": {
-        "message": "Kayah Li"
-    },
-    "Rejang": {
-        "message": "Rejang"
-    },
-    "Cham": {
-        "message": "Cham"
-    },
-    "Ancient_Symbols": {
-        "message": "Ancient Symbols"
-    },
-    "Phaistos_Disc": {
-        "message": "Phaistos Disc"
-    },
-    "Lycian": {
-        "message": "Lycian"
-    },
-    "Carian": {
-        "message": "Carian"
-    },
-    "Lydian": {
-        "message": "Lydian"
-    },
-    "Mahjong_Tiles": {
-        "message": "Mahjong Tiles"
-    },
-    "Domino_Tiles": {
-        "message": "Domino Tiles"
-    },
     "Game_Symbols": {
         "message": "Game Symbols"
     },
-    "Chess_Checkers": {
-        "message": "Chess/Checkers"
+    "Chess__Checkers_Draughts": {
+        "message": "Chess, Checkers/Draughts"
     },
     "Card_suits": {
         "message": "Card suits"
@@ -2863,661 +2656,325 @@
     "_see_also_Comb._Marks__": {
         "message": "(see also Comb. Marks)"
     },
-    "Armenian": {
-        "message": "Armenian"
+    "Caucasian_Albanian": {
+        "message": "Caucasian Albanian"
     },
-    "Armenian_Ligatures": {
-        "message": "Armenian Ligatures"
+    "Cyrillic_Extended_C": {
+        "message": "Cyrillic Extended-C"
     },
-    "Coptic": {
-        "message": "Coptic"
+    "Elbasan": {
+        "message": "Elbasan"
     },
-    "Coptic_in_Greek_block": {
-        "message": "Coptic in Greek block"
+    "Georgian_Extended": {
+        "message": "Georgian Extended"
     },
-    "Cyrillic": {
-        "message": "Cyrillic"
+    "Glagolitic_Supplement": {
+        "message": "Glagolitic Supplement"
     },
-    "Cyrillic_Supplement": {
-        "message": "Cyrillic Supplement"
+    "Latin_Extended_E": {
+        "message": "Latin Extended-E"
     },
-    "Georgian": {
-        "message": "Georgian"
+    "Linear_A": {
+        "message": "Linear A"
     },
-    "Georgian_Supplement": {
-        "message": "Georgian Supplement"
+    "Old_Hungarian": {
+        "message": "Old Hungarian"
     },
-    "Greek": {
-        "message": "Greek"
+    "Old_Permic": {
+        "message": "Old Permic"
     },
-    "Greek_Extended": {
-        "message": "Greek Extended"
+    "Modifier_Letters": {
+        "message": "Modifier Letters"
     },
-    "_see_also_Ancient_Greek_Numbers__": {
-        "message": "(see also Ancient Greek Numbers)"
+    "Superscripts_and_Subscripts": {
+        "message": "Superscripts and Subscripts"
     },
-    "_see_also_Ancient_Greek_Musical_Notation__": {
-        "message": "(see also Ancient Greek Musical Notation)"
+    "Combining_Marks": {
+        "message": "Combining Marks"
     },
-    "Latin": {
-        "message": "Latin"
+    "Combining_Diacritical_Marks_Extended": {
+        "message": "Combining Diacritical Marks Extended"
     },
-    "Basic_Latin": {
-        "message": "Basic Latin"
+    "Adlam": {
+        "message": "Adlam"
     },
-    "Latin_1_Supplement": {
-        "message": "Latin-1 Supplement"
+    "Bassa_Vah": {
+        "message": "Bassa Vah"
     },
-    "Latin_Extended_A": {
-        "message": "Latin Extended A"
+    "Coptic_Epact_Numbers": {
+        "message": "Coptic Epact Numbers"
     },
-    "Latin_Extended_B": {
-        "message": "Latin Extended B"
+    "Medefaidrin": {
+        "message": "Medefaidrin"
     },
-    "Latin_Extended_C": {
-        "message": "Latin Extended C"
+    "Mende_Kikakui": {
+        "message": "Mende Kikakui"
     },
-    "Latin_Extended_D": {
-        "message": "Latin Extended D"
+    "Meroitic": {
+        "message": "Meroitic"
     },
-    "Latin_Extended_Additional": {
-        "message": "Latin Extended Additional"
+    "Meroitic_Cursive": {
+        "message": "Meroitic Cursive"
     },
-    "Latin_Ligatures": {
-        "message": "Latin Ligatures"
+    "Meroitic_Hieroglyphs": {
+        "message": "Meroitic Hieroglyphs"
     },
-    "Fullwidth_Latin_Letters": {
-        "message": "Fullwidth Latin Letters"
+    "Anatolian_Hieroglyphs": {
+        "message": "Anatolian Hieroglyphs"
+    },
+    "Arabic_Extended_A": {
+        "message": "Arabic Extended-A"
+    },
+    "Early_Dynastic_Cuneiform": {
+        "message": "Early Dynastic Cuneiform"
+    },
+    "Hatran": {
+        "message": "Hatran"
+    },
+    "Nabataean": {
+        "message": "Nabataean"
+    },
+    "Old_North_Arabian": {
+        "message": "Old North Arabian"
+    },
+    "Pahlavi__Psalter": {
+        "message": "Pahlavi, Psalter"
+    },
+    "Palmyrene": {
+        "message": "Palmyrene"
+    },
+    "Syriac_Supplement": {
+        "message": "Syriac Supplement"
+    },
+    "Manichaean": {
+        "message": "Manichaean"
+    },
+    "Marchen": {
+        "message": "Marchen"
+    },
+    "Mongolian_Supplement": {
+        "message": "Mongolian Supplement"
+    },
+    "Old_Sogdian": {
+        "message": "Old Sogdian"
+    },
+    "Sogdian": {
+        "message": "Sogdian"
+    },
+    "Soyombo": {
+        "message": "Soyombo"
+    },
+    "Zanabazar_Square": {
+        "message": "Zanabazar Square"
+    },
+    "Ahom": {
+        "message": "Ahom"
+    },
+    "Bengali_and_Assamese": {
+        "message": "Bengali and Assamese"
+    },
+    "Bhaiksuki": {
+        "message": "Bhaiksuki"
+    },
+    "Chakma": {
+        "message": "Chakma"
+    },
+    "Dogra": {
+        "message": "Dogra"
+    },
+    "Grantha": {
+        "message": "Grantha"
+    },
+    "Gunjala_Gondi": {
+        "message": "Gunjala Gondi"
+    },
+    "Khojki": {
+        "message": "Khojki"
+    },
+    "Khudawadi": {
+        "message": "Khudawadi"
+    },
+    "Mahajani": {
+        "message": "Mahajani"
+    },
+    "Masaram_Gondi": {
+        "message": "Masaram Gondi"
+    },
+    "Meetei_Mayek_Extensions": {
+        "message": "Meetei Mayek Extensions"
+    },
+    "Modi": {
+        "message": "Modi"
+    },
+    "Mro": {
+        "message": "Mro"
+    },
+    "Multani": {
+        "message": "Multani"
+    },
+    "Newa": {
+        "message": "Newa"
+    },
+    "Sharada": {
+        "message": "Sharada"
+    },
+    "Siddham": {
+        "message": "Siddham"
+    },
+    "Sinhala_Archaic_Numbers": {
+        "message": "Sinhala Archaic Numbers"
+    },
+    "Sora_Sompeng": {
+        "message": "Sora Sompeng"
+    },
+    "Takri": {
+        "message": "Takri"
+    },
+    "Tirhuta": {
+        "message": "Tirhuta"
+    },
+    "Warang_Citi": {
+        "message": "Warang Citi"
+    },
+    "Southeast_Asian_Scripts": {
+        "message": "Southeast Asian Scripts"
+    },
+    "Hanifi_Rohingya": {
+        "message": "Hanifi Rohingya"
+    },
+    "Myanmar_Extended_B": {
+        "message": "Myanmar Extended-B"
+    },
+    "Pahawh_Hmong": {
+        "message": "Pahawh Hmong"
+    },
+    "Pau_Cin_Hau": {
+        "message": "Pau Cin Hau"
+    },
+    "Indonesia___Oceania_Scripts": {
+        "message": "Indonesia & Oceania Scripts"
+    },
+    "Makasar": {
+        "message": "Makasar"
+    },
+    "Sundanese_Supplement": {
+        "message": "Sundanese Supplement"
+    },
+    "CJK_Extension_A": {
+        "message": "CJK Extension-A"
+    },
+    "CJK_Extension_B": {
+        "message": "CJK Extension B"
+    },
+    "CJK_Extension_C": {
+        "message": "CJK Extension C"
+    },
+    "CJK_Extension_D": {
+        "message": "CJK Extension D"
+    },
+    "CJK_Extension_E": {
+        "message": "CJK Extension E"
+    },
+    "CJK_Extension_F": {
+        "message": "CJK Extension F"
+    },
+    "Kana_Extended_A": {
+        "message": "Kana Extended-A"
+    },
+    "Miao": {
+        "message": "Miao"
+    },
+    "Nushu": {
+        "message": "Nushu"
+    },
+    "Tangut": {
+        "message": "Tangut"
+    },
+    "Tangut_Components": {
+        "message": "Tangut Components"
+    },
+    "Cherokee_Supplement": {
+        "message": "Cherokee Supplement"
+    },
+    "Osage": {
+        "message": "Osage"
+    },
+    "Other": {
+        "message": "Other"
+    },
+    "Notational_Systems": {
+        "message": "Notational Systems"
+    },
+    "Duployan": {
+        "message": "Duployan"
+    },
+    "Shorthand_Format_Controls": {
+        "message": "Shorthand Format Controls"
+    },
+    "Sutton_SignWriting": {
+        "message": "Sutton SignWriting"
+    },
+    "Ideographic_Symbols_and_Punctuation": {
+        "message": "Ideographic Symbols and Punctuation"
     },
     "Small_Form_Variants": {
         "message": "Small Form Variants"
     },
-    "_see_also_Phonetic_Symbols__": {
-        "message": "(see also Phonetic Symbols)"
+    "Arabic_Mathematical_Alphabetic_Symbols": {
+        "message": "Arabic Mathematical Alphabetic Symbols"
     },
-    "African_Scripts": {
-        "message": "African Scripts"
+    "Numbers___Digits": {
+        "message": "Numbers & Digits"
     },
-    "Ethiopic": {
-        "message": "Ethiopic"
+    "Indic_Siyaq_Numbers": {
+        "message": "Indic Siyaq Numbers"
     },
-    "Ethiopic_Supplement": {
-        "message": "Ethiopic Supplement"
+    "Mayan_Numerals": {
+        "message": "Mayan Numerals"
     },
-    "Ethiopic_Extended": {
-        "message": "Ethiopic Extended"
+    "Supplemental_Arrows_C": {
+        "message": "Supplemental Arrows-C"
     },
-    "Other_African_scripts": {
-        "message": "Other African scripts"
+    "Supplemental_Mathematical_Operators": {
+        "message": "Supplemental Mathematical Operators"
     },
-    "N_Ko": {
-        "message": "N'Ko"
+    "Miscellaneous_Mathematical_Symbols_A": {
+        "message": "Miscellaneous Mathematical Symbols-A"
     },
-    "Tifinagh": {
-        "message": "Tifinagh"
+    "Miscellaneous_Mathematical_Symbols_B": {
+        "message": "Miscellaneous Mathematical Symbols-B"
     },
-    "Middle_Eastern_Scripts": {
-        "message": "Middle Eastern Scripts"
+    "Geometric_Shapes_Extended": {
+        "message": "Geometric Shapes Extended"
     },
-    "Arabic": {
-        "message": "Arabic"
+    "Emoji___Pictographs": {
+        "message": "Emoji & Pictographs"
     },
-    "Arabic_Supplement": {
-        "message": "Arabic Supplement"
+    "Ornamental_Dingbats": {
+        "message": "Ornamental Dingbats"
     },
-    "Arabic_Presentation_Forms_A": {
-        "message": "Arabic Presentation Forms A"
+    "Supplemental_Symbols_and_Pictographs": {
+        "message": "Supplemental Symbols and Pictographs"
     },
-    "Arabic_Presentation_Forms_B": {
-        "message": "Arabic Presentation Forms B"
+    "Dollar_Sign__Euro_Sign": {
+        "message": "Dollar Sign, Euro Sign"
     },
-    "Hebrew": {
-        "message": "Hebrew"
+    "Chess_Symbols": {
+        "message": "Chess Symbols"
     },
-    "Hebrew_Presentation_Forms": {
-        "message": "Hebrew Presentation Forms"
-    },
-    "Syriac": {
-        "message": "Syriac"
-    },
-    "Thaana": {
-        "message": "Thaana"
-    },
-    "American_scripts": {
-        "message": "American scripts"
-    },
-    "Cherokee": {
-        "message": "Cherokee"
-    },
-    "Deseret": {
-        "message": "Deseret"
-    },
-    "Other_Scripts": {
-        "message": "Other Scripts"
-    },
-    "Shavian": {
-        "message": "Shavian"
-    },
-    "Osmanya": {
-        "message": "Osmanya"
-    },
-    "Glagolitic": {
-        "message": "Glagolitic"
-    },
-    "Bengali": {
-        "message": "Bengali"
-    },
-    "Devanagari": {
-        "message": "Devanagari"
-    },
-    "Gujarati": {
-        "message": "Gujarati"
-    },
-    "Gurmukhi": {
-        "message": "Gurmukhi"
-    },
-    "Kannada": {
-        "message": "Kannada"
-    },
-    "Limbu": {
-        "message": "Limbu"
-    },
-    "Malayalam": {
-        "message": "Malayalam"
-    },
-    "Oriya": {
-        "message": "Oriya"
-    },
-    "Sinhala": {
-        "message": "Sinhala"
-    },
-    "Syloti_Nagri": {
-        "message": "Syloti Nagri"
-    },
-    "Tamil": {
-        "message": "Tamil"
-    },
-    "Telugu": {
-        "message": "Telugu"
-    },
-    "Philippine_Scripts": {
-        "message": "Philippine Scripts"
-    },
-    "Buhid": {
-        "message": "Buhid"
-    },
-    "Hanunoo": {
-        "message": "Hanunoo"
-    },
-    "Tagalog": {
-        "message": "Tagalog"
-    },
-    "Tagbanwa": {
-        "message": "Tagbanwa"
-    },
-    "South_East_Asian": {
-        "message": "Southeast Asian"
-    },
-    "Balinese": {
-        "message": "Balinese"
-    },
-    "Buginese": {
-        "message": "Buginese"
-    },
-    "Khmer": {
-        "message": "Khmer"
-    },
-    "Khmer_Symbols": {
-        "message": "Khmer Symbols"
-    },
-    "Lao": {
-        "message": "Lao"
-    },
-    "Myanmar": {
-        "message": "Myanmar"
-    },
-    "New_Tai_Lue": {
-        "message": "New Tai Lue"
-    },
-    "Tai_Le": {
-        "message": "Tai Le"
-    },
-    "Thai": {
-        "message": "Thai"
-    },
-    "East_Asian_Scripts": {
-        "message": "East Asian Scripts"
-    },
-    "CJK_Unified_Ideographs___Han__": {
-        "message": "CJK Unified Ideographs (Han)"
-    },
-    "CJK_Ideographs_Ext__A": {
-        "message": "CJK Ideographs Ext. A"
-    },
-    "CJK_Ideographs_Ext__B": {
-        "message": "CJK Ideographs Ext. B"
-    },
-    "CJK_Compatibility_Ideographs": {
-        "message": "CJK Compatibility Ideographs"
-    },
-    "CJK_Compatibility_Ideographs_Supplement": {
-        "message": "CJK Compatibility Ideographs Supplement"
-    },
-    "Kanbun": {
-        "message": "Kanbun"
-    },
-    "_see_also_Unihan_Database__": {
-        "message": "(see also Unihan Database)"
-    },
-    "CJK_Radicals_Supplement": {
-        "message": "CJK Radicals Supplement"
-    },
-    "CJK_Strokes": {
-        "message": "CJK Strokes"
-    },
-    "Ideographic_Description_Characters": {
-        "message": "Ideographic Description Characters"
-    },
-    "Bopomofo": {
-        "message": "Bopomofo"
-    },
-    "Bopomofo_Extended": {
-        "message": "Bopomofo Extended"
-    },
-    "Hiragana": {
-        "message": "Hiragana"
-    },
-    "Katakana": {
-        "message": "Katakana"
-    },
-    "Katakana_Phonetic_Ext_": {
-        "message": "Katakana Phonetic Extensions"
-    },
-    "Halfwidth_Katakana": {
-        "message": "Halfwidth Katakana"
-    },
-    "Hangul_Syllables": {
-        "message": "Hangul Syllables"
-    },
-    "Hangul_Jamo": {
-        "message": "Hangul Jamo"
-    },
-    "Hangul_Compatibility_Jamo": {
-        "message": "Hangul Compatibility Jamo"
-    },
-    "Halfwidth_Jamo": {
-        "message": "Halfwidth Jamo"
-    },
-    "Yi": {
-        "message": "Yi"
-    },
-    "Yi_Radicals": {
-        "message": "Yi Radicals"
-    },
-    "Central_Asian_Scripts": {
-        "message": "Central Asian Scripts"
-    },
-    "Kharoshthi": {
-        "message": "Kharoshthi"
-    },
-    "Mongolian": {
-        "message": "Mongolian"
-    },
-    "Phags_Pa": {
-        "message": "Phags-Pa"
-    },
-    "Tibetan": {
-        "message": "Tibetan"
-    },
-    "Ancient_Greek_Numbers": {
-        "message": "Ancient Greek Numbers"
-    },
-    "Ancient_Greek_Musical_Notation": {
-        "message": "Ancient Greek Musical Notation"
-    },
-    "Cuneiform": {
-        "message": "Cuneiform"
-    },
-    "Cuneiform_Numbers_and_Punctuation": {
-        "message": "Cuneiform Numbers and Punctuation"
-    },
-    "Old_Persian": {
-        "message": "Old Persian"
-    },
-    "Ugaritic": {
-        "message": "Ugaritic"
-    },
-    "Linear_B": {
-        "message": "Linear B"
-    },
-    "Linear_B_Syllabary": {
-        "message": "Linear B Syllabary"
-    },
-    "Linear_B_Ideograms": {
-        "message": "Linear B Ideograms"
-    },
-    "Aegean_Numbers": {
-        "message": "Aegean Numbers"
-    },
-    "Counting_Rod_Numerals": {
-        "message": "Counting Rod Numerals"
-    },
-    "Cypriot_Syllabary": {
-        "message": "Cypriot Syllabary"
-    },
-    "Gothic": {
-        "message": "Gothic"
-    },
-    "Old_Italic": {
-        "message": "Old Italic"
-    },
-    "Ogham": {
-        "message": "Ogham"
-    },
-    "Runic": {
-        "message": "Runic"
-    },
-    "Phoenician": {
-        "message": "Phoenician"
-    },
-    "Punctuation": {
-        "message": "Punctuation"
-    },
-    "General_Punctuation": {
-        "message": "General Punctuation"
-    },
-    "ASCII_Punctuation": {
-        "message": "ASCII Punctuation"
-    },
-    "Latin_1_Punctuation": {
-        "message": "Latin-1 Punctuation"
-    },
-    "Supplemental_Punctuation": {
-        "message": "Supplemental Punctuation"
-    },
-    "CJK_Symbols_and_Punctuation": {
-        "message": "CJK Symbols and Punctuation"
-    },
-    "Fullwidth_ASCII_Punctuation": {
-        "message": "Fullwidth ASCII Punctuation"
-    },
-    "Vertical_Forms": {
-        "message": "Vertical Forms"
-    },
-    "Enclosed_Alphanumerics": {
-        "message": "Enclosed Alphanumerics"
-    },
-    "Enclosed_Alphanumerics_CJK_Letters_and_Months": {
-        "message": "Enclosed CJK Letters and Months"
-    },
-    "CJK_Compatibility": {
-        "message": "CJK Compatibility"
-    },
-    "_see_also_Letterlike_Symbols__": {
-        "message": "(see also Letterlike Symbols)"
-    },
-    "Combining_Diacritical_Marks": {
-        "message": "Combining Diacritical Marks"
-    },
-    "Combining_Diacritical_Marks_for_Symbols": {
-        "message": "Combining Diacritical Marks for Symbols"
-    },
-    "Combining_Diacritical_Marks_Supplement": {
-        "message": "Combining Diacritical Marks Supplement"
-    },
-    "Combining_Half_Marks": {
-        "message": "Combining Half Marks"
-    },
-    "Phonetic_Symbols": {
-        "message": "Phonetic Symbols"
-    },
-    "IPA_Extensions": {
-        "message": "IPA Extensions"
-    },
-    "Phonetic_Extensions": {
-        "message": "Phonetic Extensions"
-    },
-    "Phonetic_Extensions_Supplement": {
-        "message": "Phonetic Extensions Supplement"
-    },
-    "Modifier_Tone_Letters": {
-        "message": "Modifier Tone Letters"
-    },
-    "Spacing_Modifier_Letters": {
-        "message": "Spacing Modifier Letters"
-    },
-    "_see_also_Super_and_Subscript__": {
-        "message": "(see also Super and Subscript)"
-    },
-    "Mathematical_Symbols": {
-        "message": "Mathematical Symbols"
-    },
-    "Numbers_and_Digits": {
-        "message": "Numbers and Digits"
-    },
-    "_see_also_specific_scripts__": {
-        "message": "(see also specific scripts)"
-    },
-    "ASCII_Digits": {
-        "message": "ASCII Digits"
-    },
-    "Fullwidth_ASCII_Digits": {
-        "message": "Fullwidth ASCII Digits"
-    },
-    "Number_Forms": {
-        "message": "Number Forms"
-    },
-    "Super_and_Subscripts": {
-        "message": "Super and Subscripts"
-    },
-    "Letterlike_Symbols": {
-        "message": "Letterlike Symbols"
-    },
-    "Mathematical_Alphanumeric_Symbols": {
-        "message": "Mathematical Alphanumeric Symbols"
-    },
-    "Arrows": {
-        "message": "Arrows"
-    },
-    "Mathematical_Operators": {
-        "message": "Mathematical Operators"
-    },
-    "Suppl__Math_Operators": {
-        "message": "Supplemental Math Operators"
-    },
-    "Misc__Math_Symbols_A": {
-        "message": "Miscellaneous Math Symbols A"
-    },
-    "Misc__Math_Symbols_B": {
-        "message": "Miscellaneous Math Symbols B"
-    },
-    "Supplemental_Arrows_A": {
-        "message": "Supplemental Arrows A"
-    },
-    "Supplemental_Arrows_B": {
-        "message": "Supplemental Arrows B"
-    },
-    "Misc__Symbols_and_Arrows": {
-        "message": "Miscellaneous Symbols and Arrows"
-    },
-    "Geometric_Shapes": {
-        "message": "Geometric Shapes"
-    },
-    "Box_Drawing": {
-        "message": "Box Drawing"
-    },
-    "Block_Elements": {
-        "message": "Block Elements"
-    },
-    "Technical_Symbols": {
-        "message": "Technical Symbols"
-    },
-    "Control_Pictures": {
-        "message": "Control Pictures"
-    },
-    "Miscellaneous_Technical": {
-        "message": "Miscellaneous Technical"
-    },
-    "OCR": {
-        "message": "Optical Character Recognition (OCR)"
-    },
-    "Other_Symbols": {
-        "message": "Other Symbols"
-    },
-    "Miscellaneous_Symbols": {
-        "message": "Miscellaneous Symbols"
-    },
-    "Dingbats": {
-        "message": "Dingbats"
-    },
-    "Tai_Xuan_Jing_Symbols": {
-        "message": "Tai Xuan Jing Symbols"
-    },
-    "Yijing_Hexagram_Symbols": {
-        "message": "Yijing Hexagram Symbols"
-    },
-    "Braille_Patterns": {
-        "message": "Braille Patterns"
-    },
-    "Byzantine_Musical_Symbols": {
-        "message": "Byzantine Musical Symbols"
-    },
-    "Musical_Symbols": {
-        "message": "Musical Symbols"
-    },
-    "Currency_Symbols": {
-        "message": "Currency Symbols"
-    },
-    "Dollar_Sign": {
-        "message": "Dollar Sign"
-    },
-    "Euro_Sign": {
-        "message": "Euro Sign"
-    },
-    "Yen__Pound_and_Cent": {
-        "message": "Yen, Pound and Cent"
-    },
-    "Fullwidth_Currency_Symbols": {
-        "message": "Fullwidth Currency Symbols"
-    },
-    "Mark__historic__": {
-        "message": "Mark (historic)"
-    },
-    "Pfennig__historic__": {
-        "message": "Pfennig (historic)"
-    },
-    "Rial_Sign": {
-        "message": "Rial Sign"
-    },
-    "Specials": {
-        "message": "Specials"
-    },
-    "Controls__C0": {
-        "message": "Controls: C0"
-    },
-    "Controls__C1": {
-        "message": "Controls: C1"
-    },
-    "Layout_Controls": {
-        "message": "Layout Controls"
-    },
-    "Invisible_Operators": {
-        "message": "Invisible Operators"
-    },
-    "Tags": {
-        "message": "Tags"
-    },
-    "Variation_Selectors": {
-        "message": "Variation Selectors"
-    },
-    "Variation_Selectors_Supplement": {
-        "message": "Variation Selectors Supplement"
-    },
-    "Private_Use": {
-        "message": "Private Use"
-    },
-    "Private_Use_Area": {
-        "message": "Private Use Area"
-    },
-    "Suppl__Private_Use_Area_A": {
-        "message": "Supplementary Private Use Area-A"
-    },
-    "Suppl__Private_Use_Area_B": {
-        "message": "Supplementary Private Use Area-B"
-    },
-    "Surrogates": {
-        "message": "Surrogates"
-    },
-    "High_Surrogates": {
-        "message": "High Surrogates"
-    },
-    "High_Private_Use_Surrogates": {
-        "message": "High Private Use Surrogates"
-    },
-    "Low_Surrogates": {
-        "message": "Low Surrogates"
+    "Controls__tC0__tC1": {
+        "message": "Controls:\\tC0,\\tC1"
     },
     "Noncharacters_in_Charts": {
         "message": "Noncharacters in Charts"
     },
-    "Reserved_range": {
-        "message": "Reserved range"
+    "Range_in_Arabic_Presentation_Forms_A": {
+        "message": "Range in Arabic Presentation Forms-A"
     },
-    "At_End_of_BMP": {
-        "message": "At End of BMP"
+    "Range_in_Specials": {
+        "message": "Range in Specials"
     },
-    "At_End_of_Plane_1": {
-        "message": "At End of Plane 1"
-    },
-    "At_End_of_Plane_2": {
-        "message": "At End of Plane 2"
-    },
-    "At_End_of_Plane_3": {
-        "message": "At End of Plane 3"
-    },
-    "At_End_of_Plane_4": {
-        "message": "At End of Plane 4"
-    },
-    "At_End_of_Plane_5": {
-        "message": "At End of Plane 5"
-    },
-    "At_End_of_Plane_6": {
-        "message": "At End of Plane 6"
-    },
-    "At_End_of_Plane_7": {
-        "message": "At End of Plane 7"
-    },
-    "At_End_of_Plane_8": {
-        "message": "At End of Plane 8"
-    },
-    "At_End_of_Plane_9": {
-        "message": "At End of Plane 9"
-    },
-    "At_End_of_Plane_10": {
-        "message": "At End of Plane 10"
-    },
-    "At_End_of_Plane_11": {
-        "message": "At End of Plane 11"
-    },
-    "At_End_of_Plane_12": {
-        "message": "At End of Plane 12"
-    },
-    "At_End_of_Plane_13": {
-        "message": "At End of Plane 13"
-    },
-    "At_End_of_Plane_14": {
-        "message": "At End of Plane 14"
-    },
-    "At_End_of_Plane_15": {
-        "message": "At End of Plane 15"
-    },
-    "At_End_of_Plane_16": {
-        "message": "At End of Plane 16"
-    },
-    "Lepcha": {
-        "message": "Lepcha"
-    },
-    "CJK_Compatibility_Forms": {
-        "message": "CJK Compatibility Forms"
+    "BMP__Plane_1__Plane_2__Plane_3__Plane_4__Plane_5__Plane_6__Plane_7__Plane_8__Plane_9__Plane_10__Plane_11__Plane_12__Plane_13__Plane_14__Plane_15__Plane_16": {
+        "message": "BMP, Plane 1, \\n                    Plane 2, \\n                    Plane 3, \\n                    Plane 4, \\n                    Plane 5, \\n                    Plane 6, \\n                    Plane 7, \\n                    Plane 8,\\n                    Plane 9, \\n                    Plane 10, \\n                    Plane 11, \\n                    Plane 12, \\n                    Plane 13,\\n                    Plane 14, \\n                    Plane 15, \\n                    Plane 16"
     }
 }

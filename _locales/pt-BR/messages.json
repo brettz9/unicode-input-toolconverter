@@ -1,4 +1,8 @@
 {
+    "langCode": {
+        "message": "pt-BR",
+        "description": "The default for the font language code field"
+    },
     "extensionName": {
         "message": "Unicode Input Tool/Converter"
     },

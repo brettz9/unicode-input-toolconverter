@@ -7,6 +7,7 @@ const path = require('path');
 // For `localize` `true`, need to provide strings for all
 //  possible; could auto-add to locale files if missing
 const localize = true;
+const removeDupes = false; // Not needed atm
 
 const {JSDOM} = jsdom;
 
@@ -29,7 +30,10 @@ const scriptMaps = [...doc.querySelectorAll('table.map')];
 const uniqueTextPlaceholder = localize ? '___placeholder___' : ''; // We know it is not present inside Unicode script names!
 
 const cleanupText = (txt) => {
-    return txt.trim().replace(/\s\((?:\d\.?\d*)MB\)$/, '');
+    return txt.trim()
+        .replace(/(\s)\s+/, '$1')
+        .replace(/\s*\((?:ASCII|Odia)\)$/, '')
+        .replace(/\s\((?:\d\.?\d*)MB\)$/, ''); // Remove MB size
 };
 
 const jamilih = scriptMaps.map((scriptMap) => {
@@ -90,6 +94,14 @@ const jamilih = scriptMaps.map((scriptMap) => {
 });
 // console.log('m', majorHeading, scriptGroups);
 
+async function removeLocaleDupes (localeFiles, localeFileContents) {
+    return Promise.all(
+        localeFiles.map((localeFile, i) => {
+            return fs.writeFile(localeFile, JSON.stringify(localeFileContents[i], null, 4));
+        })
+    );
+}
+
 // We only actually need the ESLint `indent` rule for the localized version, but add anyway
 await fs.writeFile('browser_action/unicode/unicode-scripts.js', `
 /* eslint-disable comma-spacing, quotes, indent */
@@ -104,7 +116,8 @@ export default function (_) {
         }))).map((fileContents) => {
             return JSON.parse(fileContents);
         });
-        let i = 0;
+        if (removeDupes) await removeLocaleDupes(localeFiles, localeFileContents);
+
         return JSON.stringify(['ul', jamilih], null, 4).replace(
             new RegExp(
                 '^(\\s*)"' + uniqueTextPlaceholder + '(.*)"(,)?$',
@@ -118,10 +131,24 @@ export default function (_) {
                 //   but first rename any similar ones if present; also hard-code each
                 //   locale to make sure no other l10n errors for missing keys, script
                 //   or otherwise
-                if (!(chromeSafeLocaleKey in localeFileContents[0])) {
-                    i++;
-                    console.log(i, chromeSafeLocaleKey, key);
+                localeFileContents.forEach((lfc, i) => {
+                    if (lfc.langCode.message !== 'en') {
+                        return;
+                    }
+                    if (!(chromeSafeLocaleKey in lfc)) {
+                        lfc[chromeSafeLocaleKey] = {
+                            message: key
+                        };
+                        console.log(chromeSafeLocaleKey, key);
+                        fs.writeFile(localeFiles[i], JSON.stringify(lfc, null, 4));
+                    }
+                });
+                /*
+                // Find change in *values*
+                if (englishLocaleFileContents[chromeSafeLocaleKey] && englishLocaleFileContents[chromeSafeLocaleKey].message !== key) {
+                    console.log(key, englishLocaleFileContents[chromeSafeLocaleKey].message);
                 }
+                */
                 return `${initialWS}_("${chromeSafeLocaleKey}")${possibleComma}`;
             }
         );

@@ -36,6 +36,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
     alink.className = 'text-link';
     alink.href = 'http://www.unicode.org/charts/PDF/U';
 
+    // Todo: Auto-generate these checks
     if (num < 0x0080) {
         alink.href += '0000';
         tn = _('Basic_Latin') + _('comma') + ' ' +
@@ -193,7 +194,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0x2440) {
         alink.href += '2400'; tn = _('Control_Pictures');
     } else if (num < 0x2460) {
-        alink.href += '2440'; tn = _('OCR');
+        alink.href += '2440'; tn = _('Optical_Character_Recognition__OCR_');
     } else if (num < 0x2500) {
         alink.href += '2460'; tn = _('Enclosed_Alphanumerics');
     } else if (num < 0x2580) {
@@ -219,7 +220,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0x2B00) {
         alink.href += '2A00'; tn = _('Suppl._Math_Operators');
     } else if (num < 0x2C00) {
-        alink.href += '2B00'; tn = _('Misc._Symbols_and_Arrows');
+        alink.href += '2B00'; tn = _('Miscellaneous_Symbols_and_Arrows');
     } else if (num < 0x2C60) {
         alink.href += '2C00'; tn = _('Glagolitic');
     } else if (num < 0x2C80) {
@@ -259,9 +260,9 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0x31F0) {
         alink.href += '31C0'; tn = _('CJK_Strokes');
     } else if (num < 0x3200) {
-        alink.href += '31F0'; tn = _('Katakana_Phonetic_Ext.');
+        alink.href += '31F0'; tn = _('Katakana_Phonetic_Extensions');
     } else if (num < 0x3300) {
-        alink.href += '3200'; tn = _('Enclosed_Alphanumerics_CJK_Letters_and_Months');
+        alink.href += '3200'; tn = _('Enclosed_CJK_Letters_and_Months');
     } else if (num < 0x3400) {
         alink.href += '3300'; tn = _('CJK_Compatibility');
     /* Begin CJK (1) */

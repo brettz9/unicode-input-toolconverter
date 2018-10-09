@@ -1,4 +1,8 @@
 {
+    "langCode": {
+        "message": "hu-HU",
+        "description": "The default for the font language code field"
+    },
     "extensionName": {
         "message": "Unicode Input Tool/Converter"
     },
