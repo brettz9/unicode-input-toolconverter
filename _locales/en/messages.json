@@ -547,9 +547,6 @@
     "unicodechartContext_accesskey": {
         "message": "C"
     },
-    "tools_charrefunicode.label": {
-        "message": "Unicode Input Tool/Converter"
-    },
     "hex2dec_label": {
         "message": "Hexadecimal to decimal"
     },
@@ -1948,9 +1945,6 @@
     "startset": {
         "message": "a"
     },
-    "_see_also_Comb__Marks_-": {
-        "message": "(see also Comb. Marks)"
-    },
     "Armenian": {
         "message": "Armenian"
     },
@@ -1980,12 +1974,6 @@
     },
     "Greek_Extended": {
         "message": "Greek Extended"
-    },
-    "_see_also_Ancient_Greek_Numbers_-": {
-        "message": "(see also Ancient Greek Numbers)"
-    },
-    "_see_also_Ancient_Greek_Musical_Notation_-": {
-        "message": "(see also Ancient Greek Musical Notation)"
     },
     "Latin": {
         "message": "Latin"
@@ -2020,9 +2008,6 @@
     "Small_Forms": {
         "message": "Small Forms"
     },
-    "_see_also_Phonetic_Symbols_-": {
-        "message": "(see also Phonetic Symbols)"
-    },
     "African_Scripts": {
         "message": "African Scripts"
     },
@@ -2043,9 +2028,6 @@
     },
     "Middle_Eastern_Scripts": {
         "message": "Middle Eastern Scripts"
-    },
-    "_see_also_Old_Persian_-": {
-        "message": "(see also Old Persian)"
     },
     "Arabic": {
         "message": "Arabic"
@@ -2341,9 +2323,6 @@
     "CJK_Compatibility": {
         "message": "CJK Compatibility"
     },
-    "_see_also_Letterlike_Symbols_-": {
-        "message": "(see also Letterlike Symbols)"
-    },
     "Combining_Diacritical_Marks": {
         "message": "Combining Diacritical Marks"
     },
@@ -2373,9 +2352,6 @@
     },
     "Spacing_Modifier_Letters": {
         "message": "Spacing Modifier Letters"
-    },
-    "_see_also_Super_and_Subscript_-": {
-        "message": "(see also Super and Subscript)"
     },
     "Mathematical_Symbols": {
         "message": "Mathematical Symbols"
@@ -2652,9 +2628,6 @@
     },
     "European_Scripts": {
         "message": "European Scripts"
-    },
-    "_see_also_Comb._Marks__": {
-        "message": "(see also Comb. Marks)"
     },
     "Caucasian_Albanian": {
         "message": "Caucasian Albanian"

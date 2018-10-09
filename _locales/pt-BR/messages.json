@@ -107,9 +107,1855 @@
         "message": "World Auxiliary Language website"
     },
     "Notes_dialogheader_title": {
-        "message": "Notes"
+        "message": "Notas"
     },
     "DTD_insertEntityFile": {
-        "message": "Insert Entity File"
+        "message": "Inserir Arquivo de Entidade"
+    },
+    "ent_isobox": {
+        "message": "Desenho de Quadro e Linha"
+    },
+    "ent_isocyr1": {
+        "message": "Cirílico Russo"
+    },
+    "ent_isocyr2": {
+        "message": "Cirílico Não-Russo"
+    },
+    "ent_isodia": {
+        "message": "Marcas Diacríticas"
+    },
+    "ent_isolat1": {
+        "message": "Acrescentado Latim 1"
+    },
+    "ent_isolat2": {
+        "message": "Acrescentado Latim 2"
+    },
+    "ent_isonum": {
+        "message": "Gráfico Numérico e Especial"
+    },
+    "ent_isopub": {
+        "message": "Publicação"
+    },
+    "ent_isoamsa": {
+        "message": "Acrescentados Símbolos Matemáticos: Relações com Setas"
+    },
+    "ent_isoamsb": {
+        "message": "Acrescentados Símbolos Matemáticos: Operadores Binários"
+    },
+    "ent_isoamsc": {
+        "message": "Acrescentados Símbolos Matemáticos: Delimitadores"
+    },
+    "ent_isoamsn": {
+        "message": "Adicionados símbolos matemáticos: Relações Negativas"
+    },
+    "ent_isoamso": {
+        "message": "Adicionados símbolos matemáticos: Ordinário"
+    },
+    "ent_isoamsr": {
+        "message": "Adicionados símbolos matemáticos: Relações"
+    },
+    "ent_isogrk1": {
+        "message": "Letras Gregas"
+    },
+    "ent_isogrk2": {
+        "message": "Monotoniko Greek"
+    },
+    "ent_isogrk3": {
+        "message": "Símbolos Gregos"
+    },
+    "ent_isogrk4": {
+        "message": "Símbolos Gregos Alternativos"
+    },
+    "ent_isomfrk": {
+        "message": "Alfabetos da Matemática: Fraktur"
+    },
+    "ent_isomopf": {
+        "message": "Alfabetos da Matemática: a face aberta"
+    },
+    "ent_isomscr": {
+        "message": "Alfabetos da Matemática: Script"
+    },
+    "ent_isotech": {
+        "message": "Técnico Geral"
+    },
+    "ent_mmlextra": {
+        "message": "Símbolos Matemáticos Adicionais MathML"
+    },
+    "ent_mmlalias": {
+        "message": "Álias MathML"
+    },
+    "ent_xhtml1_lat1": {
+        "message": "Latim para HTML"
+    },
+    "ent_xhtml1_special": {
+        "message": "Especial para  HTML"
+    },
+    "ent_xhtml1_symbol": {
+        "message": "Símbolos para HTML"
+    },
+    "ent_html5_uppercase": {
+        "message": "Álias em Maiúscula para HTML"
+    },
+    "ent_predefined": {
+        "message": "XML Predefinido"
+    },
+
+    "Convert_From_Encoding": {
+        "message": "Converter Da Codificação"
+    },
+    "Convert_To_Encoding": {
+        "message": "Converter Para a Codificação"
+    },
+
+
+    "kHanyuPinyin": {
+        "message": "HanyuPinyin"
+    },
+    "kIRG_MSource": {
+        "message": "IRG_MSource"
+    },
+
+    "Ethiopic_Extended_A": {
+        "message": "Etíope estendido A"
+    },
+    "Batak": {
+        "message": "Batak"
+    },
+    "CJK_Ideographs_Ext__D": {
+        "message": "Ideogramas CJK (Chinês-Japonês-Coreano) Extensão D"
+    },
+    "Kana_Supplement": {
+        "message": "Kana Complemento"
+    },
+    "Alchemical_Symbols": {
+        "message": "Símbolos de Alquimia"
+    },
+    "Emoticons": {
+        "message": "Emoticons"
+    },
+    "Playing_Cards": {
+        "message": "Cartas de Jogar"
+    },
+    "Miscellaneous_Symbols_And_Pictographs": {
+        "message": "Símbolos para Transportes e Mapas"
+    },
+    "Transport_and_Map_Symbols": {
+        "message": "Símbolos para Transportes e Mapas"
+    },
+    "Mandaic": {
+        "message": "Mandaico"
+    },
+    "Brahmi": {
+        "message": "Brahmi"
+    },
+    "Bamum_Supplement": {
+        "message": "Bamum Complemento"
+    },
+
+    "font_label": {
+        "message": "Fonte"
+    },
+
+    "addToToolbar": {
+        "message": "Adicionar ao menu suspenso da barra de ferramentas"
+    },
+    "usage_notespar10b": {
+        "message": "O ícone da barra de ferramentas pode ser adicionado indo a Exibir > Barra de Ferramentas > Personalizar e, em seguida, arrastando o ícone 'U' para a posição desejada. Além disso, o ícone tem um menu suspenso a que podem ser adicionados caracteres para posterior reutilização, usando o botão próximo à caixa de geração de caracteres. Para excluir itens já adicionados, enquanto visualiza os itens no ícone da barra de ferramentas, tecle o botão direito do mouse sobre o item a ser excluído. "
+    },
+
+
+    "usage_notespar1": {
+        "message": "A extensão pode ser ativada a partir do menu de contexto, a partir do menu Ferramentas ou a partir do botão de opções visualizado no menu de Complementos."
+    },
+    "usage_notespar2": {
+        "message": "As preferências são definidas logo que você clicar sobre os itens, mas você sempre pode reverter para os valores padrão, se você cometer erros."
+    },
+    "usage_notespar3": {
+        "message": "Fechar a janela de diálogo fará com que a posição da janela atual seja lembrada para uso futuro."
+    },
+    "usage_notespar4": {
+        "message": "Se você tiver problemas com o tamanho da janela, vá até a aba &quot;Preferências&quot; e selecione o botão &quot;Redefinir para os valores padrão (além DTD)&quot;. Usar as opções &quot;Definições anteriores&quot; ou &quot;Definições posteriores&quot; às vezes também pode ajustar problemas com o enquadramento de itens na exibição de gráfica."
+    },
+    "usage_notespar5": {
+        "message": "Note que você pode obter mais espaço na tela ao não usar botões. Nesse caso, você ainda pode clicar sobre os itens para obter o resultado gráfico."
+    },
+    "usage_notespar6": {
+        "message": "Por favor, tenha em mente que na visualização gráfica do Unicode, itens como pontos de interrogação (Firefox 2.0) ou números delimitados por quadrado (Firefox 3.0 +) podem aparecer no lugar de um caracter desejado (e alguns caracteres não serão ou não poderão ser exibidos de forma alguma). Isto é devido a limitações do próprio Firefox para a exibição de tais caracteres. Para obtê-los, você pode consultar imagens como as disponíveis em na página oficial http://www.unicode.org/charts, também disponível na extensão. Na extensão, ao passar o mouse sobre um caracter desejado aparecerá um link em que você pode clicar para conduzir ao gráfico adequado e, opcionalmente, ver a imagem. Opcionalmente você pode ativar as imagens para visualização direta, mas isso não deve ser ativado por padrão para evitar a onerar o servidor Unicode."
+    },
+    "usage_notespar7": {
+        "message": "Por favor, note que a seleção da opção &quot;Somente entidades&quot; na visualização gráfica permite ver as entidades HTML na ordem em que estão definidas (e somente elas). Quando não estiver neste modo, você verá todas as entidades definidas no DTD personalizado, opcionalmente excluindo entidades HTML, se a caixa de seleção para anexar entidades DTD (na aba DTD)estiver desmarcada."
+    },
+    "usage_notespar8": {
+        "message": "Você poderá baixar o banco de dados Unihan (não incluído com a extensão devido ao tamanho) de dentro das preferências. Se você tiver problemas, baixe o arquivo de aproximadamente 19MB em http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite e coloque-o em seu diretório de perfil do Firefox."
+    },
+    "usage_notespar9": {
+        "message": "Esta extensão é melhor visualizada em resoluções de tela mais altas, mas fizemos algumas adequações para resoluções mais baixas. Arraste os divisores para redimensionar as várias subseções. O ajuste desejado será lembrado."
+    },
+    "usage_notespar10": {
+        "message": "Use control + botão esquerdo do mouse quando você passar o cursor sobre o gráfico para congelar as descrições abaixo."
+    },
+    "usage_notespar11": {
+        "message": "Os dados Unicode dentro desta extensão são licenciados como descrito em http://unicode.org/copyright.html"
+    },
+    "usage_notespar12": {
+        "message": "Tradutores são bem-vindos em http://tinyurl.com/UnicodeInputToolTranslators"
+    },
+    "usage_notespar0": {
+        "message": "Outras Notas para o Uso"
+    },
+    "notespar0": {
+        "message": "Notas Unicode (algumas informações para o uso)"
+    },
+    "lang_tooltiptext": {
+        "message": "O atributo HTML 'lang' ou, em XML, o valor 'xml:lang', não tem efeito na maioria dos scripts, mas pode afetar a exibição gráfica da seleção/fonte de determinados caracteres CJK  - Chinês/Japonês/Coreano (por exemplo, U+5203 em 'zh-Hans', 'zh-hant', 'ja' ou 'ko'). Observe que para poder ver o efeito fora de nosso visualizador gráfico você deve usar o atributo lang na página web (mesmo que nossa caixa de saída gráfica não mostre nada, já que apenas o gráfico em si usa o atributo lang), e que existe atualmente uma falha no xml:lang em documentos XML/HTML verdadeiros: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+    },
+    "lang_label": {
+        "message": "lang"
+    },
+    "initialTab_label": {
+        "message": "Aba inicial a abrir (para ativação do comando-chave ou do botão da barra de ferramentas)"
+    },
+    "CSSWhitespace_label": {
+        "message": "Espaço em branco/caractere de escape CSS para usar em modo de ambigüidade"
+    },
+    "CSS_space": {
+        "message": "(espaço)"
+    },
+    "CSS_rn": {
+        "message": "\r\n (mudança de linha e nova linha)"
+    },
+    "CSS_r": {
+        "message": "\r (mudança de linha)"
+    },
+    "CSS_n": {
+        "message": "\n (nova linha)"
+    },
+    "CSS_t": {
+        "message": "\t (tab)"
+    },
+    "CSS_f": {
+        "message": "\f (quebra de página ou seção)"
+    },
+    "cssUnambiguous_label": {
+        "message": "Criar escape CSS como seqüências de 6 dígitos sem uso de espaços em branco (sendo tão longo quanto necessário e seguida de espaço em branco)"
+    },
+    "sixDigit2unicode_label": {
+        "message": "4 ou 6 dígitos (como em PHP 6) para Unicode"
+    },
+    "sixDigit2unicodeContext_label": {
+        "message": "Escape de 4 ou 6 dígitos (como em PHP 6) para Unicode"
+    },
+    "sixDigit2unicodeContext_accesskey": {
+        "message": "6"
+    },
+    "unicodeTo6DigitContext_accesskey": {
+        "message": "U"
+    },
+    "unicodeTo6Digit_label": {
+        "message": "Unicode para 6 dígitos (como em PHP 6)"
+    },
+    "unicodeTo6DigitContext_label": {
+        "message": "Unicode para Escape de 6 dígitos (como em PHP 6)"
+    },
+    "charDesc2Unicode_accesskey": {
+        "message": "e"
+    },
+    "charDesc2UnicodeContext_label": {
+        "message": "Escape de descrição de caracteres (como em PHP 6) para Unicode"
+    },
+    "unicode2CharDescContext_label": {
+        "message": "Unicode para Escape de descrição de caracteres (como em PHP 6)"
+    },
+    "unicode2CharDescContext_accesskey": {
+        "message": "n"
+    },
+    "charDesc2Unicode_label": {
+        "message": "Escape de descrição de caracteres para Unicode"
+    },
+    "unicode2CharDesc_label": {
+        "message": "Unicode para Escape de descrição de caracteres"
+    },
+    "unicode2JSEscape_label": {
+        "message": "Unicode para Seqüências de escape JavaScript"
+    },
+    "unicode2jsescapeContext_label": {
+        "message": "Unicode para escaped JS"
+    },
+    "unicode2jsescapeContext_accesskey": {
+        "message": "J"
+    },
+    "unicode2CSSEscape_label": {
+        "message": "Unicode para Seqüências de escape CSS"
+    },
+    "unicode2cssescapeContext_accesskey": {
+        "message": "S"
+    },
+    "unicode2cssescapeContext_label": {
+        "message": "Unicode para escaped CSS"
+    },
+    "jsescape2unicode_label": {
+        "message": "Seqüências de escape JavaScript para Unicode"
+    },
+    "jsescape2unicodeContext_accesskey": {
+        "message": "J"
+    },
+    "jsescape2unicodeContext_label": {
+        "message": "Escaped JS para Unicode"
+    },
+    "cssescape2unicode_label": {
+        "message": "Seqüências de escape CSS para Unicode"
+    },
+    "cssescape2unicodeContext_accesskey": {
+        "message": "C"
+    },
+    "cssescape2unicodeContext_label": {
+        "message": "Escaped CSS para Unicode"
+    },
+    "Yijing_Symbols": {
+        "message": "Símbolos Yijing"
+    },
+    "Noncharacters_at_end_of": {
+        "message": "Não-caracteres no fim de ..."
+    },
+    "_see_also_Common_Indic_Number_Forms--": {
+        "message": "(ver também Formas Numéricas Índicas Comuns)"
+    },
+    "_see_also_Combining_Diacritical_Marks_for_Symbols--": {
+        "message": "(Veja também Marcas Diacríticas Combinadas para Símbolos)"
+    },
+    "Roman_Symbols": {
+        "message": "Símbolos Romanos"
+    },
+    "CJK_Radicals___KangXi_Radicals": {
+        "message": "Radicais CJK / Radicais KangXi"
+    },
+    "CJK_Ideographs_Ext__C": {
+        "message": "Ideogramas CJK (Chinês-Japonês-Coreano) Extensão C"
+    },
+    "Bamum": {
+        "message": "Bamum"
+    },
+    "Egyptian_Hieroglyphs": {
+        "message": "Hieróglifos Egípcios"
+    },
+    "Aramaic__Imperial": {
+        "message": "Aramaico, Imperial"
+    },
+    "Avestan": {
+        "message": "Avestan"
+    },
+    "Old_South_Arabian": {
+        "message": "Árabe Antigo do Sul"
+    },
+    "Pahlavi__Inscriptional": {
+        "message": "Pahlavi, Inscrições"
+    },
+    "Parthian__Inscriptional": {
+        "message": "Parthian, Inscrições"
+    },
+    "Samaritan": {
+        "message": "Samaritano"
+    },
+    "Old_Turkic": {
+        "message": "Turco Antigo"
+    },
+    "Devanagari_Extended": {
+        "message": "Devanagari Estendido"
+    },
+    "Kaithi": {
+        "message": "Kaithi"
+    },
+    "Meetei_Mayek": {
+        "message": "Meetei Mayek"
+    },
+    "Vedic_Extensions": {
+        "message": "Extensões védicas"
+    },
+    "Javanese": {
+        "message": "Javanês"
+    },
+    "Myanmar_Extended_A": {
+        "message": "Myanmar Estendido-A"
+    },
+    "South_Asian_Scripts": {
+        "message": "Escritas do Sul da Ásia"
+    },
+    "Tai_Tham": {
+        "message": "Tai Tham"
+    },
+    "Tai_Viet": {
+        "message": "Tai Viet"
+    },
+    "Lisu": {
+        "message": "Lisu"
+    },
+    "Hangul_Jamo_Extended_A": {
+        "message": "Hangul Jamo Estendido-A"
+    },
+    "Hangul_Jamo_Extended_B": {
+        "message": "Hangul Jamo Estendido-B"
+    },
+    "UCAS_Extended": {
+        "message": "UCAS Estendido"
+    },
+    "Common_Indic_Number_Forms": {
+        "message": "Formas Numéricas Comuns do Índico"
+    },
+    "Rumi_Numeral_Symbols": {
+        "message": "Símbolos de Numerais Rumi"
+    },
+    "Basic_operators_Plus__Factorial": {
+        "message": "Operadores Básicos: Mais, Fatorial"
+    },
+    "Division__Multiplication": {
+        "message": "Divisão, Multiplicação"
+    },
+    "Unified_Canadian_Aboriginal_Syllabics": {
+        "message": "Sílabas Aborígenes Unificadas do Canadá - UCAS"
+    },
+    "Combining_Diacritics": {
+        "message": "Diacríticos Combinantes"
+    },
+    "Yi_Syllables": {
+        "message": "Sílabas Yi"
+    },
+    "Alphabetic_Presentation_Forms": {
+        "message": "Formas de Apresentação Alfabética"
+    },
+    "Halfwidth_and_Fullwidth_Forms": {
+        "message": "Formas de Meia-largura e Largura Inteira"
+    },
+    "ASCII_Characters": {
+        "message": "Caracteres ASCII"
+    },
+    "Alphanumeric_Symbols": {
+        "message": "Símbolos Alfanuméricos"
+    },
+    "Enclosed_Alphanumeric_Supplement": {
+        "message": "Suplemento Alfanumérico com Contorno"
+    },
+    "Enclosed_Ideographic_Supplement": {
+        "message": "Suplemento de Ideogramas com Contorno"
+    },
+    "Additional_Squared_Symbols": {
+        "message": "Símbolos Adicionais Contornados por Quadrado"
+    },
+    "label_unicode": {
+        "message": "Unicode"
+    },
+    "showAllDetailedView_label": {
+        "message": "Mostrar todos os itens (ou somente aqueles com conteúdo)"
+    },
+    "showAllDetailedCJKView_label": {
+        "message": "Mostrar todos os itens (ou somente aqueles com conteúdo)"
+    },
+    "showComplexWindow_label": {
+        "message": "Mostrar opções de pesquisa especializada e meta-dados em modo gráfico (mais lento para abrir a janela)"
+    },
+    "Specialized_search": {
+        "message": "Pesquisa especializada"
+    },
+    "Code_point": {
+        "message": "Ponto Código"
+    },
+    "Name": {
+        "message": "Nome"
+    },
+    "kCangjie": {
+        "message": "Cangjie"
+    },
+    "kCantonese": {
+        "message": "Cantonese"
+    },
+    "kDefinition": {
+        "message": "Definição"
+    },
+    "kHanYu": {
+        "message": "Han Yu"
+    },
+    "kIRGHanyuDaZidian": {
+        "message": "IRG Hanyu Da Zidian"
+    },
+    "kIRGKangXi": {
+        "message": "IRG Kang Xi"
+    },
+    "kIRG_GSource": {
+        "message": "Fonte G IRG"
+    },
+    "kIRG_JSource": {
+        "message": "Fonte J IRG"
+    },
+    "kIRG_TSource": {
+        "message": "Fonte T IRG"
+    },
+    "kMandarin": {
+        "message": "Mandarim"
+    },
+    "kRSUnicode": {
+        "message": "RS Unicode"
+    },
+    "kSemanticVariant": {
+        "message": "Variação Semântica"
+    },
+    "kTotalStrokes": {
+        "message": "Traços Totais"
+    },
+    "kCihaiT": {
+        "message": "Cihai T"
+    },
+    "kIRG_KSource": {
+        "message": "Fonte K IRG"
+    },
+    "kSBGY": {
+        "message": "SBGY"
+    },
+    "kJIS0213": {
+        "message": "JIS0213"
+    },
+    "kNelson": {
+        "message": "Nelson"
+    },
+    "kRSAdobe_Japan1_6": {
+        "message": "RS Adobe Japan1 6"
+    },
+    "kCowles": {
+        "message": "Cowles"
+    },
+    "kMatthews": {
+        "message": "Matthews"
+    },
+    "kOtherNumeric": {
+        "message": "Outro Numérico"
+    },
+    "kPhonetic": {
+        "message": "Fonético"
+    },
+    "kGSR": {
+        "message": "GSR"
+    },
+    "kIRG_KPSource": {
+        "message": "Fonte KP IRG"
+    },
+    "kIRG_VSource": {
+        "message": "Fonte V IRG"
+    },
+    "kKPS1": {
+        "message": "KPS 1"
+    },
+    "kFenn": {
+        "message": "Fenn"
+    },
+    "kFennIndex": {
+        "message": "Índice Fenn"
+    },
+    "kKarlgren": {
+        "message": "Karlgren"
+    },
+    "kHKSCS": {
+        "message": "HKSCS"
+    },
+    "kIRG_HSource": {
+        "message": "Fonte H IRG"
+    },
+    "kXHC1983": {
+        "message": "XHC1983"
+    },
+    "kMeyerWempe": {
+        "message": "Meyer Wempe"
+    },
+    "kTraditionalVariant": {
+        "message": "Variação Tradicional"
+    },
+    "kVietnamese": {
+        "message": "Vietnamita"
+    },
+    "kSpecializedSemanticVariant": {
+        "message": "Variação Semântica Especializada"
+    },
+    "kLau": {
+        "message": "Lau"
+    },
+    "kCheungBauer": {
+        "message": "Cheung Bauer"
+    },
+    "kCheungBauerIndex": {
+        "message": "Índice Cheung Bauer"
+    },
+    "kIICore": {
+        "message": "IICore"
+    },
+    "kTang": {
+        "message": "Tang"
+    },
+    "kZVariant": {
+        "message": "Variante Z"
+    },
+    "kRSKangXi": {
+        "message": "RS Kang Xi"
+    },
+    "kJapaneseKun": {
+        "message": "Japonês Kun"
+    },
+    "kJapaneseOn": {
+        "message": "Japonês On"
+    },
+    "kSimplifiedVariant": {
+        "message": "Variante Simplificada"
+    },
+    "kKangXi": {
+        "message": "Kang Xi"
+    },
+    "kKPS0": {
+        "message": "KPS0"
+    },
+    "kBigFive": {
+        "message": "BigFive"
+    },
+    "kCCCII": {
+        "message": "CCCII"
+    },
+    "kCNS1986": {
+        "message": "CNS1986"
+    },
+    "kCNS1992": {
+        "message": "CNS1992"
+    },
+    "kDaeJaweon": {
+        "message": "Dae Jaweon"
+    },
+    "kEACC": {
+        "message": "EACC"
+    },
+    "kFourCornerCode": {
+        "message": "Código Quatro Esquinas"
+    },
+    "kFrequency": {
+        "message": "Freqüência"
+    },
+    "kGB0": {
+        "message": "GB0"
+    },
+    "kGB1": {
+        "message": "GB1"
+    },
+    "kGradeLevel": {
+        "message": "Nível"
+    },
+    "kHDZRadBreak": {
+        "message": "HDZ RadBreak"
+    },
+    "kHKGlyph": {
+        "message": "HK Glyph"
+    },
+    "kHangul": {
+        "message": "Hangul"
+    },
+    "kHanyuPinlu": {
+        "message": "Hanyu Pinlu"
+    },
+    "kIRGDaeJaweon": {
+        "message": "IRGDaeJaweon"
+    },
+    "kIRGDaiKanwaZiten": {
+        "message": "IRG Dai Kanwa Ziten"
+    },
+    "kJis0": {
+        "message": "Jis0"
+    },
+    "kKSC0": {
+        "message": "KSC0"
+    },
+    "kKorean": {
+        "message": "Coreano"
+    },
+    "kMainlandTelegraph": {
+        "message": "Telégrafo continental"
+    },
+    "kMorohashi": {
+        "message": "Morohashi"
+    },
+    "kPrimaryNumeric": {
+        "message": "Numérico Primário"
+    },
+    "kTaiwanTelegraph": {
+        "message": "Telégrafo de Taiwan"
+    },
+    "kXerox": {
+        "message": "Xerox"
+    },
+    "kGB5": {
+        "message": "GB5"
+    },
+    "kJis1": {
+        "message": "Jis1"
+    },
+    "kPseudoGB1": {
+        "message": "Pseudo-GB1"
+    },
+    "kGB3": {
+        "message": "GB3"
+    },
+    "kGB8": {
+        "message": "GB8"
+    },
+    "kKSC1": {
+        "message": "KSC1"
+    },
+    "kIBMJapan": {
+        "message": "IBM Japão"
+    },
+    "kRSKanWa": {
+        "message": "RS Kan Wa"
+    },
+    "kRSJapanese": {
+        "message": "RS Japonês"
+    },
+    "kAccountingNumeric": {
+        "message": "Numérico Contabilidade"
+    },
+    "kRSKorean": {
+        "message": "RS Coreano"
+    },
+    "kGB7": {
+        "message": "GB7"
+    },
+    "kIRG_USource": {
+        "message": "Fonte U IRG"
+    },
+    "kCompatibilityVariant": {
+        "message": "Variante Compatibilidade"
+    },
+    "General_Category": {
+        "message": "Categoria Geral"
+    },
+    "Canonical_Combining_Class": {
+        "message": "Classe de combinação canônica"
+    },
+    "Bidi_Class": {
+        "message": "Classe bidirecional"
+    },
+    "Decomposition_Type_and_Mapping": {
+        "message": "Tipo de decomposição e mapeamento"
+    },
+    "Decimal": {
+        "message": "Decimal"
+    },
+    "Digit": {
+        "message": "Dígito"
+    },
+    "Numeric": {
+        "message": "Numérico"
+    },
+    "Bidi_Mirrored": {
+        "message": "Bidirecional Espelhado"
+    },
+    "Unicode_1_Name": {
+        "message": "Nome Unicode 1"
+    },
+    "ISO_Comment": {
+        "message": "Comentário ISO"
+    },
+    "Simple_Uppercase_Mapping": {
+        "message": "Mapeamento de maiúsculas simples"
+    },
+    "Simple_Lowercase_Mapping": {
+        "message": "Mapeamento de minúsculas simples"
+    },
+    "Simple_Titlecase_Mapping": {
+        "message": "Mapeamento de título simples"
+    },
+    "basicView_tab": {
+        "message": "Visualização e saída básica"
+    },
+    "detailedView_tab": {
+        "message": "Visualização detalhada"
+    },
+    "detailedCJKView_tab": {
+        "message": "Visualização detalhada (CJK)"
+    },
+    "unicode2charrefDecSurrogate_label": {
+        "message": "Unicode para referência gráfica (decimal) como pares substitutos"
+    },
+    "unicode2charrefHexSurrogate_label": {
+        "message": "Unicode para referência gráfica (hexadecimal) como pares substitutos"
+    },
+    "unicode2charrefSurrogate_tooltip": {
+        "message": "Converter em pares substitutos (Não escolha a menos que você precise encontrar os substitutos de um (raro) caractere superior ou desejar ver um substituto em si)"
+    },
+    "DownloadUnihan": {
+        "message": "Baixar arquivo Unihan (19.3 MB)"
+    },
+    "Download_unihan_tooltip": {
+        "message": "Clique aqui para baixar as descrições mais recentes para o chinês, japonês, coreano (que não estão incluídas na extensão quando o arquivo é grande demais)."
+    },
+    "Close": {
+        "message": "Fechar"
+    },
+    "UnihanInstalled": {
+        "message": "Base de dados Unihan (CJK) instalada"
+    },
+    "searchName": {
+        "message": "Busca por nome do caractere:"
+    },
+    "searchkDefinition": {
+        "message": "Busca pela descrição do caractere:"
+    },
+    "Regular_tab_label": {
+        "message": "Busca normal (não-CJK)"
+    },
+    "CJK_tab_label": {
+        "message": "CJK (Chinês-Japonês-Coreano)"
+    },
+    "CJK_tooltip": {
+        "message": "Buscar apenas Chinês-Japonês-Coreano"
+    },
+    "Regular_tooltip": {
+        "message": "Buscar apenas Chinês-Japonês-Coreano"
+    },
+    "Additional_Arrows": {
+        "message": "Setas adicionais"
+    },
+    "Floors_and_Ceilings": {
+        "message": "Pisos e telhados"
+    },
+    "Additional_Shapes": {
+        "message": "Formas adicionais"
+    },
+    "APL_Symbols": {
+        "message": "Símbolos APL"
+    },
+    "ShowImg_checkbox_label": {
+        "message": "Mostrar imagem?"
+    },
+    "ShowImg_tooltiptext": {
+        "message": "Por favor, mantenha esta desativada a menos que você precise encontrar uma imagem, uma vez que o servidor Unicode é tarifado."
+    },
+    "Sundanese": {
+        "message": "Sudanês"
+    },
+    "Ol_Chiki": {
+        "message": "OI Chiki"
+    },
+    "Cyrillic_Extended_A": {
+        "message": "Cirílico Estendido-A"
+    },
+    "Vai": {
+        "message": "Vai"
+    },
+    "Cyrillic_Extended_B": {
+        "message": "Cirílico Estendido-B"
+    },
+    "Saurashtra": {
+        "message": "Saurashtra"
+    },
+    "Kayah_Li": {
+        "message": "Kayah Li"
+    },
+    "Rejang": {
+        "message": "Rejang"
+    },
+    "Cham": {
+        "message": "Cham"
+    },
+    "Ancient_Symbols": {
+        "message": "Símbolos antigos"
+    },
+    "Phaistos_Disc": {
+        "message": "Disco Phaistos"
+    },
+    "Lycian": {
+        "message": "Lycian"
+    },
+    "Carian": {
+        "message": "Carian"
+    },
+    "Lydian": {
+        "message": "Lydian"
+    },
+    "Mahjong_Tiles": {
+        "message": "Azulejos Mahjong"
+    },
+    "Domino_Tiles": {
+        "message": "Azulejos Dominó"
+    },
+    "Game_Symbols": {
+        "message": "Símbolos de Jogo"
+    },
+    "Chess_Checkers": {
+        "message": "Xadrez/Damas"
+    },
+    "Card_suits": {
+        "message": "Naipes"
+    },
+    "Japanese_Chess": {
+        "message": "Xadrez Japonês"
+    },
+    "Yijing_Mono--_Di-_and_Trigrams": {
+        "message": "Monogramas, Diagramas e Triagramas Yijing"
+    },
+    "copyToClipboard": {
+        "message": "Copiar para a área de transferência"
+    },
+    "period": {
+        "message": "."
+    },
+    "moveconvertedup_label": {
+        "message": "Copiar 'convertido' para pré-convertido"
+    },
+    "Reconvert.dialogheader.title": {
+        "message": "Opções de reconversão"
+    },
+    "Preferences.dialogheader.title": {
+        "message": "Preferências"
+    },
+    "default.textbox.value": {
+        "message": "Padrão"
+    },
+    "Ascii_checkbox_label": {
+        "message": "Converter em entidades se ASCII &lt; 128? (entidades existentes/caracteres de referência não estarão imunes)"
+    },
+    "Hexletters_checkbox_label": {
+        "message": "Saída hexadecimal A-F (maiúsculas)?"
+    },
+    "xstyle_description": {
+        "message": "Estilo de 'X' na saída de caractere hexadecimal de referência?"
+    },
+    "xhtmlentmode_label": {
+        "message": "Modo entidade XHTML (permitir ' ao criar entidades HTML em vez de numérico)? (Pode ser melhor deixar esta opção desligada.)"
+    },
+    "xmlentmode_label": {
+        "message": "Modo entidade XML(quando convertendo entidades (X)HTML, deixará sem conversão o &amp;, &lt;, &gt;, &quot; e ')? (Estas entidades são seguras em XML sem a necessidade de declarações de entidade DTD, então elas provavelmente não precisam ser convertidos e são mais fáceis de ler.)"
+    },
+    "ampkeep_label": {
+        "message": "Ao converter de Unicode para entidades HTML, não vai converter &amp;, de modo a evitar a adulteração com entidades HTML existentes"
+    },
+    "ampspace_label": {
+        "message": "Converter cada &quot;&amp;&quot; que é seguido por espaços em branco para '&amp;' (para melhor XML)?"
+    },
+    "resettodefault_label": {
+        "message": "Redefinir para os valores padrão (além DTD)?"
+    },
+    "numrows": {
+        "message": "# de linhas"
+    },
+    "numcols": {
+        "message": "# de colunas"
+    },
+    "charref2unicode_label": {
+        "message": "Caractere de referência para Unicode"
+    },
+    "charref2unicodeContext_label": {
+        "message": "Caractere de referência (hexadecimal ou decimal) para Unicode"
+    },
+    "charref2unicodeContext_accesskey": {
+        "message": "C"
+    },
+    "charref2htmlents_label": {
+        "message": "Caractere de referência para entidades HTML"
+    },
+    "charref2htmlentsContext_label": {
+        "message": "Caractere de referência (hexadecimal ou decimal) para entidades HTML"
+    },
+    "charref2htmlentsContext_accesskey": {
+        "message": "C"
+    },
+    "unicode2charrefDec_label": {
+        "message": "Unicode para Caractere de referência (decimal)"
+    },
+    "unicode2charrefDecContext_label": {
+        "message": "Unicode para Caractere de referência (decimal)"
+    },
+    "unicode2charrefDecContext_accesskey": {
+        "message": "U"
+    },
+    "unicode2charrefHex_label": {
+        "message": "Unicode para Caractere de referência (hexadecimal)"
+    },
+    "unicode2charrefHexContext_label": {
+        "message": "Unicode para Caractere de referência (hexadecimal)"
+    },
+    "unicode2charrefHexContext_accesskey": {
+        "message": "U"
+    },
+    "unicode2htmlents_label": {
+        "message": "Unicode para entidades HTML"
+    },
+    "unicode2htmlentsContext_label": {
+        "message": "Unicode para entidades HTML"
+    },
+    "unicode2htmlentsContext_accesskey": {
+        "message": "U"
+    },
+    "htmlents2charrefDec_label": {
+        "message": "Entidade HTML para Caractere de referência (decimal)"
+    },
+    "htmlents2charrefDecContext_label": {
+        "message": "Entidade HTML para Caractere de referência (decimal)"
+    },
+    "htmlents2charrefDecContext_accesskey": {
+        "message": "H"
+    },
+    "htmlents2charrefHex_label": {
+        "message": "Entidade HTML para Caractere de referência (hexadecimal)"
+    },
+    "htmlents2charrefHexContext_label": {
+        "message": "Entidade HTML para Caractere de referência (hexadecimal)"
+    },
+    "htmlents2charrefHexContext_accesskey": {
+        "message": "H"
+    },
+    "htmlents2unicode_label": {
+        "message": "Entidade HTML para Unicode"
+    },
+    "htmlents2unicodeContext_label": {
+        "message": "Entidade HTML para Unicode"
+    },
+    "htmlents2unicodeContext_accesskey": {
+        "message": "H"
+    },
+    "launchunicode_label": {
+        "message": "Abrir ferramenta de conversão Unicode"
+    },
+    "launchunicodeContext_label": {
+        "message": "Abrir ferramenta de conversão Unicode"
+    },
+    "launchunicodeContext_accesskey": {
+        "message": "A"
+    },
+    "unicodechart_label": {
+        "message": "Pesquisar em gráfico Unicode"
+    },
+    "unicodechartContext_label": {
+        "message": "Pesquisar em gráfico Unicode"
+    },
+    "unicodechartContext_accesskey": {
+        "message": "C"
+    },
+    "tools_charrefunicode_label": {
+        "message": "Ferramenta/Conversor de entrada Unicode"
+    },
+    "hex2dec_label": {
+        "message": "Hexadecimal para decimal"
+    },
+    "hex2decContext_label": {
+        "message": "Hexadecimal para decimal"
+    },
+    "hex2decContext_accesskey": {
+        "message": "H"
+    },
+    "dec2hex_label": {
+        "message": "Decimal para hexadecimal"
+    },
+    "dec2hexContext_label": {
+        "message": "Decimal para hexadecimal"
+    },
+    "dec2hexContext_accesskey": {
+        "message": "D"
+    },
+    "uresults_value": {
+        "message": "Resultados Unicode"
+    },
+    "uresults_title": {
+        "message": "Resultados Unicode"
+    },
+    "uresults_preconverted": {
+        "message": "Pré-convertido:"
+    },
+    "uresults_converted": {
+        "message": "Convertido:"
+    },
+    "button_clearoutput": {
+        "message": "Limpar"
+    },
+    "caption.chart.output": {
+        "message": "Saída em gráfico"
+    },
+    "caption.chart.selectchar": {
+        "message": "Encontrar caractere ou faixa"
+    },
+    "caption.chart.layout": {
+        "message": "Leiaute de gráfico"
+    },
+    "caption_displayUnicodeDesc": {
+        "message": "Caracteres <html:br />descrição:"
+    },
+    "textbox_displayUnicodeDesc": {
+        "message": "Descrição do caractere"
+    },
+    "button_multiline": {
+        "message": "Linhas múltiplas?"
+    },
+    "outputtocopy": {
+        "message": "Saída:"
+    },
+    "button_moveoutput": {
+        "message": "Mover saída"
+    },
+    "willreplaceprecnv": {
+        "message": "(substituirá o texto &quot;pré-convertido&quot; na Barra de Conversão)"
+    },
+    "charhexdecchoices": {
+        "message": "Caractere Unicode, número hexadecimal ou decimal:"
+    },
+    "desc_digits": {
+        "message": "se procura caracteres de referência #0-9, use #n)"
+    },
+    "chooseregion": {
+        "message": "OU escolha por Região:"
+    },
+    "label_norows": {
+        "message": "Número de linhas?"
+    },
+    "label_nocols": {
+        "message": "Número de Colunas?"
+    },
+    "label_hexq": {
+        "message": "Hexadecimal?"
+    },
+    "label_decq": {
+        "message": "Decimal?"
+    },
+    "label_unicodeq": {
+        "message": "Unicode?"
+    },
+    "label_entq": {
+        "message": "Entidade?"
+    },
+    "label_onlyentsyesq": {
+        "message": "Mostrar apenas entidades?"
+    },
+    "label_xstyleq": {
+        "message": "Estilo 'x'?"
+    },
+    "label_middleq": {
+        "message": "Colocar o alvo no centro?"
+    },
+    "label_buttonq": {
+        "message": "Usar botões?"
+    },
+    "label_fontsize": {
+        "message": "Tamanho da fonte:"
+    },
+    "desc_symbolspunc": {
+        "message": "OU escolha entre símbolos e pontuação:"
+    },
+    "dialogheader_value": {
+        "message": "DTD"
+    },
+    "DTD.desc.value": {
+        "message": "Adicionar as declarações da entidade DTD (opcional) para uso em conversões"
+    },
+    "DTD.desc.value2": {
+        "message": "Formulário: &lt;!ENTITY entname 'charvalue'&gt;"
+    },
+    "DTD.textbox.value": {
+        "message": "DTD.textbox.value"
+    },
+    "DTD_insertent": {
+        "message": "Inserir &lt;!ENTITY&gt;"
+    },
+    "appendhtml_checkbox": {
+        "message": "Acrescentar ao conjunto de entidades HTML existente?"
+    },
+
+    "notespar1": {
+        "message": "Unicode é um sistema para representar todos as escritas humanas em uso (e algumas em desuso), símbolos padrões de símbolos e pontuação. Utilizar o Unicode em HTML e XML permite que todos os caracteres sejam escritos,mesmo dentro de uma mesma página. Muitos programas permitem que você escreva ou salve todos os caracteres diretamente em Unicode."
+    },
+    "notespar2": {
+        "message": "No entanto, uma vez que alguns programas ainda não suportam plenamente o Unicode eles não salvarão os textos corretamente. Para tornar mais fácil a digitação, pode-se utilizar diferentes tipos de atalhos de teclado para representar os variados caracteres Unicode. No entanto, se você estiver usando apenas os símbolos básicos ASCII, os seus documentos serão traduzidos para Unicode sem nenhuma dificuldade)"
+    },
+    "notespar3": {
+        "message": "Um atalho que pode ser usado em qualquer documento HTML ou XML é um caractere de referência. Essas referências começam com um &quot;E comercial&quot; ('&amp;') e um jogo da velha ('#') e terminam com um ponto e vírgula (';'). No meio podem ter um número decimal (ou seja, dígitos 0-9) ou um número hexadecimal (ou seja, dígitos 0-9 ou letras A-F maiúsculas ou minúsculas, precedidas por um 'x' ou 'X'). Ambos modos irão mostrar o mesmo e exibir igual à representação Unicode."
+    },
+    "notespar4": {
+        "message": "(O sistema de numeração hexadecimal pode ser pensado como trabalhando um pouco como um conjunto de cartas de baralho. O valete pode representar '11 'em alguns jogos, a dama '12', e assim por diante. Embora haja apenas um único cartão, eles representam um número superior a dez. Assim também é com cada um dos dígitos hexadecimais representadas pelas letras A-F)."
+    },
+    "notespar5": {
+        "message": "Além de referências de caracteres, outro tipo de atalho para representar um caractere Unicode (ou até vários caracteres) é a &quot;entidade analisada geral&quot;."
+    },
+    "notespar6": {
+        "message": "Para a linguagem XML, exceto para cinco entidades pré-definidas (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; ( &quot;), ' (')), você deve definir explicitamente as entidades que você vai usar (ou usar uma identidade 'PUBLICA' especial que pode indicar para os programas de leitura do arquivo XML a linguagem do conjunto de entidades que você está usando)."
+    },
+    "notespar7": {
+        "message": "Em HTML, existem uma série de entidades já definidas. Uma observação importante: apesar do HTML usar quatro das cinco entidades XML pré-definidas, ele não usa ''', então você precisa usar no lugar o Unicode equivalente (ou utilizar a referência de caracteres ' ou ')."
+    },
+    "notespar8": {
+        "message": "Você também pode definir suas próprias entidades em nossa seção &quot;DTD&quot; usando a sintaxe '&lt;! ENTITY Entname &quot;entvalue&quot;&gt;' para que eles possam ser incluídos dentro de conversões."
+    },
+
+    "European_Scripts": {
+        "message": "Alfabetos Europeus"
+    },
+    "_see_also_Comb._Marks--": {
+        "message": "(veja também Marcas Combinadas)"
+    },
+    "Armenian": {
+        "message": "Armênio"
+    },
+    "Armenian_Ligatures": {
+        "message": "Ligaduras armênias"
+    },
+    "Coptic": {
+        "message": "Cóptico"
+    },
+    "Coptic_in_Greek_block": {
+        "message": "Cóptico em bloco grego"
+    },
+    "Cyrillic": {
+        "message": "Cirílico"
+    },
+    "Cyrillic_Supplement": {
+        "message": "Suplemento cirílico"
+    },
+    "Georgian": {
+        "message": "Georgiano"
+    },
+    "Georgian_Supplement": {
+        "message": "Suplemento Georgiano"
+    },
+    "Greek": {
+        "message": "Grego"
+    },
+    "Greek_Extended": {
+        "message": "Grego Estendido"
+    },
+    "_see_also_Ancient_Greek_Numbers--": {
+        "message": "(veja também Números gregos antigos)"
+    },
+    "_see_also_Ancient_Greek_Musical_Notation--": {
+        "message": "(veja também Notações musicais gregas antigas)"
+    },
+    "Latin": {
+        "message": "Latim"
+    },
+    "Basic_Latin": {
+        "message": "Latim básico"
+    },
+    "Latin_1_Supplement": {
+        "message": "Suplemento Latim-1"
+    },
+    "Latin_Extended_A": {
+        "message": "Latim estendido A"
+    },
+    "Latin_Extended_B": {
+        "message": "Latim estendido B"
+    },
+    "Latin_Extended_C": {
+        "message": "Latim estendido C"
+    },
+    "Latin_Extended_D": {
+        "message": "Latim estendido D"
+    },
+    "Latin_Extended_Additional": {
+        "message": "Latim estendido adicional"
+    },
+    "Latin_Ligatures": {
+        "message": "Ligações Latinas"
+    },
+    "Fullwidth_Latin_Letters": {
+        "message": "Cartas em latim com largura completa"
+    },
+    "Small_Form_Variants": {
+        "message": "Variações de Formas Pequenas"
+    },
+    "_see_also_Phonetic_Symbols--": {
+        "message": "(veja também os símbolos fonéticos)"
+    },
+    "African_Scripts": {
+        "message": "Escritas africanas"
+    },
+    "Ethiopic": {
+        "message": "Etíope"
+    },
+    "Ethiopic_Supplement": {
+        "message": "Suplemento etíope"
+    },
+    "Ethiopic_Extended": {
+        "message": "Etíope estendido"
+    },
+    "Other_African_scripts": {
+        "message": "Outras escritas africanas"
+    },
+    "N_Ko": {
+        "message": "N'ko"
+    },
+    "Tifinagh": {
+        "message": "Tifinagh"
+    },
+    "Middle_Eastern_Scripts": {
+        "message": "Escritas do oriente médio"
+    },
+    "_see_also_Old_Persian_": {
+        "message": "(veja também o persa antigo)"
+    },
+    "Arabic": {
+        "message": "Árabe"
+    },
+    "Arabic_Supplement": {
+        "message": "Suplemento árabe"
+    },
+    "Arabic_Presentation_Forms_A": {
+        "message": "Tipo Arábico A"
+    },
+    "Arabic_Presentation_Forms_B": {
+        "message": "Tipo Arábico B"
+    },
+    "Hebrew": {
+        "message": "Hebraico"
+    },
+    "Hebrew_Presentation_Forms": {
+        "message": "Tipo Hebraico"
+    },
+    "Syriac": {
+        "message": "Siríaco (aramaico)"
+    },
+    "Thaana": {
+        "message": "Thaana"
+    },
+    "American_scripts": {
+        "message": "Escritas americanas"
+    },
+    "Cherokee": {
+        "message": "Cherokee"
+    },
+    "Deseret": {
+        "message": "Deseret"
+    },
+    "Other_Scripts": {
+        "message": "Outras escritas"
+    },
+    "Shavian": {
+        "message": "Shavian"
+    },
+    "Osmanya": {
+        "message": "Osmanya"
+    },
+    "Glagolitic": {
+        "message": "Glagolítico"
+    },
+    "Indic_Scripts": {
+        "message": "Línguas Índicas"
+    },
+    "Bengali": {
+        "message": "Bengali"
+    },
+    "Devanagari": {
+        "message": "Devanagari"
+    },
+    "Gujarati": {
+        "message": "Gujarati"
+    },
+    "Gurmukhi": {
+        "message": "Gurmukhi"
+    },
+    "Kannada": {
+        "message": "Kannada"
+    },
+    "Limbu": {
+        "message": "Limbu"
+    },
+    "Malayalam": {
+        "message": "Malayalam"
+    },
+    "Oriya": {
+        "message": "Oriya"
+    },
+    "Sinhala": {
+        "message": "Sinhala"
+    },
+    "Syloti_Nagri": {
+        "message": "Syloti Nagri"
+    },
+    "Tamil": {
+        "message": "Tamil"
+    },
+    "Telugu": {
+        "message": "Telugu"
+    },
+    "Philippine_Scripts": {
+        "message": "Línguas Filipinas"
+    },
+    "Buhid": {
+        "message": "Buhid"
+    },
+    "Hanunoo": {
+        "message": "Hanunoo"
+    },
+    "Tagalog": {
+        "message": "Tagalog"
+    },
+    "Tagbanwa": {
+        "message": "Tagbanwa"
+    },
+    "South_East_Asian": {
+        "message": "Sudeste Asiático"
+    },
+    "Balinese": {
+        "message": "Balinês"
+    },
+    "Buginese": {
+        "message": "Buginês"
+    },
+    "Khmer": {
+        "message": "Khmer"
+    },
+    "Khmer_Symbols": {
+        "message": "Símbolos Khmer"
+    },
+    "Lao": {
+        "message": "Lao"
+    },
+    "Myanmar": {
+        "message": "Myanmar"
+    },
+    "New_Tai_Lue": {
+        "message": "Novo Tai Lue"
+    },
+    "Tai_Le": {
+        "message": "Tai Le"
+    },
+    "Thai": {
+        "message": "Thai"
+    },
+    "East_Asian_Scripts": {
+        "message": "Línguas do leste asiático"
+    },
+    "CJK_Unified_Ideographs_--Han--": {
+        "message": "Ideogramas Unificados CJK (Han)"
+    },
+    "CJK_Ideographs_Ext__A": {
+        "message": "Ideogramas CJK (Chinês, Japonês, Coreano). Extensão A"
+    },
+    "CJK_Ideographs_Ext__B": {
+        "message": "Ideogramas CJK (Chinês, Japonês, Coreano). Extensão B"
+    },
+    "CJK_Compatibility_Ideographs": {
+        "message": "Compatibilidade de Ideogramas CJK"
+    },
+    "CJK_Compatibility_Ideographs_Supplement": {
+        "message": "Suplemento de Compatibilidade de Ideogramas CJK"
+    },
+    "Kanbun": {
+        "message": "Kanbun"
+    },
+    "_see_also_Unihan_Database--": {
+        "message": "(veja também o banco de dados Unihan)"
+    },
+    "CJK_Radicals_Supplement": {
+        "message": "Suplemento de Radicais CJK"
+    },
+    "KangXi_Radicals": {
+        "message": "Radicais Kang Xi"
+    },
+    "CJK_Strokes": {
+        "message": "Traços CJK (Chinês-Japonês-Coreano)"
+    },
+    "Ideographic_Description_Characters": {
+        "message": "Caracteres de Descrição de Ideogramas"
+    },
+    "Chinese_specific": {
+        "message": "Chinês-específico"
+    },
+    "Bopomofo": {
+        "message": "Bopomofo"
+    },
+    "Bopomofo_Extended": {
+        "message": "Bopomofo estendido"
+    },
+    "Hiragana": {
+        "message": "Hiragana"
+    },
+    "Katakana": {
+        "message": "Katakana"
+    },
+    "Katakana_Phonetic_Extensions": {
+        "message": "Katakana fonético estendido"
+    },
+    "Halfwidth_Katakana": {
+        "message": "Halfwidth Katakana"
+    },
+    "Hangul_Syllables": {
+        "message": "Sílabas Hangul"
+    },
+    "Hangul_Jamo": {
+        "message": "Hangul Jamo"
+    },
+    "Hangul_Compatibility_Jamo": {
+        "message": "Compatibilidade Hangul Jamo"
+    },
+    "Halfwidth_Jamo": {
+        "message": "Jamo de meia largura"
+    },
+    "Yi": {
+        "message": "Yi"
+    },
+    "Yi_Radicals": {
+        "message": "Radicais Yi"
+    },
+    "Central_Asian_Scripts": {
+        "message": "Escritas Centro-asiáticas"
+    },
+    "Kharoshthi": {
+        "message": "Kharoshthi"
+    },
+    "Mongolian": {
+        "message": "Mongol"
+    },
+    "Phags_Pa": {
+        "message": "Phags-Pa"
+    },
+    "Tibetan": {
+        "message": "Tibetano"
+    },
+    "Ancient_Greek_Numbers": {
+        "message": "Numerais gregos antigos"
+    },
+    "Ancient_Greek_Musical_Notation": {
+        "message": "Notações musicais gregas antigas"
+    },
+    "Cuneiform": {
+        "message": "Cuneiforme"
+    },
+    "Cuneiform_Numbers_and_Punctuation": {
+        "message": "Números e Pontuação Cuneiforme"
+    },
+    "Old_Persian": {
+        "message": "Persa antigo"
+    },
+    "Ugaritic": {
+        "message": "Ugarítico"
+    },
+    "Linear_B": {
+        "message": "Linear B"
+    },
+    "Linear_B_Syllabary": {
+        "message": "Sílabas Lineares B"
+    },
+    "Linear_B_Ideograms": {
+        "message": "Ideogramas Lineares B"
+    },
+    "Aegean_Numbers": {
+        "message": "Numerais Egeus"
+    },
+    "Counting_Rod_Numerals": {
+        "message": "Sistema Numérico de Varas"
+    },
+    "Cypriot_Syllabary": {
+        "message": "Silabário Cipriota"
+    },
+    "Gothic": {
+        "message": "Gótico"
+    },
+    "Old_Italic": {
+        "message": "Italiano antigo"
+    },
+    "Ogham": {
+        "message": "Ogham"
+    },
+    "Runic": {
+        "message": "Rúnico"
+    },
+    "Phoenician": {
+        "message": "Fenício"
+    },
+    "Punctuation": {
+        "message": "Pontuação"
+    },
+    "General_Punctuation": {
+        "message": "Pontuação geral"
+    },
+    "ASCII_Punctuation": {
+        "message": "Pontuação ASCII"
+    },
+    "Latin_1_Punctuation": {
+        "message": "Pontuação latim-1"
+    },
+    "Supplemental_Punctuation": {
+        "message": "Pontuação suplementar"
+    },
+    "CJK_Symbols_and_Punctuation": {
+        "message": "Símbolos e Pontuação CJK"
+    },
+    "Fullwidth_ASCII_Punctuation": {
+        "message": "Pontuação ASCII largura inteira"
+    },
+    "Vertical_Forms": {
+        "message": "Formas verticais"
+    },
+    "Enclosed_Alphanumerics": {
+        "message": "Caracteres alfanuméricos em parênteses, círculos ou quadrados"
+    },
+    "Enclosed_Alphanumerics_CJK_Letters_and_Months": {
+        "message": "Letras e Meses CJK contornados por parênteses, círculos ou quadrados"
+    },
+    "CJK_Compatibility": {
+        "message": "Compatibilidade CJK (Chinês-Japonês-Coreano)"
+    },
+    "_see_also_Letterlike_Symbols--": {
+        "message": "(veja também símbolos semelhantes a letras)"
+    },
+    "Combining_Diacritical_Marks": {
+        "message": "Marcas diacríticas combinantes"
+    },
+    "Combining_Diacritical_Marks_for_Symbols": {
+        "message": "Marcas diacríticas combinantes para símbolos"
+    },
+    "Combining_Diacritical_Marks_Supplement": {
+        "message": "Marcas diacríticas combinantes - suplemento"
+    },
+    "Combining_Half_Marks": {
+        "message": "Meias-marcas combinantes"
+    },
+    "Phonetic_Symbols": {
+        "message": "Símbolos fonéticos"
+    },
+    "IPA_Extensions": {
+        "message": "Extensões IPA"
+    },
+    "Phonetic_Extensions": {
+        "message": "Extensões fonéticas"
+    },
+    "Phonetic_Extensions_Supplement": {
+        "message": "Extensões fonéticas - Suplemento"
+    },
+    "Modifier_Tone_Letters": {
+        "message": "Letras modificadoras de acento"
+    },
+    "Spacing_Modifier_Letters": {
+        "message": "Letras modificadoras de espaçamento"
+    },
+    "_see_also_Super_and_Subscript--": {
+        "message": "(veja também Sobre e Sub escrito)"
+    },
+    "Mathematical_Symbols": {
+        "message": "Símbolos matemáticos"
+    },
+    "Numbers_and_Digits": {
+        "message": "Números e dígitos"
+    },
+    "_see_also_specific_scripts--": {
+        "message": "(veja também escritas específicas)"
+    },
+    "ASCII_Digits": {
+        "message": "Dígitos ASCII"
+    },
+    "Fullwidth_ASCII_Digits": {
+        "message": "Dígitos ASCII cheios"
+    },
+    "Number_Forms": {
+        "message": "Formas de números"
+    },
+    "Super_and_Subscripts": {
+        "message": "Sobre e Sub escritos"
+    },
+    "Letterlike_Symbols": {
+        "message": "Símbolos parecidos com letras"
+    },
+    "Mathematical_Alphanumeric_Symbols": {
+        "message": "Símbolos Matemáticos Alfanuméricos"
+    },
+    "Arrows": {
+        "message": "Setas"
+    },
+    "Mathematical_Operators": {
+        "message": "Operadores matemáticos"
+    },
+    "Suppl__Math_Operators": {
+        "message": "Operadores matemáticos - Suplemento"
+    },
+    "Misc__Math_Symbols_A": {
+        "message": "Miscelânea de símbolos matemáticos A"
+    },
+    "Misc__Math_Symbols_B": {
+        "message": "Miscelânea de símbolos matemáticos B"
+    },
+    "Supplemental_Arrows_A": {
+        "message": "Setas suplementares A"
+    },
+    "Supplemental_Arrows_B": {
+        "message": "Setas suplementares B"
+    },
+    "Misc__Symbols_and_Arrows": {
+        "message": "Miscelânea de símbolos e setas"
+    },
+    "Geometric_Shapes": {
+        "message": "Formas Geométricas"
+    },
+    "Box_Drawing": {
+        "message": "Desenho de caixa"
+    },
+    "Block_Elements": {
+        "message": "Elementos de bloco"
+    },
+    "Technical_Symbols": {
+        "message": "Símbolos técnicos"
+    },
+    "Control_Pictures": {
+        "message": "Controle de gravuras"
+    },
+    "Miscellaneous_Technical": {
+        "message": "Miscelânea técnica"
+    },
+    "OCR": {
+        "message": "OCR"
+    },
+    "Other_Symbols": {
+        "message": "Outros Símbolos"
+    },
+    "Miscellaneous_Symbols": {
+        "message": "Miscelânea de símbolos"
+    },
+    "Dingbats": {
+        "message": "Dingbats"
+    },
+    "Tai_Xuan_Jing_Symbols": {
+        "message": "Símbolos Tai Xuan Jing"
+    },
+    "Yijing_Hexagram_Symbols": {
+        "message": "Símbolos de Hexagrama Yijing"
+    },
+    "Braille_Patterns": {
+        "message": "Padrões Braille"
+    },
+    "Byzantine_Musical_Symbols": {
+        "message": "Símbolos Musicais Bizantinos"
+    },
+    "Musical_Symbols": {
+        "message": "Símbolos Musicais"
+    },
+    "Currency_Symbols": {
+        "message": "Símbolos Monetários"
+    },
+    "Dollar_Sign": {
+        "message": "Símbolo do Dólar"
+    },
+    "Euro_Sign": {
+        "message": "Símbolo do Euro"
+    },
+    "Yen__Pound_and_Cent": {
+        "message": "Yen, Pound e Cent"
+    },
+    "Fullwidth_Currency_Symbols": {
+        "message": "Símbolos de moedas em largura cheia"
+    },
+    "Mark_-historic--": {
+        "message": "Marco (histórico)"
+    },
+    "Pfennig_-historic--": {
+        "message": "Pfennig  (histórico)"
+    },
+    "Rial_Sign": {
+        "message": "Símbolo do Rial"
+    },
+    "Specials": {
+        "message": "Especiais"
+    },
+    "Controls__C0": {
+        "message": "Controles: C0"
+    },
+    "Controls__C1": {
+        "message": "Controles: C1"
+    },
+    "Layout_Controls": {
+        "message": "Controles de Leiaute"
+    },
+    "Invisible_Operators": {
+        "message": "Operadores invisíveis"
+    },
+    "Tags": {
+        "message": "Etiquetas"
+    },
+    "Variation_Selectors": {
+        "message": "Seletores de variação"
+    },
+    "Variation_Selectors_Supplement": {
+        "message": "Seletores de variação - suplemento"
+    },
+    "Private_Use": {
+        "message": "Uso privado"
+    },
+    "Private_Use_Area": {
+        "message": "Área de uso privado"
+    },
+    "Suppl__Private_Use_Area_A": {
+        "message": "Suplemento da área de uso privado A"
+    },
+    "Suppl__Private_Use_Area_B": {
+        "message": "Suplemento da área de uso privado B"
+    },
+    "Surrogates": {
+        "message": "Substitutos"
+    },
+    "High_Surrogates": {
+        "message": "Bons Substitutos"
+    },
+    "High_Private_Use_Surrogates": {
+        "message": "Bons Substitutos de Uso Privativo"
+    },
+    "Low_Surrogates": {
+        "message": "Substitutos Pobres"
+    },
+    "Noncharacters_in_Charts": {
+        "message": "Caracteres não mapeados"
+    },
+    "Reserved_range": {
+        "message": "Faixa reservada"
+    },
+    "At_End_of_BMP": {
+        "message": "No fim do BMP"
+    },
+    "At_End_of_Plane_1": {
+        "message": "No fim do Plano 1"
+    },
+    "At_End_of_Plane_2": {
+        "message": "No fim do Plano 2"
+    },
+    "At_End_of_Plane_3": {
+        "message": "No fim do Plano 3"
+    },
+    "At_End_of_Plane_4": {
+        "message": "No fim do Plano 4"
+    },
+    "At_End_of_Plane_5": {
+        "message": "No fim do Plano 5"
+    },
+    "At_End_of_Plane_6": {
+        "message": "No fim do Plano 6"
+    },
+    "At_End_of_Plane_7": {
+        "message": "No fim do Plano 7"
+    },
+    "At_End_of_Plane_8": {
+        "message": "No fim do Plano 8"
+    },
+    "At_End_of_Plane_9": {
+        "message": "No fim do Plano 9"
+    },
+    "At_End_of_Plane_10": {
+        "message": "No fim do Plano 10"
+    },
+    "At_End_of_Plane_11": {
+        "message": "No fim do Plano 11"
+    },
+    "At_End_of_Plane_12": {
+        "message": "No fim do Plano 12"
+    },
+    "At_End_of_Plane_13": {
+        "message": "No fim do Plano 13"
+    },
+    "At_End_of_Plane_14": {
+        "message": "No fim do Plano 14"
+    },
+    "At_End_of_Plane_15": {
+        "message": "No fim do Plano 15"
+    },
+    "At_End_of_Plane_16": {
+        "message": "No fim do Plano 16"
+    },
+    "Lepcha": {
+        "message": "Lepcha"
+    },
+    "CJK_Compatibility_Forms": {
+        "message": "Formas de compatibilidade CJK"
     }
 }
