@@ -199,22 +199,18 @@
     "ent_predefined": {
         "message": "XML Predefinido"
     },
-
     "Convert_From_Encoding": {
         "message": "Converter Da Codificação"
     },
     "Convert_To_Encoding": {
         "message": "Converter Para a Codificação"
     },
-
-
     "kHanyuPinyin": {
         "message": "HanyuPinyin"
     },
     "kIRG_MSource": {
         "message": "IRG_MSource"
     },
-
     "Ethiopic_Extended_A": {
         "message": "Etíope estendido A"
     },
@@ -251,19 +247,15 @@
     "Bamum_Supplement": {
         "message": "Bamum Complemento"
     },
-
     "font_label": {
         "message": "Fonte"
     },
-
     "addToToolbar": {
         "message": "Adicionar ao menu suspenso da barra de ferramentas"
     },
-    "usage_notespar10b": {
-        "message": "O ícone da barra de ferramentas pode ser adicionado indo a Exibir > Barra de Ferramentas > Personalizar e, em seguida, arrastando o ícone 'U' para a posição desejada. Além disso, o ícone tem um menu suspenso a que podem ser adicionados caracteres para posterior reutilização, usando o botão próximo à caixa de geração de caracteres. Para excluir itens já adicionados, enquanto visualiza os itens no ícone da barra de ferramentas, tecle o botão direito do mouse sobre o item a ser excluído. "
+    "usage_note_heading": {
+        "message": "Outras Notas para o Uso"
     },
-
-
     "usage_notespar1": {
         "message": "A extensão pode ser ativada a partir do menu de contexto, a partir do menu Ferramentas ou a partir do botão de opções visualizado no menu de Complementos."
     },
@@ -295,22 +287,46 @@
         "message": "Use control + botão esquerdo do mouse quando você passar o cursor sobre o gráfico para congelar as descrições abaixo."
     },
     "usage_notespar11": {
-        "message": "Os dados Unicode dentro desta extensão são licenciados como descrito em http://unicode.org/copyright.html"
+        "message": "O ícone da barra de ferramentas pode ser adicionado indo a Exibir > Barra de Ferramentas > Personalizar e, em seguida, arrastando o ícone 'U' para a posição desejada. Além disso, o ícone tem um menu suspenso a que podem ser adicionados caracteres para posterior reutilização, usando o botão próximo à caixa de geração de caracteres. Para excluir itens já adicionados, enquanto visualiza os itens no ícone da barra de ferramentas, tecle o botão direito do mouse sobre o item a ser excluído. "
     },
     "usage_notespar12": {
+        "message": "Os dados Unicode dentro desta extensão são licenciados como descrito em http://unicode.org/copyright.html"
+    },
+    "usage_notespar13": {
         "message": "Tradutores são bem-vindos em http://tinyurl.com/UnicodeInputToolTranslators"
     },
-    "usage_notespar0": {
-        "message": "Outras Notas para o Uso"
-    },
-    "notespar0": {
+    "note_heading": {
         "message": "Notas Unicode (algumas informações para o uso)"
     },
-    "lang_tooltiptext": {
-        "message": "O atributo HTML 'lang' ou, em XML, o valor 'xml:lang', não tem efeito na maioria dos scripts, mas pode afetar a exibição gráfica da seleção/fonte de determinados caracteres CJK  - Chinês/Japonês/Coreano (por exemplo, U+5203 em 'zh-Hans', 'zh-hant', 'ja' ou 'ko'). Observe que para poder ver o efeito fora de nosso visualizador gráfico você deve usar o atributo lang na página web (mesmo que nossa caixa de saída gráfica não mostre nada, já que apenas o gráfico em si usa o atributo lang), e que existe atualmente uma falha no xml:lang em documentos XML/HTML verdadeiros: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+    "notespar1": {
+        "message": "Unicode é um sistema para representar todos as escritas humanas em uso (e algumas em desuso), símbolos padrões de símbolos e pontuação. Utilizar o Unicode em HTML e XML permite que todos os caracteres sejam escritos,mesmo dentro de uma mesma página. Muitos programas permitem que você escreva ou salve todos os caracteres diretamente em Unicode."
+    },
+    "notespar2": {
+        "message": "No entanto, uma vez que alguns programas ainda não suportam plenamente o Unicode eles não salvarão os textos corretamente. Para tornar mais fácil a digitação, pode-se utilizar diferentes tipos de atalhos de teclado para representar os variados caracteres Unicode. No entanto, se você estiver usando apenas os símbolos básicos ASCII, os seus documentos serão traduzidos para Unicode sem nenhuma dificuldade)"
+    },
+    "notespar3": {
+        "message": "Um atalho que pode ser usado em qualquer documento HTML ou XML é um caractere de referência. Essas referências começam com um &quot;E comercial&quot; ('&amp;') e um jogo da velha ('#') e terminam com um ponto e vírgula (';'). No meio podem ter um número decimal (ou seja, dígitos 0-9) ou um número hexadecimal (ou seja, dígitos 0-9 ou letras A-F maiúsculas ou minúsculas, precedidas por um 'x' ou 'X'). Ambos modos irão mostrar o mesmo e exibir igual à representação Unicode."
+    },
+    "notespar4": {
+        "message": "(O sistema de numeração hexadecimal pode ser pensado como trabalhando um pouco como um conjunto de cartas de baralho. O valete pode representar '11 'em alguns jogos, a dama '12', e assim por diante. Embora haja apenas um único cartão, eles representam um número superior a dez. Assim também é com cada um dos dígitos hexadecimais representadas pelas letras A-F)."
+    },
+    "notespar5": {
+        "message": "Além de referências de caracteres, outro tipo de atalho para representar um caractere Unicode (ou até vários caracteres) é a &quot;entidade analisada geral&quot;."
+    },
+    "notespar6": {
+        "message": "Para a linguagem XML, exceto para cinco entidades pré-definidas (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; ( &quot;), ' (')), você deve definir explicitamente as entidades que você vai usar (ou usar uma identidade 'PUBLICA' especial que pode indicar para os programas de leitura do arquivo XML a linguagem do conjunto de entidades que você está usando)."
+    },
+    "notespar7": {
+        "message": "Em HTML, existem uma série de entidades já definidas. Uma observação importante: apesar do HTML usar quatro das cinco entidades XML pré-definidas, ele não usa ''', então você precisa usar no lugar o Unicode equivalente (ou utilizar a referência de caracteres ' ou ')."
+    },
+    "notespar8": {
+        "message": "Você também pode definir suas próprias entidades em nossa seção &quot;DTD&quot; usando a sintaxe '&lt;! ENTITY Entname &quot;entvalue&quot;&gt;' para que eles possam ser incluídos dentro de conversões."
     },
     "lang_label": {
         "message": "lang"
+    },
+    "lang_tooltiptext": {
+        "message": "O atributo HTML 'lang' ou, em XML, o valor 'xml:lang', não tem efeito na maioria dos scripts, mas pode afetar a exibição gráfica da seleção/fonte de determinados caracteres CJK  - Chinês/Japonês/Coreano (por exemplo, U+5203 em 'zh-Hans', 'zh-hant', 'ja' ou 'ko'). Observe que para poder ver o efeito fora de nosso visualizador gráfico você deve usar o atributo lang na página web (mesmo que nossa caixa de saída gráfica não mostre nada, já que apenas o gráfico em si usa o atributo lang), e que existe atualmente uma falha no xml:lang em documentos XML/HTML verdadeiros: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
     },
     "initialTab_label": {
         "message": "Aba inicial a abrir (para ativação do comando-chave ou do botão da barra de ferramentas)"
@@ -414,23 +430,98 @@
     "Yijing_Symbols": {
         "message": "Símbolos Yijing"
     },
-    "Noncharacters_at_end_of": {
+    "Noncharacters_at_end_of____": {
         "message": "Não-caracteres no fim de ..."
     },
-    "_see_also_Common_Indic_Number_Forms--": {
+    "_see_also_Common_Indic_Number_Forms__": {
         "message": "(ver também Formas Numéricas Índicas Comuns)"
     },
-    "_see_also_Combining_Diacritical_Marks_for_Symbols--": {
+    "_see_also_Combining_Diacritical_Marks_for_Symbols__": {
         "message": "(Veja também Marcas Diacríticas Combinadas para Símbolos)"
     },
     "Roman_Symbols": {
         "message": "Símbolos Romanos"
     },
-    "CJK_Radicals___KangXi_Radicals": {
-        "message": "Radicais CJK / Radicais KangXi"
+    "Latin_1_Supplement": {
+        "message": "Suplemento Latim-1"
+    },
+    "Cuneiform_Numbers_and_Punctuation": {
+        "message": "Números e Pontuação Cuneiforme"
+    },
+    "CJK_Unified_Ideographs__Han_": {
+        "message": "Ideogramas Unificados CJK (Han)"
+    },
+    "CJK_Compatibility_Ideographs": {
+        "message": "Compatibilidade de Ideogramas CJK"
+    },
+    "CJK_Compatibility_Ideographs_Supplement": {
+        "message": "Suplemento de Compatibilidade de Ideogramas CJK"
+    },
+    "CJK_Radicals_Supplement": {
+        "message": "Suplemento de Radicais CJK"
+    },
+    "Ideographic_Description_Characters": {
+        "message": "Caracteres de Descrição de Ideogramas"
+    },
+    "Small_Form_Variants": {
+        "message": "Variações de Formas Pequenas"
+    },
+    "CJK_Symbols_and_Punctuation": {
+        "message": "Símbolos e Pontuação CJK"
+    },
+    "Mathematical_Alphanumeric_Symbols": {
+        "message": "Símbolos Matemáticos Alfanuméricos"
+    },
+    "Enclosed_CJK_Letters_and_Months": {
+        "message": "Letras e Meses CJK contornados por parênteses, círculos ou quadrados"
+    },
+    "Optical_Character_Recognition__OCR_": {
+        "message": "OCR"
+    },
+    "Misc__Math_Symbols_A": {
+        "message": "Miscelânea de símbolos matemáticos A"
+    },
+    "Misc__Math_Symbols_B": {
+        "message": "Miscelânea de símbolos matemáticos B"
+    },
+    "Miscellaneous_Symbols_and_Arrows": {
+        "message": "Miscelânea de símbolos e setas"
+    },
+    "Suppl__Math_Operators": {
+        "message": "Operadores matemáticos - Suplemento"
+    },
+    "Geometric_Shapes": {
+        "message": "Formas Geométricas"
+    },
+    "Other_Symbols": {
+        "message": "Outros Símbolos"
+    },
+    "Musical_Symbols": {
+        "message": "Símbolos Musicais"
+    },
+    "Yijing_Mono___Di__and_Trigrams": {
+        "message": "Monogramas, Diagramas e Triagramas Yijing"
+    },
+    "Yijing_Hexagram_Symbols": {
+        "message": "Símbolos de Hexagrama Yijing"
+    },
+    "Katakana_Phonetic_Extensions": {
+        "message": "Katakana fonético estendido"
+    },
+    "Supplementary_Private_Use_Area_A": {
+        "message": "Suplemento da área de uso privado A"
+    },
+    "Supplementary_Private_Use_Area_B": {
+        "message": "Suplemento da área de uso privado B"
+    },
+    "Combining_Diacritics": {
+        "message": "Diacríticos Combinantes"
     },
     "CJK_Ideographs_Ext__C": {
         "message": "Ideogramas CJK (Chinês-Japonês-Coreano) Extensão C"
+    },
+    "CJK_Radicals___KangXi_Radicals": {
+        "message": "Radicais CJK / Radicais KangXi"
     },
     "Bamum": {
         "message": "Bamum"
@@ -504,7 +595,7 @@
     "Rumi_Numeral_Symbols": {
         "message": "Símbolos de Numerais Rumi"
     },
-    "Basic_operators_Plus__Factorial": {
+    "Basic_operators__Plus__Factorial__Division__Multiplication": {
         "message": "Operadores Básicos: Mais, Fatorial"
     },
     "Division__Multiplication": {
@@ -512,9 +603,6 @@
     },
     "Unified_Canadian_Aboriginal_Syllabics": {
         "message": "Sílabas Aborígenes Unificadas do Canadá - UCAS"
-    },
-    "Combining_Diacritics": {
-        "message": "Diacríticos Combinantes"
     },
     "Yi_Syllables": {
         "message": "Sílabas Yi"
@@ -921,7 +1009,7 @@
     "Additional_Shapes": {
         "message": "Formas adicionais"
     },
-    "APL_Symbols": {
+    "APL_symbols": {
         "message": "Símbolos APL"
     },
     "ShowImg_checkbox_label": {
@@ -981,7 +1069,7 @@
     "Game_Symbols": {
         "message": "Símbolos de Jogo"
     },
-    "Chess_Checkers": {
+    "Chess__Checkers_Draughts": {
         "message": "Xadrez/Damas"
     },
     "Card_suits": {
@@ -990,35 +1078,26 @@
     "Japanese_Chess": {
         "message": "Xadrez Japonês"
     },
-    "Yijing_Mono--_Di-_and_Trigrams": {
-        "message": "Monogramas, Diagramas e Triagramas Yijing"
-    },
     "copyToClipboard": {
         "message": "Copiar para a área de transferência"
-    },
-    "period": {
-        "message": "."
     },
     "moveconvertedup_label": {
         "message": "Copiar 'convertido' para pré-convertido"
     },
-    "Reconvert.dialogheader.title": {
+    "Reconvert_dialogheader_title": {
         "message": "Opções de reconversão"
     },
-    "Preferences.dialogheader.title": {
+    "Preferences_dialogheader_title": {
         "message": "Preferências"
     },
-    "default.textbox.value": {
-        "message": "Padrão"
+    "converted_value_placeholder": {
+        "message": "Resultados Unicode"
     },
     "Ascii_checkbox_label": {
         "message": "Converter em entidades se ASCII &lt; 128? (entidades existentes/caracteres de referência não estarão imunes)"
     },
     "Hexletters_checkbox_label": {
         "message": "Saída hexadecimal A-F (maiúsculas)?"
-    },
-    "xstyle_description": {
-        "message": "Estilo de 'X' na saída de caractere hexadecimal de referência?"
     },
     "xhtmlentmode_label": {
         "message": "Modo entidade XHTML (permitir ' ao criar entidades HTML em vez de numérico)? (Pode ser melhor deixar esta opção desligada.)"
@@ -1131,9 +1210,6 @@
     "unicodechartContext_accesskey": {
         "message": "C"
     },
-    "tools_charrefunicode_label": {
-        "message": "Ferramenta/Conversor de entrada Unicode"
-    },
     "hex2dec_label": {
         "message": "Hexadecimal para decimal"
     },
@@ -1152,8 +1228,8 @@
     "dec2hexContext_accesskey": {
         "message": "D"
     },
-    "uresults_value": {
-        "message": "Resultados Unicode"
+    "toconvert_placeholder": {
+        "message": "Unicode to convert"
     },
     "uresults_title": {
         "message": "Resultados Unicode"
@@ -1167,13 +1243,13 @@
     "button_clearoutput": {
         "message": "Limpar"
     },
-    "caption.chart.output": {
+    "caption_chart_output": {
         "message": "Saída em gráfico"
     },
-    "caption.chart.selectchar": {
+    "caption_chart_selectchar": {
         "message": "Encontrar caractere ou faixa"
     },
-    "caption.chart.layout": {
+    "caption_chart_layout": {
         "message": "Leiaute de gráfico"
     },
     "caption_displayUnicodeDesc": {
@@ -1224,9 +1300,6 @@
     "label_onlyentsyesq": {
         "message": "Mostrar apenas entidades?"
     },
-    "label_xstyleq": {
-        "message": "Estilo 'x'?"
-    },
     "label_middleq": {
         "message": "Colocar o alvo no centro?"
     },
@@ -1242,14 +1315,14 @@
     "dialogheader_value": {
         "message": "DTD"
     },
-    "DTD.desc.value": {
+    "DTD_desc_value1": {
         "message": "Adicionar as declarações da entidade DTD (opcional) para uso em conversões"
     },
-    "DTD.desc.value2": {
+    "DTD_desc_value2": {
         "message": "Formulário: &lt;!ENTITY entname 'charvalue'&gt;"
     },
-    "DTD.textbox.value": {
-        "message": "DTD.textbox.value"
+    "DTD_textbox_value": {
+        "message": ""
     },
     "DTD_insertent": {
         "message": "Inserir &lt;!ENTITY&gt;"
@@ -1257,37 +1330,8 @@
     "appendhtml_checkbox": {
         "message": "Acrescentar ao conjunto de entidades HTML existente?"
     },
-
-    "notespar1": {
-        "message": "Unicode é um sistema para representar todos as escritas humanas em uso (e algumas em desuso), símbolos padrões de símbolos e pontuação. Utilizar o Unicode em HTML e XML permite que todos os caracteres sejam escritos,mesmo dentro de uma mesma página. Muitos programas permitem que você escreva ou salve todos os caracteres diretamente em Unicode."
-    },
-    "notespar2": {
-        "message": "No entanto, uma vez que alguns programas ainda não suportam plenamente o Unicode eles não salvarão os textos corretamente. Para tornar mais fácil a digitação, pode-se utilizar diferentes tipos de atalhos de teclado para representar os variados caracteres Unicode. No entanto, se você estiver usando apenas os símbolos básicos ASCII, os seus documentos serão traduzidos para Unicode sem nenhuma dificuldade)"
-    },
-    "notespar3": {
-        "message": "Um atalho que pode ser usado em qualquer documento HTML ou XML é um caractere de referência. Essas referências começam com um &quot;E comercial&quot; ('&amp;') e um jogo da velha ('#') e terminam com um ponto e vírgula (';'). No meio podem ter um número decimal (ou seja, dígitos 0-9) ou um número hexadecimal (ou seja, dígitos 0-9 ou letras A-F maiúsculas ou minúsculas, precedidas por um 'x' ou 'X'). Ambos modos irão mostrar o mesmo e exibir igual à representação Unicode."
-    },
-    "notespar4": {
-        "message": "(O sistema de numeração hexadecimal pode ser pensado como trabalhando um pouco como um conjunto de cartas de baralho. O valete pode representar '11 'em alguns jogos, a dama '12', e assim por diante. Embora haja apenas um único cartão, eles representam um número superior a dez. Assim também é com cada um dos dígitos hexadecimais representadas pelas letras A-F)."
-    },
-    "notespar5": {
-        "message": "Além de referências de caracteres, outro tipo de atalho para representar um caractere Unicode (ou até vários caracteres) é a &quot;entidade analisada geral&quot;."
-    },
-    "notespar6": {
-        "message": "Para a linguagem XML, exceto para cinco entidades pré-definidas (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; ( &quot;), ' (')), você deve definir explicitamente as entidades que você vai usar (ou usar uma identidade 'PUBLICA' especial que pode indicar para os programas de leitura do arquivo XML a linguagem do conjunto de entidades que você está usando)."
-    },
-    "notespar7": {
-        "message": "Em HTML, existem uma série de entidades já definidas. Uma observação importante: apesar do HTML usar quatro das cinco entidades XML pré-definidas, ele não usa ''', então você precisa usar no lugar o Unicode equivalente (ou utilizar a referência de caracteres ' ou ')."
-    },
-    "notespar8": {
-        "message": "Você também pode definir suas próprias entidades em nossa seção &quot;DTD&quot; usando a sintaxe '&lt;! ENTITY Entname &quot;entvalue&quot;&gt;' para que eles possam ser incluídos dentro de conversões."
-    },
-
     "European_Scripts": {
         "message": "Alfabetos Europeus"
-    },
-    "_see_also_Comb._Marks--": {
-        "message": "(veja também Marcas Combinadas)"
     },
     "Armenian": {
         "message": "Armênio"
@@ -1319,20 +1363,11 @@
     "Greek_Extended": {
         "message": "Grego Estendido"
     },
-    "_see_also_Ancient_Greek_Numbers--": {
-        "message": "(veja também Números gregos antigos)"
-    },
-    "_see_also_Ancient_Greek_Musical_Notation--": {
-        "message": "(veja também Notações musicais gregas antigas)"
-    },
     "Latin": {
         "message": "Latim"
     },
     "Basic_Latin": {
         "message": "Latim básico"
-    },
-    "Latin_1_Supplement": {
-        "message": "Suplemento Latim-1"
     },
     "Latin_Extended_A": {
         "message": "Latim estendido A"
@@ -1355,11 +1390,8 @@
     "Fullwidth_Latin_Letters": {
         "message": "Cartas em latim com largura completa"
     },
-    "Small_Form_Variants": {
-        "message": "Variações de Formas Pequenas"
-    },
-    "_see_also_Phonetic_Symbols--": {
-        "message": "(veja também os símbolos fonéticos)"
+    "Small_Forms": {
+        "message": "Small Forms"
     },
     "African_Scripts": {
         "message": "Escritas africanas"
@@ -1373,9 +1405,6 @@
     "Ethiopic_Extended": {
         "message": "Etíope estendido"
     },
-    "Other_African_scripts": {
-        "message": "Outras escritas africanas"
-    },
     "N_Ko": {
         "message": "N'ko"
     },
@@ -1384,9 +1413,6 @@
     },
     "Middle_Eastern_Scripts": {
         "message": "Escritas do oriente médio"
-    },
-    "_see_also_Old_Persian_": {
-        "message": "(veja também o persa antigo)"
     },
     "Arabic": {
         "message": "Árabe"
@@ -1412,7 +1438,7 @@
     "Thaana": {
         "message": "Thaana"
     },
-    "American_scripts": {
+    "American_Scripts": {
         "message": "Escritas americanas"
     },
     "Cherokee": {
@@ -1432,9 +1458,6 @@
     },
     "Glagolitic": {
         "message": "Glagolítico"
-    },
-    "Indic_Scripts": {
-        "message": "Línguas Índicas"
     },
     "Bengali": {
         "message": "Bengali"
@@ -1520,41 +1543,20 @@
     "East_Asian_Scripts": {
         "message": "Línguas do leste asiático"
     },
-    "CJK_Unified_Ideographs_--Han--": {
-        "message": "Ideogramas Unificados CJK (Han)"
-    },
     "CJK_Ideographs_Ext__A": {
         "message": "Ideogramas CJK (Chinês, Japonês, Coreano). Extensão A"
     },
     "CJK_Ideographs_Ext__B": {
         "message": "Ideogramas CJK (Chinês, Japonês, Coreano). Extensão B"
     },
-    "CJK_Compatibility_Ideographs": {
-        "message": "Compatibilidade de Ideogramas CJK"
-    },
-    "CJK_Compatibility_Ideographs_Supplement": {
-        "message": "Suplemento de Compatibilidade de Ideogramas CJK"
-    },
     "Kanbun": {
         "message": "Kanbun"
     },
-    "_see_also_Unihan_Database--": {
+    "_see_also_Unihan_Database_": {
         "message": "(veja também o banco de dados Unihan)"
-    },
-    "CJK_Radicals_Supplement": {
-        "message": "Suplemento de Radicais CJK"
-    },
-    "KangXi_Radicals": {
-        "message": "Radicais Kang Xi"
     },
     "CJK_Strokes": {
         "message": "Traços CJK (Chinês-Japonês-Coreano)"
-    },
-    "Ideographic_Description_Characters": {
-        "message": "Caracteres de Descrição de Ideogramas"
-    },
-    "Chinese_specific": {
-        "message": "Chinês-específico"
     },
     "Bopomofo": {
         "message": "Bopomofo"
@@ -1567,9 +1569,6 @@
     },
     "Katakana": {
         "message": "Katakana"
-    },
-    "Katakana_Phonetic_Extensions": {
-        "message": "Katakana fonético estendido"
     },
     "Halfwidth_Katakana": {
         "message": "Halfwidth Katakana"
@@ -1615,9 +1614,6 @@
     },
     "Cuneiform": {
         "message": "Cuneiforme"
-    },
-    "Cuneiform_Numbers_and_Punctuation": {
-        "message": "Números e Pontuação Cuneiforme"
     },
     "Old_Persian": {
         "message": "Persa antigo"
@@ -1673,9 +1669,6 @@
     "Supplemental_Punctuation": {
         "message": "Pontuação suplementar"
     },
-    "CJK_Symbols_and_Punctuation": {
-        "message": "Símbolos e Pontuação CJK"
-    },
     "Fullwidth_ASCII_Punctuation": {
         "message": "Pontuação ASCII largura inteira"
     },
@@ -1685,14 +1678,8 @@
     "Enclosed_Alphanumerics": {
         "message": "Caracteres alfanuméricos em parênteses, círculos ou quadrados"
     },
-    "Enclosed_Alphanumerics_CJK_Letters_and_Months": {
-        "message": "Letras e Meses CJK contornados por parênteses, círculos ou quadrados"
-    },
     "CJK_Compatibility": {
         "message": "Compatibilidade CJK (Chinês-Japonês-Coreano)"
-    },
-    "_see_also_Letterlike_Symbols--": {
-        "message": "(veja também símbolos semelhantes a letras)"
     },
     "Combining_Diacritical_Marks": {
         "message": "Marcas diacríticas combinantes"
@@ -1724,16 +1711,13 @@
     "Spacing_Modifier_Letters": {
         "message": "Letras modificadoras de espaçamento"
     },
-    "_see_also_Super_and_Subscript--": {
-        "message": "(veja também Sobre e Sub escrito)"
-    },
     "Mathematical_Symbols": {
         "message": "Símbolos matemáticos"
     },
     "Numbers_and_Digits": {
         "message": "Números e dígitos"
     },
-    "_see_also_specific_scripts--": {
+    "_see_also_specific_scripts_": {
         "message": "(veja também escritas específicas)"
     },
     "ASCII_Digits": {
@@ -1751,35 +1735,17 @@
     "Letterlike_Symbols": {
         "message": "Símbolos parecidos com letras"
     },
-    "Mathematical_Alphanumeric_Symbols": {
-        "message": "Símbolos Matemáticos Alfanuméricos"
-    },
     "Arrows": {
         "message": "Setas"
     },
     "Mathematical_Operators": {
         "message": "Operadores matemáticos"
     },
-    "Suppl__Math_Operators": {
-        "message": "Operadores matemáticos - Suplemento"
-    },
-    "Misc__Math_Symbols_A": {
-        "message": "Miscelânea de símbolos matemáticos A"
-    },
-    "Misc__Math_Symbols_B": {
-        "message": "Miscelânea de símbolos matemáticos B"
-    },
     "Supplemental_Arrows_A": {
         "message": "Setas suplementares A"
     },
     "Supplemental_Arrows_B": {
         "message": "Setas suplementares B"
-    },
-    "Misc__Symbols_and_Arrows": {
-        "message": "Miscelânea de símbolos e setas"
-    },
-    "Geometric_Shapes": {
-        "message": "Formas Geométricas"
     },
     "Box_Drawing": {
         "message": "Desenho de caixa"
@@ -1796,12 +1762,6 @@
     "Miscellaneous_Technical": {
         "message": "Miscelânea técnica"
     },
-    "OCR": {
-        "message": "OCR"
-    },
-    "Other_Symbols": {
-        "message": "Outros Símbolos"
-    },
     "Miscellaneous_Symbols": {
         "message": "Miscelânea de símbolos"
     },
@@ -1811,38 +1771,20 @@
     "Tai_Xuan_Jing_Symbols": {
         "message": "Símbolos Tai Xuan Jing"
     },
-    "Yijing_Hexagram_Symbols": {
-        "message": "Símbolos de Hexagrama Yijing"
-    },
     "Braille_Patterns": {
         "message": "Padrões Braille"
     },
     "Byzantine_Musical_Symbols": {
         "message": "Símbolos Musicais Bizantinos"
     },
-    "Musical_Symbols": {
-        "message": "Símbolos Musicais"
-    },
     "Currency_Symbols": {
         "message": "Símbolos Monetários"
-    },
-    "Dollar_Sign": {
-        "message": "Símbolo do Dólar"
-    },
-    "Euro_Sign": {
-        "message": "Símbolo do Euro"
     },
     "Yen__Pound_and_Cent": {
         "message": "Yen, Pound e Cent"
     },
     "Fullwidth_Currency_Symbols": {
         "message": "Símbolos de moedas em largura cheia"
-    },
-    "Mark_-historic--": {
-        "message": "Marco (histórico)"
-    },
-    "Pfennig_-historic--": {
-        "message": "Pfennig  (histórico)"
     },
     "Rial_Sign": {
         "message": "Símbolo do Rial"
@@ -1877,12 +1819,6 @@
     "Private_Use_Area": {
         "message": "Área de uso privado"
     },
-    "Suppl__Private_Use_Area_A": {
-        "message": "Suplemento da área de uso privado A"
-    },
-    "Suppl__Private_Use_Area_B": {
-        "message": "Suplemento da área de uso privado B"
-    },
     "Surrogates": {
         "message": "Substitutos"
     },
@@ -1894,6 +1830,9 @@
     },
     "Low_Surrogates": {
         "message": "Substitutos Pobres"
+    },
+    "Noncharacters_in_blocks": {
+        "message": "Noncharacters in blocks"
     },
     "Noncharacters_in_Charts": {
         "message": "Caracteres não mapeados"

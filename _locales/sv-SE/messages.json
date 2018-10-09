@@ -112,14 +112,6 @@
     "DTD_insertEntityFile": {
         "message": "Infoga entitetsfil"
     },
-    "European_Scripts": {
-        "message": "Europeiska skrivtecken"
-    },
-
-    "usage_notespar10b": {
-        "message": "Verktygsfältsikonen kan kan läggas till genom att gå till Visa > Verktygsfält > Anpassa... och sedan dra &quot;U&quot;-ikonen till önskad position i ett verktygsfält. Dessutom har ikonen en rullgardinsmeny i vilken textstycken kan läggas till för senare återanvändning. Textstyckena läggs till m.h.a. knappen nära tabellens utdataruta. För att ta bort redan tillagda objekt, öppna rullgardinsmenyn, hovra över ett objekt (markera utan att klicka) och högerklicka på det för att ta bort det."
-    },
-
     "ent_isobox": {
         "message": "Ramelement och linjeritning"
     },
@@ -261,7 +253,9 @@
     "addToToolbar": {
         "message": "Lägg till i verktygsfältets rullgardinsmeny"
     },
-
+    "usage_note_heading": {
+        "message": "Övrig användningsinformation"
+    },
     "usage_notespar1": {
         "message": "Tillägget kan aktiveras från snabbmenyn (vilket också ger möjlighet att operera på markerad text), via Verktyg-menyn, via verktygsfältsknappen eller via inställnings-URL:en i tilläggsmenyn."
     },
@@ -292,24 +286,47 @@
     "usage_notespar10": {
         "message": "Använd Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför. "
     },
-
     "usage_notespar11": {
-        "message": "Unicode-datan inom detta tillägg är licensierad enligt som beskrivs i &quot;Unicode Terms of Use&quot; (http://unicode.org/copyright.html)"
+        "message": "Verktygsfältsikonen kan kan läggas till genom att gå till Visa > Verktygsfält > Anpassa... och sedan dra &quot;U&quot;-ikonen till önskad position i ett verktygsfält. Dessutom har ikonen en rullgardinsmeny i vilken textstycken kan läggas till för senare återanvändning. Textstyckena läggs till m.h.a. knappen nära tabellens utdataruta. För att ta bort redan tillagda objekt, öppna rullgardinsmenyn, hovra över ett objekt (markera utan att klicka) och högerklicka på det för att ta bort det."
     },
     "usage_notespar12": {
+        "message": "Unicode-datan inom detta tillägg är licensierad enligt som beskrivs i &quot;Unicode Terms of Use&quot; (http://unicode.org/copyright.html)"
+    },
+    "usage_notespar13": {
         "message": "Översättare är välkomna. Gå till http://tinyurl.com/UnicodeInputToolBabelZilla"
     },
-    "usage_notespar0": {
-        "message": "Övrig användningsinformation"
-    },
-    "notespar0": {
+    "note_heading": {
         "message": "Unicode-information (lite användningsinformation)"
     },
-    "lang_tooltiptext": {
-        "message": "HTML-språkattributet &quot;lang&quot; eller, i XML, värdet &quot;xml:lang&quot;. Har ingen effekt på de flesta skrivtecken, men kan påverka glyfval/fontvisning för vissa CJK-tecken (t.ex. U+5203 i &quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;ja&quot; eller &quot;ko&quot;). Observera att du måste använda lang-attributet för att se någon effekt utanför tabellen (inte heller vår tabellutdataruta innehåller lang) och det finns för närvarande en bugg för xml:lang i äkta XML/XHTML-dokument: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+    "notespar1": {
+        "message": "Unicode är ett system för att återge alla levande (och vissa döda) mänskliga skrivtecken, standardsymboler och skiljetecken. Unicodes användning i HTML och XML tillåter t.o.m. alla sådana skrivtecken att samsas på samma sida. Många program låter dig skriva eller spara alla sådana tecken direkt i Unicode."
+    },
+    "notespar2": {
+        "message": "Emellertid, eftersom vissa program fortfarande inte stödjer Unicode fullt ut så kanske inte texten kommer att sparas korrekt och måhända, för att göra det enklare för en del att skriva, får du också använda olika typer av kortkommandon för att återge dessa olika Unicode-tecken (fast om du endast använder de grundläggande engelska ASCII-symbolerna, så kommer dina dokument att översättas till Unicode utan problem)."
+    },
+    "notespar3": {
+        "message": "Ett sådant kortkommando som kan användas i alla HTML- och XML-dokument är teckenreferensen. Dessa referenser börjar med ett et-tecken (&quot;&amp;&quot;) och ett nummertecken (&quot;#&quot;) och slutar med ett semikolon (&quot;;&quot;). Däremellan står antingen ett decimaltal (d.v.s. siffrorna 0-9) eller ett hexadecimalt tal (d.v.s. siffrorna 0-9 Och/eller versala eller gemena bokstäverna A-F, vilka föregås av ett &quot;x&quot; eller ett &quot;X&quot;). Endera typen kommer att visa detsamma och kommer att visas exakt som Unicode-tecknet den representerar."
+    },
+    "notespar4": {
+        "message": "(Det hexadecimala talsystemet kan jämföras med en uppsättning spelkort. Knekten kan representera &quot;11&quot; i vissa spel, damen &quot;12&quot; och så vidare. Även om de bara är enskilda kort, så representerar de ett tal större än tio. På samma sätt är det med enskilda hexadecimala siffror som representeras av bokstäverna A-F.)"
+    },
+    "notespar5": {
+        "message": "Vid sidan av teckenreferenser är en annan typ av kortkommando för att återge ett Unicode-tecken (eller t.o.m. flera tecken) den &quot;parsade allmänna entiteten&quot; (parsed general entity)."
+    },
+    "notespar6": {
+        "message": "I XML-språket, undantaget fem fördefinierade entiteter (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;) och &apos; (&apos;)), måste du uttryckligen definiera de entiteter som du vill använda (eller använda ett särskilt &quot;PUBLIC&quot;-ID, vilket visar för program som läser XML-filen att du kommer att använda det språkets uppsättning av entiteter)."
+    },
+    "notespar7": {
+        "message": "I HTML finns det ett antal redan definierade entiteter. Ett viktigt påpekande: Även om HTML använder fyra av XML:s fem fördefinierade entiteter, så använder det inte &quot;&apos;&quot;. Du måste således istället använda motsvarande Unicode (eller använda någon av teckenreferenserna &amp;#x27; eller &amp;#39;)."
+    },
+    "notespar8": {
+        "message": "Du kan också definiera dina egna entiteter i tilläggets &quot;DTD&quot;-sektion genom att använda syntaxet &quot;&lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;&quot; så att de kan inkluderas i konverteringar."
     },
     "lang_label": {
         "message": "lang"
+    },
+    "lang_tooltiptext": {
+        "message": "HTML-språkattributet &quot;lang&quot; eller, i XML, värdet &quot;xml:lang&quot;. Har ingen effekt på de flesta skrivtecken, men kan påverka glyfval/fontvisning för vissa CJK-tecken (t.ex. U+5203 i &quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;ja&quot; eller &quot;ko&quot;). Observera att du måste använda lang-attributet för att se någon effekt utanför tabellen (inte heller vår tabellutdataruta innehåller lang) och det finns för närvarande en bugg för xml:lang i äkta XML/XHTML-dokument: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
     },
     "initialTab_label": {
         "message": "Startflik (vid aktivering via kortkommando eller verktygsfältsknapp)"
@@ -413,23 +430,98 @@
     "Yijing_Symbols": {
         "message": "I Ching-symboler"
     },
-    "Noncharacters_at_end_of": {
+    "Noncharacters_at_end_of____": {
         "message": "Icke-tecken i slutet av..."
     },
-    "_see_also_Common_Indic_Number_Forms--": {
+    "_see_also_Common_Indic_Number_Forms__": {
         "message": "(Se även Vanliga indiska talformat)"
     },
-    "_see_also_Combining_Diacritical_Marks_for_Symbols--": {
+    "_see_also_Combining_Diacritical_Marks_for_Symbols__": {
         "message": "(Se även Kombinerande diakritiska tecken för symboler)"
     },
     "Roman_Symbols": {
         "message": "Romerska symboler"
     },
-    "CJK_Radicals___KangXi_Radicals": {
-        "message": "CJK-radikaler / Kangxi-radikaler"
+    "Latin_1_Supplement": {
+        "message": "Latin-1 (tillägg)"
+    },
+    "Cuneiform_Numbers_and_Punctuation": {
+        "message": "Kilskrift, tal och skiljetecken"
+    },
+    "CJK_Unified_Ideographs__Han_": {
+        "message": "CJK-enhetliga ideogram (Han)"
+    },
+    "CJK_Compatibility_Ideographs": {
+        "message": "CJK, kompatibilitetsideogram"
+    },
+    "CJK_Compatibility_Ideographs_Supplement": {
+        "message": "CJK, kompatibilitetsideogram (tillägg)"
+    },
+    "CJK_Radicals_Supplement": {
+        "message": "CJK-radikaler (tillägg)"
+    },
+    "Ideographic_Description_Characters": {
+        "message": "Ideografiska beskrivningstecken"
+    },
+    "Small_Form_Variants": {
+        "message": "Litet format (varianter)"
+    },
+    "CJK_Symbols_and_Punctuation": {
+        "message": "CJK-symboler och skiljetecken"
+    },
+    "Mathematical_Alphanumeric_Symbols": {
+        "message": "Matematiska alfanumeriska symboler"
+    },
+    "Enclosed_CJK_Letters_and_Months": {
+        "message": "Omslutna CJK-bokstäver och -månader"
+    },
+    "Optical_Character_Recognition__OCR_": {
+        "message": "Optisk teckenläsning (OCR)"
+    },
+    "Misc__Math_Symbols_A": {
+        "message": "Diverse matematiska symboler A"
+    },
+    "Misc__Math_Symbols_B": {
+        "message": "Diverse matematiska symboler B"
+    },
+    "Miscellaneous_Symbols_and_Arrows": {
+        "message": "Diverse symboler och pilar"
+    },
+    "Suppl__Math_Operators": {
+        "message": "Kompletterande matematiska operatorer"
+    },
+    "Geometric_Shapes": {
+        "message": "Geometriska figurer"
+    },
+    "Other_Symbols": {
+        "message": "Övriga symboler"
+    },
+    "Musical_Symbols": {
+        "message": "Musiksymboler"
+    },
+    "Yijing_Mono___Di__and_Trigrams": {
+        "message": "I Ching (mono-, di- och trigram)"
+    },
+    "Yijing_Hexagram_Symbols": {
+        "message": "I Chings hexagramsymboler"
+    },
+    "Katakana_Phonetic_Extensions": {
+        "message": "Katakana, fonetiska utökningar"
+    },
+    "Supplementary_Private_Use_Area_A": {
+        "message": "Kompletterande privatanvändningsområde-A"
+    },
+    "Supplementary_Private_Use_Area_B": {
+        "message": "Kompletterande privatanvändningsområde-B"
+    },
+    "Combining_Diacritics": {
+        "message": "Kombinerande diakritiska tecken"
     },
     "CJK_Ideographs_Ext__C": {
         "message": "CJK-ideogram, utök. C"
+    },
+    "CJK_Radicals___KangXi_Radicals": {
+        "message": "CJK-radikaler / Kangxi-radikaler"
     },
     "Bamum": {
         "message": "Bamun"
@@ -503,7 +595,7 @@
     "Rumi_Numeral_Symbols": {
         "message": "Malajiska talsymboler"
     },
-    "Basic_operators_Plus__Factorial": {
+    "Basic_operators__Plus__Factorial__Division__Multiplication": {
         "message": "Grundläggande operatorer: Plus, fakultet"
     },
     "Division__Multiplication": {
@@ -511,9 +603,6 @@
     },
     "Unified_Canadian_Aboriginal_Syllabics": {
         "message": "Unified Canadian Aboriginal Syllabics"
-    },
-    "Combining_Diacritics": {
-        "message": "Kombinerande diakritiska tecken"
     },
     "Yi_Syllables": {
         "message": "Yi-stavelser"
@@ -920,7 +1009,7 @@
     "Additional_Shapes": {
         "message": "Ytterligare figurer"
     },
-    "APL_Symbols": {
+    "APL_symbols": {
         "message": "APL-symboler"
     },
     "ShowImg_checkbox_label": {
@@ -980,7 +1069,7 @@
     "Game_Symbols": {
         "message": "Spelsymboler"
     },
-    "Chess_Checkers": {
+    "Chess__Checkers_Draughts": {
         "message": "Schack/Dam"
     },
     "Card_suits": {
@@ -989,35 +1078,26 @@
     "Japanese_Chess": {
         "message": "Shogi"
     },
-    "Yijing_Mono--_Di-_and_Trigrams": {
-        "message": "I Ching (mono-, di- och trigram)"
-    },
     "copyToClipboard": {
         "message": "Kopiera till Urklipp"
-    },
-    "period": {
-        "message": "."
     },
     "moveconvertedup_label": {
         "message": "Kopiera &quot;Konverterade&quot; till &quot;Förkonverterade&quot;"
     },
-    "Reconvert.dialogheader.title": {
+    "Reconvert_dialogheader_title": {
         "message": "Återkonverteringsinställningar"
     },
-    "Preferences.dialogheader.title": {
+    "Preferences_dialogheader_title": {
         "message": "Inställningar"
     },
-    "default.textbox.value": {
-        "message": "standard"
+    "converted_value_placeholder": {
+        "message": "Unicode-resultat"
     },
     "Ascii_checkbox_label": {
         "message": "Konvertera till entiteter om antal ASCII &lt; 128 (befintliga entiteter/teckenref. kommer därmed inte vara immuna)"
     },
     "Hexletters_checkbox_label": {
         "message": "Utdata-hexadecimal A-F (versaler)"
-    },
-    "xstyle_description": {
-        "message": "Format för &quot;X&quot; i hexadecimal teckenreferensutdata"
     },
     "xhtmlentmode_label": {
         "message": "XHTML-entitetsläge (tillåter &apos; när HTML-entiteter skapas istället för numeriskt tecken). (Det är nog bäst att lämna detta alt. inaktiverat.)"
@@ -1130,9 +1210,6 @@
     "unicodechartContext_accesskey": {
         "message": "c"
     },
-    "tools_charrefunicode_label": {
-        "message": "Indataverktyg &amp; konverterare för Unicode"
-    },
     "hex2dec_label": {
         "message": "Hexadecimal till decimal"
     },
@@ -1151,8 +1228,8 @@
     "dec2hexContext_accesskey": {
         "message": "D"
     },
-    "uresults_value": {
-        "message": "Unicode-resultat"
+    "toconvert_placeholder": {
+        "message": "Unicode to convert"
     },
     "uresults_title": {
         "message": "Unicode-resultat"
@@ -1166,13 +1243,13 @@
     "button_clearoutput": {
         "message": "Rensa"
     },
-    "caption.chart.output": {
+    "caption_chart_output": {
         "message": "Tabellutdata"
     },
-    "caption.chart.selectchar": {
+    "caption_chart_selectchar": {
         "message": "Sök tecken eller intervall"
     },
-    "caption.chart.layout": {
+    "caption_chart_layout": {
         "message": "Tabellayout"
     },
     "caption_displayUnicodeDesc": {
@@ -1223,9 +1300,6 @@
     "label_onlyentsyesq": {
         "message": "Visa endast entiteter"
     },
-    "label_xstyleq": {
-        "message": "&quot;x&quot;-format"
-    },
     "label_middleq": {
         "message": "Placera måltecken i mitten"
     },
@@ -1241,13 +1315,13 @@
     "dialogheader_value": {
         "message": "DTD"
     },
-    "DTD.desc.value": {
+    "DTD_desc_value1": {
         "message": "Lägg till DTD-entitetsdeklarationer (valfritt) för användning vid konvertering"
     },
-    "DTD.desc.value2": {
+    "DTD_desc_value2": {
         "message": "Form: &lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;"
     },
-    "DTD.textbox.value": {
+    "DTD_textbox_value": {
         "message": ""
     },
     "DTD_insertent": {
@@ -1256,37 +1330,8 @@
     "appendhtml_checkbox": {
         "message": "Bifoga till befintlig HTML-entitetsuppsättning"
     },
-
-    "notespar1": {
-        "message": "Unicode är ett system för att återge alla levande (och vissa döda) mänskliga skrivtecken, standardsymboler och skiljetecken. Unicodes användning i HTML och XML tillåter t.o.m. alla sådana skrivtecken att samsas på samma sida. Många program låter dig skriva eller spara alla sådana tecken direkt i Unicode."
-    },
-    "notespar2": {
-        "message": "Emellertid, eftersom vissa program fortfarande inte stödjer Unicode fullt ut så kanske inte texten kommer att sparas korrekt och måhända, för att göra det enklare för en del att skriva, får du också använda olika typer av kortkommandon för att återge dessa olika Unicode-tecken (fast om du endast använder de grundläggande engelska ASCII-symbolerna, så kommer dina dokument att översättas till Unicode utan problem)."
-    },
-    "notespar3": {
-        "message": "Ett sådant kortkommando som kan användas i alla HTML- och XML-dokument är teckenreferensen. Dessa referenser börjar med ett et-tecken (&quot;&amp;&quot;) och ett nummertecken (&quot;#&quot;) och slutar med ett semikolon (&quot;;&quot;). Däremellan står antingen ett decimaltal (d.v.s. siffrorna 0-9) eller ett hexadecimalt tal (d.v.s. siffrorna 0-9 Och/eller versala eller gemena bokstäverna A-F, vilka föregås av ett &quot;x&quot; eller ett &quot;X&quot;). Endera typen kommer att visa detsamma och kommer att visas exakt som Unicode-tecknet den representerar."
-    },
-    "notespar4": {
-        "message": "(Det hexadecimala talsystemet kan jämföras med en uppsättning spelkort. Knekten kan representera &quot;11&quot; i vissa spel, damen &quot;12&quot; och så vidare. Även om de bara är enskilda kort, så representerar de ett tal större än tio. På samma sätt är det med enskilda hexadecimala siffror som representeras av bokstäverna A-F.)"
-    },
-    "notespar5": {
-        "message": "Vid sidan av teckenreferenser är en annan typ av kortkommando för att återge ett Unicode-tecken (eller t.o.m. flera tecken) den &quot;parsade allmänna entiteten&quot; (parsed general entity)."
-    },
-    "notespar6": {
-        "message": "I XML-språket, undantaget fem fördefinierade entiteter (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;) och &apos; (&apos;)), måste du uttryckligen definiera de entiteter som du vill använda (eller använda ett särskilt &quot;PUBLIC&quot;-ID, vilket visar för program som läser XML-filen att du kommer att använda det språkets uppsättning av entiteter)."
-    },
-    "notespar7": {
-        "message": "I HTML finns det ett antal redan definierade entiteter. Ett viktigt påpekande: Även om HTML använder fyra av XML:s fem fördefinierade entiteter, så använder det inte &quot;&apos;&quot;. Du måste således istället använda motsvarande Unicode (eller använda någon av teckenreferenserna &amp;#x27; eller &amp;#39;)."
-    },
-    "notespar8": {
-        "message": "Du kan också definiera dina egna entiteter i tilläggets &quot;DTD&quot;-sektion genom att använda syntaxet &quot;&lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;&quot; så att de kan inkluderas i konverteringar."
-    },
-
     "European_Scripts": {
         "message": "Europeiska alfabet"
-    },
-    "_see_also_Comb._Marks--": {
-        "message": "(Se även Kombinerande tecken)"
     },
     "Armenian": {
         "message": "Armeniska"
@@ -1318,20 +1363,11 @@
     "Greek_Extended": {
         "message": "Grekiska, utökad"
     },
-    "_see_also_Ancient_Greek_Numbers--": {
-        "message": "(Se även Forngrekiska tal)"
-    },
-    "_see_also_Ancient_Greek_Musical_Notation--": {
-        "message": "(Se även Forngrekisk notskrift)"
-    },
     "Latin": {
         "message": "Latin"
     },
     "Basic_Latin": {
         "message": "Grundläggande latin"
-    },
-    "Latin_1_Supplement": {
-        "message": "Latin-1 (tillägg)"
     },
     "Latin_Extended_A": {
         "message": "Latin, utökad A"
@@ -1354,11 +1390,8 @@
     "Fullwidth_Latin_Letters": {
         "message": "Helbreda latinska bokstäver"
     },
-    "Small_Form_Variants": {
-        "message": "Litet format (varianter)"
-    },
-    "_see_also_Phonetic_Symbols--": {
-        "message": "(Se även Fonetiska symboler)"
+    "Small_Forms": {
+        "message": "Small Forms"
     },
     "African_Scripts": {
         "message": "Afrikanska skrivtecken"
@@ -1372,9 +1405,6 @@
     "Ethiopic_Extended": {
         "message": "Ge'ez, utökad"
     },
-    "Other_African_scripts": {
-        "message": "Övriga afrikanska skrivtecken"
-    },
     "N_Ko": {
         "message": "N'Ko"
     },
@@ -1383,9 +1413,6 @@
     },
     "Middle_Eastern_Scripts": {
         "message": "Mellanösterns skrivtecken"
-    },
-    "_see_also_Old_Persian_": {
-        "message": "(Se även Fornpersiska)"
     },
     "Arabic": {
         "message": "Arabiska"
@@ -1411,7 +1438,7 @@
     "Thaana": {
         "message": "Tāna"
     },
-    "American_scripts": {
+    "American_Scripts": {
         "message": "Amerikanska skrivtecken"
     },
     "Cherokee": {
@@ -1431,9 +1458,6 @@
     },
     "Glagolitic": {
         "message": "Glagolitiska alfabetet"
-    },
-    "Indic_Scripts": {
-        "message": "Indic skrivtecken"
     },
     "Bengali": {
         "message": "Bengali"
@@ -1519,41 +1543,20 @@
     "East_Asian_Scripts": {
         "message": "Ostasiatiska skrivtecken"
     },
-    "CJK_Unified_Ideographs_--Han--": {
-        "message": "CJK-enhetliga ideogram (Han)"
-    },
     "CJK_Ideographs_Ext__A": {
         "message": "CJK-ideogram, utök. A"
     },
     "CJK_Ideographs_Ext__B": {
         "message": "CJK-ideogram, utök. B"
     },
-    "CJK_Compatibility_Ideographs": {
-        "message": "CJK, kompatibilitetsideogram"
-    },
-    "CJK_Compatibility_Ideographs_Supplement": {
-        "message": "CJK, kompatibilitetsideogram (tillägg)"
-    },
     "Kanbun": {
         "message": "Kanbun"
     },
-    "_see_also_Unihan_Database--": {
+    "_see_also_Unihan_Database_": {
         "message": "(Se även Unihan-databasen)"
-    },
-    "CJK_Radicals_Supplement": {
-        "message": "CJK-radikaler (tillägg)"
-    },
-    "KangXi_Radicals": {
-        "message": "Kangxi-radikaler"
     },
     "CJK_Strokes": {
         "message": "CJK-streck"
-    },
-    "Ideographic_Description_Characters": {
-        "message": "Ideografiska beskrivningstecken"
-    },
-    "Chinese_specific": {
-        "message": "Kinesisk-specifika"
     },
     "Bopomofo": {
         "message": "Zhùyīn Fúhào (bopomofo)"
@@ -1566,9 +1569,6 @@
     },
     "Katakana": {
         "message": "Katakana"
-    },
-    "Katakana_Phonetic_Extensions": {
-        "message": "Katakana, fonetiska utökningar"
     },
     "Halfwidth_Katakana": {
         "message": "Halvbred katakana"
@@ -1614,9 +1614,6 @@
     },
     "Cuneiform": {
         "message": "Kilskrift"
-    },
-    "Cuneiform_Numbers_and_Punctuation": {
-        "message": "Kilskrift, tal och skiljetecken"
     },
     "Old_Persian": {
         "message": "Fornpersiska"
@@ -1672,9 +1669,6 @@
     "Supplemental_Punctuation": {
         "message": "Kompletterande skiljetecken"
     },
-    "CJK_Symbols_and_Punctuation": {
-        "message": "CJK-symboler och skiljetecken"
-    },
     "Fullwidth_ASCII_Punctuation": {
         "message": "Helbreda ASCII-skiljetecken"
     },
@@ -1684,14 +1678,8 @@
     "Enclosed_Alphanumerics": {
         "message": "Omslutna alfanumeriska tecken"
     },
-    "Enclosed_Alphanumerics_CJK_Letters_and_Months": {
-        "message": "Omslutna CJK-bokstäver och -månader"
-    },
     "CJK_Compatibility": {
         "message": "CJK-kompatibilitet"
-    },
-    "_see_also_Letterlike_Symbols--": {
-        "message": "(Se även Bokstavsliknande symboler)"
     },
     "Combining_Diacritical_Marks": {
         "message": "Kombinerande diakritiska tecken"
@@ -1723,16 +1711,13 @@
     "Spacing_Modifier_Letters": {
         "message": "Stegningsbestämmande bokstäver"
     },
-    "_see_also_Super_and_Subscript--": {
-        "message": "(Se även Upphöjda och nedsänkta tecken)"
-    },
     "Mathematical_Symbols": {
         "message": "Matematiska symboler"
     },
     "Numbers_and_Digits": {
         "message": "Tal och siffror"
     },
-    "_see_also_specific_scripts--": {
+    "_see_also_specific_scripts_": {
         "message": "(Se även specifika skrivtecken)"
     },
     "ASCII_Digits": {
@@ -1750,35 +1735,17 @@
     "Letterlike_Symbols": {
         "message": "Bokstavsliknande symboler"
     },
-    "Mathematical_Alphanumeric_Symbols": {
-        "message": "Matematiska alfanumeriska symboler"
-    },
     "Arrows": {
         "message": "Pilar"
     },
     "Mathematical_Operators": {
         "message": "Matematiska operatorer"
     },
-    "Suppl__Math_Operators": {
-        "message": "Kompletterande matematiska operatorer"
-    },
-    "Misc__Math_Symbols_A": {
-        "message": "Diverse matematiska symboler A"
-    },
-    "Misc__Math_Symbols_B": {
-        "message": "Diverse matematiska symboler B"
-    },
     "Supplemental_Arrows_A": {
         "message": "Kompletterande pilar A"
     },
     "Supplemental_Arrows_B": {
         "message": "Kompletterande pilar B"
-    },
-    "Misc__Symbols_and_Arrows": {
-        "message": "Diverse symboler och pilar"
-    },
-    "Geometric_Shapes": {
-        "message": "Geometriska figurer"
     },
     "Box_Drawing": {
         "message": "Ramelement"
@@ -1795,12 +1762,6 @@
     "Miscellaneous_Technical": {
         "message": "Diverse tekniska"
     },
-    "OCR": {
-        "message": "Optisk teckenläsning (OCR)"
-    },
-    "Other_Symbols": {
-        "message": "Övriga symboler"
-    },
     "Miscellaneous_Symbols": {
         "message": "Diverse symboler"
     },
@@ -1810,38 +1771,20 @@
     "Tai_Xuan_Jing_Symbols": {
         "message": "Tai Xuan Jing-symboler"
     },
-    "Yijing_Hexagram_Symbols": {
-        "message": "I Chings hexagramsymboler"
-    },
     "Braille_Patterns": {
         "message": "Braille-mönster"
     },
     "Byzantine_Musical_Symbols": {
         "message": "Bysantinska musiksymboler"
     },
-    "Musical_Symbols": {
-        "message": "Musiksymboler"
-    },
     "Currency_Symbols": {
         "message": "Valutasymboler"
-    },
-    "Dollar_Sign": {
-        "message": "Dollar-tecken"
-    },
-    "Euro_Sign": {
-        "message": "Euro-tecken"
     },
     "Yen__Pound_and_Cent": {
         "message": "Yen, pund och cent"
     },
     "Fullwidth_Currency_Symbols": {
         "message": "Helbreda valutasymboler"
-    },
-    "Mark_-historic--": {
-        "message": "Mark (historiskt)"
-    },
-    "Pfennig_-historic--": {
-        "message": "Pfennig (historiskt)"
     },
     "Rial_Sign": {
         "message": "Rial-tecken"
@@ -1876,12 +1819,6 @@
     "Private_Use_Area": {
         "message": "Privatanvändningsområde"
     },
-    "Suppl__Private_Use_Area_A": {
-        "message": "Kompletterande privatanvändningsområde-A"
-    },
-    "Suppl__Private_Use_Area_B": {
-        "message": "Kompletterande privatanvändningsområde-B"
-    },
     "Surrogates": {
         "message": "Surrogat"
     },
@@ -1893,6 +1830,9 @@
     },
     "Low_Surrogates": {
         "message": "Låga surrogat"
+    },
+    "Noncharacters_in_blocks": {
+        "message": "Noncharacters in blocks"
     },
     "Noncharacters_in_Charts": {
         "message": "Icke-tecken i tabeller"

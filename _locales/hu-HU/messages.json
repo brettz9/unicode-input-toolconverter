@@ -199,24 +199,18 @@
     "ent_predefined": {
         "message": "előre definiált XML"
     },
-
     "Convert_From_Encoding": {
         "message": "Eredeti kódolás"
     },
     "Convert_To_Encoding": {
         "message": "Célkódolás"
     },
-
-
-
-
     "kHanyuPinyin": {
         "message": "HanyuPinyin"
     },
     "kIRG_MSource": {
         "message": "IRG_MSource"
     },
-
     "Ethiopic_Extended_A": {
         "message": "Kibővített etióp A"
     },
@@ -253,22 +247,15 @@
     "Bamum_Supplement": {
         "message": "Kiegészítő bamum"
     },
-
-
     "font_label": {
         "message": "Betűkészlet"
     },
-
     "addToToolbar": {
         "message": "Hozzáadás az eszköztár lenyíló eleméhez"
     },
-
-    "usage_notespar10b": {
-        "message": "Az eszköztárikont a Nézet -> Eszköztárak -> Testreszabás... menüpontból és az Unikód ikonnak az eszköztárra húzásával adhatja hozzá. Az ikon része egy lenyíló menü, melyhez az Eredmények táblázat melletti gombbal szöveget adhat hozzá későbbi használatra. A már hozzáadott elemek törléséhez az eszköztár ikonelemeinek megtekintése közben vigye az egeret a törlendő elem fölé és kattintson a jobb egérgombbal."
+    "usage_note_heading": {
+        "message": "Egyéb tájékoztató"
     },
-
-
-
     "usage_notespar1": {
         "message": "A kiterjesztés bekapcsolható az Előzmények menüből (így az használható a kijelölt szövegen), az Eszközök menüből, az eszköztár ikonjáról, illetve a Kiterjesztések Beállítások menüpontjából."
     },
@@ -300,34 +287,50 @@
         "message": "A leírásokat a Control + bal egérgombbal a táblázat fölött kattintva rögzítheti. "
     },
     "usage_notespar11": {
-        "message": "A kiterjesztés unikód adataira az itt olvasható engedély érvényes: http://unicode.org/copyright.html"
+        "message": "Az eszköztárikont a Nézet -> Eszköztárak -> Testreszabás... menüpontból és az Unikód ikonnak az eszköztárra húzásával adhatja hozzá. Az ikon része egy lenyíló menü, melyhez az Eredmények táblázat melletti gombbal szöveget adhat hozzá későbbi használatra. A már hozzáadott elemek törléséhez az eszköztár ikonelemeinek megtekintése közben vigye az egeret a törlendő elem fölé és kattintson a jobb egérgombbal."
     },
     "usage_notespar12": {
+        "message": "A kiterjesztés unikód adataira az itt olvasható engedély érvényes: http://unicode.org/copyright.html"
+    },
+    "usage_notespar13": {
         "message": "Fordítók jelentkezését várjuk a http://tinyurl.com/UnicodeInputToolTranslators címen!"
     },
-
-    "usage_notespar0": {
-        "message": "Egyéb tájékoztató"
-    },
-    "notespar0": {
+    "note_heading": {
         "message": "Unikóddal kapcsolatos megjegyzések (felhasználói ismertető)"
     },
-
-
-
+    "notespar1": {
+        "message": "Az unikód az összes élő (és néhány kihalt) emberi nyelv írásának, valamint standard szimbólumoknak és írásjeleknek az ábrázolására használt rendszer. Az unikód HTML-ben és XML-ben való használatával az összes így ábrázolt karakter akár ugyanazon az oldalon megjelenhet. Számos programmal írhat és menthet el közvetlenül unikódban ábrázolt karaktereket."
+    },
+    "notespar2": {
+        "message": "Ugyanakkor mivel léteznek még olyan programok, amelyek nem teljesen támogatják az unikód használatát (bár ha csak az alapvető angol ASCII-szimbólumokat használja, ezek unikóddá alakítása zökkenőmentesen történik) és helytelenül mentik el az ilyen szövegeket, valamint nehézkessé teszik ezek beírását, ezért különféle áthidaló megoldások használatával érhető el a különféle unikódos karakterek előállítása."
+    },
+    "notespar3": {
+        "message": "Az egyik ilyen, minden HTML- vagy XML-dokumentumban használható áthidaló megoldás a karakterhivatkozás. A karakterhivatkozás &quot;és&quot;-jellel (&apos;&amp;&apos;) és kettőskereszttel (&apos;#&apos;) kezdődik, és pontosvesszővel (&apos;;&apos;) ér véget. Közöttük állhatnak decimális (0-9) vagy hexadecimális számok (azaz 0-9 közötti szám vagy A-F, ill. a-f közötti nagy- és kisbetű, melyek előtt &apos;x&apos; vagy &apos;X&apos; áll)."
+    },
+    "notespar4": {
+        "message": "(A hexadecimális számrendszer hasonló egy kártyacsomaghoz. A bubi egyes játékokban &apos;11&apos;-et jelent, a dáma &apos;12&apos;-t stb. A kártyalap egy tíznél nagyobb számnak felel meg. Ugyanez a helyzet a hexadecimális számjegyeket jelentő A-F betűkkel)."
+    },
+    "notespar5": {
+        "message": "Egy unikódos karakter (vagy akár több) ábrázolására a karakterhivatkozások mellett létezik egy másik áthidaló megoldás is: a &apos;feldolgozott általános egyed&apos;."
+    },
+    "notespar6": {
+        "message": "XML esetén az öt előre meghatározott egyeden (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;), &apos; (&apos;)) kívül explicit módon megadhat egyedeket (vagy használhatja a speciális PUBLIC azonosítót, mellyel jelezheti az XML-állományt olvasó programnak, hogy a nyelv saját egyedkészletét fogja használni)."
+    },
+    "notespar7": {
+        "message": "HTML-ben egy sor előre meghatározott egyed létezik. Fontos azonban megjegyezni, hogy noha a HTML az XML öt előre meghatározott egyede közül négyet használ, nem használja az &apos;&amp;apos;&apos;-t, így ennek helyén a neki megfelelő unikódot (vagy az &amp;#x27;, ill. &amp;#39; karakterhivatkozás közül valamelyiket) kell használnia."
+    },
+    "notespar8": {
+        "message": "Ugyancsak megadhatja saját egyedeit a &apos;DTD&apos;-szakaszban az &apos;&lt;!ENTITY egyednév &quot;egyedérték&quot;&gt;&apos; szintaxissal, melyeket így az átalakítás során felhasználhat."
+    },
     "lang_label": {
         "message": "Nyelv"
     },
     "lang_tooltiptext": {
         "message": "A HTML 'lang' nyelvi attribútuma, illetve XML esetén az 'xml:lang' érték. A legtöbb kód esetén nincs hatása, de befolyásolhatja a betűalakok kiválasztását/a betűk megjelenítését egyes CJK-karakterek esetén (pl., U+5203 a 'zh-Hans', 'zh-Hant', 'ja' vagy 'ko' esetében). Ne feledje, hogy a táblázaton kívüli hatás megtekintéséhez használnia kell a lang attribútumot (még akkor is, ha a táblázat kimeneti négyzetében nincs egy sem), továbbá azt sem, hogy jelenleg az xml:lang igazi XML-/XHTML-dokumentumokban hibás: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
     },
-
-
     "initialTab_label": {
         "message": "Kezdetben megnyitandó fül (billentyűparancs vagy eszközsávon lévő gomb bekapcsolásához)"
     },
-
-
     "CSSWhitespace_label": {
         "message": "Kétértelmű üzemmód esetén használandó nem nyomtatható CSS-váltókarakter"
     },
@@ -352,7 +355,6 @@
     "cssUnambiguous_label": {
         "message": "CSS-váltókarakter nem nyomtatható karaktert nem igénylő 6 számjegyes sorozatként való létrehozása (egyébként szükség szerinti hosszúságú lesz, utána nem nyomtatható karakterrel"
     },
-
     "sixDigit2unicode_label": {
         "message": "4 vagy 6 (PHP 6-tal azonos) számjegyesből unikódra"
     },
@@ -362,7 +364,6 @@
     "sixDigit2unicodeContext_accesskey": {
         "message": "6"
     },
-
     "unicodeTo6DigitContext_accesskey": {
         "message": "U"
     },
@@ -372,7 +373,6 @@
     "unicodeTo6DigitContext_label": {
         "message": "Unikódról 6 (PHP 6-tal azonos) számjegyes váltókarakterre"
     },
-
     "charDesc2Unicode_accesskey": {
         "message": "h"
     },
@@ -391,9 +391,6 @@
     "unicode2CharDesc_label": {
         "message": "Unikódról karakterleíró váltókaraterekre"
     },
-
-
-
     "unicode2JSEscape_label": {
         "message": "Unikódról JavaScript váltókarakterekre"
     },
@@ -430,19 +427,16 @@
     "cssescape2unicodeContext_label": {
         "message": "CSS-váltókarakterekről unikódra"
     },
-
-
-
     "Yijing_Symbols": {
         "message": "Jidzsing jelek"
     },
-    "Noncharacters_at_end_of": {
+    "Noncharacters_at_end_of____": {
         "message": "Egyéb jelek a(z) ... végén"
     },
-    "_see_also_Common_Indic_Number_Forms--": {
+    "_see_also_Common_Indic_Number_Forms__": {
         "message": "(lásd még: közös indiai számformák)"
     },
-    "_see_also_Combining_Diacritical_Marks_for_Symbols--": {
+    "_see_also_Combining_Diacritical_Marks_for_Symbols__": {
         "message": "(lásd még: Szimbólumok diakritikus jeleinek kombinálása)"
     },
     "Roman_Symbols": {
@@ -454,7 +448,7 @@
     "Cuneiform_Numbers_and_Punctuation": {
         "message": "Ékírású számok és írásjelek"
     },
-    "CJK_Unified_Ideographs_--Han--": {
+    "CJK_Unified_Ideographs__Han_": {
         "message": "Egységesített ideografikus CJK-jelek (han)"
     },
     "CJK_Compatibility_Ideographs": {
@@ -478,10 +472,10 @@
     "Mathematical_Alphanumeric_Symbols": {
         "message": "Matematikai alfanumerikus jelek"
     },
-    "Enclosed_Alphanumerics_CJK_Letters_and_Months": {
+    "Enclosed_CJK_Letters_and_Months": {
         "message": "Zárójeles CJK-betűk és hónapnevek"
     },
-    "OCR": {
+    "Optical_Character_Recognition__OCR_": {
         "message": "Optikai karakterfelismerés (OCR)"
     },
     "Misc__Math_Symbols_A": {
@@ -490,7 +484,7 @@
     "Misc__Math_Symbols_B": {
         "message": "Egyéb matematikai jelek - B"
     },
-    "Misc__Symbols_and_Arrows": {
+    "Miscellaneous_Symbols_and_Arrows": {
         "message": "Egyéb jelek és nyilak"
     },
     "Suppl__Math_Operators": {
@@ -505,7 +499,7 @@
     "Musical_Symbols": {
         "message": "Zenei jelek"
     },
-    "Yijing_Mono--_Di-_and_Trigrams": {
+    "Yijing_Mono___Di__and_Trigrams": {
         "message": "Jidzsing mono-, di- és trigramok"
     },
     "Yijing_Hexagram_Symbols": {
@@ -514,20 +508,15 @@
     "Katakana_Phonetic_Extensions": {
         "message": "Katakana fonetikus kibővítések"
     },
-    "Suppl__Private_Use_Area_A": {
+    "Supplementary_Private_Use_Area_A": {
         "message": "Saját használatú kiegészítő terület - A"
     },
-    "Suppl__Private_Use_Area_B": {
+    "Supplementary_Private_Use_Area_B": {
         "message": "Saját használatú kiegészítő terület - B"
     },
-
-
     "Combining_Diacritics": {
         "message": "Diakritikus jelek kombinálása"
     },
-
-
-
     "CJK_Ideographs_Ext__C": {
         "message": "ideografikus kibővített CJK-jelek C"
     },
@@ -588,8 +577,6 @@
     "Tai_Viet": {
         "message": "Tai viet"
     },
-
-
     "Lisu": {
         "message": "kancellár"
     },
@@ -608,21 +595,17 @@
     "Rumi_Numeral_Symbols": {
         "message": "rumi numerikus jelek"
     },
-    "Basic_operators_Plus__Factorial": {
+    "Basic_operators__Plus__Factorial__Division__Multiplication": {
         "message": "Alapműveletek: összeadás, faktoriális"
     },
     "Division__Multiplication": {
         "message": "Osztás, szorzás"
     },
-
     "Unified_Canadian_Aboriginal_Syllabics": {
         "message": "Kanadai őslakosság egységesített szótagírása"
     },
     "Yi_Syllables": {
         "message": "Ji szótagírás"
-    },
-    "Combining_Diacritics": {
-        "message": "Diakritikus jelek kombinálása"
     },
     "Alphabetic_Presentation_Forms": {
         "message": "Alfabetikus prezentációs formák"
@@ -645,9 +628,6 @@
     "Additional_Squared_Symbols": {
         "message": "Kiegészítő zárójeles szimbólumok"
     },
-
-
-
     "label_unicode": {
         "message": "Unikód"
     },
@@ -1029,7 +1009,7 @@
     "Additional_Shapes": {
         "message": "További alakzatok"
     },
-    "APL_Symbols": {
+    "APL_symbols": {
         "message": "APL-szimbólumok"
     },
     "ShowImg_checkbox_label": {
@@ -1089,7 +1069,7 @@
     "Game_Symbols": {
         "message": "Játékszimbólumokmbols"
     },
-    "Chess_Checkers": {
+    "Chess__Checkers_Draughts": {
         "message": "Sakk/Dámajáték"
     },
     "Card_suits": {
@@ -1098,26 +1078,20 @@
     "Japanese_Chess": {
         "message": "Japán sakk"
     },
-    "Yijing_Mono_and_Digrams": {
-        "message": "Csidzsin monogramok és digramok"
-    },
     "copyToClipboard": {
         "message": "Másolás a vágólapra"
-    },
-    "period": {
-        "message": "."
     },
     "moveconvertedup_label": {
         "message": "&apos;Átalakított&apos; másolása előzetesen átalakított formába"
     },
-    "Reconvert.dialogheader.title": {
+    "Reconvert_dialogheader_title": {
         "message": "Újrakonvertálási lehetőségek"
     },
-    "Preferences.dialogheader.title": {
+    "Preferences_dialogheader_title": {
         "message": "Beállítások"
     },
-    "default.textbox.value": {
-        "message": "alapbeállítás"
+    "converted_value_placeholder": {
+        "message": "Unikód műveletek"
     },
     "Ascii_checkbox_label": {
         "message": "Átalakítás egyedekké, ha az ASCII-k &lt; 128 (a meglévő egyedek/karakterhivatkozások így nem lesznek immunisak)"
@@ -1236,9 +1210,6 @@
     "unicodechartContext_accesskey": {
         "message": "C"
     },
-    "tools_charrefunicode_label": {
-        "message": "Unikód beviteli eszköz/átalakító"
-    },
     "hex2dec_label": {
         "message": "Hexadecimálisból decimálisba"
     },
@@ -1257,8 +1228,8 @@
     "dec2hexContext_accesskey": {
         "message": "D"
     },
-    "uresults_value": {
-        "message": "Unikód műveletek"
+    "toconvert_placeholder": {
+        "message": "Unicode to convert"
     },
     "uresults_title": {
         "message": "Unikód műveletek"
@@ -1272,13 +1243,13 @@
     "button_clearoutput": {
         "message": "Törlés"
     },
-    "caption.chart.output": {
+    "caption_chart_output": {
         "message": "Táblázat kimenete"
     },
-    "caption.chart.selectchar": {
+    "caption_chart_selectchar": {
         "message": "Karakter vagy tartomány keresése"
     },
-    "caption.chart.layout": {
+    "caption_chart_layout": {
         "message": "Táblázat elrendezése"
     },
     "caption_displayUnicodeDesc": {
@@ -1344,14 +1315,14 @@
     "dialogheader_value": {
         "message": "DTD"
     },
-    "DTD.desc.value": {
+    "DTD_desc_value1": {
         "message": "DTD-egyeddeklarációk hozzáadása átalakításokban való (választható) használathoz"
     },
-    "DTD.desc.value2": {
+    "DTD_desc_value2": {
         "message": "Forma: &lt;!ENTITY egyednév &apos;kar.érték&apos;&gt;"
     },
     "DTD_textbox_value": {
-        "message": "DTD.textbox.value"
+        "message": ""
     },
     "DTD_insertent": {
         "message": "Beszúrás: &lt;!ENTITY&gt;"
@@ -1359,37 +1330,8 @@
     "appendhtml_checkbox": {
         "message": "Hozzáfűzi a meglévő HTML-egyedkészlethez?"
     },
-
-    "notespar1": {
-        "message": "Az unikód az összes élő (és néhány kihalt) emberi nyelv írásának, valamint standard szimbólumoknak és írásjeleknek az ábrázolására használt rendszer. Az unikód HTML-ben és XML-ben való használatával az összes így ábrázolt karakter akár ugyanazon az oldalon megjelenhet. Számos programmal írhat és menthet el közvetlenül unikódban ábrázolt karaktereket."
-    },
-    "notespar2": {
-        "message": "Ugyanakkor mivel léteznek még olyan programok, amelyek nem teljesen támogatják az unikód használatát (bár ha csak az alapvető angol ASCII-szimbólumokat használja, ezek unikóddá alakítása zökkenőmentesen történik) és helytelenül mentik el az ilyen szövegeket, valamint nehézkessé teszik ezek beírását, ezért különféle áthidaló megoldások használatával érhető el a különféle unikódos karakterek előállítása."
-    },
-    "notespar3": {
-        "message": "Az egyik ilyen, minden HTML- vagy XML-dokumentumban használható áthidaló megoldás a karakterhivatkozás. A karakterhivatkozás &quot;és&quot;-jellel (&apos;&amp;&apos;) és kettőskereszttel (&apos;#&apos;) kezdődik, és pontosvesszővel (&apos;;&apos;) ér véget. Közöttük állhatnak decimális (0-9) vagy hexadecimális számok (azaz 0-9 közötti szám vagy A-F, ill. a-f közötti nagy- és kisbetű, melyek előtt &apos;x&apos; vagy &apos;X&apos; áll)."
-    },
-    "notespar4": {
-        "message": "(A hexadecimális számrendszer hasonló egy kártyacsomaghoz. A bubi egyes játékokban &apos;11&apos;-et jelent, a dáma &apos;12&apos;-t stb. A kártyalap egy tíznél nagyobb számnak felel meg. Ugyanez a helyzet a hexadecimális számjegyeket jelentő A-F betűkkel)."
-    },
-    "notespar5": {
-        "message": "Egy unikódos karakter (vagy akár több) ábrázolására a karakterhivatkozások mellett létezik egy másik áthidaló megoldás is: a &apos;feldolgozott általános egyed&apos;."
-    },
-    "notespar6": {
-        "message": "XML esetén az öt előre meghatározott egyeden (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;), &apos; (&apos;)) kívül explicit módon megadhat egyedeket (vagy használhatja a speciális PUBLIC azonosítót, mellyel jelezheti az XML-állományt olvasó programnak, hogy a nyelv saját egyedkészletét fogja használni)."
-    },
-    "notespar7": {
-        "message": "HTML-ben egy sor előre meghatározott egyed létezik. Fontos azonban megjegyezni, hogy noha a HTML az XML öt előre meghatározott egyede közül négyet használ, nem használja az &apos;&amp;apos;&apos;-t, így ennek helyén a neki megfelelő unikódot (vagy az &amp;#x27;, ill. &amp;#39; karakterhivatkozás közül valamelyiket) kell használnia."
-    },
-    "notespar8": {
-        "message": "Ugyancsak megadhatja saját egyedeit a &apos;DTD&apos;-szakaszban az &apos;&lt;!ENTITY egyednév &quot;egyedérték&quot;&gt;&apos; szintaxissal, melyeket így az átalakítás során felhasználhat."
-    },
-
     "European_Scripts": {
         "message": "Európai ábécék"
-    },
-    "_see_also_Comb._Marks--": {
-        "message": "(lásd még: kombinált jelek)"
     },
     "Armenian": {
         "message": "Örmény"
@@ -1421,20 +1363,11 @@
     "Greek_Extended": {
         "message": "Kibővített görög"
     },
-    "_see_also_Ancient_Greek_Numbers--": {
-        "message": "(lásd még: ógörög számok)"
-    },
-    "_see_also_Ancient_Greek_Musical_Notation--": {
-        "message": "(lásd még: ógörög kotta)"
-    },
     "Latin": {
         "message": "Latin"
     },
     "Basic_Latin": {
         "message": "Latin alapkészlet"
-    },
-    "Latin_1": {
-        "message": "1-es latin"
     },
     "Latin_Extended_A": {
         "message": "Kibővített latin A"
@@ -1460,9 +1393,6 @@
     "Small_Forms": {
         "message": "Kis alakok"
     },
-    "_see_also_Phonetic_Symbols--": {
-        "message": "(lásd még: fonetikai szimbólumok)"
-    },
     "African_Scripts": {
         "message": "Afrikai írásmódok"
     },
@@ -1475,9 +1405,6 @@
     "Ethiopic_Extended": {
         "message": "Kibővített etióp"
     },
-    "Other_African_scripts": {
-        "message": "Egyéb afrikai írásmódok"
-    },
     "N_Ko": {
         "message": "N&apos;ko"
     },
@@ -1486,9 +1413,6 @@
     },
     "Middle_Eastern_Scripts": {
         "message": "Közel-keleti írásmódok"
-    },
-    "_see_also_Old_Persian--": {
-        "message": "(lásd még: óperzsa)"
     },
     "Arabic": {
         "message": "Arab"
@@ -1514,11 +1438,8 @@
     "Thaana": {
         "message": "Thaana"
     },
-    "American_scripts": {
+    "American_Scripts": {
         "message": "Amerikai írásmódok"
-    },
-    "Canadian_Syllabics": {
-        "message": "Kanadai szótagírás"
     },
     "Cherokee": {
         "message": "Cseroki"
@@ -1537,9 +1458,6 @@
     },
     "Glagolitic": {
         "message": "Glagolita"
-    },
-    "Indic_Scripts": {
-        "message": "Indiai írásmódok"
     },
     "Bengali": {
         "message": "Bengáli"
@@ -1625,56 +1543,26 @@
     "East_Asian_Scripts": {
         "message": "Kelet-ázsiai írásmódok"
     },
-    "Han_Ideographs": {
-        "message": "Han ideografikus jelek"
-    },
-    "Unified_CJK_Ideographs": {
-        "message": "Egységesíett ideografikus CJK-jelek"
-    },
     "CJK_Ideographs_Ext__A": {
         "message": "Ideografikus CJK-jelek A kibővítése"
     },
     "CJK_Ideographs_Ext__B": {
         "message": "Ideografikus CJK-jelek B kibővítése"
     },
-    "Compatibility_Ideographs": {
-        "message": "Kompatibilitáshoz szükséges ideografikus jelek"
-    },
-    "Compatibility_Ideographs_Supplement": {
-        "message": "Kompatibilitáshoz szükséges ideografikus jelek kiegészítése"
-    },
     "Kanbun": {
         "message": "Kanbun"
     },
-    "_see_also_Unihan_Database--": {
+    "_see_also_Unihan_Database_": {
         "message": "(lásd még: egységesített han adatbázis)"
-    },
-    "Radicals_and_Strokes": {
-        "message": "Gyökjelek és vonások"
-    },
-    "CJK_Radicals": {
-        "message": "CJK-gyökjelek"
-    },
-    "KangXi_Radicals": {
-        "message": "Kandzsi gyökjelek"
     },
     "CJK_Strokes": {
         "message": "CJK-gyökjelek"
-    },
-    "Ideographic_Description": {
-        "message": "Ideografikus leírás"
-    },
-    "Chinese_specific": {
-        "message": "Specifikus kínai"
     },
     "Bopomofo": {
         "message": "Bopomofo"
     },
     "Bopomofo_Extended": {
         "message": "Kibővített bopomofo"
-    },
-    "Japanese_specific": {
-        "message": "Specifikus japán"
     },
     "Hiragana": {
         "message": "Hiragana"
@@ -1684,9 +1572,6 @@
     },
     "Halfwidth_Katakana": {
         "message": "Fél szélességű katakana"
-    },
-    "Korean_specific": {
-        "message": "Specifikus koreai"
     },
     "Hangul_Syllables": {
         "message": "Hangul szótagok"
@@ -1721,12 +1606,6 @@
     "Tibetan": {
         "message": "Tibeti"
     },
-    "Ancient_Scripts": {
-        "message": "Ókori írásmódok"
-    },
-    "Ancient_Greek": {
-        "message": "Ógörög"
-    },
     "Ancient_Greek_Numbers": {
         "message": "Ógörög számok"
     },
@@ -1735,9 +1614,6 @@
     },
     "Cuneiform": {
         "message": "Ékírás"
-    },
-    "Cuneiform_Numbers": {
-        "message": "Ékírású számok"
     },
     "Old_Persian": {
         "message": "Óperzsa"
@@ -1753,9 +1629,6 @@
     },
     "Linear_B_Ideograms": {
         "message": "Vonalas B ideogramok"
-    },
-    "Other_Ancient_Scripts": {
-        "message": "Egyéb ókori írásmódok"
     },
     "Aegean_Numbers": {
         "message": "Égei számok"
@@ -1796,26 +1669,17 @@
     "Supplemental_Punctuation": {
         "message": "Kiegészítő írásjelek"
     },
-    "CJK_Punctuation": {
-        "message": "CJK-írásjelek"
-    },
     "Fullwidth_ASCII_Punctuation": {
         "message": "Teljes szélességű ASCII-írásjelek"
     },
     "Vertical_Forms": {
         "message": "Függőleges írásmódok"
     },
-    "Enclosed_and_Square": {
-        "message": "Zárójelek"
-    },
     "Enclosed_Alphanumerics": {
         "message": "Zárójeles betűk és számok"
     },
     "CJK_Compatibility": {
         "message": "CJK-kompatibilitás"
-    },
-    "_see_also_Letterlike_Symbols--": {
-        "message": "(lásd még: betűszerű szimbólumok)"
     },
     "Combining_Diacritical_Marks": {
         "message": "Diakritikus jelek kombinálása"
@@ -1847,16 +1711,13 @@
     "Spacing_Modifier_Letters": {
         "message": "Térközmódosító betűk"
     },
-    "_see_also_Super_and_Subscript--": {
-        "message": "(lásd még: felső és alsó index)"
-    },
     "Mathematical_Symbols": {
         "message": "Matematikai szimbólumok"
     },
     "Numbers_and_Digits": {
         "message": "Számok és számjegyek"
     },
-    "_see_also_specific_scripts--": {
+    "_see_also_specific_scripts_": {
         "message": "(lásd még: specifikus írásmódok)"
     },
     "ASCII_Digits": {
@@ -1874,12 +1735,6 @@
     "Letterlike_Symbols": {
         "message": "Betűszerű szimbólumok"
     },
-    "Math_Alphanumeric_Symbols": {
-        "message": "Matematikai alfanumerikus szimbólumok"
-    },
-    "Arrows_and_Operators": {
-        "message": "Nyilak és műveleti jelek"
-    },
     "Arrows": {
         "message": "Nyilak"
     },
@@ -1891,12 +1746,6 @@
     },
     "Supplemental_Arrows_B": {
         "message": "Kiegészítő nyilak - B"
-    },
-    "Geometrical_Symbols": {
-        "message": "Mértani jelek"
-    },
-    "Geometrical_Shapes": {
-        "message": "Mértani alakzatok"
     },
     "Box_Drawing": {
         "message": "Négyszögrajzolás"
@@ -1913,9 +1762,6 @@
     "Miscellaneous_Technical": {
         "message": "Egyéb műszaki"
     },
-    "Symbols": {
-        "message": "Szimbólumok"
-    },
     "Miscellaneous_Symbols": {
         "message": "Egyéb szimbólumok"
     },
@@ -1925,41 +1771,20 @@
     "Tai_Xuan_Jing_Symbols": {
         "message": "Tai Xuan Jing szimbólumok"
     },
-    "Yijing_Hexagrams": {
-        "message": "Jidzsing hexagramok"
-    },
     "Braille_Patterns": {
         "message": "Braille-jelek"
-    },
-    "Musical_Notation": {
-        "message": "Zenei jelölés"
     },
     "Byzantine_Musical_Symbols": {
         "message": "Bizánci zenei jelek"
     },
-    "Western_Musical_Symbols": {
-        "message": "Nyugati zenei jelek"
-    },
     "Currency_Symbols": {
         "message": "Pénznemszimbólumok"
-    },
-    "Dollar_Sign": {
-        "message": "Dollárjel"
-    },
-    "Euro_Sign": {
-        "message": "Eurójel"
     },
     "Yen__Pound_and_Cent": {
         "message": "Jen, font és cent"
     },
     "Fullwidth_Currency_Symbols": {
         "message": "Teljes szélességű pénznemszimbólumok"
-    },
-    "Mark_-historic--": {
-        "message": "Márka (történelmi)"
-    },
-    "Pfennig_-historic--": {
-        "message": "Pfennig (történelmi)"
     },
     "Rial_Sign": {
         "message": "Riáljel"
@@ -2005,6 +1830,9 @@
     },
     "Low_Surrogates": {
         "message": "Alsó helyettesítők"
+    },
+    "Noncharacters_in_blocks": {
+        "message": "Noncharacters in blocks"
     },
     "Noncharacters_in_Charts": {
         "message": "Diagramok egyéb jelei"

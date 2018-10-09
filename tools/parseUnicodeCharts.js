@@ -132,14 +132,27 @@ export default function (_) {
                 //   locale to make sure no other l10n errors for missing keys, script
                 //   or otherwise
                 localeFileContents.forEach((lfc, i) => {
+                    /*
+                    // Works
+                    localeFileContents.forEach((lfc2, j) => {
+                        if (i === j) {
+                            return;
+                        }
+                        Object.entries(lfc).forEach(([key, val]) => {
+                            if (!(key in lfc2)) {
+                                console.log(`key, ${key}, not present in ${localeFiles[j]}`);
+                            }
+                        });
+                    });
+                    */
                     if (lfc.langCode.message !== 'hu-HU') {
-                        return;
+                        // return;
                     }
                     if (!(chromeSafeLocaleKey in lfc)) {
                         lfc[chromeSafeLocaleKey] = {
                             message: key
                         };
-                        console.log(1, chromeSafeLocaleKey, key);
+                        // console.log(1, chromeSafeLocaleKey, key);
                         // fs.writeFile(localeFiles[i], JSON.stringify(lfc, null, 4));
                     }
                 });
