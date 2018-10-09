@@ -132,15 +132,15 @@ export default function (_) {
                 //   locale to make sure no other l10n errors for missing keys, script
                 //   or otherwise
                 localeFileContents.forEach((lfc, i) => {
-                    if (lfc.langCode.message !== 'en') {
+                    if (lfc.langCode.message !== 'hu-HU') {
                         return;
                     }
                     if (!(chromeSafeLocaleKey in lfc)) {
                         lfc[chromeSafeLocaleKey] = {
                             message: key
                         };
-                        console.log(chromeSafeLocaleKey, key);
-                        fs.writeFile(localeFiles[i], JSON.stringify(lfc, null, 4));
+                        console.log(1, chromeSafeLocaleKey, key);
+                        // fs.writeFile(localeFiles[i], JSON.stringify(lfc, null, 4));
                     }
                 });
                 /*
