@@ -1896,5 +1896,728 @@
     },
     "CJK_Compatibility_Forms": {
         "message": "CJK-kompatibilitetsformer"
+    },
+    "chars_could_not_be_converted": {
+        "message": "Tecknen kunde inte konverteras till den teckenuppsättningen"
+    },
+    "searchkHanyuPinyin": {
+        "message": "HanyuPinyin:"
+    },
+    "searchkIRG_MSource": {
+        "message": "IRG_MSource:"
+    },
+    "problemAddingToolbarItem": {
+        "message": "Ditt objekt kunde inte läggas till i verktygsfältets rullgardinsmeny eftersom ikonen inte är synlig"
+    },
+    "dropdownArr": {
+        "message": "[]"
+    },
+    "font": {
+        "message": ""
+    },
+    "lang": {
+        "message": "sv-SE"
+    },
+    "yourItemAdded": {
+        "message": "Ditt objekt har lagts till i verktygsfältets rullgardinsmeny"
+    },
+    "need_download_unihan": {
+        "message": "För att få åtkomst till CJK-tecken (kinesiska-japanska-koreanska), så måste du ladda ner den ca. 18 MB stora Unihan-databasen. Se knappen som finns överst under fliken \"Inställningar\"."
+    },
+    "left_parenth": {
+        "message": "("
+    },
+    "right_parenth": {
+        "message": ")"
+    },
+    "Digit0": {
+        "message": "0"
+    },
+    "Digit1": {
+        "message": "1"
+    },
+    "Digit2": {
+        "message": "2"
+    },
+    "Digit3": {
+        "message": "3"
+    },
+    "Digit4": {
+        "message": "4"
+    },
+    "Digit5": {
+        "message": "5"
+    },
+    "Digit6": {
+        "message": "6"
+    },
+    "Digit7": {
+        "message": "7"
+    },
+    "Digit8": {
+        "message": "8"
+    },
+    "Digit9": {
+        "message": "9"
+    },
+    "Decimal0": {
+        "message": "0"
+    },
+    "Decimal1": {
+        "message": "1"
+    },
+    "Decimal2": {
+        "message": "2"
+    },
+    "Decimal3": {
+        "message": "3"
+    },
+    "Decimal4": {
+        "message": "4"
+    },
+    "Decimal5": {
+        "message": "5"
+    },
+    "Decimal6": {
+        "message": "6"
+    },
+    "Decimal7": {
+        "message": "7"
+    },
+    "Decimal8": {
+        "message": "8"
+    },
+    "Decimal9": {
+        "message": "9"
+    },
+    "CJK_Ideograph_Extension_A": {
+        "message": "CJK, ideografiska tillägg A"
+    },
+    "CJK_Ideograph": {
+        "message": "CJK, ideografiska"
+    },
+    "CJK_Ideograph_Extension_B": {
+        "message": "CJK, ideografiska tillägg B"
+    },
+    "Hangul_Syllable": {
+        "message": "Hangul-stavelse"
+    },
+    "No_definition": {
+        "message": "Ingen definition"
+    },
+    "Bidi_MirroredY": {
+        "message": "Ja"
+    },
+    "Bidi_MirroredN": {
+        "message": "Nej"
+    },
+    "Bidi_ClassL": {
+        "message": "Vänster till höger"
+    },
+    "Bidi_ClassLRE": {
+        "message": "Vänster till höger, inbäddning"
+    },
+    "Bidi_ClassLRO": {
+        "message": "Vänster till höger, åsidosättning"
+    },
+    "Bidi_ClassR": {
+        "message": "Höger till vänster"
+    },
+    "Bidi_ClassAL": {
+        "message": "Höger till vänster, arabiska"
+    },
+    "Bidi_ClassRLE": {
+        "message": "Höger till vänster, inbäddning"
+    },
+    "Bidi_ClassRLO": {
+        "message": "Höger till vänster, åsidosättning"
+    },
+    "Bidi_ClassPDF": {
+        "message": "Upphäv riktningsformateringen (PDF)"
+    },
+    "Bidi_ClassEN": {
+        "message": "Europeiska tal"
+    },
+    "Bidi_ClassES": {
+        "message": "Europeiska talavgränsare"
+    },
+    "Bidi_ClassET": {
+        "message": "Europeiska talavslutare"
+    },
+    "Bidi_ClassAN": {
+        "message": "Arabiska tal"
+    },
+    "Bidi_ClassCS": {
+        "message": "Vanliga talavgränsare"
+    },
+    "Bidi_ClassNSM": {
+        "message": "Icke-stegande tecken"
+    },
+    "Bidi_ClassBN": {
+        "message": "Gränsoberoende"
+    },
+    "Bidi_ClassB": {
+        "message": "Styckeavgränsare"
+    },
+    "Bidi_ClassS": {
+        "message": "Segmentavgränsare"
+    },
+    "Bidi_ClassWS": {
+        "message": "Blanksteg"
+    },
+    "Bidi_ClassON": {
+        "message": "Övriga oberoende"
+    },
+    "Canonical_Combining_Class0": {
+        "message": "Stegande, delande, inneslutande, reordrant och tibetanska underliggande bifogade"
+    },
+    "Canonical_Combining_Class1": {
+        "message": "Överlägg och inre"
+    },
+    "Canonical_Combining_Class7": {
+        "message": "Nukta"
+    },
+    "Canonical_Combining_Class8": {
+        "message": "Hiragana/Katakana, intonationstecken"
+    },
+    "Canonical_Combining_Class9": {
+        "message": "Virama"
+    },
+    "Canonical_Combining_Class10": {
+        "message": "Start för klasser med fast placering"
+    },
+    "Canonical_Combining_Class199": {
+        "message": "Slut för klasser med fast placering"
+    },
+    "Canonical_Combining_Class200": {
+        "message": "Nedanför till vänster, bifogade"
+    },
+    "Canonical_Combining_Class202": {
+        "message": "Nedanför, bifogade"
+    },
+    "Canonical_Combining_Class204": {
+        "message": "Nedanför till höger, bifogade"
+    },
+    "Canonical_Combining_Class208": {
+        "message": "Vänster, bifogade (reordrant kring enskilt bastecken)"
+    },
+    "Canonical_Combining_Class210": {
+        "message": "Höger, bifogade"
+    },
+    "Canonical_Combining_Class212": {
+        "message": "Ovanför till vänster, bifogade"
+    },
+    "Canonical_Combining_Class214": {
+        "message": "Ovanför, bifogade"
+    },
+    "Canonical_Combining_Class216": {
+        "message": "Ovanför till höger, bifogade"
+    },
+    "Canonical_Combining_Class218": {
+        "message": "Nedanför till vänster"
+    },
+    "Canonical_Combining_Class220": {
+        "message": "Nedanför"
+    },
+    "Canonical_Combining_Class222": {
+        "message": "Nedanför till höger"
+    },
+    "Canonical_Combining_Class224": {
+        "message": "Vänster (reordrant kring enskilt bastecken)"
+    },
+    "Canonical_Combining_Class226": {
+        "message": "Höger"
+    },
+    "Canonical_Combining_Class228": {
+        "message": "Ovanför till vänster"
+    },
+    "Canonical_Combining_Class230": {
+        "message": "Ovanför"
+    },
+    "Canonical_Combining_Class232": {
+        "message": "Ovanför till höger"
+    },
+    "Canonical_Combining_Class233": {
+        "message": "Dubbelt nedanför"
+    },
+    "Canonical_Combining_Class234": {
+        "message": "Dubbelt ovanför"
+    },
+    "Canonical_Combining_Class240": {
+        "message": "Nedanför (iota-nedsänkt)"
+    },
+    "searchkCangjie": {
+        "message": "Cangjie:"
+    },
+    "searchkCantonese": {
+        "message": "Kantonesiska:"
+    },
+    "searchkHanYu": {
+        "message": "Hanyu:"
+    },
+    "searchkIRGHanyuDaZidian": {
+        "message": "IRGHanyuDaZidian:"
+    },
+    "searchkIRGKangXi": {
+        "message": "IRGKanxi:"
+    },
+    "searchkIRG_GSource": {
+        "message": "IRG GKälla:"
+    },
+    "searchkIRG_JSource": {
+        "message": "IRG JKälla:"
+    },
+    "searchkIRG_TSource": {
+        "message": "IRG TKälla:"
+    },
+    "searchkMandarin": {
+        "message": "Mandarin:"
+    },
+    "searchkRSUnicode": {
+        "message": "RSUnicode:"
+    },
+    "searchkSemanticVariant": {
+        "message": "SemantiskVariant:"
+    },
+    "searchkTotalStrokes": {
+        "message": "AntalStreck:"
+    },
+    "searchkCihaiT": {
+        "message": "CihaiT:"
+    },
+    "searchkIRG_KSource": {
+        "message": "IRG KKälla:"
+    },
+    "searchkSBGY": {
+        "message": "SBGY:"
+    },
+    "searchkJIS0213": {
+        "message": "JIS0213:"
+    },
+    "searchkNelson": {
+        "message": "Nelson:"
+    },
+    "searchkRSAdobe_Japan1_6": {
+        "message": "RSAdobe Japan1 6:"
+    },
+    "searchkCowles": {
+        "message": "Cowles:"
+    },
+    "searchkMatthews": {
+        "message": "Matthews:"
+    },
+    "searchkOtherNumeric": {
+        "message": "ÖvrigNumerisk:"
+    },
+    "searchkPhonetic": {
+        "message": "Fonetisk:"
+    },
+    "searchkGSR": {
+        "message": "GSR:"
+    },
+    "searchkIRG_KPSource": {
+        "message": "IRG KPKälla:"
+    },
+    "searchkIRG_VSource": {
+        "message": "IRG VKälla:"
+    },
+    "searchkKPS1": {
+        "message": "KPS1:"
+    },
+    "searchkFenn": {
+        "message": "Fenn:"
+    },
+    "searchkFennIndex": {
+        "message": "FennIndex:"
+    },
+    "searchkKarlgren": {
+        "message": "Karlgren:"
+    },
+    "searchkHKSCS": {
+        "message": "HKSCS:"
+    },
+    "searchkIRG_HSource": {
+        "message": "IRG HKälla:"
+    },
+    "searchkXHC1983": {
+        "message": "XHC1983:"
+    },
+    "searchkMeyerWempe": {
+        "message": "MeyerWempe:"
+    },
+    "searchkTraditionalVariant": {
+        "message": "TraditionellVariant:"
+    },
+    "searchkVietnamese": {
+        "message": "Vietnamesiska:"
+    },
+    "searchkSpecializedSemanticVariant": {
+        "message": "SpecialiseradSemantiskVariant:"
+    },
+    "searchkLau": {
+        "message": "Lau:"
+    },
+    "searchkCheungBauer": {
+        "message": "CheungBauer:"
+    },
+    "searchkCheungBauerIndex": {
+        "message": "CheungBauerIndex:"
+    },
+    "searchkIICore": {
+        "message": "IICore:"
+    },
+    "searchkTang": {
+        "message": "Tang:"
+    },
+    "searchkZVariant": {
+        "message": "ZVariant:"
+    },
+    "searchkRSKangXi": {
+        "message": "RSKanxi:"
+    },
+    "searchkJapaneseKun": {
+        "message": "JapanskaKun:"
+    },
+    "searchkJapaneseOn": {
+        "message": "JapanskaOn:"
+    },
+    "searchkSimplifiedVariant": {
+        "message": "FörenkladVariant:"
+    },
+    "searchkKangXi": {
+        "message": "Kangxi:"
+    },
+    "searchkKPS0": {
+        "message": "KPS0:"
+    },
+    "searchkBigFive": {
+        "message": "DeFemStora:"
+    },
+    "searchkCCCII": {
+        "message": "CCCII:"
+    },
+    "searchkCNS1986": {
+        "message": "CNS1986:"
+    },
+    "searchkCNS1992": {
+        "message": "CNS1992:"
+    },
+    "searchkDaeJaweon": {
+        "message": "DaeJaweon:"
+    },
+    "searchkEACC": {
+        "message": "EACC:"
+    },
+    "searchkFourCornerCode": {
+        "message": "Fyrahörnskod:"
+    },
+    "searchkFrequency": {
+        "message": "Frekvens:"
+    },
+    "searchkGB0": {
+        "message": "GB0:"
+    },
+    "searchkGB1": {
+        "message": "GB1:"
+    },
+    "searchkGradeLevel": {
+        "message": "GradeLevel:"
+    },
+    "searchkHDZRadBreak": {
+        "message": "HDZRadBreak:"
+    },
+    "searchkHKGlyph": {
+        "message": "HKGlyf:"
+    },
+    "searchkHangul": {
+        "message": "Hangul:"
+    },
+    "searchkHanyuPinlu": {
+        "message": "HanyuPinlu:"
+    },
+    "searchkIRGDaeJaweon": {
+        "message": "IRGDaeJaweon:"
+    },
+    "searchkIRGDaiKanwaZiten": {
+        "message": "IRGDaiKanWaJiten:"
+    },
+    "searchkJis0": {
+        "message": "Jis0:"
+    },
+    "searchkKSC0": {
+        "message": "KSC0:"
+    },
+    "searchkKorean": {
+        "message": "Koreanska:"
+    },
+    "searchkMainlandTelegraph": {
+        "message": "FastlandTelegraf:"
+    },
+    "searchkMorohashi": {
+        "message": "Morohashi:"
+    },
+    "searchkPrimaryNumeric": {
+        "message": "PrimärNumerisk:"
+    },
+    "searchkTaiwanTelegraph": {
+        "message": "TaiwanTelegraf:"
+    },
+    "searchkXerox": {
+        "message": "Xerox:"
+    },
+    "searchkGB5": {
+        "message": "GB5:"
+    },
+    "searchkJis1": {
+        "message": "Jis1:"
+    },
+    "searchkPseudoGB1": {
+        "message": "PseudoGB1:"
+    },
+    "searchkGB3": {
+        "message": "GB3:"
+    },
+    "searchkGB8": {
+        "message": "GB8:"
+    },
+    "searchkKSC1": {
+        "message": "KSC1:"
+    },
+    "searchkIBMJapan": {
+        "message": "IBMJapan:"
+    },
+    "searchkRSKanWa": {
+        "message": "RSKanWa:"
+    },
+    "searchkRSJapanese": {
+        "message": "RSJapanska:"
+    },
+    "searchkAccountingNumeric": {
+        "message": "BokföringNumerisk:"
+    },
+    "searchkRSKorean": {
+        "message": "RSKoreanska:"
+    },
+    "searchkGB7": {
+        "message": "GB7:"
+    },
+    "searchkIRG_USource": {
+        "message": "IRG UKälla:"
+    },
+    "searchkCompatibilityVariant": {
+        "message": "Kompatibilitetsvariant:"
+    },
+    "searchGeneral_Category": {
+        "message": "Allmän kategori"
+    },
+    "searchCanonical_Combining_Class": {
+        "message": "Kanonisk kombinationsklass"
+    },
+    "searchBidi_Class": {
+        "message": "Dubbelriktningsklass"
+    },
+    "searchDecomposition_Type_and_Mapping": {
+        "message": "Uppdelningstyp och mappning"
+    },
+    "searchDecimal": {
+        "message": "Decimal"
+    },
+    "searchDigit": {
+        "message": "Siffra"
+    },
+    "searchNumeric": {
+        "message": "Numerisk"
+    },
+    "searchBidi_Mirrored": {
+        "message": "Dubbelriktad, speglad"
+    },
+    "searchUnicode_1_Name": {
+        "message": "Unicode 1-namn"
+    },
+    "searchISO_Comment": {
+        "message": "ISO-kommentar"
+    },
+    "searchSimple_Uppercase_Mapping": {
+        "message": "Enkel mappning av VERSALER"
+    },
+    "searchSimple_Lowercase_Mapping": {
+        "message": "Enkel mappning av gemener"
+    },
+    "searchSimple_Titlecase_Mapping": {
+        "message": "Enkel mappning av Begynnelsebokstäver"
+    },
+    "General_CategoryLu": {
+        "message": "Bokstav, VERSAL"
+    },
+    "General_CategoryLl": {
+        "message": "Bokstav, gemen"
+    },
+    "General_CategoryLt": {
+        "message": "Bokstav, Begynnelsebokstav"
+    },
+    "General_CategoryLm": {
+        "message": "Bokstav, bestämmande"
+    },
+    "General_CategoryLo": {
+        "message": "Bokstav, övrig"
+    },
+    "General_CategoryMn": {
+        "message": "Tecken, icke-stegande"
+    },
+    "General_CategoryMc": {
+        "message": "Tecken, stegande kombinerande"
+    },
+    "General_CategoryMe": {
+        "message": "Tecken, inneslutande"
+    },
+    "General_CategoryNd": {
+        "message": "Tal, decimaltecken"
+    },
+    "General_CategoryNl": {
+        "message": "Tal, bokstav"
+    },
+    "General_CategoryNo": {
+        "message": "Tal, övrigt"
+    },
+    "General_CategoryPc": {
+        "message": "Skiljetecken, bindestreck"
+    },
+    "General_CategoryPd": {
+        "message": "Skiljetecken, tankstreck"
+    },
+    "General_CategoryPs": {
+        "message": "Skiljetecken, inledande"
+    },
+    "General_CategoryPe": {
+        "message": "Skiljetecken, avslutande"
+    },
+    "General_CategoryPi": {
+        "message": "Skiljetecken, inledande citationstecken (kan bete sig som \"Skiljetecken, inledande\" eller \"Skiljetecken, avslutande\" beroende på användning)"
+    },
+    "General_CategoryPf": {
+        "message": "Skiljetecken, avslutande citationstecken (kan bete sig som \"Skiljetecken, inledande\" eller \"Skiljetecken, avslutande\" beroende på användning)"
+    },
+    "General_CategoryPo": {
+        "message": "Skiljetecken, övrigt"
+    },
+    "General_CategorySm": {
+        "message": "Symbol, matematik"
+    },
+    "General_CategorySc": {
+        "message": "Symbol, valuta"
+    },
+    "General_CategorySk": {
+        "message": "Symbol, bestämmande"
+    },
+    "General_CategorySo": {
+        "message": "Symbol, övrig"
+    },
+    "General_CategoryZs": {
+        "message": "Avgränsare, blanksteg"
+    },
+    "General_CategoryZl": {
+        "message": "Avgränsare, rad"
+    },
+    "General_CategoryZp": {
+        "message": "Avgränsare, stycke"
+    },
+    "General_CategoryCc": {
+        "message": "Övrigt, styrtecken"
+    },
+    "General_CategoryCf": {
+        "message": "Övrigt, format"
+    },
+    "General_CategoryCs": {
+        "message": "Övrigt, surrogat"
+    },
+    "General_CategoryCo": {
+        "message": "Övrigt, privatanvändning"
+    },
+    "General_CategoryCn": {
+        "message": "Övrigt, inte tilldelat (inget tecken i filen har denna egenskap)"
+    },
+    "download_progress": {
+        "message": "Nerladdningsförlopp:"
+    },
+    "percentSign": {
+        "message": "%"
+    },
+    "Finished_download": {
+        "message": "Nerladdningen har slutförts"
+    },
+    "Problem_downloading": {
+        "message": "Ett fel uppstod vid nerladdning av filen. Försök igen. Om det inte fungerar, hämta filen på http://bahai-library.com/zamir/Unihan.sqlite och placera den i din Firefox-profilmapp."
+    },
+    "colon": {
+        "message": ":"
+    },
+    "slash": {
+        "message": "/"
+    },
+    "plane_num": {
+        "message": "Plan %1$S:"
+    },
+    "plane_numNocolon": {
+        "message": "Plan %1$S"
+    },
+    "Noncharacter": {
+        "message": "Reserverat icke-tecken"
+    },
+    "Private_use_character": {
+        "message": "Privatanvändningstecken"
+    },
+    "High_Surrogate": {
+        "message": "Höga surrogat"
+    },
+    "High_Private_Use_Surrogate": {
+        "message": "Höga privatanvändningssurrogat"
+    },
+    "Low_Surrogate": {
+        "message": "Låga surrogat"
+    },
+    "shortened_Latin_Letters__Fullwidth_": {
+        "message": "Latinska bokstäver"
+    },
+    "shortened_ASCII_Punctuation__Fullwidth_": {
+        "message": "ASCII-skiljetecken"
+    },
+    "shortened_ASCII_Digits__Fullwidth_": {
+        "message": "ASCII-siffror"
+    },
+    "shortened_Currency_Symbols__Fullwidth_": {
+        "message": "Valutasymboler"
+    },
+    "shortened_Katakana__Halfwidth_": {
+        "message": "Katakana"
+    },
+    "shortened_Jamo__Halfwidth_": {
+        "message": "Jamo"
+    },
+    "shortened_Fullwidth": {
+        "message": "Helbreda (%1$S, %2$S, %3$S, %4$S)"
+    },
+    "shortened_Halfwidth": {
+        "message": "Halvbreda (%1$S, %2$S)"
+    },
+    "Not_found": {
+        "message": "Odefinierat eller hittades inte"
+    },
+    "Not_found_hangul": {
+        "message": "Hittades inte (Hangul)"
+    },
+    "Request_status": {
+        "message": "Status för begäran"
+    },
+    "retrieving_description": {
+        "message": "hämtar beskrivning..."
+    },
+    "DTDtextbox": {
+        "message": ""
+    },
+    "currstartset": {
+        "message": "a"
+    },
+    "startset": {
+        "message": "a"
     }
 }

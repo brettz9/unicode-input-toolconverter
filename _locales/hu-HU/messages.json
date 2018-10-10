@@ -1896,5 +1896,728 @@
     },
     "CJK_Compatibility_Forms": {
         "message": "CJK kompatibilitási formák"
+    },
+    "chars_could_not_be_converted": {
+        "message": "A karaktereket nem sikerült erre a karakterkészletre átalakítani"
+    },
+    "searchkHanyuPinyin": {
+        "message": "HanyuPinyin:"
+    },
+    "searchkIRG_MSource": {
+        "message": "IRG_MSource:"
+    },
+    "problemAddingToolbarItem": {
+        "message": "Az elemet nem lehetett felvenni az eszközsor lenyíló ikonjai közé, mert az ikon nem látható"
+    },
+    "dropdownArr": {
+        "message": "[]"
+    },
+    "font": {
+        "message": ""
+    },
+    "lang": {
+        "message": "hu-HU"
+    },
+    "yourItemAdded": {
+        "message": "A szöveg hozzáadva az eszköztár lenyíló eleméhez"
+    },
+    "need_download_unihan": {
+        "message": "CJK (kínai-koreai-japán) karakterek használatához le kell töltenie a mintegy 19 MB-os Unihan adatbázist. Lásd a Beállítások fülön a felül lévő gombot."
+    },
+    "left_parenth": {
+        "message": "("
+    },
+    "right_parenth": {
+        "message": ")"
+    },
+    "Digit0": {
+        "message": "0"
+    },
+    "Digit1": {
+        "message": "1"
+    },
+    "Digit2": {
+        "message": "2"
+    },
+    "Digit3": {
+        "message": "3"
+    },
+    "Digit4": {
+        "message": "4"
+    },
+    "Digit5": {
+        "message": "5"
+    },
+    "Digit6": {
+        "message": "6"
+    },
+    "Digit7": {
+        "message": "7"
+    },
+    "Digit8": {
+        "message": "8"
+    },
+    "Digit9": {
+        "message": "9"
+    },
+    "Decimal0": {
+        "message": "0"
+    },
+    "Decimal1": {
+        "message": "1"
+    },
+    "Decimal2": {
+        "message": "2"
+    },
+    "Decimal3": {
+        "message": "3"
+    },
+    "Decimal4": {
+        "message": "4"
+    },
+    "Decimal5": {
+        "message": "5"
+    },
+    "Decimal6": {
+        "message": "6"
+    },
+    "Decimal7": {
+        "message": "7"
+    },
+    "Decimal8": {
+        "message": "8"
+    },
+    "Decimal9": {
+        "message": "9"
+    },
+    "CJK_Ideograph_Extension_A": {
+        "message": "Ideografikus CJK-jelek A kibővítése"
+    },
+    "CJK_Ideograph": {
+        "message": "Ideografikus CJK-jel"
+    },
+    "CJK_Ideograph_Extension_B": {
+        "message": "Ideografikus CJK-jelek B kibővítése"
+    },
+    "Hangul_Syllable": {
+        "message": "Hangul szótag"
+    },
+    "No_definition": {
+        "message": "Nincs definíció"
+    },
+    "Bidi_MirroredY": {
+        "message": "Igen"
+    },
+    "Bidi_MirroredN": {
+        "message": "Nem"
+    },
+    "Bidi_ClassL": {
+        "message": "Balról jobbra"
+    },
+    "Bidi_ClassLRE": {
+        "message": "Balról jobbra beágyazás"
+    },
+    "Bidi_ClassLRO": {
+        "message": "Balról jobbra felülírás"
+    },
+    "Bidi_ClassR": {
+        "message": "Jobbról balra"
+    },
+    "Bidi_ClassAL": {
+        "message": "Jobbról balra arab"
+    },
+    "Bidi_ClassRLE": {
+        "message": "Jobbról balra beágyazás"
+    },
+    "Bidi_ClassRLO": {
+        "message": "Jobbról balra felülírás"
+    },
+    "Bidi_ClassPDF": {
+        "message": "Pop irányú formátum"
+    },
+    "Bidi_ClassEN": {
+        "message": "Európai szám"
+    },
+    "Bidi_ClassES": {
+        "message": "Európai számtagoló"
+    },
+    "Bidi_ClassET": {
+        "message": "Európai számlezáró"
+    },
+    "Bidi_ClassAN": {
+        "message": "Arab szám"
+    },
+    "Bidi_ClassCS": {
+        "message": "Általános számtagoló"
+    },
+    "Bidi_ClassNSM": {
+        "message": "Nem szóközös jel"
+    },
+    "Bidi_ClassBN": {
+        "message": "Semleges határoló"
+    },
+    "Bidi_ClassB": {
+        "message": "Bekezdéselválasztó"
+    },
+    "Bidi_ClassS": {
+        "message": "Szegmenselválasztó"
+    },
+    "Bidi_ClassWS": {
+        "message": "Elválasztó"
+    },
+    "Bidi_ClassON": {
+        "message": "Egyéb semleges jelek"
+    },
+    "Canonical_Combining_Class0": {
+        "message": "Szóköz, szétválasztás, bezárás, átrendezés és tibeti hozzákapcsolás"
+    },
+    "Canonical_Combining_Class1": {
+        "message": "Billentyűzetsablonok és belső"
+    },
+    "Canonical_Combining_Class7": {
+        "message": "Nuktas"
+    },
+    "Canonical_Combining_Class8": {
+        "message": "Hiragana/katakana hangzós jelek"
+    },
+    "Canonical_Combining_Class9": {
+        "message": "Viramas"
+    },
+    "Canonical_Combining_Class10": {
+        "message": "Rögzített helyzetű osztályok kezdete"
+    },
+    "Canonical_Combining_Class199": {
+        "message": "Rögzített helyzetű osztályok vége"
+    },
+    "Canonical_Combining_Class200": {
+        "message": "A bal csatolt alatt"
+    },
+    "Canonical_Combining_Class202": {
+        "message": "A csatolt alatt"
+    },
+    "Canonical_Combining_Class204": {
+        "message": "A jobb csatolt alatt"
+    },
+    "Canonical_Combining_Class208": {
+        "message": "Bal csatolt a (egybázisú karakter körüli átrendezett)"
+    },
+    "Canonical_Combining_Class210": {
+        "message": "Jobb csatolt"
+    },
+    "Canonical_Combining_Class212": {
+        "message": "A bal csatolt fölött"
+    },
+    "Canonical_Combining_Class214": {
+        "message": "A csatolt fölött"
+    },
+    "Canonical_Combining_Class216": {
+        "message": "A jobb csatolt fölött"
+    },
+    "Canonical_Combining_Class218": {
+        "message": "A bal alatt"
+    },
+    "Canonical_Combining_Class220": {
+        "message": "Alatt"
+    },
+    "Canonical_Combining_Class222": {
+        "message": "A jobb alatt"
+    },
+    "Canonical_Combining_Class224": {
+        "message": "Bal (egybázisú karakter körüli átrendezett)"
+    },
+    "Canonical_Combining_Class226": {
+        "message": "Jobb"
+    },
+    "Canonical_Combining_Class228": {
+        "message": "A bal fölött"
+    },
+    "Canonical_Combining_Class230": {
+        "message": "Fölött"
+    },
+    "Canonical_Combining_Class232": {
+        "message": "A jobb fölött"
+    },
+    "Canonical_Combining_Class233": {
+        "message": "Alatta dupla"
+    },
+    "Canonical_Combining_Class234": {
+        "message": "Fölötte dupla"
+    },
+    "Canonical_Combining_Class240": {
+        "message": "Alatt (ióta index)"
+    },
+    "searchkCangjie": {
+        "message": "Kandzsi:"
+    },
+    "searchkCantonese": {
+        "message": "Kantoni:"
+    },
+    "searchkHanYu": {
+        "message": "Hanyu:"
+    },
+    "searchkIRGHanyuDaZidian": {
+        "message": "IRGHanyuDaZidian:"
+    },
+    "searchkIRGKangXi": {
+        "message": "IRGKangXi:"
+    },
+    "searchkIRG_GSource": {
+        "message": "IRG GSource:"
+    },
+    "searchkIRG_JSource": {
+        "message": "IRG JSource:"
+    },
+    "searchkIRG_TSource": {
+        "message": "IRG TSource:"
+    },
+    "searchkMandarin": {
+        "message": "Mandarin:"
+    },
+    "searchkRSUnicode": {
+        "message": "RSUnicode:"
+    },
+    "searchkSemanticVariant": {
+        "message": "SemanticVariant:"
+    },
+    "searchkTotalStrokes": {
+        "message": "TotalStrokes:"
+    },
+    "searchkCihaiT": {
+        "message": "CihaiT:"
+    },
+    "searchkIRG_KSource": {
+        "message": "IRG KSource:"
+    },
+    "searchkSBGY": {
+        "message": "SBGY:"
+    },
+    "searchkJIS0213": {
+        "message": "JIS0213:"
+    },
+    "searchkNelson": {
+        "message": "Nelson:"
+    },
+    "searchkRSAdobe_Japan1_6": {
+        "message": "RSAdobe Japan1 6:"
+    },
+    "searchkCowles": {
+        "message": "Cowles:"
+    },
+    "searchkMatthews": {
+        "message": "Matthews:"
+    },
+    "searchkOtherNumeric": {
+        "message": "OtherNumeric:"
+    },
+    "searchkPhonetic": {
+        "message": "Fonetikus:"
+    },
+    "searchkGSR": {
+        "message": "GSR:"
+    },
+    "searchkIRG_KPSource": {
+        "message": "IRG KPSource:"
+    },
+    "searchkIRG_VSource": {
+        "message": "IRG VSource:"
+    },
+    "searchkKPS1": {
+        "message": "KPS1:"
+    },
+    "searchkFenn": {
+        "message": "Fenn:"
+    },
+    "searchkFennIndex": {
+        "message": "FennIndex:"
+    },
+    "searchkKarlgren": {
+        "message": "Karlgren:"
+    },
+    "searchkHKSCS": {
+        "message": "HKSCS:"
+    },
+    "searchkIRG_HSource": {
+        "message": "IRG HSource:"
+    },
+    "searchkXHC1983": {
+        "message": "XHC1983:"
+    },
+    "searchkMeyerWempe": {
+        "message": "MeyerWempe:"
+    },
+    "searchkTraditionalVariant": {
+        "message": "TraditionalVariant:"
+    },
+    "searchkVietnamese": {
+        "message": "Vietnami:"
+    },
+    "searchkSpecializedSemanticVariant": {
+        "message": "SpecializedSemanticVariant:"
+    },
+    "searchkLau": {
+        "message": "Lau:"
+    },
+    "searchkCheungBauer": {
+        "message": "CheungBauer:"
+    },
+    "searchkCheungBauerIndex": {
+        "message": "CheungBauerIndex:"
+    },
+    "searchkIICore": {
+        "message": "IICore:"
+    },
+    "searchkTang": {
+        "message": "Tang:"
+    },
+    "searchkZVariant": {
+        "message": "ZVariant:"
+    },
+    "searchkRSKangXi": {
+        "message": "RSKangXi:"
+    },
+    "searchkJapaneseKun": {
+        "message": "JapaneseKun:"
+    },
+    "searchkJapaneseOn": {
+        "message": "JapaneseOn:"
+    },
+    "searchkSimplifiedVariant": {
+        "message": "SimplifiedVariant:"
+    },
+    "searchkKangXi": {
+        "message": "Kandzsi:"
+    },
+    "searchkKPS0": {
+        "message": "KPS0:"
+    },
+    "searchkBigFive": {
+        "message": "BigFive:"
+    },
+    "searchkCCCII": {
+        "message": "CCCII:"
+    },
+    "searchkCNS1986": {
+        "message": "CNS1986:"
+    },
+    "searchkCNS1992": {
+        "message": "CNS1992:"
+    },
+    "searchkDaeJaweon": {
+        "message": "DaeJaweon:"
+    },
+    "searchkEACC": {
+        "message": "EACC:"
+    },
+    "searchkFourCornerCode": {
+        "message": "FourCornerCode:"
+    },
+    "searchkFrequency": {
+        "message": "Gyakoriság:"
+    },
+    "searchkGB0": {
+        "message": "GB0:"
+    },
+    "searchkGB1": {
+        "message": "GB1:"
+    },
+    "searchkGradeLevel": {
+        "message": "GradeLevel:"
+    },
+    "searchkHDZRadBreak": {
+        "message": "HDZRadBreak:"
+    },
+    "searchkHKGlyph": {
+        "message": "HKGlyph:"
+    },
+    "searchkHangul": {
+        "message": "Hangul:"
+    },
+    "searchkHanyuPinlu": {
+        "message": "HanyuPinlu:"
+    },
+    "searchkIRGDaeJaweon": {
+        "message": "IRGDaeJaweon:"
+    },
+    "searchkIRGDaiKanwaZiten": {
+        "message": "IRGDaiKanwaZiten:"
+    },
+    "searchkJis0": {
+        "message": "Jis0:"
+    },
+    "searchkKSC0": {
+        "message": "KSC0:"
+    },
+    "searchkKorean": {
+        "message": "Koreai:"
+    },
+    "searchkMainlandTelegraph": {
+        "message": "MainlandTelegraph:"
+    },
+    "searchkMorohashi": {
+        "message": "Morohashi:"
+    },
+    "searchkPrimaryNumeric": {
+        "message": "PrimaryNumeric:"
+    },
+    "searchkTaiwanTelegraph": {
+        "message": "TaiwanTelegraph:"
+    },
+    "searchkXerox": {
+        "message": "Xerox:"
+    },
+    "searchkGB5": {
+        "message": "GB5:"
+    },
+    "searchkJis1": {
+        "message": "Jis1:"
+    },
+    "searchkPseudoGB1": {
+        "message": "PseudoGB1:"
+    },
+    "searchkGB3": {
+        "message": "GB3:"
+    },
+    "searchkGB8": {
+        "message": "GB8:"
+    },
+    "searchkKSC1": {
+        "message": "KSC1:"
+    },
+    "searchkIBMJapan": {
+        "message": "IBMJapan:"
+    },
+    "searchkRSKanWa": {
+        "message": "RSKanWa:"
+    },
+    "searchkRSJapanese": {
+        "message": "RSJapanese:"
+    },
+    "searchkAccountingNumeric": {
+        "message": "AccountingNumeric:"
+    },
+    "searchkRSKorean": {
+        "message": "RSKorean:"
+    },
+    "searchkGB7": {
+        "message": "GB7:"
+    },
+    "searchkIRG_USource": {
+        "message": "IRG USource:"
+    },
+    "searchkCompatibilityVariant": {
+        "message": "CompatibilityVariant:"
+    },
+    "searchGeneral_Category": {
+        "message": "Általános kategória"
+    },
+    "searchCanonical_Combining_Class": {
+        "message": "Kanonikus egyesítő osztály"
+    },
+    "searchBidi_Class": {
+        "message": "Kétirányú osztály"
+    },
+    "searchDecomposition_Type_and_Mapping": {
+        "message": "Dekompozíciós típus és illesztés"
+    },
+    "searchDecimal": {
+        "message": "Decimális"
+    },
+    "searchDigit": {
+        "message": "Számjegy"
+    },
+    "searchNumeric": {
+        "message": "Numerikus"
+    },
+    "searchBidi_Mirrored": {
+        "message": "Kétirányú tükrözött"
+    },
+    "searchUnicode_1_Name": {
+        "message": "1. unikódos név"
+    },
+    "searchISO_Comment": {
+        "message": "ISO-megjegyzés"
+    },
+    "searchSimple_Uppercase_Mapping": {
+        "message": "Egyszerű nagybetűs illesztés"
+    },
+    "searchSimple_Lowercase_Mapping": {
+        "message": "Egyszerű kisbetűs illesztés"
+    },
+    "searchSimple_Titlecase_Mapping": {
+        "message": "Egyszerű címszavas illesztés"
+    },
+    "General_CategoryLu": {
+        "message": "Betű, nagybetűs"
+    },
+    "General_CategoryLl": {
+        "message": "Betű, kisbetűs"
+    },
+    "General_CategoryLt": {
+        "message": "Betű, címszavas"
+    },
+    "General_CategoryLm": {
+        "message": "Betű, módosító"
+    },
+    "General_CategoryLo": {
+        "message": "Betű, egyéb"
+    },
+    "General_CategoryMn": {
+        "message": "Jel, nem szóközös"
+    },
+    "General_CategoryMc": {
+        "message": "Jel, szóközös egyesítő"
+    },
+    "General_CategoryMe": {
+        "message": "Jel, bezáró"
+    },
+    "General_CategoryNd": {
+        "message": "Szám, decimális számjegy"
+    },
+    "General_CategoryNl": {
+        "message": "Szám, betű"
+    },
+    "General_CategoryNo": {
+        "message": "Szám, egyéb"
+    },
+    "General_CategoryPc": {
+        "message": "Központozás, kötőelem"
+    },
+    "General_CategoryPd": {
+        "message": "Központozás, kötőjel"
+    },
+    "General_CategoryPs": {
+        "message": "Központozás, nyitó"
+    },
+    "General_CategoryPe": {
+        "message": "Központozás, záró"
+    },
+    "General_CategoryPi": {
+        "message": "Központozás, kezdő idézőjel (a használattól függően lehet írásjel, nyitó és írásjel, avagy záró)"
+    },
+    "General_CategoryPf": {
+        "message": "Központozás, záró idézőjel (a használattól függően lehet írásjel, nyitó és írásjel, avagy záró)"
+    },
+    "General_CategoryPo": {
+        "message": "Központozás, egyéb"
+    },
+    "General_CategorySm": {
+        "message": "Szimbólum, matematikai"
+    },
+    "General_CategorySc": {
+        "message": "Szimbólum, pénznem"
+    },
+    "General_CategorySk": {
+        "message": "Szimbólum, módosító"
+    },
+    "General_CategorySo": {
+        "message": "Szimbólum, egyéb"
+    },
+    "General_CategoryZs": {
+        "message": "Elválasztó, szóköz"
+    },
+    "General_CategoryZl": {
+        "message": "Elválasztó, vonal"
+    },
+    "General_CategoryZp": {
+        "message": "Elválasztó, bekezdés"
+    },
+    "General_CategoryCc": {
+        "message": "Egyéb, vezérlő"
+    },
+    "General_CategoryCf": {
+        "message": "Egyéb, formázó"
+    },
+    "General_CategoryCs": {
+        "message": "Egyéb, helyettesítő"
+    },
+    "General_CategoryCo": {
+        "message": "Egyéb, magánhasználatú"
+    },
+    "General_CategoryCn": {
+        "message": "Egyéb, nem hozzárendelt"
+    },
+    "download_progress": {
+        "message": "A letöltés folyamatban:"
+    },
+    "percentSign": {
+        "message": "%"
+    },
+    "Finished_download": {
+        "message": "A letöltés befejeződött"
+    },
+    "Problem_downloading": {
+        "message": "Gond volt az állomány letöltésével. Ha az ismételt próbálkozás sem vezet eredményre, látogasson el a http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite weboldalra, töltse le az állományt és tegye a Firefox felhasználói profilkönyvtárába."
+    },
+    "colon": {
+        "message": ":"
+    },
+    "slash": {
+        "message": "/"
+    },
+    "plane_num": {
+        "message": "%1$S. sík:"
+    },
+    "plane_numNocolon": {
+        "message": "%1$S. sík"
+    },
+    "Noncharacter": {
+        "message": "Fenntartott nem karakter"
+    },
+    "Private_use_character": {
+        "message": "Magánhasználatú karakter"
+    },
+    "High_Surrogate": {
+        "message": "Felső helyettesítő"
+    },
+    "High_Private_Use_Surrogate": {
+        "message": "Felső helyettesítő magánhasználatra"
+    },
+    "Low_Surrogate": {
+        "message": "Alsó helyettesítő"
+    },
+    "shortened_Latin_Letters__Fullwidth_": {
+        "message": "latin betűk"
+    },
+    "shortened_ASCII_Punctuation__Fullwidth_": {
+        "message": "ASCII-írásjelek"
+    },
+    "shortened_ASCII_Digits__Fullwidth_": {
+        "message": "ASCII-számjegyek"
+    },
+    "shortened_Currency_Symbols__Fullwidth_": {
+        "message": "pénznemszimbólumok"
+    },
+    "shortened_Katakana__Halfwidth_": {
+        "message": "katakana"
+    },
+    "shortened_Jamo__Halfwidth_": {
+        "message": "jamo"
+    },
+    "shortened_Fullwidth": {
+        "message": "Teljes szélességű (%1$S, %2$S, %3$S, %4$S)"
+    },
+    "shortened_Halfwidth": {
+        "message": "Fél szélességű (%1$S, %2$S)"
+    },
+    "Not_found": {
+        "message": "Nincs definiálva vagy nem található"
+    },
+    "Not_found_hangul": {
+        "message": "Nem található (Hangul)"
+    },
+    "Request_status": {
+        "message": "Igénylés állapota"
+    },
+    "retrieving_description": {
+        "message": "leírás betöltése..."
+    },
+    "DTDtextbox": {
+        "message": ""
+    },
+    "currstartset": {
+        "message": "a"
+    },
+    "startset": {
+        "message": "a"
     }
 }

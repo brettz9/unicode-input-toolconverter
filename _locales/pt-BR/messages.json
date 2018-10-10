@@ -1896,5 +1896,728 @@
     },
     "CJK_Compatibility_Forms": {
         "message": "Formas de compatibilidade CJK"
+    },
+    "chars_could_not_be_converted": {
+        "message": "Os caracteres não puderam ser convertidos a nosso conjunto de caracteres"
+    },
+    "searchkHanyuPinyin": {
+        "message": "HanyuPinyin:"
+    },
+    "searchkIRG_MSource": {
+        "message": "IRG_MSource:"
+    },
+    "problemAddingToolbarItem": {
+        "message": "O item não pode ser acrescentado ao botão que abre o menu de ferramentas quando o ícone do botão não estiver visível"
+    },
+    "dropdownArr": {
+        "message": "[]"
+    },
+    "font": {
+        "message": ""
+    },
+    "lang": {
+        "message": "pt-BR"
+    },
+    "yourItemAdded": {
+        "message": "Seu item foi adicionado ao menu suspenso da barra de ferramentas"
+    },
+    "need_download_unihan": {
+        "message": "Para acessar caracteres CJK (Chinês, Coreano, Japonês), você deve baixar o banco de dados Unihan de aproximadamente 19MB. Veja o botão na parte superior da guia de preferências."
+    },
+    "left_parenth": {
+        "message": "("
+    },
+    "right_parenth": {
+        "message": ")"
+    },
+    "Digit0": {
+        "message": "0"
+    },
+    "Digit1": {
+        "message": "1"
+    },
+    "Digit2": {
+        "message": "2"
+    },
+    "Digit3": {
+        "message": "3"
+    },
+    "Digit4": {
+        "message": "4"
+    },
+    "Digit5": {
+        "message": "5"
+    },
+    "Digit6": {
+        "message": "6"
+    },
+    "Digit7": {
+        "message": "7"
+    },
+    "Digit8": {
+        "message": "8"
+    },
+    "Digit9": {
+        "message": "9"
+    },
+    "Decimal0": {
+        "message": "0"
+    },
+    "Decimal1": {
+        "message": "1"
+    },
+    "Decimal2": {
+        "message": "2"
+    },
+    "Decimal3": {
+        "message": "3"
+    },
+    "Decimal4": {
+        "message": "4"
+    },
+    "Decimal5": {
+        "message": "5"
+    },
+    "Decimal6": {
+        "message": "6"
+    },
+    "Decimal7": {
+        "message": "7"
+    },
+    "Decimal8": {
+        "message": "8"
+    },
+    "Decimal9": {
+        "message": "9"
+    },
+    "CJK_Ideograph_Extension_A": {
+        "message": "Ideogramas CJK - Extensão A"
+    },
+    "CJK_Ideograph": {
+        "message": "Ideogramas CJK"
+    },
+    "CJK_Ideograph_Extension_B": {
+        "message": "Ideogramas CJK - Extensão B"
+    },
+    "Hangul_Syllable": {
+        "message": "Sílaba Hangul"
+    },
+    "No_definition": {
+        "message": "Sem definição"
+    },
+    "Bidi_MirroredY": {
+        "message": "Sim"
+    },
+    "Bidi_MirroredN": {
+        "message": "Não"
+    },
+    "Bidi_ClassL": {
+        "message": "Esquerda para a Direita"
+    },
+    "Bidi_ClassLRE": {
+        "message": "Incorporação da esquerda para a direita"
+    },
+    "Bidi_ClassLRO": {
+        "message": "Substituição da esquerda para a direita"
+    },
+    "Bidi_ClassR": {
+        "message": "Direita para a esquerda"
+    },
+    "Bidi_ClassAL": {
+        "message": "Arábico da direita para a esquerda"
+    },
+    "Bidi_ClassRLE": {
+        "message": "Incorporação da direita para a esquerda"
+    },
+    "Bidi_ClassRLO": {
+        "message": "Substituição da direita para a esquerda"
+    },
+    "Bidi_ClassPDF": {
+        "message": "Formato Direcional Pdf"
+    },
+    "Bidi_ClassEN": {
+        "message": "Número Europeu"
+    },
+    "Bidi_ClassES": {
+        "message": "Separador de Número Europeu"
+    },
+    "Bidi_ClassET": {
+        "message": "Terminador de Número Europeu"
+    },
+    "Bidi_ClassAN": {
+        "message": "Número Arábico"
+    },
+    "Bidi_ClassCS": {
+        "message": "Separador de Número Comum"
+    },
+    "Bidi_ClassNSM": {
+        "message": "Marca de Não-Espaçamento"
+    },
+    "Bidi_ClassBN": {
+        "message": "Limite Neutro"
+    },
+    "Bidi_ClassB": {
+        "message": "Separador de Parágrafo"
+    },
+    "Bidi_ClassS": {
+        "message": "Separador de Segmento"
+    },
+    "Bidi_ClassWS": {
+        "message": "Espaço em branco"
+    },
+    "Bidi_ClassON": {
+        "message": "Outros Neutros"
+    },
+    "Canonical_Combining_Class0": {
+        "message": "Espaçamento, divisão, empacotamento, reordenamento e Tibetano adjunto"
+    },
+    "Canonical_Combining_Class1": {
+        "message": "Cobertura e interior"
+    },
+    "Canonical_Combining_Class7": {
+        "message": "Nuktas"
+    },
+    "Canonical_Combining_Class8": {
+        "message": "Marcas de voz Hiragana/Katakana"
+    },
+    "Canonical_Combining_Class9": {
+        "message": "Viramas"
+    },
+    "Canonical_Combining_Class10": {
+        "message": "Início das classes de posições fixas"
+    },
+    "Canonical_Combining_Class199": {
+        "message": "Fim  das classes de posições fixas"
+    },
+    "Canonical_Combining_Class200": {
+        "message": "Anexado abaixo à esquerda"
+    },
+    "Canonical_Combining_Class202": {
+        "message": "Anexado abaixo"
+    },
+    "Canonical_Combining_Class204": {
+        "message": "Anexado abaixo à direita"
+    },
+    "Canonical_Combining_Class208": {
+        "message": "Anexado à esquerda (em torno de caractere de base simples)"
+    },
+    "Canonical_Combining_Class210": {
+        "message": "Anexado à direita"
+    },
+    "Canonical_Combining_Class212": {
+        "message": "Anexado acima à esquerda"
+    },
+    "Canonical_Combining_Class214": {
+        "message": "Anexado acima"
+    },
+    "Canonical_Combining_Class216": {
+        "message": "Anexado acima à direita"
+    },
+    "Canonical_Combining_Class218": {
+        "message": "Abaixo à esquerda"
+    },
+    "Canonical_Combining_Class220": {
+        "message": "Abaixo"
+    },
+    "Canonical_Combining_Class222": {
+        "message": "Abaixo à direita"
+    },
+    "Canonical_Combining_Class224": {
+        "message": "Esquerda (em torno de caractere de base simples)"
+    },
+    "Canonical_Combining_Class226": {
+        "message": "Direita"
+    },
+    "Canonical_Combining_Class228": {
+        "message": "Acima à esquerda"
+    },
+    "Canonical_Combining_Class230": {
+        "message": "Acima"
+    },
+    "Canonical_Combining_Class232": {
+        "message": "Acima à direita"
+    },
+    "Canonical_Combining_Class233": {
+        "message": "Duplo abaixo"
+    },
+    "Canonical_Combining_Class234": {
+        "message": "Duplo acima"
+    },
+    "Canonical_Combining_Class240": {
+        "message": "Abaixo (jota subscrito)"
+    },
+    "searchkCangjie": {
+        "message": "Cangjie:"
+    },
+    "searchkCantonese": {
+        "message": "Cantonês:"
+    },
+    "searchkHanYu": {
+        "message": "Han Yu:"
+    },
+    "searchkIRGHanyuDaZidian": {
+        "message": "IRG Hanyu Da Zidian:"
+    },
+    "searchkIRGKangXi": {
+        "message": "IRG Kang Xi:"
+    },
+    "searchkIRG_GSource": {
+        "message": "Fonte G IRG:"
+    },
+    "searchkIRG_JSource": {
+        "message": "Fonte J IRG:"
+    },
+    "searchkIRG_TSource": {
+        "message": "Fonte T IRG:"
+    },
+    "searchkMandarin": {
+        "message": "Mandarim:"
+    },
+    "searchkRSUnicode": {
+        "message": "RS Unicode:"
+    },
+    "searchkSemanticVariant": {
+        "message": "Variação Semântica:"
+    },
+    "searchkTotalStrokes": {
+        "message": "Traços de total:"
+    },
+    "searchkCihaiT": {
+        "message": "Cihai T:"
+    },
+    "searchkIRG_KSource": {
+        "message": "Fonte K IRG:"
+    },
+    "searchkSBGY": {
+        "message": "SBGY:"
+    },
+    "searchkJIS0213": {
+        "message": "JIS0213:"
+    },
+    "searchkNelson": {
+        "message": "Nelson:"
+    },
+    "searchkRSAdobe_Japan1_6": {
+        "message": "RS Adobe Japan 1 6:"
+    },
+    "searchkCowles": {
+        "message": "Cowles:"
+    },
+    "searchkMatthews": {
+        "message": "Matthews:"
+    },
+    "searchkOtherNumeric": {
+        "message": "Outros Numéricos:"
+    },
+    "searchkPhonetic": {
+        "message": "Fonético:"
+    },
+    "searchkGSR": {
+        "message": "GSR:"
+    },
+    "searchkIRG_KPSource": {
+        "message": "Fonte KP IRG:"
+    },
+    "searchkIRG_VSource": {
+        "message": "Fonte V IRG:"
+    },
+    "searchkKPS1": {
+        "message": "KPS1:"
+    },
+    "searchkFenn": {
+        "message": "Fenn:"
+    },
+    "searchkFennIndex": {
+        "message": "Índice Fenn:"
+    },
+    "searchkKarlgren": {
+        "message": "Karlgren:"
+    },
+    "searchkHKSCS": {
+        "message": "HKSCS:"
+    },
+    "searchkIRG_HSource": {
+        "message": "Fonte H IRG:"
+    },
+    "searchkXHC1983": {
+        "message": "XHC 1983:"
+    },
+    "searchkMeyerWempe": {
+        "message": "Meyer Wempe:"
+    },
+    "searchkTraditionalVariant": {
+        "message": "Variação Tradicional:"
+    },
+    "searchkVietnamese": {
+        "message": "Vietnamita:"
+    },
+    "searchkSpecializedSemanticVariant": {
+        "message": "Variante Semântica Especializada:"
+    },
+    "searchkLau": {
+        "message": "Lau:"
+    },
+    "searchkCheungBauer": {
+        "message": "Cheung Bauer:"
+    },
+    "searchkCheungBauerIndex": {
+        "message": "Índice Cheung Bauer"
+    },
+    "searchkIICore": {
+        "message": "II Core:"
+    },
+    "searchkTang": {
+        "message": "Tang:"
+    },
+    "searchkZVariant": {
+        "message": "Variante Z:"
+    },
+    "searchkRSKangXi": {
+        "message": "RS Kang Xi:"
+    },
+    "searchkJapaneseKun": {
+        "message": "Japonês Kun:"
+    },
+    "searchkJapaneseOn": {
+        "message": "Janonês On:"
+    },
+    "searchkSimplifiedVariant": {
+        "message": "Variante Simplificada:"
+    },
+    "searchkKangXi": {
+        "message": "Kang Xi:"
+    },
+    "searchkKPS0": {
+        "message": "KPS0:"
+    },
+    "searchkBigFive": {
+        "message": "Big Five:"
+    },
+    "searchkCCCII": {
+        "message": "CCCII:"
+    },
+    "searchkCNS1986": {
+        "message": "CNS 1986:"
+    },
+    "searchkCNS1992": {
+        "message": "CNS 1992:"
+    },
+    "searchkDaeJaweon": {
+        "message": "Dae Jaweon:"
+    },
+    "searchkEACC": {
+        "message": "EACC:"
+    },
+    "searchkFourCornerCode": {
+        "message": "Código Quatro Cantos(FourCornerCode):"
+    },
+    "searchkFrequency": {
+        "message": "Freqüência:"
+    },
+    "searchkGB0": {
+        "message": "GB0:"
+    },
+    "searchkGB1": {
+        "message": "GB1:"
+    },
+    "searchkGradeLevel": {
+        "message": "Nível Escala:"
+    },
+    "searchkHDZRadBreak": {
+        "message": "Interrupção HDZRad"
+    },
+    "searchkHKGlyph": {
+        "message": "HK Glyph:"
+    },
+    "searchkHangul": {
+        "message": "Hangul:"
+    },
+    "searchkHanyuPinlu": {
+        "message": "Hanyu Pinlu:"
+    },
+    "searchkIRGDaeJaweon": {
+        "message": "IRG Dae Jaweon:"
+    },
+    "searchkIRGDaiKanwaZiten": {
+        "message": "IRG Dai Kanwa Ziten:"
+    },
+    "searchkJis0": {
+        "message": "Jis0:"
+    },
+    "searchkKSC0": {
+        "message": "KSC0:"
+    },
+    "searchkKorean": {
+        "message": "Coreano:"
+    },
+    "searchkMainlandTelegraph": {
+        "message": "Mainland Telegraph:"
+    },
+    "searchkMorohashi": {
+        "message": "Morohashi:"
+    },
+    "searchkPrimaryNumeric": {
+        "message": "Numérico Primário:"
+    },
+    "searchkTaiwanTelegraph": {
+        "message": "Taiwan Telegraph:"
+    },
+    "searchkXerox": {
+        "message": "Xerox:"
+    },
+    "searchkGB5": {
+        "message": "GB5:"
+    },
+    "searchkJis1": {
+        "message": "Jis 1:"
+    },
+    "searchkPseudoGB1": {
+        "message": "Pseudo GB1:"
+    },
+    "searchkGB3": {
+        "message": "GB3:"
+    },
+    "searchkGB8": {
+        "message": "GB8:"
+    },
+    "searchkKSC1": {
+        "message": "KSC 1:"
+    },
+    "searchkIBMJapan": {
+        "message": "IBM Japão:"
+    },
+    "searchkRSKanWa": {
+        "message": "RS Kan Wa:"
+    },
+    "searchkRSJapanese": {
+        "message": "RS Japonês:"
+    },
+    "searchkAccountingNumeric": {
+        "message": "Contabilidade Numérico"
+    },
+    "searchkRSKorean": {
+        "message": "RS Coreano:"
+    },
+    "searchkGB7": {
+        "message": "GB7:"
+    },
+    "searchkIRG_USource": {
+        "message": "Fonte U IRG:"
+    },
+    "searchkCompatibilityVariant": {
+        "message": "Variante de Compatibilidade:"
+    },
+    "searchGeneral_Category": {
+        "message": "Categoria Geral:"
+    },
+    "searchCanonical_Combining_Class": {
+        "message": "Classe de combinação canônica"
+    },
+    "searchBidi_Class": {
+        "message": "Classe Bidirecional"
+    },
+    "searchDecomposition_Type_and_Mapping": {
+        "message": "Tipo de decomposição e mapeamento"
+    },
+    "searchDecimal": {
+        "message": "Decimal"
+    },
+    "searchDigit": {
+        "message": "Dígito"
+    },
+    "searchNumeric": {
+        "message": "Numérico"
+    },
+    "searchBidi_Mirrored": {
+        "message": "Espelhamento bidirecional"
+    },
+    "searchUnicode_1_Name": {
+        "message": "Unicode 1 Nome"
+    },
+    "searchISO_Comment": {
+        "message": "Comentário ISO"
+    },
+    "searchSimple_Uppercase_Mapping": {
+        "message": "Mapeamento simples em maiúsculas"
+    },
+    "searchSimple_Lowercase_Mapping": {
+        "message": "Mapeamento simples em minúsculas"
+    },
+    "searchSimple_Titlecase_Mapping": {
+        "message": "Mapeamento simples de título"
+    },
+    "General_CategoryLu": {
+        "message": "Letra, Maiúscula"
+    },
+    "General_CategoryLl": {
+        "message": "Letra, Minúscula"
+    },
+    "General_CategoryLt": {
+        "message": "Letra, Título"
+    },
+    "General_CategoryLm": {
+        "message": "Letra, Modificador"
+    },
+    "General_CategoryLo": {
+        "message": "Letra, Outra"
+    },
+    "General_CategoryMn": {
+        "message": "Marca, Sem Espaçamento"
+    },
+    "General_CategoryMc": {
+        "message": "Marca, Espaçamento combinação"
+    },
+    "General_CategoryMe": {
+        "message": "Marca, Encapsulamento"
+    },
+    "General_CategoryNd": {
+        "message": "Número, Dígito Decimal"
+    },
+    "General_CategoryNl": {
+        "message": "Número, Letra"
+    },
+    "General_CategoryNo": {
+        "message": "Número, Outro"
+    },
+    "General_CategoryPc": {
+        "message": "Pontuação, Conector"
+    },
+    "General_CategoryPd": {
+        "message": "Pontuação, Travessão"
+    },
+    "General_CategoryPs": {
+        "message": "Pontuação, Abre"
+    },
+    "General_CategoryPe": {
+        "message": "Pontuação, Fecha"
+    },
+    "General_CategoryPi": {
+        "message": "Pontuação, Citação inicial (pode se comportar como \"pontuação, abre\" ou \"pontuação, fecha\" dependendo do uso)"
+    },
+    "General_CategoryPf": {
+        "message": "Pontuação, Citação final (pode se comportar como \"pontuação, abre\" ou \"pontuação, fecha\" dependendo do uso)"
+    },
+    "General_CategoryPo": {
+        "message": "Pontuação, Outro"
+    },
+    "General_CategorySm": {
+        "message": "Símbolo, Matemática"
+    },
+    "General_CategorySc": {
+        "message": "Símbolo, Moeda"
+    },
+    "General_CategorySk": {
+        "message": "Símbolo, Modificador"
+    },
+    "General_CategorySo": {
+        "message": "Símbolo, Outro"
+    },
+    "General_CategoryZs": {
+        "message": "Separador, Espaço"
+    },
+    "General_CategoryZl": {
+        "message": "Separador, Linha"
+    },
+    "General_CategoryZp": {
+        "message": "Separador, Parágrafo"
+    },
+    "General_CategoryCc": {
+        "message": "Outro, Controle"
+    },
+    "General_CategoryCf": {
+        "message": "Outro, Formato"
+    },
+    "General_CategoryCs": {
+        "message": "Outro, Subordinado"
+    },
+    "General_CategoryCo": {
+        "message": "Outro, Uso Privativo"
+    },
+    "General_CategoryCn": {
+        "message": "Outro, Não atribuído"
+    },
+    "download_progress": {
+        "message": "Progresso do download:"
+    },
+    "percentSign": {
+        "message": "%"
+    },
+    "Finished_download": {
+        "message": "Download concluído"
+    },
+    "Problem_downloading": {
+        "message": "Houve um problema ao baixar o arquivo. Se tentar novamente e não funcionar, você pode encontrar o arquivo em http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite e salve no seu diretório de perfil de usuário do Firefox."
+    },
+    "colon": {
+        "message": ":"
+    },
+    "slash": {
+        "message": "/"
+    },
+    "plane_num": {
+        "message": "Plano %1$S:"
+    },
+    "plane_numNocolon": {
+        "message": "Plano %1$S:"
+    },
+    "Noncharacter": {
+        "message": "Não-caractere reservado"
+    },
+    "Private_use_character": {
+        "message": "Caractere de uso privativo"
+    },
+    "High_Surrogate": {
+        "message": "Altamente Subordinado"
+    },
+    "High_Private_Use_Surrogate": {
+        "message": "Uso Privado Altamente Subordinado"
+    },
+    "Low_Surrogate": {
+        "message": "Pouco subordinado"
+    },
+    "shortened_Latin_Letters__Fullwidth_": {
+        "message": "Letras Latinas"
+    },
+    "shortened_ASCII_Punctuation__Fullwidth_": {
+        "message": "Pontuação ASCII"
+    },
+    "shortened_ASCII_Digits__Fullwidth_": {
+        "message": "Dígitos ASCII"
+    },
+    "shortened_Currency_Symbols__Fullwidth_": {
+        "message": "Símbolos monetários"
+    },
+    "shortened_Katakana__Halfwidth_": {
+        "message": "Katakana"
+    },
+    "shortened_Jamo__Halfwidth_": {
+        "message": "Jamo"
+    },
+    "shortened_Fullwidth": {
+        "message": "Tamanho inteiro (%1$S, %2$S, %3$S, %4$S)"
+    },
+    "shortened_Halfwidth": {
+        "message": "Meio tamanho (%1$S, %2$S)"
+    },
+    "Not_found": {
+        "message": "Indefinido ou não encontrado"
+    },
+    "Not_found_hangul": {
+        "message": "Não encontrado (Hanful)"
+    },
+    "Request_status": {
+        "message": "Status do Pedido"
+    },
+    "retrieving_description": {
+        "message": "Recuperando descrição ..."
+    },
+    "DTDtextbox": {
+        "message": ""
+    },
+    "currstartset": {
+        "message": "a"
+    },
+    "startset": {
+        "message": "a"
     }
 }
