@@ -42,7 +42,6 @@ setPrefDefaultVars({_});
 configurePrefs({
     l10n: _,
     prefDefaults: new PrefDefaults({
-        _,
         defaults: getPrefDefaults()
     }),
     appNamespace: 'unicode-input-tool-converter-'

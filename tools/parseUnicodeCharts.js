@@ -10,6 +10,11 @@ const localize = true;
 
 const {JSDOM} = jsdom;
 
+function getChromeSafeLocaleKey (key) {
+    return key.replace(/\\n/g, '').replace(/\s\s*/g, ' ') // Getting some extra WS
+        .replace(/\W/g, '_');
+}
+
 (async () => {
 let text;
 const lastScriptNamesFile = path.join(__dirname, '../browser_action/unicode/lastScriptNames.json');
@@ -37,6 +42,8 @@ const cleanupText = (txt) => {
         .replace(/\s\((?:\d\.?\d*)MB\)$/, ''); // Remove MB size
 };
 
+const scriptsAndStartRanges = [];
+
 const jamilih = scriptMaps.map((scriptMap) => {
     const majorHeading = cleanupText(scriptMap.previousElementSibling.textContent);
     // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
@@ -56,16 +63,19 @@ const jamilih = scriptMaps.map((scriptMap) => {
                     do {
                         const a = scriptGroup.querySelector('a');
                         const title = a && a.title;
+                        let cleanedText;
                         if (scriptGroup.matches('.mb')) {
-                            const children = [uniqueTextPlaceholder + cleanupText(scriptGroup.textContent)];
+                            cleanedText = cleanupText(scriptGroup.textContent);
+                            const children = [uniqueTextPlaceholder + cleanedText];
                             lastChildren = children;
                             lists.push(
                                 ['li', {title}, children]
                             );
                         } else if (scriptGroup.matches('.pb,.sb')) {
+                            cleanedText = cleanupText(scriptGroup.textContent);
                             const children = [
                                 ['i', [
-                                    uniqueTextPlaceholder + cleanupText(scriptGroup.textContent)
+                                    uniqueTextPlaceholder + cleanedText
                                 ]]
                             ];
                             if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
@@ -80,6 +90,12 @@ const jamilih = scriptMaps.map((scriptMap) => {
                                     ['li', {title}, children]
                                 );
                             }
+                        }
+                        if (cleanedText && title) {
+                            scriptsAndStartRanges.push({
+                                script: getChromeSafeLocaleKey(cleanedText),
+                                startRange: title.replace(/-.*$/, '')
+                            });
                         }
                         scriptGroup = scriptGroup.nextElementSibling;
                     } while (scriptGroup && !scriptGroup.matches('p.sg'));
@@ -139,8 +155,8 @@ export default function (_) {
                     'gm'
                 ),
                 (_, initialWS, key, possibleComma = '') => {
-                    const chromeSafeLocaleKey = key.replace(/\\n/g, '').replace(/\s\s*/g, ' ') // Getting some extra WS
-                        .replace(/\W/g, '_');
+                    const chromeSafeLocaleKey = getChromeSafeLocaleKey(key);
+
                     newScriptNames.push(chromeSafeLocaleKey);
                     // Insert `chromeSafeLocaleKey` if not present;
                     //   Todo: Hard-code-test each locale to make sure no other
@@ -195,4 +211,22 @@ export default function (_) {
     `;
 }
 `);
+
+scriptsAndStartRanges.sort(({startRange: aStartRange}, {startRange: bStartRange}) => {
+    return parseInt(aStartRange, 16) > parseInt(bStartRange, 16) ? 1 : -1;
+});
+
+let s = '';
+let lastStartRange = '0000';
+let lastScript = '';
+scriptsAndStartRanges.forEach(({script, startRange}) => {
+    // Todo: Add plane, privateuse, surrogate info
+    s += `} else if (num < 0x${startRange}) {
+    codePointStart = '${lastStartRange}'; script = _('${lastScript}');
+`;
+    lastStartRange = startRange;
+    lastScript = script;
+});
+console.log('scriptsAndStartRanges', scriptsAndStartRanges);
+console.log('ssss', s.slice(7) + '}');
 })();
