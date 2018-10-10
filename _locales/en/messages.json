@@ -1915,11 +1915,11 @@
     "font": {
         "message": ""
     },
-    "yourItemAdded": {
-        "message": "Your item has been added to the toolbar icon pull-down"
-    },
     "lang": {
         "message": "en-US"
+    },
+    "yourItemAdded": {
+        "message": "Your item has been added to the toolbar icon pull-down"
     },
     "need_download_unihan": {
         "message": "In order to access CJK (Chinese-Korean-Japanese) characters, you must download the approximately 19.3MB Unihan database. See the button at the top of the preferences tab."
@@ -2610,9 +2610,6 @@
     },
     "retrieving_description": {
         "message": "retrieving description..."
-    },
-    "description": {
-        "message": "Converts character references into Unicode characters"
     },
     "DTDtextbox": {
         "message": ""
