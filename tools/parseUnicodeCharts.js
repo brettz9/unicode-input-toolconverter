@@ -148,6 +148,47 @@ export default function (_) {
                 return JSON.parse(fileContents);
             });
 
+            const dirResults = (await recurseDirectory({directory: 'browser_action'})).filter(({keys}) => {
+                return keys.length;
+            });
+            // console.log('dirResults', JSON.stringify(dirResults, null, 8));
+            const keyMap = {};
+            dirResults.forEach(({path, keys}) => {
+                keys.forEach((key) => {
+                    localeFileContents.forEach((lfc, i) => {
+                        if (!(key in lfc)) {
+                            if (!keyMap[key]) {
+                                keyMap[key] = {paths: [], locales: []};
+                            }
+                            if (!keyMap[key].paths.includes(path)) {
+                                keyMap[key].paths.push(path);
+                            }
+                            if (!keyMap[key].locales.includes(localeFiles[i])) {
+                                keyMap[key].locales.push(localeFiles[i]);
+                            }
+                        }
+                    });
+                });
+            });
+            Object.entries(keyMap).forEach(([key, {paths, locales}]) => {
+                // Working: console.log(`key "${key}" found in paths [${paths.join(', ')}] is missing in locales: [${locales.join(', ')}]\n`);
+            });
+
+            localeFileContents.forEach((lfc, i) => {
+                if (i !== 0) { // Just test one for now
+                    return;
+                }
+                Object.keys(lfc).forEach((localeKey) => {
+                    if (!dirResults.some(({keys, path}) => {
+                        // console.log('keys', keys);
+                        return keys.includes(localeKey);
+                    })) {
+                        // Working:
+                        // console.log(`Locale key "${localeKey}" not present in keys used in any of the found file paths.`);
+                    }
+                });
+            });
+
             const newScriptNames = [];
             const ret = JSON.stringify(['ul', jamilih], null, 4).replace(
                 new RegExp(
@@ -218,8 +259,11 @@ scriptsAndStartRanges.sort(({startRange: aStartRange}, {startRange: bStartRange}
 
 let s = '';
 let lastStartRange = '0000';
-let lastScript = '';
+let lastScript = 'null';
 scriptsAndStartRanges.forEach(({script, startRange}) => {
+    if (startRange === '0000' || !lastScript) {
+        return;
+    }
     // Todo: Add plane, privateuse, surrogate info
     s += `} else if (num < 0x${startRange}) {
     codePointStart = '${lastStartRange}'; script = _('${lastScript}');
@@ -227,6 +271,47 @@ scriptsAndStartRanges.forEach(({script, startRange}) => {
     lastStartRange = startRange;
     lastScript = script;
 });
-console.log('scriptsAndStartRanges', scriptsAndStartRanges);
-console.log('ssss', s.slice(7) + '}');
+
+async function recurseDirectory ({directory, basePath = './', results}) {
+    const dirPath = path.join(basePath, directory);
+    const filesAndDirs = await fs.readdir(dirPath);
+    let finalPromise = false;
+    if (!results) {
+        finalPromise = true;
+        results = [];
+    }
+    await Promise.all(
+        filesAndDirs.filter((fileOrDir) => {
+            // Is a directory or JavaScript file
+            return !fileOrDir.includes('.') || (/.js$/).test(fileOrDir);
+        }).map(async (fileOrDir) => {
+            if (!fileOrDir.includes('.')) { // Should check `isDirectory()` or such
+                return recurseDirectory({
+                    directory: fileOrDir,
+                    basePath: dirPath,
+                    results
+                });
+            }
+            const pth = path.join(dirPath, fileOrDir);
+            const contents = await fs.readFile(pth, 'utf-8');
+
+            const i18nRegex = // /_\((?:['"]([^'"]*)['"])\)/g;
+            // Todo: Works to find variable forms:
+                /_\((?:['"]([^'"]*)['"]|([^"')][^{)]*|[^{)]*[^"')]))\)/g;
+
+            const keys = [];
+            let result;
+            while ((result = (i18nRegex.exec(contents))) !== null) {
+                keys.push(result[1] || result[2]);
+            }
+            results.push({path: pth, keys});
+        })
+    );
+    if (finalPromise) {
+        return results;
+    }
+}
+
+// console.log('scriptsAndStartRanges', scriptsAndStartRanges);
+console.log(s.slice(7) + '}');
 })();

@@ -5,14 +5,14 @@ export default function getScriptInfoForCodePoint (num, _) {
     let script = '', codePointStart = '';
     if (num < 0x0080) {
         codePointStart = '0000';
-        script = _('Basic_Latin') + _('comma') + ' ' +
-            _('Controls__C0') + _('comma') + ' ' +
-            _('ASCII_Punctuation') + _('comma') + ' ' +
-            _('ASCII_Digits') + _('comma') + ' ' +
-            _('Dollar_Sign');
+        script = _('Basic_Latin'); // + _ ('comma') + ' ' +
+        // _('Controls__C0') + _ ('comma') + ' ' +
+        // _('ASCII_Punctuation') + _ ('comma') + ' ' +
+        // _('ASCII_Digits') + _ ('comma') + ' ' +
+        // _ ('Dollar_Sign');
     // Could just replace with formal name of the category, "Latin" (as did below in other cases)
     } else if (num < 0x0100) {
-        codePointStart = '0080'; script = _('Latin_1_Supplement') + _('comma') + ' ' + _('Latin_1_Punctuation') + _('comma') + ' ' + _('Controls__C1') + _('comma') + ' ' + _('Yen__Pound_and_Cent');
+        codePointStart = '0080'; script = _('Latin_1_Supplement'); // + _ ('comma') + ' ' + _('Latin_1_Punctuation') + _ ('comma') + ' ' + _('Controls__C1') + _ ('comma') + ' ' + _('Yen__Pound_and_Cent');
     } else if (num < 0x0180) {
         codePointStart = '0100'; script = _('Latin_Extended_A');
     } else if (num < 0x0250) {
@@ -24,7 +24,7 @@ export default function getScriptInfoForCodePoint (num, _) {
     } else if (num < 0x0370) {
         codePointStart = '0300'; script = _('Combining_Diacritical_Marks');
     } else if (num < 0x0400) {
-        codePointStart = '0370'; script = _('Greek') + _('comma') + ' ' + _('Coptic_in_Greek_block');
+        codePointStart = '0370'; script = _('Greek'); // + _ ('comma') + ' ' + _('Coptic_in_Greek_block');
     } else if (num < 0x0500) {
         codePointStart = '0400'; script = _('Cyrillic');
     } else if (num < 0x0530) {
@@ -140,15 +140,15 @@ export default function getScriptInfoForCodePoint (num, _) {
     } else if (num < 0x2000) {
         codePointStart = '1F00'; script = _('Greek_Extended');
     } else if (num < 0x2070) {
-        codePointStart = '2000'; script = _('General_Punctuation') + _('comma') + ' ' + _('Layout_Controls') + _('comma') + ' ' + _('Invisible_Operators');
+        codePointStart = '2000'; script = _('General_Punctuation'); // + _ ('comma') + ' ' + _('Layout_Controls') + _ ('comma') + ' ' + _('Invisible_Operators');
     } else if (num < 0x20A0) {
         codePointStart = '2070'; script = _('Super_and_Subscripts');
     } else if (num < 0x20D0) {
-        codePointStart = '20A0'; script = _('Currency_Symbols') + _('comma') + ' ' + _('Euro_Sign') + _('comma') + ' ' + _('Pfennig_-historic--');
+        codePointStart = '20A0'; script = _('Currency_Symbols'); // + _ ('comma') + ' ' + _ ('Euro_Sign') + _ ('comma') + ' ';
     } else if (num < 0x2100) {
         codePointStart = '20D0'; script = _('Combining_Diacritical_Marks_for_Symbols');
     } else if (num < 0x2150) {
-        codePointStart = '2100'; script = _('Letterlike_Symbols') + _('comma') + ' ' + _('Mark_-historic--');
+        codePointStart = '2100'; script = _('Letterlike_Symbols'); // + _ ('comma') + ' ' + _ ('Mark_-historic--');
     } else if (num < 0x2190) {
         codePointStart = '2150'; script = _('Number_Forms');
     } else if (num < 0x2200) {
@@ -241,7 +241,7 @@ export default function getScriptInfoForCodePoint (num, _) {
     /* End Interlude between CJK */
     /* Begin CJK (2) */
     } else if (num < 0xA000) {
-        codePointStart = '4E00'; script = _('CJK_Unified_Ideographs_--Han--');
+        codePointStart = '4E00'; script = _('CJK_Unified_Ideographs__Han_');
     /* End CJK (2) */
     /* Begin Interlude (2) between CJK */
     } else if (num < 0xA490) {
@@ -314,11 +314,11 @@ export default function getScriptInfoForCodePoint (num, _) {
     /* End Private Use */
     } else if (num < 0xFB00) {
         codePointStart = 'F900'; script = _('CJK_Compatibility_Ideographs');
-    // else if (num < 0xFB50) { codePointStart = 'FB00'; script = _('Latin_Ligatures') + _('comma') + ' ' + _('Armenian_Ligatures') + _('comma') + ' ' + _('Hebrew_Presentation_Forms');
+    // else if (num < 0xFB50) { codePointStart = 'FB00'; script = _('Latin_Ligatures') + _ ('comma') + ' ' + _('Armenian_Ligatures') + _ ('comma') + ' ' + _('Hebrew_Presentation_Forms');
     } else if (num < 0xFB50) {
         codePointStart = 'FB00'; script = _('Alphabetic_Presentation_Forms');
     } else if (num < 0xFE00) {
-        codePointStart = 'FB50'; script = _('Arabic_Presentation_Forms_A') + _('comma') + ' ' + _('Rial_Sign') + _('comma') + ' ' + _('Reserved_range');
+        codePointStart = 'FB50'; script = _('Arabic_Presentation_Forms_A'); // + _ ('comma') + ' ' + _('Rial_Sign') + _ ('comma') + ' ' + _('Reserved_range');
     } else if (num < 0xFE10) {
         codePointStart = 'FE00'; script = _('Variation_Selectors');
     } else if (num < 0xFE20) {
@@ -331,7 +331,7 @@ export default function getScriptInfoForCodePoint (num, _) {
         codePointStart = 'FE50'; script = _('Small_Form_Variants');
     } else if (num < 0xFF00) {
         codePointStart = 'FE70'; script = _('Arabic_Presentation_Forms_B');
-    // else if (num < 0xFFF0) { codePointStart = 'FF00'; script = _('Fullwidth_ASCII_Punctuation') + _('comma') + ' ' + _('Fullwidth_ASCII_Digits') + _('comma') + ' ' + _('Fullwidth_Currency_Symbols') + _('comma') + ' ' + _('Fullwidth_Latin_Letters') + _('comma') + ' ' + _('Halfwidth_Katakana') + _('comma') + ' ' + _('Halfwidth_Jamo'); }
+    // else if (num < 0xFFF0) { codePointStart = 'FF00'; script = _('Fullwidth_ASCII_Punctuation') + _ ('comma') + ' ' + _('Fullwidth_ASCII_Digits') + _ ('comma') + ' ' + _('Fullwidth_Currency_Symbols') + _ ('comma') + ' ' + _('Fullwidth_Latin_Letters') + _ ('comma') + ' ' + _('Halfwidth_Katakana') + _ ('comma') + ' ' + _('Halfwidth_Jamo'); }
     } else if (num < 0xFFF0) {
         codePointStart = 'FF00'; script = _('Halfwidth_and_Fullwidth_Forms');
     /*
@@ -343,13 +343,13 @@ export default function getScriptInfoForCodePoint (num, _) {
             asciiDigits: _('shortened_ASCII_Digits__Fullwidth_'),
             currencySymbols: _('shortened_Currency_Symbols__Fullwidth_'),
             latinLetters: _('shortened_Latin_Letters__Fullwidth_')
-        }) + _('comma') + ' ' + _('shortened_Halfwidth', {
+        }) + _ ('comma') + ' ' + _('shortened_Halfwidth', {
             katakana: _('shortened_Katakana__Halfwidth_'),
             jamo: _('shortened_Jamo__Halfwidth_')
         });
     */
     } else if (num < 0x10000) {
-        codePointStart = 'FFF0'; script = _('Specials') + _('comma') + ' ' + _('At_End_of_BMP');
+        codePointStart = 'FFF0'; script = _('Specials'); // + _ ('comma') + ' ' + _('At_End_of_BMP');
     } else if (num < 0x10080) {
         codePointStart = '10000'; script = _('Linear_B_Syllabary');
     } else if (num < 0x10100) {

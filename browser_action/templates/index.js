@@ -733,7 +733,7 @@ export default function (_) {
                     ]],
                     // ['splitter'],
                     ['div', {id: 'toconvert_persist', class: 'vbox conversionSection'}, [
-                        // ['h2', {class: 'dialogheader'}, [ _('uresults_value') ]],
+                        // ['h2', {class: 'dialogheader'}, [ _ ('uresults_value') ]],
                         ['label', {id: 'toconvert_persist_label'}, [
                             _('uresults_preconverted'),
                             ['div', [
