@@ -8,13 +8,13 @@ export const CharrefunicodeConsts = {
     /* eslint-enable comma-spacing */
 };
 
-class UnicodeDBUtil {
+class UnicodeDB {
     constructor ({charrefunicodeDb}) {
         this.charrefunicodeDb = charrefunicodeDb;
     }
 }
 // Todo: Reimplement
-export class Jamo extends UnicodeDBUtil {
+export class Jamo extends UnicodeDB {
     getJamo (code) { // expects decimal string or number
         const codePt = typeof code === 'number' ? Math.round(code).toString(16) : code;
         try {
@@ -40,13 +40,13 @@ export function getAndSetCodePointInfo (num, alink, _) {
     if (num < 0x0080) {
         alink.href += '0000';
         tn = _('Basic_Latin') + _('comma') + ' ' +
-            _('Controls-_C0') + _('comma') + ' ' +
+            _('Controls__C0') + _('comma') + ' ' +
             _('ASCII_Punctuation') + _('comma') + ' ' +
             _('ASCII_Digits') + _('comma') + ' ' +
             _('Dollar_Sign');
     // Could just replace with formal name of the category, "Latin" (as did below in other cases)
     } else if (num < 0x0100) {
-        alink.href += '0080'; tn = _('Latin-1_Supplement') + _('comma') + ' ' + _('Latin-1_Punctuation') + _('comma') + ' ' + _('Controls-_C1') + _('comma') + ' ' + _('Yen-_Pound_and_Cent');
+        alink.href += '0080'; tn = _('Latin_1_Supplement') + _('comma') + ' ' + _('Latin_1_Punctuation') + _('comma') + ' ' + _('Controls__C1') + _('comma') + ' ' + _('Yen__Pound_and_Cent');
     } else if (num < 0x0180) {
         alink.href += '0100'; tn = _('Latin_Extended_A');
     } else if (num < 0x0250) {
@@ -208,7 +208,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0x27C0) {
         alink.href += '2700'; tn = _('Dingbats');
     } else if (num < 0x27F0) {
-        alink.href += '27C0'; tn = _('Misc._Math_Symbols_A');
+        alink.href += '27C0'; tn = _('Misc__Math_Symbols_A');
     } else if (num < 0x2800) {
         alink.href += '27F0'; tn = _('Supplemental_Arrows_A');
     } else if (num < 0x2900) {
@@ -216,9 +216,9 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0x2980) {
         alink.href += '2900'; tn = _('Supplemental_Arrows_B');
     } else if (num < 0x2A00) {
-        alink.href += '2980'; tn = _('Misc._Math_Symbols_B');
+        alink.href += '2980'; tn = _('Misc__Math_Symbols_B');
     } else if (num < 0x2B00) {
-        alink.href += '2A00'; tn = _('Suppl._Math_Operators');
+        alink.href += '2A00'; tn = _('Suppl__Math_Operators');
     } else if (num < 0x2C00) {
         alink.href += '2B00'; tn = _('Miscellaneous_Symbols_and_Arrows');
     } else if (num < 0x2C60) {
@@ -234,13 +234,13 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0x2DE0) {
         alink.href += '2D80'; tn = _('Ethiopic_Extended');
     } else if (num < 0x2E00) {
-        alink.href += '2DE0'; tn = _('Cyrillic_Extended-A');
+        alink.href += '2DE0'; tn = _('Cyrillic_Extended_A');
     } else if (num < 0x2E80) {
         alink.href += '2E00'; tn = _('Supplemental_Punctuation');
     } else if (num < 0x2F00) {
         alink.href += '2E80'; tn = _('CJK_Radicals_Supplement');
     } else if (num < 0x2FF0) {
-        alink.href += '2F00'; tn = _('CJK_Radicals_-_KangXi_Radicals');
+        alink.href += '2F00'; tn = _('CJK_Radicals___KangXi_Radicals');
     } else if (num < 0x3000) {
         alink.href += '2FF0'; tn = _('Ideographic_Description_Characters');
     } else if (num < 0x3040) {
@@ -267,7 +267,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
         alink.href += '3300'; tn = _('CJK_Compatibility');
     /* Begin CJK (1) */
     } else if (num < 0x4DC0) {
-        alink.href += '3400'; tn = _('CJK_Ideographs_Ext._A');
+        alink.href += '3400'; tn = _('CJK_Ideographs_Ext__A');
     /* End CJK (1) */
     /* Begin Interlude between CJK */
     } else if (num < 0x4E00) {
@@ -287,7 +287,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0xA640) {
         alink.href += 'A500'; tn = _('Vai');
     } else if (num < 0xA6A0) {
-        alink.href += 'A640'; tn = _('Cyrillic_Extended-B');
+        alink.href += 'A640'; tn = _('Cyrillic_Extended_B');
     } else if (num < 0xA700) {
         alink.href += 'A6A0'; tn = _('Bamum');
     } else if (num < 0xA720) {
@@ -299,7 +299,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0xA840) {
         alink.href += 'A830'; tn = _('Common_Indic_Number_Forms');
     } else if (num < 0xA880) {
-        alink.href += 'A840'; tn = _('Phags-Pa');
+        alink.href += 'A840'; tn = _('Phags_Pa');
     } else if (num < 0xA8E0) {
         alink.href += 'A880'; tn = _('Saurashtra');
     } else if (num < 0xA900) {
@@ -309,13 +309,13 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0xA960) {
         alink.href += 'A930'; tn = _('Rejang');
     } else if (num < 0xA980) {
-        alink.href += 'A960'; tn = _('Hangul_Jamo_Extended-A');
+        alink.href += 'A960'; tn = _('Hangul_Jamo_Extended_A');
     } else if (num < 0xAA00) {
         alink.href += 'A980'; tn = _('Javanese');
     } else if (num < 0xAA60) {
         alink.href += 'AA00'; tn = _('Cham');
     } else if (num < 0xAA80) {
-        alink.href += 'AA60'; tn = _('Myanmar_Extended-A');
+        alink.href += 'AA60'; tn = _('Myanmar_Extended_A');
     } else if (num < 0xAB00) {
         alink.href += 'AA80'; tn = _('Tai_Viet');
     } else if (num < 0xABC0) {
@@ -328,7 +328,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
         alink.href += 'AC00'; tn = _('Hangul_Syllables');
     /* End Hangul Syllable */
     } else if (num < 0xD800) {
-        alink.href += 'D7B0'; tn = _('Hangul_Jamo_Extended-B');
+        alink.href += 'D7B0'; tn = _('Hangul_Jamo_Extended_B');
     /* Begin Non Private Use High Surrogate */
     } else if (num < 0xDB80) {
         alink.href += 'D800'; tn = _('High_Surrogates'); surrogate = _('High_Surrogate');
@@ -372,14 +372,14 @@ export function getAndSetCodePointInfo (num, alink, _) {
     // If reenabling, should do more complete i18n (e.g., put comma inside string)
     } else if (num < 0xFFF0) {
         alink.href += 'FF00';
-        tn = _('Fullwidth', {
-            asciiPunctuation: _('ASCII_Punctuation_(Fullwidth)'),
-            asciiDigits: _('ASCII_Digits_(Fullwidth)'),
-            currencySymbols: _('Currency_Symbols_(Fullwidth)'),
-            latinLetters: _('Latin_Letters_(Fullwidth)')
-        }) + _('comma') + ' ' + _('Halfwidth', {
-            katakana: _('Katakana_(Halfwidth)'),
-            jamo: _('Jamo_(Halfwidth)')
+        tn = _('shortened_Fullwidth', {
+            asciiPunctuation: _('shortened_ASCII_Punctuation__Fullwidth_'),
+            asciiDigits: _('shortened_ASCII_Digits__Fullwidth_'),
+            currencySymbols: _('shortened_Currency_Symbols__Fullwidth_'),
+            latinLetters: _('shortened_Latin_Letters__Fullwidth_')
+        }) + _('comma') + ' ' + _('shortened_Halfwidth', {
+            katakana: _('shortened_Katakana__Halfwidth_'),
+            jamo: _('shortened_Jamo__Halfwidth_')
         });
     */
     } else if (num < 0x10000) {
@@ -417,7 +417,7 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0x10840) {
         alink.href += '10800'; tn = _('Cypriot_Syllabary');
     } else if (num < 0x10900) {
-        alink.href += '10840'; tn = _('Aramaic-_Imperial');
+        alink.href += '10840'; tn = _('Aramaic__Imperial');
     } else if (num < 0x10920) {
         alink.href += '10900'; tn = _('Phoenician');
     } else if (num < 0x10A00) {
@@ -429,9 +429,9 @@ export function getAndSetCodePointInfo (num, alink, _) {
     } else if (num < 0x10B40) {
         alink.href += '10B00'; tn = _('Avestan');
     } else if (num < 0x10B60) {
-        alink.href += '10B40'; tn = _('Parthian-_Inscriptional');
+        alink.href += '10B40'; tn = _('Parthian__Inscriptional');
     } else if (num < 0x10C00) {
-        alink.href += '10B60'; tn = _('Pahlavi-_Inscriptional');
+        alink.href += '10B60'; tn = _('Pahlavi__Inscriptional');
     } else if (num < 0x10E60) {
         alink.href += '10C00'; tn = _('Old_Turkic');
     } else if (num < 0x11000) {
@@ -484,15 +484,15 @@ export function getAndSetCodePointInfo (num, alink, _) {
         alink.href += '1FF80'; tn = _('At_End_of_Plane_1');
     /* Begin CJK Ideograph Extension B */
     } else if (num < 0x2A700) {
-        alink.href += '20000'; tn = _('CJK_Ideographs_Ext._B'); plane = 2;
+        alink.href += '20000'; tn = _('CJK_Ideographs_Ext__B'); plane = 2;
     /* End CJK Ideograph Extension B */
     /* Begin CJK Ideograph Extension C */
     } else if (num < 0x2B740) {
-        alink.href += '2A700'; tn = _('CJK_Ideographs_Ext._C'); plane = 2;
+        alink.href += '2A700'; tn = _('CJK_Ideographs_Ext__C'); plane = 2;
     /* End CJK Ideograph Extension C */
     /* Begin CJK Ideograph Extension D */
     } else if (num < 0x2F800) {
-        alink.href += '2B740'; tn = _('CJK_Ideographs_Ext._D'); plane = 2;
+        alink.href += '2B740'; tn = _('CJK_Ideographs_Ext__D'); plane = 2;
     /* End CJK Ideograph Extension D */
     } else if (num < 0x2FA1F) {
         alink.href += '2F800'; tn = _('CJK_Compatibility_Ideographs_Supplement'); plane = 2;
@@ -555,18 +555,18 @@ export function getAndSetCodePointInfo (num, alink, _) {
     /* Begin Plane 15 Private Use */
     } else if (num < 0xFFF80) {
         alink.href += 'FFF80'; tn = _('plane_numNocolon', {number: 15}) + _('slash') +
-                    _('Suppl._Private_Use_Area_A'); plane = 15; privateuse = true;
+                    _('Supplementary_Private_Use_Area_A'); plane = 15; privateuse = true;
     } else if (num < 0x100000) {
         alink.href += 'FFF80'; tn = _('At_End_of_Plane_15') + _('slash') +
-                    _('Suppl._Private_Use_Area_A'); plane = 15; privateuse = true;
+                    _('Supplementary_Private_Use_Area_A'); plane = 15; privateuse = true;
     /* End Plane 15 Private Use */
     /* Begin Plane 16 Private Use */
     } else if (num <= 0x10FF80) {
         alink.href += '10FF80'; tn = _('plane_numNocolon', {number: 16}) + _('slash') +
-                    _('Suppl._Private_Use_Area_B'); plane = 16; privateuse = true;
+                    _('Supplementary_Private_Use_Area_B'); plane = 16; privateuse = true;
     } else if (num <= 0x10FFFF) {
         alink.href += '10FF80'; tn = _('At_End_of_Plane_16') + _('slash') +
-                    _('Suppl._Private_Use_Area_B'); plane = 16; privateuse = true;
+                    _('Supplementary_Private_Use_Area_B'); plane = 16; privateuse = true;
     }
     /* End Plane 16 Private Use */
 

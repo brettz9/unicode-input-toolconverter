@@ -2619,5 +2619,320 @@
     },
     "startset": {
         "message": "a"
+    },
+    "Caucasian_Albanian": {
+        "message": "Caucasian Albanian"
+    },
+    "Cyrillic_Extended_C": {
+        "message": "Cyrillic Extended-C"
+    },
+    "Elbasan": {
+        "message": "Elbasan"
+    },
+    "Georgian_Extended": {
+        "message": "Georgian Extended"
+    },
+    "Glagolitic_Supplement": {
+        "message": "Glagolitic Supplement"
+    },
+    "Latin_Extended_E": {
+        "message": "Latin Extended-E"
+    },
+    "Linear_A": {
+        "message": "Linear A"
+    },
+    "Old_Hungarian": {
+        "message": "Old Hungarian"
+    },
+    "Old_Permic": {
+        "message": "Old Permic"
+    },
+    "Modifier_Letters": {
+        "message": "Modifier Letters"
+    },
+    "Superscripts_and_Subscripts": {
+        "message": "Superscripts and Subscripts"
+    },
+    "Combining_Marks": {
+        "message": "Combining Marks"
+    },
+    "Combining_Diacritical_Marks_Extended": {
+        "message": "Combining Diacritical Marks Extended"
+    },
+    "Adlam": {
+        "message": "Adlam"
+    },
+    "Bassa_Vah": {
+        "message": "Bassa Vah"
+    },
+    "Coptic_Epact_Numbers": {
+        "message": "Coptic Epact Numbers"
+    },
+    "Medefaidrin": {
+        "message": "Medefaidrin"
+    },
+    "Mende_Kikakui": {
+        "message": "Mende Kikakui"
+    },
+    "Meroitic": {
+        "message": "Meroitic"
+    },
+    "Meroitic_Cursive": {
+        "message": "Meroitic Cursive"
+    },
+    "Meroitic_Hieroglyphs": {
+        "message": "Meroitic Hieroglyphs"
+    },
+    "Anatolian_Hieroglyphs": {
+        "message": "Anatolian Hieroglyphs"
+    },
+    "Arabic_Extended_A": {
+        "message": "Arabic Extended-A"
+    },
+    "Early_Dynastic_Cuneiform": {
+        "message": "Early Dynastic Cuneiform"
+    },
+    "Hatran": {
+        "message": "Hatran"
+    },
+    "Nabataean": {
+        "message": "Nabataean"
+    },
+    "Old_North_Arabian": {
+        "message": "Old North Arabian"
+    },
+    "Pahlavi__Psalter": {
+        "message": "Pahlavi, Psalter"
+    },
+    "Palmyrene": {
+        "message": "Palmyrene"
+    },
+    "Syriac_Supplement": {
+        "message": "Syriac Supplement"
+    },
+    "Manichaean": {
+        "message": "Manichaean"
+    },
+    "Marchen": {
+        "message": "Marchen"
+    },
+    "Mongolian_Supplement": {
+        "message": "Mongolian Supplement"
+    },
+    "Old_Sogdian": {
+        "message": "Old Sogdian"
+    },
+    "Sogdian": {
+        "message": "Sogdian"
+    },
+    "Soyombo": {
+        "message": "Soyombo"
+    },
+    "Zanabazar_Square": {
+        "message": "Zanabazar Square"
+    },
+    "Ahom": {
+        "message": "Ahom"
+    },
+    "Bengali_and_Assamese": {
+        "message": "Bengali and Assamese"
+    },
+    "Bhaiksuki": {
+        "message": "Bhaiksuki"
+    },
+    "Chakma": {
+        "message": "Chakma"
+    },
+    "Dogra": {
+        "message": "Dogra"
+    },
+    "Grantha": {
+        "message": "Grantha"
+    },
+    "Gunjala_Gondi": {
+        "message": "Gunjala Gondi"
+    },
+    "Khojki": {
+        "message": "Khojki"
+    },
+    "Khudawadi": {
+        "message": "Khudawadi"
+    },
+    "Mahajani": {
+        "message": "Mahajani"
+    },
+    "Masaram_Gondi": {
+        "message": "Masaram Gondi"
+    },
+    "Meetei_Mayek_Extensions": {
+        "message": "Meetei Mayek Extensions"
+    },
+    "Modi": {
+        "message": "Modi"
+    },
+    "Mro": {
+        "message": "Mro"
+    },
+    "Multani": {
+        "message": "Multani"
+    },
+    "Newa": {
+        "message": "Newa"
+    },
+    "Sharada": {
+        "message": "Sharada"
+    },
+    "Siddham": {
+        "message": "Siddham"
+    },
+    "Sinhala_Archaic_Numbers": {
+        "message": "Sinhala Archaic Numbers"
+    },
+    "Sora_Sompeng": {
+        "message": "Sora Sompeng"
+    },
+    "Takri": {
+        "message": "Takri"
+    },
+    "Tirhuta": {
+        "message": "Tirhuta"
+    },
+    "Warang_Citi": {
+        "message": "Warang Citi"
+    },
+    "Southeast_Asian_Scripts": {
+        "message": "Southeast Asian Scripts"
+    },
+    "Hanifi_Rohingya": {
+        "message": "Hanifi Rohingya"
+    },
+    "Myanmar_Extended_B": {
+        "message": "Myanmar Extended-B"
+    },
+    "Pahawh_Hmong": {
+        "message": "Pahawh Hmong"
+    },
+    "Pau_Cin_Hau": {
+        "message": "Pau Cin Hau"
+    },
+    "Indonesia___Oceania_Scripts": {
+        "message": "Indonesia & Oceania Scripts"
+    },
+    "Makasar": {
+        "message": "Makasar"
+    },
+    "Sundanese_Supplement": {
+        "message": "Sundanese Supplement"
+    },
+    "CJK_Extension_A": {
+        "message": "CJK Extension-A"
+    },
+    "CJK_Extension_B": {
+        "message": "CJK Extension B"
+    },
+    "CJK_Extension_C": {
+        "message": "CJK Extension C"
+    },
+    "CJK_Extension_D": {
+        "message": "CJK Extension D"
+    },
+    "CJK_Extension_E": {
+        "message": "CJK Extension E"
+    },
+    "CJK_Extension_F": {
+        "message": "CJK Extension F"
+    },
+    "Kana_Extended_A": {
+        "message": "Kana Extended-A"
+    },
+    "Miao": {
+        "message": "Miao"
+    },
+    "Nushu": {
+        "message": "Nushu"
+    },
+    "Tangut": {
+        "message": "Tangut"
+    },
+    "Tangut_Components": {
+        "message": "Tangut Components"
+    },
+    "Cherokee_Supplement": {
+        "message": "Cherokee Supplement"
+    },
+    "Osage": {
+        "message": "Osage"
+    },
+    "Other": {
+        "message": "Other"
+    },
+    "Notational_Systems": {
+        "message": "Notational Systems"
+    },
+    "Duployan": {
+        "message": "Duployan"
+    },
+    "Shorthand_Format_Controls": {
+        "message": "Shorthand Format Controls"
+    },
+    "Sutton_SignWriting": {
+        "message": "Sutton SignWriting"
+    },
+    "Ideographic_Symbols_and_Punctuation": {
+        "message": "Ideographic Symbols and Punctuation"
+    },
+    "Arabic_Mathematical_Alphabetic_Symbols": {
+        "message": "Arabic Mathematical Alphabetic Symbols"
+    },
+    "Numbers___Digits": {
+        "message": "Numbers & Digits"
+    },
+    "Indic_Siyaq_Numbers": {
+        "message": "Indic Siyaq Numbers"
+    },
+    "Mayan_Numerals": {
+        "message": "Mayan Numerals"
+    },
+    "Supplemental_Arrows_C": {
+        "message": "Supplemental Arrows-C"
+    },
+    "Supplemental_Mathematical_Operators": {
+        "message": "Supplemental Mathematical Operators"
+    },
+    "Miscellaneous_Mathematical_Symbols_A": {
+        "message": "Miscellaneous Mathematical Symbols-A"
+    },
+    "Miscellaneous_Mathematical_Symbols_B": {
+        "message": "Miscellaneous Mathematical Symbols-B"
+    },
+    "Geometric_Shapes_Extended": {
+        "message": "Geometric Shapes Extended"
+    },
+    "Emoji___Pictographs": {
+        "message": "Emoji & Pictographs"
+    },
+    "Ornamental_Dingbats": {
+        "message": "Ornamental Dingbats"
+    },
+    "Supplemental_Symbols_and_Pictographs": {
+        "message": "Supplemental Symbols and Pictographs"
+    },
+    "Dollar_Sign__Euro_Sign": {
+        "message": "Dollar Sign, Euro Sign"
+    },
+    "Chess_Symbols": {
+        "message": "Chess Symbols"
+    },
+    "Controls__tC0__tC1": {
+        "message": "Controls:\\tC0,\\tC1"
+    },
+    "Range_in_Arabic_Presentation_Forms_A": {
+        "message": "Range in Arabic Presentation Forms-A"
+    },
+    "Range_in_Specials": {
+        "message": "Range in Specials"
+    },
+    "BMP__Plane_1__Plane_2__Plane_3__Plane_4__Plane_5__Plane_6__Plane_7__Plane_8__Plane_9__Plane_10__Plane_11__Plane_12__Plane_13__Plane_14__Plane_15__Plane_16": {
+        "message": "BMP, Plane 1, \\n                    Plane 2, \\n                    Plane 3, \\n                    Plane 4, \\n                    Plane 5, \\n                    Plane 6, \\n                    Plane 7, \\n                    Plane 8,\\n                    Plane 9, \\n                    Plane 10, \\n                    Plane 11, \\n                    Plane 12, \\n                    Plane 13,\\n                    Plane 14, \\n                    Plane 15, \\n                    Plane 16"
     }
 }
