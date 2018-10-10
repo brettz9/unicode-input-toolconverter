@@ -2,12 +2,12 @@
 // To-do: move at least this file into module, and move as much of uresults.js too
 // Todo: Review `fromCharCode`, `charCodeAt`, and `charAt` on whether need modern substitutions
 
-/**
- * Ought to try IndexedDB for this for possible future migration to HTML5
- */
-const charrefunicodeDb = {
-    dbConn: null,
-    dbConnUnihan: null,
+// Todo: Switch to IndexedDB
+class UnicodeDB {
+    constructor () {
+        this.dbConn = null;
+        this.dbConnUnihan = null;
+    }
     connect (dbfile, key) {
         /*
         // Todo: Reimplement
@@ -36,7 +36,37 @@ const charrefunicodeDb = {
         }
         */
     }
-};
+}
+
+export class UnicodeDatabase extends UnicodeDB {
+    // Todo: Uncomment and implement
+    getUnicodeDescription (entity, currentStartCharCode) {
+        // const entityInParentheses = '(' + entity + ') ';
+        // Todo: Should this not be padded to 6??
+        // const currentStartCharCodeUpperCaseHexPadded = currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
+        // Todo:
+
+    }
+}
+
+// Todo: Reimplement
+export class Jamo extends UnicodeDB {
+    getJamo (code) { // expects decimal string or number
+        const codePt = typeof code === 'number' ? Math.round(code).toString(16) : code;
+        try {
+            const stmt = this.dbConn.dbJamo.createStatement(
+                'SELECT `jamo_short_name` FROM Jamo WHERE `code_pt` = "' + codePt.toUpperCase() + '"'
+            );
+            stmt.executeStep();
+            return stmt.getUTF8String(0);
+        } catch (e) {
+            throw new Error(codePt.toUpperCase() + e);
+        }
+    }
+}
+
+const charrefunicodeDb = new UnicodeDatabase();
+
 try {
     charrefunicodeDb.connect('data/Unicode.sqlite');
     charrefunicodeDb.connect('Unihan6.sqlite', 'unihan');

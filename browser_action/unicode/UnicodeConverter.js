@@ -1,6 +1,7 @@
 import {getPref} from '/vendor/easy-prefs/index-es.js';
 import {getHangulName, getHangulFromName} from './Hangul.js';
-import {CharrefunicodeConsts} from './unicodeUtils.js';
+import CharrefunicodeConsts from './CharrefunicodeConsts.js';
+import charrefunicodeDb from './charrefunicodeDb.js';
 
 let _;
 export const setL10n = (l10n) => {
@@ -15,8 +16,7 @@ const hexadec = /&#[xX]([0-9a-fA-F]*);/g;
 const htmlent = /&([_a-zA-Z][-0-9_a-zA-Z]*);/g; /* Unicode complete version? */
 
 export default class UnicodeConverter {
-    constructor ({charrefunicodeDb}) {
-        this.charrefunicodeDb = charrefunicodeDb;
+    constructor () {
         this.shiftcount = 0;
         this.newents = [];
         this.newcharrefs = [];
@@ -33,16 +33,16 @@ export default class UnicodeConverter {
         const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
 
         out = out.replace(decim, (match, match1) => {
-            const matched = CharrefunicodeConsts.charrefs.indexOf(parseInt(match1, 10));
+            const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(parseInt(match1, 10));
             if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
-                return '&' + CharrefunicodeConsts.ents[matched] + ';';
+                return '&' + CharrefunicodeConsts.Entities[matched] + ';';
             } else {
                 return match;
             }
         }).replace(hexadec, (match, match1) => {
-            const matched = CharrefunicodeConsts.charrefs.indexOf(parseInt('0x' + match1, 16));
+            const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(parseInt('0x' + match1, 16));
             if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
-                return '&' + CharrefunicodeConsts.ents[matched] + ';';
+                return '&' + CharrefunicodeConsts.Entities[matched] + ';';
             }
             return match;
         });
@@ -145,10 +145,10 @@ export default class UnicodeConverter {
 
         for (let i = 0; i < unicodeToConvert.length; i++) {
             const charcodeati = unicodeToConvert.charCodeAt(i);
-            const tempcharref = CharrefunicodeConsts.charrefs.indexOf(charcodeati);
+            const tempcharref = CharrefunicodeConsts.NumericCharacterReferences.indexOf(charcodeati);
 
             if (tempcharref !== -1 && (tempcharref !== (98 + this.shiftcount) || xhtmlentmode) && (tempcharref !== (99 + this.shiftcount) || !ampkeep)) {
-                out += '&' + CharrefunicodeConsts.ents[tempcharref] + ';';
+                out += '&' + CharrefunicodeConsts.Entities[tempcharref] + ';';
             } else {
                 out += unicodeToConvert.charAt(i);
             }
@@ -163,8 +163,8 @@ export default class UnicodeConverter {
                     match1 !== 'gt' && match1 !== 'amp')) {
                 if (this.newents.indexOf(match1) !== -1) { // If recognized multiple char ent. (won't convert these to decimal)
                     return this.newcharrefs[this.newents.indexOf(match1)];
-                } else if (CharrefunicodeConsts.ents.indexOf(match1) !== -1) { // If recognized single char. ent.
-                    return '&#' + CharrefunicodeConsts.charrefs[CharrefunicodeConsts.ents.indexOf(match1)] + ';';
+                } else if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
+                    return '&#' + CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)] + ';';
                 } else { // If unrecognized
                     return '&' + match1 + ';';
                 }
@@ -182,12 +182,12 @@ export default class UnicodeConverter {
         const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
         return out.replace(htmlent, (match, match1) => {
             if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
-                const b = CharrefunicodeConsts.charrefs[CharrefunicodeConsts.ents.indexOf(match1)];
+                const b = CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)];
                 const c = this.newents.indexOf(match1);
 
                 if (c !== -1) { // If recognized multiple char. ent. (won't convert these to hexadecimal)
                     return this.newcharrefs[c];
-                } else if (CharrefunicodeConsts.ents.indexOf(match1) !== -1) { // If recognized single char. ent.
+                } else if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
                     let hexletters = b.toString(16);
                     if (getPref('hexLettersUpper')) {
                         hexletters = hexletters.toUpperCase();
@@ -205,12 +205,12 @@ export default class UnicodeConverter {
         const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
         return out.replace(htmlent, (match, match1) => {
             if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
-                const b = CharrefunicodeConsts.charrefs[CharrefunicodeConsts.ents.indexOf(match1)];
+                const b = CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)];
 
                 if (this.newents.indexOf(match1) !== -1) { // If recognized multiple char ent.
                     return this.newcharrefs[this.newents.indexOf(match1)];
                 }
-                if (CharrefunicodeConsts.ents.indexOf(match1) !== -1) { // If recognized single char. ent.
+                if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
                     return String.fromCodePoint(b);
                 }
                 // If unrecognized
@@ -439,7 +439,7 @@ export default class UnicodeConverter {
             let hex = dec.toString(16).toUpperCase();
             hex = hex.length < 4 ? new Array(5 - hex.length).join(0) + hex : hex;
 
-            statement = this.charrefunicodeDb.dbConn.createStatement(
+            statement = charrefunicodeDb.dbConn.createStatement(
                 'SELECT `Name` FROM Unicode WHERE `Code_Point` = "' + hex + '"'
             );
             while (statement.executeStep()) { // put in while in case expand to allow LIKE checks (e.g., to get a list
@@ -493,7 +493,7 @@ export default class UnicodeConverter {
         const conn = (table === 'Unihan') ? 'dbConnUnihan' : 'dbConn';
         this.descripts = [];
 
-        if (table === 'Unihan' && !nochart && !this.charrefunicodeDb[conn]) {
+        if (table === 'Unihan' && !nochart && !charrefunicodeDb[conn]) {
             alert(_('need_download_unihan'));
             return;
         }
@@ -510,7 +510,7 @@ export default class UnicodeConverter {
 
         let statement;
         try {
-            // this.charrefunicodeDb[conn].createFunction('regx', 2, regex);
+            // charrefunicodeDb[conn].createFunction('regx', 2, regex);
             let likeBegin = 'LIKE "%';
             let likeEnd = '%"';
             if (strict) {
@@ -520,7 +520,7 @@ export default class UnicodeConverter {
 
             if (nameDesc === 'General_Category' && nameDescVal === 'Cn') {
                 try {
-                    statement = this.charrefunicodeDb[conn].createStatement(
+                    statement = charrefunicodeDb[conn].createStatement(
                         'SELECT `' + cpCol + '`, Name FROM ' + table
                     );
                     for (let i = 0; i < 0x10FFFE; i++) {
@@ -547,7 +547,7 @@ export default class UnicodeConverter {
                     alert(e);
                 }
             } else {
-                statement = this.charrefunicodeDb[conn].createStatement(
+                statement = charrefunicodeDb[conn].createStatement(
                     'SELECT `' + cpCol + '` FROM ' + table + ' WHERE `' + nameDesc +
                     '` ' + likeBegin + nameDescVal + likeEnd
                 );

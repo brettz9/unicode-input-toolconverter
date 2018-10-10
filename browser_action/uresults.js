@@ -34,19 +34,29 @@ if (prev >= 0 && prev <= 9) {
 */
 import {$, $$} from '/vendor/jamilih/dist/jml-es.js';
 import {getPref, setPref} from '/vendor/easy-prefs/index-es.js';
-import {Jamo, getAndSetCodePointInfo, CharrefunicodeConsts} from './unicode/unicodeUtils.js';
+import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
 import {getHangulName} from './unicode/Hangul.js';
 import {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from '/browser_action/templatesElementCustomization/insertIntoOrOverExisting.js';
 import {getPrefDefaults} from './preferences/prefDefaults.js';
+import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
+import charrefunicodeDb, {Jamo} from './unicode/charrefunicodeDb.js';
 
-let _, charrefunicodeConverter, charrefunicodeDb, jmo;
-export const shareVars = ({_: l10n, charrefunicodeConverter: _uc, charrefunicodeDb: _db}) => {
+let _, charrefunicodeConverter, jmo;
+export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
     _ = l10n;
     charrefunicodeConverter = _uc;
-    charrefunicodeDb = _db;
-    jmo = new Jamo({charrefunicodeDb});
+    jmo = new Jamo();
 };
+
+function getAndSetCodePointInfo (num, alink, _) {
+    const [codePointStart, script, plane, privateuse, surrogate] = getScriptInfoForCodePoint(num, _);
+    alink.target = '_blank';
+    alink.className = 'text-link';
+    alink.href = `http://www.unicode.org/charts/PDF/U${codePointStart}.pdf`;
+    alink.setAttribute('value', script + ' (PDF)');
+    return [plane, privateuse, surrogate];
+}
 
 const xulns = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
     htmlns = 'http://www.w3.org/1999/xhtml';
@@ -401,8 +411,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         this.orignewents = [];
         this.orignewcharrefs = [];
 
-        this.origents = CharrefunicodeConsts.ents.concat();
-        this.origcharrefs = CharrefunicodeConsts.charrefs.concat();
+        this.origents = CharrefunicodeConsts.Entities.concat();
+        this.origcharrefs = CharrefunicodeConsts.NumericCharacterReferences.concat();
         this.orignewents = charrefunicodeConverter.newents.concat();
         this.orignewcharrefs = charrefunicodeConverter.newcharrefs.concat();
 
@@ -951,7 +961,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         }
         return false;
     },
-    async getUnicodeDesc (kent, khextemp) {
+    // Todo: Reimplement in charrefunicodeDb.js
+    async getUnicodeDescription (kent, khextemp) {
         const that = this;
         const hideMissing = !(await getPref('showAllDetailedView'));
         const hideMissingUnihan = !(await getPref('showAllDetailedCJKView'));
@@ -1565,11 +1576,11 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
         // Reset in case charrefs or ents array deleted before and now want to go back to their original values.
         if (await getPref('appendtohtmldtd')) {
-            CharrefunicodeConsts.ents = this.origents.concat();
-            CharrefunicodeConsts.charrefs = this.origcharrefs.concat();
+            CharrefunicodeConsts.Entities = this.origents.concat();
+            CharrefunicodeConsts.NumericCharacterReferences = this.origcharrefs.concat();
         } else {
-            CharrefunicodeConsts.ents = [];
-            CharrefunicodeConsts.charrefs = [];
+            CharrefunicodeConsts.Entities = [];
+            CharrefunicodeConsts.NumericCharacterReferences = [];
         }
 
         charrefunicodeConverter.newents = this.orignewents.concat(); // Start off blank in case items erased
@@ -1596,8 +1607,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             }
             if (addreg) {
                 charrefunicodeConverter.shiftcount += 1; // Used to ensure apos or amp is detected in same position
-                CharrefunicodeConsts.ents.unshift(result[1]);
-                CharrefunicodeConsts.charrefs.unshift(m);
+                CharrefunicodeConsts.Entities.unshift(result[1]);
+                CharrefunicodeConsts.NumericCharacterReferences.unshift(m);
             } else { // For translating entities into two-char+ Unicode, or hex or dec
                 charrefunicodeConverter.newents.push(result[1]);
                 charrefunicodeConverter.newcharrefs.push(m); // Can be a string, etc.

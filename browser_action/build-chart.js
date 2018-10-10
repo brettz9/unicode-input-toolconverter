@@ -1,6 +1,6 @@
 import {jml} from '/vendor/jamilih/dist/jml-es.js';
 import {getPref, setPref} from '/vendor/easy-prefs/index-es.js';
-import {CharrefunicodeConsts} from './unicode/unicodeUtils.js';
+import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
 import buildChartTemplate from './templates/build-chart.js';
 
 let _, textReceptacle, chartContainer, insertText, charrefunicodeConverter;
@@ -64,7 +64,7 @@ export const buildChart = async function buildChart ({descripts} = {}) {
     let q, prev, chars, obj, remainder, rowceil, colsOverRemainder;
     const descriptsOrOnlyEnts = onlyentsyes || descripts;
     if (descriptsOrOnlyEnts) {
-        chars = descripts ? 'descripts' : 'charrefs';
+        chars = descripts ? 'descripts' : 'NumericCharacterReferences';
         obj = descripts ? charrefunicodeConverter : CharrefunicodeConsts;
         const chrreflgth = obj[chars].length;
 

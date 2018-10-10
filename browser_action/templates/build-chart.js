@@ -1,6 +1,6 @@
 import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
-import getUnicodeDesc from '../unicode/getUnicodeDescription.js';
+import charrefunicodeDb from '../unicode/charrefunicodeDb.js';
 
 let idgen = 0;
 export default function ({
@@ -34,11 +34,11 @@ export default function ({
                     return '';
                 }
 
-                const charRefIdx = CharrefunicodeConsts.charrefs.indexOf(current.startCharCode);
+                const charRefIdx = CharrefunicodeConsts.NumericCharacterReferences.indexOf(current.startCharCode);
                 const hasEntity = charRefIdx > -1;
                 const entity = hasEntity
                     // If recognized multiple char ent. (won't convert these to decimal)
-                    ? '&' + CharrefunicodeConsts.ents[charRefIdx] + ';'
+                    ? '&' + CharrefunicodeConsts.Entities[charRefIdx] + ';'
                     : '';
 
                 resetCurrentStartCharCodeIfOutOfBounds();
@@ -59,7 +59,7 @@ export default function ({
                         mouseover: (function (entity, current) {
                             return function () {
                                 if (!this.$noGetDescripts) {
-                                    getUnicodeDesc(entity, current.startCharCode);
+                                    charrefunicodeDb.getUnicodeDescription(entity, current.startCharCode);
                                 }
                             };
                         })(entity, current),

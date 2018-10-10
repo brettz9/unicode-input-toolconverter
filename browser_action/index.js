@@ -8,7 +8,6 @@ import addMillerColumnPlugin from '/node_modules/miller-columns/dist/index-es.js
 import getBuildChart, {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
 import {getPrefDefaults, setVars as setPrefDefaultVars} from './preferences/prefDefaults.js';
-import charrefunicodeDb from './unicode/charrefunicodeDb.js';
 import UnicodeConverter from './unicode/UnicodeConverter.js';
 import Unicodecharref, {shareVars as uresultsShareVars} from './uresults.js';
 import indexTemplate from './templates/index.js';
@@ -36,10 +35,8 @@ const [_] = await Promise.all([
     ]})
 ]);
 
-const charrefunicodeConverter = new UnicodeConverter({
-    _, charrefunicodeDb
-});
-uresultsShareVars({_, charrefunicodeConverter, charrefunicodeDb});
+const charrefunicodeConverter = new UnicodeConverter({_});
+uresultsShareVars({_, charrefunicodeConverter});
 setPrefDefaultVars({_});
 
 configurePrefs({
