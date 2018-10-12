@@ -31,8 +31,7 @@ export const setPref = async (key, val) => {
  * @returns {boolean|number|string}
  */
 export class PrefDefaults {
-    constructor ({_, defaults}) {
-        this._ = _;
+    constructor ({defaults}) {
         this.defaults = defaults;
     }
     async getPrefDefault (key) {
