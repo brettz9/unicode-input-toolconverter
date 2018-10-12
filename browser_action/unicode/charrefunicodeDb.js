@@ -21,7 +21,7 @@ class UnicodeDB {
         });
         req.addEventListener('success', ({target}) => {
             this.db = target.result;
-            this.db.addEventListener('onversionchange', () => {});
+            this.db.addEventListener('versionchange', () => {});
         });
         req.addEventListener('error', () => {});
         req.addEventListener('blocked', () => {});
