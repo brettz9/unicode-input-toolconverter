@@ -48,7 +48,9 @@ configurePrefs({
 });
 
 // TEMPLATE
-indexTemplate(_);
+// Todo: Make optional as slows down loading
+const fonts = await (await fetch('/fonts')).json();
+indexTemplate({_, fonts});
 
 // ADD BEHAVIORS
 makeTabBox('.tabbox');

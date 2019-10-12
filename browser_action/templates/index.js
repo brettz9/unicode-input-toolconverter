@@ -6,7 +6,7 @@ import unicodeScripts from '../unicode/unicode-scripts.js';
 import unihanFieldInfo from '../unicode/unihanFieldInfo.js';
 import Unicodecharref from '../uresults.js';
 
-export default function (_) {
+export default function ({_, fonts}) {
   document.title = _('uresults_title');
   jml('div', [
     ['div', {
@@ -306,22 +306,41 @@ export default function (_) {
                         ['input', {
                           id: 'font',
                           size: '12',
-                          $on: {
-                            change (e) {
-                              Unicodecharref.setprefs(e);
-                              const val = this.value.match(/\s/)
+                          $custom: {
+                            $setFontFamily (value) {
+                              const val = value.match(/\s/)
                                 ? ('"' +
-                                this.value.replace(/^"/, '').replace(/"$/, '') +
+                                value.replace(/^"/, '').replace(/"$/, '') +
                                 '"')
-                                : this.value;
+                                : value;
                               $('#insertText').style.fontFamily = val;
                               // Form elements don't inherit, so find these manually
                               $$('#chart_table button[name="unicode"]').forEach((button) => {
                                 button.style.fontFamily = val;
                               });
                             }
+                          },
+                          $on: {
+                            change (e) {
+                              Unicodecharref.setprefs(e);
+                              this.$setFontFamily(this.value);
+                            }
                           }
-                        }]
+                        }],
+                        ['br'],
+                        ['select', {$on: {
+                          click () {
+                            console.log('val', this.value);
+                            $('#font').$setFontFamily(this.value);
+                          }
+                        }}, [
+                          ['option', [
+                            _('choose_a_font')
+                          ]],
+                          ...fonts.map((font) => {
+                            return ['option', [font]];
+                          })
+                        ]]
                       ]]
                     ]],
                     ['div', {

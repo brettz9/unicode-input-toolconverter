@@ -28,7 +28,6 @@ http.createServer(function (req, res) {
             'SPFontsDataType'
           ]
         });
-        // Todo: Use in HTML
         // Todo: Switch to `flatMap` when available
         const out = fontInfo[0]._items.reduce((arr, {typefaces}) => {
           arr.push(...typefaces.map((typeface) => typeface.family));
