@@ -7,7 +7,7 @@
     "version": "0.1.0",
     "scripts": {
         "open": "open-cli http://localhost:8000/browser_action/ && npm start",
-        "start": "static -p 8000 -H '{\"Content-Type\": \"charset=utf-8\"}'",
+        "start": "node server",
         "unicode-charts-retrieve": "node tools/parseUnicodeCharts.js retrieve",
         "unicode-charts": "node tools/parseUnicodeCharts.js",
         "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
@@ -37,7 +37,7 @@
         "converter"
     ],
     "dependencies": {
-        "apple-system-profiler": "^1.0.0"
+        "apple-system-profiler": "https://github.com/brettz9/apple-system-profiler#listDataTypes"
     },
     "devDependencies": {
         "eslint": "6.5.1",
@@ -53,6 +53,7 @@
         "miller-columns": "^0.7.0",
         "node-fetch": "^2.6.0",
         "node-static": "^0.7.11",
+        "open-cli": "^5.0.0",
         "webextension-polyfill": "^0.5.0"
     }
 }

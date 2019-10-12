@@ -11,9 +11,17 @@ module.exports = {
     "browser": true,
     "webextensions": true
   },
+  "overrides": [
+      {
+          files: ["server.js"],
+          env: {
+              node: true
+          }
+      }
+  ],
   "rules": {
     "semi": [2, "always"],
-    "indent": ["error", 4, {"outerIIFEBody": 0}],
+    "indent": ["error", 2, {"outerIIFEBody": 0}],
     "object-property-newline": 0,
     "one-var": 0,
     "no-var": 2,
