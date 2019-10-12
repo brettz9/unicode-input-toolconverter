@@ -24,9 +24,5 @@ character references, etc.
     <https://bitbucket.org/brettz9/colbrowser>
 1. Borrow from or ideas from GPL3-licensed <https://github.com/brettz9/charpick>?
 1. Get i18n completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
-1. Use [`system_profiler SPFontsDataType`](https://apple.stackexchange.com/a/243746/206073)
-  (with my fork of [apple-system-profiler](https://github.com/brettz9/apple-system-profiler/))
-  to get list of fonts on system, and allow user to change, by serving
-  them with `@font-face`
 1. Allow adding specific characters or sequences thereof to global system key
     commands
