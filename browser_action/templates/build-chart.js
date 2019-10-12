@@ -1,4 +1,4 @@
-import {jml, nbsp} from '/vendor/jamilih/dist/jml-es.js';
+import {jml, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
 import charrefunicodeDb from '../unicode/charrefunicodeDb.js';
 

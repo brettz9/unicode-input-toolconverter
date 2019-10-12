@@ -1,10 +1,10 @@
 /* eslint-env browser, webextensions */
 /* globals jQuery */
-import {$} from '/vendor/jamilih/dist/jml-es.js';
-import {i18n} from '/vendor/i18n-safe/index-es.js';
+import {$} from '../vendor/jamilih/dist/jml-es.js';
+import {i18n} from '../vendor/i18n-safe/index-es.js';
 import {makeTabBox} from './templatesElementCustomization/widgets.js';
-import {setPref, configurePrefs, PrefDefaults} from '/vendor/easy-prefs/index-es.js';
-import addMillerColumnPlugin from '/node_modules/miller-columns/dist/index-es.js'; // Todo: Switch to vendor version
+import {setPref, configurePrefs, PrefDefaults} from '../vendor/easy-prefs/index-es.js';
+import addMillerColumnPlugin from '../node_modules/miller-columns/dist/index-es.js'; // Todo: Switch to vendor version
 import getBuildChart, {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
 import {getPrefDefaults, setVars as setPrefDefaultVars} from './preferences/prefDefaults.js';
@@ -59,7 +59,7 @@ await getBuildChart({
   textReceptacle: $('#insertText'),
   chartContainer: $('#chartContainer'),
   // Todo: Get working
-  insertText: ({textReceptacle, value}) => {
+  insertText ({textReceptacle, value}) {
     insertIntoOrOverExisting({textReceptacle, value});
 
     // Save values for manipulation by entity addition function, 'insertent'

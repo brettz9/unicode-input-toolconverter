@@ -111,6 +111,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
 });
 // console.log('m', majorHeading, scriptGroups);
 
+// eslint-disable-next-line require-await
 async function saveLocalesWithoutDupes (localeFiles, localeFileContents) {
   return Promise.all(
     localeFiles.map((localeFile, i) => {
@@ -251,7 +252,8 @@ export default function (_) {
   ) +
   `;
 }
-`);
+`
+);
 
 scriptsAndStartRanges.sort(({startRange: aStartRange}, {startRange: bStartRange}) => {
   return parseInt(aStartRange, 16) > parseInt(bStartRange, 16) ? 1 : -1;
@@ -305,11 +307,13 @@ async function recurseDirectory ({directory, basePath = './', results}) {
         keys.push(result[1] || result[2]);
       }
       results.push({path: pth, keys});
+      return undefined;
     })
   );
   if (finalPromise) {
     return results;
   }
+  return undefined;
 }
 
 // console.log('scriptsAndStartRanges', scriptsAndStartRanges);

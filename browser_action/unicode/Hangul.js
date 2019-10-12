@@ -30,9 +30,10 @@ const sBase = 0xAC00,
   nCount = vCount * tCount;
 
 /**
- * Break up a Hangul syllable into its Jamo components
- * @param {Number} syllableCode Decimal code point for Hangul syllable to decompose
- * @returns {Number[|String]} An array of the numeric value of each component or string if unchanged
+ * Break up a Hangul syllable into its Jamo components.
+ * @param {Integer} syllableCode Decimal code point for Hangul syllable to decompose
+ * @returns {Integer[]|string} An array of the numeric value of each component or
+ *   string if unchanged
  */
 export function decomposeHangul (syllableCode) {
   const sIndex = syllableCode - sBase;
@@ -49,7 +50,7 @@ export function decomposeHangul (syllableCode) {
 }
 /**
  *
- * @param {String[]} source
+ * @param {string[]} source
  */
 export function composeHangul (source) {
   const len = source.length;
@@ -94,10 +95,10 @@ export function composeHangul (source) {
 }
 
 /**
- * Gets a Unicode character for the passed-in Hangul syllable name
- * @param {String} name The name of the syllable to find
+ * Gets a Unicode character for the passed-in Hangul syllable name.
+ * @param {string} name The name of the syllable to find
  * @author Brett Zamir (others adapted directly from Unicode)
- * @returns {String|Boolean} False if invalid, or otherwise the Hangul character represented by
+ * @returns {string|boolean} False if invalid, or otherwise the Hangul character represented by
  *                            the supplied name
  */
 export function getHangulFromName (name) {
@@ -155,8 +156,8 @@ export function getHangulFromName (name) {
 }
 
 /**
- * Utility (could be adapted to accept the letter(s))
- * @param {String} index
+ * Utility (could be adapted to accept the letter(s)).
+ * @param {string} index
  * @param {'l'|'v'|'t'} type
  */
 export function getJamoForIndex (index, type) {

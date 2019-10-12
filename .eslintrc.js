@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   "extends": "ash-nazg",
   "parserOptions": {
@@ -10,11 +12,29 @@ module.exports = {
     "browser": true,
     "webextensions": true
   },
+  settings: {
+    polyfills: [
+      "fetch",
+      "Object.assign",
+      "Object.entries",
+      "Object.values",
+      "Promise.all",
+      "String.fromCodePoint",
+      "URL"
+    ]
+  },
   "overrides": [
     {
       files: ["server.js"],
       env: {
         node: true
+      }
+    },
+    {
+      files: ["browser_action/templates/**"],
+      rules: {
+        "object-curly-newline": 0,
+        "multiline-ternary": 0
       }
     }
   ],
@@ -28,6 +48,6 @@ module.exports = {
     "object-curly-spacing": ["error", "never"],
 
     "import/no-absolute-path": 0,
-    "object-curly-newline": 0
+    "import/no-anonymous-default-export": 0,
   }
 };

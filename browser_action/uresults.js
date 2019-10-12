@@ -32,12 +32,12 @@ if (prev >= 0 && prev <= 9) {
   prev = `'#${prev}'`;
 }
 */
-import {$, $$} from '/vendor/jamilih/dist/jml-es.js';
-import {getPref, setPref} from '/vendor/easy-prefs/index-es.js';
+import {$, $$} from '../vendor/jamilih/dist/jml-es.js';
+import {getPref, setPref} from '../vendor/easy-prefs/index-es.js';
 import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
 import {getHangulName} from './unicode/Hangul.js';
 import {buildChart} from './build-chart.js';
-import insertIntoOrOverExisting from '/browser_action/templatesElementCustomization/insertIntoOrOverExisting.js';
+import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
 import {getPrefDefaults} from './preferences/prefDefaults.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {Jamo} from './unicode/charrefunicodeDb.js';
@@ -105,6 +105,7 @@ const Unicodecharref = {
         stat.value = _('download_progress') + ' ' + percentComplete + _('percentSign');
       },
       onStateChange (aWebProgress, aRequest, aFlag, aStatus) {
+        // eslint-disable-next-line no-bitwise
         if (aFlag & STATE_STOP) { //  && aFlag & STATE_IS_WINDOW
           try {
             charrefunicodeDb.connect('Unihan6.sqlite', 'unihan');
@@ -518,14 +519,15 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
       break;
     }
 
-    if (customProtocol) {
-    } else if (!args) { // options menu
-      $('#unicodeTabBox').$selectTab($('#prefs'));
-    } else if (args[2] !== undefined) { // Keyboard invocation or button
-      // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
-      $('#unicodeTabBox').$selectTab($(await getPref('initialTab')));
-    } else if (targetid !== 'context-unicodechart' && targetid !== 'tools-charrefunicode') {
-      $('#unicodeTabBox').$selectTab($('#conversion'));
+    if (!customProtocol) {
+      if (!args) { // options menu
+        $('#unicodeTabBox').$selectTab($('#prefs'));
+      } else if (args[2] !== undefined) { // Keyboard invocation or button
+        // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
+        $('#unicodeTabBox').$selectTab($(await getPref('initialTab')));
+      } else if (targetid !== 'context-unicodechart' && targetid !== 'tools-charrefunicode') {
+        $('#unicodeTabBox').$selectTab($('#conversion'));
+      }
     }
 
     $('#initialTab').selectedItem = $('#mi_' + await getPref('initialTab'));
@@ -558,9 +560,11 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     const outerh = await getPref('outerHeight');
     const outerw = await getPref('outerWidth');
     if (outerh > 0) {
+      // eslint-disable-next-line require-atomic-updates
       window.outerHeight = outerh;
     }
     if (outerw > 0) {
+      // eslint-disable-next-line require-atomic-updates
       window.outerWidth = outerw;
     }
   },
@@ -589,7 +593,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
       break;
     case 'radio': {
       let radioid;
-      const result = e.target.id.match(/^_([0-9])+-(.*)$/);
+      const result = e.target.id.match(/^_(\d)+-(.*)$/);
       if (result !== null) {
         radioid = result[2]; // Extract preference name
         setPref(radioid, result[1] === '1');
@@ -664,15 +668,15 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     setPref('outerWidth', 0);
   },
   /**
-   * Set a boolean preference (and its checked state in the interface) to a given boolean value
-   * @param {String|String[]} els The element ID string or strings which should have their values set
-   * @param {Boolean} value The value for the preference and checked state
+   * Set a boolean preference (and its checked state in the interface) to a given boolean value.
+   * @param {string|string[]} els The element ID string or strings which should have their values set
+   * @param {boolean} value The value for the preference and checked state
    */
   setBoolChecked (els, value) {
     els = typeof els === 'string' ? [els] : els;
-    for (let i = 0; i < els.length; i++) {
-      setPref(els[i], value);
-      $('#' + els[i]).checked = value;
+    for (const el of els) {
+      setPref(el, value);
+      $('#' + el).checked = value;
     }
   },
   classChange (el) {
@@ -821,11 +825,11 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     return false;
   },
   /**
-   * Replace Unicode characters with their escaped description form
-   * @param {String} toconvert The text whose Unicode characters will be replaced
+   * Replace Unicode characters with their escaped description form.
+   * @param {string} toconvert The text whose Unicode characters will be replaced
    * @param {XULElement} el The (button) element whose class will be changed to reflect that the action has been
    *                            activated
-   * @returns {String} The passed-in string with Unicode replaced with description escape sequences
+   * @returns {string} The passed-in string with Unicode replaced with description escape sequences
    */
   unicode2CharDescVal (toconvert, el) {
     this.classChange(el);
@@ -834,11 +838,11 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     return val;
   },
   /**
-   * Converts character description escape sequences within a string to Unicode characters
-   * @param {String} toconvert The text to convert
+   * Converts character description escape sequences within a string to Unicode characters.
+   * @param {string} toconvert The text to convert
    * @param {XULElement} el The button element whose class should be dynamically changed (and others
    *                            deactivated)
-   * @returns {String} The converted-to-Unicode value
+   * @returns {string} The converted-to-Unicode value
    */
   charDesc2UnicodeVal (toconvert, el) {
     this.classChange(el);
@@ -976,7 +980,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
 
     function placeItem (sel, item) {
       const firstchld = $(sel).firstChild;
-      if (firstchld != null) {
+      if (firstchld !== null) {
         $(sel).replaceChild(item, firstchld);
       } else {
         $(sel).append(item);
@@ -986,7 +990,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     placeItem('#pdflink', alink);
 
     // Handle plane #
-    const planeText = _('plane_num', {plane}) + '\u00a0';
+    const planeText = _('plane_num', {plane}) + '\u00A0';
     placeItem('#plane', planeText);
 
     if (await getPref('showImg')) {
@@ -1103,7 +1107,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     }
     try {
       // $('#displayUnicodeDesc').value = _('retrieving_description');
-      while (statement.executeStep()) {
+      const executedStep = statement.executeStep();
+      if (executedStep) {
         if (!cjkText) {
           result = statement.getUTF8String(1);
           if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
@@ -1120,7 +1125,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
           temp = statement.getUTF8String(i); // Fix: display data more readably, etc.
           if (i === 10) {
             if (temp) {
-              result += ';\u00a0\u00a0\u00a0\u00a0\n' + _('searchUnicode_1_Name') +
+              result += ';\u00A0\u00A0\u00A0\u00A0\n' + _('searchUnicode_1_Name') +
               _('colon') + ' ' + temp;
             }
             continue;
@@ -1148,6 +1153,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             case 13:
             case 14: {
               const a = createHTMLElement('a');
+              // eslint-disable-next-line no-script-url
               a.href = 'javascript:void(0)';
 
               a.addEventListener('click', function (e) {
@@ -1181,9 +1187,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             this.removeViewChildren(i);
           }
         }
-        break;
       }
-      if (!this.UnihanType && result != null) {
+      if (!this.UnihanType && result !== null && result !== undefined) {
         $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
         $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
       // Fix: remove this duplicate also in catch, etc.
@@ -1290,7 +1295,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
       );
       try {
         // $('#displayUnicodeDesc').value= _('retrieving_description');
-        while (statement.executeStep()) {
+        const executedStep = statement.executeStep();
+        if (executedStep) {
           result = statement.getUTF8String(14); // Fix: display data more readably, with heading, etc. (and conditional)
           if (result === null && !cjkText) {
             result = _('No_definition');
@@ -1304,6 +1310,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
                 $('#_detailedCJKView' + i).parentNode.hidden = false;
               }
               // result += '; ' + temp;
+              /*
               switch (i) {
               case 1:
                 // Optional code to transform output into something more readable
@@ -1313,6 +1320,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
               default:
                 break;
               }
+              */
               $('#_detailedCJKView' + i).value = temp;
             } else {
               $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
@@ -1329,6 +1337,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
               if (hideMissingUnihan) {
                 $('#_detailedCJKView' + i).parentNode.hidden = false;
               }
+              /*
               switch (i) {
               case 4:
                 // Optional code to transform output into something more readable
@@ -1338,13 +1347,13 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
               default:
                 break;
               }
+              */
               $('#_detailedCJKView' + i).value = temp;
             } else {
               $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
               $('#_detailedCJKView' + i).value = '';
             }
           }
-          break;
         }
 
         if (result !== '' && result !== null && result !== undefined) {
@@ -1502,14 +1511,14 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
   }, */
   rowsset (e) {
     this.setCurrstartset(this.j);
-    if (e.target.value != null && e.target.value !== '') {
+    if (e.target.value !== null && e.target.value !== '') {
       setPref('tblrowsset', e.target.value);
     }
     buildChart();
   },
   colsset (e) {
     this.setCurrstartset(this.j);
-    if (e.target.value != null && e.target.value !== '') {
+    if (e.target.value !== null && e.target.value !== '') {
       setPref('tblcolsset', e.target.value);
     }
     buildChart();
@@ -1517,7 +1526,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
   async startset (tbx, descripts) {
     this.disableEnts();
     let data;
-    if (tbx.value != null && tbx.value !== '') {
+    if (tbx.value !== null && tbx.value !== undefined && tbx.value !== '') {
       data = tbx.value;
     } else {
       // Only used when the field is manually changed to blank (default start set)
@@ -1586,7 +1595,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     charrefunicodeConverter.newents = this.orignewents.concat(); // Start off blank in case items erased
     charrefunicodeConverter.newcharrefs = this.orignewcharrefs.concat(); // Start off blank in case items erased
 
-    const decreg = /^(&#|#)?([0-9][0-9]+);?$/;
+    const decreg = /^(&#|#)?(\d\d+);?$/;
     // const decreg2 = /^(&#|#)([0-9]);?$/;
     const hexreg = /^(&#|#|0|U|u)?([xX+])([0-9a-fA-F]+);?$/;
 
@@ -1616,8 +1625,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     }
   },
   /**
-   * Sets the preference for whether to display the chosen character in the middle of the chart (or beginning)
-   * @param {Boolean} bool Whether to set to true or not
+   * Sets the preference for whether to display the chosen character in the middle of the chart (or beginning).
+   * @param {boolean} bool Whether to set to true or not
    */
   startCharInMiddleOfChart (bool) {
     // Commented this out because while it will always change (unlike now), the value will be misleading
@@ -1625,8 +1634,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     setPref('startCharInMiddleOfChart', bool);
   },
   /**
-   * Sets a value in preferences at which the Unicode chart view will begin on next start-up
-   * @value The value to which to set the current starting value
+   * Sets a value in preferences at which the Unicode chart view will begin on next start-up.
+   * @param {Integer} value The value to which to set the current starting value
    */
   setCurrstartset (value) {
     setPref('currentStartCharCode', value);
@@ -1647,7 +1656,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     */
   },
   /**
-   * Display the Unicode description box size (multline or not) according to user preferences
+   * Display the Unicode description box size (multline or not) according to user preferences.
    * @param {Event} e The event (not in use)
    */
   async multiline (e) {
@@ -1709,7 +1718,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     fstream.init(entFile, -1, 0, 0);
     cstream.init(fstream, 'UTF-8', 0, 0); // you can use another encoding here if you wish
     do {
-      read = cstream.readString(0xffffffff, str); // read as much as we can and put it in str.value
+      read = cstream.readString(0xFFFFFFFF, str); // read as much as we can and put it in str.value
       data += str.value;
     } while (read !== 0);
     cstream.close(); // this closes fstream

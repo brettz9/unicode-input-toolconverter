@@ -1,4 +1,4 @@
-import {jml} from '/vendor/jamilih/dist/jml-es.js';
+import {jml} from '../../vendor/jamilih/dist/jml-es.js';
 
 export const code = function (arg) {
   return jml('code', [arg]);

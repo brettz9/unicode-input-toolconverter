@@ -1,9 +1,11 @@
-import {jml} from '/vendor/jamilih/dist/jml-es.js';
-import {getPref, setPref} from '/vendor/easy-prefs/index-es.js';
+import {jml} from '../vendor/jamilih/dist/jml-es.js';
+import {getPref, setPref} from '../vendor/easy-prefs/index-es.js';
 import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
 import buildChartTemplate from './templates/build-chart.js';
 
 let _, textReceptacle, chartContainer, insertText, charrefunicodeConverter;
+
+// eslint-disable-next-line require-await
 export default async function ({
   _: i18n,
   descripts,
@@ -101,7 +103,7 @@ export const buildChart = async function buildChart ({descripts} = {}) {
   const appliedFormats = ['decyes', 'hexyes', 'unicodeyes'].filter((t) => types[t]);
   const displayTypes = {
     hexyes: (k) => `&#${k};`,
-    decyes: (k) => {
+    decyes (k) {
       const kto16 = hexLettersUpper
         ? k.toString(16).toUpperCase()
         : k.toString(16);

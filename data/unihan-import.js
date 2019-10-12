@@ -14,7 +14,7 @@ function addScript (files, checkVars, cb, checkback) {
     baseURL = location.href.substring(0, location.href.lastIndexOf('/') + 1);
     const script = document.createElement('script');
     script.src = baseURL + file;
-    $('head').appendChild(script);
+    $('head').append(script);
   }
   const interval = setInterval(() => {
     for (let j = 0, cvl = checkVars.length; j < cvl; j++) {
@@ -41,7 +41,7 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
     'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1', 'kRSAdobe_Japan1_6', 'kRSJapanese', 'kRSKanWa', 'kRSKangXi',
     'kRSKorean', 'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant', 'kSpecializedSemanticVariant',
     'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant'];
-  baseURL = baseURL + 'unihan/';
+  baseURL += 'unihan/';
   let scriptFileAsStr = (await Promise.all([
     'Unihan_DictionaryIndices.txt',
     'Unihan_DictionaryLikeData.txt',
@@ -57,7 +57,7 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
 
   let line;
   const obj = {}, lineRegex = /^U\+([\da-fA-F]{4,6})\t(\w+?)\t(.*)$/gm;
-  while ((line = (lineRegex).exec(scriptFileAsStr)) != null) {
+  while ((line = (lineRegex).exec(scriptFileAsStr)) !== null) {
     const cdpt = line[1], col = line[2], value = line[3];
     if (!obj[cdpt]) {
       obj[cdpt] = [];
@@ -77,10 +77,10 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
   });
   // Works but FF crashes with this--Chrome is ok
   scriptFileAsStr = '';
-  for (const p in obj) {
-    // $('#results').value += JSON.stringify(obj[p]).slice(1, -1) + '\n';
-    scriptFileAsStr += JSON.stringify(obj[p]).slice(1, -1) + '\n';
-  }
+  Object.values(obj).forEach((val) => {
+    // $('#results').value += JSON.stringify(val).slice(1, -1) + '\n';
+    scriptFileAsStr += JSON.stringify(val).slice(1, -1) + '\n';
+  });
   $('#results').value = scriptFileAsStr;
   // $('#results').value = JSON.stringify(obj);
 });

@@ -1,4 +1,4 @@
-import {getPref} from '/vendor/easy-prefs/index-es.js';
+import {getPref} from '../../vendor/easy-prefs/index-es.js';
 import {getHangulName, getHangulFromName} from './Hangul.js';
 import CharrefunicodeConsts from './CharrefunicodeConsts.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
@@ -11,7 +11,7 @@ export const setL10n = (l10n) => {
 /**
  * @namespace Converts from one string form to another
  */
-const decim = /&#([0-9]*);/g;
+const decim = /&#(\d*);/g;
 const hexadec = /&#[xX]([0-9a-fA-F]*);/g;
 const htmlent = /&([_a-zA-Z][-0-9_a-zA-Z]*);/g; /* Unicode complete version? */
 
@@ -35,12 +35,11 @@ export default class UnicodeConverter {
     const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
 
     out = out.replace(decim, (match, match1) => {
-      const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(parseInt(match1, 10));
+      const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(parseInt(match1));
       if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
         return '&' + CharrefunicodeConsts.Entities[matched] + ';';
-      } else {
-        return match;
       }
+      return match;
     }).replace(hexadec, (match, match1) => {
       const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(parseInt('0x' + match1, 16));
       if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
@@ -167,16 +166,17 @@ export default class UnicodeConverter {
       if (!xmlentkeep ||
         (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
           match1 !== 'gt' && match1 !== 'amp')) {
-        if (this.newents.indexOf(match1) !== -1) { // If recognized multiple char ent. (won't convert these to decimal)
+        if (this.newents.includes(match1)) { // If recognized multiple char ent. (won't convert these to decimal)
           return this.newcharrefs[this.newents.indexOf(match1)];
-        } else if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
-          return '&#' + CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)] + ';';
-        } else { // If unrecognized
-          return '&' + match1 + ';';
         }
-      } else { // If keeping predefined XML entities (and this is one)
+        if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
+          return '&#' + CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)] + ';';
+        }
+        // If unrecognized
         return '&' + match1 + ';';
       }
+      // If keeping predefined XML entities (and this is one)
+      return '&' + match1 + ';';
     });
   }
 
@@ -193,18 +193,18 @@ export default class UnicodeConverter {
 
         if (c !== -1) { // If recognized multiple char. ent. (won't convert these to hexadecimal)
           return this.newcharrefs[c];
-        } else if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
+        }
+        if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
           let hexletters = b.toString(16);
           if (getPref('hexLettersUpper')) {
             hexletters = hexletters.toUpperCase();
           }
           return '&#' + xstyle + hexletters + ';';
-        } else { // If unrecognized ent.
-          return '&' + match1 + ';';
-        }
-      } else { // If keeping predefined XML entities (and this is one)
+        } // If unrecognized ent.
         return '&' + match1 + ';';
       }
+      // If keeping predefined XML entities (and this is one)
+      return '&' + match1 + ';';
     });
   }
 
@@ -214,7 +214,7 @@ export default class UnicodeConverter {
       if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
         const b = CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)];
 
-        if (this.newents.indexOf(match1) !== -1) { // If recognized multiple char ent.
+        if (this.newents.includes(match1)) { // If recognized multiple char ent.
           return this.newcharrefs[this.newents.indexOf(match1)];
         }
         if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
@@ -222,9 +222,9 @@ export default class UnicodeConverter {
         }
         // If unrecognized
         return '&' + match1 + ';';
-      } else { // If keeping predefined XML entities (and this is one)
-        return '&' + match1 + ';';
       }
+      // If keeping predefined XML entities (and this is one)
+      return '&' + match1 + ';';
     });
   }
 
@@ -444,9 +444,9 @@ export default class UnicodeConverter {
   }
 
   /**
-   * Obtain a Unicode character description for a given decimal-expressed code point
-   * @param {Number} dec The code point of the description to obtain
-   * @returns {String} The Unicode character description
+   * Obtain a Unicode character description for a given decimal-expressed code point.
+   * @param {Integer} dec The code point of the description to obtain
+   * @returns {string} The Unicode character description
    */
   getCharDescForCodePoint (dec) {
     // Fix: handle Hangul syllables; CJK?
@@ -472,10 +472,13 @@ export default class UnicodeConverter {
     } finally {
       statement.reset();
     }
+    return undefined;
   }
 
   /**
-   * Search for a Unicode character value matching a given description
+   * Search for a Unicode character value matching a given description.
+   * @param {string} value
+   * @returns {Integer}
    */
   lookupUnicodeValueByCharName (value) {
     // Fix: Character names for Unihan?
@@ -498,7 +501,7 @@ export default class UnicodeConverter {
     }
     // const table = 'Unihan'; // fix: determine by pull-down
     const nameDescVal = obj.value;
-    if ((obj.id.match(/^searchk/) && table === 'Unicode') || // Don't query the other databases here
+    if ((obj.id.startsWith('searchk') && table === 'Unicode') || // Don't query the other databases here
       (obj.id.match(/^search[^k]/) && table === 'Unihan')
     ) {
       return;
@@ -507,7 +510,7 @@ export default class UnicodeConverter {
 
     // const nameDesc = (table === 'Unihan') ? 'kDefinition' : 'Name'; // Fix: let Unihan search Mandarin, etc.
 
-    const colindex = (table === 'Unihan') ? 0 : 0;
+    const colindex = 0; // (table === 'Unihan') ? 0 : 0;
     const cpCol = (table === 'Unihan') ? 'code_pt' : 'Code_Point';
     const conn = (table === 'Unihan') ? 'dbConnUnihan' : 'dbConn';
     this.descripts = [];
@@ -548,10 +551,10 @@ export default class UnicodeConverter {
               break;
             }
             const cp = statement.getUTF8String(colindex);
-            const range = statement.getUTF8String(1).match(/First>$/);
+            const range = statement.getUTF8String(1).endsWith('First>');
             if (range) {
               statement.executeStep();
-              const endRange = statement.getUTF8String(1).match(/Last>$/);
+              const endRange = statement.getUTF8String(1).endsWith('Last>');
               if (endRange) {
                 i = parseInt(statement.getUTF8String(colindex), 16);
                 continue;
@@ -585,4 +588,4 @@ export default class UnicodeConverter {
       statement.reset();
     }
   }
-};
+}

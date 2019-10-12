@@ -1,4 +1,4 @@
-import {jml, body, $, $$, nbsp} from '/vendor/jamilih/dist/jml-es.js';
+import {jml, body, $, $$, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
 import {code, link} from '../templateUtils/elements.js';
 import encodings from '../encodings.js';
@@ -1190,4 +1190,4 @@ export default function (_) {
       ]]
     ]]
   ], body);
-};
+}
