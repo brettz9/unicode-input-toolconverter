@@ -2,3 +2,4 @@ polyfills/browser-polyfill.min.js
 charrefunicode@brett.zamir - old
 vendor
 lib/misc-to-move
+browser_action/unicode/unicode-scripts.js

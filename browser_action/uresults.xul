@@ -1,7 +1,7 @@
 <?xml-stylesheet href="chrome://charrefunicode/skin/overlay.css" type="text/css"?>
 <dialog title="&uresults.title;"
-        ondialogaccept="return Unicodecharref.doOK();"
-        ondialogcancel="return Unicodecharref.doCancel();"
-		onload="centerWindowOnScreen();">
+  ondialogaccept="return Unicodecharref.doOK();"
+  ondialogcancel="return Unicodecharref.doCancel();"
+	onload="centerWindowOnScreen();">
 
 </dialog>

@@ -11,8 +11,8 @@ const localize = true;
 const {JSDOM} = jsdom;
 
 function getChromeSafeLocaleKey (key) {
-    return key.replace(/\\n/g, '').replace(/\s\s*/g, ' ') // Getting some extra WS
-        .replace(/\W/g, '_');
+  return key.replace(/\\n/g, '').replace(/\s\s*/g, ' ') // Getting some extra WS
+    .replace(/\W/g, '_');
 }
 
 (async () => {
@@ -21,13 +21,13 @@ const lastScriptNamesFile = path.join(__dirname, '../browser_action/unicode/last
 const chartsURL = 'https://www.unicode.org/charts/';
 const chartsFile = path.join(__dirname, 'unicode-charts.html');
 if (process.argv[2] === 'retrieve') {
-    const resp = await fetch(chartsURL);
-    text = await resp.text();
-    console.log('retrieved', text);
-    await fs.writeFile(chartsFile, text);
-    console.log('saved file');
+  const resp = await fetch(chartsURL);
+  text = await resp.text();
+  console.log('retrieved', text);
+  await fs.writeFile(chartsFile, text);
+  console.log('saved file');
 } else {
-    text = await fs.readFile(chartsFile, 'utf-8');
+  text = await fs.readFile(chartsFile, 'utf-8');
 }
 
 const doc = new JSDOM(text).window.document;
@@ -36,280 +36,280 @@ const scriptMaps = [...doc.querySelectorAll('table.map')];
 const uniqueTextPlaceholder = localize ? '___placeholder___' : ''; // We know it is not present inside Unicode script names!
 
 const cleanupText = (txt) => {
-    return txt.trim()
-        .replace(/(\s)\s+/, '$1')
-        .replace(/\s*\((?:ASCII|Odia)\)$/, '')
-        .replace(/\s\((?:\d\.?\d*)MB\)$/, ''); // Remove MB size
+  return txt.trim()
+    .replace(/(\s)\s+/, '$1')
+    .replace(/\s*\((?:ASCII|Odia)\)$/, '')
+    .replace(/\s\((?:\d\.?\d*)MB\)$/, ''); // Remove MB size
 };
 
 const scriptsAndStartRanges = [];
 
 const jamilih = scriptMaps.map((scriptMap) => {
-    const majorHeading = cleanupText(scriptMap.previousElementSibling.textContent);
-    // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
+  const majorHeading = cleanupText(scriptMap.previousElementSibling.textContent);
+  // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
 
-    const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
-    // sg, mb, pb/sb
-    let lastChildren;
-    return ['li', [
-        majorHeading,
-        ['ul', scriptGroups.map((scriptGroup) => {
-            return ['li', [
-                ['b', [
-                    uniqueTextPlaceholder + cleanupText(scriptGroup.textContent)
-                ]],
-                (() => {
-                    const lists = [];
-                    do {
-                        const a = scriptGroup.querySelector('a');
-                        const title = a && a.title;
-                        let cleanedText;
-                        if (scriptGroup.matches('.mb')) {
-                            cleanedText = cleanupText(scriptGroup.textContent);
-                            const children = [uniqueTextPlaceholder + cleanedText];
-                            lastChildren = children;
-                            lists.push(
-                                ['li', {title}, children]
-                            );
-                        } else if (scriptGroup.matches('.pb,.sb')) {
-                            cleanedText = cleanupText(scriptGroup.textContent);
-                            const children = [
-                                ['i', [
-                                    uniqueTextPlaceholder + cleanedText
-                                ]]
-                            ];
-                            if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
-                                lists.push(
-                                    ['li', {title}, children]
-                                );
-                            } else {
-                                if (!lastChildren[1]) {
-                                    lastChildren[1] = ['ul', []];
-                                }
-                                lastChildren[1][1].push(
-                                    ['li', {title}, children]
-                                );
-                            }
-                        }
-                        if (cleanedText && title) {
-                            scriptsAndStartRanges.push({
-                                script: getChromeSafeLocaleKey(cleanedText),
-                                startRange: title.replace(/-.*$/, '')
-                            });
-                        }
-                        scriptGroup = scriptGroup.nextElementSibling;
-                    } while (scriptGroup && !scriptGroup.matches('p.sg'));
-                    lastChildren = null;
-                    if (!lists.length) { // Just be safe
-                        return '';
-                    }
-                    return ['ul', lists];
-                })()
-            ]];
-        })]
-    ]];
+  const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
+  // sg, mb, pb/sb
+  let lastChildren;
+  return ['li', [
+    majorHeading,
+    ['ul', scriptGroups.map((scriptGroup) => {
+      return ['li', [
+        ['b', [
+          uniqueTextPlaceholder + cleanupText(scriptGroup.textContent)
+        ]],
+        (() => {
+          const lists = [];
+          do {
+            const a = scriptGroup.querySelector('a');
+            const title = a && a.title;
+            let cleanedText;
+            if (scriptGroup.matches('.mb')) {
+              cleanedText = cleanupText(scriptGroup.textContent);
+              const children = [uniqueTextPlaceholder + cleanedText];
+              lastChildren = children;
+              lists.push(
+                ['li', {title}, children]
+              );
+            } else if (scriptGroup.matches('.pb,.sb')) {
+              cleanedText = cleanupText(scriptGroup.textContent);
+              const children = [
+                ['i', [
+                  uniqueTextPlaceholder + cleanedText
+                ]]
+              ];
+              if (!lastChildren) { // A few rare cases to handle, e.g., "Other"
+                lists.push(
+                  ['li', {title}, children]
+                );
+              } else {
+                if (!lastChildren[1]) {
+                  lastChildren[1] = ['ul', []];
+                }
+                lastChildren[1][1].push(
+                  ['li', {title}, children]
+                );
+              }
+            }
+            if (cleanedText && title) {
+              scriptsAndStartRanges.push({
+                script: getChromeSafeLocaleKey(cleanedText),
+                startRange: title.replace(/-.*$/, '')
+              });
+            }
+            scriptGroup = scriptGroup.nextElementSibling;
+          } while (scriptGroup && !scriptGroup.matches('p.sg'));
+          lastChildren = null;
+          if (!lists.length) { // Just be safe
+            return '';
+          }
+          return ['ul', lists];
+        })()
+      ]];
+    })]
+  ]];
 });
 // console.log('m', majorHeading, scriptGroups);
 
 async function saveLocalesWithoutDupes (localeFiles, localeFileContents) {
-    return Promise.all(
-        localeFiles.map((localeFile, i) => {
-            return fs.writeFile(localeFile, JSON.stringify(localeFileContents[i], null, 4) + '\n');
-        })
-    );
+  return Promise.all(
+    localeFiles.map((localeFile, i) => {
+      return fs.writeFile(localeFile, JSON.stringify(localeFileContents[i], null, 2) + '\n');
+    })
+  );
 }
 async function deleteUnusedScriptNames (newScriptNames, localeFileContents) {
-    const {lastScriptNames} = JSON.parse(await fs.readFile(lastScriptNamesFile, 'utf-8'));
-    lastScriptNames.forEach((lastScriptName) => {
-        if (!newScriptNames.includes(lastScriptName)) {
-            localeFileContents.forEach((lfc) => {
-                delete lfc[lastScriptName];
-            });
-        }
-    });
+  const {lastScriptNames} = JSON.parse(await fs.readFile(lastScriptNamesFile, 'utf-8'));
+  lastScriptNames.forEach((lastScriptName) => {
+    if (!newScriptNames.includes(lastScriptName)) {
+      localeFileContents.forEach((lfc) => {
+        delete lfc[lastScriptName];
+      });
+    }
+  });
 }
 
 // We only actually need the ESLint `indent` rule for the localized version, but add anyway
 await fs.writeFile(
-    'browser_action/unicode/unicode-scripts.js',
-    `/* eslint-disable comma-spacing, quotes, indent */
+  'browser_action/unicode/unicode-scripts.js',
+  `/* eslint-disable comma-spacing, quotes, indent */
 // Do not edit this file; this is an auto-generated file used to
 //   build a hierarchy of script names. It is built by
 //   \`parseUnicodeCharts.js\` using ${chartsURL}.
 export default function (_) {
-    return ` + (localize
-        ? await (async () => {
-            const localesDir = '_locales';
-            const dirs = (await fs.readdir(localesDir)).filter((f) => !f.includes('.'));
-            const localeFiles = dirs.map((dir) => path.join(localesDir, dir, 'messages.json'));
-            const localeFileContents = (await Promise.all(localeFiles.map((localeFile) => {
-                return fs.readFile(localeFile, 'utf-8');
-            }))).map((fileContents) => {
-                return JSON.parse(fileContents);
-            });
+  return ` + (localize
+    ? await (async () => {
+      const localesDir = '_locales';
+      const dirs = (await fs.readdir(localesDir)).filter((f) => !f.includes('.'));
+      const localeFiles = dirs.map((dir) => path.join(localesDir, dir, 'messages.json'));
+      const localeFileContents = (await Promise.all(localeFiles.map((localeFile) => {
+        return fs.readFile(localeFile, 'utf-8');
+      }))).map((fileContents) => {
+        return JSON.parse(fileContents);
+      });
 
-            const dirResults = (await recurseDirectory({directory: 'browser_action'})).filter(({keys}) => {
-                return keys.length;
-            });
-            // console.log('dirResults', JSON.stringify(dirResults, null, 8));
-            const keyMap = {};
-            dirResults.forEach(({path, keys}) => {
-                keys.forEach((key) => {
-                    localeFileContents.forEach((lfc, i) => {
-                        if (!(key in lfc)) {
-                            if (!keyMap[key]) {
-                                keyMap[key] = {paths: [], locales: []};
-                            }
-                            if (!keyMap[key].paths.includes(path)) {
-                                keyMap[key].paths.push(path);
-                            }
-                            if (!keyMap[key].locales.includes(localeFiles[i])) {
-                                keyMap[key].locales.push(localeFiles[i]);
-                            }
-                        }
-                    });
-                });
-            });
-            Object.entries(keyMap).forEach(([key, {paths, locales}]) => {
-                // Working: console.log(`key "${key}" found in paths [${paths.join(', ')}] is missing in locales: [${locales.join(', ')}]\n`);
-            });
+      const dirResults = (await recurseDirectory({directory: 'browser_action'})).filter(({keys}) => {
+        return keys.length;
+      });
+      // console.log('dirResults', JSON.stringify(dirResults, null, 2));
+      const keyMap = {};
+      dirResults.forEach(({path, keys}) => {
+        keys.forEach((key) => {
+          localeFileContents.forEach((lfc, i) => {
+            if (!(key in lfc)) {
+              if (!keyMap[key]) {
+                keyMap[key] = {paths: [], locales: []};
+              }
+              if (!keyMap[key].paths.includes(path)) {
+                keyMap[key].paths.push(path);
+              }
+              if (!keyMap[key].locales.includes(localeFiles[i])) {
+                keyMap[key].locales.push(localeFiles[i]);
+              }
+            }
+          });
+        });
+      });
+      Object.entries(keyMap).forEach(([key, {paths, locales}]) => {
+        // Working: console.log(`key "${key}" found in paths [${paths.join(', ')}] is missing in locales: [${locales.join(', ')}]\n`);
+      });
 
-            localeFileContents.forEach((lfc, i) => {
-                if (i !== 0) { // Just test one for now
-                    return;
+      localeFileContents.forEach((lfc, i) => {
+        if (i !== 0) { // Just test one for now
+          return;
+        }
+        Object.keys(lfc).forEach((localeKey) => {
+          if (!dirResults.some(({keys, path}) => {
+            // console.log('keys', keys);
+            return keys.includes(localeKey);
+          })) {
+            // Working:
+            // console.log(`Locale key "${localeKey}" not present in keys used in any of the found file paths.`);
+          }
+        });
+      });
+
+      const newScriptNames = [];
+      const ret = JSON.stringify(['ul', jamilih], null, 2).replace(
+        new RegExp(
+          '^(\\s*)"' + uniqueTextPlaceholder + '(.*)"(,)?$',
+          'gm'
+        ),
+        (_, initialWS, key, possibleComma = '') => {
+          const chromeSafeLocaleKey = getChromeSafeLocaleKey(key);
+
+          newScriptNames.push(chromeSafeLocaleKey);
+          // Insert `chromeSafeLocaleKey` if not present;
+          //   Todo: Hard-code-test each locale to make sure no other
+          //      l10n errors for missing keys, script or otherwise
+          localeFileContents.forEach((lfc, i) => {
+            /*
+            // Works
+            localeFileContents.forEach((lfc2, j) => {
+              if (i === j) {
+                return;
+              }
+              Object.entries(lfc).forEach(([key, val]) => {
+                if (!(key in lfc2)) {
+                  console.log(`key, ${key}, not present in ${localeFiles[j]}`);
                 }
-                Object.keys(lfc).forEach((localeKey) => {
-                    if (!dirResults.some(({keys, path}) => {
-                        // console.log('keys', keys);
-                        return keys.includes(localeKey);
-                    })) {
-                        // Working:
-                        // console.log(`Locale key "${localeKey}" not present in keys used in any of the found file paths.`);
-                    }
-                });
+              });
             });
+            */
+            if (lfc.langCode.message !== 'hu-HU') {
+              // return;
+            }
+            if (!(chromeSafeLocaleKey in lfc)) {
+              lfc[chromeSafeLocaleKey] = {
+                message: key
+              };
+              // console.log(1, chromeSafeLocaleKey, key);
+              // fs.writeFile(localeFiles[i], JSON.stringify(lfc, null, 2));
+            }
+          });
+          /*
+          // Find change in *values*
+          if (lfc[chromeSafeLocaleKey] && lfc[chromeSafeLocaleKey].message !== key) {
+            console.log(key, lfc[chromeSafeLocaleKey].message);
+          }
+          */
+          return `${initialWS}_("${chromeSafeLocaleKey}")${possibleComma}`;
+        }
+      );
+      await deleteUnusedScriptNames(newScriptNames, localeFileContents);
+      await saveLocalesWithoutDupes(localeFiles, localeFileContents);
 
-            const newScriptNames = [];
-            const ret = JSON.stringify(['ul', jamilih], null, 4).replace(
-                new RegExp(
-                    '^(\\s*)"' + uniqueTextPlaceholder + '(.*)"(,)?$',
-                    'gm'
-                ),
-                (_, initialWS, key, possibleComma = '') => {
-                    const chromeSafeLocaleKey = getChromeSafeLocaleKey(key);
-
-                    newScriptNames.push(chromeSafeLocaleKey);
-                    // Insert `chromeSafeLocaleKey` if not present;
-                    //   Todo: Hard-code-test each locale to make sure no other
-                    //          l10n errors for missing keys, script or otherwise
-                    localeFileContents.forEach((lfc, i) => {
-                        /*
-                        // Works
-                        localeFileContents.forEach((lfc2, j) => {
-                            if (i === j) {
-                                return;
-                            }
-                            Object.entries(lfc).forEach(([key, val]) => {
-                                if (!(key in lfc2)) {
-                                    console.log(`key, ${key}, not present in ${localeFiles[j]}`);
-                                }
-                            });
-                        });
-                        */
-                        if (lfc.langCode.message !== 'hu-HU') {
-                            // return;
-                        }
-                        if (!(chromeSafeLocaleKey in lfc)) {
-                            lfc[chromeSafeLocaleKey] = {
-                                message: key
-                            };
-                            // console.log(1, chromeSafeLocaleKey, key);
-                            // fs.writeFile(localeFiles[i], JSON.stringify(lfc, null, 4));
-                        }
-                    });
-                    /*
-                    // Find change in *values*
-                    if (lfc[chromeSafeLocaleKey] && lfc[chromeSafeLocaleKey].message !== key) {
-                        console.log(key, lfc[chromeSafeLocaleKey].message);
-                    }
-                    */
-                    return `${initialWS}_("${chromeSafeLocaleKey}")${possibleComma}`;
-                }
-            );
-            await deleteUnusedScriptNames(newScriptNames, localeFileContents);
-            await saveLocalesWithoutDupes(localeFiles, localeFileContents);
-
-            await fs.writeFile(lastScriptNamesFile, `
+      await fs.writeFile(lastScriptNamesFile, `
 {
-    "$comment": "Do not edit this file; this is an auto-generated file used to track script names, some of which may end up needing to be deleted from locale files if no longer in use",
-    "lastScriptNames": ${JSON.stringify(newScriptNames)}
+  "$comment": "Do not edit this file; this is an auto-generated file used to track script names, some of which may end up needing to be deleted from locale files if no longer in use",
+  "lastScriptNames": ${JSON.stringify(newScriptNames)}
 }
 `);
-            return ret;
-        })()
-        : JSON.stringify(['ul', jamilih], null, 4)
-    ) +
-    `;
+      return ret;
+    })()
+    : JSON.stringify(['ul', jamilih], null, 2)
+  ) +
+  `;
 }
 `);
 
 scriptsAndStartRanges.sort(({startRange: aStartRange}, {startRange: bStartRange}) => {
-    return parseInt(aStartRange, 16) > parseInt(bStartRange, 16) ? 1 : -1;
+  return parseInt(aStartRange, 16) > parseInt(bStartRange, 16) ? 1 : -1;
 });
 
 let s = '';
 let lastStartRange = '0000';
 let lastScript = 'null';
 scriptsAndStartRanges.forEach(({script, startRange}) => {
-    if (startRange === '0000' || !lastScript) {
-        return;
-    }
-    // Todo: Add plane, privateuse, surrogate info
-    s += `} else if (num < 0x${startRange}) {
-    codePointStart = '${lastStartRange}'; script = _('${lastScript}');
+  if (startRange === '0000' || !lastScript) {
+    return;
+  }
+  // Todo: Add plane, privateuse, surrogate info
+  s += `} else if (num < 0x${startRange}) {
+  codePointStart = '${lastStartRange}'; script = _('${lastScript}');
 `;
-    lastStartRange = startRange;
-    lastScript = script;
+  lastStartRange = startRange;
+  lastScript = script;
 });
 
 async function recurseDirectory ({directory, basePath = './', results}) {
-    const dirPath = path.join(basePath, directory);
-    const filesAndDirs = await fs.readdir(dirPath);
-    let finalPromise = false;
-    if (!results) {
-        finalPromise = true;
-        results = [];
-    }
-    await Promise.all(
-        filesAndDirs.filter((fileOrDir) => {
-            // Is a directory or JavaScript file
-            return !fileOrDir.includes('.') || (/.js$/).test(fileOrDir);
-        }).map(async (fileOrDir) => {
-            if (!fileOrDir.includes('.')) { // Should check `isDirectory()` or such
-                return recurseDirectory({
-                    directory: fileOrDir,
-                    basePath: dirPath,
-                    results
-                });
-            }
-            const pth = path.join(dirPath, fileOrDir);
-            const contents = await fs.readFile(pth, 'utf-8');
+  const dirPath = path.join(basePath, directory);
+  const filesAndDirs = await fs.readdir(dirPath);
+  let finalPromise = false;
+  if (!results) {
+    finalPromise = true;
+    results = [];
+  }
+  await Promise.all(
+    filesAndDirs.filter((fileOrDir) => {
+      // Is a directory or JavaScript file
+      return !fileOrDir.includes('.') || (/.js$/).test(fileOrDir);
+    }).map(async (fileOrDir) => {
+      if (!fileOrDir.includes('.')) { // Should check `isDirectory()` or such
+        return recurseDirectory({
+          directory: fileOrDir,
+          basePath: dirPath,
+          results
+        });
+      }
+      const pth = path.join(dirPath, fileOrDir);
+      const contents = await fs.readFile(pth, 'utf-8');
 
-            const i18nRegex = // /_\((?:['"]([^'"]*)['"])\)/g;
-            // Todo: Works to find variable forms:
-                /_\((?:['"]([^'"]*)['"]|([^"')][^{)]*|[^{)]*[^"')]))\)/g;
+      const i18nRegex = // /_\((?:['"]([^'"]*)['"])\)/g;
+      // Todo: Works to find variable forms:
+        /_\((?:['"]([^'"]*)['"]|([^"')][^{)]*|[^{)]*[^"')]))\)/g;
 
-            const keys = [];
-            let result;
-            while ((result = (i18nRegex.exec(contents))) !== null) {
-                keys.push(result[1] || result[2]);
-            }
-            results.push({path: pth, keys});
-        })
-    );
-    if (finalPromise) {
-        return results;
-    }
+      const keys = [];
+      let result;
+      while ((result = (i18nRegex.exec(contents))) !== null) {
+        keys.push(result[1] || result[2]);
+      }
+      results.push({path: pth, keys});
+    })
+  );
+  if (finalPromise) {
+    return results;
+  }
 }
 
 // console.log('scriptsAndStartRanges', scriptsAndStartRanges);

@@ -1,59 +1,59 @@
 {
-    "name": "unicode-input-toolconverter",
-    "description": "Add-on for selecting Unicode characters by variety of means and converting between various representations",
-    "author": "Brett Zamir",
-    "contributors": [],
-    "license": "MPL-2.0",
-    "version": "0.1.0",
-    "scripts": {
-        "open": "open-cli http://localhost:8000/browser_action/ && npm start",
-        "start": "node server",
-        "unicode-charts-retrieve": "node tools/parseUnicodeCharts.js retrieve",
-        "unicode-charts": "node tools/parseUnicodeCharts.js",
-        "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
-        "webext": "npm run eslint && web-ext run --browser-console -f firefox",
-        "webext-default": "npm run eslint && web-ext run --browser-console",
-        "webext-beta": "npm run eslint && web-ext run --browser-console -f beta",
-        "webext-nightly": "npm run eslint && web-ext run --browser-console -f nightly",
-        "webext-dev": "npm run eslint && web-ext run --browser-console -f firefoxdeveloperedition",
-        "webext-build": "npm run eslint && web-ext build",
-        "eslint": "eslint --ext=js,html,md .",
-        "copy": "npm run copy-jquery && npm run copy-miller-columns && npm run copy-jamilih && npm run copy-polyfill",
-        "copy-jquery": "cp node_modules/jquery/dist/jquery.js vendor/jquery/dist/jquery.js",
-        "copy-miller-columns": "cp node_modules/miller-columns/miller-columns.css vendor/miller-columns/miller-columns.css && cp node_modules/miller-columns/dist/index-es.min.js vendor/miller-columns/dist/index-es.min.js",
-        "copy-jamilih": "cp node_modules/jamilih/dist/jml-es.js vendor/jamilih/dist/jml-es.js",
-        "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js polyfills/browser-polyfill.min.js && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map polyfills/browser-polyfill.min.js.map"
-    },
-    "homepage": "https://github.com/brettz9/unicode-input-toolconverter",
-    "bugs": "https://github.com/brettz9/unicode-input-toolconverter/issues",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/brettz9/unicode-input-toolconverter"
-    },
-    "engines": {},
-    "keywords": [
-        "unicode",
-        "input",
-        "converter"
-    ],
-    "dependencies": {
-        "apple-system-profiler": "https://github.com/brettz9/apple-system-profiler#listDataTypes"
-    },
-    "devDependencies": {
-        "eslint": "6.5.1",
-        "eslint-config-standard": "14.1.0",
-        "eslint-plugin-import": "2.18.2",
-        "eslint-plugin-node": "10.0.0",
-        "eslint-plugin-promise": "4.2.1",
-        "eslint-plugin-standard": "4.0.1",
-        "fs-extra": "^8.1.0",
-        "jamilih": "0.45.0",
-        "jquery": "^3.4.1",
-        "jsdom": "^15.1.1",
-        "miller-columns": "^0.7.0",
-        "node-fetch": "^2.6.0",
-        "node-static": "^0.7.11",
-        "open-cli": "^5.0.0",
-        "webextension-polyfill": "^0.5.0"
-    }
+  "name": "unicode-input-toolconverter",
+  "description": "Add-on for selecting Unicode characters by variety of means and converting between various representations",
+  "author": "Brett Zamir",
+  "contributors": [],
+  "license": "MPL-2.0",
+  "version": "0.1.0",
+  "scripts": {
+    "open": "open-cli http://localhost:8000/browser_action/ && npm start",
+    "start": "node server",
+    "unicode-charts-retrieve": "node tools/parseUnicodeCharts.js retrieve",
+    "unicode-charts": "node tools/parseUnicodeCharts.js",
+    "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
+    "webext": "npm run eslint && web-ext run --browser-console -f firefox",
+    "webext-default": "npm run eslint && web-ext run --browser-console",
+    "webext-beta": "npm run eslint && web-ext run --browser-console -f beta",
+    "webext-nightly": "npm run eslint && web-ext run --browser-console -f nightly",
+    "webext-dev": "npm run eslint && web-ext run --browser-console -f firefoxdeveloperedition",
+    "webext-build": "npm run eslint && web-ext build",
+    "eslint": "eslint --ext=js,html,md .",
+    "copy": "npm run copy-jquery && npm run copy-miller-columns && npm run copy-jamilih && npm run copy-polyfill",
+    "copy-jquery": "cp node_modules/jquery/dist/jquery.js vendor/jquery/dist/jquery.js",
+    "copy-miller-columns": "cp node_modules/miller-columns/miller-columns.css vendor/miller-columns/miller-columns.css && cp node_modules/miller-columns/dist/index-es.min.js vendor/miller-columns/dist/index-es.min.js",
+    "copy-jamilih": "cp node_modules/jamilih/dist/jml-es.js vendor/jamilih/dist/jml-es.js",
+    "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js polyfills/browser-polyfill.min.js && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map polyfills/browser-polyfill.min.js.map"
+  },
+  "homepage": "https://github.com/brettz9/unicode-input-toolconverter",
+  "bugs": "https://github.com/brettz9/unicode-input-toolconverter/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brettz9/unicode-input-toolconverter"
+  },
+  "engines": {},
+  "keywords": [
+    "unicode",
+    "input",
+    "converter"
+  ],
+  "dependencies": {
+    "apple-system-profiler": "https://github.com/brettz9/apple-system-profiler#listDataTypes"
+  },
+  "devDependencies": {
+    "eslint": "6.5.1",
+    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-node": "10.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
+    "fs-extra": "^8.1.0",
+    "jamilih": "0.45.0",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1",
+    "miller-columns": "^0.7.0",
+    "node-fetch": "^2.6.0",
+    "node-static": "^0.7.11",
+    "open-cli": "^5.0.0",
+    "webextension-polyfill": "^0.5.0"
+  }
 }

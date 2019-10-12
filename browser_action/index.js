@@ -19,20 +19,20 @@ const lang = new URL(location).searchParams.get('lang');
 const locales = lang ? [lang] : [...navigator.languages]; // ['sv-SE']; // ['pt-BR']; // ['hu-HU'];
 const engPos = locales.indexOf('en-US');
 if (engPos > -1) {
-    locales[engPos] = 'en'; // Optimize for English (and avoid console errors)
+  locales[engPos] = 'en'; // Optimize for English (and avoid console errors)
 }
 if (!locales.includes('en')) { // Ensure there is at least one working language!
-    locales.push('en');
+  locales.push('en');
 }
 
 const [_] = await Promise.all([
-    i18n({locales, defaults: false, localesBasePath: '../'}),
-    addMillerColumnPlugin(jQuery, {stylesheets: [
-        // Per our widget "standard", allow for injecting of others
-        ['/icons/openWindow24.png', {favicon: true}],
-        'styles/unicode-dialog.css',
-        '/vendor/miller-columns/miller-columns.css'
-    ]})
+  i18n({locales, defaults: false, localesBasePath: '../'}),
+  addMillerColumnPlugin(jQuery, {stylesheets: [
+    // Per our widget "standard", allow for injecting of others
+    ['/icons/openWindow24.png', {favicon: true}],
+    'styles/unicode-dialog.css',
+    '/vendor/miller-columns/miller-columns.css'
+  ]})
 ]);
 
 const charrefunicodeConverter = new UnicodeConverter({_});
@@ -40,11 +40,11 @@ uresultsShareVars({_, charrefunicodeConverter});
 setPrefDefaultVars({_});
 
 configurePrefs({
-    l10n: _,
-    prefDefaults: new PrefDefaults({
-        defaults: getPrefDefaults()
-    }),
-    appNamespace: 'unicode-input-tool-converter-'
+  l10n: _,
+  prefDefaults: new PrefDefaults({
+    defaults: getPrefDefaults()
+  }),
+  appNamespace: 'unicode-input-tool-converter-'
 });
 
 // TEMPLATE
@@ -54,59 +54,59 @@ indexTemplate(_);
 makeTabBox('.tabbox');
 
 await getBuildChart({
-    _,
-    charrefunicodeConverter,
-    textReceptacle: $('#insertText'),
-    chartContainer: $('#chartContainer'),
-    // Todo: Get working
-    insertText: ({textReceptacle, value}) => {
-        insertIntoOrOverExisting({textReceptacle, value});
+  _,
+  charrefunicodeConverter,
+  textReceptacle: $('#insertText'),
+  chartContainer: $('#chartContainer'),
+  // Todo: Get working
+  insertText: ({textReceptacle, value}) => {
+    insertIntoOrOverExisting({textReceptacle, value});
 
-        // Save values for manipulation by entity addition function, 'insertent'
-        // Todo: Fix and use
-        /*
-        this.selst = textReceptacle.selectionStart;
-        this.selend = textReceptacle.selectionEnd;
-        */
-    }
+    // Save values for manipulation by entity addition function, 'insertent'
+    // Todo: Fix and use
+    /*
+    this.selst = textReceptacle.selectionStart;
+    this.selend = textReceptacle.selectionEnd;
+    */
+  }
 });
 
 jQuery('div.miller-columns').millerColumns({
-    /*
-    preview () {
-        // $('#chart_selectchar_persist').scrollLeft = 2000;
-        return '';
-    },
-    */
-    delay: 100, // Shorten delay until we can figure out how to fix jumpiness
-    scroll () {
-        // Due to an overflow within an overflow, we have to also force this scroll left
-        $('#chart_selectchar_persist').scrollLeft = 2000;
-    },
-    async current ($item, $cols) {
-        if (!$item) { // Todo: Is this an error?
-            return;
-        }
-        // console.log('User selected:', $item);
-        const title = $item[0].getAttribute('title');
-        if (!title) {
-            return;
-        }
-        await setPref('currentStartCharCode', parseInt(title.replace(/-.*$/, ''), 16));
-        // Free to use `buildChart` now that we have passed set-up
-        buildChart(); // Todo: descripts?
+  /*
+  preview () {
+    // $('#chart_selectchar_persist').scrollLeft = 2000;
+    return '';
+  },
+  */
+  delay: 100, // Shorten delay until we can figure out how to fix jumpiness
+  scroll () {
+    // Due to an overflow within an overflow, we have to also force this scroll left
+    $('#chart_selectchar_persist').scrollLeft = 2000;
+  },
+  async current ($item, $cols) {
+    if (!$item) { // Todo: Is this an error?
+      return;
     }
+    // console.log('User selected:', $item);
+    const title = $item[0].getAttribute('title');
+    if (!title) {
+      return;
+    }
+    await setPref('currentStartCharCode', parseInt(title.replace(/-.*$/, ''), 16));
+    // Free to use `buildChart` now that we have passed set-up
+    buildChart(); // Todo: descripts?
+  }
 });
 
 // EVENTS
 $('#encoding_from').addEventListener('click', function (e) {
-    Unicodecharref.convertEncoding($('#toconvert').value, this);
+  Unicodecharref.convertEncoding($('#toconvert').value, this);
 });
 $('#encoding_to').addEventListener('click', function (e) {
-    Unicodecharref.convertEncoding($('#toconvert').value, this);
+  Unicodecharref.convertEncoding($('#toconvert').value, this);
 });
 $('#insertEntityFile').addEventListener('change', function (e) {
-    Unicodecharref.insertEntityFile(e);
+  Unicodecharref.insertEntityFile(e);
 });
 Unicodecharref.initialize();
 /**
@@ -115,8 +115,8 @@ Unicodecharref.initialize();
 * window size; if use this, don't need code in "doOk" (besides
 * return true)
 window.addEventListener('resize', function (e) {
-    setPref('outerHeight', window.outerHeight);
-    setPref('outerWidth', window.outerWidth);
+  setPref('outerHeight', window.outerHeight);
+  setPref('outerWidth', window.outerWidth);
 });
 */
 })();
