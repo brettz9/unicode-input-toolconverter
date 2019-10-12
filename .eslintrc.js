@@ -2,9 +2,11 @@ module.exports = {
   // Todo: Switch to ash-nazg
   "extends": "standard",
   "parserOptions": {
-    "sourceType": "module"
+    ecmaVersion: 2017,
+    sourceType: "module"
   },
   "env": {
+    "es6": true,
     "node": false,
     "browser": true,
     "webextensions": true
