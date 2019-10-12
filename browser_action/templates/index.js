@@ -309,10 +309,15 @@ export default function (_) {
                           $on: {
                             change (e) {
                               Unicodecharref.setprefs(e);
-                              $('#insertText').style.fontFamily = this.value;
+                              const val = this.value.match(/\s/)
+                                ? ('"' +
+                                this.value.replace(/^"/, '').replace(/"$/, '') +
+                                '"')
+                                : this.value;
+                              $('#insertText').style.fontFamily = val;
                               // Form elements don't inherit, so find these manually
                               $$('#chart_table button[name="unicode"]').forEach((button) => {
-                                button.style.fontFamily = this.value;
+                                button.style.fontFamily = val;
                               });
                             }
                           }

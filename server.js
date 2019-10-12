@@ -28,9 +28,13 @@ http.createServer(function (req, res) {
             'SPFontsDataType'
           ]
         });
-        // Todo: Map to array of fonts and use in HTML
-        const out = fontInfo; // .map();
-        res.end(JSON.stringify(out));
+        // Todo: Use in HTML
+        // Todo: Switch to `flatMap` when available
+        const out = fontInfo[0]._items.reduce((arr, {typefaces}) => {
+          arr.push(...typefaces.map((typeface) => typeface.family));
+          return arr;
+        }, []);
+        res.end(JSON.stringify([...new Set(out)]));
       } catch (err) {
         console.log('Error', err);
       }
