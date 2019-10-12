@@ -6,6 +6,7 @@
     "license": "MPL 2.0",
     "version": "0.1.0",
     "scripts": {
+        "open": "open-cli http://localhost:8000/browser_action/ && npm start",
         "start": "static -p 8000 -H '{\"Content-Type\": \"charset=utf-8\"}'",
         "unicode-charts-retrieve": "node tools/parseUnicodeCharts.js retrieve",
         "unicode-charts": "node tools/parseUnicodeCharts.js",
