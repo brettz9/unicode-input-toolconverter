@@ -14,7 +14,7 @@ http.createServer(function (req, res) {
     res.end('Bad request');
     return;
   }
-  if (req.url === '/json') {
+  if (req.url === '/fonts') {
     res.writeHead(200, {
       'Cache-Control': 'no-cache, must-revalidate',
       'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ http.createServer(function (req, res) {
           arr.push(...typefaces.map((typeface) => typeface.family));
           return arr;
         }, []);
-        res.end(JSON.stringify([...new Set(out)]));
+        res.end(JSON.stringify([...new Set(out)].sort()));
       } catch (err) {
         console.log('Error', err);
       }
