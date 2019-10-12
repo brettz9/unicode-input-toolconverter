@@ -12,12 +12,12 @@ module.exports = {
     "webextensions": true
   },
   "overrides": [
-      {
-          files: ["server.js"],
-          env: {
-              node: true
-          }
+    {
+      files: ["server.js"],
+      env: {
+        node: true
       }
+    }
   ],
   "rules": {
     "semi": [2, "always"],
