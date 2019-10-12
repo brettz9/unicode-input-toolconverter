@@ -28,6 +28,7 @@ http.createServer(function (req, res) {
             'SPFontsDataType'
           ]
         });
+        // Todo: Map to array of fonts and use in HTML
         const out = fontInfo; // .map();
         res.end(JSON.stringify(out));
       } catch (err) {
