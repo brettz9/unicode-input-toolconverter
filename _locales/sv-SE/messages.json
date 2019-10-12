@@ -1,2938 +1,2941 @@
 {
-    "langCode": {
-        "message": "sv-SE",
-        "description": "The default for the font language code field"
-    },
-    "extensionName": {
-        "message": "Unicode Input Tool/Converter"
-    },
-    "extensionShortName": {
-        "message": "Unicode Tool"
-    },
-    "extensionDescription": {
-        "message": "Konverterar teckenreferenser till Unicode-tecken"
-    },
-    "browser_action_title": {
-        "message": "Unicode Input Tool/Converter"
-    },
-    "plus": {
-        "message": "+"
-    },
-    "minus": {
-        "message": "-"
-    },
-    "startCharCode": {
-        "message": "a",
-        "description": "This is the character that will be the default for the chart browser; should reflect a common character used by the language of the locale."
-    },
-    "unicode_noun": {
-        "message": "unicode"
-    },
-    "hex_noun": {
-        "message": "hexadecimal"
-    },
-    "dec_noun": {
-        "message": "decimal"
-    },
-    "ent_noun": {
-        "message": "entiteter"
-    },
-    "Unicode_table_caption_title": {
-        "message": "Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför"
-    },
-    "caption_format_begin": {
-        "message": ", {value}"
-    },
-    "caption_format_end_two": {
-        "message": " och {value}"
-    },
-    "caption_format_end_three_plus": {
-        "message": " och {value}"
-    },
-    "Next_set": {
-        "message": "Nästa uppsättning"
-    },
-    "Prev_set": {
-        "message": "Föreg. uppsättning"
-    },
-    "Conversion_tab_label": {
-        "message": "Konvertering"
-    },
-    "Prefs_tab_label": {
-        "message": "Inställningar"
-    },
-    "DTD_tab_label": {
-        "message": "DTD"
-    },
-    "Charts_tab_label": {
-        "message": "Tabeller"
-    },
-    "Notes_tab_label": {
-        "message": "Information"
-    },
-    "About_tab_label": {
-        "message": "Om"
-    },
-    "About_dialogheader_title": {
-        "message": "Om"
-    },
-    "About_developer_and_contributors": {
-        "message": "{About_developer} {About_developer_link} {About_contributors}"
-    },
-    "About_developer": {
-        "message": "Detta tillägg utvecklades av"
-    },
-    "About_developer_linkText": {
-        "message": "Brett Zamir"
-    },
-    "About_contributors": {
-        "message": " och översattes av Karoly Fabricz (hu-HU), Edgard Magalhães (pt-BR) och Mikael Hiort af Ornäs (sv-SE)."
-    },
-    "About_donation": {
-        "message": "Om du får användning för detta tillägg, vänligen överväg att göra en {About_donation_button}."
-    },
-    "About_donation_buttonText": {
-        "message": "donation"
-    },
-    "About_ial": {
-        "message": "Skaparen av detta tillägg vill bjuda in dig att betänka (och främja) idén om ett officiellt {About_ial_wikipedia_link}, så att världens alla folk en dag skall kunna kommunicera med varandra från tidig ålder och ägna sin energi åt mer produktiva (så väl som förståelseökande och kostnadsbesparande) områden än att behöva lära sig ett flertal lingua franca (geografiskt specifika gemensamma huvudspråk) och därmed göra dem fria att göra andra saker, såsom studier av vilka lokala eller andra språk de kan tänkas vilja lära sig: {About_ial_onetongue_link}."
-    },
-    "About_ial_wikipedia_linkText": {
-        "message": "internationellt hjälpspråk"
-    },
-    "About_ial_wikipedia_linkURL": {
-        "message": "http://sv.wikipedia.org/wiki/International_Auxiliary_Language_Association"
-    },
-    "About_ial_onetongue_linkText": {
-        "message": "World Auxiliary Language website"
-    },
-    "Notes_dialogheader_title": {
-        "message": "Information"
-    },
-    "DTD_insertEntityFile": {
-        "message": "Infoga entitetsfil"
-    },
-    "ent_isobox": {
-        "message": "Ramelement och linjeritning"
-    },
-    "ent_isocyr1": {
-        "message": "Ryska kyrilliska tecken"
-    },
-    "ent_isocyr2": {
-        "message": "Icke-ryska kyrilliska tecken"
-    },
-    "ent_isodia": {
-        "message": "Diakritiska tecken"
-    },
-    "ent_isolat1": {
-        "message": "Tillagda latinska tecken 1"
-    },
-    "ent_isolat2": {
-        "message": "Tillagda latinska tecken 2"
-    },
-    "ent_isonum": {
-        "message": "Numeriska och specialgrafik"
-    },
-    "ent_isopub": {
-        "message": "Publicering"
-    },
-    "ent_isoamsa": {
-        "message": "Tillagda matematiska symboler: Pilrelationer"
-    },
-    "ent_isoamsb": {
-        "message": "Tillagda matematiska symboler: Binära operatorer"
-    },
-    "ent_isoamsc": {
-        "message": "Tillagda matematiska symboler: Avgränsare"
-    },
-    "ent_isoamsn": {
-        "message": "Tillagda matematiska symboler: Negerade relationer"
-    },
-    "ent_isoamso": {
-        "message": "Tillagda matematiska symboler: Vanliga"
-    },
-    "ent_isoamsr": {
-        "message": "Tillagda matematiska symboler: Relationer"
-    },
-    "ent_isogrk1": {
-        "message": "Grekiska bokstäver"
-    },
-    "ent_isogrk2": {
-        "message": "Monotoniko-grekiska"
-    },
-    "ent_isogrk3": {
-        "message": "Grekiska symboler"
-    },
-    "ent_isogrk4": {
-        "message": "Alternativa grekiska symboler"
-    },
-    "ent_isomfrk": {
-        "message": "Matematiska alfabet: Fraktur"
-    },
-    "ent_isomopf": {
-        "message": "Matematiska alfabet: Open Face"
-    },
-    "ent_isomscr": {
-        "message": "Matematiska alfabet: Script"
-    },
-    "ent_isotech": {
-        "message": "Allmänna tekniska"
-    },
-    "ent_mmlextra": {
-        "message": "Ytterligare MathML-symboler"
-    },
-    "ent_mmlalias": {
-        "message": "MathML-alias"
-    },
-    "ent_xhtml1_lat1": {
-        "message": "Latinska tecken för HTML"
-    },
-    "ent_xhtml1_special": {
-        "message": "Specialtecken för HTML"
-    },
-    "ent_xhtml1_symbol": {
-        "message": "Symboler för HTML"
-    },
-    "ent_html5_uppercase": {
-        "message": "Versala alias för HTML"
-    },
-    "ent_predefined": {
-        "message": "Fördefinierad XML"
-    },
-    "Convert_From_Encoding": {
-        "message": "Konvertera från kodning"
-    },
-    "Convert_To_Encoding": {
-        "message": "Konvertera till kodning"
-    },
-    "kHanyuPinyin": {
-        "message": "HanyuPinyin"
-    },
-    "kIRG_MSource": {
-        "message": "IRG MSource"
-    },
-    "Ethiopic_Extended_A": {
-        "message": "Ge'ez, utökad A"
-    },
-    "Batak": {
-        "message": "Batak"
-    },
-    "CJK_Ideographs_Ext__D": {
-        "message": "CJK-ideogram, utök. D"
-    },
-    "Kana_Supplement": {
-        "message": "Kana (tillägg)"
-    },
-    "Alchemical_Symbols": {
-        "message": "Alkemiska symboler"
-    },
-    "Emoticons": {
-        "message": "Emotikoner"
-    },
-    "Playing_Cards": {
-        "message": "Spelkort"
-    },
-    "Miscellaneous_Symbols_And_Pictographs": {
-        "message": "Diverse symboler och piktogram"
-    },
-    "Transport_and_Map_Symbols": {
-        "message": "Transport- och kartsymboler"
-    },
-    "Mandaic": {
-        "message": "Mandeiska"
-    },
-    "Brahmi": {
-        "message": "Brahmi"
-    },
-    "Bamum_Supplement": {
-        "message": "Bamun (tillägg)"
-    },
-    "font_label": {
-        "message": "Font"
-    },
-    "addToToolbar": {
-        "message": "Lägg till i verktygsfältets rullgardinsmeny"
-    },
-    "usage_note_heading": {
-        "message": "Övrig användningsinformation"
-    },
-    "usage_notespar1": {
-        "message": "Tillägget kan aktiveras från snabbmenyn (vilket också ger möjlighet att operera på markerad text), via Verktyg-menyn, via verktygsfältsknappen eller via inställnings-URL:en i tilläggsmenyn."
-    },
-    "usage_notespar2": {
-        "message": "Inställningar anges så fort du klickar på objekten, men du kan återgå till standardvärdena om du gör något misstag."
-    },
-    "usage_notespar3": {
-        "message": "Att stänga dialogen kommer att ange det aktuella fönstrets position vid framtida bruk."
-    },
-    "usage_notespar4": {
-        "message": "Om du får problem med fönsterstorleken, gå till fliken &quot;Inställningar&quot; och klicka på knappen &quot;Återställ till standardvärden (förutom DTD)&quot;. Att använda &quot;Föreg. uppsättning&quot; eller &quot;Nästa uppsättning&quot; kan ibland också rätta till problem med objekt som inte visas korrekt i tabellvyn."
-    },
-    "usage_notespar5": {
-        "message": "Observera att du kan få extra utrymme på skärmen genom att inte använda knappar. Väljer du bort knapparna kan du fortfarande klicka på objekten för att få tabellutdata."
-    },
-    "usage_notespar6": {
-        "message": "Var medveten om att i Unicode-tabellvyn kan objekt såsom frågetecken (Firefox 2.0) eller inrutade siffror (Firefox 3.0+) visas istället för ett önskat tecken (och vissa tecken kommer inte eller kan inte visas överhuvudtaget). Detta beror på Firefox egna nuvarande begränsningar rörande visning av sådana tecken. För att hitta dessa kan du söka bland bilderna, såsom de på den officiella webbplatsen http://www.unicode.org/charts och bland de som finns tillgängliga inom själva tillägget. I tillägget kan du hovra med muspekaren över ett tecken från önskat intervall och klicka på den länk dyker upp, vilken leder dig till lämplig tabell där du kan granska bilden. Du kan även aktivera direktvisning av bilder, men detta bör vara avstängt som standard för att undvika en alltför stor belastning på Unicode-servern."
-    },
-    "usage_notespar7": {
-        "message": "Var vänlig notera att valet av alternativet &quot;Visa endast entiteter&quot; i tabellvyn kommer att visa dig HTML-entiteter i den ordning i vilken HTML-entiteterna definieras (och endast dem). När du inte befinner dig i detta läge, så kommer du att se alla entiteter som finns definierade i den anpassade DTD:n, valfritt utan HTML-entiteter, om kryssrutan om att bifoga DTD-entiteter är avmarkerad på DTD-sidan."
-    },
-    "usage_notespar8": {
-        "message": "Du bör kunna ladda ner databasen Unihan (medföljer inte tillägget p.g.a. dess storlek) inifrån inställningarna. Om du får problem, ladda ner filen som är ca. 18 MB stor från  http://bahai-library.com/zamir/Unihan.sqlite  och placera den i din Firefox-profilmapp."
-    },
-    "usage_notespar9": {
-        "message": "Tillägget används helst med högre upplösningar, men har nu i viss mån anpassats för att också passa lägre upplösningar. Dra i de olika delningslisterna för att storleksändra undersektioner. Din önskade storlek skall kommas ihåg."
-    },
-    "usage_notespar10": {
-        "message": "Använd Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför. "
-    },
-    "usage_notespar11": {
-        "message": "Verktygsfältsikonen kan kan läggas till genom att gå till Visa > Verktygsfält > Anpassa... och sedan dra &quot;U&quot;-ikonen till önskad position i ett verktygsfält. Dessutom har ikonen en rullgardinsmeny i vilken textstycken kan läggas till för senare återanvändning. Textstyckena läggs till m.h.a. knappen nära tabellens utdataruta. För att ta bort redan tillagda objekt, öppna rullgardinsmenyn, hovra över ett objekt (markera utan att klicka) och högerklicka på det för att ta bort det."
-    },
-    "usage_notespar12": {
-        "message": "Unicode-datan inom detta tillägg är licensierad enligt som beskrivs i &quot;Unicode Terms of Use&quot; (http://unicode.org/copyright.html)"
-    },
-    "usage_notespar13": {
-        "message": "Översättare är välkomna. Gå till http://tinyurl.com/UnicodeInputToolBabelZilla"
-    },
-    "note_heading": {
-        "message": "Unicode-information (lite användningsinformation)"
-    },
-    "notespar1": {
-        "message": "Unicode är ett system för att återge alla levande (och vissa döda) mänskliga skrivtecken, standardsymboler och skiljetecken. Unicodes användning i HTML och XML tillåter t.o.m. alla sådana skrivtecken att samsas på samma sida. Många program låter dig skriva eller spara alla sådana tecken direkt i Unicode."
-    },
-    "notespar2": {
-        "message": "Emellertid, eftersom vissa program fortfarande inte stödjer Unicode fullt ut så kanske inte texten kommer att sparas korrekt och måhända, för att göra det enklare för en del att skriva, får du också använda olika typer av kortkommandon för att återge dessa olika Unicode-tecken (fast om du endast använder de grundläggande engelska ASCII-symbolerna, så kommer dina dokument att översättas till Unicode utan problem)."
-    },
-    "notespar3": {
-        "message": "Ett sådant kortkommando som kan användas i alla HTML- och XML-dokument är teckenreferensen. Dessa referenser börjar med ett et-tecken (&quot;&amp;&quot;) och ett nummertecken (&quot;#&quot;) och slutar med ett semikolon (&quot;;&quot;). Däremellan står antingen ett decimaltal (d.v.s. siffrorna 0-9) eller ett hexadecimalt tal (d.v.s. siffrorna 0-9 Och/eller versala eller gemena bokstäverna A-F, vilka föregås av ett &quot;x&quot; eller ett &quot;X&quot;). Endera typen kommer att visa detsamma och kommer att visas exakt som Unicode-tecknet den representerar."
-    },
-    "notespar4": {
-        "message": "(Det hexadecimala talsystemet kan jämföras med en uppsättning spelkort. Knekten kan representera &quot;11&quot; i vissa spel, damen &quot;12&quot; och så vidare. Även om de bara är enskilda kort, så representerar de ett tal större än tio. På samma sätt är det med enskilda hexadecimala siffror som representeras av bokstäverna A-F.)"
-    },
-    "notespar5": {
-        "message": "Vid sidan av teckenreferenser är en annan typ av kortkommando för att återge ett Unicode-tecken (eller t.o.m. flera tecken) den &quot;parsade allmänna entiteten&quot; (parsed general entity)."
-    },
-    "notespar6": {
-        "message": "I XML-språket, undantaget fem fördefinierade entiteter (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;) och &apos; (&apos;)), måste du uttryckligen definiera de entiteter som du vill använda (eller använda ett särskilt &quot;PUBLIC&quot;-ID, vilket visar för program som läser XML-filen att du kommer att använda det språkets uppsättning av entiteter)."
-    },
-    "notespar7": {
-        "message": "I HTML finns det ett antal redan definierade entiteter. Ett viktigt påpekande: Även om HTML använder fyra av XML:s fem fördefinierade entiteter, så använder det inte &quot;&apos;&quot;. Du måste således istället använda motsvarande Unicode (eller använda någon av teckenreferenserna &amp;#x27; eller &amp;#39;)."
-    },
-    "notespar8": {
-        "message": "Du kan också definiera dina egna entiteter i tilläggets &quot;DTD&quot;-sektion genom att använda syntaxet &quot;&lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;&quot; så att de kan inkluderas i konverteringar."
-    },
-    "lang_label": {
-        "message": "lang"
-    },
-    "lang_tooltiptext": {
-        "message": "HTML-språkattributet &quot;lang&quot; eller, i XML, värdet &quot;xml:lang&quot;. Har ingen effekt på de flesta skrivtecken, men kan påverka glyfval/fontvisning för vissa CJK-tecken (t.ex. U+5203 i &quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;ja&quot; eller &quot;ko&quot;). Observera att du måste använda lang-attributet för att se någon effekt utanför tabellen (inte heller vår tabellutdataruta innehåller lang) och det finns för närvarande en bugg för xml:lang i äkta XML/XHTML-dokument: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
-    },
-    "initialTab_label": {
-        "message": "Startflik (vid aktivering via kortkommando eller verktygsfältsknapp)"
-    },
-    "CSSWhitespace_label": {
-        "message": "CSS-undantagstecken för blanksteg, att använda i tvetydigt läge"
-    },
-    "CSS_space": {
-        "message": "(mellanslag)"
-    },
-    "CSS_rn": {
-        "message": "\r\n (vagnretur och nyradstecken)"
-    },
-    "CSS_r": {
-        "message": "\r (vagnretur)"
-    },
-    "CSS_n": {
-        "message": "\n (nyradstecken)"
-    },
-    "CSS_t": {
-        "message": "\t (tabulator)"
-    },
-    "CSS_f": {
-        "message": "\f (sidmatning)"
-    },
-    "cssUnambiguous_label": {
-        "message": "Skapa CSS-undantagstecken i form av 6-siffriga sekvenser som inte kräver blanksteg (annars kommer de bli så långa som det är nödvändigt och följas av blanksteg)"
-    },
-    "sixDigit2unicode_label": {
-        "message": "4- eller 6-siffrigt (som i PHP 6) till Unicode"
-    },
-    "sixDigit2unicodeContext_label": {
-        "message": "4- eller 6-siffrigt undantagstecken (som i PHP 6) till Unicode"
-    },
-    "sixDigit2unicodeContext_accesskey": {
-        "message": "6"
-    },
-    "unicodeTo6DigitContext_accesskey": {
-        "message": "U"
-    },
-    "unicodeTo6Digit_label": {
-        "message": "Unicode till 6-siffrigt (som i PHP 6)"
-    },
-    "unicodeTo6DigitContext_label": {
-        "message": "Unicode till 6-siffrigt undantagstecken (som i PHP 6)"
-    },
-    "charDesc2Unicode_accesskey": {
-        "message": "T"
-    },
-    "charDesc2UnicodeContext_label": {
-        "message": "Teckenbeskrivningsundantag (som i PHP 6) till Unicode"
-    },
-    "unicode2CharDescContext_label": {
-        "message": "Unicode till teckenbeskrivningsundantag (som i PHP 6)"
-    },
-    "unicode2CharDescContext_accesskey": {
-        "message": "n"
-    },
-    "charDesc2Unicode_label": {
-        "message": "Teckenbeskrivningsundantag till Unicode"
-    },
-    "unicode2CharDesc_label": {
-        "message": "Unicode till teckenbeskrivningsundantag"
-    },
-    "unicode2JSEscape_label": {
-        "message": "Unicode till JavaScript-undantagstecken"
-    },
-    "unicode2jsescapeContext_label": {
-        "message": "Unicode till undantaget JS"
-    },
-    "unicode2jsescapeContext_accesskey": {
-        "message": "J"
-    },
-    "unicode2CSSEscape_label": {
-        "message": "Unicode till CSS-undantagstecken"
-    },
-    "unicode2cssescapeContext_accesskey": {
-        "message": "S"
-    },
-    "unicode2cssescapeContext_label": {
-        "message": "Unicode till undantaget CSS"
-    },
-    "jsescape2unicode_label": {
-        "message": "JavaScript-undantagstecken till Unicode"
-    },
-    "jsescape2unicodeContext_accesskey": {
-        "message": "J"
-    },
-    "jsescape2unicodeContext_label": {
-        "message": "Undantaget JS till Unicode"
-    },
-    "cssescape2unicode_label": {
-        "message": "CSS-undantagstecken till Unicode"
-    },
-    "cssescape2unicodeContext_accesskey": {
-        "message": "C"
-    },
-    "cssescape2unicodeContext_label": {
-        "message": "Undantaget CSS till Unicode"
-    },
-    "Yijing_Symbols": {
-        "message": "I Ching-symboler"
-    },
-    "Noncharacters_at_end_of____": {
-        "message": "Icke-tecken i slutet av..."
-    },
-    "_see_also_Common_Indic_Number_Forms__": {
-        "message": "(Se även Vanliga indiska talformat)"
-    },
-    "_see_also_Combining_Diacritical_Marks_for_Symbols__": {
-        "message": "(Se även Kombinerande diakritiska tecken för symboler)"
-    },
-    "Roman_Symbols": {
-        "message": "Romerska symboler"
-    },
-    "Latin_1_Supplement": {
-        "message": "Latin-1 (tillägg)"
-    },
-    "Cuneiform_Numbers_and_Punctuation": {
-        "message": "Kilskrift, tal och skiljetecken"
-    },
-    "CJK_Unified_Ideographs__Han_": {
-        "message": "CJK-enhetliga ideogram (Han)"
-    },
-    "CJK_Compatibility_Ideographs": {
-        "message": "CJK, kompatibilitetsideogram"
-    },
-    "CJK_Compatibility_Ideographs_Supplement": {
-        "message": "CJK, kompatibilitetsideogram (tillägg)"
-    },
-    "CJK_Radicals_Supplement": {
-        "message": "CJK-radikaler (tillägg)"
-    },
-    "Ideographic_Description_Characters": {
-        "message": "Ideografiska beskrivningstecken"
-    },
-    "Small_Form_Variants": {
-        "message": "Litet format (varianter)"
-    },
-    "CJK_Symbols_and_Punctuation": {
-        "message": "CJK-symboler och skiljetecken"
-    },
-    "Mathematical_Alphanumeric_Symbols": {
-        "message": "Matematiska alfanumeriska symboler"
-    },
-    "Enclosed_CJK_Letters_and_Months": {
-        "message": "Omslutna CJK-bokstäver och -månader"
-    },
-    "Optical_Character_Recognition__OCR_": {
-        "message": "Optisk teckenläsning (OCR)"
-    },
-    "Misc__Math_Symbols_A": {
-        "message": "Diverse matematiska symboler A"
-    },
-    "Misc__Math_Symbols_B": {
-        "message": "Diverse matematiska symboler B"
-    },
-    "Miscellaneous_Symbols_and_Arrows": {
-        "message": "Diverse symboler och pilar"
-    },
-    "Suppl__Math_Operators": {
-        "message": "Kompletterande matematiska operatorer"
-    },
-    "Geometric_Shapes": {
-        "message": "Geometriska figurer"
-    },
-    "Other_Symbols": {
-        "message": "Övriga symboler"
-    },
-    "Musical_Symbols": {
-        "message": "Musiksymboler"
-    },
-    "Yijing_Mono___Di__and_Trigrams": {
-        "message": "I Ching (mono-, di- och trigram)"
-    },
-    "Yijing_Hexagram_Symbols": {
-        "message": "I Chings hexagramsymboler"
-    },
-    "Katakana_Phonetic_Extensions": {
-        "message": "Katakana, fonetiska utökningar"
-    },
-    "Supplementary_Private_Use_Area_A": {
-        "message": "Kompletterande privatanvändningsområde-A"
-    },
-    "Supplementary_Private_Use_Area_B": {
-        "message": "Kompletterande privatanvändningsområde-B"
-    },
-    "Combining_Diacritics": {
-        "message": "Kombinerande diakritiska tecken"
-    },
-    "CJK_Ideographs_Ext__C": {
-        "message": "CJK-ideogram, utök. C"
-    },
-    "CJK_Radicals___KangXi_Radicals": {
-        "message": "CJK-radikaler / Kangxi-radikaler"
-    },
-    "Bamum": {
-        "message": "Bamun"
-    },
-    "Egyptian_Hieroglyphs": {
-        "message": "Egyptiska hieroglyfer"
-    },
-    "Aramaic__Imperial": {
-        "message": "Arameiska, kejserlig"
-    },
-    "Avestan": {
-        "message": "Avestiska"
-    },
-    "Old_South_Arabian": {
-        "message": "Sydarabiska, äldre"
-    },
-    "Pahlavi__Inscriptional": {
-        "message": "Medelpersiska, inskriftlig"
-    },
-    "Parthian__Inscriptional": {
-        "message": "Partiska, inskriftlig"
-    },
-    "Samaritan": {
-        "message": "Samaritanska"
-    },
-    "Old_Turkic": {
-        "message": "Turkiska, äldre"
-    },
-    "Devanagari_Extended": {
-        "message": "Devanāgarī, utökad"
-    },
-    "Kaithi": {
-        "message": "Kaithi"
-    },
-    "Meetei_Mayek": {
-        "message": "Meetei-mayek"
-    },
-    "Vedic_Extensions": {
-        "message": "Vediska, utökningar"
-    },
-    "Javanese": {
-        "message": "Javanesiska"
-    },
-    "Myanmar_Extended_A": {
-        "message": "Burmesiska, utökad-A"
-    },
-    "South_Asian_Scripts": {
-        "message": "Sydasiatiska skrivtecken"
-    },
-    "Tai_Tham": {
-        "message": "Lanna"
-    },
-    "Tai_Viet": {
-        "message": "Tai Viet"
-    },
-    "Lisu": {
-        "message": "Lisu"
-    },
-    "Hangul_Jamo_Extended_A": {
-        "message": "Hangul, jamo, utökad-A"
-    },
-    "Hangul_Jamo_Extended_B": {
-        "message": "Hangul, jamo, utökad-B"
-    },
-    "UCAS_Extended": {
-        "message": "UCAS, utökad"
-    },
-    "Common_Indic_Number_Forms": {
-        "message": "Vanliga indiska talformat"
-    },
-    "Rumi_Numeral_Symbols": {
-        "message": "Malajiska talsymboler"
-    },
-    "Basic_operators__Plus__Factorial__Division__Multiplication": {
-        "message": "Grundläggande operatorer: Plus, fakultet"
-    },
-    "Division__Multiplication": {
-        "message": "Division, multiplikation"
-    },
-    "Unified_Canadian_Aboriginal_Syllabics": {
-        "message": "Unified Canadian Aboriginal Syllabics"
-    },
-    "Yi_Syllables": {
-        "message": "Yi-stavelser"
-    },
-    "Alphabetic_Presentation_Forms": {
-        "message": "Alfabetiska presentationsformat"
-    },
-    "Halfwidth_and_Fullwidth_Forms": {
-        "message": "Halvbreda och helbreda format"
-    },
-    "ASCII_Characters": {
-        "message": "ASCII-tecken"
-    },
-    "Alphanumeric_Symbols": {
-        "message": "Alfanumeriska symboler"
-    },
-    "Enclosed_Alphanumeric_Supplement": {
-        "message": "Omslutna alfanumeriska (tillägg)"
-    },
-    "Enclosed_Ideographic_Supplement": {
-        "message": "Omslutna ideografiska (tillägg)"
-    },
-    "Additional_Squared_Symbols": {
-        "message": "Ytterligare obsoleta symboler"
-    },
-    "label_unicode": {
-        "message": "Unicode"
-    },
-    "showAllDetailedView_label": {
-        "message": "Visa alla objekt (eller endast de med innehåll)"
-    },
-    "showAllDetailedCJKView_label": {
-        "message": "Visa alla objekt (eller endast de med innehåll)"
-    },
-    "showComplexWindow_label": {
-        "message": "Visa specialiserade sökalternativ och metadata i tabellvyn (fönstret öppnas långsammare)"
-    },
-    "Specialized_search": {
-        "message": "Specialiserad sökning"
-    },
-    "Code_point": {
-        "message": "Kodpunkt"
-    },
-    "Name": {
-        "message": "Namn"
-    },
-    "kCangjie": {
-        "message": "Cangjie"
-    },
-    "kCantonese": {
-        "message": "Kantonesiska"
-    },
-    "kDefinition": {
-        "message": "Definition"
-    },
-    "kHanYu": {
-        "message": "Hanyu"
-    },
-    "kIRGHanyuDaZidian": {
-        "message": "IRGHanyuDaZidian"
-    },
-    "kIRGKangXi": {
-        "message": "IRGKangxi"
-    },
-    "kIRG_GSource": {
-        "message": "IRG GKälla"
-    },
-    "kIRG_JSource": {
-        "message": "IRG JKälla"
-    },
-    "kIRG_TSource": {
-        "message": "IRG TKälla"
-    },
-    "kMandarin": {
-        "message": "Mandarin"
-    },
-    "kRSUnicode": {
-        "message": "RSUnicode"
-    },
-    "kSemanticVariant": {
-        "message": "SemantiskVariant"
-    },
-    "kTotalStrokes": {
-        "message": "AntalStreck"
-    },
-    "kCihaiT": {
-        "message": "CihaiT"
-    },
-    "kIRG_KSource": {
-        "message": "IRG KKälla"
-    },
-    "kSBGY": {
-        "message": "SBGY"
-    },
-    "kJIS0213": {
-        "message": "JIS0213"
-    },
-    "kNelson": {
-        "message": "Nelson"
-    },
-    "kRSAdobe_Japan1_6": {
-        "message": "RSAdobe Japan1 6"
-    },
-    "kCowles": {
-        "message": "Cowles"
-    },
-    "kMatthews": {
-        "message": "Matthews"
-    },
-    "kOtherNumeric": {
-        "message": "ÖvrigNumerisk"
-    },
-    "kPhonetic": {
-        "message": "Fonetisk"
-    },
-    "kGSR": {
-        "message": "GSR"
-    },
-    "kIRG_KPSource": {
-        "message": "IRG KPKälla"
-    },
-    "kIRG_VSource": {
-        "message": "IRG VKälla"
-    },
-    "kKPS1": {
-        "message": "KPS1"
-    },
-    "kFenn": {
-        "message": "Fenn"
-    },
-    "kFennIndex": {
-        "message": "FennIndex"
-    },
-    "kKarlgren": {
-        "message": "Karlgren"
-    },
-    "kHKSCS": {
-        "message": "HKSCS"
-    },
-    "kIRG_HSource": {
-        "message": "IRG HKälla"
-    },
-    "kXHC1983": {
-        "message": "XHC1983"
-    },
-    "kMeyerWempe": {
-        "message": "MeyerWempe"
-    },
-    "kTraditionalVariant": {
-        "message": "TraditionellVariant"
-    },
-    "kVietnamese": {
-        "message": "Vietnamesiska"
-    },
-    "kSpecializedSemanticVariant": {
-        "message": "SpecialiseradSemantiskVariant"
-    },
-    "kLau": {
-        "message": "Lau"
-    },
-    "kCheungBauer": {
-        "message": "CheungBauer"
-    },
-    "kCheungBauerIndex": {
-        "message": "CheungBauerIndex"
-    },
-    "kIICore": {
-        "message": "IICore"
-    },
-    "kTang": {
-        "message": "Tang"
-    },
-    "kZVariant": {
-        "message": "ZVariant"
-    },
-    "kRSKangXi": {
-        "message": "RSKanxi"
-    },
-    "kJapaneseKun": {
-        "message": "JapanskaKun"
-    },
-    "kJapaneseOn": {
-        "message": "JapanskaOn"
-    },
-    "kSimplifiedVariant": {
-        "message": "FörenkladVariant"
-    },
-    "kKangXi": {
-        "message": "Kangxi"
-    },
-    "kKPS0": {
-        "message": "KPS0"
-    },
-    "kBigFive": {
-        "message": "DeFemStora"
-    },
-    "kCCCII": {
-        "message": "CCCII"
-    },
-    "kCNS1986": {
-        "message": "CNS1986"
-    },
-    "kCNS1992": {
-        "message": "CNS1992"
-    },
-    "kDaeJaweon": {
-        "message": "DaeJaweon"
-    },
-    "kEACC": {
-        "message": "EACC"
-    },
-    "kFourCornerCode": {
-        "message": "Fyrahörnskod"
-    },
-    "kFrequency": {
-        "message": "Frekvens"
-    },
-    "kGB0": {
-        "message": "GB0"
-    },
-    "kGB1": {
-        "message": "GB1"
-    },
-    "kGradeLevel": {
-        "message": "GradeLevel"
-    },
-    "kHDZRadBreak": {
-        "message": "HDZRadBreak"
-    },
-    "kHKGlyph": {
-        "message": "HKGlyf"
-    },
-    "kHangul": {
-        "message": "Hangul"
-    },
-    "kHanyuPinlu": {
-        "message": "HanyuPinlu"
-    },
-    "kIRGDaeJaweon": {
-        "message": "IRGDaeJaweon"
-    },
-    "kIRGDaiKanwaZiten": {
-        "message": "IRGDaiKanWaJiten"
-    },
-    "kJis0": {
-        "message": "Jis0"
-    },
-    "kKSC0": {
-        "message": "KSC0"
-    },
-    "kKorean": {
-        "message": "Koreanska"
-    },
-    "kMainlandTelegraph": {
-        "message": "FastlandTelegraf"
-    },
-    "kMorohashi": {
-        "message": "Morohashi"
-    },
-    "kPrimaryNumeric": {
-        "message": "PrimärNumerisk"
-    },
-    "kTaiwanTelegraph": {
-        "message": "TaiwanTelegraf"
-    },
-    "kXerox": {
-        "message": "Xerox"
-    },
-    "kGB5": {
-        "message": "GB5"
-    },
-    "kJis1": {
-        "message": "Jis1"
-    },
-    "kPseudoGB1": {
-        "message": "PseudoGB1"
-    },
-    "kGB3": {
-        "message": "GB3"
-    },
-    "kGB8": {
-        "message": "GB8"
-    },
-    "kKSC1": {
-        "message": "KSC1"
-    },
-    "kIBMJapan": {
-        "message": "IBMJapan"
-    },
-    "kRSKanWa": {
-        "message": "RSKanWa"
-    },
-    "kRSJapanese": {
-        "message": "RSJapanska"
-    },
-    "kAccountingNumeric": {
-        "message": "BokföringNumerisk"
-    },
-    "kRSKorean": {
-        "message": "RSKoreanska"
-    },
-    "kGB7": {
-        "message": "GB7"
-    },
-    "kIRG_USource": {
-        "message": "IRG UKälla"
-    },
-    "kCompatibilityVariant": {
-        "message": "Kompatibilitetsvariant"
-    },
-    "General_Category": {
-        "message": "Allmän kategori"
-    },
-    "Canonical_Combining_Class": {
-        "message": "Kanonisk kombinationsklass"
-    },
-    "Bidi_Class": {
-        "message": "Dubbelriktningsklass"
-    },
-    "Decomposition_Type_and_Mapping": {
-        "message": "Uppdelningstyp och mappning"
-    },
-    "Decimal": {
-        "message": "Decimal"
-    },
-    "Digit": {
-        "message": "Siffra"
-    },
-    "Numeric": {
-        "message": "Numerisk"
-    },
-    "Bidi_Mirrored": {
-        "message": "Dubbelriktad, speglad"
-    },
-    "Unicode_1_Name": {
-        "message": "Unicode 1-namn"
-    },
-    "ISO_Comment": {
-        "message": "ISO-kommentar"
-    },
-    "Simple_Uppercase_Mapping": {
-        "message": "Enkel mappning av VERSALER"
-    },
-    "Simple_Lowercase_Mapping": {
-        "message": "Enkel mappning av gemener"
-    },
-    "Simple_Titlecase_Mapping": {
-        "message": "Enkel mappning av Begynnelsebokstäver"
-    },
-    "basicView_tab": {
-        "message": "Grundläggande vy och utdata"
-    },
-    "detailedView_tab": {
-        "message": "Detaljerad vy"
-    },
-    "detailedCJKView_tab": {
-        "message": "Detaljerad vy (CJK)"
-    },
-    "unicode2charrefDecSurrogate_label": {
-        "message": "Unicode till teckenreferens (dec) som surrogatpar"
-    },
-    "unicode2charrefHexSurrogate_label": {
-        "message": "Unicode till teckenreferens (hex) som surrogatpar"
-    },
-    "unicode2charrefSurrogate_tooltip": {
-        "message": "Konvertera till surrogatpar (Välj inte detta såvida du inte behöver få reda på surrogaten för ett (ovanligt) högre plans-tecken eller vill granska själva surrogatet)"
-    },
-    "DownloadUnihan": {
-        "message": "Ladda ner Unihan-databasen (17,9 MB)"
-    },
-    "Download_unihan_tooltip": {
-        "message": "Här kan du hämta de senaste teckenbeskrivningarna för kinesiska, japanska och koreanska tecken (CJK). Klicka här för att ladda ner (medföljer inte tillägget eftersom filen är ganska stor)."
-    },
-    "Close": {
-        "message": "Stäng"
-    },
-    "UnihanInstalled": {
-        "message": "Unihan-databasen (CJK) är installerad"
-    },
-    "searchName": {
-        "message": "Sök på teckennamn: "
-    },
-    "searchkDefinition": {
-        "message": "Sök på teckenbeskrivning (CJK)"
-    },
-    "Regular_tab_label": {
-        "message": "Vanlig sökning (icke-CJK)"
-    },
-    "CJK_tab_label": {
-        "message": "CJK"
-    },
-    "CJK_tooltip": {
-        "message": "Sök endast i kinesiska-japanska-koreanska"
-    },
-    "Regular_tooltip": {
-        "message": "Sök i vanlig databas (förutom den kinesiska-japanska-koreanska)"
-    },
-    "Additional_Arrows": {
-        "message": "Ytterligare pilar"
-    },
-    "Floors_and_Ceilings": {
-        "message": "Golv och tak"
-    },
-    "Additional_Shapes": {
-        "message": "Ytterligare figurer"
-    },
-    "APL_symbols": {
-        "message": "APL-symboler"
-    },
-    "ShowImg_checkbox_label": {
-        "message": "Visa bild"
-    },
-    "ShowImg_tooltiptext": {
-        "message": "Var vänlig behåll detta inaktiverat såvida du inte behöver hitta en bild, eftersom det belastar Unicode-servern."
-    },
-    "Sundanese": {
-        "message": "Sundanesiska"
-    },
-    "Ol_Chiki": {
-        "message": "Ol chiki"
-    },
-    "Cyrillic_Extended_A": {
-        "message": "Kyrilliska, utökad-A"
-    },
-    "Vai": {
-        "message": "Vai"
-    },
-    "Cyrillic_Extended_B": {
-        "message": "Kyrilliska, utökad-B"
-    },
-    "Saurashtra": {
-        "message": "Saurashtra"
-    },
-    "Kayah_Li": {
-        "message": "Kayah li"
-    },
-    "Rejang": {
-        "message": "Rejang"
-    },
-    "Cham": {
-        "message": "Cham"
-    },
-    "Ancient_Symbols": {
-        "message": "Forntida symboler"
-    },
-    "Phaistos_Disc": {
-        "message": "Skivan i Faistos"
-    },
-    "Lycian": {
-        "message": "Lykiska"
-    },
-    "Carian": {
-        "message": "Kariska"
-    },
-    "Lydian": {
-        "message": "Lydiska"
-    },
-    "Mahjong_Tiles": {
-        "message": "Mahjong-brickor"
-    },
-    "Domino_Tiles": {
-        "message": "Domino-brickor"
-    },
-    "Game_Symbols": {
-        "message": "Spelsymboler"
-    },
-    "Chess__Checkers_Draughts": {
-        "message": "Schack/Dam"
-    },
-    "Card_suits": {
-        "message": "Kortleksfärger"
-    },
-    "Japanese_Chess": {
-        "message": "Shogi"
-    },
-    "copyToClipboard": {
-        "message": "Kopiera till Urklipp"
-    },
-    "moveconvertedup_label": {
-        "message": "Kopiera &quot;Konverterade&quot; till &quot;Förkonverterade&quot;"
-    },
-    "Reconvert_dialogheader_title": {
-        "message": "Återkonverteringsinställningar"
-    },
-    "Preferences_dialogheader_title": {
-        "message": "Inställningar"
-    },
-    "converted_value_placeholder": {
-        "message": "Unicode-resultat"
-    },
-    "Ascii_checkbox_label": {
-        "message": "Konvertera till entiteter om antal ASCII &lt; 128 (befintliga entiteter/teckenref. kommer därmed inte vara immuna)"
-    },
-    "Hexletters_checkbox_label": {
-        "message": "Utdata-hexadecimal A-F (versaler)"
-    },
-    "xhtmlentmode_label": {
-        "message": "XHTML-entitetsläge (tillåter &apos; när HTML-entiteter skapas istället för numeriskt tecken). (Det är nog bäst att lämna detta alt. inaktiverat.)"
-    },
-    "xmlentmode_label": {
-        "message": "XML-entitetsläge (vid konvertering från (X)HTML-entiteter lämnas &amp;, &lt;, &gt;, &quot; och &apos; okonverterade). (Dessa entiteter är ofarliga i XML och behöver inga DTD-entitetsdeklarationer, så de behöver antagligen inte konverteras och är även enklare att läsa.)"
-    },
-    "ampkeep_label": {
-        "message": "Vid konvertering från Unicode till HTML-entiteter konverteras inte &amp;, så att manipulering av befintliga HTML-entiteter undviks"
-    },
-    "ampspace_label": {
-        "message": "Konvertera varje &quot;&amp;&quot; som följs av blanksteg till &quot;&amp;&quot; (för rätt formaterad XML)."
-    },
-    "resettodefault_label": {
-        "message": "Återställ till standardvärden (förutom DTD)."
-    },
-    "numrows": {
-        "message": "Antal rader"
-    },
-    "numcols": {
-        "message": "Antal kolumner"
-    },
-    "charref2unicode_label": {
-        "message": "Teckenreferens till Unicode"
-    },
-    "charref2unicodeContext_label": {
-        "message": "Teckenref. (hex eller dec) till Unicode"
-    },
-    "charref2unicodeContext_accesskey": {
-        "message": "C"
-    },
-    "charref2htmlents_label": {
-        "message": "Teckenreferenser till HTML-entiteter"
-    },
-    "charref2htmlentsContext_label": {
-        "message": "Teckenref. (hex eller dec) till HTML-ent."
-    },
-    "charref2htmlentsContext_accesskey": {
-        "message": "C"
-    },
-    "unicode2charrefDec_label": {
-        "message": "Unicode till teckenreferens (dec)"
-    },
-    "unicode2charrefDecContext_label": {
-        "message": "Unicode till teckenref. (dec)"
-    },
-    "unicode2charrefDecContext_accesskey": {
-        "message": "U"
-    },
-    "unicode2charrefHex_label": {
-        "message": "Unicode till teckenreferens (hex)"
-    },
-    "unicode2charrefHexContext_label": {
-        "message": "Unicode till teckenref. (hex)"
-    },
-    "unicode2charrefHexContext_accesskey": {
-        "message": "U"
-    },
-    "unicode2htmlents_label": {
-        "message": "Unicode till HTML-entiteter"
-    },
-    "unicode2htmlentsContext_label": {
-        "message": "Unicode till HTML-ent."
-    },
-    "unicode2htmlentsContext_accesskey": {
-        "message": "U"
-    },
-    "htmlents2charrefDec_label": {
-        "message": "HTML-entitet till teckenreferens (dec)"
-    },
-    "htmlents2charrefDecContext_label": {
-        "message": "HTML-ent. till teckenref. (dec)"
-    },
-    "htmlents2charrefDecContext_accesskey": {
-        "message": "H"
-    },
-    "htmlents2charrefHex_label": {
-        "message": "HTML-entitet till teckenreferens (hex)"
-    },
-    "htmlents2charrefHexContext_label": {
-        "message": "HTML-ent. till teckenref. (hex)"
-    },
-    "htmlents2charrefHexContext_accesskey": {
-        "message": "H"
-    },
-    "htmlents2unicode_label": {
-        "message": "HTML-entitet till Unicode"
-    },
-    "htmlents2unicodeContext_label": {
-        "message": "HTML-ent. till Unicode"
-    },
-    "htmlents2unicodeContext_accesskey": {
-        "message": "H"
-    },
-    "launchunicode_label": {
-        "message": "Kör Unicode-konverteringsverktyget"
-    },
-    "launchunicodeContext_label": {
-        "message": "Kör Unicode-konverteringsverktyget"
-    },
-    "launchunicodeContext_accesskey": {
-        "message": "ö"
-    },
-    "unicodechart_label": {
-        "message": "Sök i Unicode-tabell"
-    },
-    "unicodechartContext_label": {
-        "message": "Sök i Unicode-tabell"
-    },
-    "unicodechartContext_accesskey": {
-        "message": "c"
-    },
-    "hex2dec_label": {
-        "message": "Hexadecimal till decimal"
-    },
-    "hex2decContext_label": {
-        "message": "Hexadecimal till decimal"
-    },
-    "hex2decContext_accesskey": {
-        "message": "H"
-    },
-    "dec2hex_label": {
-        "message": "Decimal till hexadecimal"
-    },
-    "dec2hexContext_label": {
-        "message": "Decimal till hexadecimal"
-    },
-    "dec2hexContext_accesskey": {
-        "message": "D"
-    },
-    "toconvert_placeholder": {
-        "message": "Unicode to convert"
-    },
-    "uresults_title": {
-        "message": "Unicode-resultat"
-    },
-    "uresults_preconverted": {
-        "message": "Förkonverterade:"
-    },
-    "uresults_converted": {
-        "message": "Konverterade:"
-    },
-    "button_clearoutput": {
-        "message": "Rensa"
-    },
-    "caption_chart_output": {
-        "message": "Tabellutdata"
-    },
-    "caption_chart_selectchar": {
-        "message": "Sök tecken eller intervall"
-    },
-    "caption_chart_layout": {
-        "message": "Tabellayout"
-    },
-    "caption_displayUnicodeDesc": {
-        "message": "Tkn-<html:br />besk.:"
-    },
-    "textbox_displayUnicodeDesc": {
-        "message": "Teckenbeskrivning"
-    },
-    "button_multiline": {
-        "message": "Flerradig"
-    },
-    "outputtocopy": {
-        "message": "Utdata:"
-    },
-    "button_moveoutput": {
-        "message": "Flytta utdata"
-    },
-    "willreplaceprecnv": {
-        "message": "(ersätter texten &quot;Förkonverterade&quot; under fliken &quot;Konvertering&quot;)"
-    },
-    "charhexdecchoices": {
-        "message": "Unicode-tkn, hex- eller dec-tal:"
-    },
-    "desc_digits": {
-        "message": "(vid sökning efter teckenref. #0-9, anv. #n)"
-    },
-    "chooseregion": {
-        "message": "ELLER välj efter region:"
-    },
-    "label_norows": {
-        "message": "Antal rader"
-    },
-    "label_nocols": {
-        "message": "Antal kolumner"
-    },
-    "label_hexq": {
-        "message": "Hex"
-    },
-    "label_decq": {
-        "message": "Dec"
-    },
-    "label_unicodeq": {
-        "message": "Unicode"
-    },
-    "label_entq": {
-        "message": "Entiteter"
-    },
-    "label_onlyentsyesq": {
-        "message": "Visa endast entiteter"
-    },
-    "label_middleq": {
-        "message": "Placera måltecken i mitten"
-    },
-    "label_buttonq": {
-        "message": "Använd knappar"
-    },
-    "label_fontsize": {
-        "message": "Fontstorlek:"
-    },
-    "desc_symbolspunc": {
-        "message": "ELLER välj bland symboler och skiljetecken:"
-    },
-    "dialogheader_value": {
-        "message": "DTD"
-    },
-    "DTD_desc_value1": {
-        "message": "Lägg till DTD-entitetsdeklarationer (valfritt) för användning vid konvertering"
-    },
-    "DTD_desc_value2": {
-        "message": "Form: &lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;"
-    },
-    "DTD_textbox_value": {
-        "message": ""
-    },
-    "DTD_insertent": {
-        "message": "Infoga &lt;!ENTITY&gt;"
-    },
-    "appendhtml_checkbox": {
-        "message": "Bifoga till befintlig HTML-entitetsuppsättning"
-    },
-    "European_Scripts": {
-        "message": "Europeiska alfabet"
-    },
-    "Armenian": {
-        "message": "Armeniska"
-    },
-    "Armenian_Ligatures": {
-        "message": "Armeniska ligaturer"
-    },
-    "Coptic": {
-        "message": "Koptiska"
-    },
-    "Coptic_in_Greek_block": {
-        "message": "Koptiska i grekiskt block"
-    },
-    "Cyrillic": {
-        "message": "Kyrilliska"
-    },
-    "Cyrillic_Supplement": {
-        "message": "Kyrilliska (tillägg)"
-    },
-    "Georgian": {
-        "message": "Georgiska"
-    },
-    "Georgian_Supplement": {
-        "message": "Georgiska (tillägg)"
-    },
-    "Greek": {
-        "message": "Grekiska"
-    },
-    "Greek_Extended": {
-        "message": "Grekiska, utökad"
-    },
-    "Latin": {
-        "message": "Latin"
-    },
-    "Basic_Latin": {
-        "message": "Grundläggande latin"
-    },
-    "Latin_Extended_A": {
-        "message": "Latin, utökad A"
-    },
-    "Latin_Extended_B": {
-        "message": "Latin, utökad B"
-    },
-    "Latin_Extended_C": {
-        "message": "Latin, utökad C"
-    },
-    "Latin_Extended_D": {
-        "message": "Latin, utökad D"
-    },
-    "Latin_Extended_Additional": {
-        "message": "Latin, ytterligare utökad"
-    },
-    "Latin_Ligatures": {
-        "message": "Latinska ligaturer"
-    },
-    "Fullwidth_Latin_Letters": {
-        "message": "Helbreda latinska bokstäver"
-    },
-    "Small_Forms": {
-        "message": "Small Forms"
-    },
-    "African_Scripts": {
-        "message": "Afrikanska skrivtecken"
-    },
-    "Ethiopic": {
-        "message": "Ge'ez"
-    },
-    "Ethiopic_Supplement": {
-        "message": "Ge'ez (tillägg)"
-    },
-    "Ethiopic_Extended": {
-        "message": "Ge'ez, utökad"
-    },
-    "N_Ko": {
-        "message": "N'Ko"
-    },
-    "Tifinagh": {
-        "message": "Tifinagh"
-    },
-    "Middle_Eastern_Scripts": {
-        "message": "Mellanösterns skrivtecken"
-    },
-    "Arabic": {
-        "message": "Arabiska"
-    },
-    "Arabic_Supplement": {
-        "message": "Arabiska (tillägg)"
-    },
-    "Arabic_Presentation_Forms_A": {
-        "message": "Arabiska presentationsformat A"
-    },
-    "Arabic_Presentation_Forms_B": {
-        "message": "Arabiska presentationsformat B"
-    },
-    "Hebrew": {
-        "message": "Hebreiska"
-    },
-    "Hebrew_Presentation_Forms": {
-        "message": "Hebreiska presentationsformat"
-    },
-    "Syriac": {
-        "message": "Syriska"
-    },
-    "Thaana": {
-        "message": "Tāna"
-    },
-    "American_Scripts": {
-        "message": "Amerikanska skrivtecken"
-    },
-    "Cherokee": {
-        "message": "Cherokesiska"
-    },
-    "Deseret": {
-        "message": "Deseret-alfabetet"
-    },
-    "Other_Scripts": {
-        "message": "Övriga skrivtecken"
-    },
-    "Shavian": {
-        "message": "Shaviska alfabetet"
-    },
-    "Osmanya": {
-        "message": "Osmanya-skrift"
-    },
-    "Glagolitic": {
-        "message": "Glagolitiska alfabetet"
-    },
-    "Bengali": {
-        "message": "Bengali"
-    },
-    "Devanagari": {
-        "message": "Devanāgarī"
-    },
-    "Gujarati": {
-        "message": "Gujarati"
-    },
-    "Gurmukhi": {
-        "message": "Gurmukhi"
-    },
-    "Kannada": {
-        "message": "Kannada"
-    },
-    "Limbu": {
-        "message": "Limbu"
-    },
-    "Malayalam": {
-        "message": "Malayalam"
-    },
-    "Oriya": {
-        "message": "Oriya"
-    },
-    "Sinhala": {
-        "message": "Singalesiska"
-    },
-    "Syloti_Nagri": {
-        "message": "Syloti nagri"
-    },
-    "Tamil": {
-        "message": "Tamil"
-    },
-    "Telugu": {
-        "message": "Telugu"
-    },
-    "Philippine_Scripts": {
-        "message": "Filippinska skrivtecken"
-    },
-    "Buhid": {
-        "message": "Buhid"
-    },
-    "Hanunoo": {
-        "message": "Hanunó'o"
-    },
-    "Tagalog": {
-        "message": "Tagalog"
-    },
-    "Tagbanwa": {
-        "message": "Tagbanwa"
-    },
-    "South_East_Asian": {
-        "message": "Sydostasiatiska"
-    },
-    "Balinese": {
-        "message": "Balinesiska"
-    },
-    "Buginese": {
-        "message": "Buginesiska"
-    },
-    "Khmer": {
-        "message": "Khmerisk skrift"
-    },
-    "Khmer_Symbols": {
-        "message": "Khmer-symboler"
-    },
-    "Lao": {
-        "message": "Lao"
-    },
-    "Myanmar": {
-        "message": "Burmesiska"
-    },
-    "New_Tai_Lue": {
-        "message": "Ny tai lü"
-    },
-    "Tai_Le": {
-        "message": "Tai nüa"
-    },
-    "Thai": {
-        "message": "Thailändska"
-    },
-    "East_Asian_Scripts": {
-        "message": "Ostasiatiska skrivtecken"
-    },
-    "CJK_Ideographs_Ext__A": {
-        "message": "CJK-ideogram, utök. A"
-    },
-    "CJK_Ideographs_Ext__B": {
-        "message": "CJK-ideogram, utök. B"
-    },
-    "Kanbun": {
-        "message": "Kanbun"
-    },
-    "_see_also_Unihan_Database_": {
-        "message": "(Se även Unihan-databasen)"
-    },
-    "CJK_Strokes": {
-        "message": "CJK-streck"
-    },
-    "Bopomofo": {
-        "message": "Zhùyīn Fúhào (bopomofo)"
-    },
-    "Bopomofo_Extended": {
-        "message": "Zhùyīn Fúhào (bopomofo), utökad"
-    },
-    "Hiragana": {
-        "message": "Hiragana"
-    },
-    "Katakana": {
-        "message": "Katakana"
-    },
-    "Halfwidth_Katakana": {
-        "message": "Halvbred katakana"
-    },
-    "Hangul_Syllables": {
-        "message": "Hangul-stavelser"
-    },
-    "Hangul_Jamo": {
-        "message": "Hangul, jamo"
-    },
-    "Hangul_Compatibility_Jamo": {
-        "message": "Hangul, kompatibilitetsjamo"
-    },
-    "Halfwidth_Jamo": {
-        "message": "Halvbred jamo"
-    },
-    "Yi": {
-        "message": "Yi"
-    },
-    "Yi_Radicals": {
-        "message": "Yi-radikaler"
-    },
-    "Central_Asian_Scripts": {
-        "message": "Centralasiatiska skrivtecken"
-    },
-    "Kharoshthi": {
-        "message": "Kharoshthi"
-    },
-    "Mongolian": {
-        "message": "Mongoliska"
-    },
-    "Phags_Pa": {
-        "message": "&apos;Phags-pa"
-    },
-    "Tibetan": {
-        "message": "Tibetanska"
-    },
-    "Ancient_Greek_Numbers": {
-        "message": "Forngrekiska tal"
-    },
-    "Ancient_Greek_Musical_Notation": {
-        "message": "Forngrekisk notskrift"
-    },
-    "Cuneiform": {
-        "message": "Kilskrift"
-    },
-    "Old_Persian": {
-        "message": "Fornpersiska"
-    },
-    "Ugaritic": {
-        "message": "Ugaritiska alfabetet"
-    },
-    "Linear_B": {
-        "message": "Linear B (mykensk grekiska)"
-    },
-    "Linear_B_Syllabary": {
-        "message": "Linear B, stavelseskrift"
-    },
-    "Linear_B_Ideograms": {
-        "message": "Linear B, ideogram"
-    },
-    "Aegean_Numbers": {
-        "message": "Egeiska tal"
-    },
-    "Counting_Rod_Numerals": {
-        "message": "Räknestavstaltecken"
-    },
-    "Cypriot_Syllabary": {
-        "message": "Cypriotisk stavelseskrift"
-    },
-    "Gothic": {
-        "message": "Gotiska"
-    },
-    "Old_Italic": {
-        "message": "Fornitaliska"
-    },
-    "Ogham": {
-        "message": "Ogham"
-    },
-    "Runic": {
-        "message": "Runor"
-    },
-    "Phoenician": {
-        "message": "Feniciska"
-    },
-    "Punctuation": {
-        "message": "Skiljetecken"
-    },
-    "General_Punctuation": {
-        "message": "Allmänna skiljetecken"
-    },
-    "ASCII_Punctuation": {
-        "message": "ASCII-skiljetecken"
-    },
-    "Latin_1_Punctuation": {
-        "message": "Latin-1-skiljetecken"
-    },
-    "Supplemental_Punctuation": {
-        "message": "Kompletterande skiljetecken"
-    },
-    "Fullwidth_ASCII_Punctuation": {
-        "message": "Helbreda ASCII-skiljetecken"
-    },
-    "Vertical_Forms": {
-        "message": "Lodräta format"
-    },
-    "Enclosed_Alphanumerics": {
-        "message": "Omslutna alfanumeriska tecken"
-    },
-    "CJK_Compatibility": {
-        "message": "CJK-kompatibilitet"
-    },
-    "Combining_Diacritical_Marks": {
-        "message": "Kombinerande diakritiska tecken"
-    },
-    "Combining_Diacritical_Marks_for_Symbols": {
-        "message": "Kombinerande diakritiska tecken för symboler"
-    },
-    "Combining_Diacritical_Marks_Supplement": {
-        "message": "Kombinerande diakritiska tecken (tillägg)"
-    },
-    "Combining_Half_Marks": {
-        "message": "Kombinerande halva tecken"
-    },
-    "Phonetic_Symbols": {
-        "message": "Fonetiska symboler"
-    },
-    "IPA_Extensions": {
-        "message": "IPA, utökningar"
-    },
-    "Phonetic_Extensions": {
-        "message": "Fonetiska utökningar"
-    },
-    "Phonetic_Extensions_Supplement": {
-        "message": "Fonetiska utökningar (tillägg)"
-    },
-    "Modifier_Tone_Letters": {
-        "message": "Bestämmande tonande bokstäver"
-    },
-    "Spacing_Modifier_Letters": {
-        "message": "Stegningsbestämmande bokstäver"
-    },
-    "Mathematical_Symbols": {
-        "message": "Matematiska symboler"
-    },
-    "Numbers_and_Digits": {
-        "message": "Tal och siffror"
-    },
-    "_see_also_specific_scripts_": {
-        "message": "(Se även specifika skrivtecken)"
-    },
-    "ASCII_Digits": {
-        "message": "ASCII-siffror"
-    },
-    "Fullwidth_ASCII_Digits": {
-        "message": "Helbreda ASCII-siffror"
-    },
-    "Number_Forms": {
-        "message": "Talformat"
-    },
-    "Super_and_Subscripts": {
-        "message": "Upphöjda och nedsänkta tecken"
-    },
-    "Letterlike_Symbols": {
-        "message": "Bokstavsliknande symboler"
-    },
-    "Arrows": {
-        "message": "Pilar"
-    },
-    "Mathematical_Operators": {
-        "message": "Matematiska operatorer"
-    },
-    "Supplemental_Arrows_A": {
-        "message": "Kompletterande pilar A"
-    },
-    "Supplemental_Arrows_B": {
-        "message": "Kompletterande pilar B"
-    },
-    "Box_Drawing": {
-        "message": "Ramelement"
-    },
-    "Block_Elements": {
-        "message": "Blockelement"
-    },
-    "Technical_Symbols": {
-        "message": "Tekniska symboler"
-    },
-    "Control_Pictures": {
-        "message": "Styrbilder"
-    },
-    "Miscellaneous_Technical": {
-        "message": "Diverse tekniska"
-    },
-    "Miscellaneous_Symbols": {
-        "message": "Diverse symboler"
-    },
-    "Dingbats": {
-        "message": "Dingbats"
-    },
-    "Tai_Xuan_Jing_Symbols": {
-        "message": "Tai Xuan Jing-symboler"
-    },
-    "Braille_Patterns": {
-        "message": "Braille-mönster"
-    },
-    "Byzantine_Musical_Symbols": {
-        "message": "Bysantinska musiksymboler"
-    },
-    "Currency_Symbols": {
-        "message": "Valutasymboler"
-    },
-    "Yen__Pound_and_Cent": {
-        "message": "Yen, pund och cent"
-    },
-    "Fullwidth_Currency_Symbols": {
-        "message": "Helbreda valutasymboler"
-    },
-    "Rial_Sign": {
-        "message": "Rial-tecken"
-    },
-    "Specials": {
-        "message": "Specialtecken"
-    },
-    "Controls__C0": {
-        "message": "Styrtecken: C0"
-    },
-    "Controls__C1": {
-        "message": "Styrtecken: C1"
-    },
-    "Layout_Controls": {
-        "message": "Layoutkontroller"
-    },
-    "Invisible_Operators": {
-        "message": "Osynliga operatorer"
-    },
-    "Tags": {
-        "message": "Taggar"
-    },
-    "Variation_Selectors": {
-        "message": "Variationsväljare"
-    },
-    "Variation_Selectors_Supplement": {
-        "message": "Variationsväljare (tillägg)"
-    },
-    "Private_Use": {
-        "message": "Privatanvändning"
-    },
-    "Private_Use_Area": {
-        "message": "Privatanvändningsområde"
-    },
-    "Surrogates": {
-        "message": "Surrogat"
-    },
-    "High_Surrogates": {
-        "message": "Höga surrogat"
-    },
-    "High_Private_Use_Surrogates": {
-        "message": "Höga privatanvändningssurrogat"
-    },
-    "Low_Surrogates": {
-        "message": "Låga surrogat"
-    },
-    "Noncharacters_in_blocks": {
-        "message": "Noncharacters in blocks"
-    },
-    "Noncharacters_in_Charts": {
-        "message": "Icke-tecken i tabeller"
-    },
-    "Reserved_range": {
-        "message": "Reserverat intervall"
-    },
-    "At_End_of_BMP": {
-        "message": "I slutet av BMP (plan 0)"
-    },
-    "At_End_of_Plane_1": {
-        "message": "I slutet av plan 1"
-    },
-    "At_End_of_Plane_2": {
-        "message": "I slutet av plan 2"
-    },
-    "At_End_of_Plane_3": {
-        "message": "I slutet av plan 3"
-    },
-    "At_End_of_Plane_4": {
-        "message": "I slutet av plan 4"
-    },
-    "At_End_of_Plane_5": {
-        "message": "I slutet av plan 5"
-    },
-    "At_End_of_Plane_6": {
-        "message": "I slutet av plan 6"
-    },
-    "At_End_of_Plane_7": {
-        "message": "I slutet av plan 7"
-    },
-    "At_End_of_Plane_8": {
-        "message": "I slutet av plan 8"
-    },
-    "At_End_of_Plane_9": {
-        "message": "I slutet av plan 9"
-    },
-    "At_End_of_Plane_10": {
-        "message": "I slutet av plan 10"
-    },
-    "At_End_of_Plane_11": {
-        "message": "I slutet av plan 11"
-    },
-    "At_End_of_Plane_12": {
-        "message": "I slutet av plan 12"
-    },
-    "At_End_of_Plane_13": {
-        "message": "I slutet av plan 13"
-    },
-    "At_End_of_Plane_14": {
-        "message": "I slutet av plan 14"
-    },
-    "At_End_of_Plane_15": {
-        "message": "I slutet av plan 15"
-    },
-    "At_End_of_Plane_16": {
-        "message": "I slutet av plan 16"
-    },
-    "Lepcha": {
-        "message": "Lepcha"
-    },
-    "CJK_Compatibility_Forms": {
-        "message": "CJK-kompatibilitetsformer"
-    },
-    "chars_could_not_be_converted": {
-        "message": "Tecknen kunde inte konverteras till den teckenuppsättningen"
-    },
-    "searchkHanyuPinyin": {
-        "message": "HanyuPinyin:"
-    },
-    "searchkIRG_MSource": {
-        "message": "IRG_MSource:"
-    },
-    "problemAddingToolbarItem": {
-        "message": "Ditt objekt kunde inte läggas till i verktygsfältets rullgardinsmeny eftersom ikonen inte är synlig"
-    },
-    "dropdownArr": {
-        "message": "[]"
-    },
-    "font": {
-        "message": ""
-    },
-    "lang": {
-        "message": "sv-SE"
-    },
-    "yourItemAdded": {
-        "message": "Ditt objekt har lagts till i verktygsfältets rullgardinsmeny"
-    },
-    "need_download_unihan": {
-        "message": "För att få åtkomst till CJK-tecken (kinesiska-japanska-koreanska), så måste du ladda ner den ca. 18 MB stora Unihan-databasen. Se knappen som finns överst under fliken \"Inställningar\"."
-    },
-    "left_parenth": {
-        "message": "("
-    },
-    "right_parenth": {
-        "message": ")"
-    },
-    "Digit0": {
-        "message": "0"
-    },
-    "Digit1": {
-        "message": "1"
-    },
-    "Digit2": {
-        "message": "2"
-    },
-    "Digit3": {
-        "message": "3"
-    },
-    "Digit4": {
-        "message": "4"
-    },
-    "Digit5": {
-        "message": "5"
-    },
-    "Digit6": {
-        "message": "6"
-    },
-    "Digit7": {
-        "message": "7"
-    },
-    "Digit8": {
-        "message": "8"
-    },
-    "Digit9": {
-        "message": "9"
-    },
-    "Decimal0": {
-        "message": "0"
-    },
-    "Decimal1": {
-        "message": "1"
-    },
-    "Decimal2": {
-        "message": "2"
-    },
-    "Decimal3": {
-        "message": "3"
-    },
-    "Decimal4": {
-        "message": "4"
-    },
-    "Decimal5": {
-        "message": "5"
-    },
-    "Decimal6": {
-        "message": "6"
-    },
-    "Decimal7": {
-        "message": "7"
-    },
-    "Decimal8": {
-        "message": "8"
-    },
-    "Decimal9": {
-        "message": "9"
-    },
-    "CJK_Ideograph_Extension_A": {
-        "message": "CJK, ideografiska tillägg A"
-    },
-    "CJK_Ideograph": {
-        "message": "CJK, ideografiska"
-    },
-    "CJK_Ideograph_Extension_B": {
-        "message": "CJK, ideografiska tillägg B"
-    },
-    "Hangul_Syllable": {
-        "message": "Hangul-stavelse"
-    },
-    "No_definition": {
-        "message": "Ingen definition"
-    },
-    "Bidi_MirroredY": {
-        "message": "Ja"
-    },
-    "Bidi_MirroredN": {
-        "message": "Nej"
-    },
-    "Bidi_ClassL": {
-        "message": "Vänster till höger"
-    },
-    "Bidi_ClassLRE": {
-        "message": "Vänster till höger, inbäddning"
-    },
-    "Bidi_ClassLRO": {
-        "message": "Vänster till höger, åsidosättning"
-    },
-    "Bidi_ClassR": {
-        "message": "Höger till vänster"
-    },
-    "Bidi_ClassAL": {
-        "message": "Höger till vänster, arabiska"
-    },
-    "Bidi_ClassRLE": {
-        "message": "Höger till vänster, inbäddning"
-    },
-    "Bidi_ClassRLO": {
-        "message": "Höger till vänster, åsidosättning"
-    },
-    "Bidi_ClassPDF": {
-        "message": "Upphäv riktningsformateringen (PDF)"
-    },
-    "Bidi_ClassEN": {
-        "message": "Europeiska tal"
-    },
-    "Bidi_ClassES": {
-        "message": "Europeiska talavgränsare"
-    },
-    "Bidi_ClassET": {
-        "message": "Europeiska talavslutare"
-    },
-    "Bidi_ClassAN": {
-        "message": "Arabiska tal"
-    },
-    "Bidi_ClassCS": {
-        "message": "Vanliga talavgränsare"
-    },
-    "Bidi_ClassNSM": {
-        "message": "Icke-stegande tecken"
-    },
-    "Bidi_ClassBN": {
-        "message": "Gränsoberoende"
-    },
-    "Bidi_ClassB": {
-        "message": "Styckeavgränsare"
-    },
-    "Bidi_ClassS": {
-        "message": "Segmentavgränsare"
-    },
-    "Bidi_ClassWS": {
-        "message": "Blanksteg"
-    },
-    "Bidi_ClassON": {
-        "message": "Övriga oberoende"
-    },
-    "Canonical_Combining_Class0": {
-        "message": "Stegande, delande, inneslutande, reordrant och tibetanska underliggande bifogade"
-    },
-    "Canonical_Combining_Class1": {
-        "message": "Överlägg och inre"
-    },
-    "Canonical_Combining_Class7": {
-        "message": "Nukta"
-    },
-    "Canonical_Combining_Class8": {
-        "message": "Hiragana/Katakana, intonationstecken"
-    },
-    "Canonical_Combining_Class9": {
-        "message": "Virama"
-    },
-    "Canonical_Combining_Class10": {
-        "message": "Start för klasser med fast placering"
-    },
-    "Canonical_Combining_Class199": {
-        "message": "Slut för klasser med fast placering"
-    },
-    "Canonical_Combining_Class200": {
-        "message": "Nedanför till vänster, bifogade"
-    },
-    "Canonical_Combining_Class202": {
-        "message": "Nedanför, bifogade"
-    },
-    "Canonical_Combining_Class204": {
-        "message": "Nedanför till höger, bifogade"
-    },
-    "Canonical_Combining_Class208": {
-        "message": "Vänster, bifogade (reordrant kring enskilt bastecken)"
-    },
-    "Canonical_Combining_Class210": {
-        "message": "Höger, bifogade"
-    },
-    "Canonical_Combining_Class212": {
-        "message": "Ovanför till vänster, bifogade"
-    },
-    "Canonical_Combining_Class214": {
-        "message": "Ovanför, bifogade"
-    },
-    "Canonical_Combining_Class216": {
-        "message": "Ovanför till höger, bifogade"
-    },
-    "Canonical_Combining_Class218": {
-        "message": "Nedanför till vänster"
-    },
-    "Canonical_Combining_Class220": {
-        "message": "Nedanför"
-    },
-    "Canonical_Combining_Class222": {
-        "message": "Nedanför till höger"
-    },
-    "Canonical_Combining_Class224": {
-        "message": "Vänster (reordrant kring enskilt bastecken)"
-    },
-    "Canonical_Combining_Class226": {
-        "message": "Höger"
-    },
-    "Canonical_Combining_Class228": {
-        "message": "Ovanför till vänster"
-    },
-    "Canonical_Combining_Class230": {
-        "message": "Ovanför"
-    },
-    "Canonical_Combining_Class232": {
-        "message": "Ovanför till höger"
-    },
-    "Canonical_Combining_Class233": {
-        "message": "Dubbelt nedanför"
-    },
-    "Canonical_Combining_Class234": {
-        "message": "Dubbelt ovanför"
-    },
-    "Canonical_Combining_Class240": {
-        "message": "Nedanför (iota-nedsänkt)"
-    },
-    "searchkCangjie": {
-        "message": "Cangjie:"
-    },
-    "searchkCantonese": {
-        "message": "Kantonesiska:"
-    },
-    "searchkHanYu": {
-        "message": "Hanyu:"
-    },
-    "searchkIRGHanyuDaZidian": {
-        "message": "IRGHanyuDaZidian:"
-    },
-    "searchkIRGKangXi": {
-        "message": "IRGKanxi:"
-    },
-    "searchkIRG_GSource": {
-        "message": "IRG GKälla:"
-    },
-    "searchkIRG_JSource": {
-        "message": "IRG JKälla:"
-    },
-    "searchkIRG_TSource": {
-        "message": "IRG TKälla:"
-    },
-    "searchkMandarin": {
-        "message": "Mandarin:"
-    },
-    "searchkRSUnicode": {
-        "message": "RSUnicode:"
-    },
-    "searchkSemanticVariant": {
-        "message": "SemantiskVariant:"
-    },
-    "searchkTotalStrokes": {
-        "message": "AntalStreck:"
-    },
-    "searchkCihaiT": {
-        "message": "CihaiT:"
-    },
-    "searchkIRG_KSource": {
-        "message": "IRG KKälla:"
-    },
-    "searchkSBGY": {
-        "message": "SBGY:"
-    },
-    "searchkJIS0213": {
-        "message": "JIS0213:"
-    },
-    "searchkNelson": {
-        "message": "Nelson:"
-    },
-    "searchkRSAdobe_Japan1_6": {
-        "message": "RSAdobe Japan1 6:"
-    },
-    "searchkCowles": {
-        "message": "Cowles:"
-    },
-    "searchkMatthews": {
-        "message": "Matthews:"
-    },
-    "searchkOtherNumeric": {
-        "message": "ÖvrigNumerisk:"
-    },
-    "searchkPhonetic": {
-        "message": "Fonetisk:"
-    },
-    "searchkGSR": {
-        "message": "GSR:"
-    },
-    "searchkIRG_KPSource": {
-        "message": "IRG KPKälla:"
-    },
-    "searchkIRG_VSource": {
-        "message": "IRG VKälla:"
-    },
-    "searchkKPS1": {
-        "message": "KPS1:"
-    },
-    "searchkFenn": {
-        "message": "Fenn:"
-    },
-    "searchkFennIndex": {
-        "message": "FennIndex:"
-    },
-    "searchkKarlgren": {
-        "message": "Karlgren:"
-    },
-    "searchkHKSCS": {
-        "message": "HKSCS:"
-    },
-    "searchkIRG_HSource": {
-        "message": "IRG HKälla:"
-    },
-    "searchkXHC1983": {
-        "message": "XHC1983:"
-    },
-    "searchkMeyerWempe": {
-        "message": "MeyerWempe:"
-    },
-    "searchkTraditionalVariant": {
-        "message": "TraditionellVariant:"
-    },
-    "searchkVietnamese": {
-        "message": "Vietnamesiska:"
-    },
-    "searchkSpecializedSemanticVariant": {
-        "message": "SpecialiseradSemantiskVariant:"
-    },
-    "searchkLau": {
-        "message": "Lau:"
-    },
-    "searchkCheungBauer": {
-        "message": "CheungBauer:"
-    },
-    "searchkCheungBauerIndex": {
-        "message": "CheungBauerIndex:"
-    },
-    "searchkIICore": {
-        "message": "IICore:"
-    },
-    "searchkTang": {
-        "message": "Tang:"
-    },
-    "searchkZVariant": {
-        "message": "ZVariant:"
-    },
-    "searchkRSKangXi": {
-        "message": "RSKanxi:"
-    },
-    "searchkJapaneseKun": {
-        "message": "JapanskaKun:"
-    },
-    "searchkJapaneseOn": {
-        "message": "JapanskaOn:"
-    },
-    "searchkSimplifiedVariant": {
-        "message": "FörenkladVariant:"
-    },
-    "searchkKangXi": {
-        "message": "Kangxi:"
-    },
-    "searchkKPS0": {
-        "message": "KPS0:"
-    },
-    "searchkBigFive": {
-        "message": "DeFemStora:"
-    },
-    "searchkCCCII": {
-        "message": "CCCII:"
-    },
-    "searchkCNS1986": {
-        "message": "CNS1986:"
-    },
-    "searchkCNS1992": {
-        "message": "CNS1992:"
-    },
-    "searchkDaeJaweon": {
-        "message": "DaeJaweon:"
-    },
-    "searchkEACC": {
-        "message": "EACC:"
-    },
-    "searchkFourCornerCode": {
-        "message": "Fyrahörnskod:"
-    },
-    "searchkFrequency": {
-        "message": "Frekvens:"
-    },
-    "searchkGB0": {
-        "message": "GB0:"
-    },
-    "searchkGB1": {
-        "message": "GB1:"
-    },
-    "searchkGradeLevel": {
-        "message": "GradeLevel:"
-    },
-    "searchkHDZRadBreak": {
-        "message": "HDZRadBreak:"
-    },
-    "searchkHKGlyph": {
-        "message": "HKGlyf:"
-    },
-    "searchkHangul": {
-        "message": "Hangul:"
-    },
-    "searchkHanyuPinlu": {
-        "message": "HanyuPinlu:"
-    },
-    "searchkIRGDaeJaweon": {
-        "message": "IRGDaeJaweon:"
-    },
-    "searchkIRGDaiKanwaZiten": {
-        "message": "IRGDaiKanWaJiten:"
-    },
-    "searchkJis0": {
-        "message": "Jis0:"
-    },
-    "searchkKSC0": {
-        "message": "KSC0:"
-    },
-    "searchkKorean": {
-        "message": "Koreanska:"
-    },
-    "searchkMainlandTelegraph": {
-        "message": "FastlandTelegraf:"
-    },
-    "searchkMorohashi": {
-        "message": "Morohashi:"
-    },
-    "searchkPrimaryNumeric": {
-        "message": "PrimärNumerisk:"
-    },
-    "searchkTaiwanTelegraph": {
-        "message": "TaiwanTelegraf:"
-    },
-    "searchkXerox": {
-        "message": "Xerox:"
-    },
-    "searchkGB5": {
-        "message": "GB5:"
-    },
-    "searchkJis1": {
-        "message": "Jis1:"
-    },
-    "searchkPseudoGB1": {
-        "message": "PseudoGB1:"
-    },
-    "searchkGB3": {
-        "message": "GB3:"
-    },
-    "searchkGB8": {
-        "message": "GB8:"
-    },
-    "searchkKSC1": {
-        "message": "KSC1:"
-    },
-    "searchkIBMJapan": {
-        "message": "IBMJapan:"
-    },
-    "searchkRSKanWa": {
-        "message": "RSKanWa:"
-    },
-    "searchkRSJapanese": {
-        "message": "RSJapanska:"
-    },
-    "searchkAccountingNumeric": {
-        "message": "BokföringNumerisk:"
-    },
-    "searchkRSKorean": {
-        "message": "RSKoreanska:"
-    },
-    "searchkGB7": {
-        "message": "GB7:"
-    },
-    "searchkIRG_USource": {
-        "message": "IRG UKälla:"
-    },
-    "searchkCompatibilityVariant": {
-        "message": "Kompatibilitetsvariant:"
-    },
-    "searchGeneral_Category": {
-        "message": "Allmän kategori"
-    },
-    "searchCanonical_Combining_Class": {
-        "message": "Kanonisk kombinationsklass"
-    },
-    "searchBidi_Class": {
-        "message": "Dubbelriktningsklass"
-    },
-    "searchDecomposition_Type_and_Mapping": {
-        "message": "Uppdelningstyp och mappning"
-    },
-    "searchDecimal": {
-        "message": "Decimal"
-    },
-    "searchDigit": {
-        "message": "Siffra"
-    },
-    "searchNumeric": {
-        "message": "Numerisk"
-    },
-    "searchBidi_Mirrored": {
-        "message": "Dubbelriktad, speglad"
-    },
-    "searchUnicode_1_Name": {
-        "message": "Unicode 1-namn"
-    },
-    "searchISO_Comment": {
-        "message": "ISO-kommentar"
-    },
-    "searchSimple_Uppercase_Mapping": {
-        "message": "Enkel mappning av VERSALER"
-    },
-    "searchSimple_Lowercase_Mapping": {
-        "message": "Enkel mappning av gemener"
-    },
-    "searchSimple_Titlecase_Mapping": {
-        "message": "Enkel mappning av Begynnelsebokstäver"
-    },
-    "General_CategoryLu": {
-        "message": "Bokstav, VERSAL"
-    },
-    "General_CategoryLl": {
-        "message": "Bokstav, gemen"
-    },
-    "General_CategoryLt": {
-        "message": "Bokstav, Begynnelsebokstav"
-    },
-    "General_CategoryLm": {
-        "message": "Bokstav, bestämmande"
-    },
-    "General_CategoryLo": {
-        "message": "Bokstav, övrig"
-    },
-    "General_CategoryMn": {
-        "message": "Tecken, icke-stegande"
-    },
-    "General_CategoryMc": {
-        "message": "Tecken, stegande kombinerande"
-    },
-    "General_CategoryMe": {
-        "message": "Tecken, inneslutande"
-    },
-    "General_CategoryNd": {
-        "message": "Tal, decimaltecken"
-    },
-    "General_CategoryNl": {
-        "message": "Tal, bokstav"
-    },
-    "General_CategoryNo": {
-        "message": "Tal, övrigt"
-    },
-    "General_CategoryPc": {
-        "message": "Skiljetecken, bindestreck"
-    },
-    "General_CategoryPd": {
-        "message": "Skiljetecken, tankstreck"
-    },
-    "General_CategoryPs": {
-        "message": "Skiljetecken, inledande"
-    },
-    "General_CategoryPe": {
-        "message": "Skiljetecken, avslutande"
-    },
-    "General_CategoryPi": {
-        "message": "Skiljetecken, inledande citationstecken (kan bete sig som \"Skiljetecken, inledande\" eller \"Skiljetecken, avslutande\" beroende på användning)"
-    },
-    "General_CategoryPf": {
-        "message": "Skiljetecken, avslutande citationstecken (kan bete sig som \"Skiljetecken, inledande\" eller \"Skiljetecken, avslutande\" beroende på användning)"
-    },
-    "General_CategoryPo": {
-        "message": "Skiljetecken, övrigt"
-    },
-    "General_CategorySm": {
-        "message": "Symbol, matematik"
-    },
-    "General_CategorySc": {
-        "message": "Symbol, valuta"
-    },
-    "General_CategorySk": {
-        "message": "Symbol, bestämmande"
-    },
-    "General_CategorySo": {
-        "message": "Symbol, övrig"
-    },
-    "General_CategoryZs": {
-        "message": "Avgränsare, blanksteg"
-    },
-    "General_CategoryZl": {
-        "message": "Avgränsare, rad"
-    },
-    "General_CategoryZp": {
-        "message": "Avgränsare, stycke"
-    },
-    "General_CategoryCc": {
-        "message": "Övrigt, styrtecken"
-    },
-    "General_CategoryCf": {
-        "message": "Övrigt, format"
-    },
-    "General_CategoryCs": {
-        "message": "Övrigt, surrogat"
-    },
-    "General_CategoryCo": {
-        "message": "Övrigt, privatanvändning"
-    },
-    "General_CategoryCn": {
-        "message": "Övrigt, inte tilldelat (inget tecken i filen har denna egenskap)"
-    },
-    "download_progress": {
-        "message": "Nerladdningsförlopp:"
-    },
-    "percentSign": {
-        "message": "%"
-    },
-    "Finished_download": {
-        "message": "Nerladdningen har slutförts"
-    },
-    "Problem_downloading": {
-        "message": "Ett fel uppstod vid nerladdning av filen. Försök igen. Om det inte fungerar, hämta filen på http://bahai-library.com/zamir/Unihan.sqlite och placera den i din Firefox-profilmapp."
-    },
-    "colon": {
-        "message": ":"
-    },
-    "slash": {
-        "message": "/"
-    },
-    "plane_num": {
-        "message": "Plan %1$S:"
-    },
-    "plane_numNocolon": {
-        "message": "Plan %1$S"
-    },
-    "Noncharacter": {
-        "message": "Reserverat icke-tecken"
-    },
-    "Private_use_character": {
-        "message": "Privatanvändningstecken"
-    },
-    "High_Surrogate": {
-        "message": "Höga surrogat"
-    },
-    "High_Private_Use_Surrogate": {
-        "message": "Höga privatanvändningssurrogat"
-    },
-    "Low_Surrogate": {
-        "message": "Låga surrogat"
-    },
-    "shortened_Latin_Letters__Fullwidth_": {
-        "message": "Latinska bokstäver"
-    },
-    "shortened_ASCII_Punctuation__Fullwidth_": {
-        "message": "ASCII-skiljetecken"
-    },
-    "shortened_ASCII_Digits__Fullwidth_": {
-        "message": "ASCII-siffror"
-    },
-    "shortened_Currency_Symbols__Fullwidth_": {
-        "message": "Valutasymboler"
-    },
-    "shortened_Katakana__Halfwidth_": {
-        "message": "Katakana"
-    },
-    "shortened_Jamo__Halfwidth_": {
-        "message": "Jamo"
-    },
-    "shortened_Fullwidth": {
-        "message": "Helbreda (%1$S, %2$S, %3$S, %4$S)"
-    },
-    "shortened_Halfwidth": {
-        "message": "Halvbreda (%1$S, %2$S)"
-    },
-    "Not_found": {
-        "message": "Odefinierat eller hittades inte"
-    },
-    "Not_found_hangul": {
-        "message": "Hittades inte (Hangul)"
-    },
-    "Request_status": {
-        "message": "Status för begäran"
-    },
-    "retrieving_description": {
-        "message": "hämtar beskrivning..."
-    },
-    "DTDtextbox": {
-        "message": ""
-    },
-    "currstartset": {
-        "message": "a"
-    },
-    "startset": {
-        "message": "a"
-    },
-    "Caucasian_Albanian": {
-        "message": "Caucasian Albanian"
-    },
-    "Cyrillic_Extended_C": {
-        "message": "Cyrillic Extended-C"
-    },
-    "Elbasan": {
-        "message": "Elbasan"
-    },
-    "Georgian_Extended": {
-        "message": "Georgian Extended"
-    },
-    "Glagolitic_Supplement": {
-        "message": "Glagolitic Supplement"
-    },
-    "Latin_Extended_E": {
-        "message": "Latin Extended-E"
-    },
-    "Linear_A": {
-        "message": "Linear A"
-    },
-    "Old_Hungarian": {
-        "message": "Old Hungarian"
-    },
-    "Old_Permic": {
-        "message": "Old Permic"
-    },
-    "Modifier_Letters": {
-        "message": "Modifier Letters"
-    },
-    "Superscripts_and_Subscripts": {
-        "message": "Superscripts and Subscripts"
-    },
-    "Combining_Marks": {
-        "message": "Combining Marks"
-    },
-    "Combining_Diacritical_Marks_Extended": {
-        "message": "Combining Diacritical Marks Extended"
-    },
-    "Adlam": {
-        "message": "Adlam"
-    },
-    "Bassa_Vah": {
-        "message": "Bassa Vah"
-    },
-    "Coptic_Epact_Numbers": {
-        "message": "Coptic Epact Numbers"
-    },
-    "Medefaidrin": {
-        "message": "Medefaidrin"
-    },
-    "Mende_Kikakui": {
-        "message": "Mende Kikakui"
-    },
-    "Meroitic": {
-        "message": "Meroitic"
-    },
-    "Meroitic_Cursive": {
-        "message": "Meroitic Cursive"
-    },
-    "Meroitic_Hieroglyphs": {
-        "message": "Meroitic Hieroglyphs"
-    },
-    "Anatolian_Hieroglyphs": {
-        "message": "Anatolian Hieroglyphs"
-    },
-    "Arabic_Extended_A": {
-        "message": "Arabic Extended-A"
-    },
-    "Early_Dynastic_Cuneiform": {
-        "message": "Early Dynastic Cuneiform"
-    },
-    "Hatran": {
-        "message": "Hatran"
-    },
-    "Nabataean": {
-        "message": "Nabataean"
-    },
-    "Old_North_Arabian": {
-        "message": "Old North Arabian"
-    },
-    "Pahlavi__Psalter": {
-        "message": "Pahlavi, Psalter"
-    },
-    "Palmyrene": {
-        "message": "Palmyrene"
-    },
-    "Syriac_Supplement": {
-        "message": "Syriac Supplement"
-    },
-    "Manichaean": {
-        "message": "Manichaean"
-    },
-    "Marchen": {
-        "message": "Marchen"
-    },
-    "Mongolian_Supplement": {
-        "message": "Mongolian Supplement"
-    },
-    "Old_Sogdian": {
-        "message": "Old Sogdian"
-    },
-    "Sogdian": {
-        "message": "Sogdian"
-    },
-    "Soyombo": {
-        "message": "Soyombo"
-    },
-    "Zanabazar_Square": {
-        "message": "Zanabazar Square"
-    },
-    "Ahom": {
-        "message": "Ahom"
-    },
-    "Bengali_and_Assamese": {
-        "message": "Bengali and Assamese"
-    },
-    "Bhaiksuki": {
-        "message": "Bhaiksuki"
-    },
-    "Chakma": {
-        "message": "Chakma"
-    },
-    "Dogra": {
-        "message": "Dogra"
-    },
-    "Grantha": {
-        "message": "Grantha"
-    },
-    "Gunjala_Gondi": {
-        "message": "Gunjala Gondi"
-    },
-    "Khojki": {
-        "message": "Khojki"
-    },
-    "Khudawadi": {
-        "message": "Khudawadi"
-    },
-    "Mahajani": {
-        "message": "Mahajani"
-    },
-    "Masaram_Gondi": {
-        "message": "Masaram Gondi"
-    },
-    "Meetei_Mayek_Extensions": {
-        "message": "Meetei Mayek Extensions"
-    },
-    "Modi": {
-        "message": "Modi"
-    },
-    "Mro": {
-        "message": "Mro"
-    },
-    "Multani": {
-        "message": "Multani"
-    },
-    "Newa": {
-        "message": "Newa"
-    },
-    "Sharada": {
-        "message": "Sharada"
-    },
-    "Siddham": {
-        "message": "Siddham"
-    },
-    "Sinhala_Archaic_Numbers": {
-        "message": "Sinhala Archaic Numbers"
-    },
-    "Sora_Sompeng": {
-        "message": "Sora Sompeng"
-    },
-    "Takri": {
-        "message": "Takri"
-    },
-    "Tirhuta": {
-        "message": "Tirhuta"
-    },
-    "Warang_Citi": {
-        "message": "Warang Citi"
-    },
-    "Southeast_Asian_Scripts": {
-        "message": "Southeast Asian Scripts"
-    },
-    "Hanifi_Rohingya": {
-        "message": "Hanifi Rohingya"
-    },
-    "Myanmar_Extended_B": {
-        "message": "Myanmar Extended-B"
-    },
-    "Pahawh_Hmong": {
-        "message": "Pahawh Hmong"
-    },
-    "Pau_Cin_Hau": {
-        "message": "Pau Cin Hau"
-    },
-    "Indonesia___Oceania_Scripts": {
-        "message": "Indonesia & Oceania Scripts"
-    },
-    "Makasar": {
-        "message": "Makasar"
-    },
-    "Sundanese_Supplement": {
-        "message": "Sundanese Supplement"
-    },
-    "CJK_Extension_A": {
-        "message": "CJK Extension-A"
-    },
-    "CJK_Extension_B": {
-        "message": "CJK Extension B"
-    },
-    "CJK_Extension_C": {
-        "message": "CJK Extension C"
-    },
-    "CJK_Extension_D": {
-        "message": "CJK Extension D"
-    },
-    "CJK_Extension_E": {
-        "message": "CJK Extension E"
-    },
-    "CJK_Extension_F": {
-        "message": "CJK Extension F"
-    },
-    "Kana_Extended_A": {
-        "message": "Kana Extended-A"
-    },
-    "Miao": {
-        "message": "Miao"
-    },
-    "Nushu": {
-        "message": "Nushu"
-    },
-    "Tangut": {
-        "message": "Tangut"
-    },
-    "Tangut_Components": {
-        "message": "Tangut Components"
-    },
-    "Cherokee_Supplement": {
-        "message": "Cherokee Supplement"
-    },
-    "Osage": {
-        "message": "Osage"
-    },
-    "Other": {
-        "message": "Other"
-    },
-    "Notational_Systems": {
-        "message": "Notational Systems"
-    },
-    "Duployan": {
-        "message": "Duployan"
-    },
-    "Shorthand_Format_Controls": {
-        "message": "Shorthand Format Controls"
-    },
-    "Sutton_SignWriting": {
-        "message": "Sutton SignWriting"
-    },
-    "Ideographic_Symbols_and_Punctuation": {
-        "message": "Ideographic Symbols and Punctuation"
-    },
-    "Arabic_Mathematical_Alphabetic_Symbols": {
-        "message": "Arabic Mathematical Alphabetic Symbols"
-    },
-    "Numbers___Digits": {
-        "message": "Numbers & Digits"
-    },
-    "Indic_Siyaq_Numbers": {
-        "message": "Indic Siyaq Numbers"
-    },
-    "Mayan_Numerals": {
-        "message": "Mayan Numerals"
-    },
-    "Supplemental_Arrows_C": {
-        "message": "Supplemental Arrows-C"
-    },
-    "Supplemental_Mathematical_Operators": {
-        "message": "Supplemental Mathematical Operators"
-    },
-    "Miscellaneous_Mathematical_Symbols_A": {
-        "message": "Miscellaneous Mathematical Symbols-A"
-    },
-    "Miscellaneous_Mathematical_Symbols_B": {
-        "message": "Miscellaneous Mathematical Symbols-B"
-    },
-    "Geometric_Shapes_Extended": {
-        "message": "Geometric Shapes Extended"
-    },
-    "Emoji___Pictographs": {
-        "message": "Emoji & Pictographs"
-    },
-    "Ornamental_Dingbats": {
-        "message": "Ornamental Dingbats"
-    },
-    "Supplemental_Symbols_and_Pictographs": {
-        "message": "Supplemental Symbols and Pictographs"
-    },
-    "Dollar_Sign__Euro_Sign": {
-        "message": "Dollar Sign, Euro Sign"
-    },
-    "Chess_Symbols": {
-        "message": "Chess Symbols"
-    },
-    "Controls__tC0__tC1": {
-        "message": "Controls:\\tC0,\\tC1"
-    },
-    "Range_in_Arabic_Presentation_Forms_A": {
-        "message": "Range in Arabic Presentation Forms-A"
-    },
-    "Range_in_Specials": {
-        "message": "Range in Specials"
-    },
-    "BMP__Plane_1__Plane_2__Plane_3__Plane_4__Plane_5__Plane_6__Plane_7__Plane_8__Plane_9__Plane_10__Plane_11__Plane_12__Plane_13__Plane_14__Plane_15__Plane_16": {
-        "message": "BMP, Plane 1, \\n                    Plane 2, \\n                    Plane 3, \\n                    Plane 4, \\n                    Plane 5, \\n                    Plane 6, \\n                    Plane 7, \\n                    Plane 8,\\n                    Plane 9, \\n                    Plane 10, \\n                    Plane 11, \\n                    Plane 12, \\n                    Plane 13,\\n                    Plane 14, \\n                    Plane 15, \\n                    Plane 16"
-    }
+  "langCode": {
+    "message": "sv-SE",
+    "description": "The default for the font language code field"
+  },
+  "extensionName": {
+    "message": "Unicode Input Tool/Converter"
+  },
+  "extensionShortName": {
+    "message": "Unicode Tool"
+  },
+  "extensionDescription": {
+    "message": "Konverterar teckenreferenser till Unicode-tecken"
+  },
+  "browser_action_title": {
+    "message": "Unicode Input Tool/Converter"
+  },
+  "plus": {
+    "message": "+"
+  },
+  "minus": {
+    "message": "-"
+  },
+  "startCharCode": {
+    "message": "a",
+    "description": "This is the character that will be the default for the chart browser; should reflect a common character used by the language of the locale."
+  },
+  "unicode_noun": {
+    "message": "unicode"
+  },
+  "hex_noun": {
+    "message": "hexadecimal"
+  },
+  "dec_noun": {
+    "message": "decimal"
+  },
+  "ent_noun": {
+    "message": "entiteter"
+  },
+  "Unicode_table_caption_title": {
+    "message": "Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför"
+  },
+  "caption_format_begin": {
+    "message": ", {value}"
+  },
+  "caption_format_end_two": {
+    "message": " och {value}"
+  },
+  "caption_format_end_three_plus": {
+    "message": " och {value}"
+  },
+  "Next_set": {
+    "message": "Nästa uppsättning"
+  },
+  "Prev_set": {
+    "message": "Föreg. uppsättning"
+  },
+  "Conversion_tab_label": {
+    "message": "Konvertering"
+  },
+  "Prefs_tab_label": {
+    "message": "Inställningar"
+  },
+  "DTD_tab_label": {
+    "message": "DTD"
+  },
+  "Charts_tab_label": {
+    "message": "Tabeller"
+  },
+  "Notes_tab_label": {
+    "message": "Information"
+  },
+  "About_tab_label": {
+    "message": "Om"
+  },
+  "About_dialogheader_title": {
+    "message": "Om"
+  },
+  "About_developer_and_contributors": {
+    "message": "{About_developer} {About_developer_link} {About_contributors}"
+  },
+  "About_developer": {
+    "message": "Detta tillägg utvecklades av"
+  },
+  "About_developer_linkText": {
+    "message": "Brett Zamir"
+  },
+  "About_contributors": {
+    "message": " och översattes av Karoly Fabricz (hu-HU), Edgard Magalhães (pt-BR) och Mikael Hiort af Ornäs (sv-SE)."
+  },
+  "About_donation": {
+    "message": "Om du får användning för detta tillägg, vänligen överväg att göra en {About_donation_button}."
+  },
+  "About_donation_buttonText": {
+    "message": "donation"
+  },
+  "About_ial": {
+    "message": "Skaparen av detta tillägg vill bjuda in dig att betänka (och främja) idén om ett officiellt {About_ial_wikipedia_link}, så att världens alla folk en dag skall kunna kommunicera med varandra från tidig ålder och ägna sin energi åt mer produktiva (så väl som förståelseökande och kostnadsbesparande) områden än att behöva lära sig ett flertal lingua franca (geografiskt specifika gemensamma huvudspråk) och därmed göra dem fria att göra andra saker, såsom studier av vilka lokala eller andra språk de kan tänkas vilja lära sig: {About_ial_onetongue_link}."
+  },
+  "About_ial_wikipedia_linkText": {
+    "message": "internationellt hjälpspråk"
+  },
+  "About_ial_wikipedia_linkURL": {
+    "message": "http://sv.wikipedia.org/wiki/International_Auxiliary_Language_Association"
+  },
+  "About_ial_onetongue_linkText": {
+    "message": "World Auxiliary Language website"
+  },
+  "Notes_dialogheader_title": {
+    "message": "Information"
+  },
+  "DTD_insertEntityFile": {
+    "message": "Infoga entitetsfil"
+  },
+  "ent_isobox": {
+    "message": "Ramelement och linjeritning"
+  },
+  "ent_isocyr1": {
+    "message": "Ryska kyrilliska tecken"
+  },
+  "ent_isocyr2": {
+    "message": "Icke-ryska kyrilliska tecken"
+  },
+  "ent_isodia": {
+    "message": "Diakritiska tecken"
+  },
+  "ent_isolat1": {
+    "message": "Tillagda latinska tecken 1"
+  },
+  "ent_isolat2": {
+    "message": "Tillagda latinska tecken 2"
+  },
+  "ent_isonum": {
+    "message": "Numeriska och specialgrafik"
+  },
+  "ent_isopub": {
+    "message": "Publicering"
+  },
+  "ent_isoamsa": {
+    "message": "Tillagda matematiska symboler: Pilrelationer"
+  },
+  "ent_isoamsb": {
+    "message": "Tillagda matematiska symboler: Binära operatorer"
+  },
+  "ent_isoamsc": {
+    "message": "Tillagda matematiska symboler: Avgränsare"
+  },
+  "ent_isoamsn": {
+    "message": "Tillagda matematiska symboler: Negerade relationer"
+  },
+  "ent_isoamso": {
+    "message": "Tillagda matematiska symboler: Vanliga"
+  },
+  "ent_isoamsr": {
+    "message": "Tillagda matematiska symboler: Relationer"
+  },
+  "ent_isogrk1": {
+    "message": "Grekiska bokstäver"
+  },
+  "ent_isogrk2": {
+    "message": "Monotoniko-grekiska"
+  },
+  "ent_isogrk3": {
+    "message": "Grekiska symboler"
+  },
+  "ent_isogrk4": {
+    "message": "Alternativa grekiska symboler"
+  },
+  "ent_isomfrk": {
+    "message": "Matematiska alfabet: Fraktur"
+  },
+  "ent_isomopf": {
+    "message": "Matematiska alfabet: Open Face"
+  },
+  "ent_isomscr": {
+    "message": "Matematiska alfabet: Script"
+  },
+  "ent_isotech": {
+    "message": "Allmänna tekniska"
+  },
+  "ent_mmlextra": {
+    "message": "Ytterligare MathML-symboler"
+  },
+  "ent_mmlalias": {
+    "message": "MathML-alias"
+  },
+  "ent_xhtml1_lat1": {
+    "message": "Latinska tecken för HTML"
+  },
+  "ent_xhtml1_special": {
+    "message": "Specialtecken för HTML"
+  },
+  "ent_xhtml1_symbol": {
+    "message": "Symboler för HTML"
+  },
+  "ent_html5_uppercase": {
+    "message": "Versala alias för HTML"
+  },
+  "ent_predefined": {
+    "message": "Fördefinierad XML"
+  },
+  "Convert_From_Encoding": {
+    "message": "Konvertera från kodning"
+  },
+  "Convert_To_Encoding": {
+    "message": "Konvertera till kodning"
+  },
+  "kHanyuPinyin": {
+    "message": "HanyuPinyin"
+  },
+  "kIRG_MSource": {
+    "message": "IRG MSource"
+  },
+  "Ethiopic_Extended_A": {
+    "message": "Ge'ez, utökad A"
+  },
+  "Batak": {
+    "message": "Batak"
+  },
+  "CJK_Ideographs_Ext__D": {
+    "message": "CJK-ideogram, utök. D"
+  },
+  "Kana_Supplement": {
+    "message": "Kana (tillägg)"
+  },
+  "Alchemical_Symbols": {
+    "message": "Alkemiska symboler"
+  },
+  "Emoticons": {
+    "message": "Emotikoner"
+  },
+  "Playing_Cards": {
+    "message": "Spelkort"
+  },
+  "Miscellaneous_Symbols_And_Pictographs": {
+    "message": "Diverse symboler och piktogram"
+  },
+  "Transport_and_Map_Symbols": {
+    "message": "Transport- och kartsymboler"
+  },
+  "Mandaic": {
+    "message": "Mandeiska"
+  },
+  "Brahmi": {
+    "message": "Brahmi"
+  },
+  "Bamum_Supplement": {
+    "message": "Bamun (tillägg)"
+  },
+  "font_label": {
+    "message": "Font"
+  },
+  "addToToolbar": {
+    "message": "Lägg till i verktygsfältets rullgardinsmeny"
+  },
+  "usage_note_heading": {
+    "message": "Övrig användningsinformation"
+  },
+  "usage_notespar1": {
+    "message": "Tillägget kan aktiveras från snabbmenyn (vilket också ger möjlighet att operera på markerad text), via Verktyg-menyn, via verktygsfältsknappen eller via inställnings-URL:en i tilläggsmenyn."
+  },
+  "usage_notespar2": {
+    "message": "Inställningar anges så fort du klickar på objekten, men du kan återgå till standardvärdena om du gör något misstag."
+  },
+  "usage_notespar3": {
+    "message": "Att stänga dialogen kommer att ange det aktuella fönstrets position vid framtida bruk."
+  },
+  "usage_notespar4": {
+    "message": "Om du får problem med fönsterstorleken, gå till fliken &quot;Inställningar&quot; och klicka på knappen &quot;Återställ till standardvärden (förutom DTD)&quot;. Att använda &quot;Föreg. uppsättning&quot; eller &quot;Nästa uppsättning&quot; kan ibland också rätta till problem med objekt som inte visas korrekt i tabellvyn."
+  },
+  "usage_notespar5": {
+    "message": "Observera att du kan få extra utrymme på skärmen genom att inte använda knappar. Väljer du bort knapparna kan du fortfarande klicka på objekten för att få tabellutdata."
+  },
+  "usage_notespar6": {
+    "message": "Var medveten om att i Unicode-tabellvyn kan objekt såsom frågetecken (Firefox 2.0) eller inrutade siffror (Firefox 3.0+) visas istället för ett önskat tecken (och vissa tecken kommer inte eller kan inte visas överhuvudtaget). Detta beror på Firefox egna nuvarande begränsningar rörande visning av sådana tecken. För att hitta dessa kan du söka bland bilderna, såsom de på den officiella webbplatsen http://www.unicode.org/charts och bland de som finns tillgängliga inom själva tillägget. I tillägget kan du hovra med muspekaren över ett tecken från önskat intervall och klicka på den länk dyker upp, vilken leder dig till lämplig tabell där du kan granska bilden. Du kan även aktivera direktvisning av bilder, men detta bör vara avstängt som standard för att undvika en alltför stor belastning på Unicode-servern."
+  },
+  "usage_notespar7": {
+    "message": "Var vänlig notera att valet av alternativet &quot;Visa endast entiteter&quot; i tabellvyn kommer att visa dig HTML-entiteter i den ordning i vilken HTML-entiteterna definieras (och endast dem). När du inte befinner dig i detta läge, så kommer du att se alla entiteter som finns definierade i den anpassade DTD:n, valfritt utan HTML-entiteter, om kryssrutan om att bifoga DTD-entiteter är avmarkerad på DTD-sidan."
+  },
+  "usage_notespar8": {
+    "message": "Du bör kunna ladda ner databasen Unihan (medföljer inte tillägget p.g.a. dess storlek) inifrån inställningarna. Om du får problem, ladda ner filen som är ca. 18 MB stor från  http://bahai-library.com/zamir/Unihan.sqlite  och placera den i din Firefox-profilmapp."
+  },
+  "usage_notespar9": {
+    "message": "Tillägget används helst med högre upplösningar, men har nu i viss mån anpassats för att också passa lägre upplösningar. Dra i de olika delningslisterna för att storleksändra undersektioner. Din önskade storlek skall kommas ihåg."
+  },
+  "usage_notespar10": {
+    "message": "Använd Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför. "
+  },
+  "usage_notespar11": {
+    "message": "Verktygsfältsikonen kan kan läggas till genom att gå till Visa > Verktygsfält > Anpassa... och sedan dra &quot;U&quot;-ikonen till önskad position i ett verktygsfält. Dessutom har ikonen en rullgardinsmeny i vilken textstycken kan läggas till för senare återanvändning. Textstyckena läggs till m.h.a. knappen nära tabellens utdataruta. För att ta bort redan tillagda objekt, öppna rullgardinsmenyn, hovra över ett objekt (markera utan att klicka) och högerklicka på det för att ta bort det."
+  },
+  "usage_notespar12": {
+    "message": "Unicode-datan inom detta tillägg är licensierad enligt som beskrivs i &quot;Unicode Terms of Use&quot; (http://unicode.org/copyright.html)"
+  },
+  "usage_notespar13": {
+    "message": "Översättare är välkomna. Gå till http://tinyurl.com/UnicodeInputToolBabelZilla"
+  },
+  "note_heading": {
+    "message": "Unicode-information (lite användningsinformation)"
+  },
+  "notespar1": {
+    "message": "Unicode är ett system för att återge alla levande (och vissa döda) mänskliga skrivtecken, standardsymboler och skiljetecken. Unicodes användning i HTML och XML tillåter t.o.m. alla sådana skrivtecken att samsas på samma sida. Många program låter dig skriva eller spara alla sådana tecken direkt i Unicode."
+  },
+  "notespar2": {
+    "message": "Emellertid, eftersom vissa program fortfarande inte stödjer Unicode fullt ut så kanske inte texten kommer att sparas korrekt och måhända, för att göra det enklare för en del att skriva, får du också använda olika typer av kortkommandon för att återge dessa olika Unicode-tecken (fast om du endast använder de grundläggande engelska ASCII-symbolerna, så kommer dina dokument att översättas till Unicode utan problem)."
+  },
+  "notespar3": {
+    "message": "Ett sådant kortkommando som kan användas i alla HTML- och XML-dokument är teckenreferensen. Dessa referenser börjar med ett et-tecken (&quot;&amp;&quot;) och ett nummertecken (&quot;#&quot;) och slutar med ett semikolon (&quot;;&quot;). Däremellan står antingen ett decimaltal (d.v.s. siffrorna 0-9) eller ett hexadecimalt tal (d.v.s. siffrorna 0-9 Och/eller versala eller gemena bokstäverna A-F, vilka föregås av ett &quot;x&quot; eller ett &quot;X&quot;). Endera typen kommer att visa detsamma och kommer att visas exakt som Unicode-tecknet den representerar."
+  },
+  "notespar4": {
+    "message": "(Det hexadecimala talsystemet kan jämföras med en uppsättning spelkort. Knekten kan representera &quot;11&quot; i vissa spel, damen &quot;12&quot; och så vidare. Även om de bara är enskilda kort, så representerar de ett tal större än tio. På samma sätt är det med enskilda hexadecimala siffror som representeras av bokstäverna A-F.)"
+  },
+  "notespar5": {
+    "message": "Vid sidan av teckenreferenser är en annan typ av kortkommando för att återge ett Unicode-tecken (eller t.o.m. flera tecken) den &quot;parsade allmänna entiteten&quot; (parsed general entity)."
+  },
+  "notespar6": {
+    "message": "I XML-språket, undantaget fem fördefinierade entiteter (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;) och &apos; (&apos;)), måste du uttryckligen definiera de entiteter som du vill använda (eller använda ett särskilt &quot;PUBLIC&quot;-ID, vilket visar för program som läser XML-filen att du kommer att använda det språkets uppsättning av entiteter)."
+  },
+  "notespar7": {
+    "message": "I HTML finns det ett antal redan definierade entiteter. Ett viktigt påpekande: Även om HTML använder fyra av XML:s fem fördefinierade entiteter, så använder det inte &quot;&apos;&quot;. Du måste således istället använda motsvarande Unicode (eller använda någon av teckenreferenserna &amp;#x27; eller &amp;#39;)."
+  },
+  "notespar8": {
+    "message": "Du kan också definiera dina egna entiteter i tilläggets &quot;DTD&quot;-sektion genom att använda syntaxet &quot;&lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;&quot; så att de kan inkluderas i konverteringar."
+  },
+  "lang_label": {
+    "message": "lang"
+  },
+  "lang_tooltiptext": {
+    "message": "HTML-språkattributet &quot;lang&quot; eller, i XML, värdet &quot;xml:lang&quot;. Har ingen effekt på de flesta skrivtecken, men kan påverka glyfval/fontvisning för vissa CJK-tecken (t.ex. U+5203 i &quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;ja&quot; eller &quot;ko&quot;). Observera att du måste använda lang-attributet för att se någon effekt utanför tabellen (inte heller vår tabellutdataruta innehåller lang) och det finns för närvarande en bugg för xml:lang i äkta XML/XHTML-dokument: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+  },
+  "initialTab_label": {
+    "message": "Startflik (vid aktivering via kortkommando eller verktygsfältsknapp)"
+  },
+  "CSSWhitespace_label": {
+    "message": "CSS-undantagstecken för blanksteg, att använda i tvetydigt läge"
+  },
+  "CSS_space": {
+    "message": "(mellanslag)"
+  },
+  "CSS_rn": {
+    "message": "\r\n (vagnretur och nyradstecken)"
+  },
+  "CSS_r": {
+    "message": "\r (vagnretur)"
+  },
+  "CSS_n": {
+    "message": "\n (nyradstecken)"
+  },
+  "CSS_t": {
+    "message": "\t (tabulator)"
+  },
+  "CSS_f": {
+    "message": "\f (sidmatning)"
+  },
+  "cssUnambiguous_label": {
+    "message": "Skapa CSS-undantagstecken i form av 6-siffriga sekvenser som inte kräver blanksteg (annars kommer de bli så långa som det är nödvändigt och följas av blanksteg)"
+  },
+  "sixDigit2unicode_label": {
+    "message": "4- eller 6-siffrigt (som i PHP 6) till Unicode"
+  },
+  "sixDigit2unicodeContext_label": {
+    "message": "4- eller 6-siffrigt undantagstecken (som i PHP 6) till Unicode"
+  },
+  "sixDigit2unicodeContext_accesskey": {
+    "message": "6"
+  },
+  "unicodeTo6DigitContext_accesskey": {
+    "message": "U"
+  },
+  "unicodeTo6Digit_label": {
+    "message": "Unicode till 6-siffrigt (som i PHP 6)"
+  },
+  "unicodeTo6DigitContext_label": {
+    "message": "Unicode till 6-siffrigt undantagstecken (som i PHP 6)"
+  },
+  "charDesc2Unicode_accesskey": {
+    "message": "T"
+  },
+  "charDesc2UnicodeContext_label": {
+    "message": "Teckenbeskrivningsundantag (som i PHP 6) till Unicode"
+  },
+  "unicode2CharDescContext_label": {
+    "message": "Unicode till teckenbeskrivningsundantag (som i PHP 6)"
+  },
+  "unicode2CharDescContext_accesskey": {
+    "message": "n"
+  },
+  "charDesc2Unicode_label": {
+    "message": "Teckenbeskrivningsundantag till Unicode"
+  },
+  "unicode2CharDesc_label": {
+    "message": "Unicode till teckenbeskrivningsundantag"
+  },
+  "unicode2JSEscape_label": {
+    "message": "Unicode till JavaScript-undantagstecken"
+  },
+  "unicode2jsescapeContext_label": {
+    "message": "Unicode till undantaget JS"
+  },
+  "unicode2jsescapeContext_accesskey": {
+    "message": "J"
+  },
+  "unicode2CSSEscape_label": {
+    "message": "Unicode till CSS-undantagstecken"
+  },
+  "unicode2cssescapeContext_accesskey": {
+    "message": "S"
+  },
+  "unicode2cssescapeContext_label": {
+    "message": "Unicode till undantaget CSS"
+  },
+  "jsescape2unicode_label": {
+    "message": "JavaScript-undantagstecken till Unicode"
+  },
+  "jsescape2unicodeContext_accesskey": {
+    "message": "J"
+  },
+  "jsescape2unicodeContext_label": {
+    "message": "Undantaget JS till Unicode"
+  },
+  "cssescape2unicode_label": {
+    "message": "CSS-undantagstecken till Unicode"
+  },
+  "cssescape2unicodeContext_accesskey": {
+    "message": "C"
+  },
+  "cssescape2unicodeContext_label": {
+    "message": "Undantaget CSS till Unicode"
+  },
+  "Yijing_Symbols": {
+    "message": "I Ching-symboler"
+  },
+  "Noncharacters_at_end_of____": {
+    "message": "Icke-tecken i slutet av..."
+  },
+  "_see_also_Common_Indic_Number_Forms__": {
+    "message": "(Se även Vanliga indiska talformat)"
+  },
+  "_see_also_Combining_Diacritical_Marks_for_Symbols__": {
+    "message": "(Se även Kombinerande diakritiska tecken för symboler)"
+  },
+  "Roman_Symbols": {
+    "message": "Romerska symboler"
+  },
+  "Latin_1_Supplement": {
+    "message": "Latin-1 (tillägg)"
+  },
+  "Cuneiform_Numbers_and_Punctuation": {
+    "message": "Kilskrift, tal och skiljetecken"
+  },
+  "CJK_Unified_Ideographs__Han_": {
+    "message": "CJK-enhetliga ideogram (Han)"
+  },
+  "CJK_Compatibility_Ideographs": {
+    "message": "CJK, kompatibilitetsideogram"
+  },
+  "CJK_Compatibility_Ideographs_Supplement": {
+    "message": "CJK, kompatibilitetsideogram (tillägg)"
+  },
+  "CJK_Radicals_Supplement": {
+    "message": "CJK-radikaler (tillägg)"
+  },
+  "Ideographic_Description_Characters": {
+    "message": "Ideografiska beskrivningstecken"
+  },
+  "Small_Form_Variants": {
+    "message": "Litet format (varianter)"
+  },
+  "CJK_Symbols_and_Punctuation": {
+    "message": "CJK-symboler och skiljetecken"
+  },
+  "Mathematical_Alphanumeric_Symbols": {
+    "message": "Matematiska alfanumeriska symboler"
+  },
+  "Enclosed_CJK_Letters_and_Months": {
+    "message": "Omslutna CJK-bokstäver och -månader"
+  },
+  "Optical_Character_Recognition__OCR_": {
+    "message": "Optisk teckenläsning (OCR)"
+  },
+  "Misc__Math_Symbols_A": {
+    "message": "Diverse matematiska symboler A"
+  },
+  "Misc__Math_Symbols_B": {
+    "message": "Diverse matematiska symboler B"
+  },
+  "Miscellaneous_Symbols_and_Arrows": {
+    "message": "Diverse symboler och pilar"
+  },
+  "Suppl__Math_Operators": {
+    "message": "Kompletterande matematiska operatorer"
+  },
+  "Geometric_Shapes": {
+    "message": "Geometriska figurer"
+  },
+  "Other_Symbols": {
+    "message": "Övriga symboler"
+  },
+  "Musical_Symbols": {
+    "message": "Musiksymboler"
+  },
+  "Yijing_Mono___Di__and_Trigrams": {
+    "message": "I Ching (mono-, di- och trigram)"
+  },
+  "Yijing_Hexagram_Symbols": {
+    "message": "I Chings hexagramsymboler"
+  },
+  "Katakana_Phonetic_Extensions": {
+    "message": "Katakana, fonetiska utökningar"
+  },
+  "Supplementary_Private_Use_Area_A": {
+    "message": "Kompletterande privatanvändningsområde-A"
+  },
+  "Supplementary_Private_Use_Area_B": {
+    "message": "Kompletterande privatanvändningsområde-B"
+  },
+  "Combining_Diacritics": {
+    "message": "Kombinerande diakritiska tecken"
+  },
+  "CJK_Ideographs_Ext__C": {
+    "message": "CJK-ideogram, utök. C"
+  },
+  "CJK_Radicals___KangXi_Radicals": {
+    "message": "CJK-radikaler / Kangxi-radikaler"
+  },
+  "Bamum": {
+    "message": "Bamun"
+  },
+  "Egyptian_Hieroglyphs": {
+    "message": "Egyptiska hieroglyfer"
+  },
+  "Aramaic__Imperial": {
+    "message": "Arameiska, kejserlig"
+  },
+  "Avestan": {
+    "message": "Avestiska"
+  },
+  "Old_South_Arabian": {
+    "message": "Sydarabiska, äldre"
+  },
+  "Pahlavi__Inscriptional": {
+    "message": "Medelpersiska, inskriftlig"
+  },
+  "Parthian__Inscriptional": {
+    "message": "Partiska, inskriftlig"
+  },
+  "Samaritan": {
+    "message": "Samaritanska"
+  },
+  "Old_Turkic": {
+    "message": "Turkiska, äldre"
+  },
+  "Devanagari_Extended": {
+    "message": "Devanāgarī, utökad"
+  },
+  "Kaithi": {
+    "message": "Kaithi"
+  },
+  "Meetei_Mayek": {
+    "message": "Meetei-mayek"
+  },
+  "Vedic_Extensions": {
+    "message": "Vediska, utökningar"
+  },
+  "Javanese": {
+    "message": "Javanesiska"
+  },
+  "Myanmar_Extended_A": {
+    "message": "Burmesiska, utökad-A"
+  },
+  "South_Asian_Scripts": {
+    "message": "Sydasiatiska skrivtecken"
+  },
+  "Tai_Tham": {
+    "message": "Lanna"
+  },
+  "Tai_Viet": {
+    "message": "Tai Viet"
+  },
+  "Lisu": {
+    "message": "Lisu"
+  },
+  "Hangul_Jamo_Extended_A": {
+    "message": "Hangul, jamo, utökad-A"
+  },
+  "Hangul_Jamo_Extended_B": {
+    "message": "Hangul, jamo, utökad-B"
+  },
+  "UCAS_Extended": {
+    "message": "UCAS, utökad"
+  },
+  "Common_Indic_Number_Forms": {
+    "message": "Vanliga indiska talformat"
+  },
+  "Rumi_Numeral_Symbols": {
+    "message": "Malajiska talsymboler"
+  },
+  "Basic_operators__Plus__Factorial__Division__Multiplication": {
+    "message": "Grundläggande operatorer: Plus, fakultet"
+  },
+  "Division__Multiplication": {
+    "message": "Division, multiplikation"
+  },
+  "Unified_Canadian_Aboriginal_Syllabics": {
+    "message": "Unified Canadian Aboriginal Syllabics"
+  },
+  "Yi_Syllables": {
+    "message": "Yi-stavelser"
+  },
+  "Alphabetic_Presentation_Forms": {
+    "message": "Alfabetiska presentationsformat"
+  },
+  "Halfwidth_and_Fullwidth_Forms": {
+    "message": "Halvbreda och helbreda format"
+  },
+  "ASCII_Characters": {
+    "message": "ASCII-tecken"
+  },
+  "Alphanumeric_Symbols": {
+    "message": "Alfanumeriska symboler"
+  },
+  "Enclosed_Alphanumeric_Supplement": {
+    "message": "Omslutna alfanumeriska (tillägg)"
+  },
+  "Enclosed_Ideographic_Supplement": {
+    "message": "Omslutna ideografiska (tillägg)"
+  },
+  "Additional_Squared_Symbols": {
+    "message": "Ytterligare obsoleta symboler"
+  },
+  "label_unicode": {
+    "message": "Unicode"
+  },
+  "showAllDetailedView_label": {
+    "message": "Visa alla objekt (eller endast de med innehåll)"
+  },
+  "showAllDetailedCJKView_label": {
+    "message": "Visa alla objekt (eller endast de med innehåll)"
+  },
+  "showComplexWindow_label": {
+    "message": "Visa specialiserade sökalternativ och metadata i tabellvyn (fönstret öppnas långsammare)"
+  },
+  "Specialized_search": {
+    "message": "Specialiserad sökning"
+  },
+  "Code_point": {
+    "message": "Kodpunkt"
+  },
+  "Name": {
+    "message": "Namn"
+  },
+  "kCangjie": {
+    "message": "Cangjie"
+  },
+  "kCantonese": {
+    "message": "Kantonesiska"
+  },
+  "kDefinition": {
+    "message": "Definition"
+  },
+  "kHanYu": {
+    "message": "Hanyu"
+  },
+  "kIRGHanyuDaZidian": {
+    "message": "IRGHanyuDaZidian"
+  },
+  "kIRGKangXi": {
+    "message": "IRGKangxi"
+  },
+  "kIRG_GSource": {
+    "message": "IRG GKälla"
+  },
+  "kIRG_JSource": {
+    "message": "IRG JKälla"
+  },
+  "kIRG_TSource": {
+    "message": "IRG TKälla"
+  },
+  "kMandarin": {
+    "message": "Mandarin"
+  },
+  "kRSUnicode": {
+    "message": "RSUnicode"
+  },
+  "kSemanticVariant": {
+    "message": "SemantiskVariant"
+  },
+  "kTotalStrokes": {
+    "message": "AntalStreck"
+  },
+  "kCihaiT": {
+    "message": "CihaiT"
+  },
+  "kIRG_KSource": {
+    "message": "IRG KKälla"
+  },
+  "kSBGY": {
+    "message": "SBGY"
+  },
+  "kJIS0213": {
+    "message": "JIS0213"
+  },
+  "kNelson": {
+    "message": "Nelson"
+  },
+  "kRSAdobe_Japan1_6": {
+    "message": "RSAdobe Japan1 6"
+  },
+  "kCowles": {
+    "message": "Cowles"
+  },
+  "kMatthews": {
+    "message": "Matthews"
+  },
+  "kOtherNumeric": {
+    "message": "ÖvrigNumerisk"
+  },
+  "kPhonetic": {
+    "message": "Fonetisk"
+  },
+  "kGSR": {
+    "message": "GSR"
+  },
+  "kIRG_KPSource": {
+    "message": "IRG KPKälla"
+  },
+  "kIRG_VSource": {
+    "message": "IRG VKälla"
+  },
+  "kKPS1": {
+    "message": "KPS1"
+  },
+  "kFenn": {
+    "message": "Fenn"
+  },
+  "kFennIndex": {
+    "message": "FennIndex"
+  },
+  "kKarlgren": {
+    "message": "Karlgren"
+  },
+  "kHKSCS": {
+    "message": "HKSCS"
+  },
+  "kIRG_HSource": {
+    "message": "IRG HKälla"
+  },
+  "kXHC1983": {
+    "message": "XHC1983"
+  },
+  "kMeyerWempe": {
+    "message": "MeyerWempe"
+  },
+  "kTraditionalVariant": {
+    "message": "TraditionellVariant"
+  },
+  "kVietnamese": {
+    "message": "Vietnamesiska"
+  },
+  "kSpecializedSemanticVariant": {
+    "message": "SpecialiseradSemantiskVariant"
+  },
+  "kLau": {
+    "message": "Lau"
+  },
+  "kCheungBauer": {
+    "message": "CheungBauer"
+  },
+  "kCheungBauerIndex": {
+    "message": "CheungBauerIndex"
+  },
+  "kIICore": {
+    "message": "IICore"
+  },
+  "kTang": {
+    "message": "Tang"
+  },
+  "kZVariant": {
+    "message": "ZVariant"
+  },
+  "kRSKangXi": {
+    "message": "RSKanxi"
+  },
+  "kJapaneseKun": {
+    "message": "JapanskaKun"
+  },
+  "kJapaneseOn": {
+    "message": "JapanskaOn"
+  },
+  "kSimplifiedVariant": {
+    "message": "FörenkladVariant"
+  },
+  "kKangXi": {
+    "message": "Kangxi"
+  },
+  "kKPS0": {
+    "message": "KPS0"
+  },
+  "kBigFive": {
+    "message": "DeFemStora"
+  },
+  "kCCCII": {
+    "message": "CCCII"
+  },
+  "kCNS1986": {
+    "message": "CNS1986"
+  },
+  "kCNS1992": {
+    "message": "CNS1992"
+  },
+  "kDaeJaweon": {
+    "message": "DaeJaweon"
+  },
+  "kEACC": {
+    "message": "EACC"
+  },
+  "kFourCornerCode": {
+    "message": "Fyrahörnskod"
+  },
+  "kFrequency": {
+    "message": "Frekvens"
+  },
+  "kGB0": {
+    "message": "GB0"
+  },
+  "kGB1": {
+    "message": "GB1"
+  },
+  "kGradeLevel": {
+    "message": "GradeLevel"
+  },
+  "kHDZRadBreak": {
+    "message": "HDZRadBreak"
+  },
+  "kHKGlyph": {
+    "message": "HKGlyf"
+  },
+  "kHangul": {
+    "message": "Hangul"
+  },
+  "kHanyuPinlu": {
+    "message": "HanyuPinlu"
+  },
+  "kIRGDaeJaweon": {
+    "message": "IRGDaeJaweon"
+  },
+  "kIRGDaiKanwaZiten": {
+    "message": "IRGDaiKanWaJiten"
+  },
+  "kJis0": {
+    "message": "Jis0"
+  },
+  "kKSC0": {
+    "message": "KSC0"
+  },
+  "kKorean": {
+    "message": "Koreanska"
+  },
+  "kMainlandTelegraph": {
+    "message": "FastlandTelegraf"
+  },
+  "kMorohashi": {
+    "message": "Morohashi"
+  },
+  "kPrimaryNumeric": {
+    "message": "PrimärNumerisk"
+  },
+  "kTaiwanTelegraph": {
+    "message": "TaiwanTelegraf"
+  },
+  "kXerox": {
+    "message": "Xerox"
+  },
+  "kGB5": {
+    "message": "GB5"
+  },
+  "kJis1": {
+    "message": "Jis1"
+  },
+  "kPseudoGB1": {
+    "message": "PseudoGB1"
+  },
+  "kGB3": {
+    "message": "GB3"
+  },
+  "kGB8": {
+    "message": "GB8"
+  },
+  "kKSC1": {
+    "message": "KSC1"
+  },
+  "kIBMJapan": {
+    "message": "IBMJapan"
+  },
+  "kRSKanWa": {
+    "message": "RSKanWa"
+  },
+  "kRSJapanese": {
+    "message": "RSJapanska"
+  },
+  "kAccountingNumeric": {
+    "message": "BokföringNumerisk"
+  },
+  "kRSKorean": {
+    "message": "RSKoreanska"
+  },
+  "kGB7": {
+    "message": "GB7"
+  },
+  "kIRG_USource": {
+    "message": "IRG UKälla"
+  },
+  "kCompatibilityVariant": {
+    "message": "Kompatibilitetsvariant"
+  },
+  "General_Category": {
+    "message": "Allmän kategori"
+  },
+  "Canonical_Combining_Class": {
+    "message": "Kanonisk kombinationsklass"
+  },
+  "Bidi_Class": {
+    "message": "Dubbelriktningsklass"
+  },
+  "Decomposition_Type_and_Mapping": {
+    "message": "Uppdelningstyp och mappning"
+  },
+  "Decimal": {
+    "message": "Decimal"
+  },
+  "Digit": {
+    "message": "Siffra"
+  },
+  "Numeric": {
+    "message": "Numerisk"
+  },
+  "Bidi_Mirrored": {
+    "message": "Dubbelriktad, speglad"
+  },
+  "Unicode_1_Name": {
+    "message": "Unicode 1-namn"
+  },
+  "ISO_Comment": {
+    "message": "ISO-kommentar"
+  },
+  "Simple_Uppercase_Mapping": {
+    "message": "Enkel mappning av VERSALER"
+  },
+  "Simple_Lowercase_Mapping": {
+    "message": "Enkel mappning av gemener"
+  },
+  "Simple_Titlecase_Mapping": {
+    "message": "Enkel mappning av Begynnelsebokstäver"
+  },
+  "basicView_tab": {
+    "message": "Grundläggande vy och utdata"
+  },
+  "detailedView_tab": {
+    "message": "Detaljerad vy"
+  },
+  "detailedCJKView_tab": {
+    "message": "Detaljerad vy (CJK)"
+  },
+  "unicode2charrefDecSurrogate_label": {
+    "message": "Unicode till teckenreferens (dec) som surrogatpar"
+  },
+  "unicode2charrefHexSurrogate_label": {
+    "message": "Unicode till teckenreferens (hex) som surrogatpar"
+  },
+  "unicode2charrefSurrogate_tooltip": {
+    "message": "Konvertera till surrogatpar (Välj inte detta såvida du inte behöver få reda på surrogaten för ett (ovanligt) högre plans-tecken eller vill granska själva surrogatet)"
+  },
+  "DownloadUnihan": {
+    "message": "Ladda ner Unihan-databasen (17,9 MB)"
+  },
+  "Download_unihan_tooltip": {
+    "message": "Här kan du hämta de senaste teckenbeskrivningarna för kinesiska, japanska och koreanska tecken (CJK). Klicka här för att ladda ner (medföljer inte tillägget eftersom filen är ganska stor)."
+  },
+  "Close": {
+    "message": "Stäng"
+  },
+  "UnihanInstalled": {
+    "message": "Unihan-databasen (CJK) är installerad"
+  },
+  "searchName": {
+    "message": "Sök på teckennamn: "
+  },
+  "searchkDefinition": {
+    "message": "Sök på teckenbeskrivning (CJK)"
+  },
+  "Regular_tab_label": {
+    "message": "Vanlig sökning (icke-CJK)"
+  },
+  "CJK_tab_label": {
+    "message": "CJK"
+  },
+  "CJK_tooltip": {
+    "message": "Sök endast i kinesiska-japanska-koreanska"
+  },
+  "Regular_tooltip": {
+    "message": "Sök i vanlig databas (förutom den kinesiska-japanska-koreanska)"
+  },
+  "Additional_Arrows": {
+    "message": "Ytterligare pilar"
+  },
+  "Floors_and_Ceilings": {
+    "message": "Golv och tak"
+  },
+  "Additional_Shapes": {
+    "message": "Ytterligare figurer"
+  },
+  "APL_symbols": {
+    "message": "APL-symboler"
+  },
+  "ShowImg_checkbox_label": {
+    "message": "Visa bild"
+  },
+  "ShowImg_tooltiptext": {
+    "message": "Var vänlig behåll detta inaktiverat såvida du inte behöver hitta en bild, eftersom det belastar Unicode-servern."
+  },
+  "Sundanese": {
+    "message": "Sundanesiska"
+  },
+  "Ol_Chiki": {
+    "message": "Ol chiki"
+  },
+  "Cyrillic_Extended_A": {
+    "message": "Kyrilliska, utökad-A"
+  },
+  "Vai": {
+    "message": "Vai"
+  },
+  "Cyrillic_Extended_B": {
+    "message": "Kyrilliska, utökad-B"
+  },
+  "Saurashtra": {
+    "message": "Saurashtra"
+  },
+  "Kayah_Li": {
+    "message": "Kayah li"
+  },
+  "Rejang": {
+    "message": "Rejang"
+  },
+  "Cham": {
+    "message": "Cham"
+  },
+  "Ancient_Symbols": {
+    "message": "Forntida symboler"
+  },
+  "Phaistos_Disc": {
+    "message": "Skivan i Faistos"
+  },
+  "Lycian": {
+    "message": "Lykiska"
+  },
+  "Carian": {
+    "message": "Kariska"
+  },
+  "Lydian": {
+    "message": "Lydiska"
+  },
+  "Mahjong_Tiles": {
+    "message": "Mahjong-brickor"
+  },
+  "Domino_Tiles": {
+    "message": "Domino-brickor"
+  },
+  "Game_Symbols": {
+    "message": "Spelsymboler"
+  },
+  "Chess__Checkers_Draughts": {
+    "message": "Schack/Dam"
+  },
+  "Card_suits": {
+    "message": "Kortleksfärger"
+  },
+  "Japanese_Chess": {
+    "message": "Shogi"
+  },
+  "copyToClipboard": {
+    "message": "Kopiera till Urklipp"
+  },
+  "moveconvertedup_label": {
+    "message": "Kopiera &quot;Konverterade&quot; till &quot;Förkonverterade&quot;"
+  },
+  "Reconvert_dialogheader_title": {
+    "message": "Återkonverteringsinställningar"
+  },
+  "Preferences_dialogheader_title": {
+    "message": "Inställningar"
+  },
+  "converted_value_placeholder": {
+    "message": "Unicode-resultat"
+  },
+  "Ascii_checkbox_label": {
+    "message": "Konvertera till entiteter om antal ASCII &lt; 128 (befintliga entiteter/teckenref. kommer därmed inte vara immuna)"
+  },
+  "Hexletters_checkbox_label": {
+    "message": "Utdata-hexadecimal A-F (versaler)"
+  },
+  "xhtmlentmode_label": {
+    "message": "XHTML-entitetsläge (tillåter &apos; när HTML-entiteter skapas istället för numeriskt tecken). (Det är nog bäst att lämna detta alt. inaktiverat.)"
+  },
+  "xmlentmode_label": {
+    "message": "XML-entitetsläge (vid konvertering från (X)HTML-entiteter lämnas &amp;, &lt;, &gt;, &quot; och &apos; okonverterade). (Dessa entiteter är ofarliga i XML och behöver inga DTD-entitetsdeklarationer, så de behöver antagligen inte konverteras och är även enklare att läsa.)"
+  },
+  "ampkeep_label": {
+    "message": "Vid konvertering från Unicode till HTML-entiteter konverteras inte &amp;, så att manipulering av befintliga HTML-entiteter undviks"
+  },
+  "ampspace_label": {
+    "message": "Konvertera varje &quot;&amp;&quot; som följs av blanksteg till &quot;&amp;&quot; (för rätt formaterad XML)."
+  },
+  "resettodefault_label": {
+    "message": "Återställ till standardvärden (förutom DTD)."
+  },
+  "numrows": {
+    "message": "Antal rader"
+  },
+  "numcols": {
+    "message": "Antal kolumner"
+  },
+  "charref2unicode_label": {
+    "message": "Teckenreferens till Unicode"
+  },
+  "charref2unicodeContext_label": {
+    "message": "Teckenref. (hex eller dec) till Unicode"
+  },
+  "charref2unicodeContext_accesskey": {
+    "message": "C"
+  },
+  "charref2htmlents_label": {
+    "message": "Teckenreferenser till HTML-entiteter"
+  },
+  "charref2htmlentsContext_label": {
+    "message": "Teckenref. (hex eller dec) till HTML-ent."
+  },
+  "charref2htmlentsContext_accesskey": {
+    "message": "C"
+  },
+  "unicode2charrefDec_label": {
+    "message": "Unicode till teckenreferens (dec)"
+  },
+  "unicode2charrefDecContext_label": {
+    "message": "Unicode till teckenref. (dec)"
+  },
+  "unicode2charrefDecContext_accesskey": {
+    "message": "U"
+  },
+  "unicode2charrefHex_label": {
+    "message": "Unicode till teckenreferens (hex)"
+  },
+  "unicode2charrefHexContext_label": {
+    "message": "Unicode till teckenref. (hex)"
+  },
+  "unicode2charrefHexContext_accesskey": {
+    "message": "U"
+  },
+  "unicode2htmlents_label": {
+    "message": "Unicode till HTML-entiteter"
+  },
+  "unicode2htmlentsContext_label": {
+    "message": "Unicode till HTML-ent."
+  },
+  "unicode2htmlentsContext_accesskey": {
+    "message": "U"
+  },
+  "htmlents2charrefDec_label": {
+    "message": "HTML-entitet till teckenreferens (dec)"
+  },
+  "htmlents2charrefDecContext_label": {
+    "message": "HTML-ent. till teckenref. (dec)"
+  },
+  "htmlents2charrefDecContext_accesskey": {
+    "message": "H"
+  },
+  "htmlents2charrefHex_label": {
+    "message": "HTML-entitet till teckenreferens (hex)"
+  },
+  "htmlents2charrefHexContext_label": {
+    "message": "HTML-ent. till teckenref. (hex)"
+  },
+  "htmlents2charrefHexContext_accesskey": {
+    "message": "H"
+  },
+  "htmlents2unicode_label": {
+    "message": "HTML-entitet till Unicode"
+  },
+  "htmlents2unicodeContext_label": {
+    "message": "HTML-ent. till Unicode"
+  },
+  "htmlents2unicodeContext_accesskey": {
+    "message": "H"
+  },
+  "launchunicode_label": {
+    "message": "Kör Unicode-konverteringsverktyget"
+  },
+  "launchunicodeContext_label": {
+    "message": "Kör Unicode-konverteringsverktyget"
+  },
+  "launchunicodeContext_accesskey": {
+    "message": "ö"
+  },
+  "unicodechart_label": {
+    "message": "Sök i Unicode-tabell"
+  },
+  "unicodechartContext_label": {
+    "message": "Sök i Unicode-tabell"
+  },
+  "unicodechartContext_accesskey": {
+    "message": "c"
+  },
+  "hex2dec_label": {
+    "message": "Hexadecimal till decimal"
+  },
+  "hex2decContext_label": {
+    "message": "Hexadecimal till decimal"
+  },
+  "hex2decContext_accesskey": {
+    "message": "H"
+  },
+  "dec2hex_label": {
+    "message": "Decimal till hexadecimal"
+  },
+  "dec2hexContext_label": {
+    "message": "Decimal till hexadecimal"
+  },
+  "dec2hexContext_accesskey": {
+    "message": "D"
+  },
+  "toconvert_placeholder": {
+    "message": "Unicode to convert"
+  },
+  "uresults_title": {
+    "message": "Unicode-resultat"
+  },
+  "uresults_preconverted": {
+    "message": "Förkonverterade:"
+  },
+  "uresults_converted": {
+    "message": "Konverterade:"
+  },
+  "button_clearoutput": {
+    "message": "Rensa"
+  },
+  "caption_chart_output": {
+    "message": "Tabellutdata"
+  },
+  "caption_chart_selectchar": {
+    "message": "Sök tecken eller intervall"
+  },
+  "caption_chart_layout": {
+    "message": "Tabellayout"
+  },
+  "caption_displayUnicodeDesc": {
+    "message": "Tkn-<html:br />besk.:"
+  },
+  "textbox_displayUnicodeDesc": {
+    "message": "Teckenbeskrivning"
+  },
+  "button_multiline": {
+    "message": "Flerradig"
+  },
+  "outputtocopy": {
+    "message": "Utdata:"
+  },
+  "button_moveoutput": {
+    "message": "Flytta utdata"
+  },
+  "willreplaceprecnv": {
+    "message": "(ersätter texten &quot;Förkonverterade&quot; under fliken &quot;Konvertering&quot;)"
+  },
+  "charhexdecchoices": {
+    "message": "Unicode-tkn, hex- eller dec-tal:"
+  },
+  "desc_digits": {
+    "message": "(vid sökning efter teckenref. #0-9, anv. #n)"
+  },
+  "chooseregion": {
+    "message": "ELLER välj efter region:"
+  },
+  "label_norows": {
+    "message": "Antal rader"
+  },
+  "label_nocols": {
+    "message": "Antal kolumner"
+  },
+  "label_hexq": {
+    "message": "Hex"
+  },
+  "label_decq": {
+    "message": "Dec"
+  },
+  "label_unicodeq": {
+    "message": "Unicode"
+  },
+  "label_entq": {
+    "message": "Entiteter"
+  },
+  "label_onlyentsyesq": {
+    "message": "Visa endast entiteter"
+  },
+  "label_middleq": {
+    "message": "Placera måltecken i mitten"
+  },
+  "label_buttonq": {
+    "message": "Använd knappar"
+  },
+  "label_fontsize": {
+    "message": "Fontstorlek:"
+  },
+  "desc_symbolspunc": {
+    "message": "ELLER välj bland symboler och skiljetecken:"
+  },
+  "dialogheader_value": {
+    "message": "DTD"
+  },
+  "DTD_desc_value1": {
+    "message": "Lägg till DTD-entitetsdeklarationer (valfritt) för användning vid konvertering"
+  },
+  "DTD_desc_value2": {
+    "message": "Form: &lt;!ENTITY entitetsnamn &quot;teckenvärde&quot;&gt;"
+  },
+  "DTD_textbox_value": {
+    "message": ""
+  },
+  "DTD_insertent": {
+    "message": "Infoga &lt;!ENTITY&gt;"
+  },
+  "appendhtml_checkbox": {
+    "message": "Bifoga till befintlig HTML-entitetsuppsättning"
+  },
+  "European_Scripts": {
+    "message": "Europeiska alfabet"
+  },
+  "Armenian": {
+    "message": "Armeniska"
+  },
+  "Armenian_Ligatures": {
+    "message": "Armeniska ligaturer"
+  },
+  "Coptic": {
+    "message": "Koptiska"
+  },
+  "Coptic_in_Greek_block": {
+    "message": "Koptiska i grekiskt block"
+  },
+  "Cyrillic": {
+    "message": "Kyrilliska"
+  },
+  "Cyrillic_Supplement": {
+    "message": "Kyrilliska (tillägg)"
+  },
+  "Georgian": {
+    "message": "Georgiska"
+  },
+  "Georgian_Supplement": {
+    "message": "Georgiska (tillägg)"
+  },
+  "Greek": {
+    "message": "Grekiska"
+  },
+  "Greek_Extended": {
+    "message": "Grekiska, utökad"
+  },
+  "Latin": {
+    "message": "Latin"
+  },
+  "Basic_Latin": {
+    "message": "Grundläggande latin"
+  },
+  "Latin_Extended_A": {
+    "message": "Latin, utökad A"
+  },
+  "Latin_Extended_B": {
+    "message": "Latin, utökad B"
+  },
+  "Latin_Extended_C": {
+    "message": "Latin, utökad C"
+  },
+  "Latin_Extended_D": {
+    "message": "Latin, utökad D"
+  },
+  "Latin_Extended_Additional": {
+    "message": "Latin, ytterligare utökad"
+  },
+  "Latin_Ligatures": {
+    "message": "Latinska ligaturer"
+  },
+  "Fullwidth_Latin_Letters": {
+    "message": "Helbreda latinska bokstäver"
+  },
+  "Small_Forms": {
+    "message": "Small Forms"
+  },
+  "African_Scripts": {
+    "message": "Afrikanska skrivtecken"
+  },
+  "Ethiopic": {
+    "message": "Ge'ez"
+  },
+  "Ethiopic_Supplement": {
+    "message": "Ge'ez (tillägg)"
+  },
+  "Ethiopic_Extended": {
+    "message": "Ge'ez, utökad"
+  },
+  "N_Ko": {
+    "message": "N'Ko"
+  },
+  "Tifinagh": {
+    "message": "Tifinagh"
+  },
+  "Middle_Eastern_Scripts": {
+    "message": "Mellanösterns skrivtecken"
+  },
+  "Arabic": {
+    "message": "Arabiska"
+  },
+  "Arabic_Supplement": {
+    "message": "Arabiska (tillägg)"
+  },
+  "Arabic_Presentation_Forms_A": {
+    "message": "Arabiska presentationsformat A"
+  },
+  "Arabic_Presentation_Forms_B": {
+    "message": "Arabiska presentationsformat B"
+  },
+  "Hebrew": {
+    "message": "Hebreiska"
+  },
+  "Hebrew_Presentation_Forms": {
+    "message": "Hebreiska presentationsformat"
+  },
+  "Syriac": {
+    "message": "Syriska"
+  },
+  "Thaana": {
+    "message": "Tāna"
+  },
+  "American_Scripts": {
+    "message": "Amerikanska skrivtecken"
+  },
+  "Cherokee": {
+    "message": "Cherokesiska"
+  },
+  "Deseret": {
+    "message": "Deseret-alfabetet"
+  },
+  "Other_Scripts": {
+    "message": "Övriga skrivtecken"
+  },
+  "Shavian": {
+    "message": "Shaviska alfabetet"
+  },
+  "Osmanya": {
+    "message": "Osmanya-skrift"
+  },
+  "Glagolitic": {
+    "message": "Glagolitiska alfabetet"
+  },
+  "Bengali": {
+    "message": "Bengali"
+  },
+  "Devanagari": {
+    "message": "Devanāgarī"
+  },
+  "Gujarati": {
+    "message": "Gujarati"
+  },
+  "Gurmukhi": {
+    "message": "Gurmukhi"
+  },
+  "Kannada": {
+    "message": "Kannada"
+  },
+  "Limbu": {
+    "message": "Limbu"
+  },
+  "Malayalam": {
+    "message": "Malayalam"
+  },
+  "Oriya": {
+    "message": "Oriya"
+  },
+  "Sinhala": {
+    "message": "Singalesiska"
+  },
+  "Syloti_Nagri": {
+    "message": "Syloti nagri"
+  },
+  "Tamil": {
+    "message": "Tamil"
+  },
+  "Telugu": {
+    "message": "Telugu"
+  },
+  "Philippine_Scripts": {
+    "message": "Filippinska skrivtecken"
+  },
+  "Buhid": {
+    "message": "Buhid"
+  },
+  "Hanunoo": {
+    "message": "Hanunó'o"
+  },
+  "Tagalog": {
+    "message": "Tagalog"
+  },
+  "Tagbanwa": {
+    "message": "Tagbanwa"
+  },
+  "South_East_Asian": {
+    "message": "Sydostasiatiska"
+  },
+  "Balinese": {
+    "message": "Balinesiska"
+  },
+  "Buginese": {
+    "message": "Buginesiska"
+  },
+  "Khmer": {
+    "message": "Khmerisk skrift"
+  },
+  "Khmer_Symbols": {
+    "message": "Khmer-symboler"
+  },
+  "Lao": {
+    "message": "Lao"
+  },
+  "Myanmar": {
+    "message": "Burmesiska"
+  },
+  "New_Tai_Lue": {
+    "message": "Ny tai lü"
+  },
+  "Tai_Le": {
+    "message": "Tai nüa"
+  },
+  "Thai": {
+    "message": "Thailändska"
+  },
+  "East_Asian_Scripts": {
+    "message": "Ostasiatiska skrivtecken"
+  },
+  "CJK_Ideographs_Ext__A": {
+    "message": "CJK-ideogram, utök. A"
+  },
+  "CJK_Ideographs_Ext__B": {
+    "message": "CJK-ideogram, utök. B"
+  },
+  "Kanbun": {
+    "message": "Kanbun"
+  },
+  "_see_also_Unihan_Database_": {
+    "message": "(Se även Unihan-databasen)"
+  },
+  "CJK_Strokes": {
+    "message": "CJK-streck"
+  },
+  "Bopomofo": {
+    "message": "Zhùyīn Fúhào (bopomofo)"
+  },
+  "Bopomofo_Extended": {
+    "message": "Zhùyīn Fúhào (bopomofo), utökad"
+  },
+  "Hiragana": {
+    "message": "Hiragana"
+  },
+  "Katakana": {
+    "message": "Katakana"
+  },
+  "Halfwidth_Katakana": {
+    "message": "Halvbred katakana"
+  },
+  "Hangul_Syllables": {
+    "message": "Hangul-stavelser"
+  },
+  "Hangul_Jamo": {
+    "message": "Hangul, jamo"
+  },
+  "Hangul_Compatibility_Jamo": {
+    "message": "Hangul, kompatibilitetsjamo"
+  },
+  "Halfwidth_Jamo": {
+    "message": "Halvbred jamo"
+  },
+  "Yi": {
+    "message": "Yi"
+  },
+  "Yi_Radicals": {
+    "message": "Yi-radikaler"
+  },
+  "Central_Asian_Scripts": {
+    "message": "Centralasiatiska skrivtecken"
+  },
+  "Kharoshthi": {
+    "message": "Kharoshthi"
+  },
+  "Mongolian": {
+    "message": "Mongoliska"
+  },
+  "Phags_Pa": {
+    "message": "&apos;Phags-pa"
+  },
+  "Tibetan": {
+    "message": "Tibetanska"
+  },
+  "Ancient_Greek_Numbers": {
+    "message": "Forngrekiska tal"
+  },
+  "Ancient_Greek_Musical_Notation": {
+    "message": "Forngrekisk notskrift"
+  },
+  "Cuneiform": {
+    "message": "Kilskrift"
+  },
+  "Old_Persian": {
+    "message": "Fornpersiska"
+  },
+  "Ugaritic": {
+    "message": "Ugaritiska alfabetet"
+  },
+  "Linear_B": {
+    "message": "Linear B (mykensk grekiska)"
+  },
+  "Linear_B_Syllabary": {
+    "message": "Linear B, stavelseskrift"
+  },
+  "Linear_B_Ideograms": {
+    "message": "Linear B, ideogram"
+  },
+  "Aegean_Numbers": {
+    "message": "Egeiska tal"
+  },
+  "Counting_Rod_Numerals": {
+    "message": "Räknestavstaltecken"
+  },
+  "Cypriot_Syllabary": {
+    "message": "Cypriotisk stavelseskrift"
+  },
+  "Gothic": {
+    "message": "Gotiska"
+  },
+  "Old_Italic": {
+    "message": "Fornitaliska"
+  },
+  "Ogham": {
+    "message": "Ogham"
+  },
+  "Runic": {
+    "message": "Runor"
+  },
+  "Phoenician": {
+    "message": "Feniciska"
+  },
+  "Punctuation": {
+    "message": "Skiljetecken"
+  },
+  "General_Punctuation": {
+    "message": "Allmänna skiljetecken"
+  },
+  "ASCII_Punctuation": {
+    "message": "ASCII-skiljetecken"
+  },
+  "Latin_1_Punctuation": {
+    "message": "Latin-1-skiljetecken"
+  },
+  "Supplemental_Punctuation": {
+    "message": "Kompletterande skiljetecken"
+  },
+  "Fullwidth_ASCII_Punctuation": {
+    "message": "Helbreda ASCII-skiljetecken"
+  },
+  "Vertical_Forms": {
+    "message": "Lodräta format"
+  },
+  "Enclosed_Alphanumerics": {
+    "message": "Omslutna alfanumeriska tecken"
+  },
+  "CJK_Compatibility": {
+    "message": "CJK-kompatibilitet"
+  },
+  "Combining_Diacritical_Marks": {
+    "message": "Kombinerande diakritiska tecken"
+  },
+  "Combining_Diacritical_Marks_for_Symbols": {
+    "message": "Kombinerande diakritiska tecken för symboler"
+  },
+  "Combining_Diacritical_Marks_Supplement": {
+    "message": "Kombinerande diakritiska tecken (tillägg)"
+  },
+  "Combining_Half_Marks": {
+    "message": "Kombinerande halva tecken"
+  },
+  "Phonetic_Symbols": {
+    "message": "Fonetiska symboler"
+  },
+  "IPA_Extensions": {
+    "message": "IPA, utökningar"
+  },
+  "Phonetic_Extensions": {
+    "message": "Fonetiska utökningar"
+  },
+  "Phonetic_Extensions_Supplement": {
+    "message": "Fonetiska utökningar (tillägg)"
+  },
+  "Modifier_Tone_Letters": {
+    "message": "Bestämmande tonande bokstäver"
+  },
+  "Spacing_Modifier_Letters": {
+    "message": "Stegningsbestämmande bokstäver"
+  },
+  "Mathematical_Symbols": {
+    "message": "Matematiska symboler"
+  },
+  "Numbers_and_Digits": {
+    "message": "Tal och siffror"
+  },
+  "_see_also_specific_scripts_": {
+    "message": "(Se även specifika skrivtecken)"
+  },
+  "ASCII_Digits": {
+    "message": "ASCII-siffror"
+  },
+  "Fullwidth_ASCII_Digits": {
+    "message": "Helbreda ASCII-siffror"
+  },
+  "Number_Forms": {
+    "message": "Talformat"
+  },
+  "Super_and_Subscripts": {
+    "message": "Upphöjda och nedsänkta tecken"
+  },
+  "Letterlike_Symbols": {
+    "message": "Bokstavsliknande symboler"
+  },
+  "Arrows": {
+    "message": "Pilar"
+  },
+  "Mathematical_Operators": {
+    "message": "Matematiska operatorer"
+  },
+  "Supplemental_Arrows_A": {
+    "message": "Kompletterande pilar A"
+  },
+  "Supplemental_Arrows_B": {
+    "message": "Kompletterande pilar B"
+  },
+  "Box_Drawing": {
+    "message": "Ramelement"
+  },
+  "Block_Elements": {
+    "message": "Blockelement"
+  },
+  "Technical_Symbols": {
+    "message": "Tekniska symboler"
+  },
+  "Control_Pictures": {
+    "message": "Styrbilder"
+  },
+  "Miscellaneous_Technical": {
+    "message": "Diverse tekniska"
+  },
+  "Miscellaneous_Symbols": {
+    "message": "Diverse symboler"
+  },
+  "Dingbats": {
+    "message": "Dingbats"
+  },
+  "Tai_Xuan_Jing_Symbols": {
+    "message": "Tai Xuan Jing-symboler"
+  },
+  "Braille_Patterns": {
+    "message": "Braille-mönster"
+  },
+  "Byzantine_Musical_Symbols": {
+    "message": "Bysantinska musiksymboler"
+  },
+  "Currency_Symbols": {
+    "message": "Valutasymboler"
+  },
+  "Yen__Pound_and_Cent": {
+    "message": "Yen, pund och cent"
+  },
+  "Fullwidth_Currency_Symbols": {
+    "message": "Helbreda valutasymboler"
+  },
+  "Rial_Sign": {
+    "message": "Rial-tecken"
+  },
+  "Specials": {
+    "message": "Specialtecken"
+  },
+  "Controls__C0": {
+    "message": "Styrtecken: C0"
+  },
+  "Controls__C1": {
+    "message": "Styrtecken: C1"
+  },
+  "Layout_Controls": {
+    "message": "Layoutkontroller"
+  },
+  "Invisible_Operators": {
+    "message": "Osynliga operatorer"
+  },
+  "Tags": {
+    "message": "Taggar"
+  },
+  "Variation_Selectors": {
+    "message": "Variationsväljare"
+  },
+  "Variation_Selectors_Supplement": {
+    "message": "Variationsväljare (tillägg)"
+  },
+  "Private_Use": {
+    "message": "Privatanvändning"
+  },
+  "Private_Use_Area": {
+    "message": "Privatanvändningsområde"
+  },
+  "Surrogates": {
+    "message": "Surrogat"
+  },
+  "High_Surrogates": {
+    "message": "Höga surrogat"
+  },
+  "High_Private_Use_Surrogates": {
+    "message": "Höga privatanvändningssurrogat"
+  },
+  "Low_Surrogates": {
+    "message": "Låga surrogat"
+  },
+  "Noncharacters_in_blocks": {
+    "message": "Noncharacters in blocks"
+  },
+  "Noncharacters_in_Charts": {
+    "message": "Icke-tecken i tabeller"
+  },
+  "Reserved_range": {
+    "message": "Reserverat intervall"
+  },
+  "At_End_of_BMP": {
+    "message": "I slutet av BMP (plan 0)"
+  },
+  "At_End_of_Plane_1": {
+    "message": "I slutet av plan 1"
+  },
+  "At_End_of_Plane_2": {
+    "message": "I slutet av plan 2"
+  },
+  "At_End_of_Plane_3": {
+    "message": "I slutet av plan 3"
+  },
+  "At_End_of_Plane_4": {
+    "message": "I slutet av plan 4"
+  },
+  "At_End_of_Plane_5": {
+    "message": "I slutet av plan 5"
+  },
+  "At_End_of_Plane_6": {
+    "message": "I slutet av plan 6"
+  },
+  "At_End_of_Plane_7": {
+    "message": "I slutet av plan 7"
+  },
+  "At_End_of_Plane_8": {
+    "message": "I slutet av plan 8"
+  },
+  "At_End_of_Plane_9": {
+    "message": "I slutet av plan 9"
+  },
+  "At_End_of_Plane_10": {
+    "message": "I slutet av plan 10"
+  },
+  "At_End_of_Plane_11": {
+    "message": "I slutet av plan 11"
+  },
+  "At_End_of_Plane_12": {
+    "message": "I slutet av plan 12"
+  },
+  "At_End_of_Plane_13": {
+    "message": "I slutet av plan 13"
+  },
+  "At_End_of_Plane_14": {
+    "message": "I slutet av plan 14"
+  },
+  "At_End_of_Plane_15": {
+    "message": "I slutet av plan 15"
+  },
+  "At_End_of_Plane_16": {
+    "message": "I slutet av plan 16"
+  },
+  "Lepcha": {
+    "message": "Lepcha"
+  },
+  "CJK_Compatibility_Forms": {
+    "message": "CJK-kompatibilitetsformer"
+  },
+  "chars_could_not_be_converted": {
+    "message": "Tecknen kunde inte konverteras till den teckenuppsättningen"
+  },
+  "searchkHanyuPinyin": {
+    "message": "HanyuPinyin:"
+  },
+  "searchkIRG_MSource": {
+    "message": "IRG_MSource:"
+  },
+  "problemAddingToolbarItem": {
+    "message": "Ditt objekt kunde inte läggas till i verktygsfältets rullgardinsmeny eftersom ikonen inte är synlig"
+  },
+  "dropdownArr": {
+    "message": "[]"
+  },
+  "font": {
+    "message": ""
+  },
+  "lang": {
+    "message": "sv-SE"
+  },
+  "yourItemAdded": {
+    "message": "Ditt objekt har lagts till i verktygsfältets rullgardinsmeny"
+  },
+  "need_download_unihan": {
+    "message": "För att få åtkomst till CJK-tecken (kinesiska-japanska-koreanska), så måste du ladda ner den ca. 18 MB stora Unihan-databasen. Se knappen som finns överst under fliken \"Inställningar\"."
+  },
+  "left_parenth": {
+    "message": "("
+  },
+  "right_parenth": {
+    "message": ")"
+  },
+  "Digit0": {
+    "message": "0"
+  },
+  "Digit1": {
+    "message": "1"
+  },
+  "Digit2": {
+    "message": "2"
+  },
+  "Digit3": {
+    "message": "3"
+  },
+  "Digit4": {
+    "message": "4"
+  },
+  "Digit5": {
+    "message": "5"
+  },
+  "Digit6": {
+    "message": "6"
+  },
+  "Digit7": {
+    "message": "7"
+  },
+  "Digit8": {
+    "message": "8"
+  },
+  "Digit9": {
+    "message": "9"
+  },
+  "Decimal0": {
+    "message": "0"
+  },
+  "Decimal1": {
+    "message": "1"
+  },
+  "Decimal2": {
+    "message": "2"
+  },
+  "Decimal3": {
+    "message": "3"
+  },
+  "Decimal4": {
+    "message": "4"
+  },
+  "Decimal5": {
+    "message": "5"
+  },
+  "Decimal6": {
+    "message": "6"
+  },
+  "Decimal7": {
+    "message": "7"
+  },
+  "Decimal8": {
+    "message": "8"
+  },
+  "Decimal9": {
+    "message": "9"
+  },
+  "CJK_Ideograph_Extension_A": {
+    "message": "CJK, ideografiska tillägg A"
+  },
+  "CJK_Ideograph": {
+    "message": "CJK, ideografiska"
+  },
+  "CJK_Ideograph_Extension_B": {
+    "message": "CJK, ideografiska tillägg B"
+  },
+  "Hangul_Syllable": {
+    "message": "Hangul-stavelse"
+  },
+  "No_definition": {
+    "message": "Ingen definition"
+  },
+  "Bidi_MirroredY": {
+    "message": "Ja"
+  },
+  "Bidi_MirroredN": {
+    "message": "Nej"
+  },
+  "Bidi_ClassL": {
+    "message": "Vänster till höger"
+  },
+  "Bidi_ClassLRE": {
+    "message": "Vänster till höger, inbäddning"
+  },
+  "Bidi_ClassLRO": {
+    "message": "Vänster till höger, åsidosättning"
+  },
+  "Bidi_ClassR": {
+    "message": "Höger till vänster"
+  },
+  "Bidi_ClassAL": {
+    "message": "Höger till vänster, arabiska"
+  },
+  "Bidi_ClassRLE": {
+    "message": "Höger till vänster, inbäddning"
+  },
+  "Bidi_ClassRLO": {
+    "message": "Höger till vänster, åsidosättning"
+  },
+  "Bidi_ClassPDF": {
+    "message": "Upphäv riktningsformateringen (PDF)"
+  },
+  "Bidi_ClassEN": {
+    "message": "Europeiska tal"
+  },
+  "Bidi_ClassES": {
+    "message": "Europeiska talavgränsare"
+  },
+  "Bidi_ClassET": {
+    "message": "Europeiska talavslutare"
+  },
+  "Bidi_ClassAN": {
+    "message": "Arabiska tal"
+  },
+  "Bidi_ClassCS": {
+    "message": "Vanliga talavgränsare"
+  },
+  "Bidi_ClassNSM": {
+    "message": "Icke-stegande tecken"
+  },
+  "Bidi_ClassBN": {
+    "message": "Gränsoberoende"
+  },
+  "Bidi_ClassB": {
+    "message": "Styckeavgränsare"
+  },
+  "Bidi_ClassS": {
+    "message": "Segmentavgränsare"
+  },
+  "Bidi_ClassWS": {
+    "message": "Blanksteg"
+  },
+  "Bidi_ClassON": {
+    "message": "Övriga oberoende"
+  },
+  "Canonical_Combining_Class0": {
+    "message": "Stegande, delande, inneslutande, reordrant och tibetanska underliggande bifogade"
+  },
+  "Canonical_Combining_Class1": {
+    "message": "Överlägg och inre"
+  },
+  "Canonical_Combining_Class7": {
+    "message": "Nukta"
+  },
+  "Canonical_Combining_Class8": {
+    "message": "Hiragana/Katakana, intonationstecken"
+  },
+  "Canonical_Combining_Class9": {
+    "message": "Virama"
+  },
+  "Canonical_Combining_Class10": {
+    "message": "Start för klasser med fast placering"
+  },
+  "Canonical_Combining_Class199": {
+    "message": "Slut för klasser med fast placering"
+  },
+  "Canonical_Combining_Class200": {
+    "message": "Nedanför till vänster, bifogade"
+  },
+  "Canonical_Combining_Class202": {
+    "message": "Nedanför, bifogade"
+  },
+  "Canonical_Combining_Class204": {
+    "message": "Nedanför till höger, bifogade"
+  },
+  "Canonical_Combining_Class208": {
+    "message": "Vänster, bifogade (reordrant kring enskilt bastecken)"
+  },
+  "Canonical_Combining_Class210": {
+    "message": "Höger, bifogade"
+  },
+  "Canonical_Combining_Class212": {
+    "message": "Ovanför till vänster, bifogade"
+  },
+  "Canonical_Combining_Class214": {
+    "message": "Ovanför, bifogade"
+  },
+  "Canonical_Combining_Class216": {
+    "message": "Ovanför till höger, bifogade"
+  },
+  "Canonical_Combining_Class218": {
+    "message": "Nedanför till vänster"
+  },
+  "Canonical_Combining_Class220": {
+    "message": "Nedanför"
+  },
+  "Canonical_Combining_Class222": {
+    "message": "Nedanför till höger"
+  },
+  "Canonical_Combining_Class224": {
+    "message": "Vänster (reordrant kring enskilt bastecken)"
+  },
+  "Canonical_Combining_Class226": {
+    "message": "Höger"
+  },
+  "Canonical_Combining_Class228": {
+    "message": "Ovanför till vänster"
+  },
+  "Canonical_Combining_Class230": {
+    "message": "Ovanför"
+  },
+  "Canonical_Combining_Class232": {
+    "message": "Ovanför till höger"
+  },
+  "Canonical_Combining_Class233": {
+    "message": "Dubbelt nedanför"
+  },
+  "Canonical_Combining_Class234": {
+    "message": "Dubbelt ovanför"
+  },
+  "Canonical_Combining_Class240": {
+    "message": "Nedanför (iota-nedsänkt)"
+  },
+  "searchkCangjie": {
+    "message": "Cangjie:"
+  },
+  "searchkCantonese": {
+    "message": "Kantonesiska:"
+  },
+  "searchkHanYu": {
+    "message": "Hanyu:"
+  },
+  "searchkIRGHanyuDaZidian": {
+    "message": "IRGHanyuDaZidian:"
+  },
+  "searchkIRGKangXi": {
+    "message": "IRGKanxi:"
+  },
+  "searchkIRG_GSource": {
+    "message": "IRG GKälla:"
+  },
+  "searchkIRG_JSource": {
+    "message": "IRG JKälla:"
+  },
+  "searchkIRG_TSource": {
+    "message": "IRG TKälla:"
+  },
+  "searchkMandarin": {
+    "message": "Mandarin:"
+  },
+  "searchkRSUnicode": {
+    "message": "RSUnicode:"
+  },
+  "searchkSemanticVariant": {
+    "message": "SemantiskVariant:"
+  },
+  "searchkTotalStrokes": {
+    "message": "AntalStreck:"
+  },
+  "searchkCihaiT": {
+    "message": "CihaiT:"
+  },
+  "searchkIRG_KSource": {
+    "message": "IRG KKälla:"
+  },
+  "searchkSBGY": {
+    "message": "SBGY:"
+  },
+  "searchkJIS0213": {
+    "message": "JIS0213:"
+  },
+  "searchkNelson": {
+    "message": "Nelson:"
+  },
+  "searchkRSAdobe_Japan1_6": {
+    "message": "RSAdobe Japan1 6:"
+  },
+  "searchkCowles": {
+    "message": "Cowles:"
+  },
+  "searchkMatthews": {
+    "message": "Matthews:"
+  },
+  "searchkOtherNumeric": {
+    "message": "ÖvrigNumerisk:"
+  },
+  "searchkPhonetic": {
+    "message": "Fonetisk:"
+  },
+  "searchkGSR": {
+    "message": "GSR:"
+  },
+  "searchkIRG_KPSource": {
+    "message": "IRG KPKälla:"
+  },
+  "searchkIRG_VSource": {
+    "message": "IRG VKälla:"
+  },
+  "searchkKPS1": {
+    "message": "KPS1:"
+  },
+  "searchkFenn": {
+    "message": "Fenn:"
+  },
+  "searchkFennIndex": {
+    "message": "FennIndex:"
+  },
+  "searchkKarlgren": {
+    "message": "Karlgren:"
+  },
+  "searchkHKSCS": {
+    "message": "HKSCS:"
+  },
+  "searchkIRG_HSource": {
+    "message": "IRG HKälla:"
+  },
+  "searchkXHC1983": {
+    "message": "XHC1983:"
+  },
+  "searchkMeyerWempe": {
+    "message": "MeyerWempe:"
+  },
+  "searchkTraditionalVariant": {
+    "message": "TraditionellVariant:"
+  },
+  "searchkVietnamese": {
+    "message": "Vietnamesiska:"
+  },
+  "searchkSpecializedSemanticVariant": {
+    "message": "SpecialiseradSemantiskVariant:"
+  },
+  "searchkLau": {
+    "message": "Lau:"
+  },
+  "searchkCheungBauer": {
+    "message": "CheungBauer:"
+  },
+  "searchkCheungBauerIndex": {
+    "message": "CheungBauerIndex:"
+  },
+  "searchkIICore": {
+    "message": "IICore:"
+  },
+  "searchkTang": {
+    "message": "Tang:"
+  },
+  "searchkZVariant": {
+    "message": "ZVariant:"
+  },
+  "searchkRSKangXi": {
+    "message": "RSKanxi:"
+  },
+  "searchkJapaneseKun": {
+    "message": "JapanskaKun:"
+  },
+  "searchkJapaneseOn": {
+    "message": "JapanskaOn:"
+  },
+  "searchkSimplifiedVariant": {
+    "message": "FörenkladVariant:"
+  },
+  "searchkKangXi": {
+    "message": "Kangxi:"
+  },
+  "searchkKPS0": {
+    "message": "KPS0:"
+  },
+  "searchkBigFive": {
+    "message": "DeFemStora:"
+  },
+  "searchkCCCII": {
+    "message": "CCCII:"
+  },
+  "searchkCNS1986": {
+    "message": "CNS1986:"
+  },
+  "searchkCNS1992": {
+    "message": "CNS1992:"
+  },
+  "searchkDaeJaweon": {
+    "message": "DaeJaweon:"
+  },
+  "searchkEACC": {
+    "message": "EACC:"
+  },
+  "searchkFourCornerCode": {
+    "message": "Fyrahörnskod:"
+  },
+  "searchkFrequency": {
+    "message": "Frekvens:"
+  },
+  "searchkGB0": {
+    "message": "GB0:"
+  },
+  "searchkGB1": {
+    "message": "GB1:"
+  },
+  "searchkGradeLevel": {
+    "message": "GradeLevel:"
+  },
+  "searchkHDZRadBreak": {
+    "message": "HDZRadBreak:"
+  },
+  "searchkHKGlyph": {
+    "message": "HKGlyf:"
+  },
+  "searchkHangul": {
+    "message": "Hangul:"
+  },
+  "searchkHanyuPinlu": {
+    "message": "HanyuPinlu:"
+  },
+  "searchkIRGDaeJaweon": {
+    "message": "IRGDaeJaweon:"
+  },
+  "searchkIRGDaiKanwaZiten": {
+    "message": "IRGDaiKanWaJiten:"
+  },
+  "searchkJis0": {
+    "message": "Jis0:"
+  },
+  "searchkKSC0": {
+    "message": "KSC0:"
+  },
+  "searchkKorean": {
+    "message": "Koreanska:"
+  },
+  "searchkMainlandTelegraph": {
+    "message": "FastlandTelegraf:"
+  },
+  "searchkMorohashi": {
+    "message": "Morohashi:"
+  },
+  "searchkPrimaryNumeric": {
+    "message": "PrimärNumerisk:"
+  },
+  "searchkTaiwanTelegraph": {
+    "message": "TaiwanTelegraf:"
+  },
+  "searchkXerox": {
+    "message": "Xerox:"
+  },
+  "searchkGB5": {
+    "message": "GB5:"
+  },
+  "searchkJis1": {
+    "message": "Jis1:"
+  },
+  "searchkPseudoGB1": {
+    "message": "PseudoGB1:"
+  },
+  "searchkGB3": {
+    "message": "GB3:"
+  },
+  "searchkGB8": {
+    "message": "GB8:"
+  },
+  "searchkKSC1": {
+    "message": "KSC1:"
+  },
+  "searchkIBMJapan": {
+    "message": "IBMJapan:"
+  },
+  "searchkRSKanWa": {
+    "message": "RSKanWa:"
+  },
+  "searchkRSJapanese": {
+    "message": "RSJapanska:"
+  },
+  "searchkAccountingNumeric": {
+    "message": "BokföringNumerisk:"
+  },
+  "searchkRSKorean": {
+    "message": "RSKoreanska:"
+  },
+  "searchkGB7": {
+    "message": "GB7:"
+  },
+  "searchkIRG_USource": {
+    "message": "IRG UKälla:"
+  },
+  "searchkCompatibilityVariant": {
+    "message": "Kompatibilitetsvariant:"
+  },
+  "searchGeneral_Category": {
+    "message": "Allmän kategori"
+  },
+  "searchCanonical_Combining_Class": {
+    "message": "Kanonisk kombinationsklass"
+  },
+  "searchBidi_Class": {
+    "message": "Dubbelriktningsklass"
+  },
+  "searchDecomposition_Type_and_Mapping": {
+    "message": "Uppdelningstyp och mappning"
+  },
+  "searchDecimal": {
+    "message": "Decimal"
+  },
+  "searchDigit": {
+    "message": "Siffra"
+  },
+  "searchNumeric": {
+    "message": "Numerisk"
+  },
+  "searchBidi_Mirrored": {
+    "message": "Dubbelriktad, speglad"
+  },
+  "searchUnicode_1_Name": {
+    "message": "Unicode 1-namn"
+  },
+  "searchISO_Comment": {
+    "message": "ISO-kommentar"
+  },
+  "searchSimple_Uppercase_Mapping": {
+    "message": "Enkel mappning av VERSALER"
+  },
+  "searchSimple_Lowercase_Mapping": {
+    "message": "Enkel mappning av gemener"
+  },
+  "searchSimple_Titlecase_Mapping": {
+    "message": "Enkel mappning av Begynnelsebokstäver"
+  },
+  "General_CategoryLu": {
+    "message": "Bokstav, VERSAL"
+  },
+  "General_CategoryLl": {
+    "message": "Bokstav, gemen"
+  },
+  "General_CategoryLt": {
+    "message": "Bokstav, Begynnelsebokstav"
+  },
+  "General_CategoryLm": {
+    "message": "Bokstav, bestämmande"
+  },
+  "General_CategoryLo": {
+    "message": "Bokstav, övrig"
+  },
+  "General_CategoryMn": {
+    "message": "Tecken, icke-stegande"
+  },
+  "General_CategoryMc": {
+    "message": "Tecken, stegande kombinerande"
+  },
+  "General_CategoryMe": {
+    "message": "Tecken, inneslutande"
+  },
+  "General_CategoryNd": {
+    "message": "Tal, decimaltecken"
+  },
+  "General_CategoryNl": {
+    "message": "Tal, bokstav"
+  },
+  "General_CategoryNo": {
+    "message": "Tal, övrigt"
+  },
+  "General_CategoryPc": {
+    "message": "Skiljetecken, bindestreck"
+  },
+  "General_CategoryPd": {
+    "message": "Skiljetecken, tankstreck"
+  },
+  "General_CategoryPs": {
+    "message": "Skiljetecken, inledande"
+  },
+  "General_CategoryPe": {
+    "message": "Skiljetecken, avslutande"
+  },
+  "General_CategoryPi": {
+    "message": "Skiljetecken, inledande citationstecken (kan bete sig som \"Skiljetecken, inledande\" eller \"Skiljetecken, avslutande\" beroende på användning)"
+  },
+  "General_CategoryPf": {
+    "message": "Skiljetecken, avslutande citationstecken (kan bete sig som \"Skiljetecken, inledande\" eller \"Skiljetecken, avslutande\" beroende på användning)"
+  },
+  "General_CategoryPo": {
+    "message": "Skiljetecken, övrigt"
+  },
+  "General_CategorySm": {
+    "message": "Symbol, matematik"
+  },
+  "General_CategorySc": {
+    "message": "Symbol, valuta"
+  },
+  "General_CategorySk": {
+    "message": "Symbol, bestämmande"
+  },
+  "General_CategorySo": {
+    "message": "Symbol, övrig"
+  },
+  "General_CategoryZs": {
+    "message": "Avgränsare, blanksteg"
+  },
+  "General_CategoryZl": {
+    "message": "Avgränsare, rad"
+  },
+  "General_CategoryZp": {
+    "message": "Avgränsare, stycke"
+  },
+  "General_CategoryCc": {
+    "message": "Övrigt, styrtecken"
+  },
+  "General_CategoryCf": {
+    "message": "Övrigt, format"
+  },
+  "General_CategoryCs": {
+    "message": "Övrigt, surrogat"
+  },
+  "General_CategoryCo": {
+    "message": "Övrigt, privatanvändning"
+  },
+  "General_CategoryCn": {
+    "message": "Övrigt, inte tilldelat (inget tecken i filen har denna egenskap)"
+  },
+  "download_progress": {
+    "message": "Nerladdningsförlopp:"
+  },
+  "percentSign": {
+    "message": "%"
+  },
+  "Finished_download": {
+    "message": "Nerladdningen har slutförts"
+  },
+  "Problem_downloading": {
+    "message": "Ett fel uppstod vid nerladdning av filen. Försök igen. Om det inte fungerar, hämta filen på http://bahai-library.com/zamir/Unihan.sqlite och placera den i din Firefox-profilmapp."
+  },
+  "colon": {
+    "message": ":"
+  },
+  "slash": {
+    "message": "/"
+  },
+  "plane_num": {
+    "message": "Plan %1$S:"
+  },
+  "plane_numNocolon": {
+    "message": "Plan %1$S"
+  },
+  "Noncharacter": {
+    "message": "Reserverat icke-tecken"
+  },
+  "Private_use_character": {
+    "message": "Privatanvändningstecken"
+  },
+  "High_Surrogate": {
+    "message": "Höga surrogat"
+  },
+  "High_Private_Use_Surrogate": {
+    "message": "Höga privatanvändningssurrogat"
+  },
+  "Low_Surrogate": {
+    "message": "Låga surrogat"
+  },
+  "shortened_Latin_Letters__Fullwidth_": {
+    "message": "Latinska bokstäver"
+  },
+  "shortened_ASCII_Punctuation__Fullwidth_": {
+    "message": "ASCII-skiljetecken"
+  },
+  "shortened_ASCII_Digits__Fullwidth_": {
+    "message": "ASCII-siffror"
+  },
+  "shortened_Currency_Symbols__Fullwidth_": {
+    "message": "Valutasymboler"
+  },
+  "shortened_Katakana__Halfwidth_": {
+    "message": "Katakana"
+  },
+  "shortened_Jamo__Halfwidth_": {
+    "message": "Jamo"
+  },
+  "shortened_Fullwidth": {
+    "message": "Helbreda (%1$S, %2$S, %3$S, %4$S)"
+  },
+  "shortened_Halfwidth": {
+    "message": "Halvbreda (%1$S, %2$S)"
+  },
+  "Not_found": {
+    "message": "Odefinierat eller hittades inte"
+  },
+  "Not_found_hangul": {
+    "message": "Hittades inte (Hangul)"
+  },
+  "Request_status": {
+    "message": "Status för begäran"
+  },
+  "retrieving_description": {
+    "message": "hämtar beskrivning..."
+  },
+  "DTDtextbox": {
+    "message": ""
+  },
+  "currstartset": {
+    "message": "a"
+  },
+  "startset": {
+    "message": "a"
+  },
+  "Caucasian_Albanian": {
+    "message": "Caucasian Albanian"
+  },
+  "Cyrillic_Extended_C": {
+    "message": "Cyrillic Extended-C"
+  },
+  "Elbasan": {
+    "message": "Elbasan"
+  },
+  "Georgian_Extended": {
+    "message": "Georgian Extended"
+  },
+  "Glagolitic_Supplement": {
+    "message": "Glagolitic Supplement"
+  },
+  "Latin_Extended_E": {
+    "message": "Latin Extended-E"
+  },
+  "Linear_A": {
+    "message": "Linear A"
+  },
+  "Old_Hungarian": {
+    "message": "Old Hungarian"
+  },
+  "Old_Permic": {
+    "message": "Old Permic"
+  },
+  "Modifier_Letters": {
+    "message": "Modifier Letters"
+  },
+  "Superscripts_and_Subscripts": {
+    "message": "Superscripts and Subscripts"
+  },
+  "Combining_Marks": {
+    "message": "Combining Marks"
+  },
+  "Combining_Diacritical_Marks_Extended": {
+    "message": "Combining Diacritical Marks Extended"
+  },
+  "Adlam": {
+    "message": "Adlam"
+  },
+  "Bassa_Vah": {
+    "message": "Bassa Vah"
+  },
+  "Coptic_Epact_Numbers": {
+    "message": "Coptic Epact Numbers"
+  },
+  "Medefaidrin": {
+    "message": "Medefaidrin"
+  },
+  "Mende_Kikakui": {
+    "message": "Mende Kikakui"
+  },
+  "Meroitic": {
+    "message": "Meroitic"
+  },
+  "Meroitic_Cursive": {
+    "message": "Meroitic Cursive"
+  },
+  "Meroitic_Hieroglyphs": {
+    "message": "Meroitic Hieroglyphs"
+  },
+  "Anatolian_Hieroglyphs": {
+    "message": "Anatolian Hieroglyphs"
+  },
+  "Arabic_Extended_A": {
+    "message": "Arabic Extended-A"
+  },
+  "Early_Dynastic_Cuneiform": {
+    "message": "Early Dynastic Cuneiform"
+  },
+  "Hatran": {
+    "message": "Hatran"
+  },
+  "Nabataean": {
+    "message": "Nabataean"
+  },
+  "Old_North_Arabian": {
+    "message": "Old North Arabian"
+  },
+  "Pahlavi__Psalter": {
+    "message": "Pahlavi, Psalter"
+  },
+  "Palmyrene": {
+    "message": "Palmyrene"
+  },
+  "Syriac_Supplement": {
+    "message": "Syriac Supplement"
+  },
+  "Manichaean": {
+    "message": "Manichaean"
+  },
+  "Marchen": {
+    "message": "Marchen"
+  },
+  "Mongolian_Supplement": {
+    "message": "Mongolian Supplement"
+  },
+  "Old_Sogdian": {
+    "message": "Old Sogdian"
+  },
+  "Sogdian": {
+    "message": "Sogdian"
+  },
+  "Soyombo": {
+    "message": "Soyombo"
+  },
+  "Zanabazar_Square": {
+    "message": "Zanabazar Square"
+  },
+  "Ahom": {
+    "message": "Ahom"
+  },
+  "Bengali_and_Assamese": {
+    "message": "Bengali and Assamese"
+  },
+  "Bhaiksuki": {
+    "message": "Bhaiksuki"
+  },
+  "Chakma": {
+    "message": "Chakma"
+  },
+  "Dogra": {
+    "message": "Dogra"
+  },
+  "Grantha": {
+    "message": "Grantha"
+  },
+  "Gunjala_Gondi": {
+    "message": "Gunjala Gondi"
+  },
+  "Khojki": {
+    "message": "Khojki"
+  },
+  "Khudawadi": {
+    "message": "Khudawadi"
+  },
+  "Mahajani": {
+    "message": "Mahajani"
+  },
+  "Masaram_Gondi": {
+    "message": "Masaram Gondi"
+  },
+  "Meetei_Mayek_Extensions": {
+    "message": "Meetei Mayek Extensions"
+  },
+  "Modi": {
+    "message": "Modi"
+  },
+  "Mro": {
+    "message": "Mro"
+  },
+  "Multani": {
+    "message": "Multani"
+  },
+  "Newa": {
+    "message": "Newa"
+  },
+  "Sharada": {
+    "message": "Sharada"
+  },
+  "Siddham": {
+    "message": "Siddham"
+  },
+  "Sinhala_Archaic_Numbers": {
+    "message": "Sinhala Archaic Numbers"
+  },
+  "Sora_Sompeng": {
+    "message": "Sora Sompeng"
+  },
+  "Takri": {
+    "message": "Takri"
+  },
+  "Tirhuta": {
+    "message": "Tirhuta"
+  },
+  "Warang_Citi": {
+    "message": "Warang Citi"
+  },
+  "Southeast_Asian_Scripts": {
+    "message": "Southeast Asian Scripts"
+  },
+  "Hanifi_Rohingya": {
+    "message": "Hanifi Rohingya"
+  },
+  "Myanmar_Extended_B": {
+    "message": "Myanmar Extended-B"
+  },
+  "Pahawh_Hmong": {
+    "message": "Pahawh Hmong"
+  },
+  "Pau_Cin_Hau": {
+    "message": "Pau Cin Hau"
+  },
+  "Indonesia___Oceania_Scripts": {
+    "message": "Indonesia & Oceania Scripts"
+  },
+  "Makasar": {
+    "message": "Makasar"
+  },
+  "Sundanese_Supplement": {
+    "message": "Sundanese Supplement"
+  },
+  "CJK_Extension_A": {
+    "message": "CJK Extension-A"
+  },
+  "CJK_Extension_B": {
+    "message": "CJK Extension B"
+  },
+  "CJK_Extension_C": {
+    "message": "CJK Extension C"
+  },
+  "CJK_Extension_D": {
+    "message": "CJK Extension D"
+  },
+  "CJK_Extension_E": {
+    "message": "CJK Extension E"
+  },
+  "CJK_Extension_F": {
+    "message": "CJK Extension F"
+  },
+  "Kana_Extended_A": {
+    "message": "Kana Extended-A"
+  },
+  "Miao": {
+    "message": "Miao"
+  },
+  "Nushu": {
+    "message": "Nushu"
+  },
+  "Tangut": {
+    "message": "Tangut"
+  },
+  "Tangut_Components": {
+    "message": "Tangut Components"
+  },
+  "Cherokee_Supplement": {
+    "message": "Cherokee Supplement"
+  },
+  "Osage": {
+    "message": "Osage"
+  },
+  "Other": {
+    "message": "Other"
+  },
+  "Notational_Systems": {
+    "message": "Notational Systems"
+  },
+  "Duployan": {
+    "message": "Duployan"
+  },
+  "Shorthand_Format_Controls": {
+    "message": "Shorthand Format Controls"
+  },
+  "Sutton_SignWriting": {
+    "message": "Sutton SignWriting"
+  },
+  "Ideographic_Symbols_and_Punctuation": {
+    "message": "Ideographic Symbols and Punctuation"
+  },
+  "Arabic_Mathematical_Alphabetic_Symbols": {
+    "message": "Arabic Mathematical Alphabetic Symbols"
+  },
+  "Numbers___Digits": {
+    "message": "Numbers & Digits"
+  },
+  "Indic_Siyaq_Numbers": {
+    "message": "Indic Siyaq Numbers"
+  },
+  "Mayan_Numerals": {
+    "message": "Mayan Numerals"
+  },
+  "Supplemental_Arrows_C": {
+    "message": "Supplemental Arrows-C"
+  },
+  "Supplemental_Mathematical_Operators": {
+    "message": "Supplemental Mathematical Operators"
+  },
+  "Miscellaneous_Mathematical_Symbols_A": {
+    "message": "Miscellaneous Mathematical Symbols-A"
+  },
+  "Miscellaneous_Mathematical_Symbols_B": {
+    "message": "Miscellaneous Mathematical Symbols-B"
+  },
+  "Geometric_Shapes_Extended": {
+    "message": "Geometric Shapes Extended"
+  },
+  "Emoji___Pictographs": {
+    "message": "Emoji & Pictographs"
+  },
+  "Ornamental_Dingbats": {
+    "message": "Ornamental Dingbats"
+  },
+  "Supplemental_Symbols_and_Pictographs": {
+    "message": "Supplemental Symbols and Pictographs"
+  },
+  "Dollar_Sign__Euro_Sign": {
+    "message": "Dollar Sign, Euro Sign"
+  },
+  "Chess_Symbols": {
+    "message": "Chess Symbols"
+  },
+  "Controls__tC0__tC1": {
+    "message": "Controls:\\tC0,\\tC1"
+  },
+  "Range_in_Arabic_Presentation_Forms_A": {
+    "message": "Range in Arabic Presentation Forms-A"
+  },
+  "Range_in_Specials": {
+    "message": "Range in Specials"
+  },
+  "BMP__Plane_1__Plane_2__Plane_3__Plane_4__Plane_5__Plane_6__Plane_7__Plane_8__Plane_9__Plane_10__Plane_11__Plane_12__Plane_13__Plane_14__Plane_15__Plane_16": {
+    "message": "BMP, Plane 1, \\n          Plane 2, \\n          Plane 3, \\n          Plane 4, \\n          Plane 5, \\n          Plane 6, \\n          Plane 7, \\n          Plane 8,\\n          Plane 9, \\n          Plane 10, \\n          Plane 11, \\n          Plane 12, \\n          Plane 13,\\n          Plane 14, \\n          Plane 15, \\n          Plane 16"
+  },
+  "choose_a_font": {
+    "message": "Or choose a font"
+  }
 }
