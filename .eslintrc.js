@@ -1,4 +1,5 @@
-{
+module.exports = {
+  // Todo: Switch to ash-nazg
   "extends": "standard",
   "parserOptions": {
     "sourceType": "module"
@@ -17,4 +18,4 @@
     "prefer-const": 2,
     "object-curly-spacing": ["error", "never"]
   }
-}
+};
