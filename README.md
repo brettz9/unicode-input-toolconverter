@@ -7,7 +7,7 @@ characters by a variety of means and conversion between various
 Unicode representations such as HTML/XML entities, numeric
 character references, etc.
 
-# Todos
+# Possible to-dos
 
 - Consider License liberalization
 - Convert
@@ -22,3 +22,8 @@ character references, etc.
     <https://bitbucket.org/brettz9/colbrowser>
 - Borrow from or ideas from GPL3-licensed <https://github.com/brettz9/charpick>?
 - Get i18n completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
+- Use [`system_profiler SPFontsDataType`](https://apple.stackexchange.com/a/243746/206073)
+  to get list of fonts on system, and allow user to change, by serving
+  them with `@font-face`
+- Allow adding specific characters or sequences thereof to global system key
+  commands
