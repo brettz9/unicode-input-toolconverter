@@ -23,6 +23,7 @@ character references, etc.
 - Borrow from or ideas from GPL3-licensed <https://github.com/brettz9/charpick>?
 - Get i18n completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
 - Use [`system_profiler SPFontsDataType`](https://apple.stackexchange.com/a/243746/206073)
+  (with my fork of [apple-system-profiler](https://github.com/brettz9/apple-system-profiler/))
   to get list of fonts on system, and allow user to change, by serving
   them with `@font-face`
 - Allow adding specific characters or sequences thereof to global system key
