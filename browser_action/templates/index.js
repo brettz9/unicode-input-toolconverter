@@ -1,4 +1,4 @@
-import {jml, body, $, nbsp} from '/vendor/jamilih/dist/jml-es.js';
+import {jml, body, $, $$, nbsp} from '/vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
 import {code, link} from '../templateUtils/elements.js';
 import encodings from '../encodings.js';
@@ -310,6 +310,11 @@ export default function (_) {
                             change (e) {
                               Unicodecharref.setprefs(e);
                               $('#chart_table').style.fontFamily = this.value;
+                              $('#insertText').style.fontFamily = this.value;
+                              // Form elements don't inherit, so find these manually
+                              $$('#chart_table button[name="unicode"]').forEach((button) => {
+                                button.style.fontFamily = this.value;
+                              });
                             }
                           }
                         }]

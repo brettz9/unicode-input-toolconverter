@@ -1,8 +1,8 @@
 /* eslint-env node */
+const path = require('path');
 const fetch = require('node-fetch');
 const jsdom = require('jsdom');
 const fs = require('fs-extra');
-const path = require('path');
 
 // For `localize` `true`, need to provide strings for all
 //  possible; could auto-add to locale files if missing
