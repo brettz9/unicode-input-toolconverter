@@ -624,7 +624,12 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
       return deflt;
     }
     $('#chart_table').lang = langFont('lang');
-    $('#chart_table').style.fontFamily = langFont('font');
+
+    $('#insertText').style.fontFamily = langFont('font');
+    // Form elements don't inherit, so find these manually
+    $$('#chart_table button[name="unicode"]').forEach((button) => {
+      button.style.fontFamily = langFont('font');
+    });
 
     // setPref('hexstyleLwr', true);
     // $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
