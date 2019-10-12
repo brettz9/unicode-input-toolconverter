@@ -309,7 +309,6 @@ export default function (_) {
                           $on: {
                             change (e) {
                               Unicodecharref.setprefs(e);
-                              $('#chart_table').style.fontFamily = this.value;
                               $('#insertText').style.fontFamily = this.value;
                               // Form elements don't inherit, so find these manually
                               $$('#chart_table button[name="unicode"]').forEach((button) => {
