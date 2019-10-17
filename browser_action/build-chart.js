@@ -23,7 +23,8 @@ export default async function ({
 let lastStartCharCode;
 
 // Todo:
-lastStartCharCode; // eslint-disable-line no-unused-expressions
+// eslint-disable-next-line no-unused-expressions
+lastStartCharCode; // lgtm [js/useless-expression]
 
 export const buildChart = async function buildChart ({descripts} = {}) {
   const [
