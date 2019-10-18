@@ -1,6 +1,7 @@
 import {jml, body, $, $$, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
 import {code, link} from '../templateUtils/elements.js';
+import {safeLink} from '../templateUtils/validation.js';
 import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicode-scripts.js';
 import unihanFieldInfo from '../unicode/unihanFieldInfo.js';
@@ -1196,7 +1197,7 @@ export default function ({_, fonts}) {
               About_ial_wikipedia_link: jml('a', {
                 class: 'text-link',
                 target: '_blank',
-                href: _('About_ial_wikipedia_linkURL')
+                href: safeLink(_('About_ial_wikipedia_linkURL'))
               }, [
                 _('About_ial_wikipedia_linkText')
               ]),
