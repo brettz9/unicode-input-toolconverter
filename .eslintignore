@@ -1,5 +1,7 @@
 polyfills/browser-polyfill.min.js
 charrefunicode@brett.zamir - old
 vendor
+!vendor/i18n-safe/index-es.js
+!vendor/easy-prefs/**
 lib/misc-to-move
 browser_action/unicode/unicode-scripts.js

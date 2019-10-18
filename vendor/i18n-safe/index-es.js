@@ -56,13 +56,17 @@ export const i18n = async function i18n ({
     locales = navigator.languages,
     defaultLocales = ['en-US'],
     defaults,
+    bracketRegex = /\{([^}]*?)(?:\|([^}]*))?\}/g,
     forceNodeReturn = false,
-    localesBasePath = '.'
+    localesBasePath = '.',
+    localeResolver = (locale, localesBasePath) => {
+        return `${localesBasePath.replace(/\/$/, '')}/_locales/${locale}/messages.json`;
+    }
 }) {
     const strings = await promiseChainForValues(
         [...locales, ...defaultLocales],
         async function getLocale (locale) {
-            const url = `${localesBasePath.replace(/\/$/, '')}/_locales/${locale}/messages.json`;
+            const url = localeResolver(locale, localesBasePath);
             try {
                 return await (await fetch(url)).json();
             } catch (err) {
@@ -75,7 +79,6 @@ export const i18n = async function i18n ({
         }
     );
     return (key, substitutions, {dom} = {}) => {
-        const bracketRegex = /\{([^}]*?)(?:\|([^}]*))?\}/g;
         let returnsDOM = false;
         const str = (
             key in strings && strings[key] && 'message' in strings[key] &&
