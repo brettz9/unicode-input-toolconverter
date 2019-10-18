@@ -7,7 +7,7 @@
   "version": "0.1.0",
   "scripts": {
     "open": "open-cli http://localhost:8000/browser_action/ && npm start",
-    "start": "node server",
+    "start": "echo 'Starting on http://localhost:8000/browser_action/' && node server",
     "unicode-charts-retrieve": "node tools/parseUnicodeCharts.js retrieve",
     "unicode-charts": "node tools/parseUnicodeCharts.js",
     "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
@@ -66,7 +66,7 @@
     "jquery": "^3.4.1",
     "miller-columns": "^0.7.0",
     "open-cli": "^5.0.0",
-    "simple-prefs": "^0.4.0",
+    "simple-prefs": "^0.5.0",
     "typescript": "^3.6.4",
     "webextension-polyfill": "^0.5.0"
   }
