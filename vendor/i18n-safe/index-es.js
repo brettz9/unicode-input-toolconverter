@@ -56,6 +56,7 @@ export const i18n = async function i18n ({
     locales = navigator.languages,
     defaultLocales = ['en-US'],
     defaults,
+    forceNodeReturn = false,
     localesBasePath = '.'
 }) {
     const strings = await promiseChainForValues(
@@ -91,7 +92,7 @@ export const i18n = async function i18n ({
 
         );
         if (!substitutions) {
-            return str;
+            return forceNodeReturn ? document.createTextNode(str) : str;
         }
         // Give chance to avoid this block when known to contain DOM
         if (!dom) {
