@@ -1,3 +1,3 @@
 export const safeLink = function (link) {
-  return safeLink.startsWith('http') ? link : '';
+  return link.startsWith('http') ? link : '';
 };

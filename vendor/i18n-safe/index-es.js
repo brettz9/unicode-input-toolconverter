@@ -129,11 +129,7 @@ export const i18n = async function i18n ({
             nodes.push(str.slice(previousIndex));
         }
 
-        const container = document.createElement('a');
-        container.className = 'generic-container';
-        // Avoid hand cursor for links as we are using `a`
-        //   as a generic container of block or inline
-        container.style.cursor = 'default';
+        const container = document.createDocumentFragment();
 
         // console.log('nodes', nodes);
         container.append(...nodes);
