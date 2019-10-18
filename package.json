@@ -18,11 +18,12 @@
     "webext-dev": "npm run eslint && web-ext run --browser-console -f firefoxdeveloperedition",
     "webext-build": "npm run eslint && web-ext build",
     "eslint": "eslint --ext=js,html,md .",
-    "copy": "npm run copy-jquery && npm run copy-miller-columns && npm run copy-jamilih && npm run copy-polyfill",
+    "copy": "npm run copy-jquery && npm run copy-miller-columns && npm run copy-jamilih && npm run copy-polyfill && npm run copy-simple-prefs",
     "copy-jquery": "cp node_modules/jquery/dist/jquery.js vendor/jquery/dist/jquery.js",
     "copy-miller-columns": "cp node_modules/miller-columns/miller-columns.css vendor/miller-columns/miller-columns.css && cp node_modules/miller-columns/dist/index-es.min.js vendor/miller-columns/dist/index-es.min.js",
     "copy-jamilih": "cp node_modules/jamilih/dist/jml-es.js vendor/jamilih/dist/jml-es.js",
-    "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js polyfills/browser-polyfill.min.js && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map polyfills/browser-polyfill.min.js.map"
+    "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js polyfills/browser-polyfill.min.js && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map polyfills/browser-polyfill.min.js.map",
+    "copy-simple-prefs": "cp node_modules/simple-prefs/dist/index.esm.js vendor/simple-prefs/dist/index.esm.js"
   },
   "homepage": "https://github.com/brettz9/unicode-input-toolconverter",
   "bugs": "https://github.com/brettz9/unicode-input-toolconverter/issues",
@@ -39,7 +40,7 @@
   "dependencies": {
     "apple-system-profiler": "https://github.com/brettz9/apple-system-profiler#listDataTypes",
     "fs-extra": "^8.1.0",
-    "jsdom": "^15.1.1",
+    "jsdom": "^15.2.0",
     "node-fetch": "^2.6.0",
     "node-static": "^0.7.11"
   },
@@ -53,7 +54,7 @@
     "eslint-plugin-eslint-comments": "^3.1.2",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsdoc": "^15.11.0",
+    "eslint-plugin-jsdoc": "^15.12.0",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-no-use-extend-native": "^0.4.1",
     "eslint-plugin-node": "^10.0.0",
@@ -65,6 +66,7 @@
     "jquery": "^3.4.1",
     "miller-columns": "^0.7.0",
     "open-cli": "^5.0.0",
+    "simple-prefs": "^0.4.0",
     "typescript": "^3.6.4",
     "webextension-polyfill": "^0.5.0"
   }

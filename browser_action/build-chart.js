@@ -1,5 +1,5 @@
 import {jml} from '../vendor/jamilih/dist/jml-es.js';
-import {getPref, setPref} from '../vendor/easy-prefs/index-es.js';
+import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
 import buildChartTemplate from './templates/build-chart.js';
 
@@ -27,6 +27,7 @@ let lastStartCharCode;
 lastStartCharCode; // lgtm [js/useless-expression]
 
 export const buildChart = async function buildChart ({descripts} = {}) {
+  const {getPref, setPref} = getUnicodeDefaults();
   const [
     startCharInMiddleOfChart,
     cols, onlyentsyes,

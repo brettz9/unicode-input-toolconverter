@@ -40,6 +40,8 @@ const promiseChainForValues = (values, cb) => {
     }, Promise.reject(new Error('Intentionally reject so as to begin checking chain')));
 };
 
+// Todo: Separate out locale retrieval logic from parsing logic and export both!
+
 /**
  * Get
  * @param {string[]} locales BCP-47 language strings

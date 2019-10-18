@@ -33,20 +33,20 @@ if (prev >= 0 && prev <= 9) {
 }
 */
 import {$, $$} from '../vendor/jamilih/dist/jml-es.js';
-import {getPref, setPref} from '../vendor/easy-prefs/index-es.js';
+import {getUnicodeDefaults, getPrefDefaults} from './preferences/prefDefaults.js';
 import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
 import {getHangulName} from './unicode/Hangul.js';
 import {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
-import {getPrefDefaults} from './preferences/prefDefaults.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {Jamo} from './unicode/charrefunicodeDb.js';
 
-let _, charrefunicodeConverter, jmo;
+let _, charrefunicodeConverter, jmo, getPref, setPref;
 export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
   _ = l10n;
   charrefunicodeConverter = _uc;
   jmo = new Jamo();
+  ({getPref, setPref} = getUnicodeDefaults());
 };
 
 function getAndSetCodePointInfo (num, alink, _) {

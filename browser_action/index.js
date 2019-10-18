@@ -3,12 +3,11 @@
 import {$} from '../vendor/jamilih/dist/jml-es.js';
 import {i18n} from '../vendor/i18n-safe/index-es.js';
 import {makeTabBox} from './templatesElementCustomization/widgets.js';
-import {setPref, configurePrefs, PrefDefaults} from '../vendor/easy-prefs/index-es.js';
 import addMillerColumnPlugin from '../node_modules/miller-columns/dist/index-es.js'; // Todo: Switch to vendor version
 import getBuildChart, {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
-import {getPrefDefaults, setVars as setPrefDefaultVars} from './preferences/prefDefaults.js';
-import UnicodeConverter from './unicode/UnicodeConverter.js';
+import {getUnicodeDefaults, setPrefDefaultVars} from './preferences/prefDefaults.js';
+import {getUnicodeConverter} from './unicode/UnicodeConverter.js';
 import Unicodecharref, {shareVars as uresultsShareVars} from './uresults.js';
 import indexTemplate from './templates/index.js';
 
@@ -35,17 +34,11 @@ const [_] = await Promise.all([
   ]})
 ]);
 
-const charrefunicodeConverter = new UnicodeConverter({_});
-uresultsShareVars({_, charrefunicodeConverter});
 setPrefDefaultVars({_});
+const charrefunicodeConverter = new (getUnicodeConverter())({_});
+uresultsShareVars({_, charrefunicodeConverter});
 
-configurePrefs({
-  l10n: _,
-  prefDefaults: new PrefDefaults({
-    defaults: getPrefDefaults()
-  }),
-  appNamespace: 'unicode-input-tool-converter-'
-});
+const {setPref} = getUnicodeDefaults();
 
 // TEMPLATE
 // Todo: Make optional as slows down loading

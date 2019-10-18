@@ -1,8 +1,17 @@
 // hexstyleLwr:  return true; // Could use but better not to change for XML-compatibility
 
+import {SimplePrefs} from '../../vendor/simple-prefs/dist/index.esm.js';
+
 let _;
-export const setVars = ({_: __}) => {
+export const setPrefDefaultVars = ({_: __}) => {
   _ = __;
+};
+
+export const getUnicodeDefaults = () => {
+  return new SimplePrefs({
+    namespace: 'unicode-input-toolconverter',
+    defaults: getPrefDefaults()
+  }).bind();
 };
 
 export const getPrefDefaults = () => ({
