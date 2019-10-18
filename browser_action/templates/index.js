@@ -1208,7 +1208,6 @@ export default function ({_, fonts}) {
                 _('About_ial_onetongue_linkText')
               ])
             })
-
           ]]
         ]]
       ]]
