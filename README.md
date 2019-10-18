@@ -9,6 +9,7 @@ character references, etc.
 
 # Possible to-dos
 
+1. Improve slow **font retrieval**
 1. Consider License liberalization
 1. Protocol handler: <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
 1. Various modules, some already in `vendor`, could be moved to own npm package
