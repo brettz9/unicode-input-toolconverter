@@ -77,7 +77,9 @@ export const i18n = async function i18n ({
         const bracketRegex = /\{([^}]*?)(?:\|([^}]*))?\}/g;
         let returnsDOM = false;
         const str = (
-            key in strings && strings[key] && 'message' in strings[key]
+            key in strings && strings[key] && 'message' in strings[key] &&
+                // NECESSARY FOR SECURITY ON UNTRUSTED LOCALES
+                typeof strings[key].message === 'string'
                 ? strings[key].message
                 : typeof defaults === 'function'
                     ? defaults(key, strings)
