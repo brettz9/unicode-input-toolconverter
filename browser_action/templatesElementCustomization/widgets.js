@@ -30,17 +30,19 @@ export const makeTabBox = function (sel) {
         return selected;
       });
     };
-    tabbox.querySelector('.tabs').prepend(...tabbox.$getTabPanels().map(({dataset}) => {
+    tabbox.querySelector('.tabs').prepend(...tabbox.$getTabPanels().map(({
+      dataset: {title, selected, label}
+    }) => {
       return jml('div', {
         class: 'tab',
-        title: dataset.title,
-        dataset: {selected: dataset.selected},
+        title,
+        dataset: {selected},
         $on: {
           click () {
             tabbox.$selectTab(this);
           }
         }
-      }, [dataset.label]);
+      }, [label]);
     }), jml('br', {style: 'clear: left;'}));
   });
 };
