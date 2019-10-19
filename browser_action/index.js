@@ -41,8 +41,8 @@ uresultsShareVars({_, charrefunicodeConverter});
 const {setPref} = getUnicodeDefaults();
 
 // TEMPLATE
-// Todo: Make optional as slows down loading
-const fonts = await (await fetch('/fonts')).json();
+// Todo: Disabling for now as slows down loading
+const fonts = []; // await (await fetch('/fonts')).json();
 indexTemplate({_, fonts});
 
 // ADD BEHAVIORS
