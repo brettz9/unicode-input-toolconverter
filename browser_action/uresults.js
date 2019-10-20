@@ -231,8 +231,8 @@ const Unicodecharref = {
       alert('1:' + type + i + e + this[type][i]);
     }
     // Add handlers for textboxes
-    let tabpanel = type === 'Unicode' ? '#regularSearch' : '#cjkSearch';
-    tabpanel = '#tabboxSearch';
+    // let tabpanel = type === 'Unicode' ? '#regularSearch' : '#cjkSearch';
+    const tabpanel = '#tabboxSearch';
 
     $(tabpanel).addEventListener('change', function (e) {
       Unicodecharref['search' + type](e.target);
