@@ -9,6 +9,7 @@ import insertIntoOrOverExisting from './templatesElementCustomization/insertInto
 import {getUnicodeDefaults, setPrefDefaultVars} from './preferences/prefDefaults.js';
 import {getUnicodeConverter} from './unicode/UnicodeConverter.js';
 import Unicodecharref, {shareVars as uresultsShareVars} from './uresults.js';
+import {insertEntityFile, shareVars as entityShareVars} from './entities.js';
 import indexTemplate from './templates/index.js';
 
 (async () => { // eslint-disable-line padded-blocks
@@ -37,6 +38,7 @@ const [_] = await Promise.all([
 setPrefDefaultVars({_});
 const charrefunicodeConverter = new (getUnicodeConverter())({_});
 uresultsShareVars({_, charrefunicodeConverter});
+entityShareVars({charrefunicodeConverter});
 
 const {setPref} = getUnicodeDefaults();
 
@@ -100,8 +102,8 @@ $('#encoding_from').addEventListener('click', function (e) {
 $('#encoding_to').addEventListener('click', function (e) {
   Unicodecharref.convertEncoding($('#toconvert').value, this);
 });
-$('#insertEntityFile').addEventListener('change', function (e) {
-  Unicodecharref.insertEntityFile(e);
+$('#insertEntityFile').addEventListener('change', async function (e) {
+  await insertEntityFile(e);
 });
 Unicodecharref.initialize();
 /**

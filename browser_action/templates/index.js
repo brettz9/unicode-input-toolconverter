@@ -6,6 +6,7 @@ import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicode-scripts.js';
 import unihanFieldInfo from '../unicode/unihanFieldInfo.js';
 import Unicodecharref from '../uresults.js';
+import {registerDTD} from '../entities.js';
 
 export default function ({_, fonts}) {
   document.title = _('uresults_title');
@@ -1040,7 +1041,7 @@ export default function ({_, fonts}) {
         ['div', {class: 'hbox'}, [
           ['textarea', {id: 'DTDtextbox', $on: {
             change () {
-              Unicodecharref.registerDTD();
+              registerDTD();
             }
           }}, [
             _('DTD_textbox_value')

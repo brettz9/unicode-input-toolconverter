@@ -40,6 +40,7 @@ import {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {Jamo} from './unicode/charrefunicodeDb.js';
+import {registerDTD} from './entities.js';
 
 let _, charrefunicodeConverter, jmo, getPref, setPref;
 export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
@@ -423,7 +424,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     const DTDtxtbxval = await getPref('DTDtextbox');
 
     $('#DTDtextbox').value = DTDtxtbxval;
-    this.registerDTD();
+    registerDTD();
 
     //  toconvert = charreftoconvert.replace(/\n/g, ' ');
     $('#toconvert').value = toconvert;
@@ -1577,57 +1578,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
   },
   append2htmlflip (e) {
     this.setprefs(e);
-    this.registerDTD(); // (in case DTD not also changed, still need to reset)
-  },
-  async registerDTD () {
-    // Cannot use back-reference inside char. class, so need to do twice
-    const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/g;
-
-    const text = $('#DTDtextbox').value;
-    setPref('DTDtextbox', text);
-
-    let result;
-
-    // Reset in case charrefs or ents array deleted before and now want to go back to their original values.
-    if (await getPref('appendtohtmldtd')) {
-      CharrefunicodeConsts.Entities = this.origents.concat();
-      CharrefunicodeConsts.NumericCharacterReferences = this.origcharrefs.concat();
-    } else {
-      CharrefunicodeConsts.Entities = [];
-      CharrefunicodeConsts.NumericCharacterReferences = [];
-    }
-
-    charrefunicodeConverter.newents = this.orignewents.concat(); // Start off blank in case items erased
-    charrefunicodeConverter.newcharrefs = this.orignewcharrefs.concat(); // Start off blank in case items erased
-
-    const decreg = /^(&#|#)?(\d\d+);?$/;
-    // const decreg2 = /^(&#|#)([0-9]);?$/;
-    const hexreg = /^(&#|#|0|U|u)?([xX+])([0-9a-fA-F]+);?$/;
-
-    while ((result = pattern.exec(text)) !== null) {
-      let m = result[3];
-      let addreg = true;
-      if (m.match(decreg)) { // Dec
-        m = m.replace(decreg, '$2');
-        m = parseInt(m);
-      } else if (m.match(hexreg)) { // Hex
-        m = m.replace(hexreg, '$2');
-        m = parseInt(m, 16);
-      // Todo: Fix this so it can handle surrogate pairs
-      } else if (m.length > 1) { // If replacing with Unicode sequence longer than one character, assume only wish to convert from entity (not from Unicode)
-        addreg = false;
-      } else {
-        m = m.charCodeAt();
-      }
-      if (addreg) {
-        charrefunicodeConverter.shiftcount += 1; // Used to ensure apos or amp is detected in same position
-        CharrefunicodeConsts.Entities.unshift(result[1]);
-        CharrefunicodeConsts.NumericCharacterReferences.unshift(m);
-      } else { // For translating entities into two-char+ Unicode, or hex or dec
-        charrefunicodeConverter.newents.push(result[1]);
-        charrefunicodeConverter.newcharrefs.push(m); // Can be a string, etc.
-      }
-    }
+    registerDTD(); // (in case DTD not also changed, still need to reset)
   },
   /**
    * Sets the preference for whether to display the chosen character in the middle of the chart (or beginning).
@@ -1707,29 +1658,6 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
       toolbarbuttonPopup.append(menuitem);
     }
     return true;
-  },
-  insertEntityFile (e) {
-    const Components = 'todo';
-    const Cc = Components.classes,
-      Ci = Components.interfaces;
-    const MY_ID = 'charrefunicode@brett.zamir',
-      // entFile = FileUtils.getFile(MY_ID, 'data/entities/' + e.target.value + '.ent'),
-      entFile = fetch(MY_ID, 'data/entities/' + e.target.value + '.ent'),
-      fstream = Cc['@mozilla.org/network/file-input-stream;1'].createInstance(Ci.nsIFileInputStream),
-      cstream = Cc['@mozilla.org/intl/converter-input-stream;1'].createInstance(Ci.nsIConverterInputStream),
-      str = {};
-    let read = 0;
-    let data = '';
-    fstream.init(entFile, -1, 0, 0);
-    cstream.init(fstream, 'UTF-8', 0, 0); // you can use another encoding here if you wish
-    do {
-      read = cstream.readString(0xFFFFFFFF, str); // read as much as we can and put it in str.value
-      data += str.value;
-    } while (read !== 0);
-    cstream.close(); // this closes fstream
-
-    $('#DTDtextbox').value += '\n' + data;
-    this.registerDTD();
   },
   idgen: 0,
   prefs: null,
