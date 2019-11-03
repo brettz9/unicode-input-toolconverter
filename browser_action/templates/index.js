@@ -6,6 +6,7 @@ import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicode-scripts.js';
 import unihanFieldInfo from '../unicode/unihanFieldInfo.js';
 import Unicodecharref from '../uresults.js';
+import CharrefConverterBridges from '../charref-converters.js';
 import {registerDTD} from '../entities.js';
 
 export default function ({_, fonts}) {
@@ -620,22 +621,22 @@ export default function ({_, fonts}) {
             ]],
             ['button', {id: 'b1', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.charref2unicode(e);
+                CharrefConverterBridges.charref2unicode(e);
               }
             }}, [_('charref2unicode_label')]],
             ['button', {id: 'b2', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.charref2htmlents(e);
+                CharrefConverterBridges.charref2htmlents(e);
               }
             }}, [_('charref2htmlents_label')]],
             ['button', {id: 'b3', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.unicode2charrefDec(e);
+                CharrefConverterBridges.unicode2charrefDec(e);
               }
             }}, [_('unicode2charrefDec_label')]],
             ['button', {id: 'b4', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.unicode2charrefHex(e);
+                CharrefConverterBridges.unicode2charrefHex(e);
               }
             }}, [_('unicode2charrefHex_label')]],
             ['button', {
@@ -644,7 +645,7 @@ export default function ({_, fonts}) {
               title: _('unicode2charrefSurrogate_tooltip'),
               $on: {
                 click (e) {
-                  Unicodecharref.unicode2charrefDecSurrogate(e);
+                  CharrefConverterBridges.unicode2charrefDecSurrogate(e);
                 }
               }
             }, [_('unicode2charrefDecSurrogate_label')]],
@@ -654,83 +655,83 @@ export default function ({_, fonts}) {
               title: _('unicode2charrefSurrogate_tooltip'),
               $on: {
                 click (e) {
-                  Unicodecharref.unicode2charrefHexSurrogate(e);
+                  CharrefConverterBridges.unicode2charrefHexSurrogate(e);
                 }
               }
             }, [_('unicode2charrefHexSurrogate_label')]],
             ['button', {id: 'b5', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.unicode2htmlents(e);
+                CharrefConverterBridges.unicode2htmlents(e);
               }
             }}, [_('unicode2htmlents_label')]],
             ['div', {class: 'hbox'}, [
               ['button', {id: 'b6', class: 'reconvert', $on: {
                 click (e) {
-                  Unicodecharref.unicode2jsescape(e);
+                  CharrefConverterBridges.unicode2jsescape(e);
                 }
               }}, [_('unicode2JSEscape_label')]],
               ['button', {id: 'b7', class: 'reconvert', $on: {
                 click (e) {
-                  Unicodecharref.unicodeTo6Digit(e);
+                  CharrefConverterBridges.unicodeTo6Digit(e);
                 }
               }}, [_('unicodeTo6Digit_label')]]
             ]],
             ['button', {id: 'b8', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.unicode2cssescape(e);
+                CharrefConverterBridges.unicode2cssescape(e);
               }
             }}, [_('unicode2CSSEscape_label')]],
             ['button', {id: 'b9', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.htmlents2charrefDec(e);
+                CharrefConverterBridges.htmlents2charrefDec(e);
               }
             }}, [_('htmlents2charrefDec_label')]],
             ['button', {id: 'b10', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.htmlents2charrefHex(e);
+                CharrefConverterBridges.htmlents2charrefHex(e);
               }
             }}, [_('htmlents2charrefHex_label')]],
             ['button', {id: 'b11', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.htmlents2unicode(e);
+                CharrefConverterBridges.htmlents2unicode(e);
               }
             }}, [_('htmlents2unicode_label')]],
             ['button', {id: 'b12', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.hex2dec(e);
+                CharrefConverterBridges.hex2dec(e);
               }
             }}, [_('hex2dec_label')]],
             ['button', {id: 'b13', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.dec2hex(e);
+                CharrefConverterBridges.dec2hex(e);
               }
             }}, [_('dec2hex_label')]],
             ['div', {class: 'hbox'}, [
               ['button', {id: 'b14', class: 'reconvert', $on: {
                 click (e) {
-                  Unicodecharref.jsescape2unicode(e);
+                  CharrefConverterBridges.jsescape2unicode(e);
                 }
               }}, [_('jsescape2unicode_label')]],
               ['button', {id: 'b15', class: 'reconvert', $on: {
                 click (e) {
-                  Unicodecharref.sixDigit2Unicode(e);
+                  CharrefConverterBridges.sixDigit2Unicode(e);
                 }
               }}, [_('sixDigit2unicode_label')]]
             ]],
             ['button', {id: 'b16', class: 'reconvert', $on: {
               click (e) {
-                Unicodecharref.cssescape2unicode(e);
+                CharrefConverterBridges.cssescape2unicode(e);
               }
             }}, [_('cssescape2unicode_label')]],
             ['div', {class: 'hbox'}, [
               ['button', {id: 'b17', class: 'reconvert', $on: {
                 click (e) {
-                  Unicodecharref.unicode2CharDesc(e);
+                  CharrefConverterBridges.unicode2CharDesc(e);
                 }
               }}, [_('unicode2CharDesc_label')]],
               ['button', {id: 'b18', class: 'reconvert', $on: {
                 click (e) {
-                  Unicodecharref.charDesc2Unicode(e);
+                  CharrefConverterBridges.charDesc2Unicode(e);
                 }
               }}, [_('charDesc2Unicode_label')]]
             ]],

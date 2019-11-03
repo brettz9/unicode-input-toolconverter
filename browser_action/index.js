@@ -10,7 +10,11 @@ import {getUnicodeDefaults, setPrefDefaultVars} from './preferences/prefDefaults
 import {getUnicodeConverter} from './unicode/UnicodeConverter.js';
 import Unicodecharref, {shareVars as uresultsShareVars} from './uresults.js';
 import {insertEntityFile, shareVars as entityShareVars} from './entities.js';
+import {convertEncoding} from './charset-converters.js';
 import indexTemplate from './templates/index.js';
+import {
+  shareVars as charrefConverterShareVars, classChange as charrefClassChange
+} from './charref-converters.js';
 
 (async () => { // eslint-disable-line padded-blocks
 
@@ -39,6 +43,7 @@ setPrefDefaultVars({_});
 const charrefunicodeConverter = new (getUnicodeConverter())({_});
 uresultsShareVars({_, charrefunicodeConverter});
 entityShareVars({charrefunicodeConverter});
+charrefConverterShareVars({charrefunicodeConverter});
 
 const {setPref} = getUnicodeDefaults();
 
@@ -95,17 +100,25 @@ jQuery('div.miller-columns').millerColumns({
   }
 });
 
+function encodingListener (e) {
+  charrefClassChange(this);
+  try {
+    convertEncoding($('#toconvert').value);
+  } catch (err) {
+    alert(_('chars_could_not_be_converted'));
+  }
+}
+
 // EVENTS
-$('#encoding_from').addEventListener('click', function (e) {
-  Unicodecharref.convertEncoding($('#toconvert').value, this);
-});
-$('#encoding_to').addEventListener('click', function (e) {
-  Unicodecharref.convertEncoding($('#toconvert').value, this);
-});
+$('#encoding_from').addEventListener('click', encodingListener);
+$('#encoding_to').addEventListener('click', encodingListener);
+
 $('#insertEntityFile').addEventListener('change', async function (e) {
   await insertEntityFile(e);
 });
+
 Unicodecharref.initialize();
+
 /**
 * The following works, but if used will not allow user to cancel to
 * get out of the current window size and will go back to the last
