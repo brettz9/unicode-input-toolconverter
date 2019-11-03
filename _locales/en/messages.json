@@ -326,7 +326,7 @@
     "message": "\"lang\""
   },
   "lang_tooltiptext": {
-    "message": "The HTML language attribute 'lang' or, in XML, the 'xml:lang' value. Has no effect on most scripts, but may affect glyph selection/font display for certain CJK characters (e.g., U+5203 in 'zh-Hans', 'zh-Hant', 'ja', or 'ko'). Note that you must use the lang attribute to see the effect outside of the chart (even our chart output box does not contain any), and there is presently a bug with xml:lang in true XML/XHTML documents: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+    "message": "The HTML language attribute 'lang' or, in XML, the 'xml:lang' value. Has no effect on most scripts, but may affect glyph selection/font display for certain CJK characters (e.g., U+5203 in 'zh-Hans', 'zh-Hant', 'ja', or 'ko'). Note that you must use the lang attribute to see the effect outside of the chart (even our chart output box does not contain any)."
   },
   "initialTab_label": {
     "message": "Initial tab to open (for key command or toolbar button activation)"

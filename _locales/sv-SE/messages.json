@@ -326,7 +326,7 @@
     "message": "lang"
   },
   "lang_tooltiptext": {
-    "message": "HTML-språkattributet &quot;lang&quot; eller, i XML, värdet &quot;xml:lang&quot;. Har ingen effekt på de flesta skrivtecken, men kan påverka glyfval/fontvisning för vissa CJK-tecken (t.ex. U+5203 i &quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;ja&quot; eller &quot;ko&quot;). Observera att du måste använda lang-attributet för att se någon effekt utanför tabellen (inte heller vår tabellutdataruta innehåller lang) och det finns för närvarande en bugg för xml:lang i äkta XML/XHTML-dokument: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+    "message": "HTML-språkattributet &quot;lang&quot; eller, i XML, värdet &quot;xml:lang&quot;. Har ingen effekt på de flesta skrivtecken, men kan påverka glyfval/fontvisning för vissa CJK-tecken (t.ex. U+5203 i &quot;zh-Hans&quot;, &quot;zh-Hant&quot;, &quot;ja&quot; eller &quot;ko&quot;). Observera att du måste använda lang-attributet för att se någon effekt utanför tabellen (inte heller vår tabellutdataruta innehåller lang)."
   },
   "initialTab_label": {
     "message": "Startflik (vid aktivering via kortkommando eller verktygsfältsknapp)"

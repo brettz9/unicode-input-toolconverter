@@ -326,7 +326,7 @@
     "message": "Nyelv"
   },
   "lang_tooltiptext": {
-    "message": "A HTML 'lang' nyelvi attribútuma, illetve XML esetén az 'xml:lang' érték. A legtöbb kód esetén nincs hatása, de befolyásolhatja a betűalakok kiválasztását/a betűk megjelenítését egyes CJK-karakterek esetén (pl., U+5203 a 'zh-Hans', 'zh-Hant', 'ja' vagy 'ko' esetében). Ne feledje, hogy a táblázaton kívüli hatás megtekintéséhez használnia kell a lang attribútumot (még akkor is, ha a táblázat kimeneti négyzetében nincs egy sem), továbbá azt sem, hogy jelenleg az xml:lang igazi XML-/XHTML-dokumentumokban hibás: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+    "message": "A HTML 'lang' nyelvi attribútuma, illetve XML esetén az 'xml:lang' érték. A legtöbb kód esetén nincs hatása, de befolyásolhatja a betűalakok kiválasztását/a betűk megjelenítését egyes CJK-karakterek esetén (pl., U+5203 a 'zh-Hans', 'zh-Hant', 'ja' vagy 'ko' esetében). Ne feledje, hogy a táblázaton kívüli hatás megtekintéséhez használnia kell a lang attribútumot (még akkor is, ha a táblázat kimeneti négyzetében nincs egy sem)."
   },
   "initialTab_label": {
     "message": "Kezdetben megnyitandó fül (billentyűparancs vagy eszközsávon lévő gomb bekapcsolásához)"

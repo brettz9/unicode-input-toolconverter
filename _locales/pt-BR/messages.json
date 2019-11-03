@@ -326,7 +326,7 @@
     "message": "lang"
   },
   "lang_tooltiptext": {
-    "message": "O atributo HTML 'lang' ou, em XML, o valor 'xml:lang', não tem efeito na maioria dos scripts, mas pode afetar a exibição gráfica da seleção/fonte de determinados caracteres CJK  - Chinês/Japonês/Coreano (por exemplo, U+5203 em 'zh-Hans', 'zh-hant', 'ja' ou 'ko'). Observe que para poder ver o efeito fora de nosso visualizador gráfico você deve usar o atributo lang na página web (mesmo que nossa caixa de saída gráfica não mostre nada, já que apenas o gráfico em si usa o atributo lang), e que existe atualmente uma falha no xml:lang em documentos XML/HTML verdadeiros: https://bugzilla.mozilla.org/show_bug.cgi?id=234485"
+    "message": "O atributo HTML 'lang' ou, em XML, o valor 'xml:lang', não tem efeito na maioria dos scripts, mas pode afetar a exibição gráfica da seleção/fonte de determinados caracteres CJK  - Chinês/Japonês/Coreano (por exemplo, U+5203 em 'zh-Hans', 'zh-hant', 'ja' ou 'ko'). Observe que para poder ver o efeito fora de nosso visualizador gráfico você deve usar o atributo lang na página web (mesmo que nossa caixa de saída gráfica não mostre nada, já que apenas o gráfico em si usa o atributo lang)."
   },
   "initialTab_label": {
     "message": "Aba inicial a abrir (para ativação do comando-chave ou do botão da barra de ferramentas)"

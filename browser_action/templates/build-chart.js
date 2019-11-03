@@ -18,7 +18,7 @@ export default function ({
     style: {
       'font-family': font
     },
-    // Not sure if this will require fixing if xml:lang bug is fixed: https://bugzilla.mozilla.org/show_bug.cgi?id=234485
+    // Todo: Not sure if this (or the `lang_tooltiptext` locale message) requires fixing with xml:lang bug fixed: https://bugzilla.mozilla.org/show_bug.cgi?id=234485
     lang
   }, [
     ['caption', {
