@@ -1308,7 +1308,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     const dropdownArr = await getPref('dropdownArr');
     dropdownArr.push($('#insertText').value);
     setPref('dropdownArr', dropdownArr);
-    if (this.refreshToolbarDropdown()) {
+    if (await this.refreshToolbarDropdown()) {
       alert(_('yourItemAdded'));
     } else {
       alert(_('problemAddingToolbarItem'));
