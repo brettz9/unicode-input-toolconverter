@@ -41,7 +41,7 @@
     "apple-system-profiler": "https://github.com/brettz9/apple-system-profiler#listDataTypes",
     "fs-extra": "^8.1.0",
     "jsdom": "^15.2.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "node-static": "^0.7.11"
   },
   "devDependencies": {
