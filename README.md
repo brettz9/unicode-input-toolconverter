@@ -10,20 +10,21 @@ character references, etc.
 # Possible to-dos
 
 1. Improve slow **font retrieval**
-1. Consider License liberalization
-1. Protocol handler: <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
-1. Various modules, some already in `vendor`, could be moved to own npm package
+1. Add `intl-dom`
+    1. Get i18n completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
+1. **Protocol handler**:
+  <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
+1. Various modules, some already in `vendor`, could be
+    **moved to own npm package**
 1. Convert
     [XUL-based add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/)
-    to HTML (use Jamilih for greater flexibility and i18n)
-1. Conversion to/from 6-digit JavaScript escapes
-1. When browsing by script, have option to update its location when one uses
-    next/prev
-1. Utilize column browser for browsing deep hierarchies such as list of
-    blocks/scripts/categories (also use in filebrowser-enhanced!);
-    See <https://github.com/brettz9/miller-columns> or possibly
-    <https://bitbucket.org/brettz9/colbrowser>
-1. Borrow from or ideas from GPL3-licensed <https://github.com/brettz9/charpick>?
-1. Get i18n completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
+    to **webextensions** and complete HTML conversion
+1. Conversion to/from **6-digit JavaScript escapes**
+1. When browsing by script, have **option to update script location** when one
+    uses next/prev
+1. Utilize column browser also for **blocks/categories** (also use in
+    `filebrowser-enhanced`!)
+1. **Get ideas from charpick** (GPL3-licensed):
+    <https://github.com/brettz9/charpick>?
 1. Allow adding specific characters or sequences thereof to global system key
     commands
