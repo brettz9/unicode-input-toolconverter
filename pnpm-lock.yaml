@@ -12,7 +12,7 @@ specifiers:
   eslint-plugin-eslint-comments: ^3.2.0
   eslint-plugin-html: ^6.1.2
   eslint-plugin-import: ^2.22.1
-  eslint-plugin-jsdoc: ^34.0.0
+  eslint-plugin-jsdoc: ^34.0.2
   eslint-plugin-markdown: ^2.1.0
   eslint-plugin-no-unsanitized: ^3.1.5
   eslint-plugin-no-use-extend-native: ^0.5.0
@@ -28,7 +28,7 @@ specifiers:
   miller-columns: ^0.8.1
   node-fetch: ^2.6.1
   open-cli: ^6.0.1
-  simple-prefs: ^0.6.0
+  simple-prefs: ^0.7.0
   webextension-polyfill: ^0.8.0
 
 dependencies:
@@ -61,7 +61,7 @@ devDependencies:
   jquery: 3.6.0
   miller-columns: 0.8.1
   open-cli: 6.0.1
-  simple-prefs: 0.6.0
+  simple-prefs: 0.7.0
   webextension-polyfill: 0.8.0
 
 packages:
@@ -2607,9 +2607,9 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /simple-prefs/0.6.0:
-    resolution: {integrity: sha512-T1j0xgN5VGKQQ/xlXkAATdZPiJtkmIp9AJsXN+BGMqrrSbyHEpXrLailGURkOUzD1kOWuGCps0Jkoesh/8I/9g==}
-    engines: {node: '>=4.0.0'}
+  /simple-prefs/0.7.0:
+    resolution: {integrity: sha512-p+R/7eASuOUJZLhy8BRQOijfjaGSbBFS6uMbYMSH0qz38v10iwnXvNzLGtZF2ZMFtSz56bd4fWbkCW30W5rhtw==}
+    engines: {node: '>=12.0.0'}
     dev: true
 
   /slice-ansi/4.0.0:
