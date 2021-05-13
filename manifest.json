@@ -15,11 +15,11 @@
   },
 
   "browser_action": {
-      "browser_style": true,
-      "default_area": "navbar",
-      "default_icon": "/icons/openWindow24.png",
-      "default_title": "__MSG_browser_action_title__",
-      "default_popup": "/browser_action/index.html"
+    "browser_style": true,
+    "default_area": "navbar",
+    "default_icon": "/icons/openWindow24.png",
+    "default_title": "__MSG_browser_action_title__",
+    "default_popup": "/browser_action/index.html"
   },
 
   "icons": {
