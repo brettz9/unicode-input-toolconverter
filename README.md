@@ -15,7 +15,7 @@ character references, etc.
 1. Various modules, some already in `vendor`, could be moved to own npm package
 1. Convert
     [XUL-based add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/)
-    to HTML5 (use Jamilih for greater flexibility and i18n)
+    to HTML (use Jamilih for greater flexibility and i18n)
 1. Conversion to/from 6-digit JavaScript escapes
 1. When browsing by script, have option to update its location when one uses
     next/prev

@@ -1,4 +1,5 @@
-/* eslint-env node */
+'use strict';
+
 const path = require('path');
 const fetch = require('node-fetch');
 const jsdom = require('jsdom');
@@ -11,7 +12,7 @@ const localize = true;
 const {JSDOM} = jsdom;
 
 function getChromeSafeLocaleKey (key) {
-  return key.replace(/\\n/g, '').replace(/\s\s*/g, ' ') // Getting some extra WS
+  return key.replace(/\\n/g, '').replace(/\s+/g, ' ') // Getting some extra WS
     .replace(/\W/g, '_');
 }
 
@@ -23,8 +24,10 @@ const chartsFile = path.join(__dirname, 'unicode-charts.html');
 if (process.argv[2] === 'retrieve') {
   const resp = await fetch(chartsURL);
   text = await resp.text();
+  // eslint-disable-next-line no-console -- CLI
   console.log('retrieved', text);
   await fs.writeFile(chartsFile, text);
+  // eslint-disable-next-line no-console -- CLI
   console.log('saved file');
 } else {
   text = await fs.readFile(chartsFile, 'utf-8');
@@ -39,7 +42,7 @@ const cleanupText = (txt) => {
   return txt.trim()
     .replace(/(\s)\s+/, '$1')
     .replace(/\s*\((?:ASCII|Odia)\)$/, '')
-    .replace(/\s\((?:\d\.?\d*)MB\)$/, ''); // Remove MB size
+    .replace(/\s\(\d\.?\d*MB\)$/, ''); // Remove MB size
 };
 
 const scriptsAndStartRanges = [];
@@ -111,9 +114,8 @@ const jamilih = scriptMaps.map((scriptMap) => {
 });
 // console.log('m', majorHeading, scriptGroups);
 
-// eslint-disable-next-line require-await
 async function saveLocalesWithoutDupes (localeFiles, localeFileContents) {
-  return Promise.all(
+  return await Promise.all(
     localeFiles.map((localeFile, i) => {
       return fs.writeFile(localeFile, JSON.stringify(localeFileContents[i], null, 2) + '\n');
     })
@@ -154,15 +156,15 @@ export default function (_) {
       });
       // console.log('dirResults', JSON.stringify(dirResults, null, 2));
       const keyMap = {};
-      dirResults.forEach(({path, keys}) => {
+      dirResults.forEach(({path: pth, keys}) => {
         keys.forEach((key) => {
           localeFileContents.forEach((lfc, i) => {
             if (!(key in lfc)) {
               if (!keyMap[key]) {
                 keyMap[key] = {paths: [], locales: []};
               }
-              if (!keyMap[key].paths.includes(path)) {
-                keyMap[key].paths.push(path);
+              if (!keyMap[key].paths.includes(pth)) {
+                keyMap[key].paths.push(pth);
               }
               if (!keyMap[key].locales.includes(localeFiles[i])) {
                 keyMap[key].locales.push(localeFiles[i]);
@@ -180,7 +182,7 @@ export default function (_) {
           return;
         }
         Object.keys(lfc).forEach((localeKey) => {
-          if (!dirResults.some(({keys, path}) => {
+          if (!dirResults.some(({keys, path: pth}) => {
             // console.log('keys', keys);
             return keys.includes(localeKey);
           })) {
@@ -256,7 +258,7 @@ export default function (_) {
 );
 
 scriptsAndStartRanges.sort(({startRange: aStartRange}, {startRange: bStartRange}) => {
-  return parseInt(aStartRange, 16) > parseInt(bStartRange, 16) ? 1 : -1;
+  return Number.parseInt(aStartRange, 16) > Number.parseInt(bStartRange, 16) ? 1 : -1;
 });
 
 let s = '';
@@ -317,5 +319,6 @@ async function recurseDirectory ({directory, basePath = './', results}) {
 }
 
 // console.log('scriptsAndStartRanges', scriptsAndStartRanges);
+// eslint-disable-next-line no-console -- CLI
 console.log(s.slice(7) + '}');
 })();

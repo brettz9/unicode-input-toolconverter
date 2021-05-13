@@ -1,5 +1,5 @@
 // Todo: Autogenerate if updating
-export default [
+const encodings = [
   'UTF-8',
   'ISO-8859-1',
   'Big5',
@@ -91,3 +91,5 @@ export default [
   'x-viet-vps',
   'x-windows-949'
 ];
+
+export default encodings;

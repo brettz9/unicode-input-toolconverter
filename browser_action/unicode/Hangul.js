@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-string-slice -- Easier */
 // Function can also be used standalone
 /**
 * @namespace This contains methods for translating Korean Hangul/Jamo, since these
@@ -108,10 +109,10 @@ export function getHangulFromName (name) {
 
   // L (can be 1-2 in name length)
   if (name.charAt(0) === name.charAt(1)) { // All two-letter names are doubles
-    lIndex = JAMO_L_TABLE.indexOf(name.substr(0, 2));
+    lIndex = JAMO_L_TABLE.indexOf(name.slice(0, 2));
     ptr++;
   } else {
-    lIndex = JAMO_L_TABLE.indexOf(name.substr(0, 1));
+    lIndex = JAMO_L_TABLE.indexOf(name.slice(0, 1));
   }
 
   // V (can be 1-3 in name length)

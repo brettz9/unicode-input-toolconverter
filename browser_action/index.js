@@ -1,5 +1,4 @@
-/* eslint-env browser, webextensions */
-/* globals jQuery */
+/* globals jQuery -- No ESM */
 import {$} from '../vendor/jamilih/dist/jml-es.js';
 import {i18n} from '../vendor/i18n-safe/index-es.js';
 import {makeTabBox} from './templatesElementCustomization/widgets.js';
@@ -16,7 +15,7 @@ import {
   shareVars as charrefConverterShareVars, classChange as charrefClassChange
 } from './charref-converters.js';
 
-(async () => { // eslint-disable-line padded-blocks
+(async () => { // eslint-disable-line padded-blocks -- Ugly
 
 // SETUP
 const lang = new URL(location).searchParams.get('lang');
@@ -94,7 +93,7 @@ jQuery('div.miller-columns').millerColumns({
     if (!title) {
       return;
     }
-    await setPref('currentStartCharCode', parseInt(title.replace(/-.*$/, ''), 16));
+    await setPref('currentStartCharCode', Number.parseInt(title.replace(/-.*$/, ''), 16));
     // Free to use `buildChart` now that we have passed set-up
     buildChart(); // Todo: descripts?
   }
@@ -123,10 +122,10 @@ Unicodecharref.initialize();
 * The following works, but if used will not allow user to cancel to
 * get out of the current window size and will go back to the last
 * window size; if use this, don't need code in "doOk" (besides
-* return true)
-window.addEventListener('resize', function (e) {
-  setPref('outerHeight', window.outerHeight);
-  setPref('outerWidth', window.outerWidth);
-});
-*/
+* return true).
+**/
+// window.addEventListener('resize', function (e) {
+//   setPref('outerHeight', window.outerHeight);
+//   setPref('outerWidth', window.outerWidth);
+// });
 })();

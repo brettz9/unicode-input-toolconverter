@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this -- Todo: fix later */
 import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
 import {getHangulName, getHangulFromName} from './Hangul.js';
 import CharrefunicodeConsts from './CharrefunicodeConsts.js';
@@ -7,8 +8,8 @@ import charrefunicodeDb from './charrefunicodeDb.js';
  * @namespace Converts from one string form to another
  */
 const decim = /&#(\d*);/g;
-const hexadec = /&#[xX]([0-9a-fA-F]*);/g;
-const htmlent = /&([_a-zA-Z][-0-9_a-zA-Z]*);/g; /* Unicode complete version? */
+const hexadec = /&#[xX]([\da-fA-F]*);/g;
+const htmlent = /&([_a-zA-Z][-\w]*);/g; /* Unicode complete version? */
 
 export const getUnicodeConverter = () => {
   const {getPref} = getUnicodeDefaults();
@@ -25,7 +26,7 @@ export const getUnicodeConverter = () => {
       out = out.replace(decim, function (match, match1) {
         return String.fromCodePoint(match1);
       }).replace(hexadec, function (match, match1) {
-        return String.fromCodePoint(parseInt(match1, 16));
+        return String.fromCodePoint(Number.parseInt(match1, 16));
       });
       return out;
     }
@@ -34,13 +35,13 @@ export const getUnicodeConverter = () => {
       const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
 
       out = out.replace(decim, (match, match1) => {
-        const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(parseInt(match1));
+        const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(Number.parseInt(match1));
         if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
           return '&' + CharrefunicodeConsts.Entities[matched] + ';';
         }
         return match;
       }).replace(hexadec, (match, match1) => {
-        const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(parseInt('0x' + match1, 16));
+        const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(Number.parseInt('0x' + match1, 16));
         if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
           return '&' + CharrefunicodeConsts.Entities[matched] + ';';
         }
@@ -58,7 +59,6 @@ export const getUnicodeConverter = () => {
           // Could do test on temp.isNan()  (e.g., if trying to convert a surrogate by itself in regular (non-surrogate converting) mode)
           out += '&#' + temp + ';';
           i += 1; // Skip the next surrogate
-          continue;
         } else if (temp >= 128 || getPref('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
           out += '&#' + temp + ';';
         } else {
@@ -104,19 +104,18 @@ export const getUnicodeConverter = () => {
             hexletters = hexletters.toUpperCase();
           }
           if ((type === 'php' || cssUnambiguous) && hexletters.length < 6) {
-            hexletters = new Array(7 - hexletters.length).join(0) + hexletters; // pad
+            hexletters = hexletters.padStart(6, '0');
           }
           out += beginEscape + xstyle + hexletters + endEscape;
-          continue;
         } else if (temp >= 128 || getPref('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
           hexletters = temp.toString(16);
           if (getPref('hexLettersUpper')) {
             hexletters = hexletters.toUpperCase();
           }
           if (type === 'javascript' && hexletters.length < 4) {
-            hexletters = new Array(5 - hexletters.length).join(0) + hexletters; // pad
+            hexletters = hexletters.padStart(4, '0');
           } else if ((type === 'php' || cssUnambiguous) && hexletters.length < 6) {
-            hexletters = new Array(7 - hexletters.length).join(0) + hexletters; // pad
+            hexletters = hexletters.padStart(6, '0');
           }
           out += beginEscape + xstyle + hexletters + endEscape;
         } else {
@@ -150,11 +149,7 @@ export const getUnicodeConverter = () => {
         const charcodeati = unicodeToConvert.charCodeAt(i);
         const tempcharref = CharrefunicodeConsts.NumericCharacterReferences.indexOf(charcodeati);
 
-        if (tempcharref !== -1 && (tempcharref !== (98 + this.shiftcount) || xhtmlentmode) && (tempcharref !== (99 + this.shiftcount) || !ampkeep)) {
-          out += '&' + CharrefunicodeConsts.Entities[tempcharref] + ';';
-        } else {
-          out += unicodeToConvert.charAt(i);
-        }
+        out += tempcharref !== -1 && (tempcharref !== (98 + this.shiftcount) || xhtmlentmode) && (tempcharref !== (99 + this.shiftcount) || !ampkeep) ? '&' + CharrefunicodeConsts.Entities[tempcharref] + ';' : unicodeToConvert.charAt(i);
       }
       return out;
     }
@@ -229,7 +224,7 @@ export const getUnicodeConverter = () => {
 
     hex2decval (out) {
       return out.replace(hexadec, function (match, match1) {
-        return '&#' + parseInt(match1, 16) + ';';
+        return '&#' + Number.parseInt(match1, 16) + ';';
       });
     }
 
@@ -263,7 +258,6 @@ export const getUnicodeConverter = () => {
           }
           val += '\\C{' + charDesc + '}';
           i += 1; // Skip the next (low) surrogate
-          continue;
         // Fix: Can/Will Hangul syllables be expressible this way?
         } else if (temp > 0xAC00 && temp <= 0xD7A3) {
           try {
@@ -286,7 +280,7 @@ export const getUnicodeConverter = () => {
     }
 
     charDesc2UnicodeVal (toconvert) {
-      return toconvert.replace(/\\C\{([^}]*)\}/g, (n, n1) => {
+      return toconvert.replace(/\\C{([^}]*)}/g, (n, n1) => {
         const unicodeVal = this.lookupUnicodeValueByCharName(n1);
         return unicodeVal ? String.fromCodePoint(unicodeVal) : '\uFFFD'; // Replacement character if not found?
       });
@@ -323,7 +317,7 @@ export const getUnicodeConverter = () => {
           if (hexEsc) {
             i += hexEsc[0].length - 1; // We want to skip the whole structure
             const hex = hexEsc[1] + (hexEsc[3] || ''); // [3] only if is 6-digit
-            const dec = parseInt(hex, 16);
+            const dec = Number.parseInt(hex, 16);
             const hexStr = String.fromCodePoint(dec);
 
             // \u000 is disallowed in CSS 2.1 (behavior undefined) and above 0x10FFFF is
@@ -375,7 +369,7 @@ export const getUnicodeConverter = () => {
             case 'u':
               hexChrs = (/^[a-fA-F\d]{6}|[a-fA-F\d]{4}/).exec(toconvert.slice(i + 2));
               if (hexChrs) {
-                unicode += String.fromCodePoint(parseInt(hexChrs[0], 16));
+                unicode += String.fromCodePoint(Number.parseInt(hexChrs[0], 16));
                 i += hexChrs[0].length; // 4 or 6
                 break;
               }
@@ -410,7 +404,7 @@ export const getUnicodeConverter = () => {
             case 'u':
               hexChrs = (/^[a-fA-F\d]{4}/).exec(toconvert.slice(i + 2));
               if (hexChrs) {
-                unicode += String.fromCharCode(parseInt(hexChrs[0], 16));
+                unicode += String.fromCharCode(Number.parseInt(hexChrs[0], 16));
                 i += hexChrs[0].length; // 4
                 break;
               }
@@ -452,8 +446,7 @@ export const getUnicodeConverter = () => {
       let statement;
       try {
         let result;
-        let hex = dec.toString(16).toUpperCase();
-        hex = hex.length < 4 ? new Array(5 - hex.length).join(0) + hex : hex;
+        const hex = dec.toString(16).toUpperCase().padStart(4, '0');
 
         statement = charrefunicodeDb.dbConn.createStatement(
           'SELECT `Name` FROM Unicode WHERE `Code_Point` = "' + hex + '"'
@@ -501,7 +494,7 @@ export const getUnicodeConverter = () => {
       // const table = 'Unihan'; // fix: determine by pull-down
       const nameDescVal = obj.value;
       if ((obj.id.startsWith('searchk') && table === 'Unicode') || // Don't query the other databases here
-        (obj.id.match(/^search[^k]/) && table === 'Unihan')
+        ((/^search[^k]/).test(obj.id) && table === 'Unihan')
       ) {
         return;
       }
@@ -555,11 +548,11 @@ export const getUnicodeConverter = () => {
                 statement.executeStep();
                 const endRange = statement.getUTF8String(1).endsWith('Last>');
                 if (endRange) {
-                  i = parseInt(statement.getUTF8String(colindex), 16);
+                  i = Number.parseInt(statement.getUTF8String(colindex), 16);
                   continue;
                 }
               }
-              let hex = parseInt(cp, 16);
+              let hex = Number.parseInt(cp, 16);
               for (let endHex = hex; i < endHex; i++, hex++) {
                 this.descripts.push(i);
               }
@@ -574,7 +567,7 @@ export const getUnicodeConverter = () => {
           );
           while (statement.executeStep()) {
             const cp = statement.getUTF8String(colindex);
-            const hex = parseInt(cp, 16);
+            const hex = Number.parseInt(cp, 16);
             if (table === 'Unicode' && (hex >= 0xF900 && hex < 0xFB00)) { // Don't search for compatibility if searching Unicode
               continue;
             }

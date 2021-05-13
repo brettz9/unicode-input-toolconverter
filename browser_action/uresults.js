@@ -1,4 +1,4 @@
-/* eslint-env browser */
+/* eslint-disable unicorn/no-this-assignment -- Easier here */
 
 // See http://www.unicode.org/Public/UNIDATA/ for data use
 
@@ -51,8 +51,10 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
   ({getPref, setPref} = getUnicodeDefaults());
 };
 
-function getAndSetCodePointInfo (num, alink, _) {
-  const [codePointStart, script, plane, privateuse, surrogate] = getScriptInfoForCodePoint(num, _);
+function getAndSetCodePointInfo (num, alink, underscore) {
+  const [
+    codePointStart, script, plane, privateuse, surrogate
+  ] = getScriptInfoForCodePoint(num, underscore);
   alink.target = '_blank';
   alink.className = 'text-link';
   alink.href = `http://www.unicode.org/charts/PDF/U${codePointStart}.pdf`;
@@ -107,7 +109,7 @@ const Unicodecharref = {
         stat.value = _('download_progress') + ' ' + percentComplete + _('percentSign');
       },
       onStateChange (aWebProgress, aRequest, aFlag, aStatus) {
-        // eslint-disable-next-line no-bitwise
+        // eslint-disable-next-line no-bitwise -- Easier
         if (aFlag & STATE_STOP) { //  && aFlag & STATE_IS_WINDOW
           try {
             charrefunicodeDb.connect('Unihan6.sqlite', 'unihan');
@@ -124,7 +126,9 @@ const Unicodecharref = {
             $('#DownloadProgressBox').hidden = true;
             $('#DownloadButtonBox').hidden = false;
             alert(_('Problem_downloading'));
-            console.log(e);
+
+            // eslint-disable-next-line no-console -- Debug
+            console.error(e);
           }
         }
       }
@@ -265,8 +269,8 @@ const Unicodecharref = {
       $('#' + el).checked = await getPref(el);
     });
   },
-  async initialize () {
-    const that = this, args = window.arguments;
+  async initialize (...args) {
+    const that = this;
     // this.refreshToolbarDropdown(); // redundant?
 
     // charrefunicodeDb.connect('data/Unicode.sqlite');
@@ -280,7 +284,8 @@ const Unicodecharref = {
       $('#DownloadButtonBox').hidden = true;
       $('#UnihanInstalled').hidden = false;
     } catch (e) {
-      console.log(e);
+      // eslint-disable-next-line no-console -- Debug
+      console.error(e);
       $('#DownloadButtonBox').hidden = false;
       $('#UnihanInstalled').hidden = true;
     }
@@ -293,18 +298,17 @@ const Unicodecharref = {
     // document.documentElement.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
     $('#unicodeTabBox').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
     $('#unicodeTabBox > .tabs').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
-    /**
+    /*
     $('#unicodeTabBox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
     $('#conversionhbox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
 
     $('#noteDescriptionBox2').height = $('#noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
-$('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-$('#unicodetabs').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-$('#chartcontent').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
-$('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
-
-    // */
+    $('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
+    $('#unicodetabs').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+    $('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
+    $('#chartcontent').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
+    $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
+    */
     // $('#tableholder').maxWidth = window.screen.availWidth-(window.screen.availWidth*50/100);
     // $('#tableholder').width = window.screen.availWidth-(window.screen.availWidth*50/100);
     //    window.sizeToContent();
@@ -391,6 +395,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     case '\f':
       $('#CSSWhitespace').selectedIndex = 5;
       break;
+    default:
+      throw new Error('Unexpected whitespace preference value');
     }
 
     /* if (await getPref('hexstyleLwr')) {
@@ -414,10 +420,10 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     this.orignewents = [];
     this.orignewcharrefs = [];
 
-    this.origents = CharrefunicodeConsts.Entities.concat();
-    this.origcharrefs = CharrefunicodeConsts.NumericCharacterReferences.concat();
-    this.orignewents = charrefunicodeConverter.newents.concat();
-    this.orignewcharrefs = charrefunicodeConverter.newcharrefs.concat();
+    this.origents = [...CharrefunicodeConsts.Entities];
+    this.origcharrefs = [...CharrefunicodeConsts.NumericCharacterReferences];
+    this.orignewents = [...charrefunicodeConverter.newents];
+    this.orignewcharrefs = [...charrefunicodeConverter.newcharrefs];
 
     $('#lang').value = await getPref('lang');
     $('#font').value = await getPref('font');
@@ -514,11 +520,9 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     const outerh = await getPref('outerHeight');
     const outerw = await getPref('outerWidth');
     if (outerh > 0) {
-      // eslint-disable-next-line require-atomic-updates
       window.outerHeight = outerh;
     }
     if (outerw > 0) {
-      // eslint-disable-next-line require-atomic-updates
       window.outerWidth = outerw;
     }
   },
@@ -644,7 +648,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
   setImagePref (ev) {
     this.setprefs(ev);
     if ($('#unicodeImg').firstChild) {
-      $('#unicodeImg').removeChild($('#unicodeImg').firstChild);
+      $('#unicodeImg').firstChild.remove();
     }
     return false;
   },
@@ -654,7 +658,7 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     const hideMissing = !(await getPref('showAllDetailedView'));
     const hideMissingUnihan = !(await getPref('showAllDetailedCJKView'));
 
-    const kdectemp = parseInt(khextemp, 16);
+    const kdectemp = Number.parseInt(khextemp, 16);
 
     // const alink = createHTMLElement('a');
     const alink = createXULElement('label');
@@ -836,15 +840,15 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
             case 13:
             case 14: {
               const a = createHTMLElement('a');
-              // eslint-disable-next-line no-script-url
+              // eslint-disable-next-line no-script-url -- This is controlled
               a.href = 'javascript:void(0)';
 
               a.addEventListener('click', function (e) {
                 that.startset({value: e.target.innerHTML.codePointAt()});
                 that.noGetDescripts = false; // Probably want to start checking again since move to new page
               });
-              const tempno = parseInt(temp, 16);
-              a.innerHTML = String.fromCodePoint(tempno);
+              const tempno = Number.parseInt(temp, 16);
+              a.textContent = String.fromCodePoint(tempno);
               a.className = 'text-link';
               const view = $('#_detailedView' + i);
               this.removeViewChildren(i);
@@ -907,14 +911,14 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
-        for (let i = 2; i <= 14; i++) {
-          if (i === 10) { continue; }
+        for (let j = 2; j <= 14; j++) {
+          if (j === 10) { continue; }
           try {
-            $('#_detailedView' + i).value = '';
-            $('#_detailedView' + i).parentNode.hidden = hideMissing;
-            this.removeViewChildren(i);
+            $('#_detailedView' + j).value = '';
+            $('#_detailedView' + j).parentNode.hidden = hideMissing;
+            this.removeViewChildren(j);
           } catch (e) {
-            alert('2' + e + i);
+            alert('2' + e + j);
           }
         }
       }
@@ -951,14 +955,14 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
         notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
-        for (let i = 2; i <= 14; i++) {
-          if (i === 10) { continue; }
+        for (let j = 2; j <= 14; j++) {
+          if (j === 10) { continue; }
           try {
-            $('#_detailedView' + i).value = '';
-            $('#_detailedView' + i).parentNode.hidden = hideMissing;
-            this.removeViewChildren(i);
-          } catch (e) {
-            alert('3' + e + i);
+            $('#_detailedView' + j).value = '';
+            $('#_detailedView' + j).parentNode.hidden = hideMissing;
+            this.removeViewChildren(j);
+          } catch (err) {
+            alert('3' + err + j);
           }
         }
       }
@@ -1049,14 +1053,14 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
           notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
 
           if (!cjkText || hangul) {
-            for (let i = 2; i <= 14; i++) {
-              if (i === 10) { continue; }
+            for (let j = 2; j <= 14; j++) {
+              if (j === 10) { continue; }
               try {
-                $('#_detailedView' + i).value = '';
-                $('#_detailedView' + i).parentNode.hidden = hideMissing;
-                this.removeViewChildren(i);
+                $('#_detailedView' + j).value = '';
+                $('#_detailedView' + j).parentNode.hidden = hideMissing;
+                this.removeViewChildren(j);
               } catch (e) {
-                alert('1' + e + i);
+                alert('1' + e + j);
               }
             }
             for (i = 1; i <= 13; i++) {
@@ -1179,6 +1183,8 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
     case 'f':
       value = '\f';
       break;
+    default:
+      throw new Error('Unexpected menu value');
     }
     setPref('cssWhitespace', value);
   },
@@ -1208,13 +1214,11 @@ $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.
   },
   async startset (tbx, descripts) {
     this.disableEnts();
-    let data;
-    if (tbx.value !== null && tbx.value !== undefined && tbx.value !== '') {
-      data = tbx.value;
-    } else {
-      // Only used when the field is manually changed to blank (default start set)
-      data = await getPref('startset');
-    }
+    const data = tbx.value !== null &&
+      tbx.value !== undefined &&
+      tbx.value !== ''
+      ? tbx.value
+      : (await getPref('startset'));
     this.setCurrstartset(data);
 
     buildChart(descripts);

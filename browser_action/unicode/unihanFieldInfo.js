@@ -1,4 +1,4 @@
-export default [
+const unihanFieldInfo = [
   ['kCangjie', 6],
   ['kCantonese', 7],
   // ['kDefinition', 3],
@@ -90,3 +90,5 @@ export default [
   ['kRSKorean', 77],
   ['kRSJapanese', 74]
 ];
+
+export default unihanFieldInfo;

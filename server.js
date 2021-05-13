@@ -1,5 +1,7 @@
+'use strict';
+
 const http = require('http');
-const statik = require('node-static');
+const statik = require('@brettz9/node-static');
 const {systemProfiler: asp} = require('apple-system-profiler');
 
 const file = new statik.Server({
@@ -35,7 +37,8 @@ http.createServer(function (req, res) {
         }, []);
         res.end(JSON.stringify([...new Set(out)].sort()));
       } catch (err) {
-        console.log('Error', err);
+        // eslint-disable-next-line no-console -- CLI
+        console.error('Error', err);
       }
     })();
     return;

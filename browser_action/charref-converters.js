@@ -303,6 +303,8 @@ function findBridgeForTargetID ({toconvert, targetid}) {
   case 'context-charrefunicode18':
     out = CharrefConverterBridges.charDesc2UnicodeVal(toconvert, $('#b18'));
     break;
+  default:
+    throw new Error('Unexpected target ID type');
   }
   return out;
 }

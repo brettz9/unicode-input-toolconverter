@@ -1,3 +1,5 @@
+/* globals uksort -- Global for now */
+/* eslint-disable import/unambiguous -- Global for now */
 // Not fully reimplemented (see `uksort`, test, etc.)
 // Setup to overcome restriction on file:// URLS in Firefox (Chrome, Opera disallow, but works in Safari)
 function $ (sel) {
@@ -11,7 +13,7 @@ function addScript (files, checkVars, cb, checkback) {
   let baseURL;
   for (let i = 0, filelen = files.length; i < filelen; i++) {
     const file = files[i];
-    baseURL = location.href.substring(0, location.href.lastIndexOf('/') + 1);
+    baseURL = location.href.slice(0, Math.max(0, location.href.lastIndexOf('/') + 1));
     const script = document.createElement('script');
     script.src = baseURL + file;
     $('head').append(script);
@@ -24,6 +26,7 @@ function addScript (files, checkVars, cb, checkback) {
       checkVars.splice(j, 1);
     }
     clearInterval(interval);
+    // eslint-disable-next-line promise/prefer-await-to-callbacks -- No async API yet
     cb(baseURL);
   }, checkback || 100);
 }
@@ -61,7 +64,7 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
     const cdpt = line[1], col = line[2], value = line[3];
     if (!obj[cdpt]) {
       obj[cdpt] = [];
-      fields.forEach(function (value, idx) {
+      fields.forEach(function (val, idx) {
         obj[cdpt][idx] = '';
       });
       obj[cdpt][0] = cdpt;
@@ -73,7 +76,7 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
     obj[cdpt][pos] = value;
   }
   uksort(obj, function (k1, k2) {
-    return parseInt(k1, 16) > parseInt(k2, 16);
+    return Number.parseInt(k1, 16) > Number.parseInt(k2, 16);
   });
   // Works but FF crashes with this--Chrome is ok
   scriptFileAsStr = '';

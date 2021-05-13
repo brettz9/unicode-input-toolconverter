@@ -5,8 +5,7 @@ import buildChartTemplate from './templates/build-chart.js';
 
 let _, textReceptacle, chartContainer, insertText, charrefunicodeConverter;
 
-// eslint-disable-next-line require-await
-export default async function ({
+const getBuildChart = async function ({
   _: i18n,
   descripts,
   insertText: it, textReceptacle: tr, chartContainer: cc,
@@ -17,13 +16,13 @@ export default async function ({
   insertText = it;
   charrefunicodeConverter = uc;
   _ = i18n;
-  return buildChart({descripts});
-}
+  return await buildChart({descripts});
+};
 
 let lastStartCharCode;
 
 // Todo:
-// eslint-disable-next-line no-unused-expressions
+// eslint-disable-next-line no-unused-expressions -- Bug in lgtm?
 lastStartCharCode; // lgtm [js/useless-expression]
 
 export const buildChart = async function buildChart ({descripts} = {}) {
@@ -42,7 +41,9 @@ export const buildChart = async function buildChart ({descripts} = {}) {
     'hexLettersUpper',
     'font', 'lang',
     'tblrowsset', 'currentStartCharCode'
-  ].map(getPref));
+  ].map((pref) => {
+    return getPref(pref);
+  }));
 
   const current = {startCharCode: currentStartCharCodeInitial};
   let rows = tblrowsset;
@@ -150,3 +151,5 @@ export const buildChart = async function buildChart ({descripts} = {}) {
   // Todo: Restore
   // this.resizecells({sizeToContent: true});
 };
+
+export default getBuildChart;

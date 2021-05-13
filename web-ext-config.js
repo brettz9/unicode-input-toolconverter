@@ -1,6 +1,5 @@
-/* eslint-env node */
-/* eslint-disable strict */
 'use strict';
+
 module.exports = {
   verbose: true,
   ignoreFiles: [

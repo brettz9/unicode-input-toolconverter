@@ -1,3 +1,3 @@
 export const fill = (items, filler = null) => {
-  return new Array(items).fill(filler);
+  return Array.from({length: items}).fill(filler);
 };

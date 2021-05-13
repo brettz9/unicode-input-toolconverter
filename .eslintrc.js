@@ -1,53 +1,62 @@
 'use strict';
 
+const rulesToIgnoreForNow = {
+  'no-alert': 0,
+  'max-len': 0,
+  'require-unicode-regexp': 0,
+  'jsdoc/require-jsdoc': 0,
+  'prefer-named-capture-group': 0
+};
+
 module.exports = {
-  "extends": "ash-nazg",
-  "parserOptions": {
-    ecmaVersion: 2017,
-    sourceType: "module"
-  },
-  "env": {
-    "es6": true,
-    "node": false,
-    "browser": true,
-    "webextensions": true
+  extends: ['ash-nazg/sauron-overrides'],
+  env: {
+    es6: true,
+    node: false,
+    'shared-node-browser': false,
+    browser: true,
+    webextensions: true
   },
   settings: {
     polyfills: [
-      "fetch",
-      "Object.assign",
-      "Object.entries",
-      "Object.values",
-      "Promise.all",
-      "String.fromCodePoint",
-      "URL"
+      'Array.fill',
+      'Array.from',
+      'fetch',
+      'Number.parseInt',
+      'Object.assign',
+      'Object.entries',
+      'Object.values',
+      'Promise.all',
+      'String.fromCodePoint',
+      'URL'
     ]
   },
-  "overrides": [
+  overrides: [
     {
-      files: ["server.js"],
+      extends: ['ash-nazg/sauron-node-script-overrides'],
       env: {
-        node: true
+        node: true,
+        browser: false
+      },
+      files: [
+        'server.js', 'tools/parseUnicodeCharts.js', 'web-ext-config.js'
+      ],
+      rules: {
+        ...rulesToIgnoreForNow
       }
     },
     {
-      files: ["browser_action/templates/**"],
+      files: ['browser_action/templates/**'],
       rules: {
-        "object-curly-newline": 0,
-        "multiline-ternary": 0
+        'object-curly-newline': 0,
+        'multiline-ternary': 0
       }
     }
   ],
-  "rules": {
-    "semi": [2, "always"],
-    "indent": ["error", 2, {"outerIIFEBody": 0}],
-    "object-property-newline": 0,
-    "one-var": 0,
-    "no-var": 2,
-    "prefer-const": 2,
-    "object-curly-spacing": ["error", "never"],
+  rules: {
+    'import/no-absolute-path': 0,
 
-    "import/no-absolute-path": 0,
-    "import/no-anonymous-default-export": 0,
+    // Disable for now
+    ...rulesToIgnoreForNow
   }
 };

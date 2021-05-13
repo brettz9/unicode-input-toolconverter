@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-function -- Not yet finished */
 // TO-DO: make in-place context-menu-activated textbox conversions
 // To-do: move at least this file into module, and move as much of uresults.js too
 // Todo: Review `fromCharCode`, `charCodeAt`, and `charAt` on whether need modern substitutions
@@ -9,9 +10,14 @@ class UnicodeDB {
     this.db = null;
   }
 
+  /* eslint-disable class-methods-use-this -- Abstract */
+  /**
+   * @abstract
+   */
   upgradeneeded () {
     throw new Error('`UnicodeDB.upgradeneeded` is an abstract method');
   }
+  /* eslint-enable class-methods-use-this -- Abstract */
 
   connect () {
     // Todo: Complete
@@ -44,13 +50,14 @@ export class UnicodeDatabase extends UnicodeDB {
   }
 
   // Todo: Uncomment and implement
+  /* eslint-disable class-methods-use-this -- Abstract */
   getUnicodeDescription (entity, currentStartCharCode) {
     // const entityInParentheses = '(' + entity + ') ';
     // Todo: Should this not be padded to 6??
     // const currentStartCharCodeUpperCaseHexPadded = currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
     // Todo:
-
   }
+  /* eslint-enable class-methods-use-this -- Abstract */
 }
 
 // Todo: Reimplement

@@ -3,7 +3,7 @@ import {fill} from '../templateUtils/fill.js';
 import charrefunicodeDb from '../unicode/charrefunicodeDb.js';
 
 let idgen = 0;
-export default function ({
+const buildChartTemplate = function ({
   _, rows, cols, CharrefunicodeConsts, current,
   resetCurrentStartCharCodeIfOutOfBounds, descriptsOrOnlyEnts,
   q, obj, chars, textReceptacle, entyes, buildChart, descripts,
@@ -56,10 +56,10 @@ export default function ({
         return ['td', {
           class: (hasEntity ? 'entity ' : '') + 'unicodetablecell',
           $on: {
-            mouseover: (function (entity, current) {
+            mouseover: (function (_entity, _current) {
               return function () {
                 if (!this.$noGetDescripts) {
-                  charrefunicodeDb.getUnicodeDescription(entity, current.startCharCode);
+                  charrefunicodeDb.getUnicodeDescription(_entity, _current.startCharCode);
                 }
               };
             })(entity, current),
@@ -73,10 +73,10 @@ export default function ({
             }
           }
         }, [
-          ...appliedFormats.flatMap((type, i, arr) => {
+          ...appliedFormats.flatMap((type, idx, arr) => {
             const name = type.replace('yes', '');
-            const isMiddle = i === 1 && arr.length === 2;
-            const isFinal = i === 2;
+            const isMiddle = idx === 1 && arr.length === 2;
+            const isFinal = idx === 2;
             const button = [(buttonyes ? 'button' : 'div'), {
               class: buttonyes ? 'buttonyes' : null,
               name,
@@ -167,4 +167,6 @@ export default function ({
       ]]
     ]]
   ], chartContainer);
-}
+};
+
+export default buildChartTemplate;

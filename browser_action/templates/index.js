@@ -9,7 +9,7 @@ import Unicodecharref from '../uresults.js';
 import CharrefConverterBridges from '../charref-converters.js';
 import {registerDTD} from '../entities.js';
 
-export default function ({_, fonts}) {
+const indexTemplate = function ({_, fonts}) {
   document.title = _('uresults_title');
   jml('div', [
     ['div', {
@@ -311,7 +311,7 @@ export default function ({_, fonts}) {
                           size: '12',
                           $custom: {
                             $setFontFamily (value) {
-                              const val = value.match(/\s/)
+                              const val = (/\s/).test(value)
                                 ? ('"' +
                                 value.replace(/^"/, '').replace(/"$/, '') +
                                 '"')
@@ -333,7 +333,6 @@ export default function ({_, fonts}) {
                         ['br'],
                         ['select', {$on: {
                           click () {
-                            console.log('val', this.value);
                             $('#font').$setFontFamily(this.value);
                           }
                         }}, [
@@ -1216,4 +1215,6 @@ export default function ({_, fonts}) {
       ]]
     ]]
   ], body);
-}
+};
+
+export default indexTemplate;
