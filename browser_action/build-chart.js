@@ -122,7 +122,7 @@ export const buildChart = async function buildChart ({descripts} = {}) {
     }
   });
 
-  // Todo: Replace this with a `Fluent.js` type plural awareness?
+  // Todo: Replace this with a `Intl.PluralRules` type plural awareness?
   // Make first letter of first word upper case
   const captionContent = captioncntnt[0].replace(/^[a-z]/, (s) => s.toUpperCase()) +
     captioncntnt.slice(1, -1).reduce((s, value) => {

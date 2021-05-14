@@ -30,11 +30,9 @@ http.createServer(function (req, res) {
             'SPFontsDataType'
           ]
         });
-        // Todo: Switch to `flatMap` when available
-        const out = fontInfo[0]._items.reduce((arr, {typefaces}) => {
-          arr.push(...typefaces.map((typeface) => typeface.family));
-          return arr;
-        }, []);
+        const out = fontInfo[0]._items.flatMap((arr, {typefaces}) => {
+          return typefaces.map((typeface) => typeface.family);
+        });
         res.end(JSON.stringify([...new Set(out)].sort()));
       } catch (err) {
         // eslint-disable-next-line no-console -- CLI
