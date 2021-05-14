@@ -7,6 +7,6 @@ module.exports = {
     'package-lock.json',
     'package.json',
     'screenshots',
-    'charrefunicode@brett.zamir - old' // Remove when deleted
+    'old' // Remove when deleted
   ]
 };
