@@ -288,8 +288,8 @@ export const getUnicodeConverter = () => {
 
     cssescape2unicodeval (toconvert) {
       // See:
-      // http://www.w3.org/TR/CSS21/syndata.html#characters
-      // http://www.w3.org/TR/CSS21/grammar.html
+      // https://www.w3.org/TR/CSS21/syndata.html#characters
+      // https://www.w3.org/TR/CSS21/grammar.html
       let unicode = '';
       for (let i = 0; i < toconvert.length; i++) {
         const s = toconvert[i];
@@ -326,9 +326,9 @@ export const getUnicodeConverter = () => {
               unicode += '\uFFFD'; // Replacement character since not valid Unicode
             // Too low ASCII to be converted (not a letter, digit, underscore, or hyphen)
             } else if (dec < 0xA1 && (/[^\w-]/).test(hexStr)) { // Don't convert since won't be valid if unescaped
-              // Although http://www.w3.org/TR/CSS21/grammar.html#scanner (under "nonascii" which is a
+              // Although https://www.w3.org/TR/CSS21/grammar.html#scanner (under "nonascii" which is a
               //  possible (indirect) component of identifiers) seems to permit any non-ASCII equal to or above
-              //  0x80 (decimal 128), per http://www.w3.org/TR/CSS21/syndata.html#characters only non-escaped
+              //  0x80 (decimal 128), per https://www.w3.org/TR/CSS21/syndata.html#characters only non-escaped
               // characters above 0xA1 are permitted (limitation of Flex scanner based in Latin?); testing in Firefox
               // also shows values lower than 0xA1 in CSS do not work there unless escaped
               unicode += s + hexEsc[0];

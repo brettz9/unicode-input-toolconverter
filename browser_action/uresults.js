@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/no-this-assignment -- Easier here */
 
-// See http://www.unicode.org/Public/UNIDATA/ for data use
+// See https://unicode.org/Public/UNIDATA/ for data use
 
 /*
 // Todo: Handle these for `buildUnicode` `currentStartCharCode` (`setCurrstartset`); see also
@@ -57,13 +57,13 @@ function getAndSetCodePointInfo (num, alink, underscore) {
   ] = getScriptInfoForCodePoint(num, underscore);
   alink.target = '_blank';
   alink.className = 'text-link';
-  alink.href = `http://www.unicode.org/charts/PDF/U${codePointStart}.pdf`;
+  alink.href = `https://unicode.org/charts/PDF/U${codePointStart}.pdf`;
   alink.setAttribute('value', script + ' (PDF)');
   return [plane, privateuse, surrogate];
 }
 
-const xulns = 'http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
-  htmlns = 'http://www.w3.org/1999/xhtml';
+const xulns = 'https://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
+  htmlns = 'https://www.w3.org/1999/xhtml';
 
 function createHTMLElement (el) {
   return document.createElementNS(htmlns, el);
@@ -684,7 +684,7 @@ const Unicodecharref = {
       const img = createXULElement('image');
       // img.width = '80';
       // img.height = '80';
-      img.setAttribute('src', 'http://www.unicode.org/cgi-bin/refglyph?1-' + Number(kdectemp).toString(16));
+      img.setAttribute('src', 'https://unicode.org/cgi-bin/refglyph?1-' + Number(kdectemp).toString(16));
       placeItem('#unicodeImg', img);
     }
 

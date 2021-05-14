@@ -19,7 +19,7 @@ function getChromeSafeLocaleKey (key) {
 (async () => {
 let text;
 const lastScriptNamesFile = path.join(__dirname, '../browser_action/unicode/lastScriptNames.json');
-const chartsURL = 'https://www.unicode.org/charts/';
+const chartsURL = 'https://unicode.org/charts/';
 const chartsFile = path.join(__dirname, 'unicode-charts.html');
 if (process.argv[2] === 'retrieve') {
   const resp = await fetch(chartsURL);

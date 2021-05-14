@@ -175,9 +175,9 @@ export function getJamoForIndex (index, type) {
 }
 
 export function getHangulName (syllableCode) {
-  // Adapted from Hangul Character Names: http://unicode.org/reports/tr15/#Hangul
+  // Adapted from Hangul Character Names: https://unicode.org/reports/tr15/#Hangul
 
-  // Following numbered items, with minor changes are from http://www.unicode.org/versions/Unicode5.0.0/ch03.pdf
+  // Following numbered items, with minor changes are from https://unicode.org/versions/Unicode5.0.0/ch03.pdf
   // 1. Compute the index of the syllable:
   // SIndex = S - SBase
   const sIndex = syllableCode - sBase;
