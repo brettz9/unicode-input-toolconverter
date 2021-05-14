@@ -2,6 +2,6 @@
 <dialog title="&uresults.title;"
   ondialogaccept="return Unicodecharref.doOK();"
   ondialogcancel="return Unicodecharref.doCancel();"
-	onload="centerWindowOnScreen();">
+  onload="centerWindowOnScreen();">
 
 </dialog>

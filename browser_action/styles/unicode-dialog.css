@@ -1,19 +1,20 @@
-/*
-Copyright 2007-2018 Brett Zamir
-    This file is part of Unicode Input Tool/Converter.
+/**
+ * @copyright 2007-2018 Brett Zamir
 
-    Unicode Input Tool/Converter is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+This file is part of Unicode Input Tool/Converter.
 
-    Unicode Input Tool/Converter is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
+Unicode Input Tool/Converter is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-    You should have received a copy of the GNU Lesser General Public License
-    along with Unicode Input Tool/Converter.  If not, see <http://www.gnu.org/licenses/>.
+Unicode Input Tool/Converter is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with Unicode Input Tool/Converter.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /*
@@ -24,335 +25,334 @@ Find and load font(s) to capture as many as possible by default
 */
 
 .searchBox {
-    min-height: 20px;
+  min-height: 20px;
 }
 #rowsset, #colsset {
-    max-width: 50px;
+  max-width: 50px;
 }
 #clearoutput {
-    margin-top: 2em;
-    height: 50px;
-    width: 50px;
+  margin-top: 2em;
+  height: 50px;
+  width: 50px;
 }
 #insertText {
-    height: 70px;
+  height: 70px;
 }
 #insertText, #displayUnicodeDesc {
-    width: 400px;
+  width: 400px;
 }
 .entity {
-    background-color: yellow;
+  background-color: yellow;
 }
 /*
 .leftlabel {
-    float:left;
-    width: 15%;
+  float:left;
+  width: 15%;
 }
 #displayUnicodeDesc {
-    float:left;
+  float:left;
 }
 */
 a.text-link {
-    color: blue;
-    text-decoration: underline;
+  color: blue;
+  text-decoration: underline;
 }
 
 table.unicodetablecell {
-    border-collapse: collapse;
-    min-width: 500px;
-    width: 500px;
-    max-width: 500px;
-    /*
-    overflow: auto;
-    min-height: 300px;
-    height: 300px;
-    max-height: 300px;
-    */
+  border-collapse: collapse;
+  min-width: 500px;
+  width: 500px;
+  max-width: 500px;
+  /*
+  overflow: auto;
+  min-height: 300px;
+  height: 300px;
+  max-height: 300px;
+  */
 }
 td.unicodetablecell {
-    border-style: inset;
-    overflow:auto;
-    max-height: 20px !important;
-	height:20px !important;
-	min-height:20px !important;
+  border-style: inset;
+  overflow:auto;
+  max-height: 20px !important;
+  height:20px !important;
+  min-height:20px !important;
 }
 .outputcopybutton {
-    width: 100px;
+  width: 100px;
 }
 .fontsize, .charthbox, .dtdbutton {
-    display: inline; /* Doesn't seem to work on Mac at least */
+  display: inline; /* Doesn't seem to work on Mac at least */
 }
 .dtdbutton {
-    width: 100px;
-    padding-bottom: 7px;
+  width: 100px;
+  padding-bottom: 7px;
 }
 #DTDtextbox {
-    width: 50%;
-    height: 300px;
-    margin-right: 10px;
+  width: 50%;
+  height: 300px;
+  margin-right: 10px;
 }
 .centered {
-    text-align: center;
+  text-align: center;
 }
 button.reconvert {
-    color: black;
-    margin: 2px;
+  color: black;
+  margin: 2px;
 }
 .buttonactive {
-    color: red;
+  color: red;
 }
 /* Since the dialogheader doesn't seem to work on the Mac (and since I may switch away in the future away from a "dialog" window proper), I've changed it to a description tag with a "dialogheader" class and styled it similarly */
 .dialogheader {
-    text-align: center;
-    font-size: large;
-    background-color: aqua;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  text-align: center;
+  font-size: large;
+  background-color: aqua;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .aboutdescription {
-    display: block;
-    margin-bottom: 20px;
-    text-indent: 20px;
+  display: block;
+  margin-bottom: 20px;
+  text-indent: 20px;
 }
 .notesdescription, .usage_notesdescription {
-    display: block;
-    margin-bottom: 20px;
-    text-indent: 20px;
+  display: block;
+  margin-bottom: 20px;
+  text-indent: 20px;
 }
 .chartLayout {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 #convertEncoding {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 #convertFromEncoding {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .aboutdescription, .prefdescription, .conversionhbox {
 
 }
 .indentedradio {
-    margin-left: 70px;
+  margin-left: 70px;
 }
 .firstbox {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 .chartBox {
-    width: 50%;
+  width: 50%;
 }
 #DownloadButtonBox {
-    text-align: center;
+  text-align: center;
 }
 #DownloadButtonBox > div {
-    margin-bottom: 3px;
+  margin-bottom: 3px;
 }
 #resetdefaultbutton {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 radiogroup {
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-right-style: solid;
-    border-right-width: 1px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
 }
 #outputButtons {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 .boxed {
-    border-style: solid;
-    border-width: 1px;
-    padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
 }
 .boxed, .boxedbottom {
-    padding: 5px;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-right-style: solid;
-    border-right-width: 1px;
+  padding: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
 }
 
 .detailedViewContainer {
-    overflow: auto;
-    height: 550px;
+  overflow: auto;
+  height: 550px;
 }
 
 .detailedView, .detailedCJKView {
-    overflow: auto;
-    height: 50px;
+  overflow: auto;
+  height: 50px;
 }
 .detailedView > .description.heading, .detailedCJKView > .description.heading  {
-    display: block;
+  display: block;
 }
 
 .heading {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #viewTabs {
-    overflow: auto;
-    min-height: 20px;
+  overflow: auto;
+  min-height: 20px;
 }
 #searchGrid {
-    /* Makes longer (along with change below), but no dropmarkers  overflow-y:auto;max-height:180px;width:400px;overflow-x:hidden;*/
-    overflow: auto;
-    max-width: 400px;
-    width: 400px;
+  /* Makes longer (along with change below), but no dropmarkers  overflow-y:auto;max-height:180px;width:400px;overflow-x:hidden;*/
+  overflow: auto;
+  max-width: 400px;
+  width: 400px;
 }
 #searchGridCJK {
-    overflow: auto;
-    min-width: 330px;
+  overflow: auto;
+  min-width: 330px;
 }
 
 .searchMenu {
-    /* -moz-box-flex: 1; */
+  /* -moz-box-flex: 1; */
 }
 
 #chart_selectchar_persist_vbox {
-    overflow: auto;
-    margin-right: 10px;
-    /* max-height: 630px; */
+  overflow: auto;
+  margin-right: 10px;
+  /* max-height: 630px; */
 }
 #chart_selectchar_persist {
-    overflow: auto;
-    margin-top: 10px;
-    min-height: 20px;
+  overflow: auto;
+  margin-top: 10px;
+  min-height: 20px;
 }
 .miller-columns {
-    overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 #chart_layout_persist {
-    overflow: auto;
-    min-height: 20px;
+  overflow: auto;
+  min-height: 20px;
 }
 #charts {
-    /* Make this bigger than rest of tabbox */
-    min-width: 1000px;
+  /* Make this bigger than rest of tabbox */
+  min-width: 1200px;
 }
 
 #toconvert_persist {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .noteDescriptionBox {
-    overflow: auto;
-    width: 50%;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
+  overflow: auto;
+  width: 50%;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 .convertBox {
-    width: 100%;
-    height: 200px;
+  width: 100%;
+  height: 200px;
 }
 .conversionSection {
-    width: 50%;
+  width: 50%;
 }
 #conversion_buttons_persist {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 #tabbox {
-    overflow: auto;
-    /* max-width: 1050px;
-    max-height: 710px; */
+  overflow: auto;
+  /* max-width: 1050px;
+  max-height: 710px; */
 }
 #chartcontent {
-    overflow: auto;
-    min-width: 500px;
+  overflow: auto;
+  min-width: 500px;
 }
 #tableholder {
-    overflow: auto;
-    min-height: 20px;
+  overflow: auto;
+  min-height: 20px;
 }
 #displayUnicodeDescContainer h3, #displayUnihanArea h3 {
-    /* Override Chrome default styling of 1em */
-    margin-block-start: 5px;
-    margin-block-end: 5px;
+  /* Override Chrome default styling of 1em */
+  margin-block-start: 5px;
+  margin-block-end: 5px;
 }
 .displayUnicodeDescContainer {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .detailedViewRows, .detailedCJKViewRows {
-    min-height: 150px;
+  min-height: 150px;
 }
-
 
 #unicodeDescArea {
-    overflow: auto;
+  overflow: auto;
 }
 #displayUnihanArea {
-    overflow: auto;
+  overflow: auto;
 }
 #displayUnicodeDesc2, #displayUnicodeDescUnihan {
-    width: 480px;
-    max-width: 500px;
-    min-width: 480px;
+  width: 480px;
+  max-width: 500px;
+  min-width: 480px;
 }
 
 #conversion_buttons_persist {
-    min-width: 20px;
-    overflow: auto;
+  min-width: 20px;
+  overflow: auto;
 }
 
 #unicodeTabBox > .tabs > .tab {
-    width: 100px;
-    padding: 6px;
-    border-radius: 5px 5px;
+  width: 100px;
+  padding: 6px;
+  border-radius: 5px 5px;
 }
 #tabboxSearch > .tabs > .tab {
-    width: 100px;
-    padding: 6px;
-    border-radius: 5px 5px;
+  width: 100px;
+  padding: 6px;
+  border-radius: 5px 5px;
 }
 #viewTabs > .tabs > .tab {
-    width: 150px;
-    height: 1em;
-    padding: 6px;
-    border-radius: 5px 5px;
+  width: 150px;
+  height: 1em;
+  padding: 6px;
+  border-radius: 5px 5px;
 }
 #viewTabs > .tabs {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .tab {
-    float: left;
+  float: left;
 }
 .tab[data-selected] {
-    border-collapse: collapse;
-    border: black outset 1px;
-    background-color: lightblue;
+  border-collapse: collapse;
+  border: black outset 1px;
+  background-color: lightblue;
 }
 .tab[data-selected]:hover {
-    background-color: blue;
+  background-color: blue;
 }
 .tab:not([data-selected]) {
-    border-collapse: collapse;
-    border: black inset 1px;
-    background-color: lightgray;
+  border-collapse: collapse;
+  border: black inset 1px;
+  background-color: lightgray;
 }
 .tab:not([data-selected]):hover {
-    background-color: blue;
+  background-color: blue;
 }
 .tabpanel:not([data-selected]) {
-    display: none;
+  display: none;
 }
 
 code {
-    border: 1px dotted black;
-    background-color: lightgray;
+  border: 1px dotted black;
+  background-color: lightgray;
 }
 
 .vbox {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .hbox {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
