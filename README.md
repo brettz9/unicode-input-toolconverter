@@ -1,13 +1,20 @@
 # unicode-input-toolconverter
 
-**INCOMPLETE!!**
+**Work in progress! (Still restoring from old browser add-on.)**
 
 A webextensions add-on (Firefox, Chrome) to allow selection of Unicode
 characters by a variety of means and conversion between various
 Unicode representations such as HTML/XML entities, numeric
 character references, etc.
 
-# Possible to-dos
+## Screenshots
+
+![Script Browser](./screenshots/script-browser.png)
+![Entity/Numeric Character Reference/Escape Converter](./screenshots/converter.png)
+![Preferences](./screenshots/preferences.png)
+![Custom DTD (for highlighting entities in the script browser](./screenshots/dtd.png)
+
+## Possible to-dos
 
 1. Improve slow **font retrieval**
 1. Add `intl-dom`
