@@ -46,6 +46,6 @@ export const getPrefDefaults = () => ({
   initialTab: 'charttab',
   defaultStartCharCode: _('startCharCode').codePointAt() - 1, // 'a'
   currentStartCharCode: _('startCharCode').codePointAt() - 1, // 'a'
-  lang: _('langCode'), // 'en'
+  lang: _('langCode'), // 'en-US'
   dropdownArr: []
 });

@@ -1,6 +1,5 @@
 import {jml, body, $, $$, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
-import {code, link} from '../templateUtils/elements.js';
 import {safeLink} from '../templateUtils/validation.js';
 import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicode-scripts.js';
@@ -915,7 +914,7 @@ const indexTemplate = function ({_, fonts}) {
                 }
               }
             }],
-            _('xhtmlentmode_label', {code})
+            _('xhtmlentmode_label')
           ]]
         ]],
         ['div', {class: 'boxedbottom vbox'}, [
@@ -930,7 +929,7 @@ const indexTemplate = function ({_, fonts}) {
                 }
               }
             }],
-            _('xmlentmode_label', {code})
+            _('xmlentmode_label')
           ]]
         ]],
         ['div', {class: 'boxedbottom vbox'}, [
@@ -945,7 +944,7 @@ const indexTemplate = function ({_, fonts}) {
                 }
               }
             }],
-            _('ampkeep_label', {code})
+            _('ampkeep_label')
           ]]
         ]],
         ['div', {class: 'boxedbottom vbox'}, [
@@ -960,7 +959,7 @@ const indexTemplate = function ({_, fonts}) {
                 }
               }
             }],
-            _('ampspace_label', {code})
+            _('ampspace_label')
           ]]
         ]],
         ['div', {class: 'boxedbottom vbox'}, [
@@ -1035,7 +1034,7 @@ const indexTemplate = function ({_, fonts}) {
         ]],
         ...fill(2).map((__, i) => {
           return ['p', [
-            _(`DTD_desc_value${i + 1}`, {code})
+            _(`DTD_desc_value${i + 1}`)
           ]];
         }),
         ['div', {class: 'hbox'}, [
@@ -1110,7 +1109,7 @@ const indexTemplate = function ({_, fonts}) {
               ['button', {class: 'dtdbutton', $on: {click () {
                 Unicodecharref.insertent('DTDtextbox');
               }}}, [
-                _('DTD_insertent', {code})
+                _('DTD_insertent')
               ]]
             ]],
             ['label', {style: 'margin-top: 10px;'}, [
@@ -1141,7 +1140,7 @@ const indexTemplate = function ({_, fonts}) {
             ['h3', [_('note_heading')]],
             ...fill(8).map((__, i) => {
               return ['div', {class: 'notesdescription'}, [
-                _(`notespar${i + 1}`, {code})
+                _(`notespar${i + 1}`)
               ]];
             })
           ]],
@@ -1149,7 +1148,7 @@ const indexTemplate = function ({_, fonts}) {
             ['h3', [_('usage_note_heading')]],
             ...fill(13).map((__, i) => {
               return ['div', {class: 'usage_notesdescription'}, [
-                _(`usage_notespar${i + 1}`, {code, link})
+                _(`usage_notespar${i + 1}`)
               ]];
             })
           ]]

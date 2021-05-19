@@ -28,9 +28,11 @@ specifiers:
   extract-zip: ^2.0.1
   file-fetch: ^1.6.0
   fs-extra: ^10.0.0
+  intl-dom: ^0.12.5
   jamilih: 0.54.0
   jquery: ^3.6.0
   jsdom: ^16.5.3
+  json-6: ^1.1.2
   miller-columns: ^0.9.0
   node-fetch: ^2.6.1
   open-cli: ^6.0.1
@@ -44,7 +46,9 @@ dependencies:
   extract-zip: 2.0.1
   file-fetch: 1.6.0
   fs-extra: 10.0.0
+  intl-dom: 0.12.5
   jsdom: 16.5.3
+  json-6: 1.1.2
   node-fetch: 2.6.1
 
 devDependencies:
@@ -2016,6 +2020,14 @@ packages:
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
+  /intl-dom/0.12.5:
+    resolution: {integrity: sha512-AP4hx5skzNfq2ZK2lBa7S4yx4hrDlyTJCVNkLW0KdN2GmtyD9EQp5pE4MHbpLvQBbnk+63Zgd4TkWF2Nt6ooDQ==}
+    engines: {node: '>=10.0.0'}
+    dependencies:
+      file-fetch: 1.6.0
+      json-6: 1.1.2
+    dev: false
+
   /into-stream/3.1.0:
     resolution: {integrity: sha1-lvsKk2wSur1v8XUqF9BWFqvQlMY=}
     engines: {node: '>=4'}
@@ -2315,6 +2327,12 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
     dev: true
+
+  /json-6/1.1.2:
+    resolution: {integrity: sha512-4J/KchTwM7Uj4P3GwUmsLgd4Jt6yRzrwfySNiPkDK7DtfoMe+7OFd1NdyuIEqL2BgB4yERWJqHaPJ2p8uGphfQ==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    dev: false
 
   /json-buffer/3.0.0:
     resolution: {integrity: sha1-Wx85evx11ne96Lz8Dkfh+aPZqJg=}

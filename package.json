@@ -22,7 +22,9 @@
     "webext-build": "npm run eslint && web-ext build",
     "eslint": "eslint --ext=js,md,html .",
     "lint": "npm run eslint",
-    "copy": "npm run copy-jquery && npm run copy-miller-columns && npm run copy-jamilih && npm run copy-polyfill && npm run copy-simple-prefs",
+    "copy": "npm run copy-jquery && npm run copy-miller-columns && npm run copy-jamilih && npm run copy-polyfill && npm run copy-simple-prefs && npm run copy-intl-dom && npm run copy-json-6",
+    "copy-intl-dom": "cp node_modules/intl-dom/dist/index.esm.js vendor/intl-dom/dist/index.esm.js",
+    "copy-json-6": "cp node_modules/json-6/dist/index.mjs vendor/json-6/dist/index.mjs",
     "copy-jquery": "cp node_modules/jquery/dist/jquery.js vendor/jquery/dist/jquery.js",
     "copy-miller-columns": "cp node_modules/miller-columns/miller-columns.css vendor/miller-columns/miller-columns.css && cp node_modules/miller-columns/dist/index-es.min.js vendor/miller-columns/dist/index-es.min.js",
     "copy-jamilih": "cp node_modules/jamilih/dist/jml-es.js vendor/jamilih/dist/jml-es.js",
@@ -50,7 +52,9 @@
     "extract-zip": "^2.0.1",
     "file-fetch": "^1.6.0",
     "fs-extra": "^10.0.0",
+    "intl-dom": "^0.12.5",
     "jsdom": "^16.5.3",
+    "json-6": "^1.1.2",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

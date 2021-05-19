@@ -16,9 +16,9 @@ character references, etc.
 
 ## Possible to-dos
 
-1. Improve slow **font retrieval**
-1. Add `intl-dom`
-    1. Get i18n completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
+1. Use `intl-dom`
+1. Improve slow (now broken?) **font retrieval**
+1. Get **l10n** completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
 1. **Protocol handler**:
   <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
 1. Various modules, some already in `vendor`, could be

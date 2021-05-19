@@ -1,6 +1,5 @@
 polyfills/browser-polyfill.min.js
 old
 vendor
-!vendor/i18n-safe/index-es.js
 lib/misc-to-move
 browser_action/unicode/unicode-scripts.js

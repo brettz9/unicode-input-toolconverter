@@ -335,7 +335,7 @@ export default function getScriptInfoForCodePoint (num, _) {
   } else if (num < 0xFFF0) {
     codePointStart = 'FF00'; script = _('Halfwidth_and_Fullwidth_Forms');
   /*
-  // If reenabling, should do more complete i18n (e.g., put comma inside string)
+  // Todo: If reenabling, should do more complete i18n (e.g., put comma inside string)
   } else if (num < 0xFFF0) {
     codePointStart = 'FF00';
     script = _('shortened_Fullwidth', {

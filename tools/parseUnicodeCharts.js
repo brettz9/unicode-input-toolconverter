@@ -155,7 +155,7 @@ async function deleteUnusedScriptNames (newScriptNames, localeFileContents) {
   lastScriptNames.forEach((lastScriptName) => {
     if (!newScriptNames.includes(lastScriptName)) {
       localeFileContents.forEach((lfc) => {
-        delete lfc[lastScriptName];
+        delete lfc.body[lastScriptName];
       });
     }
   });
@@ -197,7 +197,7 @@ export default function (_) {
       dirResults.forEach(({path: pth, keys}) => {
         keys.forEach((key) => {
           localeFileContents.forEach((lfc, i) => {
-            if (!(key in lfc)) {
+            if (!(key in lfc.body)) {
               if (!keyMap[key]) {
                 keyMap[key] = {paths: [], locales: []};
               }
@@ -223,7 +223,7 @@ export default function (_) {
         if (i !== 0) { // Just test one for now
           return;
         }
-        Object.keys(lfc).forEach((localeKey) => {
+        Object.keys(lfc.body).forEach((localeKey) => {
           if (!dirResults.some(({keys, path: pth}) => {
             // console.log('keys', keys);
             return keys.includes(localeKey);
@@ -255,18 +255,18 @@ export default function (_) {
               if (i === j) {
                 return;
               }
-              Object.entries(lfc).forEach(([key, val]) => {
+              Object.entries(lfc.body).forEach(([key, val]) => {
                 if (!(key in lfc2)) {
                   console.log(`key, ${key}, not present in ${localeFiles[j]}`);
                 }
               });
             });
             */
-            if (lfc.langCode.message !== 'hu-HU') {
+            if (lfc.body.langCode.message !== 'hu-HU') {
               // return;
             }
-            if (!(chromeSafeLocaleKey in lfc)) {
-              lfc[chromeSafeLocaleKey] = {
+            if (!(chromeSafeLocaleKey in lfc.body)) {
+              lfc.body[chromeSafeLocaleKey] = {
                 message: key
               };
               // console.log(1, chromeSafeLocaleKey, key);
@@ -276,10 +276,10 @@ export default function (_) {
           /*
           // Find change in *values*
           if (
-            lfc[chromeSafeLocaleKey] &&
-            lfc[chromeSafeLocaleKey].message !== key
+            lfc.body[chromeSafeLocaleKey] &&
+            lfc.body[chromeSafeLocaleKey].message !== key
           ) {
-            console.log(key, lfc[chromeSafeLocaleKey].message);
+            console.log(key, lfc.body[chromeSafeLocaleKey].message);
           }
           */
           return `${initialWS}_("${chromeSafeLocaleKey}")${possibleComma}`;

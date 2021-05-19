@@ -1,8 +1,14 @@
 /* globals jQuery -- No ESM */
 import {$} from '../vendor/jamilih/dist/jml-es.js';
-import {i18n} from '../vendor/i18n-safe/index-es.js';
+
+import {i18n, setJSONExtra} from '../vendor/intl-dom/dist/index.esm.js';
+
+// Currently not bundling json-6
+import jsonExtra from '../vendor/json-6/dist/index.mjs';
+
 import {makeTabBox} from './templatesElementCustomization/widgets.js';
-import addMillerColumnPlugin from '../node_modules/miller-columns/dist/index-es.js'; // Todo: Switch to vendor version
+import {code, link} from './templateUtils/elements.js';
+import addMillerColumnPlugin from '../vendor/miller-columns/dist/index-es.min.js';
 import getBuildChart, {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
 import {getUnicodeDefaults, setPrefDefaultVars} from './preferences/prefDefaults.js';
@@ -15,6 +21,8 @@ import {
   shareVars as charrefConverterShareVars, classChange as charrefClassChange
 } from './charref-converters.js';
 
+setJSONExtra(jsonExtra);
+
 (async () => { // eslint-disable-line padded-blocks -- Ugly
 
 // SETUP
@@ -22,14 +30,17 @@ const lang = new URL(location).searchParams.get('lang');
 const locales = lang ? [lang] : [...navigator.languages]; // ['sv-SE']; // ['pt-BR']; // ['hu-HU'];
 const engPos = locales.indexOf('en-US');
 if (engPos > -1) {
-  locales[engPos] = 'en'; // Optimize for English (and avoid console errors)
+  locales[engPos] = 'en-US'; // Optimize for English (and avoid console errors)
 }
-if (!locales.includes('en')) { // Ensure there is at least one working language!
-  locales.push('en');
+if (!locales.includes('en-US')) { // Ensure there is at least one working language!
+  locales.push('en-US');
 }
 
 const [_] = await Promise.all([
-  i18n({locales, defaults: false, localesBasePath: '../'}),
+  i18n({
+    locales, defaults: false, localesBasePath: '../',
+    substitutions: {code, link}
+  }),
   addMillerColumnPlugin(jQuery, {stylesheets: [
     // Per our widget "standard", allow for injecting of others
     ['/icons/openWindow24.png', {favicon: true}],

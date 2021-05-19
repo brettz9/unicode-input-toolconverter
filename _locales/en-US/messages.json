@@ -1,7 +1,7 @@
 {
   "body": {
     "langCode": {
-      "message": "hu-HU",
+      "message": "en",
       "description": "The default for the font language code field"
     },
     "extensionName": {
@@ -11,7 +11,7 @@
       "message": "Unicode Tool"
     },
     "extensionDescription": {
-      "message": "A karakterhivatkozásokat átalakítja unikód karakterekké"
+      "message": "Add-on for selecting Unicode characters by variety of means and converting between various representations"
     },
     "browser_action_title": {
       "message": "Unicode Input Tool/Converter"
@@ -27,79 +27,79 @@
       "description": "This is the character that will be the default for the chart browser; should reflect a common character used by the language of the locale."
     },
     "unicode_noun": {
-      "message": "unikód"
+      "message": "unicode"
     },
     "hex_noun": {
-      "message": "hexadecimális"
+      "message": "hexadecimal"
     },
     "dec_noun": {
-      "message": "decimális"
+      "message": "decimal"
     },
     "ent_noun": {
-      "message": "egyedek"
+      "message": "entities"
     },
     "Unicode_table_caption_title": {
-      "message": "Az alábbi leírások rögzítéséhez/feloldásához Control + kattintás valamely karakter fölött a bal egérgombbal"
+      "message": "Control + left-click when over a character to freeze or unfreeze the descriptions below"
     },
     "caption_format_begin": {
       "message": ", {value}"
     },
     "caption_format_end_two": {
-      "message": " és {value}"
+      "message": " and {value}"
     },
     "caption_format_end_three_plus": {
-      "message": " és {value}"
+      "message": ", and {value}"
     },
     "Next_set": {
-      "message": "Következő készlet"
+      "message": "Next set"
     },
     "Prev_set": {
-      "message": "Előző készlet"
+      "message": "Prev set"
     },
     "Conversion_tab_label": {
-      "message": "Átalakítás"
+      "message": "Conversion"
     },
     "Prefs_tab_label": {
-      "message": "Beállítások"
+      "message": "Prefs"
     },
     "DTD_tab_label": {
       "message": "DTD"
     },
     "Charts_tab_label": {
-      "message": "Diagramok"
+      "message": "Charts"
     },
     "Notes_tab_label": {
-      "message": "Megjegyzések"
+      "message": "Notes"
     },
     "About_tab_label": {
-      "message": "Névjegy"
+      "message": "About"
     },
     "About_dialogheader_title": {
-      "message": "Névjegy"
+      "message": "About"
     },
     "About_developer_and_contributors": {
       "message": "{About_developer} {About_developer_link} {About_contributors}"
     },
     "About_developer": {
-      "message": "Ezt a kiegészítőt"
+      "message": "This extension was developed by"
     },
     "About_developer_linkText": {
-      "message": "Brett Zamir készítette"
+      "message": "Brett Zamir"
     },
     "About_contributors": {
-      "message": " és Fábricz Károly (hu-HU), Edgard Magalh&#227;es (pt-BR), Mikael Hiort af Ornäs (sv-SE) fordította."
+      "message": " and translated by Karoly Fabricz (hu-HU), Edgard Magalhães (pt-BR), and Mikael Hiort af Ornäs (sv-SE)."
     },
     "About_donation": {
-      "message": "Ha a kiegészítőt hasznosnak találja, vegye fontolóra {About_donation_button}."
+      "message": "If you find this extension useful, please consider a {About_donation_button}."
     },
     "About_donation_buttonText": {
-      "message": "egy Paypal-adomány lehetőségét"
+      "message": "Donation"
     },
     "About_ial": {
-      "message": "A kiegészítő szerzője szeretné, ha csatlakozna egy hivatalos {About_ial_wikipedia_link} kijelölésére vonatkozó kezdeményezéshez (és támogatná azt), mellyel az emberiség korai nyelvelsajátítás alapján zökkenőmentesen kommunikálhatna, így energiáit hasznosabb (értelmesebb és takarékosabb) területeken kamatoztathatná, mint ha számos közös nyelven próbál értekezni, így erőforrásai szabadulnának föl egyéb dolgokra, például helyi és távoli nyelvek elsajátítására: {About_ial_onetongue_link}."
+      "message": "The author of the extension wishes to invite you to consider (and promote) the idea of an official {About_ial_wikipedia_link}, so that the peoples of the world will one day all be able to inter-communicate due to early language instruction and spend their energies on more productive (as well as understanding-raising and cost-saving) areas than learning multiple lingua francas, freeing them up to do other things such as study whatever local or other language they may wish to learn: {About_ial_onetongue_link}"
     },
     "About_ial_wikipedia_linkText": {
-      "message": "kiegészítő világnyelv"
+      "message": "world auxiliary language"
     },
     "About_ial_wikipedia_linkURL": {
       "message": "http://en.wikipedia.org/wiki/International_auxiliary_language"
@@ -108,103 +108,103 @@
       "message": "World Auxiliary Language website"
     },
     "Notes_dialogheader_title": {
-      "message": "Megjegyzések"
+      "message": "Notes"
     },
     "DTD_insertEntityFile": {
-      "message": "Elemfájl beillesztése"
+      "message": "Insert Entity File"
     },
     "ent_isobox": {
-      "message": "keretek és vonalak"
+      "message": "Box and Line Drawing"
     },
     "ent_isocyr1": {
-      "message": "orosz cirill"
+      "message": "Russian Cyrillic"
     },
     "ent_isocyr2": {
-      "message": "egyéb cirill"
+      "message": "Non-Russian Cyrillic"
     },
     "ent_isodia": {
-      "message": "diakritikus jegyek"
+      "message": "Diacritical Marks"
     },
     "ent_isolat1": {
-      "message": "Latin 1 hozzáadása"
+      "message": "Added Latin 1"
     },
     "ent_isolat2": {
-      "message": "Latin 2  hozzáadása"
+      "message": "Added Latin 2"
     },
     "ent_isonum": {
-      "message": "számjegyes és speciális grafikus"
+      "message": "Numeric and Special Graphic"
     },
     "ent_isopub": {
-      "message": "kiadás"
+      "message": "Publishing"
     },
     "ent_isoamsa": {
-      "message": "matematikai jelek hozzáadása: nyíljelek"
+      "message": "Added Math Symbols: Arrow Relations"
     },
     "ent_isoamsb": {
-      "message": "matematikai jelek hozzáadása: bináris operátorok"
+      "message": "Added Math Symbols: Binary Operators"
     },
     "ent_isoamsc": {
-      "message": "matematikai jelek hozzáadása: határolók"
+      "message": "Added Math Symbols: Delimiters"
     },
     "ent_isoamsn": {
-      "message": "matematikai jelek hozzáadása: negációjelek"
+      "message": "Added Math Symbols: Negated Relations"
     },
     "ent_isoamso": {
-      "message": "matematikai jelek hozzáadása: sorszám"
+      "message": "Added Math Symbols: Ordinary"
     },
     "ent_isoamsr": {
-      "message": "matematikai jelek hozzáadása: relációk"
+      "message": "Added Math Symbols: Relations"
     },
     "ent_isogrk1": {
-      "message": "görög betűk"
+      "message": "Greek Letters"
     },
     "ent_isogrk2": {
-      "message": "monotoniko görög"
+      "message": "Monotoniko Greek"
     },
     "ent_isogrk3": {
-      "message": "görög jelek"
+      "message": "Greek Symbols"
     },
     "ent_isogrk4": {
-      "message": "alternatív görög jelek"
+      "message": "Alternative Greek Symbols"
     },
     "ent_isomfrk": {
-      "message": "matematikai ábécé: Fraktur"
+      "message": "Math Alphabets: Fraktur"
     },
     "ent_isomopf": {
-      "message": "matematikai ábécé: Open Face"
+      "message": "Math Alphabets: Open Face"
     },
     "ent_isomscr": {
-      "message": "matematikai ábécé: Script"
+      "message": "Math Alphabets: Script"
     },
     "ent_isotech": {
-      "message": "általános műszaki"
+      "message": "General Technical"
     },
     "ent_mmlextra": {
-      "message": "kiegészítő MathML-jelek"
+      "message": "Additional MathML Symbols"
     },
     "ent_mmlalias": {
-      "message": "MathML-helyettesítők"
+      "message": "MathML Aliases"
     },
     "ent_xhtml1_lat1": {
-      "message": "latin HTML-hez"
+      "message": "Latin for HTML"
     },
     "ent_xhtml1_special": {
-      "message": "speciális HTML-hez"
+      "message": "Special for HTML"
     },
     "ent_xhtml1_symbol": {
-      "message": "jel HTML-hez"
+      "message": "Symbol for HTML"
     },
     "ent_html5_uppercase": {
-      "message": "nagybetűs helyettesítők HTML-hez"
+      "message": "Uppercase aliases for HTML"
     },
     "ent_predefined": {
-      "message": "előre definiált XML"
+      "message": "Predefined XML"
     },
     "Convert_From_Encoding": {
-      "message": "Eredeti kódolás"
+      "message": "Convert From Encoding"
     },
     "Convert_To_Encoding": {
-      "message": "Célkódolás"
+      "message": "Convert To Encoding"
     },
     "kHanyuPinyin": {
       "message": "HanyuPinyin"
@@ -213,154 +213,154 @@
       "message": "IRG_MSource"
     },
     "Ethiopic_Extended_A": {
-      "message": "Kibővített etióp A"
+      "message": "Ethiopic Extended-A"
     },
     "Batak": {
       "message": "Batak"
     },
     "CJK_Ideographs_Ext__D": {
-      "message": "Ideografikus kibővített CJK-jelek D"
+      "message": "CJK Ideographs Ext. D"
     },
     "Kana_Supplement": {
-      "message": "Kiegészítő kana"
+      "message": "Kana Supplement"
     },
     "Alchemical_Symbols": {
-      "message": "Alkémikus jelek"
+      "message": "Alchemical Symbols"
     },
     "Emoticons": {
-      "message": "Hangulatjelek"
+      "message": "Emoticons"
     },
     "Playing_Cards": {
-      "message": "Játékkártyák"
+      "message": "Playing Cards"
     },
     "Miscellaneous_Symbols_And_Pictographs": {
-      "message": "Egyéb jelek és piktogramok"
+      "message": "Miscellaneous Symbols And Pictographs"
     },
     "Transport_and_Map_Symbols": {
-      "message": "Fuvarozási szimbólumok és térképjelek"
+      "message": "Transport and Map Symbols"
     },
     "Mandaic": {
-      "message": "Mandai"
+      "message": "Mandaic"
     },
     "Brahmi": {
-      "message": "Bráhmi"
+      "message": "Brahmi"
     },
     "Bamum_Supplement": {
-      "message": "Kiegészítő bamum"
+      "message": "Bamum Supplement"
     },
     "font_label": {
-      "message": "Betűkészlet"
+      "message": "Font"
     },
     "addToToolbar": {
-      "message": "Hozzáadás az eszköztár lenyíló eleméhez"
+      "message": "Add Character(s) to Toolbar pull-down"
     },
     "usage_note_heading": {
-      "message": "Egyéb tájékoztató"
+      "message": "Other Usage Notes"
     },
     "usage_notespar1": {
-      "message": "A kiterjesztés bekapcsolható az Előzmények menüből (így az használható a kijelölt szövegen), az Eszközök menüből, az eszköztár ikonjáról, illetve a Kiterjesztések Beállítások menüpontjából."
+      "message": "The extension can be activated from the context menu (which also gives the advantage of being able to operate on highlighted text), through the Tools menu, through the toolbar icon, or through the options URL in the addons menu."
     },
     "usage_notespar2": {
-      "message": "A beállítások kattintással módosíthatók, de az alapbeállítások hiba esetén bármikor visszaállíthatók."
+      "message": "Preferences are set as soon as you click on the items, but you can revert back to the default values if you make any mistakes."
     },
     "usage_notespar3": {
-      "message": "A párbeszédablak bezárása után az ablak adott helyzete a későbbiekben megőrződik."
+      "message": "Closing the dialog will set the current window's position for future use."
     },
     "usage_notespar4": {
-      "message": "Ha az ablak mérete nem megfelelő, használja a Beállítások fül alján lévő 'Visszaállítás alapértékekre (a DTD-n felül)' gombot. Ha egyes elemek nem férnek el a táblázatban, a 'Előző készlet' vagy a 'Következő készlet' használata megszüntetheti a problémát."
+      "message": "If you have problems with Window size, go to the 'Prefs' tab and hit the 'Reset to default values (besides DTD)' button. Using 'prev set' or 'next set' can also sometimes adjust problems with items fitting correctly in the chart view."
     },
     "usage_notespar5": {
-      "message": "Ha nem használ gombokat, több helyet szabadít föl a képernyőn. Ilyenkor az eredmény megjelenítéséhez kattintson közvetlenül az adott tételre."
+      "message": "Note that you can get extra space on the screen by not using buttons. In such a case, you can still click on the items to get chart output."
     },
     "usage_notespar6": {
-      "message": "Az unikód táblázatos megjelenítése során egyes karakterek helyett más jelek, például kérdőjel (Firefox 2.0) vagy négyzetben megjelenő számok (Firefox 3.0+) jelenhetnek meg (egyesek pedig egyáltalán nem lesznek láthatók/megjeleníthetők). Ennek oka a Firefox jelenlegi hiányosságára vezethető vissza. Előkeresésükhöz ellátogathat a hivatalos http://www.unicode.org/charts portálra, vagy megtalálja őket magában a kiterjesztésben. Ha fölé viszi az egeret, megjelenik a hozzá tartozó ugrópont, melyre kattintva áttérhet a megfelelő táblázatra és megnézheti a képet. Lehetőség van a képek közvetlen megtekintésére is, de az unikód-szerver kímélése érdekében ez nem része az alapbeállításnak."
+      "message": "Please be aware that in the Unicode chart view, items like question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) may appear in place of a desired character (and some characters will not or cannot be displayed at all). This is due to Firefox's own present limitations in displaying such characters. To find these, you could consult the images such as those at the official {link|http://www.unicode.org/charts} site and also available within the extension. While in the extension, you can hover your mouse over a character from the desired range, and a link will appear which you can click to lead to the appropriate chart and optionally view the image. Or you can enable images for direct viewing, but this should not be on by default to avoid taxing the Unicode server."
     },
     "usage_notespar7": {
-      "message": "Ha táblázatos nézetben a 'Csak egyedek' lehetőséget választja, akkor a HTML-egyedek a meghatározásuk szerinti sorrendben (és csak abban) jelennek meg. Egyéb üzemmódban az egyedi DTD-ben megadott összes egyed megjelenik, akár a HTML-egyedek kizárásával, amennyiben a DTD-fülön a hozzáfűzés jelölőnégyzete nincs bejelölve."
+      "message": "Please note that selecting the 'Only ents' option in chart view will allow you to see HTML entities in the order in which the HTML entities are defined (and only them). When when you are not in this mode, you will see all entities defined in the custom DTD, optionally excluding HTML entities, if the checkbox on the DTD page to append DTD entities is unchecked."
     },
     "usage_notespar8": {
-      "message": "Az Unihan-adatbázist a Beállítások fülről le kell töltenie (mérete miatt nem része a kiterjesztésnek). Ha gondja támad, töltse le a mintegy 19 MB-os állományt a http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite portálról és helyezze el a Firefox profilkönyvtárában."
+      "message": "You should be able to download the Unihan database (not included with the extension due to size) from within the preferences. If you have trouble, download the approximately 19MB file from {link|http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite} and place it in your Firefox profile directory."
     },
     "usage_notespar9": {
-      "message": "A kiterjesztéshez ajánlott nagy felbontás használata, de állíthatja alacsonyabbra is. A különféle osztóelemeket elhúzva átméretezheti az egyes részeket. A beállított méretek megőrződnek."
+      "message": "Extension best used with higher resolutions but now makes some accommodations for lower resolutions. Drag the various splitters to resize subsections. Your desired size should be remembered."
     },
     "usage_notespar10": {
-      "message": "A leírásokat a Control + bal egérgombbal a táblázat fölött kattintva rögzítheti. "
+      "message": "Use {code|control+left-click} while you are hovering the cursor over the chart view to freeze the descriptions below. "
     },
     "usage_notespar11": {
-      "message": "Az eszköztárikont a Nézet -> Eszköztárak -> Testreszabás... menüpontból és az Unikód ikonnak az eszköztárra húzásával adhatja hozzá. Az ikon része egy lenyíló menü, melyhez az Eredmények táblázat melletti gombbal szöveget adhat hozzá későbbi használatra. A már hozzáadott elemek törléséhez az eszköztár ikonelemeinek megtekintése közben vigye az egeret a törlendő elem fölé és kattintson a jobb egérgombbal."
+      "message": "The toolbar icon can be added by going to {code|View->Toolbars->Customize} and then dragging the 'U' icon to the desired position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete."
     },
     "usage_notespar12": {
-      "message": "A kiterjesztés unikód adataira az itt olvasható engedély érvényes: http://unicode.org/copyright.html"
+      "message": "The Unicode data within this extension is licensed as described at {link|http://unicode.org/copyright.html}"
     },
     "usage_notespar13": {
-      "message": "Fordítók jelentkezését várjuk a http://tinyurl.com/UnicodeInputToolTranslators címen!"
+      "message": "Translators welcome at {link|http://tinyurl.com/UnicodeInputToolTranslators}"
     },
     "note_heading": {
-      "message": "Unikóddal kapcsolatos megjegyzések (felhasználói ismertető)"
+      "message": "Unicode Notes (some usage information)"
     },
     "notespar1": {
-      "message": "Az unikód az összes élő (és néhány kihalt) emberi nyelv írásának, valamint standard szimbólumoknak és írásjeleknek az ábrázolására használt rendszer. Az unikód HTML-ben és XML-ben való használatával az összes így ábrázolt karakter akár ugyanazon az oldalon megjelenhet. Számos programmal írhat és menthet el közvetlenül unikódban ábrázolt karaktereket."
+      "message": "Unicode is a system to represent all living (and some dead) human scripts and standard symbols and punctuation. Unicode's use in HTML and XML allow all such written characters to be contained even within the same page. Many programs allow you to type or save any such characters directly in Unicode."
     },
     "notespar2": {
-      "message": "Ugyanakkor mivel léteznek még olyan programok, amelyek nem teljesen támogatják az unikód használatát (bár ha csak az alapvető angol ASCII-szimbólumokat használja, ezek unikóddá alakítása zökkenőmentesen történik) és helytelenül mentik el az ilyen szövegeket, valamint nehézkessé teszik ezek beírását, ezért különféle áthidaló megoldások használatával érhető el a különféle unikódos karakterek előállítása."
+      "message": "However, because some programs still do not support Unicode fully (though if you are only using the basic English ASCII symbols, your documents will translate to Unicode with no difficulty) and will not save the text properly and perhaps also to make it easier for some to type, one may use different types of shortcuts to represent these assorted Unicode characters."
     },
     "notespar3": {
-      "message": "Az egyik ilyen, minden HTML- vagy XML-dokumentumban használható áthidaló megoldás a karakterhivatkozás. A karakterhivatkozás &quot;és&quot;-jellel (&apos;&amp;&apos;) és kettőskereszttel (&apos;#&apos;) kezdődik, és pontosvesszővel (&apos;;&apos;) ér véget. Közöttük állhatnak decimális (0-9) vagy hexadecimális számok (azaz 0-9 közötti szám vagy A-F, ill. a-f közötti nagy- és kisbetű, melyek előtt &apos;x&apos; vagy &apos;X&apos; áll)."
+      "message": "One such shortcut which can be used in any HTML or XML document is the character reference. These references begin with an ampersand ({code|&}) and a hash mark ({code|#}) and end with a semicolon ({code|;}). In the middle can either be a decimal number (i.e., digits 0-9) or a hexadecimal number (i.e., digits 0-9 or upper or lower-case letters A-F preceded by an {code|x} or {code|X}). Either type will display the same, and will be displayed exactly like the Unicode character it represents."
     },
     "notespar4": {
-      "message": "(A hexadecimális számrendszer hasonló egy kártyacsomaghoz. A bubi egyes játékokban &apos;11&apos;-et jelent, a dáma &apos;12&apos;-t stb. A kártyalap egy tíznél nagyobb számnak felel meg. Ugyanez a helyzet a hexadecimális számjegyeket jelentő A-F betűkkel)."
+      "message": "(The hexadecimal numbering system may be thought of as working somewhat like a set of playing cards. The Jack may represent '11' in some games, the Queen, '12', and so on. While there is only a single card, they represent a number greater than ten. Thus it is also with individual hexadecimal digits represented by the letters A-F.)"
     },
     "notespar5": {
-      "message": "Egy unikódos karakter (vagy akár több) ábrázolására a karakterhivatkozások mellett létezik egy másik áthidaló megoldás is: a &apos;feldolgozott általános egyed&apos;."
+      "message": "Besides character references, another type of shortcut to represent a Unicode character (or even multiple characters) is the 'parsed general entity'."
     },
     "notespar6": {
-      "message": "XML esetén az öt előre meghatározott egyeden (&amp; (&amp;), &lt; (&lt;), &gt; (&gt;), &quot; (&quot;), &apos; (&apos;)) kívül explicit módon megadhat egyedeket (vagy használhatja a speciális PUBLIC azonosítót, mellyel jelezheti az XML-állományt olvasó programnak, hogy a nyelv saját egyedkészletét fogja használni)."
+      "message": "For the XML language, except for five pre-defined entities ({code|&amp;} (&), {code|&lt;} (<), {code|&gt;} (>), {code|&quot;} (\"), {code|&apos;} (')), you must explicitly define the entities you will use (or use a special 'PUBLIC' id which can indicate to programs reading the XML file that you will be using that language's set of entities)."
     },
     "notespar7": {
-      "message": "HTML-ben egy sor előre meghatározott egyed létezik. Fontos azonban megjegyezni, hogy noha a HTML az XML öt előre meghatározott egyede közül négyet használ, nem használja az &apos;&amp;apos;&apos;-t, így ennek helyén a neki megfelelő unikódot (vagy az &amp;#x27;, ill. &amp;#39; karakterhivatkozás közül valamelyiket) kell használnia."
+      "message": "In HTML, there are a number of already-defined entities. One important note: although HTML uses four of XML's five predefined entities, it does not use {code|&apos;}, so you will need to use the equivalent Unicode instead (or use the character reference {code|&#x27;} or {code|&#39;})."
     },
     "notespar8": {
-      "message": "Ugyancsak megadhatja saját egyedeit a &apos;DTD&apos;-szakaszban az &apos;&lt;!ENTITY egyednév &quot;egyedérték&quot;&gt;&apos; szintaxissal, melyeket így az átalakítás során felhasználhat."
+      "message": "You can also define your own entities in our 'DTD' section using the syntax {code|<!ENTITY entname \"entvalue\">} so that they can be included within conversions."
     },
     "lang_label": {
-      "message": "Nyelv"
+      "message": "\"lang\""
     },
     "lang_tooltiptext": {
-      "message": "A HTML 'lang' nyelvi attribútuma, illetve XML esetén az 'xml:lang' érték. A legtöbb kód esetén nincs hatása, de befolyásolhatja a betűalakok kiválasztását/a betűk megjelenítését egyes CJK-karakterek esetén (pl., U+5203 a 'zh-Hans', 'zh-Hant', 'ja' vagy 'ko' esetében). Ne feledje, hogy a táblázaton kívüli hatás megtekintéséhez használnia kell a lang attribútumot (még akkor is, ha a táblázat kimeneti négyzetében nincs egy sem)."
+      "message": "The HTML language attribute 'lang' or, in XML, the 'xml:lang' value. Has no effect on most scripts, but may affect glyph selection/font display for certain CJK characters (e.g., U+5203 in 'zh-Hans', 'zh-Hant', 'ja', or 'ko'). Note that you must use the lang attribute to see the effect outside of the chart (even our chart output box does not contain any)."
     },
     "initialTab_label": {
-      "message": "Kezdetben megnyitandó fül (billentyűparancs vagy eszközsávon lévő gomb bekapcsolásához)"
+      "message": "Initial tab to open (for key command or toolbar button activation)"
     },
     "CSSWhitespace_label": {
-      "message": "Kétértelmű üzemmód esetén használandó nem nyomtatható CSS-váltókarakter"
+      "message": "CSS escape white space character to use if in ambiguous mode"
     },
     "CSS_space": {
-      "message": "(szóköz)"
+      "message": "(space)"
     },
     "CSS_rn": {
-      "message": "\r\n (soremelés és új sor)"
+      "message": "\r\n (carriage return and newline)"
     },
     "CSS_r": {
-      "message": "\r (soremelés)"
+      "message": "\r (carriage return)"
     },
     "CSS_n": {
-      "message": "\n (új sor)"
+      "message": "\n (newline)"
     },
     "CSS_t": {
-      "message": "\t (tabulátor)"
+      "message": "\t (tab)"
     },
     "CSS_f": {
-      "message": "\f (lapdobás)"
+      "message": "\f (form feed)"
     },
     "cssUnambiguous_label": {
-      "message": "CSS-váltókarakter nem nyomtatható karaktert nem igénylő 6 számjegyes sorozatként való létrehozása (egyébként szükség szerinti hosszúságú lesz, utána nem nyomtatható karakterrel"
+      "message": "Create CSS escape as 6-digit sequences not requiring whitespace (otherwise, will be as long as necessary and be followed by white space"
     },
     "sixDigit2unicode_label": {
-      "message": "4 vagy 6 (PHP 6-tal azonos) számjegyesből unikódra"
+      "message": "4 or 6-digit (as in PHP 6) to Unicode"
     },
     "sixDigit2unicodeContext_label": {
-      "message": "4 vagy 6 (PHP 6-tal azonos) számjegyes váltókarakterről unikódra"
+      "message": "4 or 6-digit escape (as in PHP 6) to Unicode"
     },
     "sixDigit2unicodeContext_accesskey": {
       "message": "6"
@@ -369,295 +369,295 @@
       "message": "U"
     },
     "unicodeTo6Digit_label": {
-      "message": "Unikódról 6 (PHP 6-tal azonos) számjegyesre"
+      "message": "Unicode to 6-digit (as in PHP 6)"
     },
     "unicodeTo6DigitContext_label": {
-      "message": "Unikódról 6 (PHP 6-tal azonos) számjegyes váltókarakterre"
+      "message": "Unicode to 6-digit escape (as in PHP 6)"
     },
     "charDesc2Unicode_accesskey": {
       "message": "h"
     },
     "charDesc2UnicodeContext_label": {
-      "message": "Karakterleíró (PHP 6-tal azonos) váltókaraterekről unikódra"
+      "message": "Character description escapes (as in PHP 6) to Unicode"
     },
     "unicode2CharDescContext_label": {
-      "message": "Unikódról (PHP 6-tal azonos) karakterleíró váltókaraterekre"
+      "message": "Unicode to character description escapes (as in PHP 6)"
     },
     "unicode2CharDescContext_accesskey": {
       "message": "n"
     },
     "charDesc2Unicode_label": {
-      "message": "Karakterleíró váltókaraterekről unikódra"
+      "message": "Character description escapes to Unicode"
     },
     "unicode2CharDesc_label": {
-      "message": "Unikódról karakterleíró váltókaraterekre"
+      "message": "Unicode to character description escapes"
     },
     "unicode2JSEscape_label": {
-      "message": "Unikódról JavaScript váltókarakterekre"
+      "message": "Unicode to JavaScript escape sequences"
     },
     "unicode2jsescapeContext_label": {
-      "message": "Unikódról JS-váltókarakterekre"
+      "message": "Unicode to escaped JS"
     },
     "unicode2jsescapeContext_accesskey": {
       "message": "J"
     },
     "unicode2CSSEscape_label": {
-      "message": "Unikódból CSS-váltókarakterekre"
+      "message": "Unicode to CSS escape sequences"
     },
     "unicode2cssescapeContext_accesskey": {
       "message": "S"
     },
     "unicode2cssescapeContext_label": {
-      "message": "Unikódról CSS-váltókarakterekre"
+      "message": "Unicode to escaped CSS"
     },
     "jsescape2unicode_label": {
-      "message": "JavaScript váltókarakterekről unikódra"
+      "message": "JavaScript escape sequences to Unicode"
     },
     "jsescape2unicodeContext_accesskey": {
       "message": "J"
     },
     "jsescape2unicodeContext_label": {
-      "message": "JS-váltókarakterekről unikódra"
+      "message": "Escaped JS to Unicode"
     },
     "cssescape2unicode_label": {
-      "message": "CSS-váltókarakterekről unikódra"
+      "message": "CSS escape sequences to Unicode"
     },
     "cssescape2unicodeContext_accesskey": {
       "message": "C"
     },
     "cssescape2unicodeContext_label": {
-      "message": "CSS-váltókarakterekről unikódra"
+      "message": "Escaped CSS to Unicode"
     },
     "Yijing_Symbols": {
-      "message": "Jidzsing jelek"
+      "message": "Yijing Symbols"
     },
     "Noncharacters_at_end_of____": {
-      "message": "Egyéb jelek a(z) ... végén"
+      "message": "Noncharacters at end of ..."
     },
     "_see_also_Common_Indic_Number_Forms__": {
-      "message": "(lásd még: közös indiai számformák)"
+      "message": "(see also Common Indic Number Forms)"
     },
     "_see_also_Combining_Diacritical_Marks_for_Symbols__": {
-      "message": "(lásd még: Szimbólumok diakritikus jeleinek kombinálása)"
+      "message": "(See also Combining Diacritical Marks for Symbols)"
     },
     "Roman_Symbols": {
-      "message": "Római jelek"
+      "message": "Roman Symbols"
     },
     "Latin_1_Supplement": {
-      "message": "1-es latin kiegészítése"
+      "message": "Latin-1 Supplement"
     },
     "Cuneiform_Numbers_and_Punctuation": {
-      "message": "Ékírású számok és írásjelek"
+      "message": "Cuneiform Numbers and Punctuation"
     },
     "CJK_Unified_Ideographs__Han_": {
-      "message": "Egységesített ideografikus CJK-jelek (han)"
+      "message": "CJK Unified Ideographs (Han)"
     },
     "CJK_Compatibility_Ideographs": {
-      "message": "Ideografikus kompatibilitási CJK-jelek"
+      "message": "CJK Compatibility Ideographs"
     },
     "CJK_Compatibility_Ideographs_Supplement": {
-      "message": "Ideografikus kompatibilitási CJK-jelek kiegészítése"
+      "message": "CJK Compatibility Ideographs Supplement"
     },
     "CJK_Radicals_Supplement": {
-      "message": "CJK-gyökjelek kiegészítése"
+      "message": "CJK Radicals Supplement"
     },
     "Ideographic_Description_Characters": {
-      "message": "Ideografikus leíró karakterek"
+      "message": "Ideographic Description Characters"
     },
     "Small_Form_Variants": {
-      "message": "Kisméretű változatok"
+      "message": "Small Form Variants"
     },
     "CJK_Symbols_and_Punctuation": {
-      "message": "CJK-jelek és írásjelek"
+      "message": "CJK Symbols and Punctuation"
     },
     "Mathematical_Alphanumeric_Symbols": {
-      "message": "Matematikai alfanumerikus jelek"
+      "message": "Mathematical Alphanumeric Symbols"
     },
     "Enclosed_CJK_Letters_and_Months": {
-      "message": "Zárójeles CJK-betűk és hónapnevek"
+      "message": "Enclosed CJK Letters and Months"
     },
     "Optical_Character_Recognition__OCR_": {
-      "message": "Optikai karakterfelismerés (OCR)"
+      "message": "Optical Character Recognition (OCR)"
     },
     "Misc__Math_Symbols_A": {
-      "message": "Egyéb matematikai jelek - A"
+      "message": "Miscellaneous Math Symbols A"
     },
     "Misc__Math_Symbols_B": {
-      "message": "Egyéb matematikai jelek - B"
+      "message": "Miscellaneous Math Symbols B"
     },
     "Miscellaneous_Symbols_and_Arrows": {
-      "message": "Egyéb jelek és nyilak"
+      "message": "Miscellaneous Symbols and Arrows"
     },
     "Suppl__Math_Operators": {
-      "message": "Kiegészítő matematikai műveleti jelek"
+      "message": "Supplemental Math Operators"
     },
     "Geometric_Shapes": {
-      "message": "Mértani alakzatok"
+      "message": "Geometric Shapes"
     },
     "Other_Symbols": {
-      "message": "Egyéb jelek"
+      "message": "Other Symbols"
     },
     "Musical_Symbols": {
-      "message": "Zenei jelek"
+      "message": "Musical Symbols"
     },
     "Yijing_Mono___Di__and_Trigrams": {
-      "message": "Jidzsing mono-, di- és trigramok"
+      "message": "Yijing Mono-, Di- and Trigrams"
     },
     "Yijing_Hexagram_Symbols": {
-      "message": "Jidzsing hexagram jelek"
+      "message": "Yijing Hexagram Symbols"
     },
     "Katakana_Phonetic_Extensions": {
-      "message": "Katakana fonetikus kibővítések"
+      "message": "Katakana Phonetic Extensions"
     },
     "Supplementary_Private_Use_Area_A": {
-      "message": "Saját használatú kiegészítő terület - A"
+      "message": "Supplementary Private Use Area-A"
     },
     "Supplementary_Private_Use_Area_B": {
-      "message": "Saját használatú kiegészítő terület - B"
+      "message": "Supplementary Private Use Area-B"
     },
     "Combining_Diacritics": {
-      "message": "Diakritikus jelek kombinálása"
+      "message": "Combining Diacritics"
     },
     "CJK_Ideographs_Ext__C": {
-      "message": "ideografikus kibővített CJK-jelek C"
+      "message": "CJK Ideographs Ext. C"
     },
     "Bamum": {
-      "message": "bamum"
+      "message": "Bamum"
     },
     "Egyptian_Hieroglyphs": {
-      "message": "egyiptomi hieroglifák"
+      "message": "Egyptian Hieroglyphs"
     },
     "Aramaic__Imperial": {
-      "message": "arámi, birodalmi"
+      "message": "Aramaic, Imperial"
     },
     "Avestan": {
-      "message": "avesztán"
+      "message": "Avestan"
     },
     "Old_South_Arabian": {
-      "message": "ódélarab"
+      "message": "Old South Arabian"
     },
     "Pahlavi__Inscriptional": {
-      "message": "pahlavi, feliratos"
+      "message": "Pahlavi, Inscriptional"
     },
     "Parthian__Inscriptional": {
-      "message": "párthus, feliratos"
+      "message": "Parthian, Inscriptional"
     },
     "Samaritan": {
-      "message": "szamaritán"
+      "message": "Samaritan"
     },
     "Old_Turkic": {
-      "message": "ótörök"
+      "message": "Old Turkic"
     },
     "Devanagari_Extended": {
-      "message": "kibővített dévanágarí"
+      "message": "Devanagari Extended"
     },
     "Kaithi": {
-      "message": "kaithi"
+      "message": "Kaithi"
     },
     "Meetei_Mayek": {
-      "message": "manipuri"
+      "message": "Meetei Mayek"
     },
     "Vedic_Extensions": {
-      "message": "védikus kibővítések"
+      "message": "Vedic Extensions"
     },
     "Javanese": {
-      "message": "jávai"
+      "message": "Javanese"
     },
     "Myanmar_Extended_A": {
-      "message": "mianmari kibővített A"
+      "message": "Myanmar Extended-A"
     },
     "South_Asian_Scripts": {
-      "message": "dél-ázsiai írásmódok"
+      "message": "South Asian Scripts"
     },
     "Tai_Tham": {
-      "message": "Tai tham"
+      "message": "Tai Tham"
     },
     "Tai_Viet": {
-      "message": "Tai viet"
+      "message": "Tai Viet"
     },
     "Lisu": {
-      "message": "kancellár"
+      "message": "Lisu"
     },
     "Hangul_Jamo_Extended_A": {
-      "message": "hangul dzsamo kibővített A"
+      "message": "Hangul Jamo Extended-A"
     },
     "Hangul_Jamo_Extended_B": {
-      "message": "hangul dzsamo kibővített B"
+      "message": "Hangul Jamo Extended-B"
     },
     "UCAS_Extended": {
-      "message": "kibővített UCAS"
+      "message": "UCAS Extended"
     },
     "Common_Indic_Number_Forms": {
-      "message": "közös indiai számformák"
+      "message": "Common Indic Number Forms"
     },
     "Rumi_Numeral_Symbols": {
-      "message": "rumi numerikus jelek"
+      "message": "Rumi Numeral Symbols"
     },
     "Basic_operators__Plus__Factorial__Division__Multiplication": {
-      "message": "Alapműveletek: összeadás, faktoriális"
+      "message": "Basic operators: Plus, Factorial, Division, Multiplication"
     },
     "Division__Multiplication": {
-      "message": "Osztás, szorzás"
+      "message": "Division, Multiplication"
     },
     "Unified_Canadian_Aboriginal_Syllabics": {
-      "message": "Kanadai őslakosság egységesített szótagírása"
+      "message": "Unified Canadian Aboriginal Syllabics"
     },
     "Yi_Syllables": {
-      "message": "Ji szótagírás"
+      "message": "Yi Syllables"
     },
     "Alphabetic_Presentation_Forms": {
-      "message": "Alfabetikus prezentációs formák"
+      "message": "Alphabetic Presentation Forms"
     },
     "Halfwidth_and_Fullwidth_Forms": {
-      "message": "Fél szélességű és teljes szélességű formák"
+      "message": "Halfwidth and Fullwidth Forms"
     },
     "ASCII_Characters": {
-      "message": "ASCII-karakterek"
+      "message": "ASCII Characters"
     },
     "Alphanumeric_Symbols": {
-      "message": "Betűk és számok"
+      "message": "Alphanumeric Symbols"
     },
     "Enclosed_Alphanumeric_Supplement": {
-      "message": "Zárójeles betűk és számok kiegészítése"
+      "message": "Enclosed Alphanumeric Supplement"
     },
     "Enclosed_Ideographic_Supplement": {
-      "message": "Zárójeles ideografikus jelek kiegészítése"
+      "message": "Enclosed Ideographic Supplement"
     },
     "Additional_Squared_Symbols": {
-      "message": "Kiegészítő zárójeles szimbólumok"
+      "message": "Additional Squared Symbols"
     },
     "label_unicode": {
-      "message": "Unikód"
+      "message": "Unicode"
     },
     "showAllDetailedView_label": {
-      "message": "Mindegyik (vagy csak a tartalommal rendelkezők) megjelenítése"
+      "message": "Show all items (or only those with content)"
     },
     "showAllDetailedCJKView_label": {
-      "message": "Mindegyik (vagy csak a tartalommal rendelkezők) megjelenítése"
+      "message": "Show all items (or only those with content)"
     },
     "showComplexWindow_label": {
-      "message": "A speciális keresési lehetőségek és a metaadatok diagramos megjelenítése (az ablak lassabban jelenik meg)"
+      "message": "Show specialized search options and meta-data in chart view (slower to open window)"
     },
     "Specialized_search": {
-      "message": "Speciális keresés"
+      "message": "Specialized search"
     },
     "Code_point": {
-      "message": "Kódpont"
+      "message": "Code Point"
     },
     "Name": {
-      "message": "Név"
+      "message": "Name"
     },
     "kCangjie": {
-      "message": "Kandzsi"
+      "message": "Cangjie"
     },
     "kCantonese": {
-      "message": "Kantoni"
+      "message": "Cantonese"
     },
     "kDefinition": {
-      "message": "Definíció"
+      "message": "Definition"
     },
     "kHanYu": {
-      "message": "Hanyu"
+      "message": "HanYu"
     },
     "kIRGHanyuDaZidian": {
       "message": "IRGHanyuDaZidian"
@@ -714,7 +714,7 @@
       "message": "OtherNumeric"
     },
     "kPhonetic": {
-      "message": "Fonetikus"
+      "message": "Phonetic"
     },
     "kGSR": {
       "message": "GSR"
@@ -753,7 +753,7 @@
       "message": "TraditionalVariant"
     },
     "kVietnamese": {
-      "message": "Vietnami"
+      "message": "Vietnamese"
     },
     "kSpecializedSemanticVariant": {
       "message": "SpecializedSemanticVariant"
@@ -816,7 +816,7 @@
       "message": "FourCornerCode"
     },
     "kFrequency": {
-      "message": "Gyakoriság"
+      "message": "Frequency"
     },
     "kGB0": {
       "message": "GB0"
@@ -852,13 +852,13 @@
       "message": "KSC0"
     },
     "kKorean": {
-      "message": "Koreai"
+      "message": "Korean"
     },
     "kMainlandTelegraph": {
       "message": "MainlandTelegraph"
     },
     "kMorohashi": {
-      "message": "Morohasi"
+      "message": "Morohashi"
     },
     "kPrimaryNumeric": {
       "message": "PrimaryNumeric"
@@ -912,130 +912,130 @@
       "message": "CompatibilityVariant"
     },
     "General_Category": {
-      "message": "Általános kategória"
+      "message": "General Category"
     },
     "Canonical_Combining_Class": {
-      "message": "Kanonikus egyesítő osztály"
+      "message": "Canonical Combining Class"
     },
     "Bidi_Class": {
-      "message": "Kétirányú osztály"
+      "message": "Bidirectional Class"
     },
     "Decomposition_Type_and_Mapping": {
-      "message": "Dekompozíciós típus és illesztés"
+      "message": "Decomposition Type and Mapping"
     },
     "Decimal": {
-      "message": "Decimális"
+      "message": "Decimal"
     },
     "Digit": {
-      "message": "Számjegy"
+      "message": "Digit"
     },
     "Numeric": {
-      "message": "Numerikus"
+      "message": "Numeric"
     },
     "Bidi_Mirrored": {
-      "message": "Kétirányú tükrözött"
+      "message": "Bidirectional Mirrored"
     },
     "Unicode_1_Name": {
-      "message": "1. unikódos név"
+      "message": "Unicode 1 Name"
     },
     "ISO_Comment": {
-      "message": "ISO-megjegyzés"
+      "message": "ISO Comment"
     },
     "Simple_Uppercase_Mapping": {
-      "message": "Egyszerű nagybetűs illesztés"
+      "message": "Simple Uppercase Mapping"
     },
     "Simple_Lowercase_Mapping": {
-      "message": "Egyszerű kisbetűs illesztés"
+      "message": "Simple Lowercase Mapping"
     },
     "Simple_Titlecase_Mapping": {
-      "message": "Egyszerű címszavas illesztés"
+      "message": "Simple Titlecase Mapping"
     },
     "basicView_tab": {
-      "message": "Alapvető nézet és kimenet"
+      "message": "Basic view and output"
     },
     "detailedView_tab": {
-      "message": "Részletes nézet"
+      "message": "Detailed view"
     },
     "detailedCJKView_tab": {
-      "message": "Részletes nézet (CJK)"
+      "message": "Detailed view (CJK)"
     },
     "unicode2charrefDecSurrogate_label": {
-      "message": "Unikódból karakterhivatkozásba (dec) helyettesítőpárként"
+      "message": "Unicode to Char reference (dec) as surrogate pairs"
     },
     "unicode2charrefHexSurrogate_label": {
-      "message": "Unikódból karakterhivatkozásba (hex) helyettesítőpárként"
+      "message": "Unicode to Char reference (hex) as surrogate pairs"
     },
     "unicode2charrefSurrogate_tooltip": {
-      "message": "Átalakítás helyettesítőpárokká (Csak akkor válassza, ha egy magasabb síkba tartozó (ritka) karakter helyettesítőjét keresi, vagy ha magát a helyettesítőt kívánja megtekinteni)"
+      "message": "Convert into surrogate pairs (Don't choose this unless you need to find out the surrogates of a (rare) higher plane character or wish to view a surrogate itself)"
     },
     "DownloadUnihan": {
-      "message": "Az Unihan-állomány letöltése (19,3 Mb)"
+      "message": "Download Unihan file (19.3 MB)"
     },
     "Download_unihan_tooltip": {
-      "message": "A kínai, japán, koreai karakterek legújabb leírását ide kattintva letöltheti (a kiegészítő nem tartalmazza, mert az állomány mérete ige nagy)."
+      "message": "To get the latest character descriptions for the Chinese-Japanese-Korean characters, click here to download (not included with the extension since the file size is fairly large)."
     },
     "Close": {
-      "message": "Bezárás"
+      "message": "Close"
     },
     "UnihanInstalled": {
-      "message": "Az Unihan (CJK) adatbázis telepítve"
+      "message": "Unihan (CJK) database installed"
     },
     "searchName": {
-      "message": "Keresés karakternév szerint: "
+      "message": "Search by character name: "
     },
     "searchkDefinition": {
-      "message": "Keresés karakterleírás szerint (CJK)"
+      "message": "Search by character description (CJK): "
     },
     "Regular_tab_label": {
-      "message": "Szokásos (nem CJK) keresés"
+      "message": "Regular Search (non-CJK)"
     },
     "CJK_tab_label": {
       "message": "CJK"
     },
     "CJK_tooltip": {
-      "message": "Csak kínai, japán, koreai karakterek keresése"
+      "message": "Search Chinese-Japanese-Korean only"
     },
     "Regular_tooltip": {
-      "message": "Keresés a szokásos adatbázisban (a kínai, japán, koreai mellett)"
+      "message": "Search regular database (besides Chinese-Japanese-Korean)"
     },
     "Additional_Arrows": {
-      "message": "További nyilak"
+      "message": "Additional Arrows"
     },
     "Floors_and_Ceilings": {
-      "message": "Kerekítés"
+      "message": "Floors and Ceilings"
     },
     "Additional_Shapes": {
-      "message": "További alakzatok"
+      "message": "Additional Shapes"
     },
     "APL_symbols": {
-      "message": "APL-szimbólumok"
+      "message": "APL symbols"
     },
     "ShowImg_checkbox_label": {
-      "message": "Látsszon a kép?"
+      "message": "Show image?"
     },
     "ShowImg_tooltiptext": {
-      "message": "Tartsa kikapcsolt állapotban, hacsak nem egy képet kíván kikeresni, mert megterheli az unikód szervert."
+      "message": "Please keep this turned off unless you need to find an image, since it taxes the Unicode server."
     },
     "Sundanese": {
-      "message": "Szundai"
+      "message": "Sundanese"
     },
     "Ol_Chiki": {
-      "message": "Szantáli"
+      "message": "Ol Chiki"
     },
     "Cyrillic_Extended_A": {
-      "message": "Kibővített cirill A"
+      "message": "Cyrillic Extended-A"
     },
     "Vai": {
       "message": "Vai"
     },
     "Cyrillic_Extended_B": {
-      "message": "Kibővített cirill B"
+      "message": "Cyrillic Extended-B"
     },
     "Saurashtra": {
-      "message": "Szaurastra"
+      "message": "Saurashtra"
     },
     "Kayah_Li": {
-      "message": "Kajah li"
+      "message": "Kayah Li"
     },
     "Rejang": {
       "message": "Rejang"
@@ -1044,184 +1044,184 @@
       "message": "Cham"
     },
     "Ancient_Symbols": {
-      "message": "Ókori szimbólumok"
+      "message": "Ancient Symbols"
     },
     "Phaistos_Disc": {
-      "message": "Phaisztoszi korong"
+      "message": "Phaistos Disc"
     },
     "Lycian": {
-      "message": "Lűciai"
+      "message": "Lycian"
     },
     "Carian": {
-      "message": "Kariai"
+      "message": "Carian"
     },
     "Lydian": {
-      "message": "Lűd"
+      "message": "Lydian"
     },
     "Mahjong_Tiles": {
-      "message": "Madzsong-kockák"
+      "message": "Mahjong Tiles"
     },
     "Domino_Tiles": {
-      "message": "Dominók"
+      "message": "Domino Tiles"
     },
     "Game_Symbols": {
-      "message": "Játékszimbólumokmbols"
+      "message": "Game Symbols"
     },
     "Chess__Checkers_Draughts": {
-      "message": "Sakk/Dámajáték"
+      "message": "Chess, Checkers/Draughts"
     },
     "Card_suits": {
-      "message": "Kártyakészlet"
+      "message": "Card suits"
     },
     "Japanese_Chess": {
-      "message": "Japán sakk"
+      "message": "Japanese Chess"
     },
     "copyToClipboard": {
-      "message": "Másolás a vágólapra"
+      "message": "Copy to clipboard"
     },
     "moveconvertedup_label": {
-      "message": "&apos;Átalakított&apos; másolása előzetesen átalakított formába"
+      "message": "Copy 'converted' to preconverted"
     },
     "Reconvert_dialogheader_title": {
-      "message": "Újrakonvertálási lehetőségek"
+      "message": "Convert options"
     },
     "Preferences_dialogheader_title": {
-      "message": "Beállítások"
+      "message": "Preferences"
     },
     "converted_value_placeholder": {
-      "message": "Unikód műveletek"
+      "message": "Converted text"
     },
     "Ascii_checkbox_label": {
-      "message": "Átalakítás egyedekké, ha az ASCII-k &lt; 128 (a meglévő egyedek/karakterhivatkozások így nem lesznek immunisak)"
+      "message": "Convert into entities if ASCIIs < 128 (existing entities/char refs. will thus not be immune)?"
     },
     "Hexletters_checkbox_label": {
-      "message": "A kimenet hexadecimális A-F (nagybetűs)"
+      "message": "Output Hexadecimal A-F (upper-case)?"
     },
     "xhtmlentmode_label": {
-      "message": "XHTML-egyedmód (engedélyezi az &apos; használatát HTML-egyedek létrehozásakor numerikus helyett; jobb, ha bejelöletlenül hagyja.)"
+      "message": "XHTML entity mode (allow {code|&apos;} when creating HTML entities instead of numeric)? (It may be best to leave this unchecked.)"
     },
     "xmlentmode_label": {
-      "message": "XML-egyedmód ((X)HTML-egyedekből való átalakítás során az &amp;, &lt;, &gt;, &quot; és &apos; átalakítatlan marad) (Ezek az egyedek XML-ben biztonságosak DTD-egyeddeklarációk nélkül, ezért valószínűleg nem kell őket átalakítani, olvasásuk pedig könnyebb.)"
+      "message": "XML entity mode (when converting from (X)HTML entities, will leave {code|&amp;}, {code|&lt;}, {code|&gt;}, {code|&quot;}, and {code|&apos;} unconverted)? (These entities are safe in XML without needing DTD entity declarations, so they probably don't need to be converted and are easier to read.)"
     },
     "ampkeep_label": {
-      "message": "Unikódból HTML-egyedekké alakítás során az &amp;-ot nem alakítja át a meglévő HTML-egyedekkel való kontárkodás elkerülése érdekében"
+      "message": "When converting from Unicode to HTML entities, will not convert {code|&} so as to avoid tampering with existing HTML entities"
     },
     "ampspace_label": {
-      "message": "Minden helykitöltő előtti &apos;&amp;&apos;-ot átalakít &apos;&amp;&amp;&apos; egyeddé (jól formált XML-hez)"
+      "message": "Convert each '&' which is followed by whitespace to {code|&amp;} (for well-formed XML)?"
     },
     "resettodefault_label": {
-      "message": "Visszaállítás alapértékekre (a DTD-n felül)"
+      "message": "Reset to default values (besides DTD)?"
     },
     "numrows": {
-      "message": "sorok száma"
+      "message": "# of rows"
     },
     "numcols": {
-      "message": "oszlopok száma"
+      "message": "# of cols"
     },
     "charref2unicode_label": {
-      "message": "Karakterhivatkozás unikódra"
+      "message": "Char reference to Unicode"
     },
     "charref2unicodeContext_label": {
-      "message": "Karakterhivatkozás (hex. vagy dec.) unikódra"
+      "message": "Char. ref. (hex. or dec.) to Unicode"
     },
     "charref2unicodeContext_accesskey": {
       "message": "C"
     },
     "charref2htmlents_label": {
-      "message": "Karakterhivatkozások HTML-egyedekre"
+      "message": "Character references to HTML entities"
     },
     "charref2htmlentsContext_label": {
-      "message": "Karakterhivatkozások (hex. vagy dec.) HTML-egyedekre"
+      "message": "Char. ref. (hex. or dec.) to HTML ents."
     },
     "charref2htmlentsContext_accesskey": {
       "message": "C"
     },
     "unicode2charrefDec_label": {
-      "message": "Unikódból karakterhivatkozásra (dec.)"
+      "message": "Unicode to Char reference (dec)"
     },
     "unicode2charrefDecContext_label": {
-      "message": "Unikódból karakterhivatkozásra (dec.)"
+      "message": "Unicode to Char. ref. (dec)"
     },
     "unicode2charrefDecContext_accesskey": {
       "message": "U"
     },
     "unicode2charrefHex_label": {
-      "message": "Unikódból karakterhivatkozásra (hex.)"
+      "message": "Unicode to Char reference (hex)"
     },
     "unicode2charrefHexContext_label": {
-      "message": "Unikódból karakterhivatkozásra (hex.)"
+      "message": "Unicode to Char. ref. (hex)"
     },
     "unicode2charrefHexContext_accesskey": {
       "message": "U"
     },
     "unicode2htmlents_label": {
-      "message": "Unikódból HTML-egyedre"
+      "message": "Unicode to HTML entities"
     },
     "unicode2htmlentsContext_label": {
-      "message": "Unikódból HTML-egyedre"
+      "message": "Unicode to HTML ents."
     },
     "unicode2htmlentsContext_accesskey": {
       "message": "U"
     },
     "htmlents2charrefDec_label": {
-      "message": "HTML-egyedekből karakterhivatkozásra (dec.)"
+      "message": "HTML entity to Char reference (dec)"
     },
     "htmlents2charrefDecContext_label": {
-      "message": "HTML-egyedekből karakterhivatkozásra (dec.)"
+      "message": "HTML ent. to Char ref. (dec)"
     },
     "htmlents2charrefDecContext_accesskey": {
       "message": "H"
     },
     "htmlents2charrefHex_label": {
-      "message": "HTML-egyedből karakterhivatkozásra (hex.)"
+      "message": "HTML entity to Char reference (hex)"
     },
     "htmlents2charrefHexContext_label": {
-      "message": "HTML-egyedből karakterhivatkozásra (hex.)"
+      "message": "HTML ent. to Char ref. (hex)"
     },
     "htmlents2charrefHexContext_accesskey": {
       "message": "H"
     },
     "htmlents2unicode_label": {
-      "message": "HTML-egyedből unikódra"
+      "message": "HTML entity to Unicode"
     },
     "htmlents2unicodeContext_label": {
-      "message": "HTML-egyedből unikódra"
+      "message": "HTML ent. to Unicode"
     },
     "htmlents2unicodeContext_accesskey": {
       "message": "H"
     },
     "launchunicode_label": {
-      "message": "Unikód-átalakító indítása"
+      "message": "Launch Unicode conversion tool"
     },
     "launchunicodeContext_label": {
-      "message": "Unikód-átalakító indítása"
+      "message": "Launch Unicode conversion tool"
     },
     "launchunicodeContext_accesskey": {
       "message": "L"
     },
     "unicodechart_label": {
-      "message": "Keresés az unikód táblában"
+      "message": "Find in Unicode chart"
     },
     "unicodechartContext_label": {
-      "message": "Keresés az unikód táblában"
+      "message": "Find in Unicode chart"
     },
     "unicodechartContext_accesskey": {
       "message": "C"
     },
     "hex2dec_label": {
-      "message": "Hexadecimálisból decimálisba"
+      "message": "Hexadecimal to decimal"
     },
     "hex2decContext_label": {
-      "message": "Hexadecimálisból decimálisba"
+      "message": "Hexadecimal to decimal"
     },
     "hex2decContext_accesskey": {
       "message": "H"
     },
     "dec2hex_label": {
-      "message": "Decimálisból hexadecimálisba"
+      "message": "Decimal to hexadecimal"
     },
     "dec2hexContext_label": {
-      "message": "Decimálisból hexadecimálisba"
+      "message": "Decimal to hexadecimal"
     },
     "dec2hexContext_accesskey": {
       "message": "D"
@@ -1230,223 +1230,223 @@
       "message": "Unicode to convert"
     },
     "uresults_title": {
-      "message": "Unikód műveletek"
+      "message": "Unicode Results"
     },
     "uresults_preconverted": {
-      "message": "Előzetesen átalakított"
+      "message": "Preconverted:"
     },
     "uresults_converted": {
-      "message": "Átalakított"
+      "message": "Converted:"
     },
     "button_clearoutput": {
-      "message": "Törlés"
+      "message": "Clear"
     },
     "caption_chart_output": {
-      "message": "Táblázat kimenete"
+      "message": "Chart Output"
     },
     "caption_chart_selectchar": {
-      "message": "Karakter vagy tartomány keresése"
+      "message": "Find Character or Range"
     },
     "caption_chart_layout": {
-      "message": "Táblázat elrendezése"
+      "message": "Chart Layout"
     },
     "caption_displayUnicodeDesc": {
-      "message": "Karakter<html:br />leírása:"
+      "message": "Char. desc.:"
     },
     "textbox_displayUnicodeDesc": {
-      "message": "Karakter leírása"
+      "message": "Character description"
     },
     "button_multiline": {
-      "message": "Több soros?"
+      "message": "Multiline?"
     },
     "outputtocopy": {
-      "message": "Kimenet:"
+      "message": "Output:"
     },
     "button_moveoutput": {
-      "message": "Kimenet áthelyezése"
+      "message": "Move output"
     },
     "willreplaceprecnv": {
-      "message": "(Az Átalakítás fülön kicseréli az &quot;előzetesen átalakított&quot; szöveget)"
+      "message": "(will replace &quot;preconverted&quot; text in Conversion tab)"
     },
     "charhexdecchoices": {
-      "message": "Unikód karakter, hex. vagy dec. szám:"
+      "message": "Unicode char., hex or dec num.:"
     },
     "desc_digits": {
-      "message": "(0-9. kar. hiv. keresésekor n-t használ)"
+      "message": "(if seeking char. refs. #0-9, use #n)"
     },
     "chooseregion": {
-      "message": "VAGY válasszon régió szerint:"
+      "message": "OR Choose by Region:"
     },
     "label_norows": {
-      "message": "Sorok száma?"
+      "message": "# of Rows?"
     },
     "label_nocols": {
-      "message": "Oszlopok száma?"
+      "message": "# of Cols?"
     },
     "label_hexq": {
-      "message": "Hex.?"
+      "message": "Hex?"
     },
     "label_decq": {
-      "message": "Dec.?"
+      "message": "Dec?"
     },
     "label_unicodeq": {
-      "message": "Unikód?"
+      "message": "Unicode?"
     },
     "label_entq": {
-      "message": "Egyed?"
+      "message": "Ent?"
     },
     "label_onlyentsyesq": {
-      "message": "Csak egyedeket mutat?"
+      "message": "Show only ents?"
     },
     "label_middleq": {
-      "message": "A cél középre kerüljön?"
+      "message": "Place target in middle?"
     },
     "label_buttonq": {
-      "message": "Használjon gombokat?"
+      "message": "Use buttons?"
     },
     "label_fontsize": {
-      "message": "Betűméret:"
+      "message": "Font-size"
     },
     "desc_symbolspunc": {
-      "message": "VAGY válasszon a szimbólumok és írásjelek közül:"
+      "message": "OR Choose from Symbols and Punctuation:"
     },
     "dialogheader_value": {
       "message": "DTD"
     },
     "DTD_desc_value1": {
-      "message": "DTD-egyeddeklarációk hozzáadása átalakításokban való (választható) használathoz"
+      "message": "Add DTD entity declarations (optional) for use in conversions."
     },
     "DTD_desc_value2": {
-      "message": "Forma: &lt;!ENTITY egyednév &apos;kar.érték&apos;&gt;"
+      "message": "Form: {code|<!ENTITY entname 'charvalue'>}"
     },
     "DTD_textbox_value": {
       "message": ""
     },
     "DTD_insertent": {
-      "message": "Beszúrás: &lt;!ENTITY&gt;"
+      "message": "Insert {code|<!ENTITY>}"
     },
     "appendhtml_checkbox": {
-      "message": "Hozzáfűzi a meglévő HTML-egyedkészlethez?"
+      "message": "Append to existing HTML entity set?"
     },
     "European_Scripts": {
-      "message": "Európai ábécék"
+      "message": "European Scripts"
     },
     "Armenian": {
-      "message": "Örmény"
+      "message": "Armenian"
     },
     "Armenian_Ligatures": {
-      "message": "Örmény ligatúrák"
+      "message": "Armenian Ligatures"
     },
     "Coptic": {
-      "message": "Kopt"
+      "message": "Coptic"
     },
     "Coptic_in_Greek_block": {
-      "message": "Kopt görög blokkban"
+      "message": "Coptic in Greek block"
     },
     "Cyrillic": {
-      "message": "Cirill"
+      "message": "Cyrillic"
     },
     "Cyrillic_Supplement": {
-      "message": "Cirill kiegészítés"
+      "message": "Cyrillic Supplement"
     },
     "Georgian": {
-      "message": "Grúz"
+      "message": "Georgian"
     },
     "Georgian_Supplement": {
-      "message": "Grúz kiegészítés"
+      "message": "Georgian Supplement"
     },
     "Greek": {
-      "message": "Görög"
+      "message": "Greek"
     },
     "Greek_Extended": {
-      "message": "Kibővített görög"
+      "message": "Greek Extended"
     },
     "Latin": {
       "message": "Latin"
     },
     "Basic_Latin": {
-      "message": "Latin alapkészlet"
+      "message": "Basic Latin"
     },
     "Latin_Extended_A": {
-      "message": "Kibővített latin A"
+      "message": "Latin Extended-A"
     },
     "Latin_Extended_B": {
-      "message": "Kibővített latin B"
+      "message": "Latin Extended-B"
     },
     "Latin_Extended_C": {
-      "message": "Kibővített latin C"
+      "message": "Latin Extended-C"
     },
     "Latin_Extended_D": {
-      "message": "Kibővített latin D"
+      "message": "Latin Extended-D"
     },
     "Latin_Extended_Additional": {
-      "message": "Kibővített kiegészített latin"
+      "message": "Latin Extended Additional"
     },
     "Latin_Ligatures": {
-      "message": "Latin ligatúrák"
+      "message": "Latin Ligatures"
     },
     "Fullwidth_Latin_Letters": {
-      "message": "Teljes szélességű latin betűk"
+      "message": "Fullwidth Latin Letters"
     },
     "Small_Forms": {
-      "message": "Kis alakok"
+      "message": "Small Forms"
     },
     "African_Scripts": {
-      "message": "Afrikai írásmódok"
+      "message": "African Scripts"
     },
     "Ethiopic": {
-      "message": "Etióp"
+      "message": "Ethiopic"
     },
     "Ethiopic_Supplement": {
-      "message": "Etióp kiegészítés"
+      "message": "Ethiopic Supplement"
     },
     "Ethiopic_Extended": {
-      "message": "Kibővített etióp"
+      "message": "Ethiopic Extended"
     },
     "N_Ko": {
-      "message": "N&apos;ko"
+      "message": "N'Ko"
     },
     "Tifinagh": {
       "message": "Tifinagh"
     },
     "Middle_Eastern_Scripts": {
-      "message": "Közel-keleti írásmódok"
+      "message": "Middle Eastern Scripts"
     },
     "Arabic": {
-      "message": "Arab"
+      "message": "Arabic"
     },
     "Arabic_Supplement": {
-      "message": "Arab kiegészítés"
+      "message": "Arabic Supplement"
     },
     "Arabic_Presentation_Forms_A": {
-      "message": "Arab A prezentációs formák"
+      "message": "Arabic Presentation Forms-A"
     },
     "Arabic_Presentation_Forms_B": {
-      "message": "Arab B prezentációs formák"
+      "message": "Arabic Presentation Forms-B"
     },
     "Hebrew": {
-      "message": "Héber"
+      "message": "Hebrew"
     },
     "Hebrew_Presentation_Forms": {
-      "message": "Héber prezentációs formák"
+      "message": "Hebrew Presentation Forms"
     },
     "Syriac": {
-      "message": "Szír"
+      "message": "Syriac"
     },
     "Thaana": {
       "message": "Thaana"
     },
     "American_Scripts": {
-      "message": "Amerikai írásmódok"
+      "message": "American Scripts"
     },
     "Cherokee": {
-      "message": "Cseroki"
+      "message": "Cherokee"
     },
     "Deseret": {
       "message": "Deseret"
     },
     "Other_Scripts": {
-      "message": "Egyéb írásmódok"
+      "message": "Other Scripts"
     },
     "Shavian": {
       "message": "Shavian"
@@ -1455,10 +1455,10 @@
       "message": "Osmanya"
     },
     "Glagolitic": {
-      "message": "Glagolita"
+      "message": "Glagolitic"
     },
     "Bengali": {
-      "message": "Bengáli"
+      "message": "Bengali"
     },
     "Devanagari": {
       "message": "Devanagari"
@@ -1494,7 +1494,7 @@
       "message": "Telugu"
     },
     "Philippine_Scripts": {
-      "message": "Fülöp-szigeteki írásmódok"
+      "message": "Philippine Scripts"
     },
     "Buhid": {
       "message": "Buhid"
@@ -1509,19 +1509,19 @@
       "message": "Tagbanwa"
     },
     "South_East_Asian": {
-      "message": "Délkelet-ázsiai"
+      "message": "Southeast Asian"
     },
     "Balinese": {
-      "message": "Bali"
+      "message": "Balinese"
     },
     "Buginese": {
-      "message": "Buginéz"
+      "message": "Buginese"
     },
     "Khmer": {
       "message": "Khmer"
     },
     "Khmer_Symbols": {
-      "message": "Khmer szimbólumok"
+      "message": "Khmer Symbols"
     },
     "Lao": {
       "message": "Lao"
@@ -1530,37 +1530,37 @@
       "message": "Myanmar"
     },
     "New_Tai_Lue": {
-      "message": "Új tai lue"
+      "message": "New Tai Lue"
     },
     "Tai_Le": {
-      "message": "Tai le"
+      "message": "Tai Le"
     },
     "Thai": {
       "message": "Thai"
     },
     "East_Asian_Scripts": {
-      "message": "Kelet-ázsiai írásmódok"
+      "message": "East Asian Scripts"
     },
     "CJK_Ideographs_Ext__A": {
-      "message": "Ideografikus CJK-jelek A kibővítése"
+      "message": "CJK Ideographs Ext. A"
     },
     "CJK_Ideographs_Ext__B": {
-      "message": "Ideografikus CJK-jelek B kibővítése"
+      "message": "CJK Ideographs Ext. B"
     },
     "Kanbun": {
       "message": "Kanbun"
     },
     "_see_also_Unihan_Database_": {
-      "message": "(lásd még: egységesített han adatbázis)"
+      "message": "(see also Unihan Database)"
     },
     "CJK_Strokes": {
-      "message": "CJK-gyökjelek"
+      "message": "CJK Strokes"
     },
     "Bopomofo": {
       "message": "Bopomofo"
     },
     "Bopomofo_Extended": {
-      "message": "Kibővített bopomofo"
+      "message": "Bopomofo Extended"
     },
     "Hiragana": {
       "message": "Hiragana"
@@ -1569,334 +1569,334 @@
       "message": "Katakana"
     },
     "Halfwidth_Katakana": {
-      "message": "Fél szélességű katakana"
+      "message": "Halfwidth Katakana"
     },
     "Hangul_Syllables": {
-      "message": "Hangul szótagok"
+      "message": "Hangul Syllables"
     },
     "Hangul_Jamo": {
-      "message": "Hangul jamo"
+      "message": "Hangul Jamo"
     },
     "Hangul_Compatibility_Jamo": {
-      "message": "Hangul-kompatibilis jamo"
+      "message": "Hangul Compatibility Jamo"
     },
     "Halfwidth_Jamo": {
-      "message": "Fél szélességű jamo"
+      "message": "Halfwidth Jamo"
     },
     "Yi": {
-      "message": "Ji"
+      "message": "Yi"
     },
     "Yi_Radicals": {
-      "message": "Ji gyökjelek"
+      "message": "Yi Radicals"
     },
     "Central_Asian_Scripts": {
-      "message": "Közép-ázsiai írásmódok"
+      "message": "Central Asian Scripts"
     },
     "Kharoshthi": {
       "message": "Kharoshthi"
     },
     "Mongolian": {
-      "message": "Mongol"
+      "message": "Mongolian"
     },
     "Phags_Pa": {
       "message": "Phags-Pa"
     },
     "Tibetan": {
-      "message": "Tibeti"
+      "message": "Tibetan"
     },
     "Ancient_Greek_Numbers": {
-      "message": "Ógörög számok"
+      "message": "Ancient Greek Numbers"
     },
     "Ancient_Greek_Musical_Notation": {
-      "message": "Ógörög kotta"
+      "message": "Ancient Greek Musical Notation"
     },
     "Cuneiform": {
-      "message": "Ékírás"
+      "message": "Cuneiform"
     },
     "Old_Persian": {
-      "message": "Óperzsa"
+      "message": "Old Persian"
     },
     "Ugaritic": {
-      "message": "Ugariti"
+      "message": "Ugaritic"
     },
     "Linear_B": {
-      "message": "Vonalas B"
+      "message": "Linear B"
     },
     "Linear_B_Syllabary": {
-      "message": "Vonalas B szótagjelölő"
+      "message": "Linear B Syllabary"
     },
     "Linear_B_Ideograms": {
-      "message": "Vonalas B ideogramok"
+      "message": "Linear B Ideograms"
     },
     "Aegean_Numbers": {
-      "message": "Égei számok"
+      "message": "Aegean Numbers"
     },
     "Counting_Rod_Numerals": {
-      "message": "Számolópálcás számok"
+      "message": "Counting Rod Numerals"
     },
     "Cypriot_Syllabary": {
-      "message": "Ciprusi szótagírás"
+      "message": "Cypriot Syllabary"
     },
     "Gothic": {
-      "message": "Gót"
+      "message": "Gothic"
     },
     "Old_Italic": {
-      "message": "Óolasz"
+      "message": "Old Italic"
     },
     "Ogham": {
       "message": "Ogham"
     },
     "Runic": {
-      "message": "Rovásírás"
+      "message": "Runic"
     },
     "Phoenician": {
-      "message": "Föníciai"
+      "message": "Phoenician"
     },
     "Punctuation": {
-      "message": "Írásjelek"
+      "message": "Punctuation"
     },
     "General_Punctuation": {
-      "message": "Általános írásjelek"
+      "message": "General Punctuation"
     },
     "ASCII_Punctuation": {
-      "message": "ASCII-írásjelek"
+      "message": "ASCII Punctuation"
     },
     "Latin_1_Punctuation": {
-      "message": "1-es latin írásjelek"
+      "message": "Latin-1 Punctuation"
     },
     "Supplemental_Punctuation": {
-      "message": "Kiegészítő írásjelek"
+      "message": "Supplemental Punctuation"
     },
     "Fullwidth_ASCII_Punctuation": {
-      "message": "Teljes szélességű ASCII-írásjelek"
+      "message": "Fullwidth ASCII Punctuation"
     },
     "Vertical_Forms": {
-      "message": "Függőleges írásmódok"
+      "message": "Vertical Forms"
     },
     "Enclosed_Alphanumerics": {
-      "message": "Zárójeles betűk és számok"
+      "message": "Enclosed Alphanumerics"
     },
     "CJK_Compatibility": {
-      "message": "CJK-kompatibilitás"
+      "message": "CJK Compatibility"
     },
     "Combining_Diacritical_Marks": {
-      "message": "Diakritikus jelek kombinálása"
+      "message": "Combining Diacritical Marks"
     },
     "Combining_Diacritical_Marks_for_Symbols": {
-      "message": "Diakritikus jelek kombinálása szimbólumokhoz"
+      "message": "Combining Diacritical Marks for Symbols"
     },
     "Combining_Diacritical_Marks_Supplement": {
-      "message": "Diakritikus jelek kombinálásának kiegészítése"
+      "message": "Combining Diacritical Marks Supplement"
     },
     "Combining_Half_Marks": {
-      "message": "Fél jelek kombinálása"
+      "message": "Combining Half Marks"
     },
     "Phonetic_Symbols": {
-      "message": "Fonetikai szimbólumok"
+      "message": "Phonetic Symbols"
     },
     "IPA_Extensions": {
-      "message": "IPA-bővítések"
+      "message": "IPA Extensions"
     },
     "Phonetic_Extensions": {
-      "message": "Fonetikai bővítések"
+      "message": "Phonetic Extensions"
     },
     "Phonetic_Extensions_Supplement": {
-      "message": "Fonetikai bővítések kiegészítése"
+      "message": "Phonetic Extensions Supplement"
     },
     "Modifier_Tone_Letters": {
-      "message": "Hangsúlymódosító betűk"
+      "message": "Modifier Tone Letters"
     },
     "Spacing_Modifier_Letters": {
-      "message": "Térközmódosító betűk"
+      "message": "Spacing Modifier Letters"
     },
     "Mathematical_Symbols": {
-      "message": "Matematikai szimbólumok"
+      "message": "Mathematical Symbols"
     },
     "Numbers_and_Digits": {
-      "message": "Számok és számjegyek"
+      "message": "Numbers and Digits"
     },
     "_see_also_specific_scripts_": {
-      "message": "(lásd még: specifikus írásmódok)"
+      "message": "(see also specific scripts)"
     },
     "ASCII_Digits": {
-      "message": "ASCII-számjegyek"
+      "message": "ASCII Digits"
     },
     "Fullwidth_ASCII_Digits": {
-      "message": "Teljes szélességű ASCII-számjegyek"
+      "message": "Fullwidth ASCII Digits"
     },
     "Number_Forms": {
-      "message": "Számformák"
+      "message": "Number Forms"
     },
     "Super_and_Subscripts": {
-      "message": "Felső és alsó index"
+      "message": "Super and Subscripts"
     },
     "Letterlike_Symbols": {
-      "message": "Betűszerű szimbólumok"
+      "message": "Letterlike Symbols"
     },
     "Arrows": {
-      "message": "Nyilak"
+      "message": "Arrows"
     },
     "Mathematical_Operators": {
-      "message": "Matematikai műveleti jelek"
+      "message": "Mathematical Operators"
     },
     "Supplemental_Arrows_A": {
-      "message": "Kiegészítő nyilak - A"
+      "message": "Supplemental Arrows-A"
     },
     "Supplemental_Arrows_B": {
-      "message": "Kiegészítő nyilak - B"
+      "message": "Supplemental Arrows-B"
     },
     "Box_Drawing": {
-      "message": "Négyszögrajzolás"
+      "message": "Box Drawing"
     },
     "Block_Elements": {
-      "message": "Blokkelemek"
+      "message": "Block Elements"
     },
     "Technical_Symbols": {
-      "message": "Műszaki szimbólumok"
+      "message": "Technical Symbols"
     },
     "Control_Pictures": {
-      "message": "Vezérlőképek"
+      "message": "Control Pictures"
     },
     "Miscellaneous_Technical": {
-      "message": "Egyéb műszaki"
+      "message": "Miscellaneous Technical"
     },
     "Miscellaneous_Symbols": {
-      "message": "Egyéb szimbólumok"
+      "message": "Miscellaneous Symbols"
     },
     "Dingbats": {
-      "message": "Dekoratív karakterek"
+      "message": "Dingbats"
     },
     "Tai_Xuan_Jing_Symbols": {
-      "message": "Tai Xuan Jing szimbólumok"
+      "message": "Tai Xuan Jing Symbols"
     },
     "Braille_Patterns": {
-      "message": "Braille-jelek"
+      "message": "Braille Patterns"
     },
     "Byzantine_Musical_Symbols": {
-      "message": "Bizánci zenei jelek"
+      "message": "Byzantine Musical Symbols"
     },
     "Currency_Symbols": {
-      "message": "Pénznemszimbólumok"
+      "message": "Currency Symbols"
     },
     "Yen__Pound_and_Cent": {
-      "message": "Jen, font és cent"
+      "message": "Yen, Pound and Cent"
     },
     "Fullwidth_Currency_Symbols": {
-      "message": "Teljes szélességű pénznemszimbólumok"
+      "message": "Fullwidth Currency Symbols"
     },
     "Rial_Sign": {
-      "message": "Riáljel"
+      "message": "Rial Sign"
     },
     "Specials": {
-      "message": "Speciális jelek"
+      "message": "Specials"
     },
     "Controls__C0": {
-      "message": "Vezérlőjelek: C0"
+      "message": "Controls: C0"
     },
     "Controls__C1": {
-      "message": "Vezérlőjelek: C1"
+      "message": "Controls: C1"
     },
     "Layout_Controls": {
-      "message": "Elrendezési vezérlőjelek"
+      "message": "Layout Controls"
     },
     "Invisible_Operators": {
-      "message": "Nem látható műveleti jelek"
+      "message": "Invisible Operators"
     },
     "Tags": {
-      "message": "Címkék"
+      "message": "Tags"
     },
     "Variation_Selectors": {
-      "message": "Változatválasztók"
+      "message": "Variation Selectors"
     },
     "Variation_Selectors_Supplement": {
-      "message": "Változatválasztók kiegészítése"
+      "message": "Variation Selectors Supplement"
     },
     "Private_Use": {
-      "message": "Magánhasználat"
+      "message": "Private Use"
     },
     "Private_Use_Area": {
-      "message": "Magánhasználati terület"
+      "message": "Private Use Area"
     },
     "Surrogates": {
-      "message": "Helyettesítők"
+      "message": "Surrogates"
     },
     "High_Surrogates": {
-      "message": "Felső helyettesítők"
+      "message": "High Surrogates"
     },
     "High_Private_Use_Surrogates": {
-      "message": "Felső helyettesítők magánhasználatra"
+      "message": "High Private Use Surrogates"
     },
     "Low_Surrogates": {
-      "message": "Alsó helyettesítők"
+      "message": "Low Surrogates"
     },
     "Noncharacters_in_blocks": {
       "message": "Noncharacters in blocks"
     },
     "Noncharacters_in_Charts": {
-      "message": "Diagramok egyéb jelei"
+      "message": "Noncharacters in Charts"
     },
     "Reserved_range": {
-      "message": "Fenntartott tartomány"
+      "message": "Reserved range"
     },
     "At_End_of_BMP": {
-      "message": "BMP végén"
+      "message": "At End of BMP"
     },
     "At_End_of_Plane_1": {
-      "message": "Az 1. sík végén"
+      "message": "At End of Plane 1"
     },
     "At_End_of_Plane_2": {
-      "message": "A 2. sík végén"
+      "message": "At End of Plane 2"
     },
     "At_End_of_Plane_3": {
-      "message": "A 3. sík végén"
+      "message": "At End of Plane 3"
     },
     "At_End_of_Plane_4": {
-      "message": "A 4. sík végén"
+      "message": "At End of Plane 4"
     },
     "At_End_of_Plane_5": {
-      "message": "Az 5. sík végén"
+      "message": "At End of Plane 5"
     },
     "At_End_of_Plane_6": {
-      "message": "A 6. sík végén"
+      "message": "At End of Plane 6"
     },
     "At_End_of_Plane_7": {
-      "message": "A 7. sík végén"
+      "message": "At End of Plane 7"
     },
     "At_End_of_Plane_8": {
-      "message": "A 8. sík végén"
+      "message": "At End of Plane 8"
     },
     "At_End_of_Plane_9": {
-      "message": "A 9. sík végén"
+      "message": "At End of Plane 9"
     },
     "At_End_of_Plane_10": {
-      "message": "A 10. sík végén"
+      "message": "At End of Plane 10"
     },
     "At_End_of_Plane_11": {
-      "message": "A 11. sík végén"
+      "message": "At End of Plane 11"
     },
     "At_End_of_Plane_12": {
-      "message": "A 12. sík végén"
+      "message": "At End of Plane 12"
     },
     "At_End_of_Plane_13": {
-      "message": "A 13. sík végén"
+      "message": "At End of Plane 13"
     },
     "At_End_of_Plane_14": {
-      "message": "A 14. sík végén"
+      "message": "At End of Plane 14"
     },
     "At_End_of_Plane_15": {
-      "message": "A 15. sík végén"
+      "message": "At End of Plane 15"
     },
     "At_End_of_Plane_16": {
-      "message": "A 16. sík végén"
+      "message": "At End of Plane 16"
     },
     "Lepcha": {
-      "message": "Lepcsa"
+      "message": "Lepcha"
     },
     "CJK_Compatibility_Forms": {
-      "message": "CJK kompatibilitási formák"
+      "message": "CJK Compatibility Forms"
     },
     "chars_could_not_be_converted": {
-      "message": "A karaktereket nem sikerült erre a karakterkészletre átalakítani"
+      "message": "The characters could not be converted to that character set"
     },
     "searchkHanyuPinyin": {
       "message": "HanyuPinyin:"
@@ -1905,7 +1905,7 @@
       "message": "IRG_MSource:"
     },
     "problemAddingToolbarItem": {
-      "message": "Az elemet nem lehetett felvenni az eszközsor lenyíló ikonjai közé, mert az ikon nem látható"
+      "message": "Your item could not be added to the toolbar icon pull-down since the icon is not visible"
     },
     "dropdownArr": {
       "message": "[]"
@@ -1914,13 +1914,13 @@
       "message": ""
     },
     "lang": {
-      "message": "hu-HU"
+      "message": "en-US"
     },
     "yourItemAdded": {
-      "message": "A szöveg hozzáadva az eszköztár lenyíló eleméhez"
+      "message": "Your item has been added to the toolbar icon pull-down"
     },
     "need_download_unihan": {
-      "message": "CJK (kínai-koreai-japán) karakterek használatához le kell töltenie a mintegy 19 MB-os Unihan adatbázist. Lásd a Beállítások fülön a felül lévő gombot."
+      "message": "In order to access CJK (Chinese-Korean-Japanese) characters, you must download the approximately 19.3MB Unihan database. See the button at the top of the preferences tab."
     },
     "left_parenth": {
       "message": "("
@@ -1989,169 +1989,169 @@
       "message": "9"
     },
     "CJK_Ideograph_Extension_A": {
-      "message": "Ideografikus CJK-jelek A kibővítése"
+      "message": "CJK Ideograph Extension A"
     },
     "CJK_Ideograph": {
-      "message": "Ideografikus CJK-jel"
+      "message": "CJK Ideograph"
     },
     "CJK_Ideograph_Extension_B": {
-      "message": "Ideografikus CJK-jelek B kibővítése"
+      "message": "CJK Ideograph Extension B"
     },
     "Hangul_Syllable": {
-      "message": "Hangul szótag"
+      "message": "Hangul Syllable"
     },
     "No_definition": {
-      "message": "Nincs definíció"
+      "message": "No definition"
     },
     "Bidi_MirroredY": {
-      "message": "Igen"
+      "message": "Yes"
     },
     "Bidi_MirroredN": {
-      "message": "Nem"
+      "message": "No"
     },
     "Bidi_ClassL": {
-      "message": "Balról jobbra"
+      "message": "Left-to-Right"
     },
     "Bidi_ClassLRE": {
-      "message": "Balról jobbra beágyazás"
+      "message": "Left-to-Right Embedding"
     },
     "Bidi_ClassLRO": {
-      "message": "Balról jobbra felülírás"
+      "message": "Left-to-Right Override"
     },
     "Bidi_ClassR": {
-      "message": "Jobbról balra"
+      "message": "Right-to-Left"
     },
     "Bidi_ClassAL": {
-      "message": "Jobbról balra arab"
+      "message": "Right-to-Left Arabic"
     },
     "Bidi_ClassRLE": {
-      "message": "Jobbról balra beágyazás"
+      "message": "Right-to-Left Embedding"
     },
     "Bidi_ClassRLO": {
-      "message": "Jobbról balra felülírás"
+      "message": "Right-to-Left Override"
     },
     "Bidi_ClassPDF": {
-      "message": "Pop irányú formátum"
+      "message": "Pop Directional Format"
     },
     "Bidi_ClassEN": {
-      "message": "Európai szám"
+      "message": "European Number"
     },
     "Bidi_ClassES": {
-      "message": "Európai számtagoló"
+      "message": "European Number Separator"
     },
     "Bidi_ClassET": {
-      "message": "Európai számlezáró"
+      "message": "European Number Terminator"
     },
     "Bidi_ClassAN": {
-      "message": "Arab szám"
+      "message": "Arabic Number"
     },
     "Bidi_ClassCS": {
-      "message": "Általános számtagoló"
+      "message": "Common Number Separator"
     },
     "Bidi_ClassNSM": {
-      "message": "Nem szóközös jel"
+      "message": "Non-Spacing Mark"
     },
     "Bidi_ClassBN": {
-      "message": "Semleges határoló"
+      "message": "Boundary Neutral"
     },
     "Bidi_ClassB": {
-      "message": "Bekezdéselválasztó"
+      "message": "Paragraph Separator"
     },
     "Bidi_ClassS": {
-      "message": "Szegmenselválasztó"
+      "message": "Segment Separator"
     },
     "Bidi_ClassWS": {
-      "message": "Elválasztó"
+      "message": "Whitespace"
     },
     "Bidi_ClassON": {
-      "message": "Egyéb semleges jelek"
+      "message": "Other Neutrals"
     },
     "Canonical_Combining_Class0": {
-      "message": "Szóköz, szétválasztás, bezárás, átrendezés és tibeti hozzákapcsolás"
+      "message": "Spacing, split, enclosing, reordrant, and Tibetan subjoined"
     },
     "Canonical_Combining_Class1": {
-      "message": "Billentyűzetsablonok és belső"
+      "message": "Overlays and interior"
     },
     "Canonical_Combining_Class7": {
       "message": "Nuktas"
     },
     "Canonical_Combining_Class8": {
-      "message": "Hiragana/katakana hangzós jelek"
+      "message": "Hiragana/Katakana voicing marks"
     },
     "Canonical_Combining_Class9": {
       "message": "Viramas"
     },
     "Canonical_Combining_Class10": {
-      "message": "Rögzített helyzetű osztályok kezdete"
+      "message": "Start of fixed position classes"
     },
     "Canonical_Combining_Class199": {
-      "message": "Rögzített helyzetű osztályok vége"
+      "message": "End of fixed position classes"
     },
     "Canonical_Combining_Class200": {
-      "message": "A bal csatolt alatt"
+      "message": "Below left attached"
     },
     "Canonical_Combining_Class202": {
-      "message": "A csatolt alatt"
+      "message": "Below attached"
     },
     "Canonical_Combining_Class204": {
-      "message": "A jobb csatolt alatt"
+      "message": "Below right attached"
     },
     "Canonical_Combining_Class208": {
-      "message": "Bal csatolt a (egybázisú karakter körüli átrendezett)"
+      "message": "Left attached (reordrant around single base character)"
     },
     "Canonical_Combining_Class210": {
-      "message": "Jobb csatolt"
+      "message": "Right attached"
     },
     "Canonical_Combining_Class212": {
-      "message": "A bal csatolt fölött"
+      "message": "Above left attached"
     },
     "Canonical_Combining_Class214": {
-      "message": "A csatolt fölött"
+      "message": "Above attached"
     },
     "Canonical_Combining_Class216": {
-      "message": "A jobb csatolt fölött"
+      "message": "Above right attached"
     },
     "Canonical_Combining_Class218": {
-      "message": "A bal alatt"
+      "message": "Below left"
     },
     "Canonical_Combining_Class220": {
-      "message": "Alatt"
+      "message": "Below"
     },
     "Canonical_Combining_Class222": {
-      "message": "A jobb alatt"
+      "message": "Below right"
     },
     "Canonical_Combining_Class224": {
-      "message": "Bal (egybázisú karakter körüli átrendezett)"
+      "message": "Left (reordrant around single base character)"
     },
     "Canonical_Combining_Class226": {
-      "message": "Jobb"
+      "message": "Right"
     },
     "Canonical_Combining_Class228": {
-      "message": "A bal fölött"
+      "message": "Above left"
     },
     "Canonical_Combining_Class230": {
-      "message": "Fölött"
+      "message": "Above"
     },
     "Canonical_Combining_Class232": {
-      "message": "A jobb fölött"
+      "message": "Above right"
     },
     "Canonical_Combining_Class233": {
-      "message": "Alatta dupla"
+      "message": "Double below"
     },
     "Canonical_Combining_Class234": {
-      "message": "Fölötte dupla"
+      "message": "Double above"
     },
     "Canonical_Combining_Class240": {
-      "message": "Alatt (ióta index)"
+      "message": "Below (iota subscript)"
     },
     "searchkCangjie": {
-      "message": "Kandzsi:"
+      "message": "Cangjie:"
     },
     "searchkCantonese": {
-      "message": "Kantoni:"
+      "message": "Cantonese:"
     },
     "searchkHanYu": {
-      "message": "Hanyu:"
+      "message": "HanYu:"
     },
     "searchkIRGHanyuDaZidian": {
       "message": "IRGHanyuDaZidian:"
@@ -2208,7 +2208,7 @@
       "message": "OtherNumeric:"
     },
     "searchkPhonetic": {
-      "message": "Fonetikus:"
+      "message": "Phonetic:"
     },
     "searchkGSR": {
       "message": "GSR:"
@@ -2247,7 +2247,7 @@
       "message": "TraditionalVariant:"
     },
     "searchkVietnamese": {
-      "message": "Vietnami:"
+      "message": "Vietnamese:"
     },
     "searchkSpecializedSemanticVariant": {
       "message": "SpecializedSemanticVariant:"
@@ -2283,7 +2283,7 @@
       "message": "SimplifiedVariant:"
     },
     "searchkKangXi": {
-      "message": "Kandzsi:"
+      "message": "KangXi:"
     },
     "searchkKPS0": {
       "message": "KPS0:"
@@ -2310,7 +2310,7 @@
       "message": "FourCornerCode:"
     },
     "searchkFrequency": {
-      "message": "Gyakoriság:"
+      "message": "Frequency:"
     },
     "searchkGB0": {
       "message": "GB0:"
@@ -2346,7 +2346,7 @@
       "message": "KSC0:"
     },
     "searchkKorean": {
-      "message": "Koreai:"
+      "message": "Korean:"
     },
     "searchkMainlandTelegraph": {
       "message": "MainlandTelegraph:"
@@ -2406,145 +2406,145 @@
       "message": "CompatibilityVariant:"
     },
     "searchGeneral_Category": {
-      "message": "Általános kategória"
+      "message": "General Category"
     },
     "searchCanonical_Combining_Class": {
-      "message": "Kanonikus egyesítő osztály"
+      "message": "Canonical Combining Class"
     },
     "searchBidi_Class": {
-      "message": "Kétirányú osztály"
+      "message": "Bidirectional Class"
     },
     "searchDecomposition_Type_and_Mapping": {
-      "message": "Dekompozíciós típus és illesztés"
+      "message": "Decomposition Type and Mapping"
     },
     "searchDecimal": {
-      "message": "Decimális"
+      "message": "Decimal"
     },
     "searchDigit": {
-      "message": "Számjegy"
+      "message": "Digit"
     },
     "searchNumeric": {
-      "message": "Numerikus"
+      "message": "Numeric"
     },
     "searchBidi_Mirrored": {
-      "message": "Kétirányú tükrözött"
+      "message": "Bidirectional Mirrored"
     },
     "searchUnicode_1_Name": {
-      "message": "1. unikódos név"
+      "message": "Unicode 1 Name"
     },
     "searchISO_Comment": {
-      "message": "ISO-megjegyzés"
+      "message": "ISO Comment"
     },
     "searchSimple_Uppercase_Mapping": {
-      "message": "Egyszerű nagybetűs illesztés"
+      "message": "Simple Uppercase Mapping"
     },
     "searchSimple_Lowercase_Mapping": {
-      "message": "Egyszerű kisbetűs illesztés"
+      "message": "Simple Lowercase Mapping"
     },
     "searchSimple_Titlecase_Mapping": {
-      "message": "Egyszerű címszavas illesztés"
+      "message": "Simple Titlecase Mapping"
     },
     "General_CategoryLu": {
-      "message": "Betű, nagybetűs"
+      "message": "Letter, Uppercase"
     },
     "General_CategoryLl": {
-      "message": "Betű, kisbetűs"
+      "message": "Letter, Lowercase"
     },
     "General_CategoryLt": {
-      "message": "Betű, címszavas"
+      "message": "Letter, Titlecase"
     },
     "General_CategoryLm": {
-      "message": "Betű, módosító"
+      "message": "Letter, Modifier"
     },
     "General_CategoryLo": {
-      "message": "Betű, egyéb"
+      "message": "Letter, Other"
     },
     "General_CategoryMn": {
-      "message": "Jel, nem szóközös"
+      "message": "Mark, Nonspacing"
     },
     "General_CategoryMc": {
-      "message": "Jel, szóközös egyesítő"
+      "message": "Mark, Spacing Combining"
     },
     "General_CategoryMe": {
-      "message": "Jel, bezáró"
+      "message": "Mark, Enclosing"
     },
     "General_CategoryNd": {
-      "message": "Szám, decimális számjegy"
+      "message": "Number, Decimal Digit"
     },
     "General_CategoryNl": {
-      "message": "Szám, betű"
+      "message": "Number, Letter"
     },
     "General_CategoryNo": {
-      "message": "Szám, egyéb"
+      "message": "Number, Other"
     },
     "General_CategoryPc": {
-      "message": "Központozás, kötőelem"
+      "message": "Punctuation, Connector"
     },
     "General_CategoryPd": {
-      "message": "Központozás, kötőjel"
+      "message": "Punctuation, Dash"
     },
     "General_CategoryPs": {
-      "message": "Központozás, nyitó"
+      "message": "Punctuation, Open"
     },
     "General_CategoryPe": {
-      "message": "Központozás, záró"
+      "message": "Punctuation, Close"
     },
     "General_CategoryPi": {
-      "message": "Központozás, kezdő idézőjel (a használattól függően lehet írásjel, nyitó és írásjel, avagy záró)"
+      "message": "Punctuation, Initial quote (may behave like Punctuation, Open or Punctuation, Close depending on usage)"
     },
     "General_CategoryPf": {
-      "message": "Központozás, záró idézőjel (a használattól függően lehet írásjel, nyitó és írásjel, avagy záró)"
+      "message": "Punctuation, Final quote (may behave like Punctuation, Open or Punctuation, Close depending on usage)"
     },
     "General_CategoryPo": {
-      "message": "Központozás, egyéb"
+      "message": "Punctuation, Other"
     },
     "General_CategorySm": {
-      "message": "Szimbólum, matematikai"
+      "message": "Symbol, Math"
     },
     "General_CategorySc": {
-      "message": "Szimbólum, pénznem"
+      "message": "Symbol, Currency"
     },
     "General_CategorySk": {
-      "message": "Szimbólum, módosító"
+      "message": "Symbol, Modifier"
     },
     "General_CategorySo": {
-      "message": "Szimbólum, egyéb"
+      "message": "Symbol, Other"
     },
     "General_CategoryZs": {
-      "message": "Elválasztó, szóköz"
+      "message": "Separator, Space"
     },
     "General_CategoryZl": {
-      "message": "Elválasztó, vonal"
+      "message": "Separator, Line"
     },
     "General_CategoryZp": {
-      "message": "Elválasztó, bekezdés"
+      "message": "Separator, Paragraph"
     },
     "General_CategoryCc": {
-      "message": "Egyéb, vezérlő"
+      "message": "Other, Control"
     },
     "General_CategoryCf": {
-      "message": "Egyéb, formázó"
+      "message": "Other, Format"
     },
     "General_CategoryCs": {
-      "message": "Egyéb, helyettesítő"
+      "message": "Other, Surrogate"
     },
     "General_CategoryCo": {
-      "message": "Egyéb, magánhasználatú"
+      "message": "Other, Private Use"
     },
     "General_CategoryCn": {
-      "message": "Egyéb, nem hozzárendelt"
+      "message": "Other, Not Assigned"
     },
     "download_progress": {
-      "message": "A letöltés folyamatban:"
+      "message": "Download progress:"
     },
     "percentSign": {
       "message": "%"
     },
     "Finished_download": {
-      "message": "A letöltés befejeződött"
+      "message": "Finished download"
     },
     "Problem_downloading": {
-      "message": "Gond volt az állomány letöltésével. Ha az ismételt próbálkozás sem vezet eredményre, látogasson el a http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite weboldalra, töltse le az állományt és tegye a Firefox felhasználói profilkönyvtárába."
+      "message": "There was a problem downloading the file. If trying it again doesn't work, you can find the file at http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite and place it in your Firefox user profile directory."
     },
     "colon": {
       "message": ":"
@@ -2553,61 +2553,61 @@
       "message": "/"
     },
     "plane_num": {
-      "message": "%1$S. sík:"
+      "message": "Plane %1$S:"
     },
     "plane_numNocolon": {
-      "message": "%1$S. sík"
+      "message": "Plane %1$S"
     },
     "Noncharacter": {
-      "message": "Fenntartott nem karakter"
+      "message": "Reserved noncharacter"
     },
     "Private_use_character": {
-      "message": "Magánhasználatú karakter"
+      "message": "Private use character"
     },
     "High_Surrogate": {
-      "message": "Felső helyettesítő"
+      "message": "High Surrogate"
     },
     "High_Private_Use_Surrogate": {
-      "message": "Felső helyettesítő magánhasználatra"
+      "message": "High Private Use Surrogate"
     },
     "Low_Surrogate": {
-      "message": "Alsó helyettesítő"
+      "message": "Low Surrogate"
     },
     "shortened_Latin_Letters__Fullwidth_": {
-      "message": "latin betűk"
+      "message": "Latin Letters"
     },
     "shortened_ASCII_Punctuation__Fullwidth_": {
-      "message": "ASCII-írásjelek"
+      "message": "ASCII Punctuation"
     },
     "shortened_ASCII_Digits__Fullwidth_": {
-      "message": "ASCII-számjegyek"
+      "message": "ASCII Digits"
     },
     "shortened_Currency_Symbols__Fullwidth_": {
-      "message": "pénznemszimbólumok"
+      "message": "Currency Symbols"
     },
     "shortened_Katakana__Halfwidth_": {
-      "message": "katakana"
+      "message": "Katakana"
     },
     "shortened_Jamo__Halfwidth_": {
-      "message": "jamo"
+      "message": "Jamo"
     },
     "shortened_Fullwidth": {
-      "message": "Teljes szélességű (%1$S, %2$S, %3$S, %4$S)"
+      "message": "Fullwidth (%1$S, %2$S, %3$S, %4$S)"
     },
     "shortened_Halfwidth": {
-      "message": "Fél szélességű (%1$S, %2$S)"
+      "message": "Halfwidth (%1$S, %2$S)"
     },
     "Not_found": {
-      "message": "Nincs definiálva vagy nem található"
+      "message": "Undefined or not found"
     },
     "Not_found_hangul": {
-      "message": "Nem található (Hangul)"
+      "message": "Not found (Hangul)"
     },
     "Request_status": {
-      "message": "Igénylés állapota"
+      "message": "Request status"
     },
     "retrieving_description": {
-      "message": "leírás betöltése..."
+      "message": "retrieving description..."
     },
     "DTDtextbox": {
       "message": ""
