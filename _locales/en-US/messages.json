@@ -2553,10 +2553,10 @@
       "message": "/"
     },
     "plane_num": {
-      "message": "Plane %1$S:"
+      "message": "Plane {plane}:"
     },
     "plane_numNocolon": {
-      "message": "Plane %1$S"
+      "message": "Plane {number}"
     },
     "Noncharacter": {
       "message": "Reserved noncharacter"
@@ -2591,11 +2591,14 @@
     "shortened_Jamo__Halfwidth_": {
       "message": "Jamo"
     },
+    "shortened_full_and_half": {
+      "message": "{fullAndHalf}"
+    },
     "shortened_Fullwidth": {
-      "message": "Fullwidth (%1$S, %2$S, %3$S, %4$S)"
+      "message": "Fullwidth ({widthItems})"
     },
     "shortened_Halfwidth": {
-      "message": "Halfwidth (%1$S, %2$S)"
+      "message": "Halfwidth ({widthItems})"
     },
     "Not_found": {
       "message": "Undefined or not found"

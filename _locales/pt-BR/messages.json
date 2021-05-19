@@ -2553,10 +2553,10 @@
       "message": "/"
     },
     "plane_num": {
-      "message": "Plano %1$S:"
+      "message": "Plano {plane}:"
     },
     "plane_numNocolon": {
-      "message": "Plano %1$S:"
+      "message": "Plano {number}:"
     },
     "Noncharacter": {
       "message": "Não-caractere reservado"
@@ -2591,11 +2591,14 @@
     "shortened_Jamo__Halfwidth_": {
       "message": "Jamo"
     },
+    "shortened_full_and_half": {
+      "message": "{fullAndHalf}"
+    },
     "shortened_Fullwidth": {
-      "message": "Tamanho inteiro (%1$S, %2$S, %3$S, %4$S)"
+      "message": "Tamanho inteiro ({widthItems})"
     },
     "shortened_Halfwidth": {
-      "message": "Meio tamanho (%1$S, %2$S)"
+      "message": "Meio tamanho ({widthItems})"
     },
     "Not_found": {
       "message": "Indefinido ou não encontrado"

@@ -2553,10 +2553,10 @@
       "message": "/"
     },
     "plane_num": {
-      "message": "Plan %1$S:"
+      "message": "Plan {plane}:"
     },
     "plane_numNocolon": {
-      "message": "Plan %1$S"
+      "message": "Plan {number}"
     },
     "Noncharacter": {
       "message": "Reserverat icke-tecken"
@@ -2591,11 +2591,14 @@
     "shortened_Jamo__Halfwidth_": {
       "message": "Jamo"
     },
+    "shortened_full_and_half": {
+      "message": "{fullAndHalf}"
+    },
     "shortened_Fullwidth": {
-      "message": "Helbreda (%1$S, %2$S, %3$S, %4$S)"
+      "message": "Helbreda ({widthItems})"
     },
     "shortened_Halfwidth": {
-      "message": "Halvbreda (%1$S, %2$S)"
+      "message": "Halvbreda ({widthItems})"
     },
     "Not_found": {
       "message": "Odefinierat eller hittades inte"

@@ -2553,10 +2553,10 @@
       "message": "/"
     },
     "plane_num": {
-      "message": "%1$S. sík:"
+      "message": "{plane}. sík:"
     },
     "plane_numNocolon": {
-      "message": "%1$S. sík"
+      "message": "{number}. sík"
     },
     "Noncharacter": {
       "message": "Fenntartott nem karakter"
@@ -2591,11 +2591,14 @@
     "shortened_Jamo__Halfwidth_": {
       "message": "jamo"
     },
+    "shortened_full_and_half": {
+      "message": "{fullAndHalf}"
+    },
     "shortened_Fullwidth": {
-      "message": "Teljes szélességű (%1$S, %2$S, %3$S, %4$S)"
+      "message": "Teljes szélességű ({widthItems})"
     },
     "shortened_Halfwidth": {
-      "message": "Fél szélességű (%1$S, %2$S)"
+      "message": "Fél szélességű ({widthItems})"
     },
     "Not_found": {
       "message": "Nincs definiálva vagy nem található"

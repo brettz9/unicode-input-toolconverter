@@ -333,20 +333,54 @@ export default function getScriptInfoForCodePoint (num, _) {
     codePointStart = 'FE70'; script = _('Arabic_Presentation_Forms_B');
   // else if (num < 0xFFF0) { codePointStart = 'FF00'; script = _('Fullwidth_ASCII_Punctuation') + _ ('comma') + ' ' + _('Fullwidth_ASCII_Digits') + _ ('comma') + ' ' + _('Fullwidth_Currency_Symbols') + _ ('comma') + ' ' + _('Fullwidth_Latin_Letters') + _ ('comma') + ' ' + _('Halfwidth_Katakana') + _ ('comma') + ' ' + _('Halfwidth_Jamo'); }
   } else if (num < 0xFFF0) {
-    codePointStart = 'FF00'; script = _('Halfwidth_and_Fullwidth_Forms');
-  /*
-  // Todo: If reenabling, should do more complete i18n (e.g., put comma inside string)
-  } else if (num < 0xFFF0) {
     codePointStart = 'FF00';
-    script = _('shortened_Fullwidth', {
-      asciiPunctuation: _('shortened_ASCII_Punctuation__Fullwidth_'),
-      asciiDigits: _('shortened_ASCII_Digits__Fullwidth_'),
-      currencySymbols: _('shortened_Currency_Symbols__Fullwidth_'),
-      latinLetters: _('shortened_Latin_Letters__Fullwidth_')
-    }) + _ ('comma') + ' ' + _('shortened_Halfwidth', {
-      katakana: _('shortened_Katakana__Halfwidth_'),
-      jamo: _('shortened_Jamo__Halfwidth_')
+    script = _('Halfwidth_and_Fullwidth_Forms');
+
+    /*
+    script = _('shortened_full_and_half', {
+      fullAndHalf: {
+        list: [
+          [
+            _('shortened_Fullwidth', {
+              widthItems: {
+                list: [
+                  [
+                    _('shortened_ASCII_Punctuation__Fullwidth_'),
+                    _('shortened_ASCII_Digits__Fullwidth_'),
+                    _('shortened_Currency_Symbols__Fullwidth_'),
+                    _('shortened_Latin_Letters__Fullwidth_')
+                  ],
+                  {
+                    // No "and" or "or"
+                    type: 'unit'
+                  }
+                ]
+              }
+            }),
+            _('shortened_Halfwidth', {
+              widthItems: {
+                list: [
+                  [
+                    _('shortened_Katakana__Halfwidth_'),
+                    _('shortened_Jamo__Halfwidth_')
+                  ],
+                  {
+                    // No "and" or "or"
+                    type: 'unit'
+                  }
+                ]
+              }
+            })
+          ],
+          {
+            // No "and" or "or"
+            type: 'unit'
+          }
+        ]
+      }
     });
+    */
+    /*
   */
   } else if (num < 0x10000) {
     codePointStart = 'FFF0'; script = _('Specials'); // + _ ('comma') + ' ' + _('At_End_of_BMP');
