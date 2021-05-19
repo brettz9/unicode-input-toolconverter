@@ -1,9 +1,8 @@
-'use strict';
+import fs from 'fs/promises';
+import path from 'path';
 
-const path = require('path');
-const fetch = require('node-fetch');
-const jsdom = require('jsdom');
-const fs = require('fs-extra');
+import fetch from 'node-fetch';
+import jsdom from 'jsdom';
 
 // For `localize` `true`, need to provide strings for all
 //  possible; could auto-add to locale files if missing
@@ -11,16 +10,22 @@ const localize = true;
 
 const {JSDOM} = jsdom;
 
+/**
+ * @param {string} key
+ * @returns {string}
+ */
 function getChromeSafeLocaleKey (key) {
-  return key.replace(/\\n/g, '').replace(/\s+/g, ' ') // Getting some extra WS
-    .replace(/\W/g, '_');
+  return key.replace(/\\n/gu, '').replace(/\s+/gu, ' ') // Getting some extra WS
+    .replace(/\W/gu, '_');
 }
 
 (async () => {
 let text;
-const lastScriptNamesFile = path.join(__dirname, '../browser_action/unicode/lastScriptNames.json');
+const lastScriptNamesFile = new URL(
+  '../browser_action/unicode/lastScriptNames.json', import.meta.url
+);
 const chartsURL = 'https://unicode.org/charts/';
-const chartsFile = path.join(__dirname, 'unicode-charts.html');
+const chartsFile = new URL('unicode-charts.html', import.meta.url);
 if (process.argv[2] === 'retrieve') {
   const resp = await fetch(chartsURL);
   text = await resp.text();
@@ -36,19 +41,23 @@ if (process.argv[2] === 'retrieve') {
 const doc = new JSDOM(text).window.document;
 const scriptMaps = [...doc.querySelectorAll('table.map')];
 
-const uniqueTextPlaceholder = localize ? '___placeholder___' : ''; // We know it is not present inside Unicode script names!
+const uniqueTextPlaceholder = localize
+  ? '___placeholder___'
+  : ''; // We know it is not present inside Unicode script names!
 
 const cleanupText = (txt) => {
   return txt.trim()
-    .replace(/(\s)\s+/, '$1')
-    .replace(/\s*\((?:ASCII|Odia)\)$/, '')
-    .replace(/\s\(\d\.?\d*MB\)$/, ''); // Remove MB size
+    .replace(/(?<initWS>\s)\s+/u, '$<initWS>')
+    .replace(/\s*\((?:ASCII|Odia)\)$/u, '')
+    .replace(/\s\(\d\.?\d*MB\)$/u, ''); // Remove MB size
 };
 
 const scriptsAndStartRanges = [];
 
 const jamilih = scriptMaps.map((scriptMap) => {
-  const majorHeading = cleanupText(scriptMap.previousElementSibling.textContent);
+  const majorHeading = cleanupText(
+    scriptMap.previousElementSibling.textContent
+  );
   // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
 
   const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
@@ -97,7 +106,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
             if (cleanedText && title) {
               scriptsAndStartRanges.push({
                 script: getChromeSafeLocaleKey(cleanedText),
-                startRange: title.replace(/-.*$/, '')
+                startRange: title.replace(/-.*$/u, '')
               });
             }
             scriptGroup = scriptGroup.nextElementSibling;
@@ -114,15 +123,35 @@ const jamilih = scriptMaps.map((scriptMap) => {
 });
 // console.log('m', majorHeading, scriptGroups);
 
+/**
+* @typedef {JSON} LocaleFileContents
+* @todo Indicate more precise format
+*/
+
+/**
+ * @param {string[]} localeFiles
+ * @param {LocaleFileContents} localeFileContents
+ * @returns {Promise<void>}
+ */
 async function saveLocalesWithoutDupes (localeFiles, localeFileContents) {
   return await Promise.all(
     localeFiles.map((localeFile, i) => {
-      return fs.writeFile(localeFile, JSON.stringify(localeFileContents[i], null, 2) + '\n');
+      return fs.writeFile(
+        localeFile, JSON.stringify(localeFileContents[i], null, 2) + '\n'
+      );
     })
   );
 }
+
+/**
+ * @param {string[]} newScriptNames
+ * @param {LocaleFileContents} localeFileContents
+ * @returns {Promise<void>}
+ */
 async function deleteUnusedScriptNames (newScriptNames, localeFileContents) {
-  const {lastScriptNames} = JSON.parse(await fs.readFile(lastScriptNamesFile, 'utf-8'));
+  const {lastScriptNames} = JSON.parse(
+    await fs.readFile(lastScriptNamesFile, 'utf-8')
+  );
   lastScriptNames.forEach((lastScriptName) => {
     if (!newScriptNames.includes(lastScriptName)) {
       localeFileContents.forEach((lfc) => {
@@ -132,7 +161,8 @@ async function deleteUnusedScriptNames (newScriptNames, localeFileContents) {
   });
 }
 
-// We only actually need the ESLint `indent` rule for the localized version, but add anyway
+// We only actually need the ESLint `indent` rule for the localized
+//  version, but add anyway
 await fs.writeFile(
   'browser_action/unicode/unicode-scripts.js',
   `/* eslint-disable comma-spacing, quotes, indent */
@@ -143,15 +173,23 @@ export default function (_) {
   return ` + (localize
     ? await (async () => {
       const localesDir = '_locales';
-      const dirs = (await fs.readdir(localesDir)).filter((f) => !f.includes('.'));
-      const localeFiles = dirs.map((dir) => path.join(localesDir, dir, 'messages.json'));
-      const localeFileContents = (await Promise.all(localeFiles.map((localeFile) => {
-        return fs.readFile(localeFile, 'utf-8');
-      }))).map((fileContents) => {
+      const dirs = (
+        await fs.readdir(localesDir)
+      ).filter((f) => !f.includes('.'));
+      const localeFiles = dirs.map(
+        (dir) => path.join(localesDir, dir, 'messages.json')
+      );
+      const localeFileContents = (
+        await Promise.all(localeFiles.map((localeFile) => {
+          return fs.readFile(localeFile, 'utf-8');
+        }))
+      ).map((fileContents) => {
         return JSON.parse(fileContents);
       });
 
-      const dirResults = (await recurseDirectory({directory: 'browser_action'})).filter(({keys}) => {
+      const dirResults = (
+        await recurseDirectory({directory: 'browser_action'})
+      ).filter(({keys}) => {
         return keys.length;
       });
       // console.log('dirResults', JSON.stringify(dirResults, null, 2));
@@ -174,7 +212,11 @@ export default function (_) {
         });
       });
       Object.entries(keyMap).forEach(([key, {paths, locales}]) => {
-        // Working: console.log(`key "${key}" found in paths [${paths.join(', ')}] is missing in locales: [${locales.join(', ')}]\n`);
+        // Working:
+        // console.log(
+        //   `key "${key}" found in paths [${paths.join(', ')}] is ` +
+        //   `missing in locales: [${locales.join(', ')}]\n`
+        // );
       });
 
       localeFileContents.forEach((lfc, i) => {
@@ -187,7 +229,8 @@ export default function (_) {
             return keys.includes(localeKey);
           })) {
             // Working:
-            // console.log(`Locale key "${localeKey}" not present in keys used in any of the found file paths.`);
+            // console.log(`Locale key "${localeKey}" not present in keys
+            //   used in any of the found file paths.`);
           }
         });
       });
@@ -196,7 +239,7 @@ export default function (_) {
       const ret = JSON.stringify(['ul', jamilih], null, 2).replace(
         new RegExp(
           '^(\\s*)"' + uniqueTextPlaceholder + '(.*)"(,)?$',
-          'gm'
+          'gum'
         ),
         (_, initialWS, key, possibleComma = '') => {
           const chromeSafeLocaleKey = getChromeSafeLocaleKey(key);
@@ -232,7 +275,10 @@ export default function (_) {
           });
           /*
           // Find change in *values*
-          if (lfc[chromeSafeLocaleKey] && lfc[chromeSafeLocaleKey].message !== key) {
+          if (
+            lfc[chromeSafeLocaleKey] &&
+            lfc[chromeSafeLocaleKey].message !== key
+          ) {
             console.log(key, lfc[chromeSafeLocaleKey].message);
           }
           */
@@ -242,12 +288,14 @@ export default function (_) {
       await deleteUnusedScriptNames(newScriptNames, localeFileContents);
       await saveLocalesWithoutDupes(localeFiles, localeFileContents);
 
+      /* eslint-disable max-len -- JSON */
       await fs.writeFile(lastScriptNamesFile, `
 {
   "$comment": "Do not edit this file; this is an auto-generated file used to track script names, some of which may end up needing to be deleted from locale files if no longer in use",
   "lastScriptNames": ${JSON.stringify(newScriptNames)}
 }
 `);
+      /* eslint-enable max-len -- JSON */
       return ret;
     })()
     : JSON.stringify(['ul', jamilih], null, 2)
@@ -257,8 +305,13 @@ export default function (_) {
 `
 );
 
-scriptsAndStartRanges.sort(({startRange: aStartRange}, {startRange: bStartRange}) => {
-  return Number.parseInt(aStartRange, 16) > Number.parseInt(bStartRange, 16) ? 1 : -1;
+scriptsAndStartRanges.sort((
+  {startRange: aStartRange}, {startRange: bStartRange}
+) => {
+  return Number.parseInt(aStartRange, 16) >
+    Number.parseInt(bStartRange, 16)
+    ? 1
+    : -1;
 });
 
 let s = '';
@@ -276,6 +329,13 @@ scriptsAndStartRanges.forEach(({script, startRange}) => {
   lastScript = script;
 });
 
+/**
+ * @param {PlainObject} cfg
+ * @param {string} cfg.directory
+ * @param {string} [cfg.basePath="./"]
+ * @param {{path, keys}} cfg.results
+ * @returns {Promise<{path, keys}|void>}
+ */
 async function recurseDirectory ({directory, basePath = './', results}) {
   const dirPath = path.join(basePath, directory);
   const filesAndDirs = await fs.readdir(dirPath);
@@ -287,7 +347,7 @@ async function recurseDirectory ({directory, basePath = './', results}) {
   await Promise.all(
     filesAndDirs.filter((fileOrDir) => {
       // Is a directory or JavaScript file
-      return !fileOrDir.includes('.') || (/.js$/).test(fileOrDir);
+      return !fileOrDir.includes('.') || (/\.js$/u).test(fileOrDir);
     }).map(async (fileOrDir) => {
       if (!fileOrDir.includes('.')) { // Should check `isDirectory()` or such
         return recurseDirectory({
@@ -301,12 +361,12 @@ async function recurseDirectory ({directory, basePath = './', results}) {
 
       const i18nRegex = // /_\((?:['"]([^'"]*)['"])\)/g;
       // Todo: Works to find variable forms:
-        /_\((?:['"]([^'"]*)['"]|([^"')][^{)]*|[^{)]*[^"')]))\)/g;
+        /_\((?:['"](?<key1>[^'"]*)['"]|(?<key2>[^"')][^{)]*|[^{)]*[^"')]))\)/gu;
 
       const keys = [];
       let result;
       while ((result = (i18nRegex.exec(contents))) !== null) {
-        keys.push(result[1] || result[2]);
+        keys.push(result.groups.key1 || result.groups.key2);
       }
       results.push({path: pth, keys});
       return undefined;

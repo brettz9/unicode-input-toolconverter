@@ -39,11 +39,21 @@ module.exports = {
         browser: false
       },
       files: [
-        'server.js', 'tools/parseUnicodeCharts.js', 'web-ext-config.js'
+        'web-ext-config.js'
       ],
       rules: {
         ...rulesToIgnoreForNow
       }
+    },
+    {
+      files: 'tools/**',
+      parserOptions: {
+        ecmaVersion: 2021
+      },
+      env: {
+        browser: false
+      },
+      extends: ['ash-nazg/sauron-node-overrides']
     },
     {
       files: ['browser_action/templates/**'],

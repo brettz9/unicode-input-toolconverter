@@ -1,5 +1,16 @@
 /* globals uksort -- Global for now */
-/* eslint-disable import/unambiguous -- Global for now */
+
+import download from 'download';
+import extract from 'extract-zip';
+
+// Todo: Add script to download
+//   from
+//   then unzip and allocate files
+
+await download('https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip');
+
+await extract(sourcePath, { dir: target })
+
 // Not fully reimplemented (see `uksort`, test, etc.)
 // Setup to overcome restriction on file:// URLS in Firefox (Chrome, Opera disallow, but works in Safari)
 function $ (sel) {
@@ -44,7 +55,7 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
     'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1', 'kRSAdobe_Japan1_6', 'kRSJapanese', 'kRSKanWa', 'kRSKangXi',
     'kRSKorean', 'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant', 'kSpecializedSemanticVariant',
     'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant'];
-  baseURL += 'unihan/';
+  baseURL += '../data/unihan/';
   let scriptFileAsStr = (await Promise.all([
     'Unihan_DictionaryIndices.txt',
     'Unihan_DictionaryLikeData.txt',

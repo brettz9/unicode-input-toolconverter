@@ -1,10 +1,2 @@
-This file is just for the extension author's purpose of importing Unihan
-files into a SQLite database.
-
-This is a place-holder for the large Unihan files which can be put here 
-when manually importing Unihan files into the SQLite database via 
-/data/unihan-import.xhtml (works in Chrome).
-
-That file will look in this directory and create a CSV file out of the 
-different Unihan files which can then be easily imported using 
-SQLite Manager.
+This file is just a place-holder for the large Unihan files that will be
+used by the application.
