@@ -69,7 +69,7 @@ const CharrefConverterBridges = {
   async charref2unicode (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.charref2unicodeval(toconvert, e.target);
     return false;
@@ -77,7 +77,7 @@ const CharrefConverterBridges = {
   async charref2htmlents (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.charref2htmlentsval(toconvert, e.target);
     return false;
@@ -85,7 +85,7 @@ const CharrefConverterBridges = {
   async unicode2charrefDec (e, leaveSurrogates) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.unicode2charrefDecval(toconvert, e.target, leaveSurrogates);
     return false;
@@ -96,7 +96,7 @@ const CharrefConverterBridges = {
   async unicode2charrefHex (e, leaveSurrogates) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.unicode2charrefHexval(toconvert, e.target, leaveSurrogates);
     return false;
@@ -107,7 +107,7 @@ const CharrefConverterBridges = {
   async unicode2htmlents (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.unicode2htmlentsval(toconvert, e.target);
     return false;
@@ -207,7 +207,7 @@ const CharrefConverterBridges = {
   async htmlents2charrefDec (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.htmlents2charrefDecval(toconvert, e.target);
     return false;
@@ -215,7 +215,7 @@ const CharrefConverterBridges = {
   async htmlents2charrefHex (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.htmlents2charrefHexval(toconvert, e.target);
     return false;
@@ -223,7 +223,7 @@ const CharrefConverterBridges = {
   async htmlents2unicode (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.htmlents2unicodeval(toconvert, e.target);
     return false;
@@ -231,7 +231,7 @@ const CharrefConverterBridges = {
   async hex2dec (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.hex2decval(toconvert, e.target);
     return false;
@@ -239,7 +239,7 @@ const CharrefConverterBridges = {
   async dec2hex (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
     $('#converted').value = this.dec2hexval(toconvert, e.target);
     return false;

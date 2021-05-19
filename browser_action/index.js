@@ -104,7 +104,10 @@ jQuery('div.miller-columns').millerColumns({
     if (!title) {
       return;
     }
-    await setPref('currentStartCharCode', Number.parseInt(title.replace(/-.*$/, ''), 16));
+    await setPref(
+      'currentStartCharCode',
+      Number.parseInt(title.replace(/-.*$/u, ''), 16)
+    );
     // Free to use `buildChart` now that we have passed set-up
     buildChart(); // Todo: descripts?
   }

@@ -310,9 +310,9 @@ const indexTemplate = function ({_, fonts}) {
                           size: '12',
                           $custom: {
                             $setFontFamily (value) {
-                              const val = (/\s/).test(value)
+                              const val = (/\s/u).test(value)
                                 ? ('"' +
-                                value.replace(/^"/, '').replace(/"$/, '') +
+                                value.replace(/^"/gu, '').replace(/"$/gu, '') +
                                 '"')
                                 : value;
                               $('#insertText').style.fontFamily = val;

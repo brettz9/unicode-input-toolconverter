@@ -7,9 +7,9 @@ import charrefunicodeDb from './charrefunicodeDb.js';
 /**
  * @namespace Converts from one string form to another
  */
-const decim = /&#(\d*);/g;
-const hexadec = /&#[xX]([\da-fA-F]*);/g;
-const htmlent = /&([_a-zA-Z][-\w]*);/g; /* Unicode complete version? */
+const decim = /&#(\d*);/gu;
+const hexadec = /&#[xX]([\da-fA-F]*);/gu;
+const htmlent = /&([_a-zA-Z][-\w]*);/gu; /* Unicode complete version? */
 
 export const getUnicodeConverter = () => {
   const {getPref} = getUnicodeDefaults();
@@ -133,11 +133,11 @@ export const getUnicodeConverter = () => {
         // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
         // +   bugfixed by: Onno Marsman
         // +   improved by: Brett Zamir (http://brett-zamir.me)
-        return str.replace(/[.\\+*?[^\]$(){}=!<>|:-]/g, '\\$&');
+        return str.replace(/[.\\+*?[^\]$(){}=!<>|:-]/gu, '\\$&');
       }
 
       for (let i = 0; i < this.newents.length; i++) {
-        const regex = new RegExp(pregQuote(this.newcharrefs[i]), 'gm'); // Escaping necessary for custom entities added via the DTD
+        const regex = new RegExp(pregQuote(this.newcharrefs[i]), 'gum'); // Escaping necessary for custom entities added via the DTD
         unicodeToConvert = unicodeToConvert.replace(regex, '&' + this.newents[i] + ';');
       }
 
@@ -280,7 +280,7 @@ export const getUnicodeConverter = () => {
     }
 
     charDesc2UnicodeVal (toconvert) {
-      return toconvert.replace(/\\C{([^}]*)}/g, (n, n1) => {
+      return toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
         const unicodeVal = this.lookupUnicodeValueByCharName(n1);
         return unicodeVal ? String.fromCodePoint(unicodeVal) : '\uFFFD'; // Replacement character if not found?
       });
@@ -313,7 +313,7 @@ export const getUnicodeConverter = () => {
           unicode += s + next;
           break;
         default: {
-          const hexEsc = toconvert.slice(i + 1).match(/^([A-Fa-f\d]{1,5})(([A-Fa-f\d])|(\r\n|[ \t\r\n\f])?)/); // 1-5 hex and WS, or 6 hex
+          const hexEsc = toconvert.slice(i + 1).match(/^([A-Fa-f\d]{1,5})(([A-Fa-f\d])|(\r\n|[ \t\r\n\f])?)/u); // 1-5 hex and WS, or 6 hex
           if (hexEsc) {
             i += hexEsc[0].length - 1; // We want to skip the whole structure
             const hex = hexEsc[1] + (hexEsc[3] || ''); // [3] only if is 6-digit
@@ -325,7 +325,7 @@ export const getUnicodeConverter = () => {
             if (dec > 0x10FFFF || dec === 0) {
               unicode += '\uFFFD'; // Replacement character since not valid Unicode
             // Too low ASCII to be converted (not a letter, digit, underscore, or hyphen)
-            } else if (dec < 0xA1 && (/[^\w-]/).test(hexStr)) { // Don't convert since won't be valid if unescaped
+            } else if (dec < 0xA1 && (/[^\w-]/u).test(hexStr)) { // Don't convert since won't be valid if unescaped
               // Although https://www.w3.org/TR/CSS21/grammar.html#scanner (under "nonascii" which is a
               //  possible (indirect) component of identifiers) seems to permit any non-ASCII equal to or above
               //  0x80 (decimal 128), per https://www.w3.org/TR/CSS21/syndata.html#characters only non-escaped
@@ -336,7 +336,7 @@ export const getUnicodeConverter = () => {
             //   identifier) so don't convert (if followed by an escaped number, there is no concern it will
             //   be avoided here, since the escaped number will remain escaped on the next
             //   iteration (by this same condition)
-            } else if ((/^-?\d/).test(hexStr + toconvert[i + 2])) {
+            } else if ((/^-?\d/u).test(hexStr + toconvert[i + 2])) {
               unicode += s + hexEsc[0];
             } else {
               unicode += hexStr;
@@ -367,7 +367,7 @@ export const getUnicodeConverter = () => {
               unicode += s;
               break;
             case 'u':
-              hexChrs = (/^[a-fA-F\d]{6}|[a-fA-F\d]{4}/).exec(toconvert.slice(i + 2));
+              hexChrs = (/^[a-fA-F\d]{6}|[a-fA-F\d]{4}/u).exec(toconvert.slice(i + 2));
               if (hexChrs) {
                 unicode += String.fromCodePoint(Number.parseInt(hexChrs[0], 16));
                 i += hexChrs[0].length; // 4 or 6
@@ -402,7 +402,7 @@ export const getUnicodeConverter = () => {
               unicode += '\b';
               break;
             case 'u':
-              hexChrs = (/^[a-fA-F\d]{4}/).exec(toconvert.slice(i + 2));
+              hexChrs = (/^[a-fA-F\d]{4}/u).exec(toconvert.slice(i + 2));
               if (hexChrs) {
                 unicode += String.fromCharCode(Number.parseInt(hexChrs[0], 16));
                 i += hexChrs[0].length; // 4
@@ -494,11 +494,11 @@ export const getUnicodeConverter = () => {
       // const table = 'Unihan'; // fix: determine by pull-down
       const nameDescVal = obj.value;
       if ((obj.id.startsWith('searchk') && table === 'Unicode') || // Don't query the other databases here
-        ((/^search[^k]/).test(obj.id) && table === 'Unihan')
+        ((/^search[^k]/u).test(obj.id) && table === 'Unihan')
       ) {
         return;
       }
-      const nameDesc = obj.id.replace(/^search/, '');
+      const nameDesc = obj.id.replace(/^search/u, '');
 
       // const nameDesc = (table === 'Unihan') ? 'kDefinition' : 'Name'; // Fix: let Unihan search Mandarin, etc.
 

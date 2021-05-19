@@ -19,7 +19,7 @@ async function insertEntityFile (e) {
 
 async function registerDTD () {
   // Cannot use back-reference inside char. class, so need to do twice
-  const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/g;
+  const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/gu;
 
   const text = $('#DTDtextbox').value;
   setPref('DTDtextbox', text);
@@ -38,9 +38,9 @@ async function registerDTD () {
   charrefunicodeConverter.newents = [...Unicodecharref.orignewents]; // Start off blank in case items erased
   charrefunicodeConverter.newcharrefs = [...Unicodecharref.orignewcharrefs]; // Start off blank in case items erased
 
-  const decreg = /^(&#|#)?(\d\d+);?$/;
-  // const decreg2 = /^(&#|#)([0-9]);?$/;
-  const hexreg = /^(&#|#|0|U|u)?([xX+])([\da-fA-F]+);?$/;
+  const decreg = /^(&#|#)?(\d\d+);?$/u;
+  // const decreg2 = /^(&#|#)([0-9]);?$/u;
+  const hexreg = /^(&#|#|0|U|u)?([xX+])([\da-fA-F]+);?$/u;
 
   while ((result = pattern.exec(text)) !== null) {
     let m = result[3];

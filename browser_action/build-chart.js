@@ -124,7 +124,7 @@ export const buildChart = async function buildChart ({descripts} = {}) {
 
   // Todo: Replace this with a `Intl.PluralRules` type plural awareness?
   // Make first letter of first word upper case
-  const captionContent = captioncntnt[0].replace(/^[a-z]/, (s) => s.toUpperCase()) +
+  const captionContent = captioncntnt[0].replace(/^[a-z]/u, (s) => s.toUpperCase()) +
     captioncntnt.slice(1, -1).reduce((s, value) => {
       return s + _('caption_format_begin', {value});
     }, '') + (

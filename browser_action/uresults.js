@@ -437,7 +437,7 @@ const Unicodecharref = {
     $('#toconvert').value = toconvert;
 
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/g, '&amp;$1');
+      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
 
     // Detect which context menu item was selected:
@@ -551,7 +551,7 @@ const Unicodecharref = {
       break;
     case 'radio': {
       let radioid;
-      const result = e.target.id.match(/^_(\d)+-(.*)$/);
+      const result = e.target.id.match(/^_(\d)+-(.*)$/u);
       if (result !== null) {
         radioid = result[2]; // Extract preference name
         setPref(radioid, result[1] === '1');

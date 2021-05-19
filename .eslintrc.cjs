@@ -3,7 +3,6 @@
 const rulesToIgnoreForNow = {
   'no-alert': 0,
   'max-len': 0,
-  'require-unicode-regexp': 0,
   'jsdoc/require-jsdoc': 0,
   'prefer-named-capture-group': 0
 };
