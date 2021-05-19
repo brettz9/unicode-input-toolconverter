@@ -520,9 +520,6 @@
   "CJK_Ideographs_Ext__C": {
     "message": "CJK-ideogram, utök. C"
   },
-  "CJK_Radicals___KangXi_Radicals": {
-    "message": "CJK-radikaler / Kangxi-radikaler"
-  },
   "Bamum": {
     "message": "Bamun"
   },
@@ -2937,5 +2934,59 @@
   },
   "choose_a_font": {
     "message": "Or choose a font"
+  },
+  "Egyptian_Hieroglyph_Format_Controls": {
+    "message": "Egyptian Hieroglyph Format Controls"
+  },
+  "Chorasmian": {
+    "message": "Chorasmian"
+  },
+  "Elymaic": {
+    "message": "Elymaic"
+  },
+  "Yezidi": {
+    "message": "Yezidi"
+  },
+  "Dives_Akuru": {
+    "message": "Dives Akuru"
+  },
+  "Nandinagari": {
+    "message": "Nandinagari"
+  },
+  "Tamil_Supplement": {
+    "message": "Tamil Supplement"
+  },
+  "Wancho": {
+    "message": "Wancho"
+  },
+  "Nyiakeng_Puachue_Hmong": {
+    "message": "Nyiakeng Puachue Hmong"
+  },
+  "CJK_Extension_G": {
+    "message": "CJK Extension G"
+  },
+  "CJK_Radicals___Kangxi_Radicals": {
+    "message": "CJK Radicals / Kangxi Radicals"
+  },
+  "Small_Kana_Extension": {
+    "message": "Small Kana Extension"
+  },
+  "Khitan_Small_Script": {
+    "message": "Khitan Small Script"
+  },
+  "Lisu_Supplement": {
+    "message": "Lisu Supplement"
+  },
+  "Tangut_Supplement": {
+    "message": "Tangut Supplement"
+  },
+  "Ottoman_Siyaq_Numbers": {
+    "message": "Ottoman Siyaq Numbers"
+  },
+  "Symbols_and_Pictographs_Extended_A": {
+    "message": "Symbols and Pictographs Extended-A"
+  },
+  "Symbols_for_Legacy_Computing": {
+    "message": "Symbols for Legacy Computing"
   }
 }

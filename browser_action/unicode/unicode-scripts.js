@@ -851,7 +851,26 @@ export default function (_) {
                         "title": "13000-1342F"
                       },
                       [
-                        _("Egyptian_Hieroglyphs")
+                        _("Egyptian_Hieroglyphs"),
+                        [
+                          "ul",
+                          [
+                            [
+                              "li",
+                              {
+                                "title": "13430-1343F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Egyptian_Hieroglyph_Format_Controls")
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
                       ]
                     ],
                     [
@@ -1122,6 +1141,15 @@ export default function (_) {
                     [
                       "li",
                       {
+                        "title": "10FB0–10FDF"
+                      },
+                      [
+                        _("Chorasmian")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "12000-123FF"
                       },
                       [
@@ -1187,6 +1215,15 @@ export default function (_) {
                             ]
                           ]
                         ]
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "10FE0-10FFF"
+                      },
+                      [
+                        _("Elymaic")
                       ]
                     ],
                     [
@@ -1342,6 +1379,15 @@ export default function (_) {
                             ]
                           ]
                         ]
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "10E80–10EBF"
+                      },
+                      [
+                        _("Yezidi")
                       ]
                     ]
                   ]
@@ -1561,6 +1607,15 @@ export default function (_) {
                     [
                       "li",
                       {
+                        "title": "11900–1195F"
+                      },
+                      [
+                        _("Dives_Akuru")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "11800-1184F"
                       },
                       [
@@ -1751,6 +1806,15 @@ export default function (_) {
                     [
                       "li",
                       {
+                        "title": "119A0-119FF"
+                      },
+                      [
+                        _("Nandinagari")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "11400-1147F"
                       },
                       [
@@ -1863,7 +1927,26 @@ export default function (_) {
                         "title": "0B80-0BFF"
                       },
                       [
-                        _("Tamil")
+                        _("Tamil"),
+                        [
+                          "ul",
+                          [
+                            [
+                              "li",
+                              {
+                                "title": "11FC0-11FFF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Tamil_Supplement")
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
                       ]
                     ],
                     [
@@ -1900,6 +1983,15 @@ export default function (_) {
                       },
                       [
                         _("Vedic_Extensions")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "1E2C0-1E2FF"
+                      },
+                      [
+                        _("Wancho")
                       ]
                     ],
                     [
@@ -2040,6 +2132,15 @@ export default function (_) {
                       },
                       [
                         _("New_Tai_Lue")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "1E100-1E14F"
+                      },
+                      [
+                        _("Nyiakeng_Puachue_Hmong")
                       ]
                     ],
                     [
@@ -2187,7 +2288,7 @@ export default function (_) {
                     [
                       "li",
                       {
-                        "title": "A930-A95F"
+                        "title": "1B80-1BBF"
                       },
                       [
                         _("Sundanese"),
@@ -2371,6 +2472,20 @@ export default function (_) {
                             [
                               "li",
                               {
+                                "title": "30000–3134A"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("CJK_Extension_G")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
                                 "title": ""
                               },
                               [
@@ -2420,7 +2535,7 @@ export default function (_) {
                         "title": "2F00-2FDF"
                       },
                       [
-                        _("CJK_Radicals___KangXi_Radicals"),
+                        _("CJK_Radicals___Kangxi_Radicals"),
                         [
                           "ul",
                           [
@@ -2579,6 +2694,15 @@ export default function (_) {
                     [
                       "li",
                       {
+                        "title": "1B130-1B16F"
+                      },
+                      [
+                        _("Small_Kana_Extension")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "3190-319F"
                       },
                       [
@@ -2630,10 +2754,38 @@ export default function (_) {
                     [
                       "li",
                       {
+                        "title": "18B00–18CFF"
+                      },
+                      [
+                        _("Khitan_Small_Script")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "A4D0-A4FF"
                       },
                       [
-                        _("Lisu")
+                        _("Lisu"),
+                        [
+                          "ul",
+                          [
+                            [
+                              "li",
+                              {
+                                "title": "11FB0–11FBF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Lisu_Supplement")
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
                       ]
                     ],
                     [
@@ -2674,6 +2826,20 @@ export default function (_) {
                                   "i",
                                   [
                                     _("Tangut_Components")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "18D00–18D08"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Tangut_Supplement")
                                   ]
                                 ]
                               ]
@@ -3485,6 +3651,15 @@ export default function (_) {
                     [
                       "li",
                       {
+                        "title": "1ED00-1ED4F"
+                      },
+                      [
+                        _("Ottoman_Siyaq_Numbers")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "10E60-10E7F"
                       },
                       [
@@ -3902,6 +4077,15 @@ export default function (_) {
                     [
                       "li",
                       {
+                        "title": "1FA70-1FAFF"
+                      },
+                      [
+                        _("Symbols_and_Pictographs_Extended_A")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "1F680-1F6FF"
                       },
                       [
@@ -4145,6 +4329,15 @@ export default function (_) {
                       },
                       [
                         _("Miscellaneous_Symbols_and_Arrows")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "1FB00–1FBFF"
+                      },
+                      [
+                        _("Symbols_for_Legacy_Computing")
                       ]
                     ],
                     [
