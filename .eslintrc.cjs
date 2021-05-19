@@ -47,6 +47,7 @@ module.exports = {
     },
     {
       files: 'tools/**',
+      parser: '@babel/eslint-parser',
       parserOptions: {
         ecmaVersion: 2021
       },

@@ -1,21 +1,29 @@
 /* globals uksort -- Global for now */
 
+import fs from 'fs/promises';
+
 import download from 'download';
 import extract from 'extract-zip';
 
-// Todo: Add script to download
-//   from
-//   then unzip and allocate files
+const args = process.argv.slice(2);
 
-await download('https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip');
+const targetDir = `${process.cwd()}/data/unihan`;
+const unihanZip = `${targetDir}/Unihan.zip`;
 
-await extract(sourcePath, { dir: target })
+if (args.includes('download')) {
+  await download(
+    'https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip', targetDir
+  );
+}
 
+if (args.includes('extract') || args.includes('download')) {
+  await extract(unihanZip, {dir: targetDir});
+  await fs.unlink(unihanZip);
+}
+
+throw '';
 // Not fully reimplemented (see `uksort`, test, etc.)
 // Setup to overcome restriction on file:// URLS in Firefox (Chrome, Opera disallow, but works in Safari)
-function $ (sel) {
-  return document.querySelector(sel);
-}
 function addScript (files, checkVars, cb, checkback) {
   if (typeof files === 'string') {
     files = [files];

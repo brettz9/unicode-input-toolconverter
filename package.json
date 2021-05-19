@@ -9,6 +9,7 @@
   "scripts": {
     "open": "open-cli http://localhost:8000/browser_action/ && npm start",
     "start": "echo 'Starting on http://localhost:8000/browser_action/' && node server",
+    "unihan-download": "node --trace-uncaught tools/unihan-import.js download",
     "unicode-charts-retrieve": "node tools/parseUnicodeCharts.js retrieve",
     "unicode-charts": "node tools/parseUnicodeCharts.js",
     "webext-path": "npm run eslint && web-ext run --browser-console -f /Applications/Firefox.app",
@@ -51,6 +52,9 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.3",
+    "@babel/plugin-syntax-top-level-await": "^7.12.13",
     "@brettz9/eslint-plugin": "^1.0.3",
     "eslint": "^7.26.0",
     "eslint-config-ash-nazg": "29.15.0",
