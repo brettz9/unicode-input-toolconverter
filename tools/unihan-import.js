@@ -1,14 +1,14 @@
-/* globals uksort -- Global for now */
-
 import fs from 'fs/promises';
 
 import download from 'download';
 import extract from 'extract-zip';
+import fetch from 'file-fetch';
 
 const args = process.argv.slice(2);
 
 const targetDir = `${process.cwd()}/data/unihan`;
 const unihanZip = `${targetDir}/Unihan.zip`;
+const targetJSONUnihan = `${targetDir}/unihan.json`;
 
 if (args.includes('download')) {
   await download(
@@ -21,36 +21,14 @@ if (args.includes('extract') || args.includes('download')) {
   await fs.unlink(unihanZip);
 }
 
-throw '';
-// Not fully reimplemented (see `uksort`, test, etc.)
-// Setup to overcome restriction on file:// URLS in Firefox (Chrome, Opera disallow, but works in Safari)
-function addScript (files, checkVars, cb, checkback) {
-  if (typeof files === 'string') {
-    files = [files];
-    checkVars = [checkVars];
-  }
-  let baseURL;
-  for (let i = 0, filelen = files.length; i < filelen; i++) {
-    const file = files[i];
-    baseURL = location.href.slice(0, Math.max(0, location.href.lastIndexOf('/') + 1));
-    const script = document.createElement('script');
-    script.src = baseURL + file;
-    $('head').append(script);
-  }
-  const interval = setInterval(() => {
-    for (let j = 0, cvl = checkVars.length; j < cvl; j++) {
-      if (typeof window[checkVars[j]] === 'undefined') {
-        return;
-      }
-      checkVars.splice(j, 1);
-    }
-    clearInterval(interval);
-    // eslint-disable-next-line promise/prefer-await-to-callbacks -- No async API yet
-    cb(baseURL);
-  }, checkback || 100);
-}
+addScript(targetDir);
 
-addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_contents', '$'], async function (baseURL) {
+/**
+ * @param {string} baseURL
+ * @returns {Promise<void>}
+ */
+async function addScript (baseURL) {
+  /* eslint-disable max-len -- Long */
   const fields = ['code_pt', 'kAccountingNumeric', 'kBigFive', 'kCCCII', 'kCNS1986', 'kCNS1992', 'kCangjie', 'kCantonese',
     'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon',
     'kDefinition', 'kEACC', 'kFenn', 'kFennIndex', 'kFourCornerCode', 'kFrequency', 'kGB0', 'kGB1', 'kGB3',
@@ -63,8 +41,8 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
     'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1', 'kRSAdobe_Japan1_6', 'kRSJapanese', 'kRSKanWa', 'kRSKangXi',
     'kRSKorean', 'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant', 'kSpecializedSemanticVariant',
     'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant'];
-  baseURL += '../data/unihan/';
-  let scriptFileAsStr = (await Promise.all([
+  /* eslint-enable max-len -- Long */
+  const scriptFileAsStr = (await Promise.all([
     'Unihan_DictionaryIndices.txt',
     'Unihan_DictionaryLikeData.txt',
     'Unihan_IRGSources.txt',
@@ -73,14 +51,16 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
     'Unihan_RadicalStrokeCounts.txt',
     'Unihan_Readings.txt',
     'Unihan_Variants.txt'
-  ].map((file) => {
-    return fetch(baseURL + file);
+  ].map(async (file) => {
+    const fileObj = await fetch(`${baseURL}/${file}`);
+    return await fileObj.text();
   }))).join('');
 
   let line;
-  const obj = {}, lineRegex = /^U\+([\da-fA-F]{4,6})\t(\w+?)\t(.*)$/gm;
+  const obj = {};
+  const lineRegex = /^U\+(?<cdpt>[\da-fA-F]{4,6})\t(?<col>\w+?)\t(?<value>.*)$/gum;
   while ((line = (lineRegex).exec(scriptFileAsStr)) !== null) {
-    const cdpt = line[1], col = line[2], value = line[3];
+    const {cdpt, col, value} = line.groups;
     if (!obj[cdpt]) {
       obj[cdpt] = [];
       fields.forEach(function (val, idx) {
@@ -90,19 +70,30 @@ addScript(['file_get_and_ksort.min.js', 'import-helpers.js'], ['file_get_content
     }
     const pos = fields.indexOf(col);
     if (pos === -1) {
-      $('#errors').value += 'Not present: ' + col + '\n';
+      // eslint-disable-next-line no-console -- CLI
+      console.error(`Not present: ${col}\n`);
+      continue;
     }
     obj[cdpt][pos] = value;
   }
-  uksort(obj, function (k1, k2) {
-    return Number.parseInt(k1, 16) > Number.parseInt(k2, 16);
-  });
-  // Works but FF crashes with this--Chrome is ok
+  Object.entries(obj).sort(([k1], [k2]) => {
+    return Number.parseInt(k1, 16) > Number.parseInt(k2, 16)
+      ? 1
+      : -1;
+  }).reduce((object, [key, val]) => {
+    object[key] = val;
+    return object;
+  }, {});
+
+  /*
+  CSV
   scriptFileAsStr = '';
   Object.values(obj).forEach((val) => {
     // $('#results').value += JSON.stringify(val).slice(1, -1) + '\n';
     scriptFileAsStr += JSON.stringify(val).slice(1, -1) + '\n';
   });
-  $('#results').value = scriptFileAsStr;
-  // $('#results').value = JSON.stringify(obj);
-});
+  console.log('scriptFileAsStr', scriptFileAsStr);
+  */
+
+  await fs.writeFile(targetJSONUnihan, JSON.stringify(obj));
+}

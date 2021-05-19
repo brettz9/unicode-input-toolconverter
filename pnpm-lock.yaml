@@ -26,6 +26,7 @@ specifiers:
   eslint-plugin-standard: ^4.1.0
   eslint-plugin-unicorn: ^32.0.1
   extract-zip: ^2.0.1
+  file-fetch: ^1.6.0
   fs-extra: ^10.0.0
   jamilih: 0.54.0
   jquery: ^3.6.0
@@ -41,6 +42,7 @@ dependencies:
   apple-system-profiler: github.com/brettz9/apple-system-profiler/506e9c648b0aef7413ef14e2bd0dc35d88ab5cb0
   download: 8.0.0
   extract-zip: 2.0.1
+  file-fetch: 1.6.0
   fs-extra: 10.0.0
   jsdom: 16.5.3
   node-fetch: 2.6.1
@@ -1618,6 +1620,16 @@ packages:
       flat-cache: 3.0.4
     dev: true
 
+  /file-fetch/1.6.0:
+    resolution: {integrity: sha512-OW9dwp1/tLWklTUjiypJN5x2nBxam4b1/KcGIPgU9ZgAiwS2rWUwrSNu16+VSUqhy8gr1obAyfSS/Sxq7pSlOw==}
+    engines: {node: '>=10.0.0'}
+    dependencies:
+      get-stream: 6.0.1
+      mime-types: 2.1.30
+      node-fetch: 2.6.1
+      readable-error: 1.0.0
+    dev: false
+
   /file-type/11.1.0:
     resolution: {integrity: sha512-rM0UO7Qm9K7TWTtA6AShI/t7H5BPjDeGVDaNyg9BjHAj3PysKy7+8C8D137R88jnR3rFJZQB/tFgydl5sN5m7g==}
     engines: {node: '>=6'}
@@ -1787,6 +1799,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       pump: 3.0.0
+    dev: false
+
+  /get-stream/6.0.1:
+    resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
+    engines: {node: '>=10'}
     dev: false
 
   /getpass/0.1.7:
@@ -3014,6 +3031,12 @@ packages:
       parse-json: 5.2.0
       type-fest: 0.6.0
     dev: true
+
+  /readable-error/1.0.0:
+    resolution: {integrity: sha512-CLnInu5bUphmFiZ3pD/BC6+Cg4/BzK6ZMvWfd0b2QMzYo159Z/f/nVFQ9L5IeMrqUxy0EFsp3XJ+BRfLfY13IQ==}
+    dependencies:
+      readable-stream: 2.3.7
+    dev: false
 
   /readable-stream/2.3.7:
     resolution: {integrity: sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==}

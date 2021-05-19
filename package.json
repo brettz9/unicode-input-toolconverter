@@ -9,6 +9,7 @@
   "scripts": {
     "open": "open-cli http://localhost:8000/browser_action/ && npm start",
     "start": "echo 'Starting on http://localhost:8000/browser_action/' && node server",
+    "unihan": "node --trace-uncaught tools/unihan-import.js",
     "unihan-download": "node --trace-uncaught tools/unihan-import.js download",
     "unicode-charts-retrieve": "node tools/parseUnicodeCharts.js retrieve",
     "unicode-charts": "node tools/parseUnicodeCharts.js",
@@ -47,6 +48,7 @@
     "apple-system-profiler": "https://github.com/brettz9/apple-system-profiler#listDataTypes",
     "download": "^8.0.0",
     "extract-zip": "^2.0.1",
+    "file-fetch": "^1.6.0",
     "fs-extra": "^10.0.0",
     "jsdom": "^16.5.3",
     "node-fetch": "^2.6.1"
