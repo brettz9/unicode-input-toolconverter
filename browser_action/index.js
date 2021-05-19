@@ -123,7 +123,7 @@ Unicodecharref.initialize();
 * get out of the current window size and will go back to the last
 * window size; if use this, don't need code in "doOk" (besides
 * return true).
-**/
+*/
 // window.addEventListener('resize', function (e) {
 //   setPref('outerHeight', window.outerHeight);
 //   setPref('outerWidth', window.outerWidth);
