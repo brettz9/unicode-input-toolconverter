@@ -1,6 +1,6 @@
 import http from 'http';
 import statik from '@brettz9/node-static';
-import {systemProfiler as asp} from 'apple-system-profiler';
+import {systemProfiler} from 'apple-system-profiler';
 
 const file = new statik.Server({
   headers: {
@@ -21,7 +21,7 @@ http.createServer(function (req, res) {
     });
     (async () => {
       try {
-        const fontInfo = await asp({
+        const fontInfo = await systemProfiler({
           normalize: false,
           detailLevel: 'full',
           dataTypes: [

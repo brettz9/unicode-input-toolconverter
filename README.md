@@ -18,7 +18,8 @@ character references, etc.
 
 1. Create (reactive) **Web Components** (hyperHTML?) so that besides internal
     clarity, could reuse as pop-up script browser or character picker
-1. Improve slow **font retrieval** so can reenable
+1. Improve slow **font retrieval** so can reenable; need to do equivalent for
+    other OS' or at least disable for them
 1. Get **l10n** completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
 1. **Protocol handler**:
     <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
