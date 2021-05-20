@@ -1,4 +1,5 @@
-// hexstyleLwr:  return true; // Could use but better not to change for XML-compatibility
+// hexstyleLwr:  return true; // Could use but better not to
+//   change for XML-compatibility
 
 import {SimplePrefs} from '../../vendor/simple-prefs/dist/index.esm.js';
 

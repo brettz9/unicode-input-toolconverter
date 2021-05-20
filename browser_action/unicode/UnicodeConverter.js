@@ -369,7 +369,9 @@ export const getUnicodeConverter = () => {
             case 'u':
               hexChrs = (/^[a-fA-F\d]{6}|[a-fA-F\d]{4}/u).exec(toconvert.slice(i + 2));
               if (hexChrs) {
-                unicode += String.fromCodePoint(Number.parseInt(hexChrs[0], 16));
+                unicode += String.fromCodePoint(
+                  Number.parseInt(hexChrs[0], 16)
+                );
                 i += hexChrs[0].length; // 4 or 6
                 break;
               }
@@ -437,7 +439,8 @@ export const getUnicodeConverter = () => {
     }
 
     /**
-     * Obtain a Unicode character description for a given decimal-expressed code point.
+     * Obtain a Unicode character description for a given decimal-expressed
+     * code point.
      * @param {Integer} dec The code point of the description to obtain
      * @returns {string} The Unicode character description
      */
@@ -451,8 +454,10 @@ export const getUnicodeConverter = () => {
         statement = charrefunicodeDb.dbConn.createStatement(
           'SELECT `Name` FROM Unicode WHERE `Code_Point` = "' + hex + '"'
         );
-        while (statement.executeStep()) { // put in while in case expand to allow LIKE checks (e.g., to get a list
-          // of matching descriptions within a given code point range, etc.)
+        while (statement.executeStep()) {
+          // Put in `while` in case expand to allow LIKE checks (e.g., to get
+          //   a list of matching descriptions within a given code point range,
+          //   etc.)
           result = statement.getUTF8String(0);
           if (result === null) {
             return false;
@@ -493,7 +498,9 @@ export const getUnicodeConverter = () => {
       }
       // const table = 'Unihan'; // fix: determine by pull-down
       const nameDescVal = obj.value;
-      if ((obj.id.startsWith('searchk') && table === 'Unicode') || // Don't query the other databases here
+      if (
+        // Don't query the other databases here
+        (obj.id.startsWith('searchk') && table === 'Unicode') ||
         ((/^search[^k]/u).test(obj.id) && table === 'Unihan')
       ) {
         return;

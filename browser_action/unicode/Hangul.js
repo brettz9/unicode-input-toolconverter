@@ -1,8 +1,9 @@
 /* eslint-disable unicorn/prefer-string-slice -- Easier */
 // Function can also be used standalone
 /**
-* @namespace This contains methods for translating Korean Hangul/Jamo, since these
-*  are obtained programmatically and not through the Unicode (or Unihan) database
+* @namespace This contains methods for translating Korean Hangul/Jamo,
+*   since these are obtained programmatically and not through the Unicode (or
+*   Unihan) database
 */
 
 // Private static
@@ -32,14 +33,16 @@ const sBase = 0xAC00,
 
 /**
  * Break up a Hangul syllable into its Jamo components.
- * @param {Integer} syllableCode Decimal code point for Hangul syllable to decompose
- * @returns {Integer[]|string} An array of the numeric value of each component or
- *   string if unchanged
+ * @param {Integer} syllableCode Decimal code point for Hangul syllable
+ *   to decompose
+ * @returns {Integer[]|string} An array of the numeric value of each
+ *   component or string if unchanged
  */
 export function decomposeHangul (syllableCode) {
   const sIndex = syllableCode - sBase;
   if (sIndex < 0 || sIndex >= sCount) {
-    return String.fromCodePoint(syllableCode); // Return as single-item array instead or change "result" to String?
+    // Return as single-item array instead or change "result" to String?
+    return String.fromCodePoint(syllableCode);
   }
   const result = [];
   const l = lBase + Math.floor(sIndex / nCount);
@@ -71,7 +74,9 @@ export function composeHangul (source) {
       const vIndex = ch.codePointAt() - vBase;
       if (vIndex > 0 && vIndex < vCount) {
         // make syllable of form LV
-        last = String.fromCodePoint(sBase + (lIndex * vCount + vIndex) * tCount);
+        last = String.fromCodePoint(
+          sBase + (lIndex * vCount + vIndex) * tCount
+        );
         result[result.length - 1] = last; // reset last
         return; // discard ch
       }
@@ -99,8 +104,8 @@ export function composeHangul (source) {
  * Gets a Unicode character for the passed-in Hangul syllable name.
  * @param {string} name The name of the syllable to find
  * @author Brett Zamir (others adapted directly from Unicode)
- * @returns {string|boolean} False if invalid, or otherwise the Hangul character represented by
- *                            the supplied name
+ * @returns {string|boolean} False if invalid, or otherwise the Hangul
+ *   character represented by the supplied name
  */
 export function getHangulFromName (name) {
   // Turn indices into individual Jamo characters
@@ -137,7 +142,10 @@ export function getHangulFromName (name) {
     tIndex = JAMO_T_TABLE.indexOf(name.substr(ptr, 1));
     ptr += 1;
   }
-  if (lIndex === -1 || vIndex === -1 || (tIndex && ptr < name.length)) { // If an invalid Hangul syllable name was passed in
+  if (
+    lIndex === -1 || vIndex === -1 ||
+    (tIndex && ptr < name.length)
+  ) { // If an invalid Hangul syllable name was passed in
     return false;
   }
 
@@ -174,15 +182,23 @@ export function getJamoForIndex (index, type) {
   }
 }
 
+/**
+ * @param {PositiveInteger} syllableCode
+ * @returns {string}
+ */
 export function getHangulName (syllableCode) {
-  // Adapted from Hangul Character Names: https://unicode.org/reports/tr15/#Hangul
+  // Adapted from Hangul Character Names:
+  //  https://unicode.org/reports/tr15/#Hangul
 
-  // Following numbered items, with minor changes are from https://unicode.org/versions/Unicode5.0.0/ch03.pdf
+  // Following numbered items, with minor changes are from
+  //  https://unicode.org/versions/Unicode5.0.0/ch03.pdf
   // 1. Compute the index of the syllable:
   // SIndex = S - SBase
   const sIndex = syllableCode - sBase;
-  // 2. If SIndex is in the range (0 ? SIndex < SCount), then compute the components as follows:
-  // The operators �/� and �%� are as defined in Table A-3 in Appendix A, Notational Conventions.
+  // 2. If SIndex is in the range (0 ? SIndex < SCount), then compute the
+  //     components as follows:
+  // The operators /” and  “%” are as defined in Table A-3 in Appendix A,
+  //    Notational Conventions.
   if (sIndex < 0 && sIndex >= sCount) {
     throw new Error('Not a hangul syllable ' + syllableCode);
   }
@@ -196,8 +212,9 @@ export function getHangulName (syllableCode) {
   const t = sIndex % tCount;
   return JAMO_L_TABLE[l] + JAMO_V_TABLE[v] + JAMO_T_TABLE[t];
 
-  // 3. If T = TBase, then there is no trailing character, so replace S by the sequence
-  // L V. Otherwise, there is a trailing character, so replace S by the sequence L V T.
+  // 3. If T = TBase, then there is no trailing character, so replace S by the
+  //     sequence L V. Otherwise, there is a trailing character, so replace S
+  //     by the sequence L V T.
   // Example. Compute the components:
   // L = LBase + 17
   // V = VBase + 16
@@ -209,9 +226,9 @@ export function getHangulName (syllableCode) {
   if (t !== tBase) {
     arr.push(t);
   }
-  // The character names for Hangul syllables are derived from the decomposition by starting
-  // with the string hangul syllable, and appending the short name of each decomposition
-  // component in order.
+  // The character names for Hangul syllables are derived from the
+  //   decomposition by starting with the string hangul syllable, and
+  //   appending the short name of each decomposition component in order.
   for (let c = 0; c < arr.length; c++) {
     const jamoComponent = getJamo(arr[c]);
     cjkText += jamoComponent;

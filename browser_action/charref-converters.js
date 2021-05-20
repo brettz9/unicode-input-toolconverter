@@ -7,6 +7,10 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
   ({getPref} = getUnicodeDefaults());
 };
 
+/**
+ * @param {HTMLElement} el
+ * @returns {void}
+ */
 function classChange (el) {
   const activeButton = $("*[class='buttonactive']");
   activeButton.className = 'reconvert';
@@ -25,11 +29,15 @@ const CharrefConverterBridges = {
   },
   unicode2charrefDecval (unicodeToConvert, el, leaveSurrogates) {
     classChange(el);
-    return charrefunicodeConverter.unicode2charrefDecval(unicodeToConvert, leaveSurrogates);
+    return charrefunicodeConverter.unicode2charrefDecval(
+      unicodeToConvert, leaveSurrogates
+    );
   },
   unicode2charrefHexval (unicodeToConvert, el, leaveSurrogates, type) {
     classChange(el);
-    return charrefunicodeConverter.unicode2charrefHexval(unicodeToConvert, leaveSurrogates, type);
+    return charrefunicodeConverter.unicode2charrefHexval(
+      unicodeToConvert, leaveSurrogates, type
+    );
   },
   unicode2htmlentsval (unicodeToConvert, el) {
     classChange(el);
@@ -87,7 +95,9 @@ const CharrefConverterBridges = {
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.unicode2charrefDecval(toconvert, e.target, leaveSurrogates);
+    $('#converted').value = this.unicode2charrefDecval(
+      toconvert, e.target, leaveSurrogates
+    );
     return false;
   },
   unicode2charrefDecSurrogate (e) {
@@ -98,7 +108,9 @@ const CharrefConverterBridges = {
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.unicode2charrefHexval(toconvert, e.target, leaveSurrogates);
+    $('#converted').value = this.unicode2charrefHexval(
+      toconvert, e.target, leaveSurrogates
+    );
     return false;
   },
   unicode2charrefHexSurrogate (e) {
@@ -114,10 +126,12 @@ const CharrefConverterBridges = {
   },
   /**
    * Replace Unicode characters with their escaped description form.
-   * @param {string} toconvert The text whose Unicode characters will be replaced
-   * @param {XULElement} el The (button) element whose class will be changed to reflect that the action has been
-   *                            activated
-   * @returns {string} The passed-in string with Unicode replaced with description escape sequences
+   * @param {string} toconvert The text whose Unicode characters will be
+   *   replaced
+   * @param {XULElement} el The (button) element whose class will be changed to
+   *   reflect that the action has been activated
+   * @returns {string} The passed-in string with Unicode replaced with
+   *   description escape sequences
    */
   unicode2CharDescVal (toconvert, el) {
     classChange(el);
@@ -126,10 +140,11 @@ const CharrefConverterBridges = {
     return val;
   },
   /**
-   * Converts character description escape sequences within a string to Unicode characters.
+   * Converts character description escape sequences within a string to
+   * Unicode characters.
    * @param {string} toconvert The text to convert
-   * @param {XULElement} el The button element whose class should be dynamically changed (and others
-   *                            deactivated)
+   * @param {XULElement} el The button element whose class should be
+   *   dynamically changed (and others deactivated)
    * @returns {string} The converted-to-Unicode value
    */
   charDesc2UnicodeVal (toconvert, el) {
@@ -188,7 +203,9 @@ const CharrefConverterBridges = {
   // Fix: make option to avoid converting \r, etc. for javascript
   jsescape2unicodeval (toconvert, el, mode) {
     classChange(el);
-    const unicode = charrefunicodeConverter.jsescape2unicodeval(toconvert, mode);
+    const unicode = charrefunicodeConverter.jsescape2unicodeval(
+      toconvert, mode
+    );
     return unicode;
   },
   unicode2cssescapeval (toconvert, el) {
@@ -246,8 +263,15 @@ const CharrefConverterBridges = {
   }
 };
 
+/**
+ * @param {PlainObject} cfg
+ * @param {string} cfg.toconvert
+ * @param {string} cfg.targetid
+ * @throws {Error}
+ * @returns {string}
+ */
 function findBridgeForTargetID ({toconvert, targetid}) {
-  let out = false;
+  let out;
   switch (targetid) {
   case 'context-charrefunicode1':
     out = CharrefConverterBridges.charref2unicodeval(toconvert, $('#b1'));

@@ -61,7 +61,9 @@ export const buildChart = async function buildChart ({descripts} = {}) {
   };
 
   if (startCharInMiddleOfChart) {
-    current.startCharCode = Math.round(current.startCharCode - ((rows * cols) / 2));
+    current.startCharCode = Math.round(
+      current.startCharCode - ((rows * cols) / 2)
+    );
     resetCurrentStartCharCodeIfOutOfBounds();
   }
 
@@ -103,7 +105,9 @@ export const buildChart = async function buildChart ({descripts} = {}) {
   chartContainer.textContent = '';
 
   const types = {hexyes, decyes, unicodeyes, entyes};
-  const appliedFormats = ['decyes', 'hexyes', 'unicodeyes'].filter((t) => types[t]);
+  const appliedFormats = [
+    'decyes', 'hexyes', 'unicodeyes'
+  ].filter((t) => types[t]);
   const displayTypes = {
     hexyes: (k) => `&#${k};`,
     decyes (k) {

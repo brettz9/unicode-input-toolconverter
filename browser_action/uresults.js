@@ -52,9 +52,9 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
 };
 
 function getAndSetCodePointInfo (num, alink, underscore) {
-  const [
+  const {
     codePointStart, script, plane, privateuse, surrogate
-  ] = getScriptInfoForCodePoint(num, underscore);
+  } = getScriptInfoForCodePoint(num, underscore);
   alink.target = '_blank';
   alink.className = 'text-link';
   alink.href = `https://unicode.org/charts/PDF/U${codePointStart}.pdf`;

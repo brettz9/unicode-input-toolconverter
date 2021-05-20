@@ -1,5 +1,15 @@
 // Todo: Move to own library
-export default function insertIntoOrOverExisting ({textReceptacle, value, focusIn = true} = {}) {
+
+/**
+ * @param {PlainObject} [cfg={}]
+ * @param {HTMLTextAreaElement|HTMLInputElement} cfg.textReceptacle
+ * @param {string} cfg.value
+ * @param {boolean} [cfg.focusIn=true]
+ * @returns {void}
+ */
+export default function insertIntoOrOverExisting ({
+  textReceptacle, value, focusIn = true
+} = {}) {
   const {length: len} = textReceptacle.value;
   const start = textReceptacle.selectionStart;
   const end = textReceptacle.selectionEnd;

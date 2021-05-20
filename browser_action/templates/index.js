@@ -26,7 +26,9 @@ const indexTemplate = function ({_, fonts}) {
         class: 'tabpanel'
       }, [
         ['div', {class: 'hbox'}, [
-          ['div', {id: 'chart_selectchar_persist_vbox', class: 'vbox chartBox'}, [
+          ['div', {
+            id: 'chart_selectchar_persist_vbox', class: 'vbox chartBox'
+          }, [
             ['div', {id: 'chart_selectchar_persist'}, [
               ['fieldset', [
                 ['legend', [_('caption_chart_selectchar')]],
@@ -316,10 +318,12 @@ const indexTemplate = function ({_, fonts}) {
                                 '"')
                                 : value;
                               $('#insertText').style.fontFamily = val;
-                              // Form elements don't inherit, so find these manually
-                              $$('#chart_table button[name="unicode"]').forEach((button) => {
-                                button.style.fontFamily = val;
-                              });
+                              // Form elements don't inherit, so find these
+                              //   manually
+                              $$('#chart_table button[name="unicode"]')
+                                .forEach((button) => {
+                                  button.style.fontFamily = val;
+                                });
                             }
                           },
                           $on: {
@@ -511,7 +515,10 @@ const indexTemplate = function ({_, fonts}) {
                     }],
                     _('showAllDetailedView_label')
                   ]],
-                  ['div', {id: 'displayUnicodeDescContainer', class: 'displayUnicodeDescContainer hbox'}, [
+                  ['div', {
+                    id: 'displayUnicodeDescContainer',
+                    class: 'displayUnicodeDescContainer hbox'
+                  }, [
                     ['label', [
                       ['h3', [
                         _('textbox_displayUnicodeDesc')
@@ -613,7 +620,9 @@ const indexTemplate = function ({_, fonts}) {
         }
       }, [
         ['div', {id: 'conversionhbox', class: 'hbox'}, [
-          ['div', {id: 'conversion_buttons_persist', class: 'vbox conversionSection'}, [
+          ['div', {
+            id: 'conversion_buttons_persist', class: 'vbox conversionSection'
+          }, [
             ['h2', {class: 'dialogheader'}, [
               _('Reconvert_dialogheader_title')
             ]],
@@ -840,7 +849,8 @@ const indexTemplate = function ({_, fonts}) {
             hidden: true
           }, [
             ['label', {id: 'progress_stat'}, [
-              // Todo: ['progressmeter', {id: 'progress_element', mode: 'determined'}]
+              // Todo: ['progressmeter', {id: 'progress_element',
+              //   mode: 'determined'}]
             ]],
             ['button', {
               id: 'closeDownloadProgressBox',
@@ -864,12 +874,24 @@ const indexTemplate = function ({_, fonts}) {
                 Unicodecharref.setprefs(e);
               }
             }}, [
-              ['option', {id: 'mi_charttab', value: 'charts'}, [_('Charts_tab_label')]],
-              ['option', {id: 'mi_conversiontab', value: 'conversion'}, [_('Conversion_tab_label')]],
-              ['option', {id: 'mi_prefstab', value: 'prefs'}, [_('Prefs_tab_label')]],
-              ['option', {id: 'mi_dtdtab', value: 'DTDpanel'}, [_('DTD_tab_label')]],
-              ['option', {id: 'mi_notestab', value: 'notes'}, [_('Notes_tab_label')]],
-              ['option', {id: 'mi_abouttab', value: 'about'}, [_('About_tab_label')]]
+              ['option', {
+                id: 'mi_charttab', value: 'charts'
+              }, [_('Charts_tab_label')]],
+              ['option', {
+                id: 'mi_conversiontab', value: 'conversion'
+              }, [_('Conversion_tab_label')]],
+              ['option', {
+                id: 'mi_prefstab', value: 'prefs'
+              }, [_('Prefs_tab_label')]],
+              ['option', {
+                id: 'mi_dtdtab', value: 'DTDpanel'
+              }, [_('DTD_tab_label')]],
+              ['option', {
+                id: 'mi_notestab', value: 'notes'
+              }, [_('Notes_tab_label')]],
+              ['option', {
+                id: 'mi_abouttab', value: 'about'
+              }, [_('About_tab_label')]]
             ]]
           ]]
         ]],
@@ -1058,7 +1080,9 @@ const indexTemplate = function ({_, fonts}) {
                     ['option', {value: 'isonum'}, [_('ent_isonum')]]
                   ]],
                   ['optgroup', {label: 'Math Symbols'}, [
-                    ['option', {value: 'xhtml1-symbol'}, [_('ent_xhtml1_symbol')]],
+                    ['option', {
+                      value: 'xhtml1-symbol'
+                    }, [_('ent_xhtml1_symbol')]],
                     ['option', {value: 'isoamsa'}, [_('ent_isoamsa')]],
                     ['option', {value: 'isoamsb'}, [_('ent_isoamsb')]],
                     ['option', {value: 'isoamsc'}, [_('ent_isoamsc')]],
@@ -1092,9 +1116,15 @@ const indexTemplate = function ({_, fonts}) {
                   ]],
                   ['optgroup', {label: 'XHTML/HTML/XML'}, [
                     ['option', {value: 'xhtml1-lat1'}, [_('ent_xhtml1_lat1')]],
-                    ['option', {value: 'xhtml1-special'}, [_('ent_xhtml1_special')]],
-                    ['option', {value: 'xhtml1-symbol'}, [_('ent_xhtml1_symbol')]],
-                    ['option', {value: 'html5-uppercase'}, [_('ent_html5_uppercase')]],
+                    ['option', {
+                      value: 'xhtml1-special'
+                    }, [_('ent_xhtml1_special')]],
+                    ['option', {
+                      value: 'xhtml1-symbol'
+                    }, [_('ent_xhtml1_symbol')]],
+                    ['option', {
+                      value: 'html5-uppercase'
+                    }, [_('ent_html5_uppercase')]],
                     ['option', {value: 'predefined'}, [_('ent_predefined')]]
                   ]],
                   ['optgroup', {label: 'Other'}, [

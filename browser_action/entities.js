@@ -9,6 +9,10 @@ export const shareVars = ({charrefunicodeConverter: _uc}) => {
   ({getPref, setPref} = getUnicodeDefaults());
 };
 
+/**
+ * @param {Event} e
+ * @returns {Promise<void>}
+ */
 async function insertEntityFile (e) {
   const entFile = await fetch('../data/entities/' + e.target.value + '.ent');
   const data = await entFile.text();
@@ -17,6 +21,9 @@ async function insertEntityFile (e) {
   registerDTD();
 }
 
+/**
+ * @returns {Promise<void>}
+ */
 async function registerDTD () {
   // Cannot use back-reference inside char. class, so need to do twice
   const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/gu;
@@ -26,17 +33,22 @@ async function registerDTD () {
 
   let result;
 
-  // Reset in case charrefs or ents array deleted before and now want to go back to their original values.
+  // Reset in case charrefs or ents array deleted before and now want to
+  //  go back to their original values.
   if (await getPref('appendtohtmldtd')) {
     CharrefunicodeConsts.Entities = [...Unicodecharref.origents];
-    CharrefunicodeConsts.NumericCharacterReferences = [...Unicodecharref.origcharrefs];
+    CharrefunicodeConsts.NumericCharacterReferences = [
+      ...Unicodecharref.origcharrefs
+    ];
   } else {
     CharrefunicodeConsts.Entities = [];
     CharrefunicodeConsts.NumericCharacterReferences = [];
   }
 
-  charrefunicodeConverter.newents = [...Unicodecharref.orignewents]; // Start off blank in case items erased
-  charrefunicodeConverter.newcharrefs = [...Unicodecharref.orignewcharrefs]; // Start off blank in case items erased
+  // Start off blank in case items erased
+  charrefunicodeConverter.newents = [...Unicodecharref.orignewents];
+  // Start off blank in case items erased
+  charrefunicodeConverter.newcharrefs = [...Unicodecharref.orignewcharrefs];
 
   const decreg = /^(&#|#)?(\d\d+);?$/u;
   // const decreg2 = /^(&#|#)([0-9]);?$/u;
@@ -52,16 +64,20 @@ async function registerDTD () {
       m = m.replace(hexreg, '$2');
       m = Number.parseInt(m, 16);
     // Todo: Fix this so it can handle surrogate pairs
-    } else if (m.length > 1) { // If replacing with Unicode sequence longer than one character, assume only wish to convert from entity (not from Unicode)
+    // If replacing with Unicode sequence longer than one character, assume
+    //  only wish to convert from entity (not from Unicode)
+    } else if (m.length > 1) {
       addreg = false;
     } else {
       m = m.charCodeAt();
     }
     if (addreg) {
-      charrefunicodeConverter.shiftcount += 1; // Used to ensure apos or amp is detected in same position
+      // Used to ensure apos or amp is detected in same position
+      charrefunicodeConverter.shiftcount += 1;
       CharrefunicodeConsts.Entities.unshift(result[1]);
       CharrefunicodeConsts.NumericCharacterReferences.unshift(m);
-    } else { // For translating entities into two-char+ Unicode, or hex or dec
+    // For translating entities into two-char+ Unicode, or hex or dec
+    } else {
       charrefunicodeConverter.newents.push(result[1]);
       charrefunicodeConverter.newcharrefs.push(m); // Can be a string, etc.
     }

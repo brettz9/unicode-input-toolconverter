@@ -1,10 +1,21 @@
 /* eslint-disable no-empty-function -- Not yet finished */
 // TO-DO: make in-place context-menu-activated textbox conversions
-// To-do: move at least this file into module, and move as much of uresults.js too
-// Todo: Review `fromCharCode`, `charCodeAt`, and `charAt` on whether need modern substitutions
+// To-do: move at least this file into module, and move as much
+//   of uresults.js too
+// Todo: Review `fromCharCode`, `charCodeAt`, and `charAt` on whether
+//   need modern substitutions
 
 // Todo: Switch to IndexedDB
+
+/**
+ *
+ */
 class UnicodeDB {
+  /**
+   * @param {PlainObject} cfg
+   * @param {string} cfg.name
+   * @param {PositiveInteger} [cfg.version=1]
+   */
   constructor ({name, version = 1}) {
     Object.assign(this, {name, version});
     this.db = null;
@@ -19,6 +30,9 @@ class UnicodeDB {
   }
   /* eslint-enable class-methods-use-this -- Abstract */
 
+  /**
+   * @returns {void}
+   */
   connect () {
     // Todo: Complete
     const req = indexedDB.open(this.name, this.version);
@@ -36,32 +50,58 @@ class UnicodeDB {
   }
 }
 
+/**
+ *
+ */
 export class UnihanDatabase extends UnicodeDB {
 
 }
 
+/**
+ *
+ */
 export class UnicodeDatabase extends UnicodeDB {
+  /**
+   * @param {PlainObject} cfg
+   * @param {PositiveInteger} cfg.version
+   */
   constructor ({version} = {}) {
     super({name: 'unicode', version});
   }
 
+  /**
+   * @returns {void}
+   */
   upgradeneeded () {
     this.db.createObjectStore();
   }
 
   // Todo: Uncomment and implement
   /* eslint-disable class-methods-use-this -- Abstract */
+  /**
+   * @param {string} entity
+   * @param {PositiveInteger} currentStartCharCode
+   * @returns {void}
+   */
   getUnicodeDescription (entity, currentStartCharCode) {
     // const entityInParentheses = '(' + entity + ') ';
     // Todo: Should this not be padded to 6??
-    // const currentStartCharCodeUpperCaseHexPadded = currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
+    // const currentStartCharCodeUpperCaseHexPadded =
+    //   currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
     // Todo:
   }
   /* eslint-enable class-methods-use-this -- Abstract */
 }
 
 // Todo: Reimplement
+/**
+ *
+ */
 export class Jamo extends UnicodeDB {
+  /**
+   * @param {PlainObject} [cfg={}]
+   * @param {PositiveInteger} cfg.version
+   */
   constructor ({version} = {}) {
     super({name: 'jamo', version});
   }
@@ -71,10 +111,13 @@ export class Jamo extends UnicodeDB {
    * @returns {string}
    */
   getJamo (code) {
-    const codePt = typeof code === 'number' ? Math.round(code).toString(16) : code;
+    const codePt = typeof code === 'number'
+      ? Math.round(code).toString(16)
+      : code;
     try {
       const stmt = this.db.createStatement(
-        'SELECT `jamo_short_name` FROM Jamo WHERE `code_pt` = "' + codePt.toUpperCase() + '"'
+        'SELECT `jamo_short_name` FROM Jamo WHERE `code_pt` = "' +
+          codePt.toUpperCase() + '"'
       );
       stmt.executeStep();
       return stmt.getUTF8String(0);

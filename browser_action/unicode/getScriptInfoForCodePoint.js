@@ -1,4 +1,13 @@
 // Todo: Auto-generate this function
+
+/**
+ * @param {PositiveInteger} num
+ * @param {IntlDom} _
+ * @returns {{
+ * codePointStart: string, script: string, plane: PositiveInteger,
+ * privateuse: boolean, surrogate: boolean|string
+ * }}
+ */
 export default function getScriptInfoForCodePoint (num, _) {
   let privateuse = false, surrogate = false;
   let plane = num >= 0x10000 && num <= 0x1FFFF ? 1 : 0;
@@ -10,9 +19,12 @@ export default function getScriptInfoForCodePoint (num, _) {
     // _('ASCII_Punctuation') + _ ('comma') + ' ' +
     // _('ASCII_Digits') + _ ('comma') + ' ' +
     // _ ('Dollar_Sign');
-  // Could just replace with formal name of the category, "Latin" (as did below in other cases)
+  // Could just replace with formal name of the category, "Latin" (as did
+  //  below in other cases)
   } else if (num < 0x0100) {
-    codePointStart = '0080'; script = _('Latin_1_Supplement'); // + _ ('comma') + ' ' + _('Latin_1_Punctuation') + _ ('comma') + ' ' + _('Controls__C1') + _ ('comma') + ' ' + _('Yen__Pound_and_Cent');
+    // + _ ('comma') + ' ' + _('Latin_1_Punctuation') + _ ('comma') + ' ' +
+    //  _('Controls__C1') + _ ('comma') + ' ' + _('Yen__Pound_and_Cent');
+    codePointStart = '0080'; script = _('Latin_1_Supplement');
   } else if (num < 0x0180) {
     codePointStart = '0100'; script = _('Latin_Extended_A');
   } else if (num < 0x0250) {
@@ -24,7 +36,8 @@ export default function getScriptInfoForCodePoint (num, _) {
   } else if (num < 0x0370) {
     codePointStart = '0300'; script = _('Combining_Diacritical_Marks');
   } else if (num < 0x0400) {
-    codePointStart = '0370'; script = _('Greek'); // + _ ('comma') + ' ' + _('Coptic_in_Greek_block');
+    codePointStart = '0370';
+    script = _('Greek'); // + _ ('comma') + ' ' + _('Coptic_in_Greek_block');
   } else if (num < 0x0500) {
     codePointStart = '0400'; script = _('Cyrillic');
   } else if (num < 0x0530) {
@@ -86,7 +99,8 @@ export default function getScriptInfoForCodePoint (num, _) {
   } else if (num < 0x1400) {
     codePointStart = '13A0'; script = _('Cherokee');
   } else if (num < 0x1680) {
-    codePointStart = '1400'; script = _('Unified_Canadian_Aboriginal_Syllabics');
+    codePointStart = '1400';
+    script = _('Unified_Canadian_Aboriginal_Syllabics');
   } else if (num < 0x16A0) {
     codePointStart = '1680'; script = _('Ogham');
   } else if (num < 0x1700) {
@@ -134,21 +148,30 @@ export default function getScriptInfoForCodePoint (num, _) {
   } else if (num < 0x1DC0) {
     codePointStart = '1D80'; script = _('Phonetic_Extensions_Supplement');
   } else if (num < 0x1E00) {
-    codePointStart = '1DC0'; script = _('Combining_Diacritical_Marks_Supplement');
+    codePointStart = '1DC0';
+    script = _('Combining_Diacritical_Marks_Supplement');
   } else if (num < 0x1F00) {
     codePointStart = '1E00'; script = _('Latin_Extended_Additional');
   } else if (num < 0x2000) {
     codePointStart = '1F00'; script = _('Greek_Extended');
   } else if (num < 0x2070) {
-    codePointStart = '2000'; script = _('General_Punctuation'); // + _ ('comma') + ' ' + _('Layout_Controls') + _ ('comma') + ' ' + _('Invisible_Operators');
+    codePointStart = '2000';
+    script = _('General_Punctuation');
+    // + _ ('comma') + ' ' + _('Layout_Controls') + _ ('comma') + ' ' +
+    //   _('Invisible_Operators');
   } else if (num < 0x20A0) {
     codePointStart = '2070'; script = _('Super_and_Subscripts');
   } else if (num < 0x20D0) {
-    codePointStart = '20A0'; script = _('Currency_Symbols'); // + _ ('comma') + ' ' + _ ('Euro_Sign') + _ ('comma') + ' ';
+    codePointStart = '20A0';
+    // + _ ('comma') + ' ' + _ ('Euro_Sign') + _ ('comma') + ' ';
+    script = _('Currency_Symbols');
   } else if (num < 0x2100) {
-    codePointStart = '20D0'; script = _('Combining_Diacritical_Marks_for_Symbols');
+    codePointStart = '20D0';
+    script = _('Combining_Diacritical_Marks_for_Symbols');
   } else if (num < 0x2150) {
-    codePointStart = '2100'; script = _('Letterlike_Symbols'); // + _ ('comma') + ' ' + _ ('Mark_-historic--');
+    codePointStart = '2100';
+    // + _ ('comma') + ' ' + _ ('Mark_-historic--');
+    script = _('Letterlike_Symbols');
   } else if (num < 0x2190) {
     codePointStart = '2150'; script = _('Number_Forms');
   } else if (num < 0x2200) {
@@ -297,16 +320,20 @@ export default function getScriptInfoForCodePoint (num, _) {
     codePointStart = 'D7B0'; script = _('Hangul_Jamo_Extended_B');
   /* Begin Non Private Use High Surrogate */
   } else if (num < 0xDB80) {
-    codePointStart = 'D800'; script = _('High_Surrogates'); surrogate = _('High_Surrogate');
+    codePointStart = 'D800';
+    script = _('High_Surrogates'); surrogate = _('High_Surrogate');
   /* End Non Private Use High Surrogate */
   /* Begin Private Use High Surrogate */
   /* **********NOTE:  This one has no PDF   */
   } else if (num < 0xDC00) {
-    codePointStart = 'DB80'; script = _('High_Private_Use_Surrogates'); surrogate = _('High_Private_Use_Surrogate');
+    codePointStart = 'DB80';
+    script = _('High_Private_Use_Surrogates');
+    surrogate = _('High_Private_Use_Surrogate');
   /* End Private Use High Surrogate */
   /* Begin Low Surrogate */
   } else if (num < 0xE000) {
-    codePointStart = 'DC00'; script = _('Low_Surrogates'); surrogate = _('Low_Surrogate');
+    codePointStart = 'DC00';
+    script = _('Low_Surrogates'); surrogate = _('Low_Surrogate');
   /* End Low Surrogate */
   /* Begin Private Use */
   } else if (num < 0xF900) {
@@ -314,11 +341,17 @@ export default function getScriptInfoForCodePoint (num, _) {
   /* End Private Use */
   } else if (num < 0xFB00) {
     codePointStart = 'F900'; script = _('CJK_Compatibility_Ideographs');
-  // else if (num < 0xFB50) { codePointStart = 'FB00'; script = _('Latin_Ligatures') + _ ('comma') + ' ' + _('Armenian_Ligatures') + _ ('comma') + ' ' + _('Hebrew_Presentation_Forms');
+  // else if (num < 0xFB50) { codePointStart = 'FB00';
+  // script = _('Latin_Ligatures') + _ ('comma') + ' ' +
+  //  _('Armenian_Ligatures') + _ ('comma') + ' ' +
+  //  _('Hebrew_Presentation_Forms');
   } else if (num < 0xFB50) {
     codePointStart = 'FB00'; script = _('Alphabetic_Presentation_Forms');
   } else if (num < 0xFE00) {
-    codePointStart = 'FB50'; script = _('Arabic_Presentation_Forms_A'); // + _ ('comma') + ' ' + _('Rial_Sign') + _ ('comma') + ' ' + _('Reserved_range');
+    codePointStart = 'FB50';
+    // + _ ('comma') + ' ' + _('Rial_Sign') + _ ('comma') + ' ' +
+    //  _('Reserved_range');
+    script = _('Arabic_Presentation_Forms_A');
   } else if (num < 0xFE10) {
     codePointStart = 'FE00'; script = _('Variation_Selectors');
   } else if (num < 0xFE20) {
@@ -331,7 +364,12 @@ export default function getScriptInfoForCodePoint (num, _) {
     codePointStart = 'FE50'; script = _('Small_Form_Variants');
   } else if (num < 0xFF00) {
     codePointStart = 'FE70'; script = _('Arabic_Presentation_Forms_B');
-  // else if (num < 0xFFF0) { codePointStart = 'FF00'; script = _('Fullwidth_ASCII_Punctuation') + _ ('comma') + ' ' + _('Fullwidth_ASCII_Digits') + _ ('comma') + ' ' + _('Fullwidth_Currency_Symbols') + _ ('comma') + ' ' + _('Fullwidth_Latin_Letters') + _ ('comma') + ' ' + _('Halfwidth_Katakana') + _ ('comma') + ' ' + _('Halfwidth_Jamo'); }
+  // else if (num < 0xFFF0) { codePointStart = 'FF00';
+  // script = _('Fullwidth_ASCII_Punctuation') + _ ('comma') + ' ' +
+  // _('Fullwidth_ASCII_Digits') + _ ('comma') + ' ' +
+  //  _('Fullwidth_Currency_Symbols') + _ ('comma') + ' ' +
+  // _('Fullwidth_Latin_Letters') + _ ('comma') + ' ' +
+  // _('Halfwidth_Katakana') + _ ('comma') + ' ' + _('Halfwidth_Jamo'); }
   } else if (num < 0xFFF0) {
     codePointStart = 'FF00';
     script = _('Halfwidth_and_Fullwidth_Forms');
@@ -383,7 +421,8 @@ export default function getScriptInfoForCodePoint (num, _) {
     /*
   */
   } else if (num < 0x10000) {
-    codePointStart = 'FFF0'; script = _('Specials'); // + _ ('comma') + ' ' + _('At_End_of_BMP');
+    codePointStart = 'FFF0';
+    script = _('Specials'); // + _ ('comma') + ' ' + _('At_End_of_BMP');
   } else if (num < 0x10080) {
     codePointStart = '10000'; script = _('Linear_B_Syllabary');
   } else if (num < 0x10100) {
@@ -473,7 +512,8 @@ export default function getScriptInfoForCodePoint (num, _) {
   } else if (num < 0x1F300) {
     codePointStart = '1F200'; script = _('Enclosed_Ideographic_Supplement');
   } else if (num < 0x1F600) {
-    codePointStart = '1F300'; script = _('Miscellaneous_Symbols_And_Pictographs');
+    codePointStart = '1F300';
+    script = _('Miscellaneous_Symbols_And_Pictographs');
   } else if (num < 0x1F680) {
     codePointStart = '1F600'; script = _('Emoticons');
   } else if (num < 0x1F700) {
@@ -495,79 +535,108 @@ export default function getScriptInfoForCodePoint (num, _) {
     codePointStart = '2B740'; script = _('CJK_Ideographs_Ext__D'); plane = 2;
   /* End CJK Ideograph Extension D */
   } else if (num < 0x2FA1F) {
-    codePointStart = '2F800'; script = _('CJK_Compatibility_Ideographs_Supplement'); plane = 2;
+    codePointStart = '2F800';
+    script = _('CJK_Compatibility_Ideographs_Supplement'); plane = 2;
   /* End Compatibility Ideographs Supplement */
   } else if (num < 0x2FF80) {
-    codePointStart = '2FF80'; script = _('plane_numNocolon', {number: 2}); plane = 2;
+    codePointStart = '2FF80';
+    script = _('plane_numNocolon', {number: 2}); plane = 2;
   } else if (num < 0x30000) {
-    codePointStart = '2FF80'; script = _('At_End_of_Plane_2'); plane = 2;
+    codePointStart = '2FF80';
+    script = _('At_End_of_Plane_2'); plane = 2;
   } else if (num < 0x3FF80) {
-    codePointStart = '3FF80'; script = _('plane_numNocolon', {number: 3}); plane = 3;
+    codePointStart = '3FF80';
+    script = _('plane_numNocolon', {number: 3}); plane = 3;
   } else if (num < 0x40000) {
     codePointStart = '3FF80'; script = _('At_End_of_Plane_3'); plane = 3;
   } else if (num < 0x4FF80) {
-    codePointStart = '4FF80'; script = _('plane_numNocolon', {number: 4}); plane = 4;
+    codePointStart = '4FF80';
+    script = _('plane_numNocolon', {number: 4}); plane = 4;
   } else if (num < 0x50000) {
     codePointStart = '4FF80'; script = _('At_End_of_Plane_4'); plane = 4;
   } else if (num < 0x5FF80) {
-    codePointStart = '5FF80'; script = _('plane_numNocolon', {number: 5}); plane = 5;
+    codePointStart = '5FF80';
+    script = _('plane_numNocolon', {number: 5}); plane = 5;
   } else if (num < 0x60000) {
-    codePointStart = '5FF80'; script = _('At_End_of_Plane_5'); plane = 5;
+    codePointStart = '5FF80';
+    script = _('At_End_of_Plane_5'); plane = 5;
   } else if (num < 0x6FF80) {
-    codePointStart = '6FF80'; script = _('plane_numNocolon', {number: 6}); plane = 6;
+    codePointStart = '6FF80';
+    script = _('plane_numNocolon', {number: 6}); plane = 6;
   } else if (num < 0x70000) {
-    codePointStart = '6FF80'; script = _('At_End_of_Plane_6'); plane = 6;
+    codePointStart = '6FF80';
+    script = _('At_End_of_Plane_6'); plane = 6;
   } else if (num < 0x7FF80) {
-    codePointStart = '7FF80'; script = _('plane_numNocolon', {number: 7}); plane = 7;
+    codePointStart = '7FF80';
+    script = _('plane_numNocolon', {number: 7}); plane = 7;
   } else if (num < 0x80000) {
-    codePointStart = '7FF80'; script = _('At_End_of_Plane_7'); plane = 7;
+    codePointStart = '7FF80';
+    script = _('At_End_of_Plane_7'); plane = 7;
   } else if (num < 0x8FF80) {
-    codePointStart = '8FF80'; script = _('plane_numNocolon', {number: 8}); plane = 8;
+    codePointStart = '8FF80';
+    script = _('plane_numNocolon', {number: 8}); plane = 8;
   } else if (num < 0x90000) {
-    codePointStart = '8FF80'; script = _('At_End_of_Plane_8'); plane = 8;
+    codePointStart = '8FF80';
+    script = _('At_End_of_Plane_8'); plane = 8;
   } else if (num < 0x9FF80) {
-    codePointStart = '9FF80'; script = _('plane_numNocolon', {number: 9}); plane = 9;
+    codePointStart = '9FF80';
+    script = _('plane_numNocolon', {number: 9}); plane = 9;
   } else if (num < 0xA0000) {
-    codePointStart = '9FF80'; script = _('At_End_of_Plane_9'); plane = 9;
+    codePointStart = '9FF80';
+    script = _('At_End_of_Plane_9'); plane = 9;
   } else if (num < 0xAFF80) {
-    codePointStart = 'AFF80'; script = _('plane_numNocolon', {number: 10}); plane = 10;
+    codePointStart = 'AFF80';
+    script = _('plane_numNocolon', {number: 10}); plane = 10;
   } else if (num < 0xB0000) {
-    codePointStart = 'AFF80'; script = _('At_End_of_Plane_10'); plane = 10;
+    codePointStart = 'AFF80';
+    script = _('At_End_of_Plane_10'); plane = 10;
   } else if (num < 0xBFF80) {
-    codePointStart = 'BFF80'; script = _('plane_numNocolon', {number: 11}); plane = 11;
+    codePointStart = 'BFF80';
+    script = _('plane_numNocolon', {number: 11}); plane = 11;
   } else if (num < 0xC0000) {
-    codePointStart = 'BFF80'; script = _('At_End_of_Plane_11'); plane = 11;
+    codePointStart = 'BFF80';
+    script = _('At_End_of_Plane_11'); plane = 11;
   } else if (num < 0xCFF80) {
-    codePointStart = 'CFF80'; script = _('plane_numNocolon', {number: 12}); plane = 12;
+    codePointStart = 'CFF80';
+    script = _('plane_numNocolon', {number: 12}); plane = 12;
   } else if (num < 0xD0000) {
-    codePointStart = 'CFF80'; script = _('At_End_of_Plane_12'); plane = 12;
+    codePointStart = 'CFF80';
+    script = _('At_End_of_Plane_12'); plane = 12;
   } else if (num < 0xDFF80) {
-    codePointStart = 'DFF80'; script = _('plane_numNocolon', {number: 13}); plane = 13;
+    codePointStart = 'DFF80';
+    script = _('plane_numNocolon', {number: 13}); plane = 13;
   } else if (num < 0xE0000) {
     codePointStart = 'DFF80'; script = _('At_End_of_Plane_13'); plane = 13;
   } else if (num < 0xE0100) {
     codePointStart = 'E0000'; script = _('Tags'); plane = 13;
   } else if (num < 0xEFF80) {
-    codePointStart = 'E0100'; script = _('Variation_Selectors_Supplement'); plane = 13;
-  // else if (num < 0xEFF80) { codePointStart = 'EFF80'; script = _('plane_numNocolon', {number: 14}); plane=14;}
+    codePointStart = 'E0100';
+    script = _('Variation_Selectors_Supplement');
+    plane = 13;
+  // else if (num < 0xEFF80) { codePointStart = 'EFF80';
+  // script = _('plane_numNocolon', {number: 14}); plane=14;}
   } else if (num < 0xF0000) {
     codePointStart = 'EFF80'; script = _('At_End_of_Plane_14'); plane = 14;
   /* Begin Plane 15 Private Use */
   } else if (num < 0xFFF80) {
-    codePointStart = 'FFF80'; script = _('plane_numNocolon', {number: 15}) + _('slash') +
-          _('Supplementary_Private_Use_Area_A'); plane = 15; privateuse = true;
+    codePointStart = 'FFF80';
+    script = _('plane_numNocolon', {number: 15}) + _('slash') +
+      _('Supplementary_Private_Use_Area_A');
+    plane = 15;
+    privateuse = true;
   } else if (num < 0x100000) {
     codePointStart = 'FFF80'; script = _('At_End_of_Plane_15') + _('slash') +
           _('Supplementary_Private_Use_Area_A'); plane = 15; privateuse = true;
   /* End Plane 15 Private Use */
   /* Begin Plane 16 Private Use */
   } else if (num <= 0x10FF80) {
-    codePointStart = '10FF80'; script = _('plane_numNocolon', {number: 16}) + _('slash') +
+    codePointStart = '10FF80';
+    script = _('plane_numNocolon', {number: 16}) + _('slash') +
           _('Supplementary_Private_Use_Area_B'); plane = 16; privateuse = true;
   } else if (num <= 0x10FFFF) {
     codePointStart = '10FF80'; script = _('At_End_of_Plane_16') + _('slash') +
           _('Supplementary_Private_Use_Area_B'); plane = 16; privateuse = true;
   }
   /* End Plane 16 Private Use */
-  return [codePointStart, script, plane, privateuse, surrogate];
+  return {codePointStart, script, plane, privateuse, surrogate};
 }

@@ -8,10 +8,13 @@ import jsonExtra from '../vendor/json-6/dist/index.mjs';
 
 import {makeTabBox} from './templatesElementCustomization/widgets.js';
 import {code, link} from './templateUtils/elements.js';
-import addMillerColumnPlugin from '../vendor/miller-columns/dist/index-es.min.js';
+import addMillerColumnPlugin from
+  '../vendor/miller-columns/dist/index-es.min.js';
 import getBuildChart, {buildChart} from './build-chart.js';
-import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
-import {getUnicodeDefaults, setPrefDefaultVars} from './preferences/prefDefaults.js';
+import insertIntoOrOverExisting from
+  './templatesElementCustomization/insertIntoOrOverExisting.js';
+import {getUnicodeDefaults, setPrefDefaultVars} from
+  './preferences/prefDefaults.js';
 import {getUnicodeConverter} from './unicode/UnicodeConverter.js';
 import Unicodecharref, {shareVars as uresultsShareVars} from './uresults.js';
 import {insertEntityFile, shareVars as entityShareVars} from './entities.js';
@@ -28,12 +31,17 @@ setJSONExtra(jsonExtra);
 // SETUP
 // Todo: Support hash searchParams / streamline with `pushState`
 const lang = new URL(location).searchParams.get('lang');
-const locales = lang ? [lang] : [...navigator.languages]; // ['sv-SE']; // ['pt-BR']; // ['hu-HU'];
+
+// ['sv-SE']; // ['pt-BR']; // ['hu-HU'];
+const locales = lang ? [lang] : [...navigator.languages];
+
 const engPos = locales.indexOf('en-US');
 if (engPos > -1) {
   locales[engPos] = 'en-US'; // Optimize for English (and avoid console errors)
 }
-if (!locales.includes('en-US')) { // Ensure there is at least one working language!
+
+// Ensure there is at least one working language!
+if (!locales.includes('en-US')) {
   locales.push('en-US');
 }
 
@@ -93,7 +101,8 @@ jQuery('div.miller-columns').millerColumns({
   */
   delay: 100, // Shorten delay until we can figure out how to fix jumpiness
   scroll () {
-    // Due to an overflow within an overflow, we have to also force this scroll left
+    // Due to an overflow within an overflow, we have to also force
+    //   this scroll left
     $('#chart_selectchar_persist').scrollLeft = 2000;
   },
   async current ($item, $cols) {
@@ -114,6 +123,10 @@ jQuery('div.miller-columns').millerColumns({
   }
 });
 
+/**
+ * @param {Event} e
+ * @returns {void}
+ */
 function encodingListener (e) {
   charrefClassChange(this);
   try {

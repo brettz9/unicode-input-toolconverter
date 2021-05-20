@@ -34,7 +34,8 @@ const buildChartTemplate = function ({
           return '';
         }
 
-        const charRefIdx = CharrefunicodeConsts.NumericCharacterReferences.indexOf(current.startCharCode);
+        const charRefIdx = CharrefunicodeConsts.NumericCharacterReferences
+          .indexOf(current.startCharCode);
         const hasEntity = charRefIdx > -1;
         const entity = hasEntity
           // If recognized multiple char ent. (won't convert these to decimal)
@@ -59,7 +60,9 @@ const buildChartTemplate = function ({
             mouseover: (function (_entity, _current) {
               return function () {
                 if (!this.$noGetDescripts) {
-                  charrefunicodeDb.getUnicodeDescription(_entity, _current.startCharCode);
+                  charrefunicodeDb.getUnicodeDescription(
+                    _entity, _current.startCharCode
+                  );
                 }
               };
             })(entity, current),

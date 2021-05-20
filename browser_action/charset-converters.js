@@ -13,12 +13,19 @@ export const convertEncoding = (out) => {
   const Components = 'todo';
   const Cc = Components.classes,
     Ci = Components.interfaces;
-  const cnv = Cc['@mozilla.org/intl/scriptableunicodeconverter'].createInstance(Ci.nsIScriptableUnicodeConverter);
+  const cnv = Cc[
+    '@mozilla.org/intl/scriptableunicodeconverter'
+  ].createInstance(Ci.nsIScriptableUnicodeConverter);
   cnv.charset = from; // The charset to use
   const os = cnv.convertToInputStream(toconvert);
 
-  const replacementChar = Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER; // Fix: could customize
-  const is = Cc['@mozilla.org/intl/converter-input-stream;1'].createInstance(Ci.nsIConverterInputStream);
+  // Fix: could customize
+  const replacementChar = Ci
+    .nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER;
+
+  const is = Cc[
+    '@mozilla.org/intl/converter-input-stream;1'
+  ].createInstance(Ci.nsIConverterInputStream);
   is.init(os, to, 1024, replacementChar);
   const str = {};
   let output = '';
@@ -28,7 +35,9 @@ export const convertEncoding = (out) => {
   os.close();
   $('#converted').value = output;
   /*
-  const cv = Cc['@mozilla.org/intl/scriptableunicodeconverter'].getService(Ci.nsIScriptableUnicodeConverter);
+  const cv = Cc[
+    '@mozilla.org/intl/scriptableunicodeconverter'
+  ].getService(Ci.nsIScriptableUnicodeConverter);
   cv.charset = to;
   const unicode_str = cv.ConvertToUnicode(toconvert);
   cv.charset = from;
