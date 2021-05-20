@@ -50,17 +50,29 @@ export const getUnicodeConverter = () => {
      * @returns {string}
      */
     charref2htmlentsval (out) {
-      const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
+      // If true, should allow conversion to &apos;
+      const xhtmlentmode = getPref('xhtmlentmode');
 
       out = out.replace(decim, (match, match1) => {
-        const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(Number.parseInt(match1));
-        if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
+        const matched = CharrefunicodeConsts
+          .NumericCharacterReferences.indexOf(Number.parseInt(match1));
+        if (
+          matched !== -1 &&
+          (matched !== (98 + this.shiftcount) || xhtmlentmode)
+        ) {
           return '&' + CharrefunicodeConsts.Entities[matched] + ';';
         }
         return match;
       }).replace(hexadec, (match, match1) => {
-        const matched = CharrefunicodeConsts.NumericCharacterReferences.indexOf(Number.parseInt('0x' + match1, 16));
-        if (matched !== -1 && (matched !== (98 + this.shiftcount) || xhtmlentmode)) {
+        const matched = CharrefunicodeConsts
+          .NumericCharacterReferences.indexOf(
+            Number.parseInt('0x' + match1, 16)
+          );
+        if (
+          matched !== -1 && (
+            matched !== (98 + this.shiftcount) || xhtmlentmode
+          )
+        ) {
           return '&' + CharrefunicodeConsts.Entities[matched] + ';';
         }
         return match;
@@ -78,11 +90,16 @@ export const getUnicodeConverter = () => {
       for (let i = 0; i < unicodeToConvert.length; i++) {
         let temp = unicodeToConvert.charCodeAt(i);
         if (!leaveSurrogates && temp >= 0xD800 && temp < 0xF900) { // surrogate
-          temp = ((temp - 0xD800) * 0x400) + (unicodeToConvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
-          // Could do test on temp.isNan()  (e.g., if trying to convert a surrogate by itself in regular (non-surrogate converting) mode)
+          temp = ((temp - 0xD800) * 0x400) +
+            (unicodeToConvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
+          // Could do test on temp.isNan()  (e.g., if trying to convert
+          //  a surrogate by itself in regular (non-surrogate converting) mode)
           out += '&#' + temp + ';';
           i += 1; // Skip the next surrogate
-        } else if (temp >= 128 || getPref('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
+
+        // Replace this 'if' condition and remove the 'else' if also
+        //  want ascii
+        } else if (temp >= 128 || getPref('asciiLt128')) {
           out += '&#' + temp + ';';
         } else {
           out += unicodeToConvert.charAt(i);
@@ -101,7 +118,8 @@ export const getUnicodeConverter = () => {
       // alert(unicodeToConvert + '::' + leaveSurrogates + '::' + type);
       let out = '';
       let xstyle, beginEscape, endEscape, cssUnambiguous;
-      // Fix: offer a U+.... option (similar to 'php' or 'javascript' depending on if length is desired as 4 or 6)
+      // Fix: offer a U+.... option (similar to 'php' or 'javascript'
+      //   depending on if length is desired as 4 or 6)
       if (type === 'javascript' || type === 'php') {
         xstyle = '';
         beginEscape = '\\u';
@@ -126,7 +144,8 @@ export const getUnicodeConverter = () => {
         let hexletters;
         let temp = unicodeToConvert.charCodeAt(i);
         if (!leaveSurrogates && temp >= 0xD800 && temp < 0xF900) { // surrogate
-          temp = ((temp - 0xD800) * 0x400) + (unicodeToConvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
+          temp = ((temp - 0xD800) * 0x400) +
+            (unicodeToConvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
           hexletters = temp.toString(16);
           i += 1; // Skip the next surrogate
           if (getPref('hexLettersUpper')) {
@@ -136,14 +155,18 @@ export const getUnicodeConverter = () => {
             hexletters = hexletters.padStart(6, '0');
           }
           out += beginEscape + xstyle + hexletters + endEscape;
-        } else if (temp >= 128 || getPref('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
+        // Replace this 'if' condition and remove the 'else' if also want ascii
+        } else if (temp >= 128 || getPref('asciiLt128')) {
           hexletters = temp.toString(16);
           if (getPref('hexLettersUpper')) {
             hexletters = hexletters.toUpperCase();
           }
           if (type === 'javascript' && hexletters.length < 4) {
             hexletters = hexletters.padStart(4, '0');
-          } else if ((type === 'php' || cssUnambiguous) && hexletters.length < 6) {
+          } else if (
+            (type === 'php' || cssUnambiguous) &&
+            hexletters.length < 6
+          ) {
             hexletters = hexletters.padStart(6, '0');
           }
           out += beginEscape + xstyle + hexletters + endEscape;
@@ -174,19 +197,30 @@ export const getUnicodeConverter = () => {
       }
 
       for (let i = 0; i < this.newents.length; i++) {
-        const regex = new RegExp(pregQuote(this.newcharrefs[i]), 'gum'); // Escaping necessary for custom entities added via the DTD
-        unicodeToConvert = unicodeToConvert.replace(regex, '&' + this.newents[i] + ';');
+        const regex = new RegExp(
+          pregQuote(this.newcharrefs[i]), 'gum'
+        ); // Escaping necessary for custom entities added via the DTD
+        unicodeToConvert = unicodeToConvert.replace(
+          regex, '&' + this.newents[i] + ';'
+        );
       }
 
       let out = '';
-      const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
-      const ampkeep = getPref('ampkeep'); // If true, will not convert '&' to '&amp;'
+      // If true, should allow conversion to &apos;
+      const xhtmlentmode = getPref('xhtmlentmode');
+      // If true, will not convert '&' to '&amp;'
+      const ampkeep = getPref('ampkeep');
 
       for (let i = 0; i < unicodeToConvert.length; i++) {
         const charcodeati = unicodeToConvert.charCodeAt(i);
-        const tempcharref = CharrefunicodeConsts.NumericCharacterReferences.indexOf(charcodeati);
+        const tempcharref = CharrefunicodeConsts
+          .NumericCharacterReferences.indexOf(charcodeati);
 
-        out += tempcharref !== -1 && (tempcharref !== (98 + this.shiftcount) || xhtmlentmode) && (tempcharref !== (99 + this.shiftcount) || !ampkeep) ? '&' + CharrefunicodeConsts.Entities[tempcharref] + ';' : unicodeToConvert.charAt(i);
+        out += tempcharref !== -1 &&
+          (tempcharref !== (98 + this.shiftcount) || xhtmlentmode) &&
+          (tempcharref !== (99 + this.shiftcount) || !ampkeep)
+          ? '&' + CharrefunicodeConsts.Entities[tempcharref] + ';'
+          : unicodeToConvert.charAt(i);
       }
       return out;
     }
@@ -196,16 +230,22 @@ export const getUnicodeConverter = () => {
      * @returns {string}
      */
     htmlents2charrefDecval (out) {
-      const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+      // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+      const xmlentkeep = getPref('xmlentkeep');
       return out.replace(htmlent, (match, match1) => {
         if (!xmlentkeep ||
           (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
             match1 !== 'gt' && match1 !== 'amp')) {
-          if (this.newents.includes(match1)) { // If recognized multiple char ent. (won't convert these to decimal)
+          // If recognized multiple char ent. (won't convert these to decimal)
+          if (this.newents.includes(match1)) {
             return this.newcharrefs[this.newents.indexOf(match1)];
           }
-          if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
-            return '&#' + CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)] + ';';
+          // If recognized single char. ent.
+          if (CharrefunicodeConsts.Entities.includes(match1)) {
+            return '&#' + CharrefunicodeConsts
+              .NumericCharacterReferences[
+                CharrefunicodeConsts.Entities.indexOf(match1)
+              ] + ';';
           }
           // If unrecognized
           return '&' + match1 + ';';
@@ -224,16 +264,27 @@ export const getUnicodeConverter = () => {
       /* if (!getPref('hexstyleLwr')) {
         xstyle = 'X';
       } */
-      const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+      // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+      const xmlentkeep = getPref('xmlentkeep');
       return out.replace(htmlent, (match, match1) => {
-        if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
-          const b = CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)];
+        if (
+          !xmlentkeep ||
+          (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
+            match1 !== 'gt' && match1 !== 'amp')
+        ) {
+          const b = CharrefunicodeConsts.NumericCharacterReferences[
+            CharrefunicodeConsts.Entities.indexOf(match1)
+          ];
           const c = this.newents.indexOf(match1);
 
-          if (c !== -1) { // If recognized multiple char. ent. (won't convert these to hexadecimal)
+          // If recognized multiple char. ent. (won't convert these to
+          //   hexadecimal)
+          if (c !== -1) {
             return this.newcharrefs[c];
           }
-          if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
+
+          // If recognized single char. ent.
+          if (CharrefunicodeConsts.Entities.includes(match1)) {
             let hexletters = b.toString(16);
             if (getPref('hexLettersUpper')) {
               hexletters = hexletters.toUpperCase();
@@ -252,15 +303,24 @@ export const getUnicodeConverter = () => {
      * @returns {string}
      */
     htmlents2unicodeval (out) {
-      const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+      // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
+      const xmlentkeep = getPref('xmlentkeep');
       return out.replace(htmlent, (match, match1) => {
-        if (!xmlentkeep || (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' && match1 !== 'gt' && match1 !== 'amp')) {
-          const b = CharrefunicodeConsts.NumericCharacterReferences[CharrefunicodeConsts.Entities.indexOf(match1)];
+        if (
+          !xmlentkeep ||
+          (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
+            match1 !== 'gt' && match1 !== 'amp')
+        ) {
+          const b = CharrefunicodeConsts.NumericCharacterReferences[
+            CharrefunicodeConsts.Entities.indexOf(match1)
+          ];
 
-          if (this.newents.includes(match1)) { // If recognized multiple char ent.
+          // If recognized multiple char ent.
+          if (this.newents.includes(match1)) {
             return this.newcharrefs[this.newents.indexOf(match1)];
           }
-          if (CharrefunicodeConsts.Entities.includes(match1)) { // If recognized single char. ent.
+          // If recognized single char. ent.
+          if (CharrefunicodeConsts.Entities.includes(match1)) {
             return String.fromCodePoint(b);
           }
           // If unrecognized
@@ -309,8 +369,10 @@ export const getUnicodeConverter = () => {
       for (let i = 0; i < toconvert.length; i++) {
         let temp = toconvert.charCodeAt(i);
         if (temp >= 0xD800 && temp < 0xF900) { // surrogate
-          temp = ((temp - 0xD800) * 0x400) + (toconvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
-          // Could do test on temp.isNan()  (e.g., if trying to convert a surrogate by itself in regular (non-surrogate converting) mode)
+          temp = ((temp - 0xD800) * 0x400) +
+            (toconvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
+          // Could do test on temp.isNan()  (e.g., if trying to convert
+          //  a surrogate by itself in regular (non-surrogate converting) mode)
           charDesc = this.getCharDescForCodePoint(temp);
           if (!charDesc) {
             val += toconvert.charAt(i) + toconvert.charAt(i + 1);
@@ -326,7 +388,8 @@ export const getUnicodeConverter = () => {
           } catch (e) {
             val += toconvert.charAt(i);
           }
-        } else if (temp >= 128 || getPref('asciiLt128')) { /* replace this 'if' condition and remove the 'else' if also want ascii */
+        // Replace this 'if' condition and remove the 'else' if also want ascii
+        } else if (temp >= 128 || getPref('asciiLt128')) {
           charDesc = this.getCharDescForCodePoint(temp);
           if (!charDesc) { // Skip if no description in database
             val += toconvert.charAt(i);
@@ -347,7 +410,9 @@ export const getUnicodeConverter = () => {
     charDesc2UnicodeVal (toconvert) {
       return toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
         const unicodeVal = this.lookupUnicodeValueByCharName(n1);
-        return unicodeVal ? String.fromCodePoint(unicodeVal) : '\uFFFD'; // Replacement character if not found?
+        return unicodeVal
+          ? String.fromCodePoint(unicodeVal)
+          : '\uFFFD'; // Replacement character if not found?
       });
     }
 
@@ -389,29 +454,38 @@ export const getUnicodeConverter = () => {
             const dec = Number.parseInt(hex, 16);
             const hexStr = String.fromCodePoint(dec);
 
-            // \u000 is disallowed in CSS 2.1 (behavior undefined) and above 0x10FFFF is
-            //  beyond valid Unicode; fix: disallow non-characters too?
+            // \u000 is disallowed in CSS 2.1 (behavior undefined) and above
+            //  0x10FFFF is beyond valid Unicode; fix: disallow non-characters
+            //  too?
             if (dec > 0x10FFFF || dec === 0) {
-              unicode += '\uFFFD'; // Replacement character since not valid Unicode
-            // Too low ASCII to be converted (not a letter, digit, underscore, or hyphen)
-            } else if (dec < 0xA1 && (/[^\w-]/u).test(hexStr)) { // Don't convert since won't be valid if unescaped
-              // Although https://www.w3.org/TR/CSS21/grammar.html#scanner (under "nonascii" which is a
-              //  possible (indirect) component of identifiers) seems to permit any non-ASCII equal to or above
-              //  0x80 (decimal 128), per https://www.w3.org/TR/CSS21/syndata.html#characters only non-escaped
-              // characters above 0xA1 are permitted (limitation of Flex scanner based in Latin?); testing in Firefox
-              // also shows values lower than 0xA1 in CSS do not work there unless escaped
+              // Replacement character since not valid Unicode
+              unicode += '\uFFFD';
+            // Too low ASCII to be converted (not a letter, digit,
+            //  underscore, or hyphen)
+            } else if (dec < 0xA1 && (/[^\w-]/u).test(hexStr)) {
+              // Don't convert since won't be valid if unescaped
+              // Although https://www.w3.org/TR/CSS21/grammar.html#scanner
+              //  (under "nonascii" which is a possible (indirect) component
+              //  of identifiers) seems to permit any non-ASCII equal to or
+              //  above 0x80 (decimal 128), per https://www.w3.org/TR/CSS21/syndata.html#characters
+              //  only non-escaped characters above 0xA1 are permitted
+              //  (limitation of Flex scanner based in Latin?); testing in
+              //  Firefox also shows values lower than 0xA1 in CSS do not work
+              //  there unless escaped
               unicode += s + hexEsc[0];
-            // If begins with a digit or hyphen and digit, might not be valid if unescaped (if at beginning of
-            //   identifier) so don't convert (if followed by an escaped number, there is no concern it will
-            //   be avoided here, since the escaped number will remain escaped on the next
-            //   iteration (by this same condition)
+            // If begins with a digit or hyphen and digit, might not be valid
+            //   if unescaped (if at beginning of identifier) so don't
+            //   convert (if followed by an escaped number, there is no concern
+            //   it will be avoided here, since the escaped number will remain
+            //   escaped on the next iteration (by this same condition)
             } else if ((/^-?\d/u).test(hexStr + toconvert[i + 2])) {
               unicode += s + hexEsc[0];
             } else {
               unicode += hexStr;
             }
           } else {
-            // [^\r\n\f0-9a-f] // May be escaping something that needs to be escaped for CSS grammar, so keep
+            // [^\r\n\f0-9a-f] // May be escaping something that needs
+            //   to be escaped for CSS grammar, so keep
             unicode += s + next;
           }
           break;

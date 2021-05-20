@@ -3,11 +3,13 @@
 // See https://unicode.org/Public/UNIDATA/ for data use
 
 /*
-// Todo: Handle these for `buildUnicode` `currentStartCharCode` (`setCurrstartset`); see also
+// Todo: Handle these for `buildUnicode` `currentStartCharCode`
+//    (`setCurrstartset`); see also
 //    `setPref('currentStartCharCode'...`
 if (k < 0) {
   k = 1114112 + parseInt(k);
-} else if (currentStartCharCode.toString().match(decreg) || currentStartCharCode.toString().match(decreg2)) { // Dec
+} else if (currentStartCharCode.toString().match(decreg) ||
+  currentStartCharCode.toString().match(decreg2)) { // Dec
   currentStartCharCode = currentStartCharCode.toString().replace(decreg, '$2');
   currentStartCharCode = parseInt(currentStartCharCode, 10);
 } else if (currentStartCharCode.toString().match(hexreg)) { // Hex
@@ -18,7 +20,8 @@ if (k < 0) {
   // Todo: Review `charCodeAt` on whether need modern substitutions
   const kt = currentStartCharCode.toString().charCodeAt(0);
   if (kt >= 0xD800 && kt < 0xF900) { // surrogate component (higher plane)
-    currentStartCharCode = ((kt - 0xD800) * 0x400) + (currentStartCharCode.toString().charCodeAt(1) - 0xDC00) + 0x10000;
+    currentStartCharCode = ((kt - 0xD800) * 0x400) +
+      (currentStartCharCode.toString().charCodeAt(1) - 0xDC00) + 0x10000;
   } else {
     currentStartCharCode = kt;
   }
@@ -33,11 +36,14 @@ if (prev >= 0 && prev <= 9) {
 }
 */
 import {$, $$} from '../vendor/jamilih/dist/jml-es.js';
-import {getUnicodeDefaults, getPrefDefaults} from './preferences/prefDefaults.js';
+import {
+  getUnicodeDefaults, getPrefDefaults
+} from './preferences/prefDefaults.js';
 import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
 import {getHangulName} from './unicode/Hangul.js';
 import {buildChart} from './build-chart.js';
-import insertIntoOrOverExisting from './templatesElementCustomization/insertIntoOrOverExisting.js';
+import insertIntoOrOverExisting from
+  './templatesElementCustomization/insertIntoOrOverExisting.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {Jamo} from './unicode/charrefunicodeDb.js';
 import {registerDTD} from './entities.js';
@@ -100,37 +106,53 @@ const unicodecharref = {
     const Components = 'todo';
     const Cc = Components.classes,
       Ci = Components.interfaces;
-    const ios = Cc['@mozilla.org/network/io-service;1'].getService(Components.interfaces.nsIIOService);
+    const ios = Cc[
+      '@mozilla.org/network/io-service;1'
+    ].getService(Components.interfaces.nsIIOService);
     const url = ios.newURI(aFileURL, null, null);
-    const file = Cc['@mozilla.org/file/directory_service;1'].getService(Ci.nsIProperties).get('ProfD', Ci.nsILocalFile);
+    const file = Cc[
+      '@mozilla.org/file/directory_service;1'
+    ].getService(Ci.nsIProperties).get('ProfD', Ci.nsILocalFile);
     file.append('Unihan6.sqlite');
     if (file.exists()) {
       file.remove(false); // Shouldn't make it here unless it was a bad file
       // return; // Don't do this: give chance to overwrite
     }
-    file.create(Ci.nsIFile.NORMAL_FILE_TYPE, '777'.toString(8)); // DIRECTORY_TYPE
+    file.create(
+      Ci.nsIFile.NORMAL_FILE_TYPE, '777'.toString(8)
+    ); // DIRECTORY_TYPE
 
     const {STATE_STOP} = Ci.nsIWebProgressListener;
     // const {STATE_IS_WINDOW} = Ci.nsIWebProgressListener;
 
-    const persist = Cc['@mozilla.org/embedding/browser/nsWebBrowserPersist;1'].createInstance(Ci.nsIWebBrowserPersist);
+    const persist = Cc[
+      '@mozilla.org/embedding/browser/nsWebBrowserPersist;1'
+    ].createInstance(Ci.nsIWebBrowserPersist);
     persist.progressListener = {
-      onProgressChange (aWebProgress, aRequest, aCurSelfProgress, aMaxSelfProgress, aCurTotalProgress, aMaxTotalProgress) {
-        const percentComplete = ((aCurTotalProgress / aMaxTotalProgress) * 100).toFixed(2);
+      onProgressChange (
+        aWebProgress, aRequest, aCurSelfProgress, aMaxSelfProgress,
+        aCurTotalProgress, aMaxTotalProgress
+      ) {
+        const percentComplete = ((
+          aCurTotalProgress / aMaxTotalProgress
+        ) * 100).toFixed(2);
         // <label id="progress_stat"/>
         // <progressmeter id="progress_element" mode="determined"/>
         const ele = $('#progress_element');
         ele.value = percentComplete;
         const stat = $('#progress_stat');
 
-        stat.value = _('download_progress') + ' ' + percentComplete + _('percentSign');
+        stat.value = _('download_progress') + ' ' +
+          percentComplete + _('percentSign');
       },
       onStateChange (aWebProgress, aRequest, aFlag, aStatus) {
         // eslint-disable-next-line no-bitwise -- Easier
         if (aFlag & STATE_STOP) { //  && aFlag & STATE_IS_WINDOW
           try {
             charrefunicodeDb.connect('Unihan6.sqlite', 'unihan');
-            /* const statement = */ charrefunicodeDb.dbConnUnihan.createStatement( // Just to test database
+            /* const statement = */
+            charrefunicodeDb.dbConnUnihan.createStatement(
+              // Just to test database
               'SELECT code_pt FROM ' + 'Unihan' + ' WHERE code_pt = "3400"'
             );
             alert(_('Finished_download'));
@@ -169,8 +191,12 @@ const unicodecharref = {
         textbox.setAttribute('id', prefix + this[type][i]);
         textbox.setAttribute('rows', '1');
         textbox.setAttribute('cols', '2');
-        textbox.addEventListener('change', function (e) {unicodecharref['search' + type](e);});
-        textbox.addEventListener('input', function (e) {unicodecharref['search' + type](e);});
+        textbox.addEventListener(
+          'change', function (e) {unicodecharref['search' + type](e);}
+        );
+        textbox.addEventListener(
+          'input', function (e) {unicodecharref['search' + type](e);}
+        );
         row.append(label);
         row.append(textbox);
         $(type+'Search').append(row);
@@ -212,24 +238,41 @@ const unicodecharref = {
               menupopup = createXULElement('menupopup');
               for (j = 0; j < this['UnicodeMenu' + match].length; j++) {
                 menuitem = createXULElement('menuitem');
-                menuitem.setAttribute('label', _(match + this['UnicodeMenu' + match][j]));
-                menuitem.setAttribute('tooltiptext', _(match + this['UnicodeMenu' + match][j]));
-                menuitem.setAttribute('value', this['UnicodeMenu' + match][j]);
+                menuitem.setAttribute(
+                  'label', _(match + this['UnicodeMenu' + match][j])
+                );
+                menuitem.setAttribute(
+                  'tooltiptext', _(match + this['UnicodeMenu' + match][j])
+                );
+                menuitem.setAttribute(
+                  'value', this['UnicodeMenu' + match][j]
+                );
                 menupopup.append(menuitem);
               }
               if (match === 'Canonical_Combining_Class') {
-                for (j = 11; j <= 36; j++) { // Other Non-Numeric not listed in UnicodeMenuCCVNumericOnly
+                for (j = 11; j <= 36; j++) {
+                  // Other Non-Numeric not listed in UnicodeMenuCCVNumericOnly
                   menuitem = createXULElement('menuitem');
                   menuitem.setAttribute('label', j);
                   menuitem.setAttribute('tooltiptext', j);
                   menuitem.setAttribute('value', j);
                   menupopup.append(menuitem);
                 }
-                for (j = 0; j < this['UnicodeMenu' + 'CCVNumericOnly'].length; j++) {
+                for (
+                  j = 0;
+                  j < this['UnicodeMenu' + 'CCVNumericOnly'].length;
+                  j++
+                ) {
                   menuitem = createXULElement('menuitem');
-                  menuitem.setAttribute('label', this['UnicodeMenu' + 'CCVNumericOnly'][j]);
-                  menuitem.setAttribute('tooltiptext', this['UnicodeMenu' + 'CCVNumericOnly'][j]);
-                  menuitem.setAttribute('value', this['UnicodeMenu' + 'CCVNumericOnly'][j]);
+                  menuitem.setAttribute(
+                    'label', this['UnicodeMenu' + 'CCVNumericOnly'][j]
+                  );
+                  menuitem.setAttribute(
+                    'tooltiptext', this['UnicodeMenu' + 'CCVNumericOnly'][j]
+                  );
+                  menuitem.setAttribute(
+                    'value', this['UnicodeMenu' + 'CCVNumericOnly'][j]
+                  );
                   menupopup.append(menuitem);
                 }
               }
@@ -264,11 +307,17 @@ const unicodecharref = {
       unicodecharref['search' + type](e.target);
     });
     $(tabpanel).addEventListener('select', function (e) {
-      if (e.target.nodeName !== 'menulist' && e.target.nodeName !== 'textbox') { return; }
+      if (
+        e.target.nodeName !== 'menulist' &&
+        e.target.nodeName !== 'textbox'
+      ) { return; }
       unicodecharref['search' + type](e.target);
     }); // Triggered initially which sets preference to "Lu"
   },
-  async testIfComplexWindow () { // Fix: Should also create the detailedView and detailedCJKView's content dynamically (and thus fully conditionally rather than hiding)
+
+  // Fix: Should also create the detailedView and detailedCJKView's
+  //  content dynamically (and thus fully conditionally rather than hiding)
+  async testIfComplexWindow () {
     if (await getPref('showComplexWindow')) {
       $('#specializedSearch').hidden = false;
       this.makeRows('Unihan');
@@ -294,7 +343,9 @@ const unicodecharref = {
     this.unihanDb_exists = false;
     try {
       // charrefunicodeDb.connect('Unihan.sqlite', 'unihan');
-      /* const statement = */ charrefunicodeDb.dbConnUnihan.createStatement( // Just to test database is not corrupted
+      /* const statement = */
+      charrefunicodeDb.dbConnUnihan.createStatement(
+        // Just to test database is not corrupted
         'SELECT code_pt FROM ' + 'Unihan' + ' WHERE code_pt = "3400"'
       );
       this.unihanDb_exists = true;
@@ -312,38 +363,58 @@ const unicodecharref = {
       alert(e);
     }
 
-    // document.documentElement.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-    $('#unicodeTabBox').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
-    $('#unicodeTabBox > .tabs').style.maxWidth = window.screen.availWidth - (window.screen.availWidth * 3 / 100);
+    // document.documentElement.maxWidth =
+    //  window.screen.availWidth-(window.screen.availWidth*1/100);
+    $('#unicodeTabBox').style.maxWidth = window.screen.availWidth -
+      (window.screen.availWidth * 3 / 100);
+    $('#unicodeTabBox > .tabs').style.maxWidth =
+      window.screen.availWidth - (window.screen.availWidth * 3 / 100);
     /*
-    $('#unicodeTabBox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*5/100);
-    $('#conversionhbox').style.maxHeight = window.screen.availHeight-(window.screen.availHeight*13/100);
+    $('#unicodeTabBox').style.maxHeight =
+      window.screen.availHeight-(window.screen.availHeight*5/100);
+    $('#conversionhbox').style.maxHeight =
+      window.screen.availHeight-(window.screen.availHeight*13/100);
 
-    $('#noteDescriptionBox2').height = $('#noteDescriptionBox2').height = window.screen.availHeight-(window.screen.availHeight*25/100);
-    $('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*1/100);
-    $('#unicodetabs').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-    $('#unicodeTabBox').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*2/100);
-    $('#chartcontent').style.maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
-    $('#chart_selectchar_persist_vbox').maxWidth = window.screen.availWidth-(window.screen.availWidth*25/100);
+    $('#noteDescriptionBox2').height =
+      $('#noteDescriptionBox2').height =
+        window.screen.availHeight-(window.screen.availHeight*25/100);
+    $('#unicodeTabBox').style.maxWidth =
+      window.screen.availWidth-(window.screen.availWidth*1/100);
+    $('#unicodetabs').style.maxWidth =
+      window.screen.availWidth-(window.screen.availWidth*2/100);
+    $('#unicodeTabBox').style.maxWidth =
+      window.screen.availWidth-(window.screen.availWidth*2/100);
+    $('#chartcontent').style.maxWidth =
+      window.screen.availWidth-(window.screen.availWidth*25/100);
+    $('#chart_selectchar_persist_vbox').maxWidth =
+      window.screen.availWidth-(window.screen.availWidth*25/100);
     */
-    // $('#tableholder').maxWidth = window.screen.availWidth-(window.screen.availWidth*50/100);
-    // $('#tableholder').width = window.screen.availWidth-(window.screen.availWidth*50/100);
-    //    window.sizeToContent();
+    // $('#tableholder').maxWidth =
+    //  window.screen.availWidth-(window.screen.availWidth*50/100);
+    // $('#tableholder').width = window.screen.availWidth -
+    //   (window.screen.availWidth*50/100);
+    // window.sizeToContent();
 
     this.testIfComplexWindow();
 
-    // These defaults are necessary for the sake of the options URL (when called from addons menu)
+    // These defaults are necessary for the sake of the options URL
+    //  (when called from addons menu)
     let toconvert = '';
     let targetid = '';
     // const targetid = 'context-launchunicode';
 
     // Check first for our custom protocol
     const arg0 = args && args[0] && args[0].wrappedJSObject;
-    const customProtocol = arg0 && arg0.constructor.name === 'NsiSupportsWrapper';
-    // Fix: the initial portion of this handling really should be inside the protocol handler, but that requires implementing the object to add arguments
+    const customProtocol = arg0 &&
+      arg0.constructor.name === 'NsiSupportsWrapper';
+    // Fix: the initial portion of this handling really should be inside
+    //  the protocol handler, but that requires implementing the object to
+    //  add arguments
     let unicodeQueryObj;
-    if (customProtocol) { // Will be passed a query string if a protocol handler has been triggered
-      const req = decodeURIComponent(arg0.toString().slice(1)); // We skip over the initial question mark too
+    // Will be passed a query string if a protocol handler has been triggered
+    if (customProtocol) {
+      // We skip over the initial question mark too
+      const req = decodeURIComponent(arg0.toString().slice(1));
       unicodeQueryObj = {};
       const queryTypeEndPos = req.indexOf(';');
       const queryType = req.slice(0, queryTypeEndPos); // Use
@@ -365,7 +436,10 @@ const unicodecharref = {
         break;
         // Could also add 'define', 'convert', etc.
       default:
-        throw new Error('Unrecognized query type passed to application for Custom Unicode protocol');
+        throw new Error(
+          'Unrecognized query type passed to application ' +
+            'for Custom Unicode protocol'
+        );
       }
     } else if (!args) { // Do nothing for options dialog
     } else if (!args[2]) {
@@ -375,10 +449,14 @@ const unicodecharref = {
       const Components = 'todo';
       const Cc = Components.classes,
         Ci = Components.interfaces;
-      const wm = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator);
+      const wm = Cc[
+        '@mozilla.org/appshell/window-mediator;1'
+      ].getService(Ci.nsIWindowMediator);
       const browserWin = wm.getMostRecentWindow('navigator:browser');
       toconvert = browserWin.content.getSelection().toString();
-      targetid = toconvert ? 'context-charrefunicode1' : ''; // Fix: replace with preference
+      targetid = toconvert
+        ? 'context-charrefunicode1'
+        : ''; // Fix: replace with preference
     }
 
     if (!(await getPref('multiline'))) {
@@ -389,7 +467,9 @@ const unicodecharref = {
       $('#displayUnicodeDesc').setAttribute('rows', 3);
     }
 
-    this.setupBoolChecked(...Object.entries(getPrefDefaults()).filter(([key, value]) => {
+    this.setupBoolChecked(...Object.entries(getPrefDefaults()).filter((
+      [key, value]
+    ) => {
       return typeof value === 'boolean';
     }).map(([key]) => key));
 
@@ -426,12 +506,14 @@ const unicodecharref = {
       $(EXT_BASE + 'xstyle').checked = true;
     } */
 
-    this.resizecells(); // Set the size per the prefs (don't increase or decrease the value)
+    // Set the size per the prefs (don't increase or decrease the value)
+    this.resizecells();
 
     $('#rowsset').value = await getPref('tblrowsset');
     $('#colsset').value = await getPref('tblcolsset');
 
-    // Save copies in case decide to reset later (i.e., not append to HTML entities, then wish to append to them again)
+    // Save copies in case decide to reset later (i.e., not append to
+    //  HTML entities, then wish to append to them again)
     this.origents = [];
     this.origcharrefs = [];
     this.orignewents = [];
@@ -482,7 +564,9 @@ const unicodecharref = {
       case 'searchName':
         $(targetid).value = unicodeQueryObj.string;
         $(targetid).focus();
-        this.searchUnicode({id: targetid, value: unicodeQueryObj.string}); // Assume non-CJK
+        this.searchUnicode({
+          id: targetid, value: unicodeQueryObj.string
+        }); // Assume non-CJK
         break;
       case 'searchkDefinition':
         $(targetid).value = unicodeQueryObj.string;
@@ -502,7 +586,10 @@ const unicodecharref = {
       } else if (args[2] !== undefined) { // Keyboard invocation or button
         // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
         $('#unicodeTabBox').$selectTab($(await getPref('initialTab')));
-      } else if (targetid !== 'context-unicodechart' && targetid !== 'tools-charrefunicode') {
+      } else if (
+        targetid !== 'context-unicodechart' &&
+        targetid !== 'tools-charrefunicode'
+      ) {
         $('#unicodeTabBox').$selectTab($('#conversion'));
       }
     }
@@ -519,7 +606,9 @@ const unicodecharref = {
 
     $('#menulists').addEventListener('command',
       function (e) {
-        // const tmp = that.branch.getComplexValue('currentStartCharCode', Ci.nsIPrefLocalizedString).data;
+        // const tmp = that.branch.getComplexValue(
+        //   'currentStartCharCode', Ci.nsIPrefLocalizedString
+        // ).data;
         that.disableEnts();
         that.setCurrstartset(e.target.value);
         buildChart();
@@ -548,7 +637,9 @@ const unicodecharref = {
     const Components = 'todo';
     const Cc = Components.classes,
       Ci = Components.interfaces;
-    const gClipboardHelper = Cc['@mozilla.org/widget/clipboardhelper;1'].getService(Ci.nsIClipboardHelper);
+    const gClipboardHelper = Cc[
+      '@mozilla.org/widget/clipboardhelper;1'
+    ].getService(Ci.nsIClipboardHelper);
     gClipboardHelper.copyString(text);
   },
   setprefs (e) {
@@ -560,7 +651,9 @@ const unicodecharref = {
       );
       break;
     case 'menuitem':
-      setPref(e.target.parentNode.parentNode.id, e.target.value); // Could use @label or position as default value
+      setPref(
+        e.target.parentNode.parentNode.id, e.target.value
+      ); // Could use @label or position as default value
       break;
     case 'checkbox':
       // Apparently hasn't changed yet, so use the opposite
@@ -581,9 +674,14 @@ const unicodecharref = {
   async resetdefaults () {
     const that = this;
     // Todo: Change to programmatic setting
-    // If make changes here, also change the default/preferences charrefunicode.js file
-    this.setBoolChecked(['asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'multiline'], false);
-    this.setBoolChecked(['xmlentkeep', 'ampkeep', 'appendtohtmldtd', 'cssUnambiguous'], true);
+    // If make changes here, also change the default/preferences
+    //  charrefunicode.js file
+    this.setBoolChecked([
+      'asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'multiline'
+    ], false);
+    this.setBoolChecked([
+      'xmlentkeep', 'ampkeep', 'appendtohtmldtd', 'cssUnambiguous'
+    ], true);
 
     $('#ampspace').checked = false;
     $('#showComplexWindow').checked = false;
@@ -597,7 +695,9 @@ const unicodecharref = {
     function langFont (langOrFont) { // Fix: needs to get default!
       const Components = 'todo';
       const Ci = Components.interfaces;
-      const deflt = that.branchDefault.getComplexValue(langOrFont, Ci.nsIPrefLocalizedString).data;
+      const deflt = that.branchDefault.getComplexValue(
+        langOrFont, Ci.nsIPrefLocalizedString
+      ).data;
       $('#' + langOrFont).value = deflt;
       setPref(langOrFont, deflt);
       return deflt;
@@ -622,7 +722,11 @@ const unicodecharref = {
     $('#DTDtextbox').value = '';
     */
 
-    setPref('startset', 'a'.codePointAt() - 1); // Don't really need to reset since user can't currently change this (only for blank string entry)
+    // Don't really need to reset since user can't currently change
+    //  this (only for blank string entry)
+    setPref(
+      'startset', 'a'.codePointAt() - 1
+    );
 
     this.setCurrstartset(await getPref('startset'));
 
@@ -635,8 +739,12 @@ const unicodecharref = {
     setPref('tblcolsset', 3);
     $('#colsset').value = 3;
 
-    this.setBoolChecked(['entyes', 'hexyes', 'decyes', 'unicodeyes', 'buttonyes'], true);
-    this.setBoolChecked(['onlyentsyes', 'startCharInMiddleOfChart'], false);
+    this.setBoolChecked([
+      'entyes', 'hexyes', 'decyes', 'unicodeyes', 'buttonyes'
+    ], true);
+    this.setBoolChecked([
+      'onlyentsyes', 'startCharInMiddleOfChart'
+    ], false);
 
     // setPref('xstyle', 'x');
     // $('#xstyle').checked = true;
@@ -651,9 +759,12 @@ const unicodecharref = {
     setPref('outerHeight', 0);
     setPref('outerWidth', 0);
   },
+
   /**
-   * Set a boolean preference (and its checked state in the interface) to a given boolean value.
-   * @param {string|string[]} els The element ID string or strings which should have their values set
+   * Set a boolean preference (and its checked state in the interface) to
+   * a given boolean value.
+   * @param {string|string[]} els The element ID string or strings which
+   *   should have their values set
    * @param {boolean} value The value for the preference and checked state
    */
   setBoolChecked (els, value) {
@@ -684,7 +795,9 @@ const unicodecharref = {
     // const alink = createHTMLElement('a');
     const alink = createXULElement('label');
 
-    const {plane, privateuse, surrogate} = getAndSetCodePointInfo(kdectemp, alink, _);
+    const {
+      plane, privateuse, surrogate
+    } = getAndSetCodePointInfo(kdectemp, alink, _);
 
     /**
      * @param {string} sel
@@ -717,9 +830,12 @@ const unicodecharref = {
     let hangul = false;
     let i; // file;
     // If Unihan
-    if ((kdectemp > 0x3400 && kdectemp <= 0x4DB5) || (kdectemp > 0x4E00 && kdectemp <= 0x9FC3) || // 0x9FBB
+    if (
+      (kdectemp > 0x3400 && kdectemp <= 0x4DB5) ||
+      (kdectemp > 0x4E00 && kdectemp <= 0x9FC3) || // 0x9FBB
       (kdectemp > 0xF900 && kdectemp < 0xFB00) ||
-      // If not using the 27MB updated file, this range (CJK Ideograph Extension B) will not be valid:
+      // If not using the 27MB updated file, this range (CJK Ideograph
+      //   Extension B) will not be valid:
       (kdectemp > 0x20000 && kdectemp <= 0x2A6D6) ||
       (kdectemp >= 0x2F800 && kdectemp < 0x2FA1F)
     ) {
@@ -737,13 +853,16 @@ const unicodecharref = {
         }
       }
       this.UnihanType = false;
-      /* The following are some ranges in UnicodeData.txt which do not have their own description sheets as do the two above */
+      // The following are some ranges in UnicodeData.txt which do not
+      //  have their own description sheets as do the two above
       /*
       if (0xE000 <= kdectemp && kdectemp <= 0xF8FF) {// Private Use
       }
-      else if (0xF0000 <= kdectemp && kdectemp <= 0xFFFFD) {// Plane 15 Private Use
+      // Plane 15 Private Use
+      else if (0xF0000 <= kdectemp && kdectemp <= 0xFFFFD) {
       }
-      else if (0x100000 <= kdectemp && kdectemp <= 0x10FFFD) {// Plane 16 Private Use
+      // Plane 16 Private Use
+      else if (0x100000 <= kdectemp && kdectemp <= 0x10FFFD) {
       }
       */
     } else {
@@ -762,7 +881,10 @@ const unicodecharref = {
 
     let temp, notfoundval, table, result, statement;
 
-    if (!this.UnihanType && !hangul && $('#viewTabs').selectedTab === $('#detailedCJKView')) {
+    if (
+      !this.UnihanType && !hangul &&
+      $('#viewTabs').selectedTab === $('#detailedCJKView')
+    ) {
       $('#viewTabs').$selectTab($('#detailedView'));
     }
     table = 'Unicode';
@@ -783,7 +905,9 @@ const unicodecharref = {
       } else if (kdectemp === 0x9FC3) {
         search = '9FC3';
       }
-    } else if (kdectemp >= 0xF900 && kdectemp < 0xFB00) { // Should have individual code point
+    } else if (
+      kdectemp >= 0xF900 && kdectemp < 0xFB00
+    ) { // Should have individual code point
       search = true;
     } else if (kdectemp >= 0x20000 && kdectemp <= 0x2A6D6) {
       search = '20000';
@@ -792,7 +916,9 @@ const unicodecharref = {
       } else if (kdectemp === 0x2A6D6) {
         search = '2A6D6';
       }
-    } else if (kdectemp >= 0x2F800 && kdectemp < 0x2FA1F) { // Should have individual code point
+    } else if (
+      kdectemp >= 0x2F800 && kdectemp < 0x2FA1F
+    ) { // Should have individual code point
       search = true;
     } else if (hangul) {
       // search = 'AC00';
@@ -835,11 +961,12 @@ const unicodecharref = {
           result = cjkText;
         }
         for (i = 2; i <= 14; i++) {
-          temp = statement.getUTF8String(i); // Fix: display data more readably, etc.
+          // Fix: display data more readably, etc.
+          temp = statement.getUTF8String(i);
           if (i === 10) {
             if (temp) {
-              result += ';\u00A0\u00A0\u00A0\u00A0\n' + _('searchUnicode_1_Name') +
-              _('colon') + ' ' + temp;
+              result += ';\u00A0\u00A0\u00A0\u00A0\n' +
+                _('searchUnicode_1_Name') + _('colon') + ' ' + temp;
             }
             continue;
           }
@@ -853,14 +980,18 @@ const unicodecharref = {
               break;
             case 3:
               if (temp < 11 || temp > 132) {
-                temp = _('Canonical_Combining_Class' + temp); // 199, 200, 204, 208, 210, 212 do not have members yet and others from 11 to 132 do not have name listed
+                // 199, 200, 204, 208, 210, 212 do not have members yet and
+                //  others from 11 to 132 do not have name listed
+                temp = _('Canonical_Combining_Class' + temp);
               }
               break;
             case 4:
               temp = _('Bidi_Class' + temp);
               break;
             case 9:
-              temp = (temp === 'Y') ? _('Bidi_MirroredY') : _('Bidi_MirroredN'); // Only two choices
+              temp = (temp === 'Y')
+                ? _('Bidi_MirroredY')
+                : _('Bidi_MirroredN'); // Only two choices
               break;
             case 12:
             case 13:
@@ -871,7 +1002,8 @@ const unicodecharref = {
 
               a.addEventListener('click', function (e) {
                 that.startset({value: e.target.innerHTML.codePointAt()});
-                that.noGetDescripts = false; // Probably want to start checking again since move to new page
+                // Probably want to start checking again since move to new page
+                that.noGetDescripts = false;
               });
               const tempno = Number.parseInt(temp, 16);
               a.textContent = String.fromCodePoint(tempno);
@@ -879,7 +1011,8 @@ const unicodecharref = {
               const view = $('#_detailedView' + i);
               this.removeViewChildren(i);
 
-              const box = createXULElement('description'); // necessary to avoid CSS wrapping warning
+              // Necessary to avoid CSS wrapping warning
+              const box = createXULElement('description');
               box.append(a);
               box.append(' (' + temp + ')');
               view.append(box);
@@ -902,15 +1035,21 @@ const unicodecharref = {
         }
       }
       if (!this.UnihanType && result !== null && result !== undefined) {
-        $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
-        $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
+        $('#displayUnicodeDesc').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + result;
+        $('#displayUnicodeDesc2').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + result;
       // Fix: remove this duplicate also in catch, etc.
       } else if (surrogate) {
-        $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + surrogate;
-        $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + surrogate;
+        $('#displayUnicodeDesc').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + surrogate;
+        $('#displayUnicodeDesc2').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + surrogate;
       } else if (privateuse) {
-        $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
-        $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
+        $('#displayUnicodeDesc').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
+        $('#displayUnicodeDesc2').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
       } else if ( // Catch noncharacters
         (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
         (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
@@ -931,8 +1070,10 @@ const unicodecharref = {
         (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
         (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
       ) {
-        $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
-        $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
+        $('#displayUnicodeDesc').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
+        $('#displayUnicodeDesc2').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
       } else if (!this.UnihanType) {
         notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
@@ -950,11 +1091,15 @@ const unicodecharref = {
       }
     } catch (e) {
       if (surrogate) {
-        $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + surrogate;
-        $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + surrogate;
+        $('#displayUnicodeDesc').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + surrogate;
+        $('#displayUnicodeDesc2').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + surrogate;
       } else if (privateuse) {
-        $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
-        $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
+        $('#displayUnicodeDesc').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
+        $('#displayUnicodeDesc2').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
       } else if ( // Catch noncharacters
         (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
         (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
@@ -975,8 +1120,10 @@ const unicodecharref = {
         (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
         (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
       ) {
-        $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
-        $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
+        $('#displayUnicodeDesc').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
+        $('#displayUnicodeDesc2').value = kent +
+          'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
       } else {
         notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
@@ -1000,7 +1147,9 @@ const unicodecharref = {
     if (this.unihanDb_exists) {
       table = 'Unihan';
 
-      if ((this.UnihanType) && $('#viewTabs').selectedTab === $('#detailedView')) {
+      if (
+        (this.UnihanType) && $('#viewTabs').selectedTab === $('#detailedView')
+      ) {
         $('#viewTabs').$selectTab($('#detailedCJKView'));
       }
       statement = charrefunicodeDb.dbConnUnihan.createStatement(
@@ -1010,14 +1159,18 @@ const unicodecharref = {
         // $('#displayUnicodeDesc').value= _('retrieving_description');
         const executedStep = statement.executeStep();
         if (executedStep) {
-          result = statement.getUTF8String(14); // Fix: display data more readably, with heading, etc. (and conditional)
+          // Fix: display data more readably, with heading, etc. (and
+          //   conditional)
+          result = statement.getUTF8String(14);
           if (result === null && !cjkText) {
             result = _('No_definition');
           }
-          // Fix: Display meta-data in table (get to be stable by right-clicking)
+          // Fix: Display meta-data in table (get to be stable by
+          //   right-clicking)
           // $('#_detailedCJKView' + 3).value = result ? result : '';
           for (i = 1; i <= 13; i++) {
-            temp = statement.getUTF8String(i); // Fix: display data more readably, etc.
+            // Fix: display data more readably, etc.
+            temp = statement.getUTF8String(i);
             if (temp) {
               if (hideMissingUnihan) {
                 $('#_detailedCJKView' + i).parentNode.hidden = false;
@@ -1026,7 +1179,8 @@ const unicodecharref = {
               /*
               switch (i) {
               case 1:
-                // Optional code to transform output into something more readable
+                // Optional code to transform output into something
+                //   more readable
                 break;
               case 2:
                 break;
@@ -1042,7 +1196,8 @@ const unicodecharref = {
           }
           for (i = 15; i <= 90; i++) {
             try {
-              temp = statement.getUTF8String(i); // Fix: display data more readably, etc.
+              // Fix: display data more readably, etc.
+              temp = statement.getUTF8String(i);
             } catch (e) {
               alert(i);
             }
@@ -1053,7 +1208,8 @@ const unicodecharref = {
               /*
               switch (i) {
               case 4:
-                // Optional code to transform output into something more readable
+                // Optional code to transform output into something
+                //   more readable
                 break;
               case 5:
                 break;
@@ -1071,10 +1227,14 @@ const unicodecharref = {
 
         if (result !== '' && result !== null && result !== undefined) {
           // Commenting out to show general category under definition
-          // $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon')+' ' + result;
-          $('#displayUnicodeDescUnihan').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
-          $('#displayUnicodeDesc').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
-          $('#displayUnicodeDesc2').value = kent + 'U+' + khextemp + _('colon') + ' ' + result;
+          // $('#displayUnicodeDesc2').value = kent +
+          //   'U+' + khextemp + _('colon')+' ' + result;
+          $('#displayUnicodeDescUnihan').value = kent +
+            'U+' + khextemp + _('colon') + ' ' + result;
+          $('#displayUnicodeDesc').value = kent +
+            'U+' + khextemp + _('colon') + ' ' + result;
+          $('#displayUnicodeDesc2').value = kent +
+            'U+' + khextemp + _('colon') + ' ' + result;
         } else {
           notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
 
@@ -1104,8 +1264,12 @@ const unicodecharref = {
             $('#displayUnicodeDescUnihan').value = notfoundval;
             $('#displayUnicodeDesc2').value = notfoundval;
           } else {
-            const finalval = kent + 'U+' + khextemp + _('colon') + ' ' + cjkText + ' ' +
-              (hangul ? '' : _('left_parenth') + _('No_definition') + _('right_parenth'));
+            const finalval = kent +
+              'U+' + khextemp + _('colon') + ' ' + cjkText + ' ' +
+              (hangul
+                ? ''
+                : _('left_parenth') + _('No_definition') +
+                  _('right_parenth'));
             $('#displayUnicodeDesc').value = finalval;
             $('#displayUnicodeDesc2').value = finalval;
             $('#displayUnicodeDescUnihan').value = finalval;
@@ -1262,9 +1426,11 @@ const unicodecharref = {
       this.startset(obj, true); // Could remember last description (?)
       this.setCurrstartset(tmp); // Set it back as it was before the search
     }
-    /* if (name_desc === 'Name' || name_desc === 'kDefinition') { // Doesn't work since name_desc_val is
-    // search value, not first result value (we could remember the last search and whether it were a search,
-    // however); we need to be careful, however, since some searches run automatically on start-up
+    // Doesn't work since name_desc_val is search value, not first
+    //  result value (we could remember the last search and whether it
+    //  were a search, however); we need to be careful, however, since
+    //  some searches run automatically on start-up
+    /* if (name_desc === 'Name' || name_desc === 'kDefinition') {
       this.setCurrstartset(name_desc_val);
     } */
   },
@@ -1288,22 +1454,27 @@ const unicodecharref = {
     registerDTD(); // (in case DTD not also changed, still need to reset)
   },
   /**
-   * Sets the preference for whether to display the chosen character in the middle of the chart (or beginning).
+   * Sets the preference for whether to display the chosen character
+   * in the middle of the chart (or beginning).
    * @param {boolean} bool Whether to set to true or not
    */
   startCharInMiddleOfChart (bool) {
-    // Commented this out because while it will always change (unlike now), the value will be misleading
+    // Commented this out because while it will always change (unlike
+    //   now), the value will be misleading
     // $(EXT_BASE + 'startCharInMiddleOfChart').checked = bool;
     setPref('startCharInMiddleOfChart', bool);
   },
   /**
-   * Sets a value in preferences at which the Unicode chart view will begin on next start-up.
-   * @param {Integer} value The value to which to set the current starting value
+   * Sets a value in preferences at which the Unicode chart view will
+   * begin on next start-up.
+   * @param {Integer} value The value to which to set the current
+   *   starting value
    */
   setCurrstartset (value) {
     setPref('currentStartCharCode', value);
   },
-  // Some of these defaults may become irrelevant due to the /default/preferences/charrefunicode.js file's settings
+  // Some of these defaults may become irrelevant due to the
+  //  /default/preferences/charrefunicode.js file's settings
   k (setval) {
     this.setCurrstartset(setval);
   },
@@ -1312,14 +1483,15 @@ const unicodecharref = {
       textReceptacle: $('#DTDtextbox'),
       value: '<!ENTITY  "">\n'
     });
-    /* The following works but may be annoying if trying to insert multiple entities at a time (thus the addition of the newline)
+    // The following works but may be annoying if trying to insert
+    //  multiple entities at a time (thus the addition of the newline)
     // Bring cursor back a little
-    textarea.selectionStart = this.selst - 5;
-    textarea.selectionEnd = this.selend - 5;
-    */
+    // textarea.selectionStart = this.selst - 5;
+    // textarea.selectionEnd = this.selend - 5;
   },
   /**
-   * Display the Unicode description box size (multline or not) according to user preferences.
+   * Display the Unicode description box size (multline or not) according
+   * to user preferences.
    * @param {Event} e The event (not in use)
    */
   async multiline (e) {
@@ -1369,17 +1541,56 @@ const unicodecharref = {
   idgen: 0,
   prefs: null,
 
+  // Build these programmatically?
   /* Pseudo-constants */
-  Unihan: ['AccountingNumeric', 'BigFive', 'CCCII', 'CNS1986', 'CNS1992', 'Cangjie', 'Cantonese', 'CheungBauer', 'CheungBauerIndex', 'CihaiT', 'CompatibilityVariant', 'Cowles', 'DaeJaweon', 'EACC', 'Fenn', 'FennIndex', 'FourCornerCode', 'Frequency', 'GB0', 'GB1', 'GB3', 'GB5', 'GB7', 'GB8', 'GSR', 'GradeLevel', 'HDZRadBreak', 'HKGlyph', 'HKSCS', 'HanYu', 'Hangul', 'HanyuPinlu', 'HanyuPinyin', 'IBMJapan', 'IICore', 'IRGDaeJaweon', 'IRGDaiKanwaZiten', 'IRGHanyuDaZidian', 'IRGKangXi', 'IRG_GSource', 'IRG_HSource', 'IRG_JSource', 'IRG_KPSource', 'IRG_KSource', 'IRG_MSource', 'IRG_TSource', 'IRG_USource', 'IRG_VSource', 'JIS0213', 'JapaneseKun', 'JapaneseOn', 'Jis0', 'Jis1', 'KPS0', 'KPS1', 'KSC0', 'KSC1', 'KangXi', 'Karlgren', 'Korean', 'Lau', 'MainlandTelegraph', 'Mandarin', 'Matthews', 'MeyerWempe', 'Morohashi', 'Nelson', 'OtherNumeric', 'Phonetic', 'PrimaryNumeric', 'PseudoGB1', 'RSAdobe_Japan1_6', 'RSJapanese', 'RSKanWa', 'RSKangXi', 'RSKorean', 'RSUnicode', 'SBGY', 'SemanticVariant', 'SimplifiedVariant', 'SpecializedSemanticVariant', 'TaiwanTelegraph', 'Tang', 'TotalStrokes', 'TraditionalVariant', 'Vietnamese', 'XHC1983', 'Xerox', 'ZVariant'],
+  Unihan: [
+    'AccountingNumeric', 'BigFive', 'CCCII', 'CNS1986', 'CNS1992',
+    'Cangjie', 'Cantonese', 'CheungBauer', 'CheungBauerIndex',
+    'CihaiT', 'CompatibilityVariant', 'Cowles', 'DaeJaweon', 'EACC', 'Fenn',
+    'FennIndex', 'FourCornerCode', 'Frequency', 'GB0', 'GB1', 'GB3', 'GB5',
+    'GB7', 'GB8', 'GSR', 'GradeLevel', 'HDZRadBreak', 'HKGlyph', 'HKSCS',
+    'HanYu', 'Hangul', 'HanyuPinlu', 'HanyuPinyin', 'IBMJapan', 'IICore',
+    'IRGDaeJaweon', 'IRGDaiKanwaZiten', 'IRGHanyuDaZidian', 'IRGKangXi',
+    'IRG_GSource', 'IRG_HSource', 'IRG_JSource', 'IRG_KPSource',
+    'IRG_KSource', 'IRG_MSource', 'IRG_TSource', 'IRG_USource',
+    'IRG_VSource', 'JIS0213', 'JapaneseKun', 'JapaneseOn', 'Jis0', 'Jis1',
+    'KPS0', 'KPS1', 'KSC0', 'KSC1', 'KangXi', 'Karlgren', 'Korean', 'Lau',
+    'MainlandTelegraph', 'Mandarin', 'Matthews', 'MeyerWempe', 'Morohashi',
+    'Nelson', 'OtherNumeric', 'Phonetic', 'PrimaryNumeric', 'PseudoGB1',
+    'RSAdobe_Japan1_6', 'RSJapanese', 'RSKanWa', 'RSKangXi', 'RSKorean',
+    'RSUnicode', 'SBGY', 'SemanticVariant', 'SimplifiedVariant',
+    'SpecializedSemanticVariant', 'TaiwanTelegraph', 'Tang',
+    'TotalStrokes', 'TraditionalVariant', 'Vietnamese', 'XHC1983',
+    'Xerox', 'ZVariant'
+  ],
   UnihanMenus: [], // Unused
-  Unicode: ['General_Category', 'Canonical_Combining_Class', 'Bidi_Class', 'Decomposition_Type_and_Mapping', 'Decimal', 'Digit', 'Numeric', 'Bidi_Mirrored', 'Unicode_1_Name', 'ISO_Comment', 'Simple_Uppercase_Mapping', 'Simple_Lowercase_Mapping', 'Simple_Titlecase_Mapping'],
-  UnicodeMenus: ['General_Category', 'Canonical_Combining_Class', 'Bidi_Class', 'Bidi_Mirrored', 'Digit', 'Decimal'],
+  Unicode: [
+    'General_Category', 'Canonical_Combining_Class', 'Bidi_Class',
+    'Decomposition_Type_and_Mapping', 'Decimal', 'Digit', 'Numeric',
+    'Bidi_Mirrored', 'Unicode_1_Name', 'ISO_Comment',
+    'Simple_Uppercase_Mapping', 'Simple_Lowercase_Mapping',
+    'Simple_Titlecase_Mapping'
+  ],
+  UnicodeMenus: [
+    'General_Category', 'Canonical_Combining_Class', 'Bidi_Class',
+    'Bidi_Mirrored', 'Digit', 'Decimal'
+  ],
 
-  UnicodeMenuBidi_Class: ['L', 'LRE', 'LRO', 'R', 'AL', 'RLE', 'RLO', 'PDF', 'EN', 'ES', 'ET', 'AN', 'CS', 'NSM', 'BN', 'B', 'S', 'WS', 'ON'],
+  UnicodeMenuBidi_Class: [
+    'L', 'LRE', 'LRO', 'R', 'AL', 'RLE', 'RLO', 'PDF', 'EN', 'ES', 'ET',
+    'AN', 'CS', 'NSM', 'BN', 'B', 'S', 'WS', 'ON'
+  ],
   // Also 11-36 are automated above
-  UnicodeMenuCanonical_Combining_Class: [0, 1, 7, 8, 9, 10, 199, 200, 202, 204, 208, 210, 212, 214, 216, 218, 220, 222, 224, 226, 228, 230, 232, 233, 234, 240],
+  UnicodeMenuCanonical_Combining_Class: [
+    0, 1, 7, 8, 9, 10, 199, 200, 202, 204, 208, 210, 212, 214, 216, 218,
+    220, 222, 224, 226, 228, 230, 232, 233, 234, 240
+  ],
   UnicodeMenuCCVNumericOnly: [84, 91, 103, 107, 118, 122, 129, 130, 132],
-  UnicodeMenuGeneral_Category: ['Lu', 'Ll', 'Lt', 'Lm', 'Lo', 'Mn', 'Mc', 'Me', 'Nd', 'Nl', 'No', 'Pc', 'Pd', 'Ps', 'Pe', 'Pi', 'Pf', 'Po', 'Sm', 'Sc', 'Sk', 'So', 'Zs', 'Zl', 'Zp', 'Cc', 'Cf', 'Cs', 'Co', 'Cn'],
+  UnicodeMenuGeneral_Category: [
+    'Lu', 'Ll', 'Lt', 'Lm', 'Lo', 'Mn', 'Mc', 'Me', 'Nd', 'Nl', 'No',
+    'Pc', 'Pd', 'Ps', 'Pe', 'Pi', 'Pf', 'Po', 'Sm', 'Sc', 'Sk', 'So',
+    'Zs', 'Zl', 'Zp', 'Cc', 'Cf', 'Cs', 'Co', 'Cn'
+  ],
   UnicodeMenuBidi_Mirrored: ['Y', 'N'],
   UnicodeMenuDigit: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   UnicodeMenuDecimal: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
