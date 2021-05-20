@@ -5,6 +5,10 @@ import CharrefunicodeConsts from './CharrefunicodeConsts.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
 
 /**
+* @typedef {"php"|"css"|"javascript"} UnicodeEscapeMode
+*/
+
+/**
  * @namespace Converts from one string form to another
  */
 const decim = /&#(\d*);/gu;
@@ -87,6 +91,12 @@ export const getUnicodeConverter = () => {
       return out;
     }
 
+    /**
+     * @param {string} unicodeToConvert
+     * @param {boolean} leaveSurrogates
+     * @param {UnicodeEscapeMode} type
+     * @returns {string}
+     */
     unicode2charrefHexval (unicodeToConvert, leaveSurrogates, type) {
       // alert(unicodeToConvert + '::' + leaveSurrogates + '::' + type);
       let out = '';
@@ -144,7 +154,15 @@ export const getUnicodeConverter = () => {
       return out;
     }
 
+    /**
+     * @param {string} unicodeToConvert
+     * @returns {string}
+     */
     unicode2htmlentsval (unicodeToConvert) {
+      /**
+       * @param {string} str
+       * @returns {string}
+       */
       function pregQuote (str) {
         // http://kevin.vanzonneveld.net
         // +   original by: booeyOH
@@ -173,6 +191,10 @@ export const getUnicodeConverter = () => {
       return out;
     }
 
+    /**
+     * @param {string} out
+     * @returns {string}
+     */
     htmlents2charrefDecval (out) {
       const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       return out.replace(htmlent, (match, match1) => {
@@ -193,6 +215,10 @@ export const getUnicodeConverter = () => {
       });
     }
 
+    /**
+     * @param {string} out
+     * @returns {string}
+     */
     htmlents2charrefHexval (out) {
       const xstyle = 'x';
       /* if (!getPref('hexstyleLwr')) {
@@ -221,6 +247,10 @@ export const getUnicodeConverter = () => {
       });
     }
 
+    /**
+     * @param {string} out
+     * @returns {string}
+     */
     htmlents2unicodeval (out) {
       const xmlentkeep = getPref('xmlentkeep'); // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       return out.replace(htmlent, (match, match1) => {
@@ -241,12 +271,20 @@ export const getUnicodeConverter = () => {
       });
     }
 
+    /**
+     * @param {string} out
+     * @returns {string}
+     */
     hex2decval (out) {
       return out.replace(hexadec, function (match, match1) {
         return '&#' + Number.parseInt(match1, 16) + ';';
       });
     }
 
+    /**
+     * @param {string} out
+     * @returns {string}
+     */
     dec2hexval (out) {
       const xstyle = 'x';
       /* if (!getPref('hexstyleLwr')) {
@@ -261,6 +299,10 @@ export const getUnicodeConverter = () => {
       });
     }
 
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
     unicode2CharDescVal (toconvert) {
       let val = '', charDesc;
       // Todo: Redo with `codePointAt`
@@ -298,6 +340,10 @@ export const getUnicodeConverter = () => {
       return val;
     }
 
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
     charDesc2UnicodeVal (toconvert) {
       return toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
         const unicodeVal = this.lookupUnicodeValueByCharName(n1);
@@ -305,6 +351,10 @@ export const getUnicodeConverter = () => {
       });
     }
 
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
     cssescape2unicodeval (toconvert) {
       // See:
       // https://www.w3.org/TR/CSS21/syndata.html#characters
@@ -372,6 +422,11 @@ export const getUnicodeConverter = () => {
       return unicode;
     }
 
+    /**
+     * @param {string} toconvert
+     * @param {UnicodeEscapeMode} mode
+     * @returns {string}
+     */
     jsescape2unicodeval (toconvert, mode) {
       let unicode = '', hexChrs;
       for (let i = 0; i < toconvert.length; i++) {
@@ -441,18 +496,34 @@ export const getUnicodeConverter = () => {
       return unicode;
     }
 
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
     unicode2jsescapeval (toconvert) {
       return this.unicode2charrefHexval(toconvert, true, 'javascript');
     }
 
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
     unicodeTo6DigitVal (toconvert) {
       return this.unicode2charrefHexval(toconvert, false, 'php');
     }
 
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
     unicode2cssescapeval (toconvert) {
       return this.unicode2charrefHexval(toconvert, false, 'css');
     }
 
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
     sixDigit2UnicodeVal (toconvert) {
       return this.jsescape2unicodeval(toconvert, 'php');
     }
@@ -513,6 +584,13 @@ export const getUnicodeConverter = () => {
     }
 
     // Used for conversions, so included here (also used externally)
+    /**
+     * @param {{id: string, value: string}} obj E.g., an input element
+     * @param {string} table
+     * @param {boolean} nochart
+     * @param {boolean} strict
+     * @returns {void}
+     */
     searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
       if (!table) {
         table = 'Unicode';
