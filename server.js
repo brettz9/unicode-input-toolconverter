@@ -28,7 +28,7 @@ http.createServer(function (req, res) {
             'SPFontsDataType'
           ]
         });
-        const out = fontInfo[0]._items.flatMap((arr, {typefaces}) => {
+        const out = fontInfo[0]._items.flatMap(({typefaces}) => {
           return typefaces.map((typeface) => typeface.family);
         });
         res.end(JSON.stringify([...new Set(out)].sort()));
