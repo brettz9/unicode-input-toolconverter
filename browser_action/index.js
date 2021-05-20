@@ -26,6 +26,7 @@ setJSONExtra(jsonExtra);
 (async () => { // eslint-disable-line padded-blocks -- Ugly
 
 // SETUP
+// Todo: Support hash searchParams / streamline with `pushState`
 const lang = new URL(location).searchParams.get('lang');
 const locales = lang ? [lang] : [...navigator.languages]; // ['sv-SE']; // ['pt-BR']; // ['hu-HU'];
 const engPos = locales.indexOf('en-US');
@@ -42,7 +43,7 @@ const [_] = await Promise.all([
     substitutions: {code, link}
   }),
   addMillerColumnPlugin(jQuery, {stylesheets: [
-    // Per our widget "standard", allow for injecting of others
+    // Per our widget "standard", allow for injecting of others in parallel
     ['/icons/openWindow24.png', {favicon: true}],
     'styles/unicode-dialog.css',
     '/vendor/miller-columns/miller-columns.css'
