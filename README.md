@@ -16,11 +16,12 @@ character references, etc.
 
 ## Possible to-dos
 
-1. Use `intl-dom`
+1. Create (reactive) **Web Components** (hyperHTML?) so that besides internal
+    clarity, could reuse as pop-up script browser or character picker
 1. Improve slow (now broken?) **font retrieval**
 1. Get **l10n** completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
 1. **Protocol handler**:
-  <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
+    <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
 1. Various modules, some already in `vendor`, could be
     **moved to own npm package**
 1. Convert
