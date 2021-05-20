@@ -1,7 +1,7 @@
 import {$} from '../vendor/jamilih/dist/jml-es.js';
 import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
-import Unicodecharref from './uresults.js';
+import unicodecharref from './unicodecharref.js';
 
 let charrefunicodeConverter, getPref, setPref;
 export const shareVars = ({charrefunicodeConverter: _uc}) => {
@@ -36,9 +36,9 @@ async function registerDTD () {
   // Reset in case charrefs or ents array deleted before and now want to
   //  go back to their original values.
   if (await getPref('appendtohtmldtd')) {
-    CharrefunicodeConsts.Entities = [...Unicodecharref.origents];
+    CharrefunicodeConsts.Entities = [...unicodecharref.origents];
     CharrefunicodeConsts.NumericCharacterReferences = [
-      ...Unicodecharref.origcharrefs
+      ...unicodecharref.origcharrefs
     ];
   } else {
     CharrefunicodeConsts.Entities = [];
@@ -46,9 +46,9 @@ async function registerDTD () {
   }
 
   // Start off blank in case items erased
-  charrefunicodeConverter.newents = [...Unicodecharref.orignewents];
+  charrefunicodeConverter.newents = [...unicodecharref.orignewents];
   // Start off blank in case items erased
-  charrefunicodeConverter.newcharrefs = [...Unicodecharref.orignewcharrefs];
+  charrefunicodeConverter.newcharrefs = [...unicodecharref.orignewcharrefs];
 
   const decreg = /^(&#|#)?(\d\d+);?$/u;
   // const decreg2 = /^(&#|#)([0-9]);?$/u;

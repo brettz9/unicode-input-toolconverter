@@ -89,7 +89,7 @@ function createXULElement (el) {
   return document.createElementNS(xulns, el);
 }
 
-const Unicodecharref = {
+const unicodecharref = {
   downloadUnihan () {
     $('#DownloadButtonBox').hidden = true;
     $('#DownloadProgressBox').hidden = false;
@@ -169,8 +169,8 @@ const Unicodecharref = {
         textbox.setAttribute('id', prefix + this[type][i]);
         textbox.setAttribute('rows', '1');
         textbox.setAttribute('cols', '2');
-        textbox.addEventListener('change', function (e) {Unicodecharref['search' + type](e);});
-        textbox.addEventListener('input', function (e) {Unicodecharref['search' + type](e);});
+        textbox.addEventListener('change', function (e) {unicodecharref['search' + type](e);});
+        textbox.addEventListener('input', function (e) {unicodecharref['search' + type](e);});
         row.append(label);
         row.append(textbox);
         $(type+'Search').append(row);
@@ -258,14 +258,14 @@ const Unicodecharref = {
     const tabpanel = '#tabboxSearch';
 
     $(tabpanel).addEventListener('change', function (e) {
-      Unicodecharref['search' + type](e.target);
+      unicodecharref['search' + type](e.target);
     });
     $(tabpanel).addEventListener('input', function (e) {
-      Unicodecharref['search' + type](e.target);
+      unicodecharref['search' + type](e.target);
     });
     $(tabpanel).addEventListener('select', function (e) {
       if (e.target.nodeName !== 'menulist' && e.target.nodeName !== 'textbox') { return; }
-      Unicodecharref['search' + type](e.target);
+      unicodecharref['search' + type](e.target);
     }); // Triggered initially which sets preference to "Lu"
   },
   async testIfComplexWindow () { // Fix: Should also create the detailedView and detailedCJKView's content dynamically (and thus fully conditionally rather than hiding)
@@ -1384,4 +1384,4 @@ const Unicodecharref = {
   UnicodeMenuDigit: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   UnicodeMenuDecimal: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 };
-export default Unicodecharref;
+export default unicodecharref;

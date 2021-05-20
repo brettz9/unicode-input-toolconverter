@@ -16,7 +16,8 @@ import insertIntoOrOverExisting from
 import {getUnicodeDefaults, setPrefDefaultVars} from
   './preferences/prefDefaults.js';
 import {getUnicodeConverter} from './unicode/UnicodeConverter.js';
-import Unicodecharref, {shareVars as uresultsShareVars} from './uresults.js';
+import unicodecharref, {shareVars as uresultsShareVars} from
+  './unicodecharref.js';
 import {insertEntityFile, shareVars as entityShareVars} from './entities.js';
 import {convertEncoding} from './charset-converters.js';
 import indexTemplate from './templates/index.js';
@@ -144,7 +145,7 @@ $('#insertEntityFile').addEventListener('change', async function (e) {
   await insertEntityFile(e);
 });
 
-Unicodecharref.initialize();
+unicodecharref.initialize();
 
 /**
 * The following works, but if used will not allow user to cancel to

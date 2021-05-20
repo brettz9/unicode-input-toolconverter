@@ -4,7 +4,7 @@ import {safeLink} from '../templateUtils/validation.js';
 import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicode-scripts.js';
 import unihanFieldInfo from '../unicode/unihanFieldInfo.js';
-import Unicodecharref from '../uresults.js';
+import unicodecharref from '../unicodecharref.js';
 import CharrefConverterBridges from '../charref-converters.js';
 import {registerDTD} from '../entities.js';
 
@@ -41,10 +41,10 @@ const indexTemplate = function ({_, fonts}) {
                         class: 'searchBox',
                         $on: {
                           change () {
-                            Unicodecharref.startset(this);
+                            unicodecharref.startset(this);
                           },
                           input () {
-                            Unicodecharref.startset(this);
+                            unicodecharref.startset(this);
                           }
                         }
                       }]
@@ -58,10 +58,10 @@ const indexTemplate = function ({_, fonts}) {
                         class: 'searchBox',
                         $on: {
                           change () {
-                            Unicodecharref.searchUnicode(this);
+                            unicodecharref.searchUnicode(this);
                           },
                           input () {
-                            Unicodecharref.searchUnicode(this);
+                            unicodecharref.searchUnicode(this);
                           }
                         }
                       }]
@@ -75,10 +75,10 @@ const indexTemplate = function ({_, fonts}) {
                         class: 'searchBox',
                         $on: {
                           change () {
-                            Unicodecharref.searchUnihan(this);
+                            unicodecharref.searchUnihan(this);
                           },
                           input () {
-                            Unicodecharref.searchUnihan(this);
+                            unicodecharref.searchUnihan(this);
                           }
                         }
                       }]
@@ -167,7 +167,7 @@ const indexTemplate = function ({_, fonts}) {
                         class: 'charthbox',
                         $on: {
                           click (e) {
-                            Unicodecharref.onlyentsyesflip(e);
+                            unicodecharref.onlyentsyesflip(e);
                           }
                         }
                       }],
@@ -182,7 +182,7 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'rowsset',
                           $on: {
                             change (e) {
-                              Unicodecharref.rowsset(e);
+                              unicodecharref.rowsset(e);
                             }
                           }
                         }]
@@ -194,7 +194,7 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'colsset',
                           $on: {
                             change (e) {
-                              Unicodecharref.colsset(e);
+                              unicodecharref.colsset(e);
                             }
                           }
                         }]
@@ -208,7 +208,7 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             click (e) {
-                              Unicodecharref.entflip(e);
+                              unicodecharref.entflip(e);
                             }
                           }
                         }],
@@ -222,7 +222,7 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             click (e) {
-                              Unicodecharref.decflip(e);
+                              unicodecharref.decflip(e);
                             }
                           }
                         }],
@@ -236,7 +236,7 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             click (e) {
-                              Unicodecharref.hexflip(e);
+                              unicodecharref.hexflip(e);
                             }
                           }
                         }],
@@ -250,7 +250,7 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             click (e) {
-                              Unicodecharref.unicodeflip(e);
+                              unicodecharref.unicodeflip(e);
                             }
                           }
                         }],
@@ -265,7 +265,7 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             click (e) {
-                              Unicodecharref.middleflip(e);
+                              unicodecharref.middleflip(e);
                             }
                           }
                         }],
@@ -279,7 +279,7 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             click (e) {
-                              Unicodecharref.buttonflip(e);
+                              unicodecharref.buttonflip(e);
                             }
                           }
                         }],
@@ -291,13 +291,13 @@ const indexTemplate = function ({_, fonts}) {
                       nbsp.repeat(2),
                       ['button', {class: 'fontsize', $on: {
                         click () {
-                          Unicodecharref.tblfontsize(+1);
+                          unicodecharref.tblfontsize(+1);
                         }
                       }}, [_('plus')]],
                       nbsp,
                       ['button', {class: 'fontsize', $on: {
                         click () {
-                          Unicodecharref.tblfontsize(-1);
+                          unicodecharref.tblfontsize(-1);
                         }
                       }}, [_('minus')]]
                     ]]
@@ -328,7 +328,7 @@ const indexTemplate = function ({_, fonts}) {
                           },
                           $on: {
                             change (e) {
-                              Unicodecharref.setprefs(e);
+                              unicodecharref.setprefs(e);
                               this.$setFontFamily(this.value);
                             }
                           }
@@ -360,7 +360,7 @@ const indexTemplate = function ({_, fonts}) {
                           size: '5',
                           $on: {
                             change (e) {
-                              Unicodecharref.setprefs(e);
+                              unicodecharref.setprefs(e);
                               $('#chart_table').lang = this.value;
                             }
                           }
@@ -404,7 +404,7 @@ const indexTemplate = function ({_, fonts}) {
                         type: 'checkbox',
                         $on: {
                           click () {
-                            Unicodecharref.multiline();
+                            unicodecharref.multiline();
                           }
                         }
                       }],
@@ -418,7 +418,7 @@ const indexTemplate = function ({_, fonts}) {
                         type: 'checkbox',
                         $on: {
                           click (e) {
-                            Unicodecharref.setImagePref(e);
+                            unicodecharref.setImagePref(e);
                           }
                         }
                       }],
@@ -468,7 +468,7 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'outputcopybutton',
                           $on: {
                             click () {
-                              Unicodecharref.moveoutput('insertText');
+                              unicodecharref.moveoutput('insertText');
                             }
                           }
                         }, [
@@ -478,7 +478,7 @@ const indexTemplate = function ({_, fonts}) {
                       nbsp.repeat(2),
                       ['button', {$on: {
                         click () {
-                          Unicodecharref.copyToClipboard('insertText');
+                          unicodecharref.copyToClipboard('insertText');
                         }
                       }}, [
                         _('copyToClipboard')
@@ -486,7 +486,7 @@ const indexTemplate = function ({_, fonts}) {
                       nbsp.repeat(2),
                       ['button', {$on: {
                         click () {
-                          Unicodecharref.addToToolbar();
+                          unicodecharref.addToToolbar();
                         }
                       }}, [
                         _('addToToolbar')
@@ -509,7 +509,7 @@ const indexTemplate = function ({_, fonts}) {
                       id: 'showAllDetailedView',
                       $on: {
                         click (e) {
-                          Unicodecharref.setprefs(e);
+                          unicodecharref.setprefs(e);
                         }
                       }
                     }],
@@ -579,7 +579,7 @@ const indexTemplate = function ({_, fonts}) {
                       id: 'showAllDetailedCJKView',
                       $on: {
                         click (e) {
-                          Unicodecharref.setprefs(e);
+                          unicodecharref.setprefs(e);
                         }
                       }
                     }],
@@ -798,7 +798,7 @@ const indexTemplate = function ({_, fonts}) {
               nbsp.repeat(2),
               ['button', {class: 'fontsize', $on: {
                 click () {
-                  Unicodecharref.fontsizetextbox(+1);
+                  unicodecharref.fontsizetextbox(+1);
                 }
               }}, [
                 _('plus')
@@ -806,14 +806,14 @@ const indexTemplate = function ({_, fonts}) {
               nbsp,
               ['button', {class: 'fontsize', $on: {
                 click () {
-                  Unicodecharref.fontsizetextbox(-1);
+                  unicodecharref.fontsizetextbox(-1);
                 }
               }}, [
                 _('minus')
               ]],
               nbsp.repeat(7),
               ['button', {$on: {click () {
-                Unicodecharref.moveoutput('converted');
+                unicodecharref.moveoutput('converted');
               }}}, [
                 _('moveconvertedup_label')
               ]]
@@ -838,7 +838,7 @@ const indexTemplate = function ({_, fonts}) {
             ['button', {
               $on: {
                 click () {
-                  Unicodecharref.downloadUnihan();
+                  unicodecharref.downloadUnihan();
                 }
               }
             }, [_('DownloadUnihan')]]
@@ -857,7 +857,7 @@ const indexTemplate = function ({_, fonts}) {
               hidden: true,
               $on: {
                 click () {
-                  Unicodecharref.closeDownloadProgressBox();
+                  unicodecharref.closeDownloadProgressBox();
                 }
               }
             }, [_('Close')]]
@@ -871,7 +871,7 @@ const indexTemplate = function ({_, fonts}) {
             _('initialTab_label'), nbsp.repeat(3),
             ['select', {id: 'initialTab', $on: {
               click (e) {
-                Unicodecharref.setprefs(e);
+                unicodecharref.setprefs(e);
               }
             }}, [
               ['option', {
@@ -902,7 +902,7 @@ const indexTemplate = function ({_, fonts}) {
               id: 'asciiLt128',
               $on: {
                 click (e) {
-                  Unicodecharref.setprefs(e);
+                  unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -917,7 +917,7 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 click (e) {
-                  Unicodecharref.setprefs(e);
+                  unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -932,7 +932,7 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 click (e) {
-                  Unicodecharref.setprefs(e);
+                  unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -947,7 +947,7 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 click (e) {
-                  Unicodecharref.setprefs(e);
+                  unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -962,7 +962,7 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 click (e) {
-                  Unicodecharref.setprefs(e);
+                  unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -977,7 +977,7 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 click (e) {
-                  Unicodecharref.setprefs(e);
+                  unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -992,8 +992,8 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 click (e) {
-                  Unicodecharref.setprefs(e);
-                  Unicodecharref.testIfComplexWindow();
+                  unicodecharref.setprefs(e);
+                  unicodecharref.testIfComplexWindow();
                 }
               }
             }],
@@ -1008,7 +1008,7 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 click (e) {
-                  Unicodecharref.setprefs(e);
+                  unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -1021,7 +1021,7 @@ const indexTemplate = function ({_, fonts}) {
               id: 'CSSWhitespace',
               $on: {
                 click (e) {
-                  Unicodecharref.cssWhitespace(e);
+                  unicodecharref.cssWhitespace(e);
                 }
               }
             }, [
@@ -1037,7 +1037,7 @@ const indexTemplate = function ({_, fonts}) {
         ['div', {style: 'text-align: center;'}, [
           ['button', {id: 'resetdefaultbutton', $on: {
             click () {
-              Unicodecharref.resetdefaults();
+              unicodecharref.resetdefaults();
             }
           }}, [
             _('resettodefault_label')
@@ -1137,7 +1137,7 @@ const indexTemplate = function ({_, fonts}) {
             ]],
             ['div', {style: 'text-align: center; margin-top: 10px;'}, [
               ['button', {class: 'dtdbutton', $on: {click () {
-                Unicodecharref.insertent('DTDtextbox');
+                unicodecharref.insertent('DTDtextbox');
               }}}, [
                 _('DTD_insertent')
               ]]
@@ -1148,7 +1148,7 @@ const indexTemplate = function ({_, fonts}) {
                 type: 'checkbox',
                 $on: {
                   click (e) {
-                    Unicodecharref.append2htmlflip(e);
+                    unicodecharref.append2htmlflip(e);
                   }
                 }
               }],

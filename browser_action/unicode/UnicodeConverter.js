@@ -64,6 +64,11 @@ export const getUnicodeConverter = () => {
       return out;
     }
 
+    /**
+     * @param {string} unicodeToConvert
+     * @param {boolean} leaveSurrogates
+     * @returns {string}
+     */
     unicode2charrefDecval (unicodeToConvert, leaveSurrogates) {
       let out = '';
       for (let i = 0; i < unicodeToConvert.length; i++) {
