@@ -14,7 +14,13 @@ const htmlent = /&([_a-zA-Z][-\w]*);/gu; /* Unicode complete version? */
 export const getUnicodeConverter = () => {
   const {getPref} = getUnicodeDefaults();
 
+  /**
+   *
+   */
   return class UnicodeConverter {
+    /**
+     * @param {IntlDom} _
+     */
     constructor ({_}) {
       this._ = _;
       this.shiftcount = 0;
@@ -22,6 +28,10 @@ export const getUnicodeConverter = () => {
       this.newcharrefs = [];
     }
 
+    /**
+     * @param {string} out
+     * @returns {string}
+     */
     charref2unicodeval (out) {
       out = out.replace(decim, function (match, match1) {
         return String.fromCodePoint(match1);
@@ -31,6 +41,10 @@ export const getUnicodeConverter = () => {
       return out;
     }
 
+    /**
+     * @param {string} out
+     * @returns {string}
+     */
     charref2htmlentsval (out) {
       const xhtmlentmode = getPref('xhtmlentmode'); // If true, should allow conversion to &apos;
 
@@ -479,11 +493,13 @@ export const getUnicodeConverter = () => {
      */
     lookupUnicodeValueByCharName (value) {
       // Fix: Character names for Unihan?
-      const forceUnicode = true; // Todo: Need to make changeable? If not, remove
+      // Todo: Need to make changeable? If not, remove
+      const forceUnicode = true;
       const table = forceUnicode ? 'Unicode' : 'Unihan';
       const id = forceUnicode ? 'searchName' : 'searchkDefinition';
       this.searchUnicode({id, value}, table, 'noChart=true', 'strict=true');
-      if (!this.descripts[0] && value.length <= 7) { // Try Hangul (if possible size for Hangul)
+      if (!this.descripts[0] && value.length <= 7) {
+        // Try Hangul (if possible size for Hangul)
         // Fix: Is Hangul allowed in PHP 6 Unicode escape names?
         const ret = getHangulFromName(value);
         return ret ? ret.charCodeAt(0) : false;
@@ -507,7 +523,8 @@ export const getUnicodeConverter = () => {
       }
       const nameDesc = obj.id.replace(/^search/u, '');
 
-      // const nameDesc = (table === 'Unihan') ? 'kDefinition' : 'Name'; // Fix: let Unihan search Mandarin, etc.
+      // const nameDesc = (table === 'Unihan') ? 'kDefinition'
+      // : 'Name'; // Fix: let Unihan search Mandarin, etc.
 
       const colindex = 0; // (table === 'Unihan') ? 0 : 0;
       const cpCol = (table === 'Unihan') ? 'code_pt' : 'Code_Point';
@@ -575,10 +592,13 @@ export const getUnicodeConverter = () => {
           while (statement.executeStep()) {
             const cp = statement.getUTF8String(colindex);
             const hex = Number.parseInt(cp, 16);
-            if (table === 'Unicode' && (hex >= 0xF900 && hex < 0xFB00)) { // Don't search for compatibility if searching Unicode
+            if (table === 'Unicode' &&
+              (hex >= 0xF900 && hex < 0xFB00)
+            ) { // Don't search for compatibility if searching Unicode
               continue;
             }
-            this.descripts.push(hex); // Fix: inefficient, but fits more easily into current pattern
+            // Fix: inefficient, but fits more easily into current pattern
+            this.descripts.push(hex);
           }
         }
       } catch (e) {

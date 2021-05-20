@@ -51,6 +51,14 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
   ({getPref, setPref} = getUnicodeDefaults());
 };
 
+/**
+* @param {PositiveInteger} num
+* @param {HTMLAnchorElement} alink
+* @param {IntlDom} underscore
+* @returns {{
+*   plane: PositiveInteger, privateuse: boolean, surrogate: boolean|string
+* }}
+*/
 function getAndSetCodePointInfo (num, alink, underscore) {
   const {
     codePointStart, script, plane, privateuse, surrogate
@@ -59,15 +67,24 @@ function getAndSetCodePointInfo (num, alink, underscore) {
   alink.className = 'text-link';
   alink.href = `https://unicode.org/charts/PDF/U${codePointStart}.pdf`;
   alink.setAttribute('value', script + ' (PDF)');
-  return [plane, privateuse, surrogate];
+  return {plane, privateuse, surrogate};
 }
 
 const xulns = 'https://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
   htmlns = 'https://www.w3.org/1999/xhtml';
 
+/**
+* @param {string} el
+* @returns {Element}
+*/
 function createHTMLElement (el) {
   return document.createElementNS(htmlns, el);
 }
+
+/**
+* @param {string} el
+* @returns {Element}
+*/
 function createXULElement (el) {
   return document.createElementNS(xulns, el);
 }
@@ -573,6 +590,10 @@ const Unicodecharref = {
     $('#showAllDetailedView').checked = true;
     $('#showAllDetailedCJKView').checked = true;
 
+    /**
+    * @param {string} langOrFont
+    * @returns {string}
+    */
     function langFont (langOrFont) { // Fix: needs to get default!
       const Components = 'todo';
       const Ci = Components.interfaces;
@@ -663,8 +684,13 @@ const Unicodecharref = {
     // const alink = createHTMLElement('a');
     const alink = createXULElement('label');
 
-    const [plane, privateuse, surrogate] = getAndSetCodePointInfo(kdectemp, alink, _);
+    const {plane, privateuse, surrogate} = getAndSetCodePointInfo(kdectemp, alink, _);
 
+    /**
+     * @param {string} sel
+     * @param {Element} item
+     * @returns {void}
+     */
     function placeItem (sel, item) {
       const firstchld = $(sel).firstChild;
       if (firstchld !== null) {
