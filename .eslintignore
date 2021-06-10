@@ -2,4 +2,4 @@ polyfills/browser-polyfill.min.js
 old
 vendor
 lib/misc-to-move
-browser_action/unicode/unicode-scripts.js
+browser_action/unicode/unicodeScripts.js

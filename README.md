@@ -14,26 +14,32 @@ character references, etc.
 ![Preferences](./screenshots/preferences.png)
 ![Custom DTD (for highlighting entities in the script browser](./screenshots/dtd.png)
 
+## History
+
+This project had originally found life as a
+[XUL-based Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/),
+but XUL support was dropped in Firefox.
+
 ## Possible to-dos
 
+1. ONGOING: Get **l10n** completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
+
+1. Conversion to/from **6-digit JavaScript escapes**
+1. **Protocol handler**:
+    <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
 1. Create (reactive) **Web Components** (hyperHTML?) so that besides internal
     clarity, could reuse as pop-up script browser or character picker
 1. Improve slow **font retrieval** so can reenable; need to do equivalent for
     other OS' or at least disable for them
-1. Get **l10n** completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
-1. **Protocol handler**:
-    <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
-1. Various modules, some already in `vendor`, could be
-    **moved to own npm package**
-1. Convert
-    [XUL-based add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/)
-    to **webextensions** and complete HTML conversion
-1. Conversion to/from **6-digit JavaScript escapes**
+1. After HTML conversion, restore as browser add-on, but as **webextensions**
+    1. Allow adding specific characters or sequences thereof to global system
+        **key commands**
+
+## Lower-priority to-dos
+
 1. When browsing by script, have **option to update script location** when one
     uses next/prev
+1. `unicode` or `utils` modules could be **moved to own npm package**
 1. Utilize column browser also for **blocks/categories** (also use in
     `filebrowser-enhanced`!)
-1. **Get ideas from charpick** (GPL3-licensed):
-    <https://github.com/brettz9/charpick>?
-1. Allow adding specific characters or sequences thereof to global system key
-    commands
+1. Offer **minimal character picker window**

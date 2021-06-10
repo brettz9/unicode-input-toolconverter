@@ -7,7 +7,7 @@
  * @param {boolean} [cfg.focusIn=true]
  * @returns {void}
  */
-export default function insertIntoOrOverExisting ({
+function insertIntoOrOverExisting ({
   textReceptacle, value, focusIn = true
 } = {}) {
   const {length: len} = textReceptacle.value;
@@ -22,3 +22,5 @@ export default function insertIntoOrOverExisting ({
   textReceptacle.selectionStart = pre.length + value.length;
   textReceptacle.selectionEnd = pre.length + value.length;
 }
+
+export {insertIntoOrOverExisting};

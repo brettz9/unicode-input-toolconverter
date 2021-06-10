@@ -1,8 +1,7 @@
 /* globals jQuery -- No ESM */
 import {$} from '../vendor/jamilih/dist/jml-es.js';
-import getBuildChart, {buildChart} from './build-chart.js';
-import insertIntoOrOverExisting from
-  './templatesElementCustomization/insertIntoOrOverExisting.js';
+import {getChartBuild, chartBuild} from './chartBuild.js';
+import {insertIntoOrOverExisting} from './utils/TextUtils.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import addMillerColumnPlugin from
   '../vendor/miller-columns/dist/index-es.min.js';
@@ -17,7 +16,7 @@ async function characterSelection ({
   _, charrefunicodeConverter
 }) {
   const {setPref} = getUnicodeDefaults();
-  await getBuildChart({
+  await getChartBuild({
     _,
     charrefunicodeConverter,
     textReceptacle: $('#insertText'),
@@ -68,8 +67,8 @@ async function characterSelection ({
         'currentStartCharCode',
         Number.parseInt(title.replace(/-.*$/u, ''), 16)
       );
-      // Free to use `buildChart` now that we have passed set-up
-      buildChart(); // Todo: descripts?
+      // Free to use `chartBuild` now that we have passed set-up
+      chartBuild(); // Todo: descripts?
     }
   });
 }

@@ -1,5 +1,7 @@
 import {$} from '../vendor/jamilih/dist/jml-es.js';
 
+import {classChange as charrefClassChange} from './charrefConverters.js';
+
 // UI Bridges
 export const convertEncoding = (out) => {
   const from = $('#encoding_from').value,
@@ -44,3 +46,28 @@ export const convertEncoding = (out) => {
   $('#converted').value = cv.ConvertFromUnicode(unicode_str);
   */
 };
+
+/**
+* @param {PlainObject} cfg
+* @param {external:IntlDom} cfg._
+* @returns {void}
+*/
+function setupEncodingEvents ({_}) {
+  /**
+   * @param {Event} e
+   * @returns {void}
+   */
+  function encodingListener (e) {
+    charrefClassChange(this);
+    try {
+      convertEncoding($('#toconvert').value);
+    } catch (err) {
+      alert(_('chars_could_not_be_converted'));
+    }
+  }
+
+  $('#encoding_from').addEventListener('click', encodingListener);
+  $('#encoding_to').addEventListener('click', encodingListener);
+}
+
+export {setupEncodingEvents};

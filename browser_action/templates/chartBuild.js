@@ -3,10 +3,10 @@ import {fill} from '../templateUtils/fill.js';
 import charrefunicodeDb from '../unicode/charrefunicodeDb.js';
 
 let idgen = 0;
-const buildChartTemplate = function ({
-  _, rows, cols, CharrefunicodeConsts, current,
+const chartBuildTemplate = function ({
+  _, rows, cols, charrefunicodeConverter, current,
   resetCurrentStartCharCodeIfOutOfBounds, descriptsOrOnlyEnts,
-  q, obj, chars, textReceptacle, entyes, buildChart, descripts,
+  q, obj, chars, textReceptacle, entyes, chartBuild, descripts,
   chartContainer,
   setPref, insertText, buttonyes, font, lang, prev,
   rowceil, colsOverRemainder, appliedFormats, displayTypes,
@@ -34,12 +34,14 @@ const buildChartTemplate = function ({
           return '';
         }
 
-        const charRefIdx = CharrefunicodeConsts.NumericCharacterReferences
-          .indexOf(current.startCharCode);
+        const charRefIdx = charrefunicodeConverter
+          .numericCharacterReferences.indexOf(
+            current.startCharCode
+          );
         const hasEntity = charRefIdx > -1;
         const entity = hasEntity
           // If recognized multiple char ent. (won't convert these to decimal)
-          ? '&' + CharrefunicodeConsts.Entities[charRefIdx] + ';'
+          ? '&' + charrefunicodeConverter.entities[charRefIdx] + ';'
           : '';
 
         resetCurrentStartCharCodeIfOutOfBounds();
@@ -145,7 +147,7 @@ const buildChartTemplate = function ({
                 setPref('currentStartCharCode', prev),
                 setPref('startCharInMiddleOfChart', false)
               ]);
-              buildChart(descripts);
+              chartBuild(descripts);
             }
           }
         }, [
@@ -161,7 +163,7 @@ const buildChartTemplate = function ({
                 setPref('currentStartCharCode', current.startCharCode),
                 setPref('startCharInMiddleOfChart', false)
               ]);
-              buildChart(descripts);
+              chartBuild(descripts);
             }
           }
         }, [
@@ -172,4 +174,4 @@ const buildChartTemplate = function ({
   ], chartContainer);
 };
 
-export default buildChartTemplate;
+export default chartBuildTemplate;

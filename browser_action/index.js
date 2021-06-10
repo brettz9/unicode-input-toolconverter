@@ -1,25 +1,25 @@
-import {$} from '../vendor/jamilih/dist/jml-es.js';
-
 import {i18n, setJSONExtra} from '../vendor/intl-dom/dist/index.esm.js';
-
 // Currently not bundling json-6
 import jsonExtra from '../vendor/json-6/dist/index.mjs';
 
 import {makeTabBox} from './templatesElementCustomization/widgets.js';
 import {code, link} from './templateUtils/elements.js';
+
 import {setPrefDefaultVars} from
   './preferences/prefDefaults.js';
 import {getUnicodeConverter} from './unicode/UnicodeConverter.js';
-import unicodecharref, {shareVars as uresultsShareVars} from
+import unicodecharref, {shareVars as shareVarsUresults} from
   './unicodecharref.js';
-import {insertEntityFile, shareVars as entityShareVars} from './entities.js';
-import {convertEncoding} from './charset-converters.js';
 import indexTemplate from './templates/index.js';
-import {
-  shareVars as charrefConverterShareVars, classChange as charrefClassChange
-} from './charref-converters.js';
 
-import characterSelection from './character-selection.js';
+import {
+  shareVars as shareVarsEntity, setupEntityEvents
+} from './entityBehaviors.js';
+import {
+  shareVars as shareVarsCharrefConverter
+} from './charrefConverters.js';
+import characterSelection from './characterSelection.js';
+import {setupEncodingEvents} from './encodingBehaviors.js';
 
 setJSONExtra(jsonExtra);
 
@@ -49,46 +49,26 @@ const _ = await i18n({
 
 setPrefDefaultVars({_});
 const charrefunicodeConverter = new (getUnicodeConverter())({_});
-uresultsShareVars({_, charrefunicodeConverter});
-entityShareVars({charrefunicodeConverter});
-charrefConverterShareVars({charrefunicodeConverter});
+shareVarsUresults({_, charrefunicodeConverter});
+shareVarsEntity({charrefunicodeConverter});
+shareVarsCharrefConverter({charrefunicodeConverter});
 
-// TEMPLATE
+// MAIN TEMPLATE
 // Todo: Disabling for now as slows down loading
 const fonts = []; // await (await fetch('/fonts')).json();
 indexTemplate({_, fonts});
 
-// ADD BEHAVIORS
+// ADD GENERAL BEHAVIORS
 makeTabBox('.tabbox');
 
+// TAB-SPECIFIC
 await characterSelection({
   _, charrefunicodeConverter
 });
+setupEncodingEvents({_});
+setupEntityEvents();
 
-/**
- * @param {Event} e
- * @returns {void}
- */
-function encodingListener (e) {
-  charrefClassChange(this);
-  try {
-    convertEncoding($('#toconvert').value);
-  } catch (err) {
-    alert(_('chars_could_not_be_converted'));
-  }
-}
-
-// EVENTS
-
-// 1. ENCODING
-$('#encoding_from').addEventListener('click', encodingListener);
-$('#encoding_to').addEventListener('click', encodingListener);
-
-// 2. ENTITIES
-$('#insertEntityFile').addEventListener('change', async function (e) {
-  await insertEntityFile(e);
-});
-
+// Todo: Move functionality to relevant files
 unicodecharref.initialize();
 
 /**

@@ -2,11 +2,11 @@ import {jml, body, $, $$, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
 import {safeLink} from '../templateUtils/validation.js';
 import encodings from '../encodings.js';
-import unicodeScripts from '../unicode/unicode-scripts.js';
+import unicodeScripts from '../unicode/unicodeScripts.js';
 import unihanFieldInfo from '../unicode/unihanFieldInfo.js';
 import unicodecharref from '../unicodecharref.js';
-import CharrefConverterBridges from '../charref-converters.js';
-import {registerDTD} from '../entities.js';
+import CharrefConverterBridges from '../charrefConverters.js';
+import {registerDTD} from '../entityBehaviors.js';
 
 const indexTemplate = function ({_, fonts}) {
   document.title = _('uresults_title');
@@ -1066,8 +1066,8 @@ const indexTemplate = function ({_, fonts}) {
         }),
         ['div', {class: 'hbox'}, [
           ['textarea', {id: 'DTDtextbox', $on: {
-            change () {
-              registerDTD();
+            async change () {
+              await registerDTD();
             }
           }}, [
             _('DTD_textbox_value')

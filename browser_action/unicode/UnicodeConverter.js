@@ -1,7 +1,6 @@
 /* eslint-disable class-methods-use-this -- Todo: fix later */
 import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
-import {getHangulName, getHangulFromName} from './Hangul.js';
-import CharrefunicodeConsts from './CharrefunicodeConsts.js';
+import {getHangulName, getHangulFromName} from './hangul.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
 
 /**
@@ -27,9 +26,26 @@ export const getUnicodeConverter = () => {
      */
     constructor ({_}) {
       this._ = _;
-      this.shiftcount = 0;
       this.newents = [];
       this.newcharrefs = [];
+
+      this.entities = [];
+      this.numericCharacterReferences = [];
+    }
+
+    /**
+     * Ensure dynamic as array may change.
+     * @returns {Integer}
+     */
+    getAposPos () {
+      return this.numericCharacterReferences.indexOf(39);
+    }
+    /**
+     * Ensure dynamic as array may change.
+     * @returns {Integer}
+     */
+    getAmpPos () {
+      return this.numericCharacterReferences.indexOf(38);
     }
 
     /**
@@ -54,26 +70,26 @@ export const getUnicodeConverter = () => {
       const xhtmlentmode = getPref('xhtmlentmode');
 
       out = out.replace(decim, (match, match1) => {
-        const matched = CharrefunicodeConsts
-          .NumericCharacterReferences.indexOf(Number.parseInt(match1));
+        const matched = this.numericCharacterReferences.indexOf(
+          Number.parseInt(match1)
+        );
         if (
           matched !== -1 &&
-          (matched !== (98 + this.shiftcount) || xhtmlentmode)
+          (matched !== this.getAposPos() || xhtmlentmode)
         ) {
-          return '&' + CharrefunicodeConsts.Entities[matched] + ';';
+          return '&' + this.entities[matched] + ';';
         }
         return match;
       }).replace(hexadec, (match, match1) => {
-        const matched = CharrefunicodeConsts
-          .NumericCharacterReferences.indexOf(
-            Number.parseInt('0x' + match1, 16)
-          );
+        const matched = this.numericCharacterReferences.indexOf(
+          Number.parseInt('0x' + match1, 16)
+        );
         if (
           matched !== -1 && (
-            matched !== (98 + this.shiftcount) || xhtmlentmode
+            matched !== this.getAposPos() || xhtmlentmode
           )
         ) {
-          return '&' + CharrefunicodeConsts.Entities[matched] + ';';
+          return '&' + this.entities[matched] + ';';
         }
         return match;
       });
@@ -89,13 +105,14 @@ export const getUnicodeConverter = () => {
       let out = '';
       for (let i = 0; i < unicodeToConvert.length; i++) {
         let temp = unicodeToConvert.charCodeAt(i);
+        // Todo: Redo with `codePointAt`?
         if (!leaveSurrogates && temp >= 0xD800 && temp < 0xF900) { // surrogate
           temp = ((temp - 0xD800) * 0x400) +
             (unicodeToConvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
           // Could do test on temp.isNan()  (e.g., if trying to convert
           //  a surrogate by itself in regular (non-surrogate converting) mode)
           out += '&#' + temp + ';';
-          i += 1; // Skip the next surrogate
+          i++; // Skip the next surrogate
 
         // Replace this 'if' condition and remove the 'else' if also
         //  want ascii
@@ -143,11 +160,12 @@ export const getUnicodeConverter = () => {
       for (let i = 0; i < unicodeToConvert.length; i++) {
         let hexletters;
         let temp = unicodeToConvert.charCodeAt(i);
+        // Todo: Redo with `codePointAt`?
         if (!leaveSurrogates && temp >= 0xD800 && temp < 0xF900) { // surrogate
           temp = ((temp - 0xD800) * 0x400) +
             (unicodeToConvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
           hexletters = temp.toString(16);
-          i += 1; // Skip the next surrogate
+          i++; // Skip the next surrogate
           if (getPref('hexLettersUpper')) {
             hexletters = hexletters.toUpperCase();
           }
@@ -213,13 +231,14 @@ export const getUnicodeConverter = () => {
 
       for (let i = 0; i < unicodeToConvert.length; i++) {
         const charcodeati = unicodeToConvert.charCodeAt(i);
-        const tempcharref = CharrefunicodeConsts
-          .NumericCharacterReferences.indexOf(charcodeati);
+        const tempcharref = this.numericCharacterReferences.indexOf(
+          charcodeati
+        );
 
         out += tempcharref !== -1 &&
-          (tempcharref !== (98 + this.shiftcount) || xhtmlentmode) &&
-          (tempcharref !== (99 + this.shiftcount) || !ampkeep)
-          ? '&' + CharrefunicodeConsts.Entities[tempcharref] + ';'
+          (xhtmlentmode || tempcharref !== this.getAposPos()) &&
+          (!ampkeep || tempcharref !== this.getAmpPos())
+          ? '&' + this.entities[tempcharref] + ';'
           : unicodeToConvert.charAt(i);
       }
       return out;
@@ -241,11 +260,10 @@ export const getUnicodeConverter = () => {
             return this.newcharrefs[this.newents.indexOf(match1)];
           }
           // If recognized single char. ent.
-          if (CharrefunicodeConsts.Entities.includes(match1)) {
-            return '&#' + CharrefunicodeConsts
-              .NumericCharacterReferences[
-                CharrefunicodeConsts.Entities.indexOf(match1)
-              ] + ';';
+          if (this.entities.includes(match1)) {
+            return '&#' + this.numericCharacterReferences[
+              this.entities.indexOf(match1)
+            ] + ';';
           }
           // If unrecognized
           return '&' + match1 + ';';
@@ -272,8 +290,8 @@ export const getUnicodeConverter = () => {
           (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
             match1 !== 'gt' && match1 !== 'amp')
         ) {
-          const b = CharrefunicodeConsts.NumericCharacterReferences[
-            CharrefunicodeConsts.Entities.indexOf(match1)
+          const b = this.numericCharacterReferences[
+            this.entities.indexOf(match1)
           ];
           const c = this.newents.indexOf(match1);
 
@@ -284,7 +302,7 @@ export const getUnicodeConverter = () => {
           }
 
           // If recognized single char. ent.
-          if (CharrefunicodeConsts.Entities.includes(match1)) {
+          if (this.entities.includes(match1)) {
             let hexletters = b.toString(16);
             if (getPref('hexLettersUpper')) {
               hexletters = hexletters.toUpperCase();
@@ -311,8 +329,8 @@ export const getUnicodeConverter = () => {
           (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
             match1 !== 'gt' && match1 !== 'amp')
         ) {
-          const b = CharrefunicodeConsts.NumericCharacterReferences[
-            CharrefunicodeConsts.Entities.indexOf(match1)
+          const b = this.numericCharacterReferences[
+            this.entities.indexOf(match1)
           ];
 
           // If recognized multiple char ent.
@@ -320,7 +338,7 @@ export const getUnicodeConverter = () => {
             return this.newcharrefs[this.newents.indexOf(match1)];
           }
           // If recognized single char. ent.
-          if (CharrefunicodeConsts.Entities.includes(match1)) {
+          if (this.entities.includes(match1)) {
             return String.fromCodePoint(b);
           }
           // If unrecognized
@@ -356,63 +374,6 @@ export const getUnicodeConverter = () => {
           hexletters = hexletters.toUpperCase();
         }
         return '&#' + xstyle + hexletters + ';';
-      });
-    }
-
-    /**
-     * @param {string} toconvert
-     * @returns {string}
-     */
-    unicode2CharDescVal (toconvert) {
-      let val = '', charDesc;
-      // Todo: Redo with `codePointAt`
-      for (let i = 0; i < toconvert.length; i++) {
-        let temp = toconvert.charCodeAt(i);
-        if (temp >= 0xD800 && temp < 0xF900) { // surrogate
-          temp = ((temp - 0xD800) * 0x400) +
-            (toconvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
-          // Could do test on temp.isNan()  (e.g., if trying to convert
-          //  a surrogate by itself in regular (non-surrogate converting) mode)
-          charDesc = this.getCharDescForCodePoint(temp);
-          if (!charDesc) {
-            val += toconvert.charAt(i) + toconvert.charAt(i + 1);
-            i += 1; // Skip the next (low) surrogate
-            continue;
-          }
-          val += '\\C{' + charDesc + '}';
-          i += 1; // Skip the next (low) surrogate
-        // Fix: Can/Will Hangul syllables be expressible this way?
-        } else if (temp > 0xAC00 && temp <= 0xD7A3) {
-          try {
-            val += '\\C{' + getHangulName(temp) + '}';
-          } catch (e) {
-            val += toconvert.charAt(i);
-          }
-        // Replace this 'if' condition and remove the 'else' if also want ascii
-        } else if (temp >= 128 || getPref('asciiLt128')) {
-          charDesc = this.getCharDescForCodePoint(temp);
-          if (!charDesc) { // Skip if no description in database
-            val += toconvert.charAt(i);
-            continue;
-          }
-          val += '\\C{' + charDesc + '}';
-        } else {
-          val += toconvert.charAt(i);
-        }
-      }
-      return val;
-    }
-
-    /**
-     * @param {string} toconvert
-     * @returns {string}
-     */
-    charDesc2UnicodeVal (toconvert) {
-      return toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
-        const unicodeVal = this.lookupUnicodeValueByCharName(n1);
-        return unicodeVal
-          ? String.fromCodePoint(unicodeVal)
-          : '\uFFFD'; // Replacement character if not found?
       });
     }
 
@@ -600,6 +561,65 @@ export const getUnicodeConverter = () => {
      */
     sixDigit2UnicodeVal (toconvert) {
       return this.jsescape2unicodeval(toconvert, 'php');
+    }
+
+    // Todo: Move these to their own database-driven file?
+
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
+    unicode2CharDescVal (toconvert) {
+      let val = '', charDesc;
+      // Todo: Redo with `codePointAt`?
+      for (let i = 0; i < toconvert.length; i++) {
+        let temp = toconvert.charCodeAt(i);
+        if (temp >= 0xD800 && temp < 0xF900) { // surrogate
+          temp = ((temp - 0xD800) * 0x400) +
+            (toconvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
+          // Could do test on temp.isNan()  (e.g., if trying to convert
+          //  a surrogate by itself in regular (non-surrogate converting) mode)
+          charDesc = this.getCharDescForCodePoint(temp);
+          if (!charDesc) {
+            val += toconvert.charAt(i) + toconvert.charAt(i + 1);
+            i++; // Skip the next (low) surrogate
+            continue;
+          }
+          val += '\\C{' + charDesc + '}';
+          i++; // Skip the next (low) surrogate
+        // Fix: Can/Will Hangul syllables be expressible this way?
+        } else if (temp > 0xAC00 && temp <= 0xD7A3) {
+          try {
+            val += '\\C{' + getHangulName(temp) + '}';
+          } catch (e) {
+            val += toconvert.charAt(i);
+          }
+        // Replace this 'if' condition and remove the 'else' if also want ascii
+        } else if (temp >= 128 || getPref('asciiLt128')) {
+          charDesc = this.getCharDescForCodePoint(temp);
+          if (!charDesc) { // Skip if no description in database
+            val += toconvert.charAt(i);
+            continue;
+          }
+          val += '\\C{' + charDesc + '}';
+        } else {
+          val += toconvert.charAt(i);
+        }
+      }
+      return val;
+    }
+
+    /**
+     * @param {string} toconvert
+     * @returns {string}
+     */
+    charDesc2UnicodeVal (toconvert) {
+      return toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
+        const unicodeVal = this.lookupUnicodeValueByCharName(n1);
+        return unicodeVal
+          ? String.fromCodePoint(unicodeVal)
+          : '\uFFFD'; // Replacement character if not found?
+      });
     }
 
     /**

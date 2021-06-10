@@ -38,7 +38,7 @@ const sBase = 0xAC00,
  * @returns {Integer[]|string} An array of the numeric value of each
  *   component or string if unchanged
  */
-export function decomposeHangul (syllableCode) {
+function decomposeHangul (syllableCode) {
   const sIndex = syllableCode - sBase;
   if (sIndex < 0 || sIndex >= sCount) {
     // Return as single-item array instead or change "result" to String?
@@ -55,8 +55,9 @@ export function decomposeHangul (syllableCode) {
 /**
  *
  * @param {string[]} source
+ * @returns {string[]}
  */
-export function composeHangul (source) {
+function composeHangul (source) {
   const len = source.length;
   if (len === 0) { return ''; }
   const result = [];
@@ -107,7 +108,7 @@ export function composeHangul (source) {
  * @returns {string|boolean} False if invalid, or otherwise the Hangul
  *   character represented by the supplied name
  */
-export function getHangulFromName (name) {
+function getHangulFromName (name) {
   // Turn indices into individual Jamo characters
   let t, lIndex, vIndex, tIndex;
   let ptr = 1;
@@ -130,7 +131,7 @@ export function getHangulFromName (name) {
       ptr += 2;
     } else {
       vIndex = JAMO_V_TABLE.indexOf(name.substr(ptr, 1));
-      ptr += 1;
+      ptr++;
     }
   }
 
@@ -140,7 +141,7 @@ export function getHangulFromName (name) {
     ptr += 2;
   } else {
     tIndex = JAMO_T_TABLE.indexOf(name.substr(ptr, 1));
-    ptr += 1;
+    ptr++;
   }
   if (
     lIndex === -1 || vIndex === -1 ||
@@ -168,8 +169,10 @@ export function getHangulFromName (name) {
  * Utility (could be adapted to accept the letter(s)).
  * @param {string} index
  * @param {'l'|'v'|'t'} type
+ * @throws {TypeError}
+ * @returns {string}
  */
-export function getJamoForIndex (index, type) {
+function getJamoForIndex (index, type) {
   switch (type) {
   case 'l':
     return String.fromCodePoint(lBase + index);
@@ -184,9 +187,10 @@ export function getJamoForIndex (index, type) {
 
 /**
  * @param {PositiveInteger} syllableCode
+ * @throws {Error}
  * @returns {string}
  */
-export function getHangulName (syllableCode) {
+function getHangulName (syllableCode) {
   // Adapted from Hangul Character Names:
   //  https://unicode.org/reports/tr15/#Hangul
 
@@ -235,3 +239,8 @@ export function getHangulName (syllableCode) {
   }
   */
 }
+
+export {
+  decomposeHangul, composeHangul, getHangulFromName,
+  getJamoForIndex, getHangulName
+};

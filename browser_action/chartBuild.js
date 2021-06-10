@@ -1,11 +1,10 @@
 import {jml} from '../vendor/jamilih/dist/jml-es.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
-import CharrefunicodeConsts from './unicode/CharrefunicodeConsts.js';
-import buildChartTemplate from './templates/build-chart.js';
+import chartBuildTemplate from './templates/chartBuild.js';
 
 let _, textReceptacle, chartContainer, insertText, charrefunicodeConverter;
 
-const getBuildChart = async function ({
+const getChartBuild = async function ({
   _: i18n,
   descripts,
   insertText: it, textReceptacle: tr, chartContainer: cc,
@@ -16,7 +15,7 @@ const getBuildChart = async function ({
   insertText = it;
   charrefunicodeConverter = uc;
   _ = i18n;
-  return await buildChart({descripts});
+  return await chartBuild({descripts});
 };
 
 let lastStartCharCode;
@@ -25,7 +24,7 @@ let lastStartCharCode;
 // eslint-disable-next-line no-unused-expressions -- Bug in lgtm?
 lastStartCharCode; // lgtm [js/useless-expression]
 
-export const buildChart = async function buildChart ({descripts} = {}) {
+const chartBuild = async function chartBuild ({descripts} = {}) {
   const {getPref, setPref} = getUnicodeDefaults();
   const [
     startCharInMiddleOfChart,
@@ -68,12 +67,13 @@ export const buildChart = async function buildChart ({descripts} = {}) {
   }
 
   // Todo: Document (or better name) what's going on here
-  let q, prev, chars, obj, remainder, rowceil, colsOverRemainder;
+  let q, prev, chars, arr, remainder, rowceil, colsOverRemainder;
   const descriptsOrOnlyEnts = onlyentsyes || descripts;
   if (descriptsOrOnlyEnts) {
-    chars = descripts ? 'descripts' : 'NumericCharacterReferences';
-    obj = descripts ? charrefunicodeConverter : CharrefunicodeConsts;
-    const chrreflgth = obj[chars].length;
+    arr = descripts
+      ? charrefunicodeConverter.descripts
+      : charrefunicodeConverter.numericCharacterReferences;
+    const chrreflgth = arr.length;
 
     if ((rows * cols) > chrreflgth) {
       const newrows = chrreflgth / cols;
@@ -83,17 +83,17 @@ export const buildChart = async function buildChart ({descripts} = {}) {
       const hasRemainder = remainder > 0;
       colsOverRemainder = hasRemainder && cols - remainder;
     }
-    q = obj[chars].indexOf(current.startCharCode);
+    q = arr.indexOf(current.startCharCode);
     if (q === -1) {
       q = 0;
-      current.startCharCode = obj[chars][q];
+      current.startCharCode = arr[q];
     }
 
     let newq = q - (cols * rows);
     if (newq < 0) { // Go backwards in the entity array
       newq = chrreflgth + newq;
     }
-    prev = obj[chars][newq];
+    prev = arr[newq];
   } else {
     prev = current.startCharCode - (cols * rows);
   }
@@ -142,10 +142,10 @@ export const buildChart = async function buildChart ({descripts} = {}) {
         })
         : '');
 
-  buildChartTemplate({
-    _, rows, cols, CharrefunicodeConsts, current,
+  chartBuildTemplate({
+    _, rows, cols, charrefunicodeConverter, current,
     resetCurrentStartCharCodeIfOutOfBounds, descriptsOrOnlyEnts,
-    q, obj, chars, textReceptacle, entyes, buildChart, descripts,
+    q, chars, textReceptacle, entyes, chartBuild, descripts,
     chartContainer,
     setPref, insertText, buttonyes, font, lang, prev,
     rowceil, colsOverRemainder, appliedFormats, displayTypes,
@@ -156,4 +156,4 @@ export const buildChart = async function buildChart ({descripts} = {}) {
   // this.resizecells({sizeToContent: true});
 };
 
-export default getBuildChart;
+export {chartBuild, getChartBuild};
