@@ -58,22 +58,27 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
 };
 
 /**
-* @param {PositiveInteger} num
-* @param {HTMLAnchorElement} alink
-* @param {IntlDom} underscore
-* @returns {{
-*   plane: PositiveInteger, privateuse: boolean, surrogate: boolean|string
-* }}
-*/
-function getAndSetCodePointInfo (num, alink, underscore) {
-  const {
-    codePointStart, script, plane, privateuse, surrogate
-  } = getScriptInfoForCodePoint(num, underscore);
-  alink.target = '_blank';
-  alink.className = 'text-link';
-  alink.href = `https://unicode.org/charts/PDF/U${codePointStart}.pdf`;
-  alink.setAttribute('value', script + ' (PDF)');
-  return {plane, privateuse, surrogate};
+ * @param {Integer} i
+ * @returns {void}
+ */
+function removeViewChildren (i) {
+  const view = $('#_detailedView' + i);
+  while (view.firstChild) {
+    view.firstChild.remove();
+  }
+}
+/**
+ * @param {string} sel
+ * @param {Element} item
+ * @returns {void}
+ */
+function placeItem (sel, item) {
+  const firstchld = $(sel).firstChild;
+  if (firstchld !== null) {
+    $(sel).replaceChild(item, firstchld);
+  } else {
+    $(sel).append(item);
+  }
 }
 
 const xulns = 'https://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
@@ -786,51 +791,13 @@ const unicodecharref = {
   },
   // Todo: Reimplement in charrefunicodeDb.js
   async getUnicodeDescription (kent, khextemp) {
-    const that = this;
     const hideMissing = !(await getPref('showAllDetailedView'));
     const hideMissingUnihan = !(await getPref('showAllDetailedCJKView'));
 
     const kdectemp = Number.parseInt(khextemp, 16);
 
-    // const alink = createHTMLElement('a');
-    const alink = createXULElement('label');
+    let unihanType = false, hangul = false;
 
-    const {
-      plane, privateuse, surrogate
-    } = getAndSetCodePointInfo(kdectemp, alink, _);
-
-    /**
-     * @param {string} sel
-     * @param {Element} item
-     * @returns {void}
-     */
-    function placeItem (sel, item) {
-      const firstchld = $(sel).firstChild;
-      if (firstchld !== null) {
-        $(sel).replaceChild(item, firstchld);
-      } else {
-        $(sel).append(item);
-      }
-    }
-    // Handle PDF link
-    placeItem('#pdflink', alink);
-
-    // Handle plane #
-    const planeText = _('plane_num', {plane}) + '\u00A0';
-    placeItem('#plane', planeText);
-
-    if (await getPref('showImg')) {
-      const img = createXULElement('image');
-      // img.width = '80';
-      // img.height = '80';
-      img.setAttribute('src', 'https://unicode.org/cgi-bin/refglyph?1-' + Number(kdectemp).toString(16));
-      placeItem('#unicodeImg', img);
-    }
-
-    let hangul = false;
-    let i; // file;
-    // If Unihan
-    let UnihanType = false;
     if (
       (kdectemp > 0x3400 && kdectemp <= 0x4DB5) ||
       (kdectemp > 0x4E00 && kdectemp <= 0x9FC3) || // 0x9FBB
@@ -842,7 +809,7 @@ const unicodecharref = {
     ) {
       // pattern = new RegExp('^U\\+(' + khextemp + ')\\t(.*)\\t(.*)$', 'mg');
       // file = 'Unihan.txt';
-      UnihanType = true;
+      unihanType = true;
       // $('#pdflink').append(alink);
     } else if (kdectemp > 0xAC00 && kdectemp <= 0xD7A3) {
       // pattern = new RegExp('^' + khextemp + '\\s*;\\s*(.*)$', 'm');
@@ -864,28 +831,12 @@ const unicodecharref = {
     // pattern = new RegExp('^' + khextemp + ';([^;]*);', 'm');
     // file = 'UnicodeData.txt';
 
-    // Todo: Make reactive!
-    if (!UnihanType) {
-      for (i = 1; i <= 13; i++) {
-        $('#_detailedCJKView' + i).value = '';
-      }
-      for (i = 15; i <= 90; i++) {
-        $('#_detailedCJKView' + i).value = '';
-      }
-      for (i = 0; i < this.Unihan.length; i++) {
-        $('#searchk' + this.Unihan[i]).value = '';
-      }
-    }
-
-    let temp, notfoundval, table, result, statement;
-
     if (
-      !UnihanType && !hangul &&
+      !unihanType && !hangul &&
       $('#viewTabs').selectedTab === $('#detailedCJKView')
     ) {
       $('#viewTabs').$selectTab($('#detailedView'));
     }
-    table = 'Unicode';
     let search = false;
     let cjkText;
 
@@ -930,18 +881,25 @@ const unicodecharref = {
         search = 'D7A3';
       } */
     }
+    let searchValue;
     if (search) {
       if (search === true) {
         search = khextemp;
       }
-      statement = charrefunicodeDb.dbConn.createStatement(
-        'SELECT * FROM ' + table + ' WHERE Code_Point = "' + search + '"'
-      );
+      searchValue = search;
     } else {
-      statement = charrefunicodeDb.dbConn.createStatement(
-        'SELECT * FROM ' + table + ' WHERE Code_Point = "' + khextemp + '"'
-      );
+      searchValue = khextemp;
     }
+
+    const {
+      codePointStart, script, plane, privateuse, surrogate
+    } = getScriptInfoForCodePoint(kdectemp, _);
+
+    const statement = charrefunicodeDb.dbConn.createStatement(
+      'SELECT * FROM Unicode WHERE Code_Point = "' + searchValue + '"'
+    );
+
+    let result;
     try {
       // $('#displayUnicodeDesc').value = _('retrieving_description');
       const executedStep = statement.executeStep();
@@ -958,9 +916,9 @@ const unicodecharref = {
         } else {
           result = cjkText;
         }
-        for (i = 2; i <= 14; i++) {
+        for (let i = 2; i <= 14; i++) {
           // Fix: display data more readably, etc.
-          temp = statement.getUTF8String(i);
+          let temp = statement.getUTF8String(i);
           if (i === 10) {
             if (temp) {
               result += ';\u00A0\u00A0\u00A0\u00A0\n' +
@@ -999,15 +957,17 @@ const unicodecharref = {
               a.href = 'javascript:void(0)';
 
               a.addEventListener('click', function (e) {
-                that.startset({value: e.target.innerHTML.codePointAt()});
+                unicodecharref.startset({
+                  value: e.target.innerHTML.codePointAt()
+                });
                 // Probably want to start checking again since move to new page
-                that.noGetDescripts = false;
+                // that.noGetDescripts = false;
               });
               const tempno = Number.parseInt(temp, 16);
               a.textContent = String.fromCodePoint(tempno);
               a.className = 'text-link';
               const view = $('#_detailedView' + i);
-              this.removeViewChildren(i);
+              removeViewChildren(i);
 
               // Necessary to avoid CSS wrapping warning
               const box = createXULElement('description');
@@ -1028,11 +988,11 @@ const unicodecharref = {
             $('#_detailedView' + i).value = '';
           } else {
             $('#_detailedView' + i).parentNode.hidden = hideMissing;
-            this.removeViewChildren(i);
+            removeViewChildren(i);
           }
         }
       }
-      if (!UnihanType && result !== null && result !== undefined) {
+      if (!unihanType && result !== null && result !== undefined) {
         $('#displayUnicodeDesc').value = kent +
           'U+' + khextemp + _('colon') + ' ' + result;
         $('#displayUnicodeDesc2').value = kent +
@@ -1072,8 +1032,8 @@ const unicodecharref = {
           'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
         $('#displayUnicodeDesc2').value = kent +
           'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
-      } else if (!UnihanType) {
-        notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
+      } else if (!unihanType) {
+        const notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
         for (let j = 2; j <= 14; j++) {
@@ -1081,7 +1041,7 @@ const unicodecharref = {
           try {
             $('#_detailedView' + j).value = '';
             $('#_detailedView' + j).parentNode.hidden = hideMissing;
-            this.removeViewChildren(j);
+            removeViewChildren(j);
           } catch (e) {
             alert('2' + e + j);
           }
@@ -1123,7 +1083,7 @@ const unicodecharref = {
         $('#displayUnicodeDesc2').value = kent +
           'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
       } else {
-        notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
+        const notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
         for (let j = 2; j <= 14; j++) {
@@ -1131,7 +1091,7 @@ const unicodecharref = {
           try {
             $('#_detailedView' + j).value = '';
             $('#_detailedView' + j).parentNode.hidden = hideMissing;
-            this.removeViewChildren(j);
+            removeViewChildren(j);
           } catch (err) {
             alert('3' + err + j);
           }
@@ -1143,32 +1103,25 @@ const unicodecharref = {
     // const canreturn = true;
 
     if (this.unihanDb_exists) {
-      table = 'Unihan';
-
-      if (
-        (UnihanType) && $('#viewTabs').selectedTab === $('#detailedView')
-      ) {
-        $('#viewTabs').$selectTab($('#detailedCJKView'));
-      }
-      statement = charrefunicodeDb.dbConnUnihan.createStatement(
-        'SELECT * FROM ' + table + ' WHERE code_pt = "' + khextemp + '"'
+      const stmt = charrefunicodeDb.dbConnUnihan.createStatement(
+        'SELECT * FROM Unihan WHERE code_pt = "' + khextemp + '"'
       );
       try {
         // $('#displayUnicodeDesc').value= _('retrieving_description');
-        const executedStep = statement.executeStep();
+        const executedStep = stmt.executeStep();
         if (executedStep) {
           // Fix: display data more readably, with heading, etc. (and
           //   conditional)
-          result = statement.getUTF8String(14);
+          result = stmt.getUTF8String(14);
           if (result === null && !cjkText) {
             result = _('No_definition');
           }
           // Fix: Display meta-data in table (get to be stable by
           //   right-clicking)
           // $('#_detailedCJKView' + 3).value = result ? result : '';
-          for (i = 1; i <= 13; i++) {
+          for (let i = 1; i <= 13; i++) {
             // Fix: display data more readably, etc.
-            temp = statement.getUTF8String(i);
+            const temp = stmt.getUTF8String(i);
             if (temp) {
               if (hideMissingUnihan) {
                 $('#_detailedCJKView' + i).parentNode.hidden = false;
@@ -1192,10 +1145,11 @@ const unicodecharref = {
               $('#_detailedCJKView' + i).value = '';
             }
           }
-          for (i = 15; i <= 90; i++) {
+          for (let i = 15; i <= 90; i++) {
+            let temp;
             try {
               // Fix: display data more readably, etc.
-              temp = statement.getUTF8String(i);
+              temp = stmt.getUTF8String(i);
             } catch (e) {
               alert(i);
             }
@@ -1234,7 +1188,8 @@ const unicodecharref = {
           $('#displayUnicodeDesc2').value = kent +
             'U+' + khextemp + _('colon') + ' ' + result;
         } else {
-          notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
+          const notfoundval = 'U+' + khextemp + _('colon') + ' ' +
+            _('Not_found');
 
           if (!cjkText || hangul) {
             for (let j = 2; j <= 14; j++) {
@@ -1242,16 +1197,16 @@ const unicodecharref = {
               try {
                 $('#_detailedView' + j).value = '';
                 $('#_detailedView' + j).parentNode.hidden = hideMissing;
-                this.removeViewChildren(j);
+                removeViewChildren(j);
               } catch (e) {
                 alert('1' + e + j);
               }
             }
-            for (i = 1; i <= 13; i++) {
+            for (let i = 1; i <= 13; i++) {
               $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
               $('#_detailedCJKView' + i).value = '';
             }
-            for (i = 15; i <= 90; i++) {
+            for (let i = 15; i <= 90; i++) {
               $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
               $('#_detailedCJKView' + i).value = '';
             }
@@ -1277,15 +1232,53 @@ const unicodecharref = {
       } catch (e) {
         alert(e);
       } finally {
-        statement.reset();
+        stmt.reset();
       }
       // return;
     } // Excised Ajax code...
-  },
-  removeViewChildren (i) {
-    const view = $('#_detailedView' + i);
-    while (view.firstChild) {
-      view.firstChild.remove();
+
+    // SET DOM
+
+    // Todo: Make reactive!
+    if (!unihanType) {
+      for (let i = 1; i <= 13; i++) {
+        $('#_detailedCJKView' + i).value = '';
+      }
+      for (let i = 15; i <= 90; i++) {
+        $('#_detailedCJKView' + i).value = '';
+      }
+      for (let i = 0; i < this.unihanProperties.length; i++) {
+        $('#searchk' + this.unihanProperties[i]).value = '';
+      }
+    }
+
+    if (
+      this.unihanDb_exists && unihanType &&
+      $('#viewTabs').selectedTab === $('#detailedView')
+    ) {
+      $('#viewTabs').$selectTab($('#detailedCJKView'));
+    }
+
+    // const alink = createHTMLElement('a');
+    const alink = createXULElement('label');
+    alink.target = '_blank';
+    alink.className = 'text-link';
+    alink.href = `https://unicode.org/charts/PDF/U${codePointStart}.pdf`;
+    alink.setAttribute('value', script + ' (PDF)');
+
+    // Handle PDF link
+    placeItem('#pdflink', alink);
+
+    // Handle plane #
+    const planeText = _('plane_num', {plane}) + '\u00A0';
+    placeItem('#plane', planeText);
+
+    if (await getPref('showImg')) {
+      const img = createXULElement('image');
+      // img.width = '80';
+      // img.height = '80';
+      img.setAttribute('src', 'https://unicode.org/cgi-bin/refglyph?1-' + Number(kdectemp).toString(16));
+      placeItem('#unicodeImg', img);
     }
   },
   async fontsizetextbox (size) { // Changes font-size
@@ -1541,7 +1534,7 @@ const unicodecharref = {
 
   // Build these programmatically?
   /* Pseudo-constants */
-  Unihan: [
+  unihanProperties: [
     'AccountingNumeric', 'BigFive', 'CCCII', 'CNS1986', 'CNS1992',
     'Cangjie', 'Cantonese', 'CheungBauer', 'CheungBauerIndex',
     'CihaiT', 'CompatibilityVariant', 'Cowles', 'DaeJaweon', 'EACC', 'Fenn',
