@@ -29,7 +29,7 @@ const indexTemplate = function ({_, fonts}) {
           ['div', {
             id: 'chart_selectchar_persist_vbox', class: 'vbox chartBox'
           }, [
-            ['div', {id: 'chart_selectchar_persist'}, [
+            ['div', {id: 'selectChar'}, [
               ['fieldset', [
                 ['legend', [_('caption_chart_selectchar')]],
                 ['div', {class: 'hbox'}, [
@@ -88,7 +88,9 @@ const indexTemplate = function ({_, fonts}) {
                     }
                   }]
                 ]]
-              ]],
+              ]]
+            ]],
+            ['div', {id: 'chart_selectchar_persist'}, [
               ['div', {id: 'menulists', class: 'vbox'}, [
                 ['fieldset', [
                   ['legend', [_('chooseregion')]],

@@ -72,7 +72,7 @@ table.unicodetablecell {
 }
 td.unicodetablecell {
   border-style: inset;
-  overflow:auto;
+  overflow: auto;
   max-height: 20px !important;
   height:20px !important;
   min-height:20px !important;
@@ -214,7 +214,6 @@ radiogroup {
 }
 
 #chart_selectchar_persist_vbox {
-  overflow: auto;
   margin-right: 10px;
   /* max-height: 630px; */
 }
