@@ -356,3 +356,20 @@ code {
   display: flex;
   flex-direction: row;
 }
+
+#chart_selectchar_persist > fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+#chart_selectchar_persist .hbox {
+  display: flex;
+}
+
+#chart_selectchar_persist .hbox > div {
+  flex: 1;
+}
+
+#chart_selectchar_persist .hbox > input {
+  flex: 1;
+}

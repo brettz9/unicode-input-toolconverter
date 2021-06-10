@@ -34,56 +34,59 @@ const indexTemplate = function ({_, fonts}) {
                 ['legend', [_('caption_chart_selectchar')]],
                 ['div', {class: 'hbox'}, [
                   ['div', {title: _('desc_digits')}, [
-                    ['label', [
-                      _('charhexdecchoices'),
-                      ['input', {
-                        id: 'startset',
-                        class: 'searchBox',
-                        $on: {
-                          change () {
-                            unicodecharref.startset(this);
-                          },
-                          input () {
-                            unicodecharref.startset(this);
-                          }
-                        }
-                      }]
+                    ['label', {for: 'startset'}, [
+                      _('charhexdecchoices')
                     ]]
                   ]],
                   ['div', [
-                    ['label', [
-                      _('searchName'),
-                      ['input', {
-                        id: 'searchName',
-                        class: 'searchBox',
-                        $on: {
-                          change () {
-                            unicodecharref.searchUnicode(this);
-                          },
-                          input () {
-                            unicodecharref.searchUnicode(this);
-                          }
-                        }
-                      }]
+                    ['label', {for: 'searchName'}, [
+                      _('searchName')
                     ]]
                   ]],
                   ['div', [
-                    ['label', [
-                      _('searchkDefinition'),
-                      ['input', {
-                        id: 'searchkDefinition',
-                        class: 'searchBox',
-                        $on: {
-                          change () {
-                            unicodecharref.searchUnihan(this);
-                          },
-                          input () {
-                            unicodecharref.searchUnihan(this);
-                          }
-                        }
-                      }]
+                    ['label', {for: 'searchkDefinition'}, [
+                      _('searchkDefinition')
                     ]]
                   ]]
+                ]],
+                ['div', {class: 'hbox'}, [
+                  ['input', {
+                    title: _('desc_digits'),
+                    id: 'startset',
+                    class: 'searchBox',
+                    $on: {
+                      change () {
+                        unicodecharref.startset(this);
+                      },
+                      input () {
+                        unicodecharref.startset(this);
+                      }
+                    }
+                  }],
+                  ['input', {
+                    id: 'searchName',
+                    class: 'searchBox',
+                    $on: {
+                      change () {
+                        unicodecharref.searchUnicode(this);
+                      },
+                      input () {
+                        unicodecharref.searchUnicode(this);
+                      }
+                    }
+                  }],
+                  ['input', {
+                    id: 'searchkDefinition',
+                    class: 'searchBox',
+                    $on: {
+                      change () {
+                        unicodecharref.searchUnihan(this);
+                      },
+                      input () {
+                        unicodecharref.searchUnihan(this);
+                      }
+                    }
+                  }]
                 ]]
               ]],
               ['div', {id: 'menulists', class: 'vbox'}, [
