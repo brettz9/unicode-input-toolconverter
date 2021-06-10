@@ -830,6 +830,7 @@ const unicodecharref = {
     let hangul = false;
     let i; // file;
     // If Unihan
+    let UnihanType = false;
     if (
       (kdectemp > 0x3400 && kdectemp <= 0x4DB5) ||
       (kdectemp > 0x4E00 && kdectemp <= 0x9FC3) || // 0x9FBB
@@ -841,18 +842,12 @@ const unicodecharref = {
     ) {
       // pattern = new RegExp('^U\\+(' + khextemp + ')\\t(.*)\\t(.*)$', 'mg');
       // file = 'Unihan.txt';
-      this.UnihanType = true;
+      UnihanType = true;
       // $('#pdflink').append(alink);
     } else if (kdectemp > 0xAC00 && kdectemp <= 0xD7A3) {
       // pattern = new RegExp('^' + khextemp + '\\s*;\\s*(.*)$', 'm');
       // file = 'HangulSyllableType.txt';
       hangul = true;
-      if (this.UnihanType) {
-        for (i = 0; i < this.Unihan.length; i++) {
-          $('#searchk' + this.Unihan[i]).value = '';
-        }
-      }
-      this.UnihanType = false;
       // The following are some ranges in UnicodeData.txt which do not
       //  have their own description sheets as do the two above
       /*
@@ -865,24 +860,27 @@ const unicodecharref = {
       else if (0x100000 <= kdectemp && kdectemp <= 0x10FFFD) {
       }
       */
-    } else {
-      // pattern = new RegExp('^' + khextemp + ';([^;]*);', 'm');
-      // file = 'UnicodeData.txt';
-      if (this.UnihanType) {
-        for (i = 1; i <= 13; i++) {
-          $('#_detailedCJKView' + i).value = '';
-        }
-        for (i = 15; i <= 90; i++) {
-          $('#_detailedCJKView' + i).value = '';
-        }
+    }
+    // pattern = new RegExp('^' + khextemp + ';([^;]*);', 'm');
+    // file = 'UnicodeData.txt';
+
+    // Todo: Make reactive!
+    if (!UnihanType) {
+      for (i = 1; i <= 13; i++) {
+        $('#_detailedCJKView' + i).value = '';
       }
-      this.UnihanType = false;
+      for (i = 15; i <= 90; i++) {
+        $('#_detailedCJKView' + i).value = '';
+      }
+      for (i = 0; i < this.Unihan.length; i++) {
+        $('#searchk' + this.Unihan[i]).value = '';
+      }
     }
 
     let temp, notfoundval, table, result, statement;
 
     if (
-      !this.UnihanType && !hangul &&
+      !UnihanType && !hangul &&
       $('#viewTabs').selectedTab === $('#detailedCJKView')
     ) {
       $('#viewTabs').$selectTab($('#detailedView'));
@@ -1034,7 +1032,7 @@ const unicodecharref = {
           }
         }
       }
-      if (!this.UnihanType && result !== null && result !== undefined) {
+      if (!UnihanType && result !== null && result !== undefined) {
         $('#displayUnicodeDesc').value = kent +
           'U+' + khextemp + _('colon') + ' ' + result;
         $('#displayUnicodeDesc2').value = kent +
@@ -1074,7 +1072,7 @@ const unicodecharref = {
           'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
         $('#displayUnicodeDesc2').value = kent +
           'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
-      } else if (!this.UnihanType) {
+      } else if (!UnihanType) {
         notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
@@ -1148,7 +1146,7 @@ const unicodecharref = {
       table = 'Unihan';
 
       if (
-        (this.UnihanType) && $('#viewTabs').selectedTab === $('#detailedView')
+        (UnihanType) && $('#viewTabs').selectedTab === $('#detailedView')
       ) {
         $('#viewTabs').$selectTab($('#detailedCJKView'));
       }
