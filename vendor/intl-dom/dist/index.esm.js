@@ -468,6 +468,8 @@ var getFormatterInfo = function getFormatterInfo(_ref) {
  */
 
 var defaultAllSubstitutions = function defaultAllSubstitutions(_ref2) {
+  var _Intl$DateTimeFormat;
+
   var value = _ref2.value,
       arg = _ref2.arg;
       _ref2.key;
@@ -512,6 +514,8 @@ var defaultAllSubstitutions = function defaultAllSubstitutions(_ref2) {
     return options;
   };
 
+  var expectsDatetime = false;
+
   if (value && _typeof(value) === 'object' && !Array.isArray(value)) {
     var singleKey = Object.keys(value)[0];
 
@@ -528,12 +532,19 @@ var defaultAllSubstitutions = function defaultAllSubstitutions(_ref2) {
       callback = _getFormatterInfo.callback;
 
       switch (singleKey) {
+        case 'date':
+        case 'datetime':
+          expectsDatetime = true;
+          break;
+
         case 'dateRange':
         case 'datetimeRange':
-          return new Intl.DateTimeFormat(locale, applyArgs({
+          return (_Intl$DateTimeFormat = new Intl.DateTimeFormat(locale, applyArgs({
             type: 'DATERANGE',
             options: extraOpts
-          })).formatRange(value, opts);
+          }))).formatRange.apply(_Intl$DateTimeFormat, _toConsumableArray([value, opts].map(function (val) {
+            return typeof val === 'number' ? new Date(val) : val;
+          })));
 
         case 'region':
         case 'language':
@@ -575,6 +586,32 @@ var defaultAllSubstitutions = function defaultAllSubstitutions(_ref2) {
           }));
       }
     }
+  } // Dates
+
+
+  if (value) {
+    if (typeof value === 'number' && (expectsDatetime || /^DATE(?:TIME)(?:\||$)/.test(arg))) {
+      value = new Date(value);
+    }
+
+    if (_typeof(value) === 'object' && typeof value.getTime === 'function') {
+      return new Intl.DateTimeFormat(locale, applyArgs({
+        type: 'DATETIME'
+      })).format(value);
+    }
+  } // Date range
+
+
+  if (Array.isArray(value)) {
+    var _Intl$DateTimeFormat2;
+
+    var _extraOpts2 = value[2];
+    return (_Intl$DateTimeFormat2 = new Intl.DateTimeFormat(locale, applyArgs({
+      type: 'DATERANGE',
+      options: _extraOpts2
+    }))).formatRange.apply(_Intl$DateTimeFormat2, _toConsumableArray(value.slice(0, 2).map(function (val) {
+      return typeof val === 'number' ? new Date(val) : val;
+    })));
   } // Numbers
 
 
@@ -582,24 +619,6 @@ var defaultAllSubstitutions = function defaultAllSubstitutions(_ref2) {
     return new Intl.NumberFormat(locale, applyArgs({
       type: 'NUMBER'
     })).format(value);
-  } // Dates
-
-
-  if (value && _typeof(value) === 'object' && typeof value.getTime === 'function') {
-    return new Intl.DateTimeFormat(locale, applyArgs({
-      type: 'DATETIME'
-    })).format(value);
-  } // Date range
-
-
-  if (Array.isArray(value)) {
-    var _Intl$DateTimeFormat;
-
-    var _extraOpts2 = value[2];
-    return (_Intl$DateTimeFormat = new Intl.DateTimeFormat(locale, applyArgs({
-      type: 'DATERANGE',
-      options: _extraOpts2
-    }))).formatRange.apply(_Intl$DateTimeFormat, _toConsumableArray(value.slice(0, 2)));
   } // console.log('value', value);
 
 
