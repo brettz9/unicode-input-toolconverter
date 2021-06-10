@@ -1,4 +1,3 @@
-/* globals jQuery -- No ESM */
 import {$} from '../vendor/jamilih/dist/jml-es.js';
 
 import {i18n, setJSONExtra} from '../vendor/intl-dom/dist/index.esm.js';
@@ -8,12 +7,7 @@ import jsonExtra from '../vendor/json-6/dist/index.mjs';
 
 import {makeTabBox} from './templatesElementCustomization/widgets.js';
 import {code, link} from './templateUtils/elements.js';
-import addMillerColumnPlugin from
-  '../vendor/miller-columns/dist/index-es.min.js';
-import getBuildChart, {buildChart} from './build-chart.js';
-import insertIntoOrOverExisting from
-  './templatesElementCustomization/insertIntoOrOverExisting.js';
-import {getUnicodeDefaults, setPrefDefaultVars} from
+import {setPrefDefaultVars} from
   './preferences/prefDefaults.js';
 import {getUnicodeConverter} from './unicode/UnicodeConverter.js';
 import unicodecharref, {shareVars as uresultsShareVars} from
@@ -24,6 +18,8 @@ import indexTemplate from './templates/index.js';
 import {
   shareVars as charrefConverterShareVars, classChange as charrefClassChange
 } from './charref-converters.js';
+
+import characterSelection from './character-selection.js';
 
 setJSONExtra(jsonExtra);
 
@@ -46,26 +42,16 @@ if (!locales.includes('en-US')) {
   locales.push('en-US');
 }
 
-const [_] = await Promise.all([
-  i18n({
-    locales, defaults: false, localesBasePath: '../',
-    substitutions: {code, link}
-  }),
-  addMillerColumnPlugin(jQuery, {stylesheets: [
-    // Per our widget "standard", allow for injecting of others in parallel
-    ['/icons/openWindow24.png', {favicon: true}],
-    'styles/unicode-dialog.css',
-    '/vendor/miller-columns/miller-columns.css'
-  ]})
-]);
+const _ = await i18n({
+  locales, defaults: false, localesBasePath: '../',
+  substitutions: {code, link}
+});
 
 setPrefDefaultVars({_});
 const charrefunicodeConverter = new (getUnicodeConverter())({_});
 uresultsShareVars({_, charrefunicodeConverter});
 entityShareVars({charrefunicodeConverter});
 charrefConverterShareVars({charrefunicodeConverter});
-
-const {setPref} = getUnicodeDefaults();
 
 // TEMPLATE
 // Todo: Disabling for now as slows down loading
@@ -75,53 +61,8 @@ indexTemplate({_, fonts});
 // ADD BEHAVIORS
 makeTabBox('.tabbox');
 
-await getBuildChart({
-  _,
-  charrefunicodeConverter,
-  textReceptacle: $('#insertText'),
-  chartContainer: $('#chartContainer'),
-  // Todo: Get working
-  insertText ({textReceptacle, value}) {
-    insertIntoOrOverExisting({textReceptacle, value});
-
-    // Save values for manipulation by entity addition function, 'insertent'
-    // Todo: Fix and use
-    /*
-    this.selst = textReceptacle.selectionStart;
-    this.selend = textReceptacle.selectionEnd;
-    */
-  }
-});
-
-jQuery('div.miller-columns').millerColumns({
-  /*
-  preview () {
-    // $('#chart_selectchar_persist').scrollLeft = 2000;
-    return '';
-  },
-  */
-  delay: 100, // Shorten delay until we can figure out how to fix jumpiness
-  scroll () {
-    // Due to an overflow within an overflow, we have to also force
-    //   this scroll left
-    $('#chart_selectchar_persist').scrollLeft = 2000;
-  },
-  async current ($item, $cols) {
-    if (!$item) { // Todo: Is this an error?
-      return;
-    }
-    // console.log('User selected:', $item);
-    const title = $item[0].getAttribute('title');
-    if (!title) {
-      return;
-    }
-    await setPref(
-      'currentStartCharCode',
-      Number.parseInt(title.replace(/-.*$/u, ''), 16)
-    );
-    // Free to use `buildChart` now that we have passed set-up
-    buildChart(); // Todo: descripts?
-  }
+await characterSelection({
+  _, charrefunicodeConverter
 });
 
 /**
@@ -138,9 +79,12 @@ function encodingListener (e) {
 }
 
 // EVENTS
+
+// 1. ENCODING
 $('#encoding_from').addEventListener('click', encodingListener);
 $('#encoding_to').addEventListener('click', encodingListener);
 
+// 2. ENTITIES
 $('#insertEntityFile').addEventListener('change', async function (e) {
   await insertEntityFile(e);
 });
