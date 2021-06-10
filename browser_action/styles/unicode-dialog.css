@@ -356,19 +356,19 @@ code {
   flex-direction: row;
 }
 
-#chart_selectchar_persist > fieldset {
+#chart_selectchar_persist_vbox > fieldset {
   display: flex;
   flex-direction: column;
 }
 
-#chart_selectchar_persist .hbox {
+#chart_selectchar_persist_vbox .hbox {
   display: flex;
 }
 
-#chart_selectchar_persist .hbox > div {
+#chart_selectchar_persist_vbox .hbox > div {
   flex: 1;
 }
 
-#chart_selectchar_persist .hbox > input {
+#chart_selectchar_persist_vbox .hbox > input {
   flex: 1;
 }
