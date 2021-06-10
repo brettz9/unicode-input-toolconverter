@@ -969,7 +969,7 @@
       "message": "Convert into surrogate pairs (Don't choose this unless you need to find out the surrogates of a (rare) higher plane character or wish to view a surrogate itself)"
     },
     "DownloadUnihan": {
-      "message": "Download Unihan file (19.3 MB)"
+      "message": "Download Unihan file (39.5 MB)"
     },
     "Download_unihan_tooltip": {
       "message": "To get the latest character descriptions for the Chinese-Japanese-Korean characters, click here to download (not included with the extension since the file size is fairly large)."

@@ -279,7 +279,7 @@
       "message": "Ha táblázatos nézetben a 'Csak egyedek' lehetőséget választja, akkor a HTML-egyedek a meghatározásuk szerinti sorrendben (és csak abban) jelennek meg. Egyéb üzemmódban az egyedi DTD-ben megadott összes egyed megjelenik, akár a HTML-egyedek kizárásával, amennyiben a DTD-fülön a hozzáfűzés jelölőnégyzete nincs bejelölve."
     },
     "usage_notespar8": {
-      "message": "Az Unihan-adatbázist a Beállítások fülről le kell töltenie (mérete miatt nem része a kiterjesztésnek). Ha gondja támad, töltse le a mintegy 19 MB-os állományt a http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite portálról és helyezze el a Firefox profilkönyvtárában."
+      "message": "Az Unihan-adatbázist a Beállítások fülről le kell töltenie (mérete miatt nem része a kiterjesztésnek). Ha gondja támad, töltse le a mintegy 39,5 MB-os állományt a http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite portálról és helyezze el a Firefox profilkönyvtárában."
     },
     "usage_notespar9": {
       "message": "A kiterjesztéshez ajánlott nagy felbontás használata, de állíthatja alacsonyabbra is. A különféle osztóelemeket elhúzva átméretezheti az egyes részeket. A beállított méretek megőrződnek."
@@ -969,7 +969,7 @@
       "message": "Átalakítás helyettesítőpárokká (Csak akkor válassza, ha egy magasabb síkba tartozó (ritka) karakter helyettesítőjét keresi, vagy ha magát a helyettesítőt kívánja megtekinteni)"
     },
     "DownloadUnihan": {
-      "message": "Az Unihan-állomány letöltése (19,3 Mb)"
+      "message": "Az Unihan-állomány letöltése (39,5 Mb)"
     },
     "Download_unihan_tooltip": {
       "message": "A kínai, japán, koreai karakterek legújabb leírását ide kattintva letöltheti (a kiegészítő nem tartalmazza, mert az állomány mérete ige nagy)."
@@ -1920,7 +1920,7 @@
       "message": "A szöveg hozzáadva az eszköztár lenyíló eleméhez"
     },
     "need_download_unihan": {
-      "message": "CJK (kínai-koreai-japán) karakterek használatához le kell töltenie a mintegy 19 MB-os Unihan adatbázist. Lásd a Beállítások fülön a felül lévő gombot."
+      "message": "CJK (kínai-koreai-japán) karakterek használatához le kell töltenie a mintegy 39,5 MB-os Unihan adatbázist. Lásd a Beállítások fülön a felül lévő gombot."
     },
     "left_parenth": {
       "message": "("

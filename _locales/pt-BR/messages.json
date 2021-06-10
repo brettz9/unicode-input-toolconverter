@@ -969,7 +969,7 @@
       "message": "Converter em pares substitutos (Não escolha a menos que você precise encontrar os substitutos de um (raro) caractere superior ou desejar ver um substituto em si)"
     },
     "DownloadUnihan": {
-      "message": "Baixar arquivo Unihan (19.3 MB)"
+      "message": "Baixar arquivo Unihan (39.5 MB)"
     },
     "Download_unihan_tooltip": {
       "message": "Clique aqui para baixar as descrições mais recentes para o chinês, japonês, coreano (que não estão incluídas na extensão quando o arquivo é grande demais)."

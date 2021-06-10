@@ -279,7 +279,7 @@
       "message": "Var vänlig notera att valet av alternativet &quot;Visa endast entiteter&quot; i tabellvyn kommer att visa dig HTML-entiteter i den ordning i vilken HTML-entiteterna definieras (och endast dem). När du inte befinner dig i detta läge, så kommer du att se alla entiteter som finns definierade i den anpassade DTD:n, valfritt utan HTML-entiteter, om kryssrutan om att bifoga DTD-entiteter är avmarkerad på DTD-sidan."
     },
     "usage_notespar8": {
-      "message": "Du bör kunna ladda ner databasen Unihan (medföljer inte tillägget p.g.a. dess storlek) inifrån inställningarna. Om du får problem, ladda ner filen som är ca. 18 MB stor från  http://bahai-library.com/zamir/Unihan.sqlite  och placera den i din Firefox-profilmapp."
+      "message": "Du bör kunna ladda ner databasen Unihan (medföljer inte tillägget p.g.a. dess storlek) inifrån inställningarna. Om du får problem, ladda ner filen som är ca. 39,5 MB stor från  http://bahai-library.com/zamir/Unihan.sqlite  och placera den i din Firefox-profilmapp."
     },
     "usage_notespar9": {
       "message": "Tillägget används helst med högre upplösningar, men har nu i viss mån anpassats för att också passa lägre upplösningar. Dra i de olika delningslisterna för att storleksändra undersektioner. Din önskade storlek skall kommas ihåg."
@@ -969,7 +969,7 @@
       "message": "Konvertera till surrogatpar (Välj inte detta såvida du inte behöver få reda på surrogaten för ett (ovanligt) högre plans-tecken eller vill granska själva surrogatet)"
     },
     "DownloadUnihan": {
-      "message": "Ladda ner Unihan-databasen (17,9 MB)"
+      "message": "Ladda ner Unihan-databasen (39,5 MB)"
     },
     "Download_unihan_tooltip": {
       "message": "Här kan du hämta de senaste teckenbeskrivningarna för kinesiska, japanska och koreanska tecken (CJK). Klicka här för att ladda ner (medföljer inte tillägget eftersom filen är ganska stor)."
@@ -1920,7 +1920,7 @@
       "message": "Ditt objekt har lagts till i verktygsfältets rullgardinsmeny"
     },
     "need_download_unihan": {
-      "message": "För att få åtkomst till CJK-tecken (kinesiska-japanska-koreanska), så måste du ladda ner den ca. 18 MB stora Unihan-databasen. Se knappen som finns överst under fliken \"Inställningar\"."
+      "message": "För att få åtkomst till CJK-tecken (kinesiska-japanska-koreanska), så måste du ladda ner den ca. 39,5 MB stora Unihan-databasen. Se knappen som finns överst under fliken \"Inställningar\"."
     },
     "left_parenth": {
       "message": "("

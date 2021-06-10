@@ -40,7 +40,9 @@ async function addScript (baseURL) {
     'kMainlandTelegraph', 'kMandarin', 'kMatthews', 'kMeyerWempe', 'kMorohashi', 'kNelson', 'kOtherNumeric',
     'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1', 'kRSAdobe_Japan1_6', 'kRSJapanese', 'kRSKanWa', 'kRSKangXi',
     'kRSKorean', 'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant', 'kSpecializedSemanticVariant',
-    'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant'];
+    'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant',
+    'kUnihanCore2020', 'kIRG_UKSource', 'kIRG_SSource', 'kTGH', 'kKoreanName', 'kJa', 'kJoyoKanji', 'kKoreanEducationHanja',
+    'kJinmeiyoKanji', 'kTGHZ2013', 'kSpoofingVariant'];
   /* eslint-enable max-len -- Long */
   const scriptFileAsStr = (await Promise.all([
     'Unihan_DictionaryIndices.txt',
@@ -56,6 +58,7 @@ async function addScript (baseURL) {
     return await fileObj.text();
   }))).join('');
 
+  const notPresent = {};
   let line;
   const obj = {};
   const lineRegex = /^U\+(?<cdpt>[\da-fA-F]{4,6})\t(?<col>\w+?)\t(?<value>.*)$/gum;
@@ -70,8 +73,11 @@ async function addScript (baseURL) {
     }
     const pos = fields.indexOf(col);
     if (pos === -1) {
-      // eslint-disable-next-line no-console -- CLI
-      console.error(`Not present: ${col}\n`);
+      if (!notPresent[col]) {
+        // eslint-disable-next-line no-console -- CLI
+        console.error(`Not present: ${col}\n`);
+        notPresent[col] = 1;
+      }
       continue;
     }
     obj[cdpt][pos] = value;
