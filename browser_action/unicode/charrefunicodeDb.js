@@ -16,7 +16,7 @@ class UnicodeDB {
    * @param {string} cfg.name
    * @param {PositiveInteger} [cfg.version=1]
    */
-  constructor ({name, version = 1}) {
+  constructor ({name = 'unicode', version = 1} = {}) {
     Object.assign(this, {name, version});
     this.db = null;
   }
@@ -54,7 +54,23 @@ class UnicodeDB {
  *
  */
 export class UnihanDatabase extends UnicodeDB {
-
+  /* eslint-disable class-methods-use-this -- Abstract */
+  /**
+  * @param {string} searchValue
+  * @throws {Error}
+  * @returns {string[]}
+  */
+  getUnicodeFields (searchValue) {
+    const results = [];
+    // const stmt = charrefunicodeDb.dbConnUnihan.createStatement(
+    //   'SELECT * FROM Unihan WHERE code_pt = "' + khextemp + '"'
+    // );
+    if (!results) {
+      throw new Error('Not present');
+    }
+    return results;
+  }
+  /* eslint-enable class-methods-use-this -- Abstract */
 }
 
 /**
@@ -89,6 +105,21 @@ export class UnicodeDatabase extends UnicodeDB {
     // const currentStartCharCodeUpperCaseHexPadded =
     //   currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
     // Todo:
+  }
+
+  /**
+  * @param {string} searchValue
+  * @returns {string[]}
+  */
+  getUnicodeFields (searchValue) {
+    const results = [];
+    /*
+    const statement = charrefunicodeDb.dbConn.createStatement(
+      'SELECT * FROM Unicode WHERE Code_Point = "' + searchValue + '"'
+    );
+    */
+    // $('#displayUnicodeDesc').value = _('retrieving_description');
+    return results;
   }
   /* eslint-enable class-methods-use-this -- Abstract */
 }

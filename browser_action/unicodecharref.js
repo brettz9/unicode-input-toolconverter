@@ -45,7 +45,9 @@ import {buildChart} from './build-chart.js';
 import insertIntoOrOverExisting from
   './templatesElementCustomization/insertIntoOrOverExisting.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
-import charrefunicodeDb, {Jamo} from './unicode/charrefunicodeDb.js';
+import charrefunicodeDb, {
+  UnihanDatabase, Jamo
+} from './unicode/charrefunicodeDb.js';
 import {registerDTD} from './entities.js';
 import {findBridgeForTargetID} from './charref-converters.js';
 
@@ -56,6 +58,8 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
   jmo = new Jamo();
   ({getPref, setPref} = getUnicodeDefaults());
 };
+
+const unihanDatabase = new UnihanDatabase();
 
 /**
  * @param {Integer} i
@@ -478,11 +482,10 @@ const unicodecharref = {
     this.unihanDb_exists = false;
     try {
       // charrefunicodeDb.connect('Unihan.sqlite', 'unihan');
-      /* const statement = */
-      charrefunicodeDb.dbConnUnihan.createStatement(
-        // Just to test database is not corrupted
-        'SELECT code_pt FROM ' + 'Unihan' + ' WHERE code_pt = "3400"'
-      );
+
+      // Test Unihan value
+      unihanDatabase.getUnicodeFields('3400');
+
       this.unihanDb_exists = true;
       $('#DownloadButtonBox').hidden = true;
       $('#UnihanInstalled').hidden = false;
@@ -933,17 +936,25 @@ const unicodecharref = {
       codePointStart, script, plane, privateuse, surrogate
     } = getScriptInfoForCodePoint(kdectemp, _);
 
-    const statement = charrefunicodeDb.dbConn.createStatement(
-      'SELECT * FROM Unicode WHERE Code_Point = "' + searchValue + '"'
-    );
+    // Todo: Make reactive!
+    if (!unihanType) {
+      for (let i = 1; i <= 13; i++) {
+        $('#_detailedCJKView' + i).value = '';
+      }
+      for (let i = 15; i <= 90; i++) {
+        $('#_detailedCJKView' + i).value = '';
+      }
+      for (let i = 0; i < this.unihanProperties.length; i++) {
+        $('#searchk' + this.unihanProperties[i]).value = '';
+      }
+    }
 
     let result;
     try {
-      // $('#displayUnicodeDesc').value = _('retrieving_description');
-      const executedStep = statement.executeStep();
-      if (executedStep) {
+      const results = charrefunicodeDb.getUnicodeFields(searchValue);
+      if (results) {
         if (!cjkText) {
-          result = statement.getUTF8String(1);
+          result = results[1];
           if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
             try {
               const jamo = jmo.getJamo(kdectemp);
@@ -956,7 +967,7 @@ const unicodecharref = {
         }
         for (let i = 2; i <= 14; i++) {
           // Fix: display data more readably, etc.
-          let temp = statement.getUTF8String(i);
+          let temp = results[i];
           if (i === 10) {
             if (temp) {
               result += ';\u00A0\u00A0\u00A0\u00A0\n' +
@@ -1135,22 +1146,17 @@ const unicodecharref = {
           }
         }
       }
-    } finally {
-      statement.reset();
     }
     // const canreturn = true;
 
     if (this.unihanDb_exists) {
-      const stmt = charrefunicodeDb.dbConnUnihan.createStatement(
-        'SELECT * FROM Unihan WHERE code_pt = "' + khextemp + '"'
-      );
       try {
         // $('#displayUnicodeDesc').value= _('retrieving_description');
-        const executedStep = stmt.executeStep();
-        if (executedStep) {
+        const results = unihanDatabase.getUnicodeFields(khextemp);
+        if (results) {
           // Fix: display data more readably, with heading, etc. (and
           //   conditional)
-          result = stmt.getUTF8String(14);
+          result = results[14];
           if (result === null && !cjkText) {
             result = _('No_definition');
           }
@@ -1159,7 +1165,7 @@ const unicodecharref = {
           // $('#_detailedCJKView' + 3).value = result ? result : '';
           for (let i = 1; i <= 13; i++) {
             // Fix: display data more readably, etc.
-            const temp = stmt.getUTF8String(i);
+            const temp = results[i];
             if (temp) {
               if (hideMissingUnihan) {
                 $('#_detailedCJKView' + i).parentNode.hidden = false;
@@ -1187,7 +1193,7 @@ const unicodecharref = {
             let temp;
             try {
               // Fix: display data more readably, etc.
-              temp = stmt.getUTF8String(i);
+              temp = results[i];
             } catch (e) {
               alert(i);
             }
@@ -1269,26 +1275,9 @@ const unicodecharref = {
         }
       } catch (e) {
         alert(e);
-      } finally {
-        stmt.reset();
       }
       // return;
     } // Excised Ajax code...
-
-    // SET DOM
-
-    // Todo: Make reactive!
-    if (!unihanType) {
-      for (let i = 1; i <= 13; i++) {
-        $('#_detailedCJKView' + i).value = '';
-      }
-      for (let i = 15; i <= 90; i++) {
-        $('#_detailedCJKView' + i).value = '';
-      }
-      for (let i = 0; i < this.unihanProperties.length; i++) {
-        $('#searchk' + this.unihanProperties[i]).value = '';
-      }
-    }
 
     if (
       this.unihanDb_exists && unihanType &&
@@ -1570,7 +1559,7 @@ const unicodecharref = {
   idgen: 0,
   prefs: null,
 
-  // Build these programmatically?
+  // Build these programmatically? (and in UI?)
   /* Pseudo-constants */
   unihanProperties: [
     'AccountingNumeric', 'BigFive', 'CCCII', 'CNS1986', 'CNS1992',
