@@ -82,24 +82,6 @@ async function addScript (baseURL) {
     }
     obj[cdpt][pos] = value;
   }
-  Object.entries(obj).sort(([k1], [k2]) => {
-    return Number.parseInt(k1, 16) > Number.parseInt(k2, 16)
-      ? 1
-      : -1;
-  }).reduce((object, [key, val]) => {
-    object[key] = val;
-    return object;
-  }, {});
-
-  /*
-  CSV
-  scriptFileAsStr = '';
-  Object.values(obj).forEach((val) => {
-    // $('#results').value += JSON.stringify(val).slice(1, -1) + '\n';
-    scriptFileAsStr += JSON.stringify(val).slice(1, -1) + '\n';
-  });
-  console.log('scriptFileAsStr', scriptFileAsStr);
-  */
 
   await fs.writeFile(targetJSONUnihan, JSON.stringify(obj));
 }
