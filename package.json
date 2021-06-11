@@ -2,11 +2,15 @@
   "name": "unicode-input-toolconverter",
   "description": "Add-on for selecting Unicode characters by variety of means and converting between various representations",
   "type": "module",
+  "exports": {
+    "browser": "./browser_action/index.js"
+  },
   "author": "Brett Zamir",
   "contributors": [],
   "license": "MPL-2.0",
   "version": "0.1.0",
   "scripts": {
+    "service-worker": "find-es-resources -o sw-resources.json --removeBasePath=\"/Users/brett/unicode-input-toolconverter\"",
     "open": "open-cli http://localhost:8000/browser_action/ && npm start",
     "start": "echo 'Starting on http://localhost:8000/browser_action/' && node server",
     "unihan": "node --trace-uncaught tools/unihan-import.js",
@@ -81,6 +85,7 @@
     "eslint-plugin-standard": "^4.1.0",
     "eslint-plugin-unicorn": "^33.0.1",
     "fflate": "^0.7.0",
+    "find-es-resources": "^1.0.1",
     "jamilih": "0.54.0",
     "jquery": "^3.6.0",
     "miller-columns": "^0.9.0",

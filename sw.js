@@ -1,0 +1,302 @@
+/* eslint-disable import/unambiguous, no-console -- Service worker */
+/* eslint-env serviceworker -- Service worker */
+
+// TODO: Complete
+
+const CACHE_VERSION = '0.32.3';
+const CURRENT_CACHES = {
+  prefetch: 'prefetch-cache-v' + CACHE_VERSION
+};
+const minutes = 60 * 1000;
+
+// Utilities
+
+/**
+ *
+ * @param {PlainObject} args
+ * @param {
+ *   "log"|"error"|"beginInstall"|"finishedInstall"|"beginActivate"|
+ *   "finishedActivate"
+ * } args.type
+ * @param {string} [args.message=type]
+ * @returns {Promise<void>}
+ */
+async function post ({type, message = type}) {
+  const windowClients = await self.clients.matchAll({
+    // Are there any uncontrolled within activate anyways?
+    includeUncontrolled: true,
+    type: 'window'
+  }) || [];
+  if (message.includes('Posting finished')) {
+    message += ` (count: ${windowClients.length})`;
+  }
+  windowClients.forEach((client) => {
+    // Although we only need one client to which to send
+    //   arguments, we want to signal phase complete to all
+    client.postMessage({message, type});
+  });
+}
+
+/**
+ *
+ * @param {string[]} messages
+* @returns {Promise<void>}
+ */
+function log (...messages) {
+  const message = messages.join(' ');
+  console.log(message);
+  return post({message, type: 'log'});
+}
+
+/**
+ *
+ * @param {Error} error
+ * @param {string[]} messages
+* @returns {Promise<void>} Resolves to `undefined`
+ */
+function logError (error, ...messages) {
+  const message = messages.join(' ');
+  console.error(error, message);
+  return post({
+    message, errorType: error.type, name: error.name, type: 'error'
+  });
+}
+
+/**
+ * @callback DelayCallback
+ * @param {Float} time
+ * @returns {void}
+ */
+
+/**
+ *
+ * @param {DelayCallback} cb
+ * @param {PositiveInteger} timeout
+ * @param {string} errMessage
+ * @param {PositiveInteger} [time=0]
+ * @returns {Promise<void>}
+ */
+async function tryAndRetry (cb, timeout, errMessage, time = 0) {
+  time++;
+  try {
+    // eslint-disable-next-line max-len -- Long
+    // eslint-disable-next-line promise/prefer-await-to-callbacks -- Needed for retries
+    await cb(time);
+    return undefined;
+  } catch (err) {
+    console.log('errrr', err);
+    logError(err, err.message || errMessage);
+    // eslint-disable-next-line promise/avoid-new -- Need timeout
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(tryAndRetry(cb, timeout, errMessage, time));
+      }, timeout);
+    });
+  }
+}
+
+/**
+* @typedef {PlainObject} ConfigObject
+* @property {string} namespace
+* @property {string} basePath
+* @property {string} languages
+* @property {string} files
+* @property {string[]} userStaticFiles
+*/
+
+/**
+ *
+ * @param {ConfigObject} args
+ * @returns {ConfigObject}
+ * @todo Since some of these reused, move to external file (or
+ *         use `setServiceWorkerDefaults`?)
+ */
+function getConfigDefaults (args) {
+  return {
+    namespace: 'unicode-input-toolconverter',
+    basePath: '',
+    languages: new URL(
+      '../appdata/languages.json',
+      import.meta.url
+    ).href,
+    files: 'files.json',
+    userStaticFiles: defaultUserStaticFiles,
+    // Opportunity to override
+    ...args
+  };
+}
+
+const defaultUserStaticFiles = [
+  '/', // Needs a separate entry from `index.html` (at least in Chrome)
+  'index.html',
+  'files.json',
+  'site.json',
+  'resources/user.js'
+  // We do not put the user.json here as that is obtained live with
+  //   service worker
+];
+// Todo: We could supply `new URL(fileName, moduleURL).href` to
+//   get these as reliable full paths without hard-coding or needing to
+//   actually be in `node_modules/textbrowser`; see `resources/index.js`
+const textbrowserStaticResourceFiles = [
+  'node_modules/dialog-polyfill/dist/dialog-polyfill.esm.js',
+
+  'node_modules/textbrowser/appdata/languages.json',
+
+  'node_modules/textbrowser/dist/index-es.js'
+];
+
+const params = new URL(location).searchParams;
+const pathToUserJSON = params.get('pathToUserJSON');
+const stylesheets = JSON.parse(params.get('stylesheets') || []);
+
+console.log('sw info', pathToUserJSON);
+console.log('sw stylesheets', stylesheets);
+
+/**
+ *
+ * @param {PositiveInteger} time
+ * @throws {Error}
+ * @returns {Promise<void>}
+ */
+async function install (time) {
+  post({type: 'beginInstall'});
+  log(`Install: Trying, attempt ${time}`);
+  const now = Date.now();
+  const response = await fetch(pathToUserJSON);
+  const json = await response.json();
+
+  const {
+    namespace, languages, files, userStaticFiles
+  } = getConfigDefaults(json);
+
+  console.log('opening cache', namespace + CURRENT_CACHES.prefetch);
+  const [
+    cache,
+    userDataFiles,
+    {languages: langs}
+  ] = await Promise.all([
+    caches.open(namespace + CURRENT_CACHES.prefetch),
+    WorkInfo.getWorkFiles(files),
+    getJSON(languages)
+  ]);
+  log('Install: Retrieved dependency values');
+
+  const langPathParts = languages.split('/');
+  // Todo: We might give option to only download
+  //        one locale and avoid language splash page
+  const localeFiles = langs.map(
+    ({locale: {$ref}}) => {
+      return (langPathParts.length > 1
+        ? langPathParts.slice(0, -1).join('/') + '/'
+        : ''
+      ) + $ref;
+    }
+  );
+
+  const urlsToPrefetch = [
+    ...textbrowserStaticResourceFiles,
+    ...localeFiles,
+    ...userStaticFiles,
+    ...userDataFiles,
+    ...stylesheets
+  ];
+
+  // .map((url) => url === 'index.html'
+  //   ? new Request(url, {cache: 'reload'}) : url)
+  try {
+    const cachePromises = urlsToPrefetch.map(async (urlToPrefetch) => {
+      // This constructs a new URL object using the service worker's script
+      //   location as the base for relative URLs.
+      const url = new URL(urlToPrefetch, location.href);
+      url.search += (url.search ? '&' : '?') + 'cache-bust=' + now;
+      const request = new Request(url, {mode: 'no-cors'});
+      try {
+        const resp = await fetch(request);
+        if (resp.status >= 400) {
+          throw new Error('request for ' + urlToPrefetch +
+                      ' failed with status ' + resp.statusText);
+        }
+        return cache.put(urlToPrefetch, resp);
+      } catch (error) {
+        logError(error, 'Not caching ' + urlToPrefetch + ' due to ' + error);
+        return Promise.reject(error);
+      }
+    });
+    await Promise.all(cachePromises);
+    log('Install: Pre-fetching complete.');
+  } catch (error) {
+    logError(error, `Install: Pre-fetching failed: ${error}`);
+    // Failing gives chance for a new client to re-trigger install?
+    throw error;
+  }
+
+  // An install update event will not be reported until controlled,
+  //    so we need to inform the clients
+  log(`Install: Posting finished message to clients`);
+
+  // Although we only need one client to which to send
+  //   arguments, we want to signal phase complete to all
+  post({type: 'finishedInstall'});
+}
+
+/**
+ *
+ * @param {PositiveInteger} time
+ * @returns {Promise<void>}
+ */
+async function activate (time) {
+  post({type: 'beginActivate'});
+  log(`Activate: Trying, attempt ${time}`);
+  const [json, cacheNames] = await Promise.all([
+    (await fetch(pathToUserJSON)).json(),
+    caches.keys()
+  ]);
+  const {namespace, files, basePath} = getConfigDefaults(json);
+
+  const expectedCacheNames = Object.values(
+    CURRENT_CACHES
+  ).map((n) => namespace + n);
+  cacheNames.map(async (cacheName) => {
+    if (!expectedCacheNames.includes(cacheName)) {
+      log('Activate: Deleting out of date cache:', cacheName);
+      await caches.delete(cacheName);
+    }
+  });
+
+  await activateCallback({namespace, files, basePath, log});
+  log('Activate: Database changes completed');
+
+  log(`Activate: Posting finished message to clients`);
+  // Signal phase complete to all clients
+  post({type: 'finishedActivate'});
+}
+
+self.addEventListener('install', (e) => {
+  e.waitUntil(tryAndRetry(install, 5 * minutes, 'Error installing'));
+});
+
+self.addEventListener('activate', (e) => {
+  // Erring is of no present use here:
+  //   https://github.com/w3c/ServiceWorker/issues/659#issuecomment-384919053
+  e.waitUntil(tryAndRetry(activate, 5 * minutes, 'Error activating'));
+});
+
+// We cannot make this async as `e.respondWith` must be called synchronously
+self.addEventListener('fetch', (e) => {
+  // DevTools opening will trigger these o-i-c requests
+  const {request} = e;
+  const {cache, mode, url} = request;
+  if (cache === 'only-if-cached' &&
+        mode !== 'same-origin') {
+    return;
+  }
+  console.log('fetching', url);
+  e.respondWith((async () => {
+    const cached = await caches.match(request);
+    if (!cached) {
+      console.log('no cached found', url);
+    }
+    return cached || fetch(request);
+  })());
+});

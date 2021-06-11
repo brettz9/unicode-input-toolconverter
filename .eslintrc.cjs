@@ -8,11 +8,14 @@ const rulesToIgnoreForNow = {
 module.exports = {
   extends: ['ash-nazg/sauron-overrides'],
   env: {
-    es6: true,
+    es2021: true,
     node: false,
     'shared-node-browser': false,
     browser: true,
     webextensions: true
+  },
+  parserOptions: {
+    ecmaVersion: 2021
   },
   settings: {
     polyfills: [
@@ -23,7 +26,9 @@ module.exports = {
       'Object.assign',
       'Object.entries',
       'Object.values',
+      'Promise',
       'Promise.all',
+      'Request',
       'String.fromCodePoint',
       'URL'
     ]
