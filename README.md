@@ -50,5 +50,5 @@ but XUL support was dropped in Firefox.
 1. Script for **auto-downloading entity files** (`/download/entities/`).
 1. `unicode` or `utils` modules could be **moved to own npm package**
 1. Utilize column browser also for **blocks/categories** (also use in
-    `filebrowser-enhanced`!)
+    `filebrowser-enhanced`!); could even replace chart
 1. Offer **minimal character picker window**
