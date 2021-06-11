@@ -22,7 +22,7 @@ but XUL support was dropped in Firefox.
 
 ## High priority to-dos (toward restoring functionality)
 
-1. Unihan download and other Unicode file saving into indexedDB
+1. Service worker / Unihan download and other Unicode file saving into indexedDB
 2. Move out description code in `UnicodeConverter.js` to `charrefunicodeDb` or
     other database-aware utility.
 3. Split up `unicodecharref.js`
