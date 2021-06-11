@@ -1,8 +1,22 @@
+// As the Unicode server does not have CORS enabled, we can't adapt
+//  this file for the browser, but we're keeping this file for demonstrating
+//  an approach for live-obtaining the live version.
+//  The current process we're using on our (bahai-browser.org) server
+//  was instead just to use
+//  `curl -LO https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip`
+//  while in the `bahai-browser.org/download/unicode` directory and serve
+//  `Unihan.zip` with a static file server so our browser script (elsewhere)
+//  can download it and unpack its contents to supply to the method shared with
+//  this file, `parseUnihanFromTextFileStrings.js`.
+
 import fs from 'fs/promises';
 
 import download from 'download';
 import extract from 'extract-zip';
 import fetch from 'file-fetch';
+
+import parseUnihanFromTextFileStrings from
+  '../browser_action/unicode/parseUnihanFromTextFileStrings.js';
 
 const args = process.argv.slice(2);
 
@@ -28,23 +42,7 @@ addScript(targetDir);
  * @returns {Promise<void>}
  */
 async function addScript (baseURL) {
-  /* eslint-disable max-len -- Long */
-  const fields = ['code_pt', 'kAccountingNumeric', 'kBigFive', 'kCCCII', 'kCNS1986', 'kCNS1992', 'kCangjie', 'kCantonese',
-    'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon',
-    'kDefinition', 'kEACC', 'kFenn', 'kFennIndex', 'kFourCornerCode', 'kFrequency', 'kGB0', 'kGB1', 'kGB3',
-    'kGB5', 'kGB7', 'kGB8', 'kGSR', 'kGradeLevel', 'kHDZRadBreak', 'kHKGlyph', 'kHKSCS', 'kHanYu', 'kHangul',
-    'kHanyuPinlu', 'kHanyuPinyin', 'kIBMJapan', 'kIICore', 'kIRGDaeJaweon', 'kIRGDaiKanwaZiten',
-    'kIRGHanyuDaZidian', 'kIRGKangXi', 'kIRG_GSource', 'kIRG_HSource', 'kIRG_JSource', 'kIRG_KPSource',
-    'kIRG_KSource', 'kIRG_MSource', 'kIRG_TSource', 'kIRG_USource', 'kIRG_VSource', 'kJIS0213', 'kJapaneseKun',
-    'kJapaneseOn', 'kJis0', 'kJis1', 'kKPS0', 'kKPS1', 'kKSC0', 'kKSC1', 'kKangXi', 'kKarlgren', 'kKorean', 'kLau',
-    'kMainlandTelegraph', 'kMandarin', 'kMatthews', 'kMeyerWempe', 'kMorohashi', 'kNelson', 'kOtherNumeric',
-    'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1', 'kRSAdobe_Japan1_6', 'kRSJapanese', 'kRSKanWa', 'kRSKangXi',
-    'kRSKorean', 'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant', 'kSpecializedSemanticVariant',
-    'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant',
-    'kUnihanCore2020', 'kIRG_UKSource', 'kIRG_SSource', 'kTGH', 'kKoreanName', 'kJa', 'kJoyoKanji', 'kKoreanEducationHanja',
-    'kJinmeiyoKanji', 'kTGHZ2013', 'kSpoofingVariant'];
-  /* eslint-enable max-len -- Long */
-  const scriptFileAsStr = (await Promise.all([
+  const scriptFileAsStrings = await Promise.all([
     'Unihan_DictionaryIndices.txt',
     'Unihan_DictionaryLikeData.txt',
     'Unihan_IRGSources.txt',
@@ -56,32 +54,9 @@ async function addScript (baseURL) {
   ].map(async (file) => {
     const fileObj = await fetch(`${baseURL}/${file}`);
     return await fileObj.text();
-  }))).join('');
+  }));
 
-  const notPresent = {};
-  let line;
-  const obj = {};
-  const lineRegex = /^U\+(?<cdpt>[\da-fA-F]{4,6})\t(?<col>\w+?)\t(?<value>.*)$/gum;
-  while ((line = (lineRegex).exec(scriptFileAsStr)) !== null) {
-    const {cdpt, col, value} = line.groups;
-    if (!obj[cdpt]) {
-      obj[cdpt] = [];
-      fields.forEach(function (val, idx) {
-        obj[cdpt][idx] = '';
-      });
-      obj[cdpt][0] = cdpt;
-    }
-    const pos = fields.indexOf(col);
-    if (pos === -1) {
-      if (!notPresent[col]) {
-        // eslint-disable-next-line no-console -- CLI
-        console.error(`Not present: ${col}\n`);
-        notPresent[col] = 1;
-      }
-      continue;
-    }
-    obj[cdpt][pos] = value;
-  }
+  const obj = parseUnihanFromTextFileStrings(scriptFileAsStrings);
 
   await fs.writeFile(targetJSONUnihan, JSON.stringify(obj));
 }

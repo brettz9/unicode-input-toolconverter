@@ -26,6 +26,7 @@ specifiers:
   eslint-plugin-standard: ^4.1.0
   eslint-plugin-unicorn: ^33.0.1
   extract-zip: ^2.0.1
+  fflate: ^0.7.0
   file-fetch: ^1.7.0
   fs-extra: ^10.0.0
   intl-dom: ^0.13.4
@@ -73,6 +74,7 @@ devDependencies:
   eslint-plugin-radar: 0.2.1_eslint@7.28.0
   eslint-plugin-standard: 4.1.0_eslint@7.28.0
   eslint-plugin-unicorn: 33.0.1_eslint@7.28.0
+  fflate: 0.7.0
   jamilih: 0.54.0
   jquery: 3.6.0
   miller-columns: 0.9.0
@@ -1564,6 +1566,10 @@ packages:
     dependencies:
       pend: 1.2.0
     dev: false
+
+  /fflate/0.7.0:
+    resolution: {integrity: sha512-rL8N1NGlP36Hj8S+h6cyQs1RLKNp40e+BjAelaT738RrhSr9Ud99imQ2be9OYrCsIlnVcTM/Ru6c01YN5cK+dQ==}
+    dev: true
 
   /file-entry-cache/6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
