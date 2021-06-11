@@ -842,34 +842,33 @@ const indexTemplate = function ({_, fonts}) {
           ['div', [
             ['button', {
               $on: {
-                click () {
-                  unicodecharref.downloadUnihan();
+                async click () {
+                  await unicodecharref.downloadUnihan();
                 }
               }
             }, [_('DownloadUnihan')]]
-          ]],
-          ['div', {
-            id: 'DownloadProgressBox',
-            class: 'vbox',
-            hidden: true
-          }, [
-            ['label', {id: 'progress_stat'}, [
-              // Todo: ['progressmeter', {id: 'progress_element',
-              //   mode: 'determined'}]
-            ]],
-            ['button', {
-              id: 'closeDownloadProgressBox',
-              hidden: true,
-              $on: {
-                click () {
-                  unicodecharref.closeDownloadProgressBox();
-                }
-              }
-            }, [_('Close')]]
-          ]],
-          ['div', {id: 'UnihanInstalled', class: 'vbox'}, [
-            _('UnihanInstalled')
           ]]
+        ]],
+        ['div', {
+          id: 'DownloadProgressBox',
+          class: 'vbox',
+          hidden: true
+        }, [
+          ['label', [
+            ['progressmeter', {id: 'progress_element'}]
+          ]],
+          ['button', {
+            id: 'closeDownloadProgressBox',
+            hidden: true,
+            $on: {
+              click () {
+                unicodecharref.closeDownloadProgressBox();
+              }
+            }
+          }, [_('Close')]]
+        ]],
+        ['div', {id: 'UnihanInstalled', class: 'vbox'}, [
+          _('UnihanInstalled')
         ]],
         ['div', {class: 'boxed vbox'}, [
           ['label', [

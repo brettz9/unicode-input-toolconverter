@@ -36,6 +36,9 @@ if (prev >= 0 && prev <= 9) {
 }
 */
 import {$, $$} from '../vendor/jamilih/dist/jml-es.js';
+// Todo: Filed the following to avoid both sync and callbacks:
+//  https://github.com/101arrowz/fflate/issues/70
+import {unzipSync, strFromU8} from '../vendor/fflate/esm/browser.js';
 import {
   getUnicodeDefaults, getPrefDefaults
 } from './preferences/prefDefaults.js';
@@ -49,6 +52,8 @@ import charrefunicodeDb, {
   UnihanDatabase, Jamo
 } from './unicode/charrefunicodeDb.js';
 import {getCJKTypeFromHexString} from './unicode/unihan.js';
+import parseUnihanFromTextFileStrings from
+  './unicode/parseUnihanFromTextFileStrings.js';
 import {registerDTD} from './entityBehaviors.js';
 import {entities, numericCharacterReferences} from './entities.js';
 import {findBridgeForTargetID} from './charrefConverters.js';
@@ -63,84 +68,86 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
 
 const unihanDatabase = new UnihanDatabase();
 
+/**
+ * @returns {Promise<Object<string,string[]>>}
+ */
+async function getDownloadResults () {
+  const response = await fetch('/download/unihan/Unihan.zip');
+  const reader = response.body.getReader();
+  // 6747669; // 39.5 MB unzipped;
+  const totalBytes = response.headers.get('content-length');
+  const progressElement = $('#progress_element');
+  progressElement.max = totalBytes;
+
+  const chunks = [];
+  let receivedLength = 0;
+  while (true) {
+    // eslint-disable-next-line no-await-in-loop -- Stream reading
+    const {done, value} = await reader.read();
+    if (done) {
+      break;
+    }
+
+    chunks.push(value);
+    receivedLength += value.length;
+
+    const percentComplete = ((
+      receivedLength / totalBytes
+    ) * 100);
+
+    progressElement.value = percentComplete;
+    progressElement.textContent = _('download_progress') + ' ' +
+      percentComplete.toFixed(2) + _('percentSign');
+  }
+
+  // Combine into single `Uint8Array`
+  const compressed = new Uint8Array(receivedLength);
+  let pos = 0;
+  for (const chunk of chunks) {
+    compressed.set(chunk, pos);
+    pos += chunk.length;
+  }
+
+  const decompressedObj = unzipSync(compressed);
+  const scriptFileAsStrings = Object.values(decompressedObj).map(
+    (decompressed) => {
+      return strFromU8(decompressed);
+    }
+  );
+
+  return parseUnihanFromTextFileStrings(scriptFileAsStrings);
+}
+
 const unicodecharref = {
-  downloadUnihan () {
+  async downloadUnihan () {
     $('#DownloadButtonBox').hidden = true;
     $('#DownloadProgressBox').hidden = false;
 
-    const that = this;
-    const aFileURL = 'http://brett-zamir.me/unicode_input_tool/Unihan6.sqlite';
+    const parsed = await getDownloadResults();
 
-    const Components = 'todo';
-    const Cc = Components.classes,
-      Ci = Components.interfaces;
-    const ios = Cc[
-      '@mozilla.org/network/io-service;1'
-    ].getService(Components.interfaces.nsIIOService);
-    const url = ios.newURI(aFileURL, null, null);
-    const file = Cc[
-      '@mozilla.org/file/directory_service;1'
-    ].getService(Ci.nsIProperties).get('ProfD', Ci.nsILocalFile);
-    file.append('Unihan6.sqlite');
-    if (file.exists()) {
-      file.remove(false); // Shouldn't make it here unless it was a bad file
-      // return; // Don't do this: give chance to overwrite
+    // Todo: Save to indexedDB
+    console.log('parsed', parsed[3400]);
+
+    try {
+      // Todo: Change to indexedDB
+      charrefunicodeDb.dbConnUnihan.createStatement(
+        // Just to test database
+        'SELECT code_pt FROM ' + 'Unihan' + ' WHERE code_pt = "3400"'
+      );
+      alert(_('Finished_download'));
+      this.unihanDb_exists = true;
+      $('#closeDownloadProgressBox').hidden = false;
+      $('#UnihanInstalled').hidden = false;
+    } catch (e) {
+      $('#closeDownloadProgressBox').hidden = true;
+      $('#UnihanInstalled').hidden = true;
+      $('#DownloadProgressBox').hidden = true;
+      $('#DownloadButtonBox').hidden = false;
+      alert(_('Problem_downloading'));
+
+      // eslint-disable-next-line no-console -- Debug
+      console.error(e);
     }
-    file.create(
-      Ci.nsIFile.NORMAL_FILE_TYPE, '777'.toString(8)
-    ); // DIRECTORY_TYPE
-
-    const {STATE_STOP} = Ci.nsIWebProgressListener;
-    // const {STATE_IS_WINDOW} = Ci.nsIWebProgressListener;
-
-    const persist = Cc[
-      '@mozilla.org/embedding/browser/nsWebBrowserPersist;1'
-    ].createInstance(Ci.nsIWebBrowserPersist);
-    persist.progressListener = {
-      onProgressChange (
-        aWebProgress, aRequest, aCurSelfProgress, aMaxSelfProgress,
-        aCurTotalProgress, aMaxTotalProgress
-      ) {
-        const percentComplete = ((
-          aCurTotalProgress / aMaxTotalProgress
-        ) * 100).toFixed(2);
-        // <label id="progress_stat"/>
-        // <progressmeter id="progress_element" mode="determined"/>
-        const ele = $('#progress_element');
-        ele.value = percentComplete;
-        const stat = $('#progress_stat');
-
-        stat.value = _('download_progress') + ' ' +
-          percentComplete + _('percentSign');
-      },
-      onStateChange (aWebProgress, aRequest, aFlag, aStatus) {
-        // eslint-disable-next-line no-bitwise -- Easier
-        if (aFlag & STATE_STOP) { //  && aFlag & STATE_IS_WINDOW
-          try {
-            charrefunicodeDb.connect('Unihan6.sqlite', 'unihan');
-            /* const statement = */
-            charrefunicodeDb.dbConnUnihan.createStatement(
-              // Just to test database
-              'SELECT code_pt FROM ' + 'Unihan' + ' WHERE code_pt = "3400"'
-            );
-            alert(_('Finished_download'));
-            that.unihanDb_exists = true;
-            $('#closeDownloadProgressBox').hidden = false;
-            $('#UnihanInstalled').hidden = false;
-          } catch (e) {
-            $('#closeDownloadProgressBox').hidden = true;
-            $('#UnihanInstalled').hidden = true;
-            $('#DownloadProgressBox').hidden = true;
-            $('#DownloadButtonBox').hidden = false;
-            alert(_('Problem_downloading'));
-
-            // eslint-disable-next-line no-console -- Debug
-            console.error(e);
-          }
-        }
-      }
-    };
-    persist.saveURI(url, null, null, null, '', file);
   },
   closeDownloadProgressBox () {
     $('#closeDownloadProgressBox').hidden = false;
@@ -307,10 +314,11 @@ const unicodecharref = {
     const that = this;
     // this.refreshToolbarDropdown(); // redundant?
 
-    // charrefunicodeDb.connect('data/Unicode.sqlite');
+    // charrefunicodeDb.connect('download/Unicode.sqlite');
     this.unihanDb_exists = false;
     try {
-      // charrefunicodeDb.connect('Unihan.sqlite', 'unihan');
+      // Todo: Fix
+      charrefunicodeDb('Unihan.sqlite', 'unihan');
 
       // Test Unihan value
       unihanDatabase.getUnicodeFields('3400');
@@ -325,7 +333,7 @@ const unicodecharref = {
       $('#UnihanInstalled').hidden = true;
     }
     try {
-      // charrefunicodeDb.connect('data/Jamo.sqlite', 'jamo');
+      // charrefunicodeDb.connect('download/Jamo.sqlite', 'jamo');
     } catch (e) {
       alert(e);
     }
@@ -1280,16 +1288,6 @@ const unicodecharref = {
     /* if (name_desc === 'Name' || name_desc === 'kDefinition') {
       this.setCurrstartset(name_desc_val);
     } */
-  },
-  doOK () {
-    setPref('outerHeight', window.outerHeight);
-    setPref('outerWidth', window.outerWidth);
-    return false;
-  },
-  doCancel () {
-    setPref('outerHeight', window.outerHeight);
-    setPref('outerWidth', window.outerWidth);
-    return true;
   },
   moveoutput (movedid) {
     const insertText = $(movedid);

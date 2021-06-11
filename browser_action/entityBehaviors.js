@@ -13,7 +13,9 @@ export const shareVars = ({charrefunicodeConverter: _uc}) => {
  * @returns {Promise<void>}
  */
 async function insertEntityFile (e) {
-  const entFile = await fetch('../data/entities/' + e.target.value + '.ent');
+  const entFile = await fetch(
+    '../download/entities/' + e.target.value + '.ent'
+  );
   const data = await entFile.text();
 
   $('#DTDtextbox').value += '\n' + data;

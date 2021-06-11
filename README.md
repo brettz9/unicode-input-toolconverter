@@ -20,6 +20,14 @@ This project had originally found life as a
 [XUL-based Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/),
 but XUL support was dropped in Firefox.
 
+## High priority to-dos (toward restoring functionality)
+
+1. Unihan download and other Unicode file saving into indexedDB
+2. Move out description code in `UnicodeConverter.js` to `charrefunicodeDb` or
+    other database-aware utility.
+3. Split up `unicodecharref.js`
+4. Restore starting with `unicodecharref.js` and then `charrefConverters.js`.
+
 ## Possible to-dos
 
 1. ONGOING: Get **l10n** completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
@@ -39,6 +47,7 @@ but XUL support was dropped in Firefox.
 
 1. When browsing by script, have **option to update script location** when one
     uses next/prev
+1. Script for **auto-downloading entity files** (`/download/entities/`).
 1. `unicode` or `utils` modules could be **moved to own npm package**
 1. Utilize column browser also for **blocks/categories** (also use in
     `filebrowser-enhanced`!)

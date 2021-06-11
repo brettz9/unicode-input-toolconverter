@@ -4,7 +4,7 @@
 //  The current process we're using on our (bahai-browser.org) server
 //  was instead just to use
 //  `curl -LO https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip`
-//  while in the `bahai-browser.org/download/unicode` directory and serve
+//  while in the `bahai-browser.org/download/unihan` directory and serve
 //  `Unihan.zip` with a static file server so our browser script (elsewhere)
 //  can download it and unpack its contents to supply to the method shared with
 //  this file, `parseUnihanFromTextFileStrings.js`.
@@ -20,7 +20,7 @@ import parseUnihanFromTextFileStrings from
 
 const args = process.argv.slice(2);
 
-const targetDir = `${process.cwd()}/data/unihan`;
+const targetDir = `${process.cwd()}/download/unihan`;
 const unihanZip = `${targetDir}/Unihan.zip`;
 const targetJSONUnihan = `${targetDir}/unihan.json`;
 

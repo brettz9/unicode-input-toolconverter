@@ -1,2 +1,0 @@
-This file is just a place-holder for the large Unihan files that will be
-used by the application.

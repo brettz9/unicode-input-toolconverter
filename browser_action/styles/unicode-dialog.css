@@ -144,7 +144,7 @@ button.reconvert {
 .chartBox {
   width: 50%;
 }
-#DownloadButtonBox {
+#DownloadButtonBox, #DownloadProgressBox, #UnihanInstalled {
   text-align: center;
 }
 #DownloadButtonBox > div {
@@ -371,4 +371,9 @@ code {
 
 #chart_selectchar_persist_vbox .hbox > input {
   flex: 1;
+}
+
+/* Odd behavior whereby hidden doesn't work with display: flex */
+[hidden] {
+  display:none;
 }

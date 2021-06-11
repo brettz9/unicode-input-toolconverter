@@ -1,3 +1,3 @@
 node_modules
-data/unihan
-!data/unihan/putUnihanFilesHereForImport.txt
+download/unihan
+!download/unihan/putUnihanFilesHereForImport.txt

@@ -74,8 +74,7 @@ unicodecharref.initialize();
 /**
 * The following works, but if used will not allow user to cancel to
 * get out of the current window size and will go back to the last
-* window size; if use this, don't need code in "doOk" (besides
-* return true).
+* window size.
 */
 // window.addEventListener('resize', function (e) {
 //   setPref('outerHeight', window.outerHeight);
