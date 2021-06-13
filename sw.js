@@ -1,15 +1,22 @@
 /* eslint-disable import/unambiguous, no-console -- Service worker */
 /* eslint-env serviceworker -- Service worker */
 
-// TODO: Complete
-
-const CACHE_VERSION = '0.32.3';
+const CACHE_VERSION = '0.1.0';
 const CURRENT_CACHES = {
   prefetch: 'prefetch-cache-v' + CACHE_VERSION
 };
 const minutes = 60 * 1000;
 
 // Utilities
+
+/**
+* @param {string} path
+* @returns {JSON}
+*/
+const getJSON = async (path) => {
+  const response = await fetch(path);
+  return await response.json();
+};
 
 /**
  *
@@ -99,59 +106,13 @@ async function tryAndRetry (cb, timeout, errMessage, time = 0) {
 * @typedef {PlainObject} ConfigObject
 * @property {string} namespace
 * @property {string} basePath
-* @property {string} languages
-* @property {string} files
-* @property {string[]} userStaticFiles
 */
 
-/**
- *
- * @param {ConfigObject} args
- * @returns {ConfigObject}
- * @todo Since some of these reused, move to external file (or
- *         use `setServiceWorkerDefaults`?)
- */
-function getConfigDefaults (args) {
-  return {
-    namespace: 'unicode-input-toolconverter',
-    basePath: '',
-    languages: new URL(
-      '../appdata/languages.json',
-      import.meta.url
-    ).href,
-    files: 'files.json',
-    userStaticFiles: defaultUserStaticFiles,
-    // Opportunity to override
-    ...args
-  };
-}
+const namespace = 'unicode-input-toolconverter';
+const pathToStaticJSON = './sw-resources.json';
+const pathToLocaleJSON = './sw-locales.json';
 
-const defaultUserStaticFiles = [
-  '/', // Needs a separate entry from `index.html` (at least in Chrome)
-  'index.html',
-  'files.json',
-  'site.json',
-  'resources/user.js'
-  // We do not put the user.json here as that is obtained live with
-  //   service worker
-];
-// Todo: We could supply `new URL(fileName, moduleURL).href` to
-//   get these as reliable full paths without hard-coding or needing to
-//   actually be in `node_modules/textbrowser`; see `resources/index.js`
-const textbrowserStaticResourceFiles = [
-  'node_modules/dialog-polyfill/dist/dialog-polyfill.esm.js',
-
-  'node_modules/textbrowser/appdata/languages.json',
-
-  'node_modules/textbrowser/dist/index-es.js'
-];
-
-const params = new URL(location).searchParams;
-const pathToUserJSON = params.get('pathToUserJSON');
-const stylesheets = JSON.parse(params.get('stylesheets') || []);
-
-console.log('sw info', pathToUserJSON);
-console.log('sw stylesheets', stylesheets);
+console.log('sw info', pathToStaticJSON);
 
 /**
  *
@@ -163,43 +124,22 @@ async function install (time) {
   post({type: 'beginInstall'});
   log(`Install: Trying, attempt ${time}`);
   const now = Date.now();
-  const response = await fetch(pathToUserJSON);
-  const json = await response.json();
-
-  const {
-    namespace, languages, files, userStaticFiles
-  } = getConfigDefaults(json);
 
   console.log('opening cache', namespace + CURRENT_CACHES.prefetch);
   const [
     cache,
-    userDataFiles,
-    {languages: langs}
+    staticResourceFiles,
+    localeFiles
   ] = await Promise.all([
     caches.open(namespace + CURRENT_CACHES.prefetch),
-    WorkInfo.getWorkFiles(files),
-    getJSON(languages)
+    getJSON(pathToStaticJSON),
+    getJSON(pathToLocaleJSON)
   ]);
   log('Install: Retrieved dependency values');
 
-  const langPathParts = languages.split('/');
-  // Todo: We might give option to only download
-  //        one locale and avoid language splash page
-  const localeFiles = langs.map(
-    ({locale: {$ref}}) => {
-      return (langPathParts.length > 1
-        ? langPathParts.slice(0, -1).join('/') + '/'
-        : ''
-      ) + $ref;
-    }
-  );
-
   const urlsToPrefetch = [
-    ...textbrowserStaticResourceFiles,
     ...localeFiles,
-    ...userStaticFiles,
-    ...userDataFiles,
-    ...stylesheets
+    ...staticResourceFiles
   ];
 
   // .map((url) => url === 'index.html'
@@ -214,8 +154,10 @@ async function install (time) {
       try {
         const resp = await fetch(request);
         if (resp.status >= 400) {
-          throw new Error('request for ' + urlToPrefetch +
-                      ' failed with status ' + resp.statusText);
+          throw new Error(
+            'request for ' + urlToPrefetch +
+            ' failed with status ' + resp.statusText
+          );
         }
         return cache.put(urlToPrefetch, resp);
       } catch (error) {
@@ -248,24 +190,21 @@ async function install (time) {
 async function activate (time) {
   post({type: 'beginActivate'});
   log(`Activate: Trying, attempt ${time}`);
-  const [json, cacheNames] = await Promise.all([
-    (await fetch(pathToUserJSON)).json(),
-    caches.keys()
-  ]);
-  const {namespace, files, basePath} = getConfigDefaults(json);
+  const cacheNames = await caches.keys();
 
   const expectedCacheNames = Object.values(
     CURRENT_CACHES
   ).map((n) => namespace + n);
-  cacheNames.map(async (cacheName) => {
+  cacheNames.forEach(async (cacheName) => {
     if (!expectedCacheNames.includes(cacheName)) {
       log('Activate: Deleting out of date cache:', cacheName);
       await caches.delete(cacheName);
     }
   });
 
-  await activateCallback({namespace, files, basePath, log});
-  log('Activate: Database changes completed');
+  // Todo: Use `namespace` in indexedDB db
+  // await activateCallback({namespace, basePath, log});
+  // log('Activate: Database changes completed');
 
   log(`Activate: Posting finished message to clients`);
   // Signal phase complete to all clients
@@ -287,8 +226,10 @@ self.addEventListener('fetch', (e) => {
   // DevTools opening will trigger these o-i-c requests
   const {request} = e;
   const {cache, mode, url} = request;
-  if (cache === 'only-if-cached' &&
-        mode !== 'same-origin') {
+  if (
+    cache === 'only-if-cached' &&
+    mode !== 'same-origin'
+  ) {
     return;
   }
   console.log('fetching', url);
