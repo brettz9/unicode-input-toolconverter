@@ -11,4 +11,6 @@ const json = dirs.filter((dir) => {
 // eslint-disable-next-line no-console -- CLI
 console.log('json', json);
 
-fs.writeFile('sw-locales.json', JSON.stringify(json, null, 2) + '\n');
+fs.writeFile(
+  'browser_action/sw-locales.json', JSON.stringify(json, null, 2) + '\n'
+);

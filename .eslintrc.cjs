@@ -22,6 +22,7 @@ module.exports = {
       'Array.fill',
       'Array.from',
       'fetch',
+      'navigator.serviceWorker',
       'Number.parseInt',
       'Object.assign',
       'Object.entries',

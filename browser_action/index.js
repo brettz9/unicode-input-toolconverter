@@ -12,6 +12,8 @@ import unicodecharref, {shareVars as shareVarsUresults} from
   './unicodecharref.js';
 import indexTemplate from './templates/index.js';
 
+import setupServiceWorker from './utils/setupServiceWorker.js';
+
 import {
   shareVars as shareVarsEntity, setupEntityEvents
 } from './entityBehaviors.js';
@@ -26,6 +28,7 @@ setJSONExtra(jsonExtra);
 (async () => { // eslint-disable-line padded-blocks -- Ugly
 
 // SETUP
+
 // Todo: Support hash searchParams / streamline with `pushState`
 const lang = new URL(location).searchParams.get('lang');
 
@@ -46,6 +49,8 @@ const _ = await i18n({
   locales, defaults: false, localesBasePath: '../',
   substitutions: {code, link}
 });
+
+await setupServiceWorker();
 
 setPrefDefaultVars({_});
 const charrefunicodeConverter = new (getUnicodeConverter())({_});
