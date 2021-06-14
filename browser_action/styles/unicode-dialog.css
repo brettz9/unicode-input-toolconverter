@@ -223,6 +223,7 @@ radiogroup {
   min-height: 20px;
 }
 .miller-columns {
+  display: none;
   overflow: hidden !important;
 }
 

@@ -71,6 +71,7 @@ async function characterSelection ({
       chartBuild(); // Todo: descripts?
     }
   });
+  $('div.miller-columns').style.display = 'block';
 }
 
 export default characterSelection;

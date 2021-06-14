@@ -26,6 +26,7 @@
   "/browser_action/unicodecharref.js",
   "/browser_action/utils/DOMUtils.js",
   "/browser_action/utils/TextUtils.js",
+  "/browser_action/utils/setupServiceWorker.js",
   "/vendor/fflate/esm/browser.js",
   "/vendor/intl-dom/dist/index.esm.js",
   "/vendor/jamilih/dist/jml-es.js",
