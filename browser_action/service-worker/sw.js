@@ -56,7 +56,7 @@ function log (...messages) {
  *
  * @param {Error} error
  * @param {string[]} messages
-* @returns {Promise<void>} Resolves to `undefined`
+ * @returns {Promise<void>}
  */
 function logError (error, ...messages) {
   const message = messages.join(' ');
@@ -100,9 +100,9 @@ async function tryAndRetry (cb, timeout, errMessage, time = 0) {
 }
 
 const namespace = 'unicode-input-toolconverter';
-const pathToStaticJSON = './service-worker/sw-resources.json';
-const pathToLocaleJSON = './service-worker/sw-locales.json';
-const pathToUnicodeDataJSON = './service-worker/sw-unicode-data.json';
+const pathToStaticJSON = './sw-resources.json';
+const pathToLocaleJSON = './sw-locales.json';
+const pathToUnicodeDataJSON = './sw-unicode-data.json';
 
 console.log('sw info', pathToStaticJSON);
 
@@ -116,8 +116,7 @@ async function install (time) {
   post({type: 'beginInstall'});
   log(`Install: Trying, attempt ${time}`);
   const now = Date.now();
-
-  const {version} = await getJSON('package.json');
+  const {version} = await getJSON('../../package.json');
 
   const cacheKey = namespace + CURRENT_CACHES.prefetch + version;
 
@@ -196,7 +195,7 @@ async function activate (time) {
     {version}
   ] = await Promise.all([
     caches.keys(),
-    getJSON('package.json')
+    getJSON('../../package.json')
   ]);
 
   const expectedCacheNames = Object.values(

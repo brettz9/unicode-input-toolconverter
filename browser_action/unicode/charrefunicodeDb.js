@@ -42,7 +42,8 @@ class UnicodeDB {
     return new Promise((resolve, reject) => {
       if (updateUnicodeData) {
         req.addEventListener('upgradeneeded', (e) => {
-          const {db} = e.target;
+          const {result: db} = e.target;
+          console.log('e.target', e.target.result);
           this.db = db;
           this.upgradeneeded({updateUnicodeData});
         });
@@ -129,7 +130,7 @@ export class UnicodeDatabase extends UnicodeDB {
         /<(?<decompositionType>[^>]*)>\s+(?<decompositionMapping>.*)/u
       ).exec(
         decomposition
-      );
+      ) ?? {groups: {}};
       let numericType = 'None';
       if (numeric6) {
         numericType = 'Decimal';

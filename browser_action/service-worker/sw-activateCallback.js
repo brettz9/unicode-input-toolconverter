@@ -16,10 +16,8 @@ async function activateCallback ({namespace, log}) {
     //  independently
     version: 1
   });
-  const unicodeData = await getText('/download/UCD/UnicodeData.txt');
-  console.log('unicodeData', unicodeData.slice(0, 100) + '...');
+  const unicodeData = (await getText('/download/UCD/UnicodeData.txt')).trim();
   const updateUnicodeData = semicolonSeparatedToArray(unicodeData);
-  console.log('updateUnicodeData', updateUnicodeData.length);
   await charrefunicodeDb.connect({
     updateUnicodeData
   });
