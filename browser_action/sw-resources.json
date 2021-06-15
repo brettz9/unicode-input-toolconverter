@@ -9,6 +9,7 @@
   "/browser_action/index.html",
   "/browser_action/index.js",
   "/browser_action/preferences/prefDefaults.js",
+  "/browser_action/styles/unicode-dialog.css",
   "/browser_action/templateUtils/elements.js",
   "/browser_action/templateUtils/fill.js",
   "/browser_action/templateUtils/validation.js",
@@ -27,11 +28,13 @@
   "/browser_action/utils/DOMUtils.js",
   "/browser_action/utils/TextUtils.js",
   "/browser_action/utils/setupServiceWorker.js",
+  "/icons/openWindow24.png",
   "/vendor/fflate/esm/browser.js",
   "/vendor/intl-dom/dist/index.esm.js",
   "/vendor/jamilih/dist/jml-es.js",
   "/vendor/jquery/dist/jquery.js",
   "/vendor/json-6/dist/index.mjs",
   "/vendor/miller-columns/dist/index-es.min.js",
+  "/vendor/miller-columns/miller-columns.css",
   "/vendor/simple-prefs/dist/index.esm.js"
 ]

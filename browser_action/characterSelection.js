@@ -37,7 +37,7 @@ async function characterSelection ({
   await addMillerColumnPlugin(jQuery, {stylesheets: [
     // Per our widget "standard", allow for injecting of others in parallel
     ['/icons/openWindow24.png', {favicon: true}],
-    'styles/unicode-dialog.css',
+    '/browser_action/styles/unicode-dialog.css',
     '/vendor/miller-columns/miller-columns.css'
   ]});
 
