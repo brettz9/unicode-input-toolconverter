@@ -1,6 +1,7 @@
 /* eslint-disable no-console -- Debugging */
 /* eslint-env serviceworker -- Service worker */
 
+import {getJSON} from '../utils/FetchUtils.js';
 import activateCallback from './sw-activateCallback.js';
 
 const CURRENT_CACHES = {
@@ -9,15 +10,6 @@ const CURRENT_CACHES = {
 const minutes = 60 * 1000;
 
 // Utilities
-
-/**
-* @param {string} path
-* @returns {JSON}
-*/
-const getJSON = async (path) => {
-  const response = await fetch(path);
-  return await response.json();
-};
 
 /**
  *
@@ -108,9 +100,9 @@ async function tryAndRetry (cb, timeout, errMessage, time = 0) {
 }
 
 const namespace = 'unicode-input-toolconverter';
-const pathToStaticJSON = './sw-resources.json';
-const pathToLocaleJSON = './sw-locales.json';
-const pathToUnicodeDataJSON = './sw-unicode-data.json';
+const pathToStaticJSON = './service-worker/sw-resources.json';
+const pathToLocaleJSON = './service-worker/sw-locales.json';
+const pathToUnicodeDataJSON = './service-worker/sw-unicode-data.json';
 
 console.log('sw info', pathToStaticJSON);
 

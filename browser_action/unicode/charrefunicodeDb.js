@@ -1,4 +1,3 @@
-/* eslint-disable no-empty-function -- Not yet finished */
 // TO-DO: make in-place context-menu-activated textbox conversions
 // To-do: move at least this file into module, and move as much
 //   of uresults.js too
@@ -32,25 +31,40 @@ class UnicodeDB {
 
   /**
    * @param {PlainObject} [cfg={}]
-   * @param {boolean} [cfg.writable]
-   * @returns {void}
+   * @param {JSON} [cfg.updateUnicodeData]
+   * @param {GenericFunction} [cfg.versionchange]
+   * @returns {Promise<void>}
    */
-  connect ({writable} = {}) {
-    // Todo: Complete
+  connect ({updateUnicodeData, versionchange} = {}) {
     const req = indexedDB.open(this.name, this.version);
-    if (writable) {
-      req.addEventListener('upgradeneeded', (e) => {
-        const {db} = e.target;
-        this.db = db;
-        this.upgradeneeded();
+    // eslint-disable-next-line max-len -- Long
+    /* eslint-disable promise/avoid-new, promise/prefer-await-to-callbacks -- No Promise API */
+    return new Promise((resolve, reject) => {
+      if (updateUnicodeData) {
+        req.addEventListener('upgradeneeded', (e) => {
+          const {db} = e.target;
+          this.db = db;
+          this.upgradeneeded({updateUnicodeData});
+        });
+      }
+      req.addEventListener('success', ({target}) => {
+        this.db = target.result;
+        if (versionchange) {
+          this.db.addEventListener('versionchange', (ev) => {
+            versionchange(ev);
+          });
+        }
+        resolve(this.db);
       });
-    }
-    req.addEventListener('success', ({target}) => {
-      this.db = target.result;
-      this.db.addEventListener('versionchange', () => {});
+      req.addEventListener('error', (err) => {
+        reject(err);
+      });
+      req.addEventListener('blocked', (err) => {
+        reject(err);
+      });
+      // eslint-disable-next-line max-len -- Long
+      /* eslint-enable promise/avoid-new, promise/prefer-await-to-callbacks -- No Promise API */
     });
-    req.addEventListener('error', () => {});
-    req.addEventListener('blocked', () => {});
   }
 }
 
@@ -86,14 +100,53 @@ export class UnicodeDatabase extends UnicodeDB {
    * @param {PositiveInteger} cfg.version
    */
   constructor ({version} = {}) {
-    super({name: 'unicode', version});
+    super({name: 'unicode-input-toolconverter', version});
   }
 
   /**
+   * @param {JSON} updateUnicodeData
    * @returns {void}
    */
-  upgradeneeded () {
-    this.db.createObjectStore();
+  upgradeneeded ({updateUnicodeData}) {
+    const store = this.db.createObjectStore('UnicodeData', {
+      keyPath: 'codePoint'
+    });
+    store.createIndex('code-point', 'codePoint', {
+      unique: true
+    });
+    updateUnicodeData.forEach((codePointInfoRow) => {
+      // http://www.unicode.org/reports/tr44/#UnicodeData.txt
+      const [
+        codePoint, name, generalCategory, canonicalCombiningClass, bidiClass,
+        decomposition, numeric6, numeric7, numeric8,
+        bidiMirrored, unicode1Name, isoComment,
+        simpleUppercaseMapping, simpleLowercaseMapping, simpleTitlecaseMapping
+      ] = codePointInfoRow;
+      const {groups: {
+        decompositionType,
+        decompositionMapping
+      }} = (
+        /<(?<decompositionType>[^>]*)>\s+(?<decompositionMapping>.*)/u
+      ).exec(
+        decomposition
+      );
+      let numericType = 'None';
+      if (numeric6) {
+        numericType = 'Decimal';
+      } else if (numeric7) {
+        numericType = 'Digit';
+      } else if (numeric8) {
+        numericType = 'Numeric';
+      }
+      const numericValue = numericType ? numeric8 : Number.NaN;
+
+      store.put({
+        codePoint, name, generalCategory, canonicalCombiningClass, bidiClass,
+        decompositionType, decompositionMapping, numericType, numericValue,
+        bidiMirrored, unicode1Name, isoComment,
+        simpleUppercaseMapping, simpleLowercaseMapping, simpleTitlecaseMapping
+      });
+    });
   }
 
   // Todo: Uncomment and implement

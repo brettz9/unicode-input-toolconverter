@@ -10,7 +10,7 @@
   "license": "MPL-2.0",
   "version": "0.1.0",
   "scripts": {
-    "service-worker": "node ./tools/list-locales && find-es-resources --queryModule=\"./tools/findEsResources.js\" --htmlInput=\"./browser_action/index.html\" -o browser_action/sw-resources.json --removeBasePath=\"/Users/brett/unicode-input-toolconverter\"",
+    "service-worker": "node ./tools/list-locales && find-es-resources --queryModule=\"./tools/findEsResources.js\" --htmlInput=\"./browser_action/index.html\" -o browser_action/service-worker/sw-resources.json --removeBasePath=\"/Users/brett/unicode-input-toolconverter\"",
     "open": "open-cli http://localhost:8000/browser_action/ && npm start",
     "start": "echo 'Starting on http://localhost:8000/browser_action/' && node server",
     "unihan": "node --trace-uncaught tools/unihan-import.js",

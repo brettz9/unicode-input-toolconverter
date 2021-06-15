@@ -12,5 +12,6 @@ const json = dirs.filter((dir) => {
 console.log('json', json);
 
 fs.writeFile(
-  'browser_action/sw-locales.json', JSON.stringify(json, null, 2) + '\n'
+  'browser_action/service-worker/sw-locales.json',
+  JSON.stringify(json, null, 2) + '\n'
 );

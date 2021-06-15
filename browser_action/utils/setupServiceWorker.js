@@ -1,9 +1,9 @@
 /**
- * @param {string} [serviceWorkerPath=sw.js]
+ * @param {string} [serviceWorkerPath="service-worker/sw.js"]
  * @returns {Promise<void>}
  */
 async function setupServiceWorker (
-  serviceWorkerPath = 'sw.js'
+  serviceWorkerPath = 'service-worker/sw.js'
 ) {
   let registration = await navigator.serviceWorker.getRegistration(
     serviceWorkerPath
@@ -14,7 +14,9 @@ async function setupServiceWorker (
   ) {
     try {
       registration = await navigator.serviceWorker.register(
-        serviceWorkerPath
+        serviceWorkerPath, {
+          type: 'module'
+        }
       );
     } catch (err) {
       console.log('err', err);
