@@ -1,9 +1,10 @@
-/* eslint-disable import/unambiguous, no-console -- Service worker */
+/* eslint-disable no-console -- Debugging */
 /* eslint-env serviceworker -- Service worker */
 
-const CACHE_VERSION = '0.1.0';
+import activateCallback from './sw-activateCallback.js';
+
 const CURRENT_CACHES = {
-  prefetch: 'prefetch-cache-v' + CACHE_VERSION
+  prefetch: 'prefetch-cache-v'
 };
 const minutes = 60 * 1000;
 
@@ -45,9 +46,13 @@ async function post ({type, message = type}) {
 }
 
 /**
- *
+ * @callback Logger
  * @param {string[]} messages
-* @returns {Promise<void>}
+ * @returns {Promise<void>}
+ */
+
+/**
+ * @type {Logger}
  */
 function log (...messages) {
   const message = messages.join(' ');
@@ -102,15 +107,10 @@ async function tryAndRetry (cb, timeout, errMessage, time = 0) {
   }
 }
 
-/**
-* @typedef {PlainObject} ConfigObject
-* @property {string} namespace
-* @property {string} basePath
-*/
-
 const namespace = 'unicode-input-toolconverter';
 const pathToStaticJSON = './sw-resources.json';
 const pathToLocaleJSON = './sw-locales.json';
+const pathToUnicodeDataJSON = './sw-unicode-data.json';
 
 console.log('sw info', pathToStaticJSON);
 
@@ -125,22 +125,29 @@ async function install (time) {
   log(`Install: Trying, attempt ${time}`);
   const now = Date.now();
 
-  console.log('opening cache', namespace + CURRENT_CACHES.prefetch);
+  const {version} = await getJSON('package.json');
+
+  const cacheKey = namespace + CURRENT_CACHES.prefetch + version;
+
+  console.log('opening cache', cacheKey);
   const [
     cache,
     staticResourceFiles,
-    localeFiles
+    localeFiles,
+    unicodeDataFiles
   ] = await Promise.all([
-    caches.open(namespace + CURRENT_CACHES.prefetch),
+    caches.open(cacheKey),
     getJSON(pathToStaticJSON),
-    getJSON(pathToLocaleJSON)
+    getJSON(pathToLocaleJSON),
+    getJSON(pathToUnicodeDataJSON)
   ]);
   log('Install: Retrieved dependency values');
 
   const urlsToPrefetch = [
     '/browser_action/',
+    ...staticResourceFiles,
     ...localeFiles,
-    ...staticResourceFiles
+    ...unicodeDataFiles
   ];
 
   // .map((url) => url === 'index.html'
@@ -191,11 +198,18 @@ async function install (time) {
 async function activate (time) {
   post({type: 'beginActivate'});
   log(`Activate: Trying, attempt ${time}`);
-  const cacheNames = await caches.keys();
+
+  const [
+    cacheNames,
+    {version}
+  ] = await Promise.all([
+    caches.keys(),
+    getJSON('package.json')
+  ]);
 
   const expectedCacheNames = Object.values(
     CURRENT_CACHES
-  ).map((n) => namespace + n);
+  ).map((n) => namespace + n + version);
   cacheNames.forEach(async (cacheName) => {
     if (!expectedCacheNames.includes(cacheName)) {
       log('Activate: Deleting out of date cache:', cacheName);
@@ -204,7 +218,10 @@ async function activate (time) {
   });
 
   // Todo: Use `namespace` in indexedDB db
-  // await activateCallback({namespace, basePath, log});
+  await activateCallback({
+    namespace,
+    log
+  });
   // log('Activate: Database changes completed');
 
   log(`Activate: Posting finished message to clients`);

@@ -31,16 +31,20 @@ class UnicodeDB {
   /* eslint-enable class-methods-use-this -- Abstract */
 
   /**
+   * @param {PlainObject} [cfg={}]
+   * @param {boolean} [cfg.writable]
    * @returns {void}
    */
-  connect () {
+  connect ({writable} = {}) {
     // Todo: Complete
     const req = indexedDB.open(this.name, this.version);
-    req.addEventListener('upgradeneeded', (e) => {
-      const {db} = e.target;
-      this.db = db;
-      this.upgradeneeded();
-    });
+    if (writable) {
+      req.addEventListener('upgradeneeded', (e) => {
+        const {db} = e.target;
+        this.db = db;
+        this.upgradeneeded();
+      });
+    }
     req.addEventListener('success', ({target}) => {
       this.db = target.result;
       this.db.addEventListener('versionchange', () => {});
