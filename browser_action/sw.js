@@ -138,6 +138,7 @@ async function install (time) {
   log('Install: Retrieved dependency values');
 
   const urlsToPrefetch = [
+    '/browser_action/',
     ...localeFiles,
     ...staticResourceFiles
   ];
