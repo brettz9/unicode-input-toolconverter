@@ -125,7 +125,7 @@ const unicodecharref = {
     const parsed = await getDownloadResults();
 
     // Todo: Save to indexedDB
-    console.log('parsed', parsed[3400]);
+    console.log('parsed', parsed[0]);
 
     try {
       // Todo: Change to indexedDB

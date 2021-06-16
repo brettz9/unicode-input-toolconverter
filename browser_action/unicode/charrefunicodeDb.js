@@ -72,6 +72,14 @@ class UnicodeDB {
  *
  */
 export class UnihanDatabase extends UnicodeDB {
+  /**
+   * @param {PlainObject} cfg
+   * @param {PositiveInteger} cfg.version
+   */
+  constructor ({version} = {}) {
+    // We create a separate database so updates do not clobber both databases
+    super({name: 'unicode-input-toolconverter-Unihan', version});
+  }
   /* eslint-disable class-methods-use-this -- Abstract */
   /**
   * @param {string} searchValue
@@ -87,6 +95,27 @@ export class UnihanDatabase extends UnicodeDB {
       throw new Error('Not present');
     }
     return results;
+  }
+  /**
+   * @param {JSON} updateUnihanData
+   * @returns {void}
+   */
+  upgradeneeded ({updateUnihanData}) {
+    const store = this.db.createObjectStore('Unihan', {
+      keyPath: 'codePoint'
+    });
+    store.createIndex('code-point', 'codePoint', {
+      unique: true
+    });
+
+    updateUnihanData.forEach((
+      [codePoint, ...codePointInfoRow]
+    ) => {
+      store.put({
+        codePoint,
+        columns: codePointInfoRow
+      });
+    });
   }
   /* eslint-enable class-methods-use-this -- Abstract */
 }

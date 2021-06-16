@@ -196,6 +196,8 @@ function getHangulName (syllableCode) {
 
   // Following numbered items, with minor changes are from
   //  https://unicode.org/versions/Unicode5.0.0/ch03.pdf
+  //  now:
+  //  https://unicode.org/versions/Unicode13.0.0/ch03.pdf
   // 1. Compute the index of the syllable:
   // SIndex = S - SBase
   const sIndex = syllableCode - sBase;

@@ -58,7 +58,7 @@ async function addScript (baseURL) {
     return await fileObj.text();
   }));
 
-  const obj = parseUnihanFromTextFileStrings(scriptFileAsStrings);
+  const arr = parseUnihanFromTextFileStrings(scriptFileAsStrings);
 
-  await fs.writeFile(targetJSONUnihan, JSON.stringify(obj));
+  await fs.writeFile(targetJSONUnihan, JSON.stringify(arr));
 }

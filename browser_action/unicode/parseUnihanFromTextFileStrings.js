@@ -48,7 +48,7 @@ function parseUnihanFromTextFileStrings (scriptFileAsStrings) {
     obj[cdpt][pos] = value;
   }
 
-  return obj;
+  return Object.values(obj);
 }
 
 export default parseUnihanFromTextFileStrings;
