@@ -181,40 +181,6 @@ export class UnicodeDatabase extends UnicodeDB {
   /* eslint-enable class-methods-use-this -- Abstract */
 }
 
-// Todo: Reimplement
-/**
- *
- */
-export class Jamo extends UnicodeDB {
-  /**
-   * @param {PlainObject} [cfg={}]
-   * @param {PositiveInteger} cfg.version
-   */
-  constructor ({version} = {}) {
-    super({name: 'jamo', version});
-  }
-
-  /**
-   * @param {number|string} code // Expects decimal string or number
-   * @returns {string}
-   */
-  getJamo (code) {
-    const codePt = typeof code === 'number'
-      ? Math.round(code).toString(16)
-      : code;
-    try {
-      const stmt = this.db.createStatement(
-        'SELECT `jamo_short_name` FROM Jamo WHERE `code_pt` = "' +
-          codePt.toUpperCase() + '"'
-      );
-      stmt.executeStep();
-      return stmt.getUTF8String(0);
-    } catch (e) {
-      throw new Error(codePt.toUpperCase() + e);
-    }
-  }
-}
-
 const charrefunicodeDb = new UnicodeDatabase();
 /*
 const unihanDb = new UnihanDatabase();

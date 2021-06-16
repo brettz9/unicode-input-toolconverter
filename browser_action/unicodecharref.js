@@ -49,7 +49,7 @@ import {
 } from './utils/DOMUtils.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {
-  UnihanDatabase, Jamo
+  UnihanDatabase
 } from './unicode/charrefunicodeDb.js';
 import {getCJKTypeFromHexString} from './unicode/unihan.js';
 import parseUnihanFromTextFileStrings from
@@ -58,11 +58,10 @@ import {registerDTD} from './entityBehaviors.js';
 import {entities, numericCharacterReferences} from './entities.js';
 import {findBridgeForTargetID} from './charrefConverters.js';
 
-let _, charrefunicodeConverter, jmo, getPref, setPref;
+let _, charrefunicodeConverter, getPref, setPref;
 export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
   _ = l10n;
   charrefunicodeConverter = _uc;
-  jmo = new Jamo();
   ({getPref, setPref} = getUnicodeDefaults());
 };
 
@@ -790,18 +789,13 @@ const unicodecharref = {
     try {
       const results = charrefunicodeDb.getUnicodeFields(searchValue);
       if (results) {
-        if (!cjkText) {
-          result = results[1];
-          if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
-            try {
-              const jamo = jmo.getJamo(kdectemp);
-              result += ' (' + jamo + ')';
-            } catch (e) {
-            }
-          }
-        } else {
-          result = cjkText;
-        }
+        result = !cjkText
+          // We had obtained Jamo from Jamo.txt and showed it in parentheses,
+          //  but it seems this is now included in UnicodData.txt as we
+          //  import into our database.
+          // if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
+          ? results[1]
+          : cjkText;
         for (let i = 2; i <= 14; i++) {
           // Fix: display data more readably, etc.
           let temp = results[i];
