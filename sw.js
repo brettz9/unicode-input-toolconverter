@@ -1,8 +1,9 @@
 /* eslint-disable no-console -- Debugging */
 /* eslint-env serviceworker -- Service worker */
 
-import {getJSON} from '../utils/FetchUtils.js';
-import activateCallback from './sw-activateCallback.js';
+import {getJSON} from './browser_action/utils/FetchUtils.js';
+import activateCallback from
+  './browser_action/service-worker/sw-activateCallback.js';
 
 const CURRENT_CACHES = {
   prefetch: 'prefetch-cache-v'
@@ -100,9 +101,10 @@ async function tryAndRetry (cb, timeout, errMessage, time = 0) {
 }
 
 const namespace = 'unicode-input-toolconverter';
-const pathToStaticJSON = './sw-resources.json';
-const pathToLocaleJSON = './sw-locales.json';
-const pathToUnicodeDataJSON = './sw-unicode-data.json';
+const pathToStaticJSON = './browser_action/service-worker/sw-resources.json';
+const pathToLocaleJSON = './browser_action/service-worker/sw-locales.json';
+const pathToUnicodeDataJSON =
+  './browser_action/service-worker/sw-unicode-data.json';
 
 console.log('sw info', pathToStaticJSON);
 
@@ -116,7 +118,7 @@ async function install (time) {
   post({type: 'beginInstall'});
   log(`Install: Trying, attempt ${time}`);
   const now = Date.now();
-  const {version} = await getJSON('../../package.json');
+  const {version} = await getJSON('./package.json');
 
   const cacheKey = namespace + CURRENT_CACHES.prefetch + version;
 
@@ -140,6 +142,7 @@ async function install (time) {
     ...localeFiles,
     ...unicodeDataFiles
   ];
+  console.log('urlsToPrefetch', urlsToPrefetch);
 
   // .map((url) => url === 'index.html'
   //   ? new Request(url, {cache: 'reload'}) : url)
@@ -195,7 +198,7 @@ async function activate (time) {
     {version}
   ] = await Promise.all([
     caches.keys(),
-    getJSON('../../package.json')
+    getJSON('./package.json')
   ]);
 
   const expectedCacheNames = Object.values(

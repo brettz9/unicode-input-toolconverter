@@ -43,7 +43,6 @@ class UnicodeDB {
       if (updateUnicodeData) {
         req.addEventListener('upgradeneeded', (e) => {
           const {result: db} = e.target;
-          console.log('e.target', e.target.result);
           this.db = db;
           this.upgradeneeded({updateUnicodeData});
         });
