@@ -1,12 +1,13 @@
 import {UnihanDatabase} from './charrefunicodeDb.js';
-import {getText} from '../utils/FetchUtils.js';
 
-const unihanPath = `/download/unihan/unihan.json`;
+// import {getText} from '../utils/FetchUtils.js';
+// const unihanPath = `/download/unihan/unihan.json`;
 
 /**
-* @returns {Promise<UnihanDatabase>}
-*/
-async function unihanDbPopulate () {
+ * @param {JSON} updateUnicodeData
+ * @returns {Promise<UnihanDatabase>}
+ */
+async function unihanDbPopulate (updateUnicodeData) {
   const namespace = 'unicode-input-toolconverter-Unihan';
   indexedDB.deleteDatabase(namespace);
   const unihanDatabase = new UnihanDatabase({
@@ -15,7 +16,6 @@ async function unihanDbPopulate () {
     //  independently
     version: 1
   });
-  const updateUnicodeData = (await getText(unihanPath)).trim();
   await unihanDatabase.connect({
     updateUnicodeData
   });

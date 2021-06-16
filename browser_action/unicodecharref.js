@@ -125,7 +125,8 @@ const unicodecharref = {
     console.log('parsed', parsed[0]);
 
     try {
-      this.unihanDatabase = await unihanDbPopulate();
+      this.unihanDatabase?.close();
+      this.unihanDatabase = await unihanDbPopulate(parsed);
 
       // Confirm it worked
       await this.unihanDatabase.getUnicodeFields('3400');
@@ -313,14 +314,14 @@ const unicodecharref = {
     this.unihanDb_exists = false;
     try {
       const namespace = 'unicode-input-toolconverter-Unihan';
-      const unihanDatabase = new UnihanDatabase({
+      this.unihanDatabase = new UnihanDatabase({
         name: namespace,
         // We don't peg to package major version as database version may vary
         //  independently
         version: 1
       });
       // Do not update here; just checking if already downloaded
-      await unihanDatabase.connect();
+      await this.unihanDatabase.connect();
 
       // Test Unihan value
       await this.unihanDatabase.getUnicodeFields('3400');

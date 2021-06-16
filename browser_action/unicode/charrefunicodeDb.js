@@ -97,11 +97,19 @@ export class UnihanDatabase extends UnicodeDB {
       });
     });
   }
+
   /**
-   * @param {JSON} updateUnihanData
+  * @returns {void}
+  */
+  close () {
+    this.db.close();
+  }
+
+  /**
+   * @param {JSON} updateUnicodeData
    * @returns {void}
    */
-  upgradeneeded ({updateUnihanData}) {
+  upgradeneeded ({updateUnicodeData}) {
     const store = this.db.createObjectStore('Unihan', {
       keyPath: 'codePoint'
     });
@@ -109,7 +117,7 @@ export class UnihanDatabase extends UnicodeDB {
       unique: true
     });
 
-    updateUnihanData.forEach((
+    updateUnicodeData.forEach((
       [codePoint, ...codePointInfoRow]
     ) => {
       store.put({
