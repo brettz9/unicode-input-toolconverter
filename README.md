@@ -22,26 +22,29 @@ but XUL support was dropped in Firefox.
 
 ## High priority to-dos (toward restoring functionality)
 
-1. Service worker / Unihan download saving into indexedDB
-2. Move out description code in `UnicodeConverter.js` to `charrefunicodeDb` or
+1. Move out description code in `UnicodeConverter.js` to `charrefunicodeDb` or
     other database-aware utility.
-3. Split up `unicodecharref.js`
-4. Restore starting with `unicodecharref.js` and then `charrefConverters.js`.
+1. Restore starting with `unicodecharref.js` and then `charrefConverters.js`.
+    1. Split up `unicodecharref.js`
+1. Improve slow **font retrieval** so can reenable; need to do equivalent for
+    other OS' or at least disable for them
+1. Cypress tests and coverage
 
-## Possible to-dos
+## To-dos - medium priority
 
 1. ONGOING: Get **l10n** completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
 
-1. Conversion to/from **6-digit JavaScript escapes**
 1. **Protocol handler**:
     <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>
-1. Create (reactive) **Web Components** (hyperHTML?) so that besides internal
-    clarity, could reuse as pop-up script browser or character picker
-1. Improve slow **font retrieval** so can reenable; need to do equivalent for
-    other OS' or at least disable for them
+1. Compatibility with WebAppFind AtYourCommand so can **receive `postMessage`**
+    to prepopulate entity conversion or chart item to browse
 1. After HTML conversion, restore as browser add-on, but as **webextensions**
     1. Allow adding specific characters or sequences thereof to global system
         **key commands**
+
+1. Conversion to/from **6-digit JavaScript escapes**
+1. Create (reactive) **Web Components** (hyperHTML?) so that besides internal
+    clarity, could reuse as pop-up script browser or character picker
 1. Make **in-place context-menu-activated textbox conversions**
 
 ## Lower-priority to-dos
