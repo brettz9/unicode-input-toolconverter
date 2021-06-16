@@ -121,9 +121,6 @@ const unicodecharref = {
 
     const parsed = await getDownloadResults();
 
-    // Todo: Save to indexedDB
-    console.log('parsed', parsed[0]);
-
     try {
       this.unihanDatabase?.close();
       this.unihanDatabase = await unihanDbPopulate(parsed);

@@ -12,7 +12,7 @@ import unicodecharref, {shareVars as shareVarsUresults} from
   './unicodecharref.js';
 import indexTemplate from './templates/index.js';
 
-// import setupServiceWorker from './utils/setupServiceWorker.js';
+import setupServiceWorker from './utils/setupServiceWorker.js';
 
 import {
   shareVars as shareVarsEntity, setupEntityEvents

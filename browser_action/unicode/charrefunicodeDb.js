@@ -84,7 +84,9 @@ export class UnihanDatabase extends UnicodeDB {
   * @returns {Promise<string[]>}
   */
   getUnicodeFields (codePoint) {
-    const store = this.db.objectStore('Unihan');
+    const tx = this.db.transaction(['Unihan'], 'readonly');
+    const store = tx.objectStore('Unihan');
+
     const codePointIndex = store.index('code-point');
     const request = codePointIndex.get(codePoint);
     // eslint-disable-next-line promise/avoid-new -- No Promise API
@@ -210,7 +212,8 @@ export class UnicodeDatabase extends UnicodeDB {
     // Todo: Should this not be padded to 6??
     // const currentStartCharCodeUpperCaseHexPadded =
     //   currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
-    const store = this.db.objectStore('UnicodeData');
+    const tx = this.db.transaction(['UnicodeData'], 'readonly');
+    const store = tx.objectStore('UnicodeData');
     const codePointIndex = store.index('code-point');
     const request = codePointIndex.get(codePoint);
     // eslint-disable-next-line promise/avoid-new -- No Promise API
