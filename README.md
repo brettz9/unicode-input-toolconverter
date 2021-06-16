@@ -42,6 +42,7 @@ but XUL support was dropped in Firefox.
 1. After HTML conversion, restore as browser add-on, but as **webextensions**
     1. Allow adding specific characters or sequences thereof to global system
         **key commands**
+1. Make **in-place context-menu-activated textbox conversions**
 
 ## Lower-priority to-dos
 

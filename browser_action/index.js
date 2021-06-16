@@ -75,7 +75,9 @@ setupEncodingEvents({_});
 setupEntityEvents();
 
 // Todo: Move functionality to relevant files
-unicodecharref.initialize();
+unicodecharref.initialize({
+  targetid: 'context-unicodechart'
+});
 
 /**
 * The following works, but if used will not allow user to cancel to

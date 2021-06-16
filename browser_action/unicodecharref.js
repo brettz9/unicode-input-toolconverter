@@ -304,7 +304,16 @@ const unicodecharref = {
       $('#' + el).checked = await getPref(el);
     });
   },
-  async initialize (...args) {
+  /**
+  * @param {PlainObject} cfg
+  * @param {boolean} [cfg.protocol]
+  * @param {boolean} [cfg.options]
+  * @param {string} [cfg.convert]
+  * @param {string} [cfg.targetid]
+  * @param {Window} [cfg.win]
+  * @returns {Promise<void>}
+  */
+  async initialize (cfg = {}) {
     const that = this;
     // this.refreshToolbarDropdown(); // redundant?
 
@@ -373,10 +382,8 @@ const unicodecharref = {
     let targetid = '';
     // const targetid = 'context-launchunicode';
 
-    // Check first for our custom protocol
-    const arg0 = args && args[0] && args[0].wrappedJSObject;
-    const customProtocol = arg0 &&
-      arg0.constructor.name === 'NsiSupportsWrapper';
+    // Todo: Check first for our custom protocol
+    const customProtocol = cfg.protocol;
     // Fix: the initial portion of this handling really should be inside
     //  the protocol handler, but that requires implementing the object to
     //  add arguments
@@ -384,7 +391,7 @@ const unicodecharref = {
     // Will be passed a query string if a protocol handler has been triggered
     if (customProtocol) {
       // We skip over the initial question mark too
-      const req = decodeURIComponent(arg0.toString().slice(1));
+      const req = decodeURIComponent(cfg.protocol.slice(1));
       unicodeQueryObj = {};
       const queryTypeEndPos = req.indexOf(';');
       const queryType = req.slice(0, queryTypeEndPos); // Use
@@ -411,22 +418,17 @@ const unicodecharref = {
             'for Custom Unicode protocol'
         );
       }
-    } else if (!args) { // Do nothing for options dialog
-    } else if (!args[2]) {
-      toconvert = args[0].toString(); // Need the conversion to string since content.window.getSelection() passed here gives an object, unlike the now deprecated content.document.getSelection() which returns a string. (Discovered deprecated status via Console extension: https://addons.mozilla.org/en-US/firefox/addon/1815 )
-      targetid = args[1];
-    } else {
-      const Components = 'todo';
-      const Cc = Components.classes,
-        Ci = Components.interfaces;
-      const wm = Cc[
-        '@mozilla.org/appshell/window-mediator;1'
-      ].getService(Ci.nsIWindowMediator);
-      const browserWin = wm.getMostRecentWindow('navigator:browser');
-      toconvert = browserWin.content.getSelection().toString();
+    } else if (cfg.options) { // Do nothing for options dialog
+    } else if (cfg.convert) {
+      toconvert = cfg.convert;
+      ({targetid} = cfg);
+    } else if (cfg.win) {
+      toconvert = cfg.win.getSelection().toString();
       targetid = toconvert
         ? 'context-charrefunicode1'
         : ''; // Fix: replace with preference
+    } else {
+      ({targetid} = cfg);
     }
 
     if (!(await getPref('multiline'))) {
@@ -502,17 +504,20 @@ const unicodecharref = {
     $('#DTDtextbox').value = DTDtxtbxval;
     registerDTD();
 
-    //  toconvert = charreftoconvert.replace(/\n/g, ' ');
-    $('#toconvert').value = toconvert;
+    let bridgeResult;
+    if (toconvert) {
+      //  toconvert = charreftoconvert.replace(/\n/g, ' ');
+      $('#toconvert').value = toconvert;
 
-    if (await getPref('ampspace')) {
-      toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
+      if (await getPref('ampspace')) {
+        toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
+      }
+
+      bridgeResult = findBridgeForTargetID({toconvert, targetid});
     }
 
     // Detect which context menu item was selected:
     let out; // converttypeid;
-
-    const bridgeResult = findBridgeForTargetID({toconvert, targetid});
 
     if (bridgeResult !== false) {
       out = bridgeResult;
@@ -551,9 +556,9 @@ const unicodecharref = {
     }
 
     if (!customProtocol) {
-      if (!args) { // options menu
+      if (cfg.options) { // options menu
         $('#unicodeTabBox').$selectTab($('#prefs'));
-      } else if (args[2] !== undefined) { // Keyboard invocation or button
+      } else if (cfg.convert) { // Keyboard invocation or button
         // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
         $('#unicodeTabBox').$selectTab($(await getPref('initialTab')));
       } else if (

@@ -1,10 +1,5 @@
-// TO-DO: make in-place context-menu-activated textbox conversions
-// To-do: move at least this file into module, and move as much
-//   of uresults.js too
 // Todo: Review `fromCharCode`, `charCodeAt`, and `charAt` on whether
 //   need modern substitutions
-
-// Todo: Switch to IndexedDB
 
 /**
  *
