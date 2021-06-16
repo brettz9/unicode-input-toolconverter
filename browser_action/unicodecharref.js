@@ -48,10 +48,9 @@ import {
   placeItem, removeViewChildren, createHTMLElement, createXULElement, xulns
 } from './utils/DOMUtils.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
-import charrefunicodeDb, {
-  UnihanDatabase
-} from './unicode/charrefunicodeDb.js';
+import charrefunicodeDb, {UnihanDatabase} from './unicode/charrefunicodeDb.js';
 import {getCJKTypeFromHexString} from './unicode/unihan.js';
+import unihanDbPopulate from './unicode/unihanDbPopulate.js';
 import parseUnihanFromTextFileStrings from
   './unicode/parseUnihanFromTextFileStrings.js';
 import {registerDTD} from './entityBehaviors.js';
@@ -64,8 +63,6 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
   charrefunicodeConverter = _uc;
   ({getPref, setPref} = getUnicodeDefaults());
 };
-
-const unihanDatabase = new UnihanDatabase();
 
 /**
  * @returns {Promise<Object<string,string[]>>}
@@ -128,11 +125,11 @@ const unicodecharref = {
     console.log('parsed', parsed[0]);
 
     try {
-      // Todo: Change to indexedDB
-      charrefunicodeDb.dbConnUnihan.createStatement(
-        // Just to test database
-        'SELECT code_pt FROM ' + 'Unihan' + ' WHERE code_pt = "3400"'
-      );
+      this.unihanDatabase = await unihanDbPopulate();
+
+      // Confirm it worked
+      await this.unihanDatabase.getUnicodeFields('3400');
+
       alert(_('Finished_download'));
       this.unihanDb_exists = true;
       $('#closeDownloadProgressBox').hidden = false;
@@ -313,14 +310,20 @@ const unicodecharref = {
     const that = this;
     // this.refreshToolbarDropdown(); // redundant?
 
-    // charrefunicodeDb.connect('download/Unicode.sqlite');
     this.unihanDb_exists = false;
     try {
-      // Todo: Fix
-      charrefunicodeDb('Unihan.sqlite', 'unihan');
+      const namespace = 'unicode-input-toolconverter-Unihan';
+      const unihanDatabase = new UnihanDatabase({
+        name: namespace,
+        // We don't peg to package major version as database version may vary
+        //  independently
+        version: 1
+      });
+      // Do not update here; just checking if already downloaded
+      await unihanDatabase.connect();
 
       // Test Unihan value
-      unihanDatabase.getUnicodeFields('3400');
+      await this.unihanDatabase.getUnicodeFields('3400');
 
       this.unihanDb_exists = true;
       $('#DownloadButtonBox').hidden = true;
@@ -330,11 +333,6 @@ const unicodecharref = {
       console.error(e);
       $('#DownloadButtonBox').hidden = false;
       $('#UnihanInstalled').hidden = true;
-    }
-    try {
-      // charrefunicodeDb.connect('download/Jamo.sqlite', 'jamo');
-    } catch (e) {
-      alert(e);
     }
 
     // document.documentElement.maxWidth =
@@ -787,18 +785,18 @@ const unicodecharref = {
 
     let result;
     try {
-      const results = charrefunicodeDb.getUnicodeFields(searchValue);
+      const results = await charrefunicodeDb.getUnicodeFields(searchValue);
       if (results) {
         result = !cjkText
           // We had obtained Jamo from Jamo.txt and showed it in parentheses,
           //  but it seems this is now included in UnicodData.txt as we
           //  import into our database.
           // if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
-          ? results[1]
+          ? results[0]
           : cjkText;
         for (let i = 2; i <= 14; i++) {
           // Fix: display data more readably, etc.
-          let temp = results[i];
+          let temp = results[i - 1];
           if (i === 10) {
             if (temp) {
               result += ';\u00A0\u00A0\u00A0\u00A0\n' +
@@ -983,11 +981,11 @@ const unicodecharref = {
     if (this.unihanDb_exists) {
       try {
         // $('#displayUnicodeDesc').value= _('retrieving_description');
-        const results = unihanDatabase.getUnicodeFields(khextemp);
+        const results = await this.unihanDatabase.getUnicodeFields(khextemp);
         if (results) {
           // Fix: display data more readably, with heading, etc. (and
           //   conditional)
-          result = results[14];
+          result = results[13];
           if (result === null && !cjkText) {
             result = _('No_definition');
           }
@@ -996,7 +994,7 @@ const unicodecharref = {
           // $('#_detailedCJKView' + 3).value = result ? result : '';
           for (let i = 1; i <= 13; i++) {
             // Fix: display data more readably, etc.
-            const temp = results[i];
+            const temp = results[i - 1];
             if (temp) {
               if (hideMissingUnihan) {
                 $('#_detailedCJKView' + i).parentNode.hidden = false;
@@ -1024,7 +1022,7 @@ const unicodecharref = {
             let temp;
             try {
               // Fix: display data more readably, etc.
-              temp = results[i];
+              temp = results[i - 1];
             } catch (e) {
               alert(i);
             }

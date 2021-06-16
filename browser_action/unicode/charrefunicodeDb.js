@@ -37,8 +37,7 @@ class UnicodeDB {
    */
   connect ({updateUnicodeData, versionchange} = {}) {
     const req = indexedDB.open(this.name, this.version);
-    // eslint-disable-next-line max-len -- Long
-    /* eslint-disable promise/avoid-new, promise/prefer-await-to-callbacks -- No Promise API */
+    /* eslint-disable promise/avoid-new -- No Promise API */
     return new Promise((resolve, reject) => {
       if (updateUnicodeData) {
         req.addEventListener('upgradeneeded', (e) => {
@@ -56,14 +55,13 @@ class UnicodeDB {
         }
         resolve(this.db);
       });
-      req.addEventListener('error', (err) => {
-        reject(err);
+      req.addEventListener('error', (ev) => {
+        reject(req.error);
       });
-      req.addEventListener('blocked', (err) => {
-        reject(err);
+      req.addEventListener('blocked', (ev) => {
+        reject(new Error('blocked'));
       });
-      // eslint-disable-next-line max-len -- Long
-      /* eslint-enable promise/avoid-new, promise/prefer-await-to-callbacks -- No Promise API */
+      /* eslint-enable promise/avoid-new -- No Promise API */
     });
   }
 }
@@ -80,21 +78,24 @@ export class UnihanDatabase extends UnicodeDB {
     // We create a separate database so updates do not clobber both databases
     super({name: 'unicode-input-toolconverter-Unihan', version});
   }
-  /* eslint-disable class-methods-use-this -- Abstract */
   /**
-  * @param {string} searchValue
+  * @param {string} codePoint
   * @throws {Error}
-  * @returns {string[]}
+  * @returns {Promise<string[]>}
   */
-  getUnicodeFields (searchValue) {
-    const results = [];
-    // const stmt = charrefunicodeDb.dbConnUnihan.createStatement(
-    //   'SELECT * FROM Unihan WHERE code_pt = "' + khextemp + '"'
-    // );
-    if (!results) {
-      throw new Error('Not present');
-    }
-    return results;
+  getUnicodeFields (codePoint) {
+    const store = this.db.objectStore('Unihan');
+    const codePointIndex = store.index('code-point');
+    const request = codePointIndex.get(codePoint);
+    // eslint-disable-next-line promise/avoid-new -- No Promise API
+    return new Promise((resolve, reject) => {
+      request.addEventListener('success', () => {
+        resolve(request.result);
+      });
+      request.addEventListener('error', (ev) => {
+        reject(request.error);
+      });
+    });
   }
   /**
    * @param {JSON} updateUnihanData
@@ -117,7 +118,6 @@ export class UnihanDatabase extends UnicodeDB {
       });
     });
   }
-  /* eslint-enable class-methods-use-this -- Abstract */
 }
 
 /**
@@ -194,18 +194,26 @@ export class UnicodeDatabase extends UnicodeDB {
   }
 
   /**
-  * @param {string} searchValue
-  * @returns {string[]}
+  * @param {string} codePoint
+  * @returns {Promise<string[]>}
   */
-  getUnicodeFields (searchValue) {
-    const results = [];
-    /*
-    const statement = charrefunicodeDb.dbConn.createStatement(
-      'SELECT * FROM Unicode WHERE Code_Point = "' + searchValue + '"'
-    );
-    */
-    // $('#displayUnicodeDesc').value = _('retrieving_description');
-    return results;
+  getUnicodeFields (codePoint) {
+    // const entityInParentheses = '(' + entity + ') ';
+    // Todo: Should this not be padded to 6??
+    // const currentStartCharCodeUpperCaseHexPadded =
+    //   currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
+    const store = this.db.objectStore('UnicodeData');
+    const codePointIndex = store.index('code-point');
+    const request = codePointIndex.get(codePoint);
+    // eslint-disable-next-line promise/avoid-new -- No Promise API
+    return new Promise((resolve, reject) => {
+      request.addEventListener('success', () => {
+        resolve(request.result.columns);
+      });
+      request.addEventListener('error', (ev) => {
+        reject(request.error);
+      });
+    });
   }
   /* eslint-enable class-methods-use-this -- Abstract */
 }
