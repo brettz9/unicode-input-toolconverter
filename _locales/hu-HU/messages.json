@@ -113,6 +113,12 @@
     "DTD_insertEntityFile": {
       "message": "Elemfájl beillesztése"
     },
+    "ent_htmlmathml_f": {
+      "message": "Expanded set of HTML and MathML entity definitions"
+    },
+    "ent_w3centities_f": {
+      "message": "W3C entities collection"
+    },
     "ent_isobox": {
       "message": "keretek és vonalak"
     },

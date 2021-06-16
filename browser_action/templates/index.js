@@ -1079,6 +1079,14 @@ const indexTemplate = function ({_, fonts}) {
                   id: 'insertEntityFile',
                   class: 'dtdbutton'
                 }, [
+                  ['optgroup', {label: 'Recommended (Non-legacy)'}, [
+                    ['option', {
+                      value: 'htmlmathml-f'
+                    }, [_('ent_htmlmathml_f')]],
+                    ['option', {
+                      value: 'w3centities-f'
+                    }, [_('ent_w3centities_f')]]
+                  ]],
                   ['optgroup', {label: 'Graphic'}, [
                     ['option', {value: 'isobox'}, [_('ent_isobox')]],
                     ['option', {value: 'isonum'}, [_('ent_isonum')]]

@@ -3,12 +3,21 @@
      File isoamso.ent produced by the XSL script entities.xsl
      from input data in unicode.xml.
 
-     Copyright 1998 - 2010 W3C.
+     Copyright 1998 - 2011 W3C.
 
-     Use and distribution of this code are permitted under the terms of the
-     W3C Software Notice and License.
-     http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231.html
+     Use and distribution of this code are permitted under the terms of
+     either of the following two licences:
 
+     1) W3C Software Notice and License.
+        http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231.html
+
+
+     2) The license used for the WHATWG HTML specification,
+        which states, in full:
+            You are granted a license to use, reproduce and create derivative
+            works of this document.
+
+ 
      Please report any errors to David Carlisle
      via the public W3C list www-math@w3.org.
 
