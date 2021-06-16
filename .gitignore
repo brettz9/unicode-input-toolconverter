@@ -1,3 +1,10 @@
 node_modules
+
 download/unihan
 !download/unihan/putUnihanFilesHereForImport.txt
+
+download/UCD
+
+# Start Reenabling as needed
+!download/UCD/UnicodeData.txt
+!download/UCD/Jamo.txt

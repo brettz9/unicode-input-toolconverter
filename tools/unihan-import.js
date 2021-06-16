@@ -7,7 +7,9 @@
 //  while in the `bahai-browser.org/download/unihan` directory and serve
 //  `Unihan.zip` with a static file server so our browser script (elsewhere)
 //  can download it and unpack its contents to supply to the method shared with
-//  this file, `parseUnihanFromTextFileStrings.js`.
+//  this file, `parseUnihanFromTextFileStrings.js`. (CORS is not currently
+//  enabled, however, so this would need to be adjusted for cross-origin
+//  browser use.)
 
 import fs from 'fs/promises';
 
