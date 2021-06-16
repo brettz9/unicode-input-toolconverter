@@ -12,7 +12,7 @@ import unicodecharref, {shareVars as shareVarsUresults} from
   './unicodecharref.js';
 import indexTemplate from './templates/index.js';
 
-import setupServiceWorker from './utils/setupServiceWorker.js';
+// import setupServiceWorker from './utils/setupServiceWorker.js';
 
 import {
   shareVars as shareVarsEntity, setupEntityEvents
@@ -50,7 +50,8 @@ const _ = await i18n({
   substitutions: {code, link}
 });
 
-await setupServiceWorker();
+// Works in Chrome (not in FF as SW using ESM) but commenting out for now
+// await setupServiceWorker();
 
 setPrefDefaultVars({_});
 const charrefunicodeConverter = new (getUnicodeConverter())({_});
