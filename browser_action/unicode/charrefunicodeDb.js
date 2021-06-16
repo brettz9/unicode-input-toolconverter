@@ -188,21 +188,6 @@ export class UnicodeDatabase extends UnicodeDB {
     });
   }
 
-  // Todo: Uncomment and implement
-  /* eslint-disable class-methods-use-this -- Abstract */
-  /**
-   * @param {string} entity
-   * @param {PositiveInteger} currentStartCharCode
-   * @returns {void}
-   */
-  getUnicodeDescription (entity, currentStartCharCode) {
-    // const entityInParentheses = '(' + entity + ') ';
-    // Todo: Should this not be padded to 6??
-    // const currentStartCharCodeUpperCaseHexPadded =
-    //   currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
-    // Todo:
-  }
-
   /**
   * @param {string} codePoint
   * @returns {Promise<string[]>}
@@ -226,7 +211,6 @@ export class UnicodeDatabase extends UnicodeDB {
       });
     });
   }
-  /* eslint-enable class-methods-use-this -- Abstract */
 }
 
 const charrefunicodeDb = new UnicodeDatabase();

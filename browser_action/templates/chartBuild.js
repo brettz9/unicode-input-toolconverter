@@ -1,6 +1,6 @@
 import {jml, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
-import charrefunicodeDb from '../unicode/charrefunicodeDb.js';
+import unicodecharref from '../unicodecharref.js';
 
 let idgen = 0;
 const chartBuildTemplate = function ({
@@ -62,7 +62,7 @@ const chartBuildTemplate = function ({
             mouseover: (function (_entity, _current) {
               return function () {
                 if (!this.$noGetDescripts) {
-                  charrefunicodeDb.getUnicodeDescription(
+                  unicodecharref.getUnicodeDescription(
                     _entity, _current.startCharCode
                   );
                 }
