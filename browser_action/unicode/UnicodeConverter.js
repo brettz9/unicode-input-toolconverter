@@ -569,7 +569,7 @@ export const getUnicodeConverter = () => {
      * @param {string} toconvert
      * @returns {string}
      */
-    unicode2CharDescVal (toconvert) {
+    async unicode2CharDescVal (toconvert) {
       let val = '', charDesc;
       // Todo: Redo with `codePointAt`?
       for (let i = 0; i < toconvert.length; i++) {
@@ -579,7 +579,7 @@ export const getUnicodeConverter = () => {
             (toconvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
           // Could do test on temp.isNan()  (e.g., if trying to convert
           //  a surrogate by itself in regular (non-surrogate converting) mode)
-          charDesc = this.getCharDescForCodePoint(temp);
+          charDesc = await this.getCharDescForCodePoint(temp);
           if (!charDesc) {
             val += toconvert.charAt(i) + toconvert.charAt(i + 1);
             i++; // Skip the next (low) surrogate
@@ -596,7 +596,7 @@ export const getUnicodeConverter = () => {
           }
         // Replace this 'if' condition and remove the 'else' if also want ascii
         } else if (temp >= 128 || getPref('asciiLt128')) {
-          charDesc = this.getCharDescForCodePoint(temp);
+          charDesc = await this.getCharDescForCodePoint(temp);
           if (!charDesc) { // Skip if no description in database
             val += toconvert.charAt(i);
             continue;
@@ -628,30 +628,21 @@ export const getUnicodeConverter = () => {
      * @param {Integer} dec The code point of the description to obtain
      * @returns {string} The Unicode character description
      */
-    getCharDescForCodePoint (dec) {
+    async getCharDescForCodePoint (dec) {
       // Fix: handle Hangul syllables; CJK?
-      let statement;
       try {
-        let result;
         const hex = dec.toString(16).toUpperCase().padStart(4, '0');
 
-        statement = charrefunicodeDb.dbConn.createStatement(
-          'SELECT `Name` FROM Unicode WHERE `Code_Point` = "' + hex + '"'
-        );
-        while (statement.executeStep()) {
-          // Put in `while` in case expand to allow LIKE checks (e.g., to get
-          //   a list of matching descriptions within a given code point range,
-          //   etc.)
-          result = statement.getUTF8String(0);
-          if (result === null) {
-            return false;
-          }
+        const {
+          name, unicode1Name
+        } = await charrefunicodeDb.getUnicodeFields(hex);
+
+        if (name.includes('<')) {
+          return `${unicode1Name} (${name})`;
         }
-        return result;
+        return name;
       } catch (e) {
         alert(e);
-      } finally {
-        statement.reset();
       }
       return undefined;
     }
