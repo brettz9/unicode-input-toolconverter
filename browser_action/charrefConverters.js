@@ -133,9 +133,9 @@ const CharrefConverterBridges = {
    * @returns {string} The passed-in string with Unicode replaced with
    *   description escape sequences
    */
-  unicode2CharDescVal (toconvert, el) {
+  async unicode2CharDescVal (toconvert, el) {
     classChange(el);
-    const val = charrefunicodeConverter.unicode2CharDescVal(toconvert);
+    const val = await charrefunicodeConverter.unicode2CharDescVal(toconvert);
     $('#converted').value = val;
     return val;
   },
@@ -158,9 +158,9 @@ const CharrefConverterBridges = {
     this.charDesc2UnicodeVal(toconvert, e.target);
     return false;
   },
-  unicode2CharDesc (e) {
+  async unicode2CharDesc (e) {
     const toconvert = $('#toconvert').value;
-    this.unicode2CharDescVal(toconvert, e.target);
+    await this.unicode2CharDescVal(toconvert, e.target);
     return false;
   },
   unicode2jsescapeval (toconvert, el) {
@@ -268,9 +268,9 @@ const CharrefConverterBridges = {
  * @param {string} cfg.toconvert
  * @param {string} cfg.targetid
  * @throws {Error}
- * @returns {string}
+ * @returns {Promise<string>}
  */
-function findBridgeForTargetID ({toconvert, targetid}) {
+async function findBridgeForTargetID ({toconvert, targetid}) {
   let out;
   switch (targetid) {
   case 'context-charrefunicode1':
@@ -322,7 +322,9 @@ function findBridgeForTargetID ({toconvert, targetid}) {
     out = CharrefConverterBridges.cssescape2unicodeval(toconvert, $('#b16'));
     break;
   case 'context-charrefunicode17':
-    out = CharrefConverterBridges.unicode2CharDescVal(toconvert, $('#b17'));
+    out = await CharrefConverterBridges.unicode2CharDescVal(
+      toconvert, $('#b17')
+    );
     break;
   case 'context-charrefunicode18':
     out = CharrefConverterBridges.charDesc2UnicodeVal(toconvert, $('#b18'));

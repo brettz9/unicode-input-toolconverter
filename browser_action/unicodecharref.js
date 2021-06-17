@@ -513,7 +513,7 @@ const unicodecharref = {
         toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
       }
 
-      bridgeResult = findBridgeForTargetID({toconvert, targetid});
+      bridgeResult = await findBridgeForTargetID({toconvert, targetid});
     }
 
     // Detect which context menu item was selected:

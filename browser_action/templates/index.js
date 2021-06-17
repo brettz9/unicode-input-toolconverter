@@ -737,8 +737,8 @@ const indexTemplate = function ({_, fonts}) {
             }}, [_('cssescape2unicode_label')]],
             ['div', {class: 'hbox'}, [
               ['button', {id: 'b17', class: 'reconvert', $on: {
-                click (e) {
-                  CharrefConverterBridges.unicode2CharDesc(e);
+                async click (e) {
+                  await CharrefConverterBridges.unicode2CharDesc(e);
                 }
               }}, [_('unicode2CharDesc_label')]],
               ['button', {id: 'b18', class: 'reconvert', $on: {
