@@ -229,17 +229,17 @@ export const getUnicodeConverter = () => {
       // If true, will not convert '&' to '&amp;'
       const ampkeep = getPref('ampkeep');
 
-      for (let i = 0; i < unicodeToConvert.length; i++) {
-        const charcodeati = unicodeToConvert.charCodeAt(i);
+      for (const ch of unicodeToConvert) {
+        const codePoint = ch.codePointAt();
         const tempcharref = this.numericCharacterReferences.indexOf(
-          charcodeati
+          codePoint
         );
 
         out += tempcharref !== -1 &&
           (xhtmlentmode || tempcharref !== this.getAposPos()) &&
           (!ampkeep || tempcharref !== this.getAmpPos())
           ? '&' + this.entities[tempcharref] + ';'
-          : unicodeToConvert.charAt(i);
+          : ch;
       }
       return out;
     }
@@ -572,7 +572,7 @@ export const getUnicodeConverter = () => {
     async unicode2CharDescVal (toconvert) {
       let val = '', charDesc;
       for (const ch of toconvert) {
-        const codePoint = ch.charCodeAt();
+        const codePoint = ch.codePointAt();
         // Replace this 'if' condition and remove the 'else' if also want ascii
         if (codePoint >= 128 || getPref('asciiLt128')) {
           charDesc = await this.getCharDescForCodePoint(codePoint);
