@@ -571,40 +571,17 @@ export const getUnicodeConverter = () => {
      */
     async unicode2CharDescVal (toconvert) {
       let val = '', charDesc;
-      // Todo: Redo with `codePointAt`?
-      for (let i = 0; i < toconvert.length; i++) {
-        let temp = toconvert.charCodeAt(i);
-        if (temp >= 0xD800 && temp < 0xF900) { // surrogate
-          temp = ((temp - 0xD800) * 0x400) +
-            (toconvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
-          // Could do test on temp.isNan()  (e.g., if trying to convert
-          //  a surrogate by itself in regular (non-surrogate converting) mode)
-          charDesc = await this.getCharDescForCodePoint(temp);
-          if (!charDesc) {
-            val += toconvert.charAt(i) + toconvert.charAt(i + 1);
-            i++; // Skip the next (low) surrogate
-            continue;
-          }
-          val += '\\C{' + charDesc + '}';
-          i++; // Skip the next (low) surrogate
-        // Fix: Can/Will Hangul syllables be expressible this way?
-        } else if (temp > 0xAC00 && temp <= 0xD7A3) {
-          try {
-            val += '\\C{' + getHangulName(temp) + '}';
-          } catch (e) {
-            val += toconvert.charAt(i);
-          }
+      for (const ch of toconvert) {
+        const codePoint = ch.charCodeAt();
         // Replace this 'if' condition and remove the 'else' if also want ascii
-        } else if (temp >= 128 || getPref('asciiLt128')) {
-          charDesc = await this.getCharDescForCodePoint(temp);
-          if (!charDesc) { // Skip if no description in database
-            val += toconvert.charAt(i);
+        if (codePoint >= 128 || getPref('asciiLt128')) {
+          charDesc = await this.getCharDescForCodePoint(codePoint);
+          if (charDesc) { // Skip if no description in database
+            val += '\\C{' + charDesc + '}';
             continue;
           }
-          val += '\\C{' + charDesc + '}';
-        } else {
-          val += toconvert.charAt(i);
         }
+        val += ch;
       }
       return val;
     }
