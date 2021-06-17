@@ -624,20 +624,23 @@ export const getUnicodeConverter = () => {
 
     /**
      * Obtain a Unicode character description for a given decimal-expressed
-     * code point.
+     * code point. Note this does not support CJK (and does not need to do so).
      * @param {Integer} dec The code point of the description to obtain
      * @returns {string} The Unicode character description
      */
     async getCharDescForCodePoint (dec) {
-      // Fix: handle Hangul syllables; CJK?
       try {
-        const hex = dec.toString(16).toUpperCase().padStart(4, '0');
+        const hexStr = dec.toString(16).toUpperCase().padStart(4, '0');
+
+        if (dec >= 0xAC00 && dec <= 0xD7A3) {
+          return getHangulName(dec);
+        }
 
         const {
           name, unicode1Name
-        } = await charrefunicodeDb.getUnicodeFields(hex);
+        } = await charrefunicodeDb.getUnicodeFields(hexStr);
 
-        if (name.includes('<')) {
+        if (unicode1Name && name.includes('<')) {
           return `${unicode1Name} (${name})`;
         }
         return name;
