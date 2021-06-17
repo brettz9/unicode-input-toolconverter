@@ -624,11 +624,13 @@ export const getUnicodeConverter = () => {
 
     /**
      * Obtain a Unicode character description for a given decimal-expressed
-     * code point. Note this does not support CJK (and does not need to do so).
+     * code point.
      * @param {Integer} dec The code point of the description to obtain
      * @returns {string} The Unicode character description
      */
     async getCharDescForCodePoint (dec) {
+      // Todo: This should support CJK and those which are only marked by
+      //   ranges (e.g., surrogates, though for these, see calling code)
       try {
         const hexStr = dec.toString(16).toUpperCase().padStart(4, '0');
 
