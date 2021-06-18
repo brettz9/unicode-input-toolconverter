@@ -570,20 +570,16 @@ export const getUnicodeConverter = () => {
      * @returns {string}
      */
     async unicode2CharDescVal (toconvert) {
-      let val = '', charDesc;
-      for (const ch of toconvert) {
+      return (await Promise.all([...toconvert].map(async (ch) => {
         const codePoint = ch.codePointAt();
-        // Replace this 'if' condition and remove the 'else' if also want ascii
         if (codePoint >= 128 || getPref('asciiLt128')) {
-          charDesc = await this.getCharDescForCodePoint(codePoint);
+          const charDesc = await this.getCharDescForCodePoint(codePoint);
           if (charDesc) { // Skip if no description in database
-            val += '\\C{' + charDesc + '}';
-            continue;
+            return '\\C{' + charDesc + '}';
           }
         }
-        val += ch;
-      }
-      return val;
+        return ch;
+      }))).join('');
     }
 
     /**
