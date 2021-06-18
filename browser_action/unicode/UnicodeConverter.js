@@ -605,15 +605,18 @@ export const getUnicodeConverter = () => {
       // Todo: This should support CJK and those which are only marked by
       //   ranges (e.g., surrogates, though for these, see calling code)
       try {
-        const hexStr = dec.toString(16).toUpperCase().padStart(4, '0');
-
         if (dec >= 0xAC00 && dec <= 0xD7A3) {
           return getHangulName(dec);
         }
 
+        const hexStr = dec.toString(16).toUpperCase().padStart(4, '0');
         const {
           name, unicode1Name
         } = await charrefunicodeDb.getUnicodeFields(hexStr);
+
+        if (!name) {
+          // Todo: Unihan
+        }
 
         if (unicode1Name && name.includes('<')) {
           return `${unicode1Name} (${name})`;
