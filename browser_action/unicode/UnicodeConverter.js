@@ -12,7 +12,14 @@ import charrefunicodeDb from './charrefunicodeDb.js';
  */
 const decim = /&#(\d*);/gu;
 const hexadec = /&#[xX]([\da-fA-F]*);/gu;
-const htmlent = /&([_a-zA-Z][-\w]*);/gu; /* Unicode complete version? */
+
+// Per https://www.w3.org/TR/xml/#sec-suggested-names
+// Continue also needs: "Characters for Natural Language Identifiers" in
+//   https://unicode.org/reports/tr31/ ;
+// Currently appears to be Tables 3, 3a, and 3b
+//   (besides \u0027 and \u2019 per XML)
+const htmlOrXmlEnt = /[\p{ID_Start}_][\p{ID_Continue}\u0024\u005F\u002D\u002E\u003A\u00B7\u058A\u05F4\u0F0B\u200C\u2010\u2027\u30A0\u30FB\u05F3\u200D]/gui;
+// const htmlOrXmlEnt = /&([a-z\d]+);/gui; // Works for basic HTML entitites
 
 export const getUnicodeConverter = () => {
   const {getPref} = getUnicodeDefaults();
@@ -251,7 +258,7 @@ export const getUnicodeConverter = () => {
     htmlents2charrefDecval (out) {
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       const xmlentkeep = getPref('xmlentkeep');
-      return out.replace(htmlent, (match, match1) => {
+      return out.replace(htmlOrXmlEnt, (match, match1) => {
         if (!xmlentkeep ||
           (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
             match1 !== 'gt' && match1 !== 'amp')) {
@@ -284,7 +291,7 @@ export const getUnicodeConverter = () => {
       } */
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       const xmlentkeep = getPref('xmlentkeep');
-      return out.replace(htmlent, (match, match1) => {
+      return out.replace(htmlOrXmlEnt, (match, match1) => {
         if (
           !xmlentkeep ||
           (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
@@ -323,7 +330,7 @@ export const getUnicodeConverter = () => {
     htmlents2unicodeval (out) {
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       const xmlentkeep = getPref('xmlentkeep');
-      return out.replace(htmlent, (match, match1) => {
+      return out.replace(htmlOrXmlEnt, (match, match1) => {
         if (
           !xmlentkeep ||
           (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
