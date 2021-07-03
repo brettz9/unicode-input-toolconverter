@@ -34,6 +34,7 @@ async function post ({type, message = type}) {
   windowClients.forEach((client) => {
     // Although we only need one client to which to send
     //   arguments, we want to signal phase complete to all
+    // eslint-disable-next-line unicorn/require-post-message-target-origin -- Rule being reviewed: https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1396
     client.postMessage({message, type});
   });
 }
