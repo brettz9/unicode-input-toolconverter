@@ -15,6 +15,11 @@ describe('Main page', function () {
 
   it('Loads with service worker', function () {
     cy.visit('/browser_action/?serviceWorker=1');
+
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    return cy.window().then((win) => {
+      return expect(win.navigator.serviceWorker.controller).to.not.be.null;
+    });
   });
 
   it('Loads with custom lang', function () {
