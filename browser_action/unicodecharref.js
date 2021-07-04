@@ -11,8 +11,10 @@ import {
 } from './preferences/prefDefaults.js';
 import {chartBuild} from './chartBuild.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
+import {joinChunks} from './utils/TypedArrayUtils.js';
 import {
-  placeItem, removeViewChildren, createHTMLElement, createXULElement, xulns
+  placeItem, removeViewChildren, createHTMLElement, createXULElement, xulns,
+  showProgress
 } from './utils/DOMUtils.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {UnihanDatabase} from './unicode/charrefunicodeDb.js';
@@ -35,41 +37,16 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
  * @returns {Promise<Object<string,string[]>>}
  */
 async function getDownloadResults () {
-  const response = await fetch('/download/unihan/Unihan.zip');
-  const reader = response.body.getReader();
-  // 6747669; // 39.5 MB unzipped;
-  const totalBytes = response.headers.get('content-length');
-  const progressElement = $('#progress_element');
-  progressElement.max = totalBytes;
-
-  const chunks = [];
-  let receivedLength = 0;
-  while (true) {
-    // eslint-disable-next-line no-await-in-loop -- Stream reading
-    const {done, value} = await reader.read();
-    if (done) {
-      break;
+  const receivedInfo = await showProgress({
+    // 6747669; // 39.5 MB unzipped;
+    url: '/download/unihan/Unihan.zip',
+    progressElement: $('#progress_element'),
+    progress (percentComplete) {
+      return _('download_progress') + ' ' +
+        percentComplete.toFixed(2) + _('percentSign');
     }
-
-    chunks.push(value);
-    receivedLength += value.length;
-
-    const percentComplete = ((
-      receivedLength / totalBytes
-    ) * 100);
-
-    progressElement.value = percentComplete;
-    progressElement.textContent = _('download_progress') + ' ' +
-      percentComplete.toFixed(2) + _('percentSign');
-  }
-
-  // Combine into single `Uint8Array`
-  const compressed = new Uint8Array(receivedLength);
-  let pos = 0;
-  for (const chunk of chunks) {
-    compressed.set(chunk, pos);
-    pos += chunk.length;
-  }
+  });
+  const compressed = joinChunks(receivedInfo);
 
   const decompressedObj = unzipSync(compressed);
   const scriptFileAsStrings = Object.values(decompressedObj).map(
