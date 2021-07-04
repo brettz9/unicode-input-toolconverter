@@ -134,7 +134,6 @@ const unicodecharref = {
           const menuIdx = this.UnicodeMenus.indexOf(this[type][i]);
           if (menuIdx !== -1) {
             const match = this.UnicodeMenus[menuIdx];
-            let j, menupopup, menulist, menuitem;
             switch (match) {
             case 'Decimal':
               // Fallthrough
@@ -146,12 +145,12 @@ const unicodecharref = {
               // Fallthrough
             case 'Bidi_Mirrored': // 'Y'/'N'
               // Fallthrough
-            case 'Bidi_Class':
-              menulist = createXULElement('menulist');
+            case 'Bidi_Class': {
+              const menulist = createXULElement('menulist');
               menulist.className = 'searchMenu';
-              menupopup = createXULElement('menupopup');
-              for (j = 0; j < this['UnicodeMenu' + match].length; j++) {
-                menuitem = createXULElement('menuitem');
+              const menupopup = createXULElement('menupopup');
+              for (let j = 0; j < this['UnicodeMenu' + match].length; j++) {
+                const menuitem = createXULElement('menuitem');
                 menuitem.setAttribute(
                   'label', _(match + this['UnicodeMenu' + match][j])
                 );
@@ -164,20 +163,20 @@ const unicodecharref = {
                 menupopup.append(menuitem);
               }
               if (match === 'Canonical_Combining_Class') {
-                for (j = 11; j <= 36; j++) {
+                for (let j = 11; j <= 36; j++) {
                   // Other Non-Numeric not listed in UnicodeMenuCCVNumericOnly
-                  menuitem = createXULElement('menuitem');
+                  const menuitem = createXULElement('menuitem');
                   menuitem.setAttribute('label', j);
                   menuitem.setAttribute('tooltiptext', j);
                   menuitem.setAttribute('value', j);
                   menupopup.append(menuitem);
                 }
                 for (
-                  j = 0;
+                  let j = 0;
                   j < this['UnicodeMenu' + 'CCVNumericOnly'].length;
                   j++
                 ) {
-                  menuitem = createXULElement('menuitem');
+                  const menuitem = createXULElement('menuitem');
                   menuitem.setAttribute(
                     'label', this['UnicodeMenu' + 'CCVNumericOnly'][j]
                   );
@@ -195,7 +194,7 @@ const unicodecharref = {
               row.append(menulist);
               $('#' + type + 'Search').append(row);
               continue;
-            default:
+            } default:
               break;
             }
           }
