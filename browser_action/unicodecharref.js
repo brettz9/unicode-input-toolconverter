@@ -2,39 +2,6 @@
 
 // See https://unicode.org/Public/UNIDATA/ for data use
 
-/*
-// Todo: Handle these for `buildUnicode` `currentStartCharCode`
-//    (`setCurrstartset`); see also
-//    `setPref('currentStartCharCode'...`
-if (k < 0) {
-  k = 1114112 + parseInt(k);
-} else if (currentStartCharCode.toString().match(decreg) ||
-  currentStartCharCode.toString().match(decreg2)) { // Dec
-  currentStartCharCode = currentStartCharCode.toString().replace(decreg, '$2');
-  currentStartCharCode = parseInt(currentStartCharCode, 10);
-} else if (currentStartCharCode.toString().match(hexreg)) { // Hex
-  currentStartCharCode = currentStartCharCode.toString().replace(hexreg, '$3');
-  currentStartCharCode = parseInt(currentStartCharCode, 16);
-} else {
-  // Convert toString in case trying to get the ASCII for a single digit number
-  // Todo: Review `charCodeAt` on whether need modern substitutions
-  const kt = currentStartCharCode.toString().charCodeAt(0);
-  if (kt >= 0xD800 && kt < 0xF900) { // surrogate component (higher plane)
-    currentStartCharCode = ((kt - 0xD800) * 0x400) +
-      (currentStartCharCode.toString().charCodeAt(1) - 0xDC00) + 0x10000;
-  } else {
-    currentStartCharCode = kt;
-  }
-}
-resetCurrentStartCharCodeIfOutOfBounds();
-
-//
-//
-// Ensure 0-9 get treated as char. ref. values rather than Unicode digits
-if (prev >= 0 && prev <= 9) {
-  prev = `'#${prev}'`;
-}
-*/
 import {$, $$} from '../vendor/jamilih/dist/jml-es.js';
 // Todo: Filed the following to avoid both sync and callbacks:
 //  https://github.com/101arrowz/fflate/issues/70

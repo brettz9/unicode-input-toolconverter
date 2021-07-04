@@ -50,8 +50,12 @@ const _ = await i18n({
   substitutions: {code, link}
 });
 
-// Works in Chrome (not in FF as SW using ESM) but commenting out for now
-// await setupServiceWorker();
+const searchParams = new URLSearchParams(location.search);
+
+if (searchParams.get('serviceWorker')) {
+  // Doesn't work in FF as SW using ESM so putting behind switch for now
+  await setupServiceWorker();
+}
 
 setPrefDefaultVars({_});
 const charrefunicodeConverter = new (getUnicodeConverter())({_});
@@ -60,8 +64,11 @@ shareVarsEntity({charrefunicodeConverter});
 shareVarsCharrefConverter({charrefunicodeConverter});
 
 // MAIN TEMPLATE
-// Todo: Disabling for now as slows down loading
-const fonts = []; // await (await fetch('/fonts')).json();
+// Slows down loading so putting behind switch
+const fonts = searchParams.get('fonts')
+  ? await (await fetch('/fonts')).json()
+  : [];
+
 indexTemplate({_, fonts});
 
 // ADD GENERAL BEHAVIORS

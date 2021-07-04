@@ -31,7 +31,9 @@ module.exports = {
       'Promise.all',
       'Request',
       'String.fromCodePoint',
-      'URL'
+      'URL',
+      'URLSearchParams',
+      'URLSearchParams.get'
     ]
   },
   overrides: [
