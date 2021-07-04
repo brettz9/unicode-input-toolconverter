@@ -30,27 +30,21 @@ setJSONExtra(jsonExtra);
 // SETUP
 
 // Todo: Support hash searchParams / streamline with `pushState`
-const lang = new URL(location).searchParams.get('lang');
+const {searchParams} = new URL(location);
+
+const lang = searchParams.get('lang');
 
 // ['sv-SE']; // ['pt-BR']; // ['hu-HU'];
-const locales = lang ? [lang] : [...navigator.languages];
-
-const engPos = locales.indexOf('en-US');
-if (engPos > -1) {
-  locales[engPos] = 'en-US'; // Optimize for English (and avoid console errors)
-}
-
-// Ensure there is at least one working language!
-if (!locales.includes('en-US')) {
-  locales.push('en-US');
-}
+const locales = [...new Set([
+  // Ensure there is at least one working language!
+  ...(lang ? [lang] : [...navigator.languages]),
+  'en-US'
+])];
 
 const _ = await i18n({
   locales, defaults: false, localesBasePath: '../',
   substitutions: {code, link}
 });
-
-const searchParams = new URLSearchParams(location.search);
 
 if (searchParams.get('serviceWorker')) {
   // Doesn't work in FF as SW using ESM so putting behind switch for now
