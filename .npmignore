@@ -8,3 +8,6 @@ download/UCD
 
 old
 .idea
+cypress
+coverage
+rollup.config.js

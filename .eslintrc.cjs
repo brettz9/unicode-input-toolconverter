@@ -42,10 +42,24 @@ module.exports = {
         browser: false
       },
       files: [
-        'web-ext-config.js'
+        'web-ext-config.js',
+        // For now until can use type: module with Cypress
+        'server.js',
+        'cypress/plugins/index.js'
       ],
       rules: {
         ...rulesToIgnoreForNow
+      }
+    },
+    {
+      files: [
+        'cypress/**'
+      ],
+      extends: [
+        'plugin:cypress/recommended'
+      ],
+      rules: {
+        'import/unambiguous': 0
       }
     },
     {

@@ -1,6 +1,13 @@
+/*
 import http from 'http';
 import statik from '@brettz9/node-static';
 import {systemProfiler} from 'apple-system-profiler';
+*/
+'use strict';
+
+const http = require('http');
+const statik = require('@brettz9/node-static');
+const {systemProfiler} = require('apple-system-profiler');
 
 const file = new statik.Server({
   headers: {
@@ -9,6 +16,15 @@ const file = new statik.Server({
 });
 
 http.createServer(function (req, res) {
+  /* istanbul ignore next */
+  if (globalThis.__coverage__ && req.url.startsWith('/__coverage__')) {
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({
+      coverage: globalThis.__coverage__
+    }));
+    return;
+  }
+
   if (req.url.startsWith('/.')) {
     res.writeHead(404);
     res.end('Bad request');
