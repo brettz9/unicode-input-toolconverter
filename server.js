@@ -26,8 +26,10 @@ http.createServer(function (req, res) {
   }
 
   if (req.url.startsWith('/.')) {
-    res.writeHead(404);
-    res.end('Bad request');
+    res.writeHead(404, {
+      'Content-Type': 'text/html'
+    });
+    res.end('<b>Bad request</b>');
     return;
   }
   if (req.url === '/fonts') {
