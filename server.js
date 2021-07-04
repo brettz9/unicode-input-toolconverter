@@ -50,10 +50,14 @@ http.createServer(function (req, res) {
           return typefaces.map((typeface) => typeface.family);
         });
         res.end(JSON.stringify([...new Set(out)].sort()));
+      // istanbul ignore next
       } catch (err) {
-        // eslint-disable-next-line no-console -- CLI
+        /* eslint-disable no-console -- CLI */
+        // istanbul ignore next
         console.error('Error', err);
+      // istanbul ignore next
       }
+      /* eslint-enable no-console -- CLI */
     })();
     return;
   }
