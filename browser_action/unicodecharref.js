@@ -42,8 +42,9 @@ async function getDownloadResults () {
     url: '/download/unihan/Unihan.zip',
     progressElement: $('#progress_element'),
     progress (percentComplete) {
-      return _('download_progress') + ' ' +
-        percentComplete.toFixed(2) + _('percentSign');
+      return `${_('download_progress')} ${
+        percentComplete.toFixed(2)
+      }${_('percentSign')}`;
     }
   });
   const compressed = joinChunks(receivedInfo);
