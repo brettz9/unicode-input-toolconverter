@@ -44,6 +44,39 @@ function createXULElement (el) {
 }
 
 /**
+* @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+* @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator
+*/
+class AsyncStreamIterable {
+  /**
+  * @param {Stream} stream
+  */
+  constructor (stream) {
+    this._stream = stream;
+  }
+
+  /**
+  * @returns {void}
+  * @yields {Integer}
+  */
+  async * [Symbol.asyncIterator] () {
+    const reader = this._stream.getReader();
+    try {
+      while (true) {
+        // eslint-disable-next-line no-await-in-loop -- Generator
+        const {done, value} = await reader.read();
+        if (done) {
+          return;
+        }
+        yield value;
+      }
+    } finally {
+      reader.releaseLock();
+    }
+  }
+}
+
+/**
 * @callback ProgressCallback
 * @param {Float} percentComplete
 * @returns {string}
@@ -60,19 +93,12 @@ function createXULElement (el) {
  */
 async function showProgress ({url, progressElement, progress}) {
   const response = await fetch(url);
-  const reader = response.body.getReader();
   const totalBytes = response.headers.get('content-length');
   progressElement.max = totalBytes;
 
   const chunks = [];
   let receivedLength = 0;
-  while (true) {
-    // eslint-disable-next-line no-await-in-loop -- Stream reading
-    const {done, value} = await reader.read();
-    if (done) {
-      break;
-    }
-
+  for await (const value of new AsyncStreamIterable(response.body)) {
     chunks.push(value);
     receivedLength += value.length;
 
