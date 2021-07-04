@@ -27,3 +27,22 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('clearIndexedDB', async () => {
+  const databases = await indexedDB.databases();
+
+  await Promise.all(
+    databases.map(
+      ({name}) => {
+        // eslint-disable-next-line promise/avoid-new -- Not in API
+        return new Promise((resolve, reject) => {
+          const request = indexedDB.deleteDatabase(name);
+
+          request.addEventListener('success', resolve);
+          request.addEventListener('blocked', resolve);
+          request.addEventListener('error', reject);
+        });
+      }
+    )
+  );
+});

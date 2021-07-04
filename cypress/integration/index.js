@@ -1,4 +1,7 @@
 describe('Main page', function () {
+  beforeEach(() => {
+    return cy.clearIndexedDB();
+  });
   it('Bad request for hidden files', function () {
     cy.visit('/.git/config', {
       failOnStatusCode: false
@@ -11,6 +14,32 @@ describe('Main page', function () {
     cy.location('pathname', {
       timeout: 10000
     }).should('eq', '/browser_action/');
+  });
+
+  it.skip('Downloads Unihan', function () {
+    cy.visit('/browser_action/');
+    cy.get('#unicodeTabBox > .tabs > .tab:nth-child(3)').click();
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    return cy.get('#UnihanInstalled').then(($el) => {
+      return Cypress.dom.isHidden($el);
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      return cy.get('#DownloadButtonBox button').click();
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      return cy.get('#UnihanInstalled', {
+        timeout: 20000
+      }).contains('database installed');
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      return cy.get('#closeDownloadProgressBox').click();
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      return cy.get('#DownloadProgressBox');
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(($el) => {
+      return Cypress.dom.isHidden($el);
+    });
   });
 
   it('Loads with service worker', function () {
