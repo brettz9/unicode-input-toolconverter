@@ -16,6 +16,10 @@ describe('Main page', function () {
     }).should('eq', '/browser_action/');
   });
 
+  it.only('Checks accessibility', function () {
+    cy.visitURLAndCheckAccessibility('/browser_action/');
+  });
+
   it.skip('Downloads Unihan', function () {
     cy.visit('/browser_action/');
     cy.get('#unicodeTabBox > .tabs > .tab:nth-child(3)').click();
