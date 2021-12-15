@@ -83,6 +83,15 @@ function unicodeScripts (_) {
                     [
                       "li",
                       {
+                        "title": "12F90–12FFF"
+                      },
+                      [
+                        _("Cypro_Minoan")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "0400-04FF"
                       },
                       [
@@ -391,6 +400,34 @@ function unicodeScripts (_) {
                             [
                               "li",
                               {
+                                "title": "10780–107BF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Latin_Extended_F")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "1DF00–1DFFF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Latin_Extended_G")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
                                 "title": "1E00-1EFF"
                               },
                               [
@@ -620,6 +657,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Shavian")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "10570–105BF"
+                      },
+                      [
+                        _("Vithkuqi")
                       ]
                     ]
                   ]
@@ -924,6 +970,20 @@ function unicodeScripts (_) {
                                   ]
                                 ]
                               ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "1E7E0–1E7FF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Ethiopic_Extended_B")
+                                  ]
+                                ]
+                              ]
                             ]
                           ]
                         ]
@@ -1084,6 +1144,20 @@ function unicodeScripts (_) {
                                   "i",
                                   [
                                     _("Arabic_Extended_A")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "0870–089F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Arabic_Extended_B")
                                   ]
                                 ]
                               ]
@@ -1468,6 +1542,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Old_Turkic")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "10F70–10FAF"
+                      },
+                      [
+                        _("Old_Uyghur")
                       ]
                     ],
                     [
@@ -1979,6 +2062,15 @@ function unicodeScripts (_) {
                     [
                       "li",
                       {
+                        "title": "1E290–1E2BF"
+                      },
+                      [
+                        _("Toto")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "1CD0-1CFF"
                       },
                       [
@@ -2186,6 +2278,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Tai_Viet")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "16A70–16ACF"
+                      },
+                      [
+                        _("Tangsa")
                       ]
                     ],
                     [
@@ -2685,6 +2786,15 @@ function unicodeScripts (_) {
                     [
                       "li",
                       {
+                        "title": "1AFF0–1AFFF"
+                      },
+                      [
+                        _("Kana_Extended_B")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "1B000-1B0FF"
                       },
                       [
@@ -2975,6 +3085,20 @@ function unicodeScripts (_) {
                                   ]
                                 ]
                               ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "11AB0–11ABF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("UCAS_Extended_A")
+                                  ]
+                                ]
+                              ]
                             ]
                           ]
                         ]
@@ -3108,6 +3232,20 @@ function unicodeScripts (_) {
                                   "i",
                                   [
                                     _("Byzantine_Musical_Symbols")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "1CF00–1CFCF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Znamenny_Musical_Notation")
                                   ]
                                 ]
                               ]

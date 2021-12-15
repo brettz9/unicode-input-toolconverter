@@ -641,6 +641,12 @@ var json6 = createCommonjsModule(function (module, exports) {
                   val.string += '\f';
                   break;
 
+                case 118
+                /*'v'*/
+                :
+                  val.string += '\v';
+                  break;
+
                 case 120
                 /*'x'*/
                 :
@@ -732,7 +738,17 @@ var json6 = createCommonjsModule(function (module, exports) {
                   status = false;
                   throwError("fault while parsing number;", cInt); // break;
                 }
-              } else if (cInt == 120
+              } else if (fromHex && (cInt >= 95
+            /*'a'*/
+            && cInt <= 102
+            /*'f'*/
+            || cInt >= 65
+            /*'A'*/
+            && cInt <= 70
+            /*'F'*/
+            )) {
+              val.string += str;
+            } else if (cInt == 120
             /*'x'*/
             || cInt == 98
             /*'b'*/

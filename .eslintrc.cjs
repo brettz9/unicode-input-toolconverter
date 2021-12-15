@@ -2,7 +2,10 @@
 
 const rulesToIgnoreForNow = {
   'no-alert': 0,
-  'prefer-named-capture-group': 0
+  'prefer-named-capture-group': 0,
+
+  // May need in some though perhaps not all instances (for surrogates)
+  'unicorn/prefer-code-point': 0
 };
 
 module.exports = {
@@ -22,6 +25,7 @@ module.exports = {
       'Array.fill',
       'Array.from',
       'fetch',
+      'navigator.languages',
       'navigator.serviceWorker',
       'Number.parseInt',
       'Object.assign',

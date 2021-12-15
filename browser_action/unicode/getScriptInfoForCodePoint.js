@@ -481,8 +481,12 @@ export default function getScriptInfoForCodePoint (num, _) {
     codePointStart = '11080'; script = _('Kaithi');
   } else if (num < 0x12400) {
     codePointStart = '12000'; script = _('Cuneiform');
-  } else if (num < 0x13000) {
+  } else if (num < 0x12480) {
     codePointStart = '12400'; script = _('Cuneiform_Numbers_and_Punctuation');
+  } else if (num < 0x12550) {
+    codePointStart = '12480'; script = _('Early Dynastic Cuneiform');
+  } else if (num < 0x13000) {
+    codePointStart = '12F90'; script = _('Cypro_Minoan');
   } else if (num < 0x16800) {
     codePointStart = '13000'; script = _('Egyptian_Hieroglyphs');
   } else if (num < 0x1B000) {

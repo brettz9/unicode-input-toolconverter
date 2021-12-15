@@ -1,13 +1,6 @@
-/*
 import http from 'http';
 import statik from '@brettz9/node-static';
 import {systemProfiler} from 'apple-system-profiler';
-*/
-'use strict';
-
-const http = require('http');
-const statik = require('@brettz9/node-static');
-const {systemProfiler} = require('apple-system-profiler');
 
 const file = new statik.Server({
   headers: {

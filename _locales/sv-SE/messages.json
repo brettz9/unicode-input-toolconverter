@@ -2998,6 +2998,42 @@
     },
     "Symbols_for_Legacy_Computing": {
       "message": "Symbols for Legacy Computing"
+    },
+    "Cypro_Minoan": {
+      "message": "Cypro-Minoan"
+    },
+    "Latin_Extended_F": {
+      "message": "Latin Extended-F"
+    },
+    "Latin_Extended_G": {
+      "message": "Latin Extended-G"
+    },
+    "Vithkuqi": {
+      "message": "Vithkuqi"
+    },
+    "Ethiopic_Extended_B": {
+      "message": "Ethiopic Extended-B"
+    },
+    "Arabic_Extended_B": {
+      "message": "Arabic Extended-B"
+    },
+    "Old_Uyghur": {
+      "message": "Old Uyghur"
+    },
+    "Toto": {
+      "message": "Toto"
+    },
+    "Tangsa": {
+      "message": "Tangsa"
+    },
+    "Kana_Extended_B": {
+      "message": "Kana Extended-B"
+    },
+    "UCAS_Extended_A": {
+      "message": "UCAS Extended-A"
+    },
+    "Znamenny_Musical_Notation": {
+      "message": "Znamenny Musical Notation"
     }
   }
 }
