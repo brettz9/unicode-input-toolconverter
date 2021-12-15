@@ -722,7 +722,7 @@ const unicodecharref = {
       for (let i = 1; i <= 13; i++) {
         $('#_detailedCJKView' + i).value = '';
       }
-      for (let i = 15; i <= 90; i++) {
+      for (let i = 15; i <= 91; i++) {
         $('#_detailedCJKView' + i).value = '';
       }
       for (let i = 0; i < this.unihanProperties.length; i++) {
@@ -965,7 +965,7 @@ const unicodecharref = {
               $('#_detailedCJKView' + i).value = '';
             }
           }
-          for (let i = 15; i <= 90; i++) {
+          for (let i = 15; i <= 91; i++) {
             let temp;
             try {
               // Fix: display data more readably, etc.
@@ -1026,7 +1026,7 @@ const unicodecharref = {
               $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
               $('#_detailedCJKView' + i).value = '';
             }
-            for (let i = 15; i <= 90; i++) {
+            for (let i = 15; i <= 91; i++) {
               $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
               $('#_detailedCJKView' + i).value = '';
             }
@@ -1343,7 +1343,7 @@ const unicodecharref = {
     'Nelson', 'OtherNumeric', 'Phonetic', 'PrimaryNumeric', 'PseudoGB1',
     'RSAdobe_Japan1_6', 'RSJapanese', 'RSKanWa', 'RSKangXi', 'RSKorean',
     'RSUnicode', 'SBGY', 'SemanticVariant', 'SimplifiedVariant',
-    'SpecializedSemanticVariant', 'TaiwanTelegraph', 'Tang',
+    'SpecializedSemanticVariant', 'Strange', 'TaiwanTelegraph', 'Tang',
     'TotalStrokes', 'TraditionalVariant', 'Vietnamese', 'XHC1983',
     'Xerox', 'ZVariant'
   ],

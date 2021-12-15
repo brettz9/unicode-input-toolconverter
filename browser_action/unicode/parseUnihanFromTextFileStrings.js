@@ -14,7 +14,7 @@ const fields = ['code_pt', 'kAccountingNumeric', 'kBigFive', 'kCCCII', 'kCNS1986
   'kRSKorean', 'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant', 'kSpecializedSemanticVariant',
   'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant',
   'kUnihanCore2020', 'kIRG_UKSource', 'kIRG_SSource', 'kTGH', 'kKoreanName', 'kJa', 'kJoyoKanji', 'kKoreanEducationHanja',
-  'kJinmeiyoKanji', 'kTGHZ2013', 'kSpoofingVariant'];
+  'kJinmeiyoKanji', 'kTGHZ2013', 'kSpoofingVariant', 'kStrange'];
 /* eslint-enable max-len -- Long */
 
 /**
@@ -38,6 +38,7 @@ function parseUnihanFromTextFileStrings (scriptFileAsStrings) {
     }
     const pos = fields.indexOf(col);
     if (pos === -1) {
+      // Todo: Even if not inserting, should auto-add locales as in parseUnicodeCharts.js
       if (!notPresent[col]) {
         // eslint-disable-next-line no-console -- CLI
         console.error(`Not present: ${col}\n`);

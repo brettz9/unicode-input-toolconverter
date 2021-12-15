@@ -917,6 +917,9 @@
     "kCompatibilityVariant": {
       "message": "CompatibilityVariant"
     },
+    "kStrange": {
+      "message": "Strange:"
+    },
     "General_Category": {
       "message": "General Category"
     },
@@ -2410,6 +2413,9 @@
     },
     "searchkCompatibilityVariant": {
       "message": "CompatibilityVariant:"
+    },
+    "searchkStrange": {
+      "message": "Strange:"
     },
     "searchGeneral_Category": {
       "message": "General Category"

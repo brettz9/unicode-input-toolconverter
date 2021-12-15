@@ -88,7 +88,8 @@ const unihanFieldInfo = [
   ['kIBMJapan', 35],
   ['kRSKanWa', 75],
   ['kRSKorean', 77],
-  ['kRSJapanese', 74]
+  ['kRSJapanese', 74],
+  ['kStrange', 91]
 ];
 
 export default unihanFieldInfo;
