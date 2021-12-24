@@ -315,7 +315,7 @@ scriptsAndStartRanges.sort((
     : -1;
 });
 
-let s = '';
+let ifElseBlocks = '';
 let lastStartRange = '0000';
 let lastScript = 'null';
 scriptsAndStartRanges.forEach(({script, startRange}) => {
@@ -323,9 +323,23 @@ scriptsAndStartRanges.forEach(({script, startRange}) => {
     return;
   }
   // Todo: Add plane, privateuse, surrogate info
-  s += `} else if (num < 0x${startRange}) {
-  codePointStart = '${lastStartRange}'; script = _('${lastScript}');
-`;
+  ifElseBlocks += `
+  } else if (num < 0x${startRange}) {
+    codePointStart = '${lastStartRange}';
+    script = _('${lastScript}');${
+      // Not in chart:
+      // startRange === 'DB80' ? "surrogate = _('High_Private_Use_Surrogate')" :
+      lastStartRange === 'D800'
+        ? `
+    surrogate = _('High_Surrogate');`
+        : lastStartRange === 'DC00'
+          ? `
+    surrogate = _('Low_Surrogate');`
+          : ['E000', 'F0000', '100000'].includes(lastStartRange)
+            ? `
+    privateuse = true;`
+            : ''
+}`;
   lastStartRange = startRange;
   lastScript = script;
 });
@@ -380,6 +394,26 @@ async function recurseDirectory ({directory, basePath = './', results}) {
 }
 
 // console.log('scriptsAndStartRanges', scriptsAndStartRanges);
-// eslint-disable-next-line no-console -- CLI
-console.log(s.slice(7) + '}');
+
+const output = `
+// Todo: Auto-generate this function
+
+/**
+ * @param {PositiveInteger} num
+ * @param {IntlDom} _
+ * @returns {{
+ *   codePointStart: string, script: string, plane: PositiveInteger,
+ *   privateuse: boolean, surrogate: boolean|string
+ * }}
+ */
+export default function getScriptInfoForCodePoint (num, _) {
+  let privateuse = false, surrogate = false;
+  let plane = num >= 0x10000 && num <= 0x1FFFF ? 1 : 0;
+  let script = '', codePointStart = '';
+${ifElseBlocks.slice('} else '.length) + '\n  }'}
+
+  return {codePointStart, script, plane, privateuse, surrogate};
+}
+`;
+console.log('output', output);
 })();
