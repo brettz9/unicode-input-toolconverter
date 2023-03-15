@@ -113,6 +113,9 @@
     "DTD_insertEntityFile": {
       "message": "Inserir Arquivo de Entidade"
     },
+    "choose_an_entity_file": {
+      "message": "Choose an entity file"
+    },
     "ent_htmlmathml_f": {
       "message": "Expanded set of HTML and MathML entity definitions"
     },

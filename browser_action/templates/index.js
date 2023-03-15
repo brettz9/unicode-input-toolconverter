@@ -1078,6 +1078,9 @@ const indexTemplate = function ({_, fonts}) {
                   id: 'insertEntityFile',
                   class: 'dtdbutton'
                 }, [
+                  ['option', {value: ''}, [
+                    _('choose_an_entity_file')
+                  ]],
                   ['optgroup', {label: 'Recommended (Non-legacy)'}, [
                     ['option', {
                       value: 'htmlmathml-f'
