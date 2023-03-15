@@ -18,7 +18,7 @@ module.exports = {
     webextensions: true
   },
   parserOptions: {
-    ecmaVersion: 2021
+    ecmaVersion: 2022
   },
   settings: {
     polyfills: [
@@ -48,10 +48,7 @@ module.exports = {
         browser: false
       },
       files: [
-        'web-ext-config.js',
-        // For now until can use type: module with Cypress
-        'server.js',
-        'cypress/plugins/index.js'
+        'web-ext-config.js'
       ],
       rules: {
         ...rulesToIgnoreForNow

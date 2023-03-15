@@ -15,6 +15,8 @@ import fs from 'fs/promises';
 
 import download from 'download';
 import extract from 'extract-zip';
+
+// eslint-disable-next-line no-shadow -- Clearer
 import fetch from 'file-fetch';
 
 import parseUnihanFromTextFileStrings from
@@ -37,7 +39,7 @@ if (args.includes('extract') || args.includes('download')) {
   await fs.unlink(unihanZip);
 }
 
-addScript(targetDir);
+await addScript(targetDir);
 
 /**
  * @param {string} baseURL

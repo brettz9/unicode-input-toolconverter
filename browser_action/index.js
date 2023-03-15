@@ -25,8 +25,6 @@ import {setupEncodingEvents} from './encodingBehaviors.js';
 
 setJSONExtra(jsonExtra);
 
-(async () => { // eslint-disable-line padded-blocks -- Ugly
-
 // SETUP
 
 // Todo: Support hash searchParams / streamline with `pushState`
@@ -41,6 +39,8 @@ const locales = [...new Set([
   'en-US'
 ])];
 
+// eslint-disable-next-line unicorn/prefer-top-level-await -- No iife export
+(async () => {
 const _ = await i18n({
   locales, defaults: false, localesBasePath: '../',
   substitutions: {code, link}

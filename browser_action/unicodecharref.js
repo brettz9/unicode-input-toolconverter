@@ -734,13 +734,12 @@ const unicodecharref = {
     try {
       const results = await charrefunicodeDb.getUnicodeFields(searchValue);
       if (results) {
-        result = !cjkText
+        result = cjkText ||
           // We had obtained Jamo from Jamo.txt and showed it in parentheses,
           //  but it seems this is now included in UnicodData.txt as we
           //  import into our database.
           // if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
-          ? results[0]
-          : cjkText;
+          results[0];
         for (let i = 2; i <= 14; i++) {
           // Fix: display data more readably, etc.
           let temp = results[i - 1];

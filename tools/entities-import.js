@@ -4,9 +4,10 @@
 
 import fs from 'fs/promises';
 
+// eslint-disable-next-line no-shadow -- Clearer
 import fetch from 'node-fetch';
 
-import cheerio from 'cheerio';
+import {load} from 'cheerio';
 
 const args = process.argv.slice(2);
 
@@ -23,7 +24,7 @@ const getText = async (file) => {
 
 if (args.includes('download')) {
   const htmlText = await getText(entityBasePath);
-  const $ = cheerio.load(htmlText);
+  const $ = load(htmlText);
   const elems = $('a[href$=".ent"]');
   const entityFiles = [];
   // eslint-disable-next-line unicorn/no-for-loop -- Not iterable

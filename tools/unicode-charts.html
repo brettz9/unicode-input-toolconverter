@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Unicode 14.0 Character Code Charts</title>
+<title>Unicode 15.0 Character Code Charts</title>
 
 <link rel="stylesheet" href="https://www.unicode.org/webscripts/standard_styles.css">
 <style>
@@ -14,19 +14,18 @@ table.map td { font-size: 85%; padding-left:0.25em; vertical-align: top; border:
 #table5 td { width: 20%; }
 #table9 td { width: 20%;}
 
-table.map a:link { text-decoration: none; color:#880000 }
-table.map a:visited { text-decoration: none; color:#880000 }
-table.map a:active { text-decoration: none; color:#FF0000 }
-table.map a:hover { text-decoration: none; color:#FF0000 }
+table.map a:link { text-decoration: none; color:#1A1A99 }
+table.map a:visited { text-decoration: none; color:#1A1A99 }
+table.map a:active { text-decoration: none; color:#1A1A99 }
+table.map a:hover { text-decoration: underline }
 
-p.map a:link { text-decoration: none; color:#880000 }
-p.map a:visited { text-decoration: none; color:#880000 }
-p.map a:active { text-decoration: none; color:#FF0000 }
-p.map a:hover { text-decoration: none; color:#FF0000 }
+p.map a:link { text-decoration: none; color:#1A1A99 }
+p.map a:visited { text-decoration: none; color:#1A1A99 }
+p.map a:active { text-decoration: none; color:#1A1A99 }
+p.map a:hover { text-decoration: underline }
 
-.sg { background-color:#880000; color:#FFFFFF; font-weight:bold; margin-top: 5px; }
-.mb { background-color:#E0E0E0; font-weight:bold; font-style:italic }
-.mt { background-color:#F0F0F0; }
+.sg { background-color:#5555FF; color:#FFFFFF; font-weight:bold; margin-top: 5px; }
+.mb { background-color:#EEEEFE; font-weight:bold; font-style:italic }
 .sb { border-color:inherit }
 .pb { font-style:italic;  }
 
@@ -42,10 +41,10 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 <body>
 
 <form method="post" action="/cgi-bin/Code2Chart" enctype="application/x-www-form-urlencoded">
-			<table id="table4" style="border-bottom:10px solid rgb(153, 153, 153);">
+			<table id="table4" style="border-bottom:10px solid rgb(234, 234, 254);">
 				<tr>
 					<td class="icon"><a href="https://www.unicode.org/">
-					<img height="33" alt="[Unicode]" src="http://www.unicode.org/webscripts/logo60s2.gif" width="34" style="vertical-align:middle;"></a>&nbsp;
+					<img height="33" alt="[Unicode]" src="https://www.unicode.org/webscripts/logo60s2.gif" width="34" style="vertical-align:middle;"></a>&nbsp;
 					&nbsp;<a class="bar" href="About.html">Code Charts</a> </td>
 					<td class="bar">
 					<a class="bar" href="https://www.unicode.org/main.html">Tech Site</a> |
@@ -58,7 +57,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 
 
 	<div class="body">
-		<h1>Unicode 14.0 Character Code Charts</h1>
+		<h1>Unicode 15.0 Character Code Charts</h1>
 		<p id="toplinks" class="map"><a href="#scripts">Scripts</a>&nbsp;&nbsp; 
 		|&nbsp;&nbsp; <a href="#symbols">Symbols &amp; Punctuation</a>&nbsp;&nbsp; 
 		|&nbsp;&nbsp; <a href="charindex.html">Name Index</a></p>
@@ -87,6 +86,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 					<p class="sb"><a href="PDF/U2DE0.pdf" title="2DE0-2DFF">Cyrillic Extended-A</a></p>
 					<p class="sb"><a href="PDF/UA640.pdf" title="A640-A69F">Cyrillic Extended-B</a></p>
 					<p class="sb"><a href="PDF/U1C80.pdf" title="1C80-1C8F">Cyrillic Extended-C</a></p>
+					<p class="sb"><a href="PDF/U1E030.pdf" title="1E030–1E08F">Cyrillic Extended-D</a></p>
 					<p class="mb"><a href="PDF/U10500.pdf" title="10500-1052F">Elbasan</a></p>
 					<p class="mb"><a href="PDF/U10A0.pdf" title="10A0-10FF">Georgian</a></p>
 					<p class="sb"><a href="PDF/U1C90.pdf" title="1C90-1CBF">Georgian Extended</a></p>
@@ -134,18 +134,24 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 					<p class="mb"><a href="PDF/U10570.pdf" title="10570–105BF">Vithkuqi</a></p>
                     
                     
-                    <p class="sg"><a>Modifier Letters</a></p>
+                    <p class="sg">Modifier Letters</p>
                     <p class="mb"><a href="PDF/UA700.pdf" title="A700-A71F">Modifier Tone Letters</a></p>
 					<p class="mb"><a href="PDF/U02B0.pdf" title="02B0-02FF">Spacing Modifier Letters</a></p>
                     <p class="mb"><a href="PDF/U2070.pdf" title="2070-209F">Superscripts and Subscripts</a></p>
                     
                     
-                    <p class="sg"><a>Combining Marks</a></p>
+                    <p class="sg">Combining Marks</p>
                     <p class="mb"><a href="PDF/U0300.pdf" title="0300-036F">Combining Diacritical Marks</a></p>
                         <p class="sb"><a href="PDF/U1AB0.pdf" title="1AB0-1AFF">Combining Diacritical Marks Extended</a></p>
                         <p class="sb"><a href="PDF/U1DC0.pdf" title="1DC0-1DFF">Combining Diacritical Marks Supplement</a></p>
                   <p class="mb"><a href="PDF/U20D0.pdf" title="20D0-20FF">Combining Diacritical Marks for Symbols</a></p>
                     <p class="mb"><a href="PDF/UFE20.pdf" title="FE20-FE2F">Combining Half Marks</a></p>
+
+
+                    <p class="sg">Miscellaneous</p>
+                    <p class="sb"><a href="PDF/UFB00.pdf" title="FB00-FB4F">Alphabetic Presentation Forms</a></p>
+                    <p class="pb"><a href="PDF/U0000.pdf" title="0000-007F">ASCII Characters</a></p>
+                    <p class="sb"><a href="PDF/UFF00.pdf" title="FF00-FFEF">Halfwidth and Fullwidth Forms</a></p>
 				</td>
 
 
@@ -158,8 +164,8 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 					<p class="mb"><a href="PDF/U2C80.pdf" title="2C80-2CFF">Coptic</a>&nbsp;</p>
 					<p class="pb"><a href="PDF/U0370.pdf" title="03E2-03EF">Coptic in Greek block</a></p>
 						<p class="sb"><a href="PDF/U102E0.pdf" title="102E0-102FF">Coptic Epact Numbers</a></p>
-					<p class="mb"><a href="PDF/U13000.pdf" title="13000-1342F">Egyptian Hieroglyphs</a> (1MB)</p>
-						<p class="sb"><a href="PDF/U13430.pdf" title="13430-1343F">Egyptian Hieroglyph Format Controls</a></p>
+					<p class="mb"><a href="PDF/U13000.pdf" title="13000-1342F">Egyptian Hieroglyphs</a></p>
+						<p class="sb"><a href="PDF/U13430.pdf" title="13430-1345F">Egyptian Hieroglyph Format Controls</a></p>
 					<p class="mb"><a href="PDF/U1200.pdf" title="1200-137F">Ethiopic</a></p>
 						<p class="sb"><a href="PDF/U1380.pdf" title="1380-139F">Ethiopic Supplement</a></p>
 						<p class="sb"><a href="PDF/U2D80.pdf" title="2D80-2DDF">Ethiopic Extended</a></p>
@@ -182,12 +188,13 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                     	<p class="sb"><a href="PDF/U0750.pdf" title="0750-077F">Arabic Supplement</a></p>
                     	<p class="sb"><a href="PDF/U08A0.pdf" title="08A0-08FF">Arabic Extended-A</a></p>
                     	<p class="sb"><a href="PDF/U0870.pdf" title="0870–089F">Arabic Extended-B</a></p>
+                    	<p class="sb"><a href="PDF/U10EC0.pdf" title="10EC0–10EFF">Arabic Extended-C</a></p>
                     	<p class="sb"><a href="PDF/UFB50.pdf" title="FB50-FDFF">Arabic Presentation Forms-A</a></p>
                     	<p class="sb"><a href="PDF/UFE70.pdf" title="FE70-FEFF">Arabic Presentation Forms-B</a></p>
 					<p class="mb"><a href="PDF/U10840.pdf" title="10840-1085F">Aramaic, Imperial</a></p>
                     <p class="mb"><a href="PDF/U10B00.pdf" title="10B00-10B3F">Avestan</a></p>
                     <p class="mb"><a href="PDF/U10FB0.pdf" title="10FB0–10FDF">Chorasmian</a></p>
-                    <p class="mb"><a href="PDF/U12000.pdf" title="12000-123FF">Cuneiform</a> (1MB)</p>
+                    <p class="mb"><a href="PDF/U12000.pdf" title="12000-123FF">Cuneiform</a></p>
                     	<p class="sb"><a href="PDF/U12400.pdf" title="12400-1247F">Cuneiform Numbers and Punctuation</a></p>
                     	<p class="sb"><a href="PDF/U12480.pdf" title="12480-1254F">Early Dynastic Cuneiform</a></p>
                     	<p class="sb"><a href="PDF/U103A0.pdf" title="103A0-103DF">Old Persian</a></p>
@@ -229,13 +236,14 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                 
 				<td>
 					<p class="sg">South Asian Scripts</p>
-					<p class="mb"><a href="PDF/U11700.pdf" title="11700-1173F">Ahom</a></p>
+					<p class="mb"><a href="PDF/U11700.pdf" title="11700-1174F">Ahom</a></p>
 					<p class="mb"><a href="PDF/U0980.pdf" title="0980-09FF">Bengali and Assamese</a></p>
 					<p class="mb"><a href="PDF/U11C00.pdf" title="11C00-11C6F">Bhaiksuki</a></p>
 					<p class="mb"><a href="PDF/U11000.pdf" title="11000-1107F">Brahmi</a></p>
                     <p class="mb"><a href="PDF/U11100.pdf" title="11100-1114F">Chakma</a></p>
 					<p class="mb"><a href="PDF/U0900.pdf" title="0900-097F">Devanagari</a></p>
-						<p class="sb"><a href="PDF/UA8E0.pdf" title="A8E0-A8FF">Devanagari Extended</a></p>
+				    <p class="sb"><a href="PDF/UA8E0.pdf" title="A8E0-A8FF">Devanagari Extended</a></p>
+				    <p class="sb"><a href="PDF/U11B00.pdf" title="11B00–11B5F">Devanagari Extended-A</a></p>
                     <p class="mb"><a href="PDF/U11900.pdf" title="11900–1195F">Dives Akuru</a></p>
                     <p class="mb"><a href="PDF/U11800.pdf" title="11800-1184F">Dogra</a></p>
                     <p class="mb"><a href="PDF/U11300.pdf" title="11300-1137F">Grantha</a></p>
@@ -257,6 +265,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                     <p class="mb"><a href="PDF/U11600.pdf" title="11600-1165F">Modi</a></p>
                     <p class="mb"><a href="PDF/U16A40.pdf" title="16A40-16A6F">Mro</a></p>
                     <p class="mb"><a href="PDF/U11280.pdf" title="11280-112AF">Multani</a></p>
+                    <p class="mb"><a href="PDF/U1E4D0.pdf" title="1E4D0–1E4FF">Nag Mundari</a></p>
                     <p class="mb"><a href="PDF/U119A0.pdf" title="119A0-119FF">Nandinagari</a></p>
                     <p class="mb"><a href="PDF/U11400.pdf" title="11400-1147F">Newa</a></p>
                     <p class="mb"><a href="PDF/U1C50.pdf" title="1C50-1C7F">Ol Chiki</a></p>
@@ -304,13 +313,14 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                 
                 
 				<td>
-                    <p class="sg">Indonesia &amp; Oceania Scripts</p>
+                    <p class="sg">Indonesian &amp; Philippine Scripts</p>
 					<p class="mb"><a href="PDF/U1B00.pdf" title="1B00-1B7F">Balinese</a></p>
 					<p class="mb"><a href="PDF/U1BC0.pdf" title="1BC0-1BFF">Batak</a></p>
                     <p class="mb"><a href="PDF/U1A00.pdf" title="1A00-1A1F">Buginese</a></p>
                     <p class="mb"><a href="PDF/U1740.pdf" title="1740-175F">Buhid</a></p>
                     <p class="mb"><a href="PDF/U1720.pdf" title="1720-173F">Hanunoo</a></p>
                     <p class="mb"><a href="PDF/UA980.pdf" title="A980-A9DF">Javanese</a></p>
+                    <p class="mb"><a href="PDF/U11F00.pdf" title="11F00–11F5F">Kawi</a></p>
                     <p class="mb"><a href="PDF/U11EE0.pdf" title="11EE0-11EFF">Makasar</a></p>
                     <p class="mb"><a href="PDF/UA930.pdf" title="A930-A95F">Rejang</a></p>
                     <p class="mb"><a href="PDF/U1B80.pdf" title="1B80-1BBF">Sundanese</a></p>
@@ -328,8 +338,9 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 						<p class="sb"><a href="PDF/U2A700.pdf" title="2A700-2B73F">CJK Extension&nbsp;C</a>&nbsp;(3MB)</p>
 						<p class="sb"><a href="PDF/U2B740.pdf" title="2B740-2B81F">CJK Extension&nbsp;D</a></p>
 						<p class="sb"><a href="PDF/U2B820.pdf" title="2B820-2CEAF">CJK Extension&nbsp;E</a>&nbsp;(3.5MB)</p>
-						<p class="sb"><a href="PDF/U2CEB0.pdf" title="2CEB0–2EBE0">CJK Extension&nbsp;F</a>&nbsp;(4MB)</p>
-						<p class="sb"><a href="PDF/U30000.pdf" title="30000–3134A">CJK Extension&nbsp;G</a>&nbsp;(2MB)</p>
+						<p class="sb"><a href="PDF/U2CEB0.pdf" title="2CEB0–2EBEF">CJK Extension&nbsp;F</a>&nbsp;(4MB)</p>
+						<p class="sb"><a href="PDF/U30000.pdf" title="30000–3134F">CJK Extension&nbsp;G</a>&nbsp;(2MB)</p>
+						<p class="sb"><a href="PDF/U31350.pdf" title="31350–323AF">CJK Extension&nbsp;H</a>&nbsp;(2.5MB)</p>
 						<p class="sb">(see also <a href="unihan.html">Unihan Database</a>)</p>
 					<p class="mb"><a href="PDF/UF900.pdf" title="F900-FAFF">CJK Compatibility Ideographs</a></p>
 						<p class="sb"><a href="PDF/U2F800.pdf" title="2F800-2FA1F">CJK Compatibility Ideographs Supplement</a></p>
@@ -375,12 +386,6 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                     <p class="mb"><a href="PDF/U1400.pdf" title="1400-167F">Unified Canadian Aboriginal Syllabics</a></p>
                     	<p class="sb"><a href="PDF/U18B0.pdf" title="18B0-18FF">UCAS Extended</a></p>
                     	<p class="sb"><a href="PDF/U11AB0.pdf" title="11AB0–11ABF">UCAS Extended-A</a></p>
-
-
-                    <p class="sg">Other</p>
-                    <p class="sb"><a href="PDF/UFB00.pdf" title="FB00-FB4F">Alphabetic Presentation Forms</a></p>
-                    <p class="pb"><a href="PDF/U0000.pdf" title="0000-007F">ASCII Characters</a></p>
-                    <p class="sb"><a href="PDF/UFF00.pdf" title="FF00-FFEF">Halfwidth and Fullwidth Forms</a></p>
 				</td>
 			</tr>
 		</table>
@@ -450,6 +455,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 					<p class="mb"><a href="PDF/U1D360.pdf" title="1D360-1D37F">Counting Rod Numerals</a></p>
 					<p class="mb"><a href="PDF/U12400.pdf" title="12400-1247F">Cuneiform Numbers and Punctuation</a></p>
 					<p class="mb"><a href="PDF/U1EC70.pdf" title="1EC70-1ECBF">Indic Siyaq Numbers</a></p>
+                    <p class="mb"><a href="PDF/U1D2C0.pdf" title="1D2C0–1D2DF">Kaktovik Numerals</a></p>
                     <p class="mb"><a href="PDF/U1D2E0.pdf" title="1D2E0-1D2FF">Mayan Numerals</a></p>
 					<p class="mb"><a href="PDF/U2150.pdf" title="2150-218F">Number Forms</a></p>
 					<p class="mb"><a href="PDF/U1ED00.pdf" title="1ED00-1ED4F">Ottoman Siyaq Numbers</a></p>
@@ -591,7 +597,6 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 				<img height="50" alt="Access to Copyright and terms of use" src="https://www.unicode.org/img/hb_notice.gif" width="216"></a>
                 </div>
 
-		<div><script src="https://www.unicode.org/webscripts/lastModified.js"></script></div>
         </div>
 </form>
 

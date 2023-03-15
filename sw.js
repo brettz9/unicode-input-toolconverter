@@ -165,7 +165,7 @@ async function install (time) {
         return cache.put(urlToPrefetch, resp);
       } catch (error) {
         logError(error, 'Not caching ' + urlToPrefetch + ' due to ' + error);
-        return Promise.reject(error);
+        throw error;
       }
     });
     await Promise.all(cachePromises);

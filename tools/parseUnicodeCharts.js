@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
+// eslint-disable-next-line no-shadow -- Remove?
 import fetch from 'node-fetch';
 import jsdom from 'jsdom';
 
@@ -19,7 +20,6 @@ function getChromeSafeLocaleKey (key) {
     .replace(/\W/gu, '_');
 }
 
-(async () => {
 let text;
 const lastScriptNamesFile = new URL(
   '../browser_action/unicode/lastScriptNames.json', import.meta.url
@@ -35,7 +35,7 @@ if (process.argv[2] === 'retrieve') {
   // eslint-disable-next-line no-console -- CLI
   console.log('saved file');
 } else {
-  text = await fs.readFile(chartsFile, 'utf-8');
+  text = await fs.readFile(chartsFile, 'utf8');
 }
 
 const doc = new JSDOM(text).window.document;
@@ -150,7 +150,7 @@ async function saveLocalesWithoutDupes (localeFiles, localeFileContents) {
  */
 async function deleteUnusedScriptNames (newScriptNames, localeFileContents) {
   const {lastScriptNames} = JSON.parse(
-    await fs.readFile(lastScriptNamesFile, 'utf-8')
+    await fs.readFile(lastScriptNamesFile, 'utf8')
   );
   lastScriptNames.forEach((lastScriptName) => {
     if (!newScriptNames.includes(lastScriptName)) {
@@ -181,7 +181,7 @@ function unicodeScripts (_) {
       );
       const localeFileContents = (
         await Promise.all(localeFiles.map((localeFile) => {
-          return fs.readFile(localeFile, 'utf-8');
+          return fs.readFile(localeFile, 'utf8');
         }))
       ).map((fileContents) => {
         return JSON.parse(fileContents);
@@ -327,18 +327,18 @@ scriptsAndStartRanges.forEach(({script, startRange}) => {
   } else if (num < 0x${startRange}) {
     codePointStart = '${lastStartRange}';
     script = _('${lastScript}');${
-      // Not in chart:
-      // startRange === 'DB80' ? "surrogate = _('High_Private_Use_Surrogate')" :
-      lastStartRange === 'D800'
+  // Not in chart:
+  // startRange === 'DB80' ? "surrogate = _('High_Private_Use_Surrogate')" :
+  lastStartRange === 'D800'
+    ? `
+surrogate = _('High_Surrogate');`
+    : lastStartRange === 'DC00'
+      ? `
+surrogate = _('Low_Surrogate');`
+      : ['E000', 'F0000', '100000'].includes(lastStartRange)
         ? `
-    surrogate = _('High_Surrogate');`
-        : lastStartRange === 'DC00'
-          ? `
-    surrogate = _('Low_Surrogate');`
-          : ['E000', 'F0000', '100000'].includes(lastStartRange)
-            ? `
-    privateuse = true;`
-            : ''
+privateuse = true;`
+        : ''
 }`;
   lastStartRange = startRange;
   lastScript = script;
@@ -372,7 +372,7 @@ async function recurseDirectory ({directory, basePath = './', results}) {
         });
       }
       const pth = path.join(dirPath, fileOrDir);
-      const contents = await fs.readFile(pth, 'utf-8');
+      const contents = await fs.readFile(pth, 'utf8');
 
       const i18nRegex = // /_\((?:['"]([^'"]*)['"])\)/g;
       // Todo: Works to find variable forms:
@@ -415,5 +415,6 @@ ${ifElseBlocks.slice('} else '.length) + '\n  }'}
   return {codePointStart, script, plane, privateuse, surrogate};
 }
 `;
+
+// eslint-disable-next-line no-console -- Debugging
 console.log('output', output);
-})();

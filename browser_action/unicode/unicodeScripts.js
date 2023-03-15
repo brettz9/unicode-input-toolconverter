@@ -154,6 +154,20 @@ function unicodeScripts (_) {
                                   ]
                                 ]
                               ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "1E030–1E08F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Cyrillic_Extended_D")
+                                  ]
+                                ]
+                              ]
                             ]
                           ]
                         ]
@@ -797,6 +811,64 @@ function unicodeScripts (_) {
                 [
                   "b",
                   [
+                    _("Miscellaneous")
+                  ]
+                ],
+                [
+                  "ul",
+                  [
+                    [
+                      "li",
+                      {
+                        "title": "FB00-FB4F"
+                      },
+                      [
+                        [
+                          "i",
+                          [
+                            _("Alphabetic_Presentation_Forms")
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "0000-007F"
+                      },
+                      [
+                        [
+                          "i",
+                          [
+                            _("ASCII_Characters")
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "FF00-FFEF"
+                      },
+                      [
+                        [
+                          "i",
+                          [
+                            _("Halfwidth_and_Fullwidth_Forms")
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "li",
+              [
+                [
+                  "b",
+                  [
                     _("African_Scripts")
                   ]
                 ],
@@ -904,7 +976,7 @@ function unicodeScripts (_) {
                             [
                               "li",
                               {
-                                "title": "13430-1343F"
+                                "title": "13430-1345F"
                               },
                               [
                                 [
@@ -1158,6 +1230,20 @@ function unicodeScripts (_) {
                                   "i",
                                   [
                                     _("Arabic_Extended_B")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "10EC0–10EFF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Arabic_Extended_C")
                                   ]
                                 ]
                               ]
@@ -1617,7 +1703,7 @@ function unicodeScripts (_) {
                     [
                       "li",
                       {
-                        "title": "11700-1173F"
+                        "title": "11700-1174F"
                       },
                       [
                         _("Ahom")
@@ -1679,6 +1765,20 @@ function unicodeScripts (_) {
                                   "i",
                                   [
                                     _("Devanagari_Extended")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "11B00–11B5F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Devanagari_Extended_A")
                                   ]
                                 ]
                               ]
@@ -1884,6 +1984,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Multani")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "1E4D0–1E4FF"
+                      },
+                      [
+                        _("Nag_Mundari")
                       ]
                     ],
                     [
@@ -2308,7 +2417,7 @@ function unicodeScripts (_) {
                 [
                   "b",
                   [
-                    _("Indonesia___Oceania_Scripts")
+                    _("Indonesian___Philippine_Scripts")
                   ]
                 ],
                 [
@@ -2366,6 +2475,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Javanese")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "11F00–11F5F"
+                      },
+                      [
+                        _("Kawi")
                       ]
                     ],
                     [
@@ -2559,7 +2677,7 @@ function unicodeScripts (_) {
                             [
                               "li",
                               {
-                                "title": "2CEB0–2EBE0"
+                                "title": "2CEB0–2EBEF"
                               },
                               [
                                 [
@@ -2573,13 +2691,27 @@ function unicodeScripts (_) {
                             [
                               "li",
                               {
-                                "title": "30000–3134A"
+                                "title": "30000–3134F"
                               },
                               [
                                 [
                                   "i",
                                   [
                                     _("CJK_Extension_G")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "31350–323AF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("CJK_Extension_H")
                                   ]
                                 ]
                               ]
@@ -3100,64 +3232,6 @@ function unicodeScripts (_) {
                                 ]
                               ]
                             ]
-                          ]
-                        ]
-                      ]
-                    ]
-                  ]
-                ]
-              ]
-            ],
-            [
-              "li",
-              [
-                [
-                  "b",
-                  [
-                    _("Other")
-                  ]
-                ],
-                [
-                  "ul",
-                  [
-                    [
-                      "li",
-                      {
-                        "title": "FB00-FB4F"
-                      },
-                      [
-                        [
-                          "i",
-                          [
-                            _("Alphabetic_Presentation_Forms")
-                          ]
-                        ]
-                      ]
-                    ],
-                    [
-                      "li",
-                      {
-                        "title": "0000-007F"
-                      },
-                      [
-                        [
-                          "i",
-                          [
-                            _("ASCII_Characters")
-                          ]
-                        ]
-                      ]
-                    ],
-                    [
-                      "li",
-                      {
-                        "title": "FF00-FFEF"
-                      },
-                      [
-                        [
-                          "i",
-                          [
-                            _("Halfwidth_and_Fullwidth_Forms")
                           ]
                         ]
                       ]
@@ -3766,6 +3840,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Indic_Siyaq_Numbers")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "1D2C0–1D2DF"
+                      },
+                      [
+                        _("Kaktovik_Numerals")
                       ]
                     ],
                     [

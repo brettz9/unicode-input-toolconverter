@@ -12,15 +12,13 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-'use strict';
-
-const coverage = require('@cypress/code-coverage/task');
-// const useBabelRc = require('@cypress/code-coverage/use-babelrc');
+import coverage from '@cypress/code-coverage/task.js';
+// import useBabelRc from '@cypress/code-coverage/use-babelrc';
 
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = (on, config) => {
+const plugins = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   coverage(on, config);
@@ -28,3 +26,5 @@ module.exports = (on, config) => {
 
   return config;
 };
+
+export default plugins;

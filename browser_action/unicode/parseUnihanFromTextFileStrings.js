@@ -1,7 +1,7 @@
 // Todo: We might consider auto-building these fields in another file and/or
 //   merging with `unihanFieldInfo.js`.
 /* eslint-disable max-len -- Long */
-const fields = ['code_pt', 'kAccountingNumeric', 'kBigFive', 'kCCCII', 'kCNS1986', 'kCNS1992', 'kCangjie', 'kCantonese',
+const fields = ['code_pt', 'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCCCII', 'kCNS1986', 'kCNS1992', 'kCangjie', 'kCantonese',
   'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon',
   'kDefinition', 'kEACC', 'kFenn', 'kFennIndex', 'kFourCornerCode', 'kFrequency', 'kGB0', 'kGB1', 'kGB3',
   'kGB5', 'kGB7', 'kGB8', 'kGSR', 'kGradeLevel', 'kHDZRadBreak', 'kHKGlyph', 'kHKSCS', 'kHanYu', 'kHangul',
@@ -38,7 +38,8 @@ function parseUnihanFromTextFileStrings (scriptFileAsStrings) {
     }
     const pos = fields.indexOf(col);
     if (pos === -1) {
-      // Todo: Even if not inserting, should auto-add locales as in parseUnicodeCharts.js
+      // Todo: Even if not inserting, should auto-add locales as in
+      //   parseUnicodeCharts.js
       if (!notPresent[col]) {
         // eslint-disable-next-line no-console -- CLI
         console.error(`Not present: ${col}\n`);

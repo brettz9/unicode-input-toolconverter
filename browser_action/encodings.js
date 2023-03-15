@@ -1,5 +1,6 @@
 // Todo: Autogenerate if updating
 const encodings = [
+  // eslint-disable-next-line unicorn/text-encoding-identifier-case -- Required
   'UTF-8',
   'ISO-8859-1',
   'Big5',
@@ -52,6 +53,7 @@ const encodings = [
   'UTF-32BE',
   'UTF-32LE',
   'UTF-7',
+  // eslint-disable-next-line unicorn/text-encoding-identifier-case -- Required
   'UTF-8',
   'VISCII',
   'armscii-8',

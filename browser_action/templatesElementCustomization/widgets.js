@@ -20,8 +20,8 @@ export const makeTabBox = function (sel) {
           childTab.dataset.selected = true;
           tabPanel.dataset.selected = true;
         } else {
-          childTab.removeAttribute('data-selected');
-          tabPanel.removeAttribute('data-selected');
+          delete childTab.dataset.selected;
+          delete tabPanel.dataset.selected;
         }
       });
     };

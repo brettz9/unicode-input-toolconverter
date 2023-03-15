@@ -2828,9 +2828,6 @@
     "Pau_Cin_Hau": {
       "message": "Pau Cin Hau"
     },
-    "Indonesia___Oceania_Scripts": {
-      "message": "Indonesia & Oceania Scripts"
-    },
     "Makasar": {
       "message": "Makasar"
     },
@@ -2875,9 +2872,6 @@
     },
     "Osage": {
       "message": "Osage"
-    },
-    "Other": {
-      "message": "Other"
     },
     "Notational_Systems": {
       "message": "Notational Systems"
@@ -3040,6 +3034,33 @@
     },
     "Znamenny_Musical_Notation": {
       "message": "Znamenny Musical Notation"
+    },
+    "Cyrillic_Extended_D": {
+      "message": "Cyrillic Extended-D"
+    },
+    "Miscellaneous": {
+      "message": "Miscellaneous"
+    },
+    "Arabic_Extended_C": {
+      "message": "Arabic Extended-C"
+    },
+    "Devanagari_Extended_A": {
+      "message": "Devanagari Extended-A"
+    },
+    "Nag_Mundari": {
+      "message": "Nag Mundari"
+    },
+    "Indonesian___Philippine_Scripts": {
+      "message": "Indonesian & Philippine Scripts"
+    },
+    "Kawi": {
+      "message": "Kawi"
+    },
+    "CJK_Extension_H": {
+      "message": "CJK Extension H"
+    },
+    "Kaktovik_Numerals": {
+      "message": "Kaktovik Numerals"
     }
   }
 }

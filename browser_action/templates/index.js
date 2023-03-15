@@ -537,36 +537,34 @@ const indexTemplate = function ({_, fonts}) {
                 ['div', {class: 'detailedViewRows vbox'}, [
                   ['div', [
                     ['div', {class: 'detailedViewContainer vbox'}, [
-                      ...[
-                        'General_Category',
-                        'Canonical_Combining_Class',
-                        'Bidi_Class',
-                        'Decomposition_Type_and_Mapping',
-                        'Decimal',
-                        'Digit',
-                        'Numeric',
-                        'Bidi_Mirrored',
-                        'ISO_Comment',
-                        // 'Unicode_1_Name',
-                        'Simple_Uppercase_Mapping',
-                        'Simple_Lowercase_Mapping',
-                        'Simple_Titlecase_Mapping'
-                      ].map((key, i) => {
-                        return ['div', {
-                          class: 'detailedView vbox'
+                      'General_Category',
+                      'Canonical_Combining_Class',
+                      'Bidi_Class',
+                      'Decomposition_Type_and_Mapping',
+                      'Decimal',
+                      'Digit',
+                      'Numeric',
+                      'Bidi_Mirrored',
+                      'ISO_Comment',
+                      // 'Unicode_1_Name',
+                      'Simple_Uppercase_Mapping',
+                      'Simple_Lowercase_Mapping',
+                      'Simple_Titlecase_Mapping'
+                    ].map((key, i) => {
+                      return ['div', {
+                        class: 'detailedView vbox'
+                      }, [
+                        ['label', {
+                          class: 'heading'
                         }, [
-                          ['label', {
-                            class: 'heading'
-                          }, [
-                            _(key),
-                            nbsp.repeat(2),
-                            ['input', {
-                              id: `_detailedView${i + 2}`
-                            }]
-                          ]]
-                        ]];
-                      })
-                    ]]
+                          _(key),
+                          nbsp.repeat(2),
+                          ['input', {
+                            id: `_detailedView${i + 2}`
+                          }]
+                        ]]
+                      ]];
+                    })]
                   ]]
                 ]]
               ]],
@@ -597,19 +595,17 @@ const indexTemplate = function ({_, fonts}) {
                     ]]
                   ]],
                   ['div', {class: 'detailedCJKViewRows vbox'}, [
-                    ['div', [
-                      ...unihanFieldInfo.map(([key, num]) => {
-                        return ['div', {class: 'detailedCJKView vbox'}, [
-                          ['label', {class: 'heading'}, [
-                            _(key),
-                            nbsp.repeat(2),
-                            ['input', {
-                              id: `_detailedCJKView${num}`
-                            }]
-                          ]]
-                        ]];
-                      })
-                    ]]
+                    ['div', unihanFieldInfo.map(([key, num]) => {
+                      return ['div', {class: 'detailedCJKView vbox'}, [
+                        ['label', {class: 'heading'}, [
+                          _(key),
+                          nbsp.repeat(2),
+                          ['input', {
+                            id: `_detailedCJKView${num}`
+                          }]
+                        ]]
+                      ]];
+                    })]
                   ]]
                 ]]
               ]]
