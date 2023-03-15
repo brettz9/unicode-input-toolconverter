@@ -917,7 +917,8 @@ const unicodecharref = {
             $('#_detailedView' + j).parentNode.hidden = hideMissing;
             removeViewChildren(j);
           } catch (err) {
-            alert('3' + err + j);
+            // eslint-disable-next-line no-console -- Debugging
+            console.log('3' + err + j);
           }
         }
       }

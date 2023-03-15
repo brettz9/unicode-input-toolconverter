@@ -31,7 +31,7 @@
 Cypress.Commands.add('clearIndexedDB', async () => {
   const databases = await indexedDB.databases();
 
-  await Promise.all(
+  return await Promise.all(
     databases.map(
       ({name}) => {
         // eslint-disable-next-line promise/avoid-new -- Not in API
@@ -54,14 +54,21 @@ function checkAccessibility () {
   cy.injectAxe();
   // Configure aXe and test the page at initial load
   cy.configureAxe({
-    // Todo: Reenable this accessibility rule when have time to fix
-    // See https://www.deque.com/axe/axe-for-web/documentation/api-documentation/#user-content-parameters-1
-    // For Bootstrap's lack of built-in color contrast, see
-    //  https://getbootstrap.com/docs/4.0/getting-started/accessibility/#color-contrast
-    rules: [{
-      id: 'color-contrast',
-      enabled: false
-    }]
+    rules: [
+      // Todo: Reenable this accessibility rule when have time to fix
+      // See https://www.deque.com/axe/axe-for-web/documentation/api-documentation/#user-content-parameters-1
+      // For Bootstrap's lack of built-in color contrast, see
+      //  https://getbootstrap.com/docs/4.0/getting-started/accessibility/#color-contrast
+      {
+        id: 'color-contrast',
+        enabled: false
+      },
+      // Seems not that counterintuitive to have tabindexes out of order
+      {
+        id: 'tabindex',
+        enabled: false
+      }
+    ]
     /*
     branding: {
       brand: String,

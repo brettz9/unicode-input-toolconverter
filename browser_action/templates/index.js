@@ -9,8 +9,11 @@ import CharrefConverterBridges from '../charrefConverters.js';
 import {registerDTD} from '../entityBehaviors.js';
 
 const indexTemplate = function ({_, fonts}) {
+  $('html').lang = _.resolvedLocale;
   document.title = _('uresults_title');
-  jml('div', [
+  jml('div', {
+    role: 'main'
+  }, [
     ['div', {
       id: 'unicodeTabBox',
       style: 'width: 700px;',

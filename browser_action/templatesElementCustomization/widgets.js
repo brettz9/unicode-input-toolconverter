@@ -33,7 +33,8 @@ export const makeTabBox = function (sel) {
     tabbox.querySelector('.tabs').prepend(...tabbox.$getTabPanels().map(({
       dataset: {title, selected, label}
     }) => {
-      return jml('div', {
+      // Set to h1 for accessibility, though styles will reduce default size
+      return jml('h1', {
         class: 'tab',
         title,
         dataset: {selected},

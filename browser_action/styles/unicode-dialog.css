@@ -322,6 +322,9 @@ radiogroup {
 
 .tab {
   float: left;
+  /* Although h1 for accessibility, reduce size */
+  font-weight: normal;
+  font-size: inherit !important;
 }
 .tab[data-selected] {
   border-collapse: collapse;

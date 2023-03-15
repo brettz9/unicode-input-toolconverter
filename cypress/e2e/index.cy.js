@@ -16,7 +16,7 @@ describe('Main page', function () {
     }).should('eq', '/browser_action/');
   });
 
-  it.only('Checks accessibility', function () {
+  it('Checks accessibility', function () {
     cy.visitURLAndCheckAccessibility('/browser_action/');
   });
 
