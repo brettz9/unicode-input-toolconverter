@@ -724,8 +724,11 @@ const unicodecharref = {
       for (let i = 15; i <= 91; i++) {
         $('#_detailedCJKView' + i).value = '';
       }
-      for (let i = 0; i < this.unihanProperties.length; i++) {
-        $('#searchk' + this.unihanProperties[i]).value = '';
+      for (const prop of this.unihanProperties) {
+        // May not be generated based on `showComplexWindow`
+        if ($('#searchk' + prop)) {
+          $('#searchk' + prop).value = '';
+        }
       }
     }
 
