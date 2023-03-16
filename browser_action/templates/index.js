@@ -996,7 +996,7 @@ const indexTemplate = function ({_, fonts}) {
               $on: {
                 async click (e) {
                   await unicodecharref.setprefs(e);
-                  unicodecharref.testIfComplexWindow();
+                  await unicodecharref.testIfComplexWindow();
                 }
               }
             }],

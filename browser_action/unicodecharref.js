@@ -318,7 +318,7 @@ const unicodecharref = {
     //   (window.screen.availWidth*50/100);
     // window.sizeToContent();
 
-    this.testIfComplexWindow();
+    await this.testIfComplexWindow();
 
     // These defaults are necessary for the sake of the options URL
     //  (when called from addons menu)
