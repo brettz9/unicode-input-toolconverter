@@ -174,8 +174,8 @@ const indexTemplate = function ({_, fonts}) {
                         id: 'onlyentsyes',
                         class: 'charthbox',
                         $on: {
-                          click (e) {
-                            unicodecharref.onlyentsyesflip(e);
+                          async click (e) {
+                            await unicodecharref.onlyentsyesflip(e);
                           }
                         }
                       }],
@@ -189,8 +189,8 @@ const indexTemplate = function ({_, fonts}) {
                         ['input', {
                           id: 'rowsset',
                           $on: {
-                            change (e) {
-                              unicodecharref.rowsset(e);
+                            async change (e) {
+                              await unicodecharref.rowsset(e);
                             }
                           }
                         }]
@@ -201,8 +201,8 @@ const indexTemplate = function ({_, fonts}) {
                         ['input', {
                           id: 'colsset',
                           $on: {
-                            change (e) {
-                              unicodecharref.colsset(e);
+                            async change (e) {
+                              await unicodecharref.colsset(e);
                             }
                           }
                         }]
@@ -215,8 +215,8 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'entyes',
                           class: 'charthbox',
                           $on: {
-                            click (e) {
-                              unicodecharref.entflip(e);
+                            async click (e) {
+                              await unicodecharref.entflip(e);
                             }
                           }
                         }],
@@ -229,8 +229,8 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'decyes',
                           class: 'charthbox',
                           $on: {
-                            click (e) {
-                              unicodecharref.decflip(e);
+                            async click (e) {
+                              await unicodecharref.decflip(e);
                             }
                           }
                         }],
@@ -243,8 +243,8 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'hexyes',
                           class: 'charthbox',
                           $on: {
-                            click (e) {
-                              unicodecharref.hexflip(e);
+                            async click (e) {
+                              await unicodecharref.hexflip(e);
                             }
                           }
                         }],
@@ -257,8 +257,8 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'unicodeyes',
                           class: 'charthbox',
                           $on: {
-                            click (e) {
-                              unicodecharref.unicodeflip(e);
+                            async click (e) {
+                              await unicodecharref.unicodeflip(e);
                             }
                           }
                         }],
@@ -272,8 +272,8 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'startCharInMiddleOfChart',
                           class: 'charthbox',
                           $on: {
-                            click (e) {
-                              unicodecharref.middleflip(e);
+                            async click (e) {
+                              await unicodecharref.middleflip(e);
                             }
                           }
                         }],
@@ -286,8 +286,8 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'buttonyes',
                           class: 'charthbox',
                           $on: {
-                            click (e) {
-                              unicodecharref.buttonflip(e);
+                            async click (e) {
+                              await unicodecharref.buttonflip(e);
                             }
                           }
                         }],
@@ -335,8 +335,8 @@ const indexTemplate = function ({_, fonts}) {
                             }
                           },
                           $on: {
-                            change (e) {
-                              unicodecharref.setprefs(e);
+                            async change (e) {
+                              await unicodecharref.setprefs(e);
                               this.$setFontFamily(this.value);
                             }
                           }
@@ -367,8 +367,8 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'lang',
                           size: '5',
                           $on: {
-                            change (e) {
-                              unicodecharref.setprefs(e);
+                            async change (e) {
+                              await unicodecharref.setprefs(e);
                               $('#chart_table').lang = this.value;
                             }
                           }
@@ -425,8 +425,8 @@ const indexTemplate = function ({_, fonts}) {
                         title: _('ShowImg_tooltiptext'),
                         type: 'checkbox',
                         $on: {
-                          click (e) {
-                            unicodecharref.setImagePref(e);
+                          async click (e) {
+                            await unicodecharref.setImagePref(e);
                           }
                         }
                       }],
@@ -516,8 +516,8 @@ const indexTemplate = function ({_, fonts}) {
                       type: 'checkbox',
                       id: 'showAllDetailedView',
                       $on: {
-                        click (e) {
-                          unicodecharref.setprefs(e);
+                        async click (e) {
+                          await unicodecharref.setprefs(e);
                         }
                       }
                     }],
@@ -584,8 +584,8 @@ const indexTemplate = function ({_, fonts}) {
                       type: 'checkbox',
                       id: 'showAllDetailedCJKView',
                       $on: {
-                        click (e) {
-                          unicodecharref.setprefs(e);
+                        async click (e) {
+                          await unicodecharref.setprefs(e);
                         }
                       }
                     }],
@@ -873,8 +873,8 @@ const indexTemplate = function ({_, fonts}) {
           ['label', [
             _('initialTab_label'), nbsp.repeat(3),
             ['select', {id: 'initialTab', $on: {
-              click (e) {
-                unicodecharref.setprefs(e);
+              async click (e) {
+                await unicodecharref.setprefs(e);
               }
             }}, [
               ['option', {
@@ -904,8 +904,8 @@ const indexTemplate = function ({_, fonts}) {
               type: 'checkbox',
               id: 'asciiLt128',
               $on: {
-                click (e) {
-                  unicodecharref.setprefs(e);
+                async click (e) {
+                  await unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -919,8 +919,8 @@ const indexTemplate = function ({_, fonts}) {
               id: 'hexLettersUpper',
               class: 'topofpanel',
               $on: {
-                click (e) {
-                  unicodecharref.setprefs(e);
+                async click (e) {
+                  await unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -934,8 +934,8 @@ const indexTemplate = function ({_, fonts}) {
               id: 'xhtmlentmode',
               class: 'topofpanel',
               $on: {
-                click (e) {
-                  unicodecharref.setprefs(e);
+                async click (e) {
+                  await unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -949,8 +949,8 @@ const indexTemplate = function ({_, fonts}) {
               id: 'xmlentkeep',
               class: 'topofpanel',
               $on: {
-                click (e) {
-                  unicodecharref.setprefs(e);
+                async click (e) {
+                  await unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -964,8 +964,8 @@ const indexTemplate = function ({_, fonts}) {
               id: 'ampkeep',
               class: 'topofpanel',
               $on: {
-                click (e) {
-                  unicodecharref.setprefs(e);
+                async click (e) {
+                  await unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -979,8 +979,8 @@ const indexTemplate = function ({_, fonts}) {
               id: 'ampspace',
               class: 'topofpanel',
               $on: {
-                click (e) {
-                  unicodecharref.setprefs(e);
+                async click (e) {
+                  await unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -994,8 +994,8 @@ const indexTemplate = function ({_, fonts}) {
               id: 'showComplexWindow',
               class: 'topofpanel',
               $on: {
-                click (e) {
-                  unicodecharref.setprefs(e);
+                async click (e) {
+                  await unicodecharref.setprefs(e);
                   unicodecharref.testIfComplexWindow();
                 }
               }
@@ -1010,8 +1010,8 @@ const indexTemplate = function ({_, fonts}) {
               id: 'cssUnambiguous',
               class: 'topofpanel',
               $on: {
-                click (e) {
-                  unicodecharref.setprefs(e);
+                async click (e) {
+                  await unicodecharref.setprefs(e);
                 }
               }
             }],
@@ -1023,8 +1023,8 @@ const indexTemplate = function ({_, fonts}) {
             ['select', {
               id: 'CSSWhitespace',
               $on: {
-                click (e) {
-                  unicodecharref.cssWhitespace(e);
+                async click (e) {
+                  await unicodecharref.cssWhitespace(e);
                 }
               }
             }, [
@@ -1161,8 +1161,8 @@ const indexTemplate = function ({_, fonts}) {
                 id: 'appendtohtmldtd',
                 type: 'checkbox',
                 $on: {
-                  click (e) {
-                    unicodecharref.append2htmlflip(e);
+                  async click (e) {
+                    await unicodecharref.append2htmlflip(e);
                   }
                 }
               }],

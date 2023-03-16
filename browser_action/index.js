@@ -85,8 +85,8 @@ unicodecharref.initialize({
 * get out of the current window size and will go back to the last
 * window size.
 */
-// window.addEventListener('resize', function (e) {
-//   setPref('outerHeight', window.outerHeight);
-//   setPref('outerWidth', window.outerWidth);
+// window.addEventListener('resize', async (e) => {
+//   await setPref('outerHeight', window.outerHeight);
+//   await setPref('outerWidth', window.outerWidth);
 // });
 })();

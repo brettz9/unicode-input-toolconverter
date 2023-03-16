@@ -468,11 +468,11 @@ const unicodecharref = {
     } else {
       switch (targetid) {
       case 'context-unicodechart':
-        this.disableEnts();
+        await this.disableEnts();
         $('#startset').value = toconvert;
         $('#unicodeTabBox').$selectTab($('#charts'));
         if (toconvert !== '') {
-          this.setCurrstartset(toconvert);
+          await this.setCurrstartset(toconvert.codePointAt() - 1);
           chartBuild();
         }
         // Fallthrough
@@ -517,21 +517,22 @@ const unicodecharref = {
 
     if (targetid !== 'searchName' && targetid !== 'searchkDefinition') {
       if (toconvert) { // Seemed to become necessarily suddenly
-        this.setCurrstartset(toconvert);
+        await this.setCurrstartset(toconvert.codePointAt() - 1);
       }
       chartBuild();
     }
     this.tblfontsize(0); // Draw with the preferences value
 
     $('#menulists').addEventListener('command',
-      function (e) {
+      async function (e) {
         // const tmp = that.branch.getComplexValue(
         //   'currentStartCharCode', Ci.nsIPrefLocalizedString
         // ).data;
-        that.disableEnts();
-        that.setCurrstartset(e.target.value);
+        await that.disableEnts();
+        await that.setCurrstartset(e.target.value.codePointAt() - 1);
         chartBuild();
-        // that.setCurrstartset(tmp); // Set it back as it was before the search
+        // Set it back as it was before the search
+        // await that.setCurrstartset(tmp);
       },
       true);
 
@@ -561,44 +562,42 @@ const unicodecharref = {
     ].getService(Ci.nsIClipboardHelper);
     gClipboardHelper.copyString(text);
   },
-  setprefs (e) {
+  async setprefs (e) {
     switch (e.target.nodeName) {
     case 'textbox':
-      setPref(
+      return await setPref(
         e.target.id,
         e.target.value
       );
-      break;
     case 'menuitem':
-      setPref(
+      return await setPref(
         e.target.parentNode.parentNode.id, e.target.value
       ); // Could use @label or position as default value
-      break;
     case 'checkbox':
       // Apparently hasn't changed yet, so use the opposite
-      setPref(e.target.id, Boolean(!e.target.checked));
-      break;
+      return await setPref(e.target.id, Boolean(!e.target.checked));
     case 'radio': {
       let radioid;
       const result = e.target.id.match(/^_(\d)+-(.*)$/u);
       if (result !== null) {
         radioid = result[2]; // Extract preference name
-        setPref(radioid, result[1] === '1');
+        return await setPref(radioid, result[1] === '1');
       }
       break;
     } default:
       break;
     }
+    return undefined;
   },
   async resetdefaults () {
     const that = this;
     // Todo: Change to programmatic setting
     // If make changes here, also change the default/preferences
     //  charrefunicode.js file
-    this.setBoolChecked([
+    await this.setBoolChecked([
       'asciiLt128', 'showImg', 'xhtmlentmode', 'hexLettersUpper', 'multiline'
     ], false);
-    this.setBoolChecked([
+    await this.setBoolChecked([
       'xmlentkeep', 'ampkeep', 'appendtohtmldtd', 'cssUnambiguous'
     ], true);
 
@@ -611,72 +610,72 @@ const unicodecharref = {
     * @param {string} langOrFont
     * @returns {string}
     */
-    function langFont (langOrFont) { // Fix: needs to get default!
+    async function langFont (langOrFont) { // Fix: needs to get default!
       const Components = 'todo';
       const Ci = Components.interfaces;
       const deflt = that.branchDefault.getComplexValue(
         langOrFont, Ci.nsIPrefLocalizedString
       ).data;
       $('#' + langOrFont).value = deflt;
-      setPref(langOrFont, deflt);
+      await setPref(langOrFont, deflt);
       return deflt;
     }
-    $('#chart_table').lang = langFont('lang');
+    $('#chart_table').lang = await langFont('lang');
 
-    $('#insertText').style.fontFamily = langFont('font');
+    $('#insertText').style.fontFamily = await langFont('font');
     // Form elements don't inherit, so find these manually
-    $$('#chart_table button[name="unicode"]').forEach((button) => {
-      button.style.fontFamily = langFont('font');
+    $$('#chart_table button[name="unicode"]').forEach(async (button) => {
+      button.style.fontFamily = await langFont('font');
     });
 
-    // setPref('hexstyleLwr', true);
+    // await setPref('hexstyleLwr', true);
     // $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
 
-    setPref('fontsizetextbox', 13);
+    await setPref('fontsizetextbox', 13);
     this.fontsizetextbox(0);
 
     /*
     Easy enough to manually remove DTD -- wouldn't want to lose that data
-    setPref('DTDtextbox', '');
+    await setPref('DTDtextbox', '');
     $('#DTDtextbox').value = '';
     */
 
     // Don't really need to reset since user can't currently change
     //  this (only for blank string entry)
-    setPref(
+    await setPref(
       'startset', 'a'.codePointAt() - 1
     );
 
-    this.setCurrstartset(await getPref('startset'));
+    await this.setCurrstartset(await getPref('startset'));
 
     $('#displayUnicodeDesc').setAttribute('multiline', false);
     $('#displayUnicodeDesc').setAttribute('rows', 1);
 
     // These get activated in chartBuild(); below
-    setPref('tblrowsset', 4);
+    await setPref('tblrowsset', 4);
     $('#rowsset').value = 4;
-    setPref('tblcolsset', 3);
+    await setPref('tblcolsset', 3);
     $('#colsset').value = 3;
 
-    this.setBoolChecked([
+    await this.setBoolChecked([
       'entyes', 'hexyes', 'decyes', 'unicodeyes', 'buttonyes'
     ], true);
-    this.setBoolChecked([
+    await this.setBoolChecked([
       'onlyentsyes', 'startCharInMiddleOfChart'
     ], false);
 
-    // setPref('xstyle', 'x');
+    // await setPref('xstyle', 'x');
     // $('#xstyle').checked = true;
 
-    setPref('initialTab', 'charts');
+    await setPref('initialTab', 'charts');
     $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_charttab');
 
-    setPref('tblfontsize', 13);
+    await setPref('tblfontsize', 13);
     this.resizecells();
 
     chartBuild();
-    setPref('outerHeight', 0);
-    setPref('outerWidth', 0);
+    await setPref('outerHeight', 0);
+    await setPref('outerWidth', 0);
   },
 
   /**
@@ -686,18 +685,18 @@ const unicodecharref = {
    *   should have their values set
    * @param {boolean} value The value for the preference and checked state
    */
-  setBoolChecked (els, value) {
+  async setBoolChecked (els, value) {
     els = typeof els === 'string' ? [els] : els;
-    for (const el of els) {
-      setPref(el, value);
+    return await Promise.all(els.map(async (el) => {
+      await setPref(el, value);
       $('#' + el).checked = value;
-    }
+    }));
   },
 
   // End UI bridges
 
-  setImagePref (ev) {
-    this.setprefs(ev);
+  async setImagePref (ev) {
+    await this.setprefs(ev);
     if ($('#unicodeImg').firstChild) {
       $('#unicodeImg').firstChild.remove();
     }
@@ -1086,7 +1085,7 @@ const unicodecharref = {
   },
   async fontsizetextbox (size) { // Changes font-size
     const txtbxsize = await getPref('fontsizetextbox') + size;
-    setPref('fontsizetextbox', txtbxsize);
+    await setPref('fontsizetextbox', txtbxsize);
 
     $('#toconvert').style.fontSize = txtbxsize + 'px';
     $('#converted').style.fontSize = txtbxsize + 'px';
@@ -1099,7 +1098,7 @@ const unicodecharref = {
   async tblfontsize (size) { // Changes font-size of chart table cells
     const fsize = await getPref('tblfontsize') + size;
     // const tds = createHTMLElement('td');
-    setPref('tblfontsize', fsize);
+    await setPref('tblfontsize', fsize);
     this.resizecells({sizeToContent: size > 0});
   },
   async resizecells ({sizeToContent} = {}) {
@@ -1119,33 +1118,33 @@ const unicodecharref = {
       window.sizeToContent();
     }
   },
-  flip (e) {
-    this.setCurrstartset(this.j);
-    this.setprefs(e);
+  async flip (e) {
+    await this.setCurrstartset(this.j);
+    await this.setprefs(e);
     chartBuild();
   },
   onlyentsyesflip (e) {
-    this.flip(e);
+    return this.flip(e);
   },
   hexflip (e) {
-    this.flip(e);
+    return this.flip(e);
   },
   decflip (e) {
-    this.flip(e);
+    return this.flip(e);
   },
   unicodeflip (e) {
-    this.flip(e);
+    return this.flip(e);
   },
   middleflip (e) {
-    this.flip(e);
+    return this.flip(e);
   },
   buttonflip (e) {
-    this.flip(e);
+    return this.flip(e);
   },
   entflip (e) {
-    this.flip(e);
+    return this.flip(e);
   },
-  cssWhitespace (e) {
+  async cssWhitespace (e) {
     let {value} = e.target;
     // Escape these since some like \r may be lost?
     switch (value) {
@@ -1170,62 +1169,79 @@ const unicodecharref = {
     default:
       throw new Error('Unexpected menu value');
     }
-    setPref('cssWhitespace', value);
+    await setPref('cssWhitespace', value);
   },
-  /* xstyleflip () {
-    this.setCurrstartset(this.j);
+  /* async xstyleflip () {
+    await this.setCurrstartset(this.j);
     const currxstyle = 'x';
     const prevxstyle = await getPref('xstyle');
     if (prevxstyle === 'x') {
       currxstyle = 'X';
     }
-    setPref('xstyle', currxstyle);
+    await setPref('xstyle', currxstyle);
     chartBuild();
   }, */
-  rowsset (e) {
-    this.setCurrstartset(this.j);
+  async rowsset (e) {
+    await this.setCurrstartset(this.j);
     if (e.target.value !== null && e.target.value !== '') {
-      setPref('tblrowsset', e.target.value);
+      await setPref('tblrowsset', e.target.value);
     }
     chartBuild();
   },
-  colsset (e) {
-    this.setCurrstartset(this.j);
+  async colsset (e) {
+    await this.setCurrstartset(this.j);
     if (e.target.value !== null && e.target.value !== '') {
-      setPref('tblcolsset', e.target.value);
+      await setPref('tblcolsset', e.target.value);
     }
     chartBuild();
   },
   async startset (tbx, descripts) {
-    this.disableEnts();
+    /**
+     * @param {string} str
+     * @returns {Integer}
+     */
+    function convert (str) {
+      str = str.replace(/;$/u, '');
+      const hexInit = str.match(/^&?#?x/u);
+      if (hexInit) {
+        return Number.parseInt(str.slice(hexInit[0].length), 16) - 1;
+      }
+      const decInit = str.match(/^&?#/u);
+      if (decInit) {
+        return Number.parseInt(str.slice(decInit[0].length)) - 1;
+      }
+      return str.codePointAt() - 1;
+    }
+    await this.disableEnts();
     const data = tbx.value !== null &&
       tbx.value !== undefined &&
       tbx.value !== ''
-      ? tbx.value
-      : (await getPref('startset'));
-    this.setCurrstartset(data);
+      ? convert(tbx.value)
+      : (await getPref('startset') || 'a').codePointAt() - 1;
+    await this.setCurrstartset(data);
 
     chartBuild(descripts);
   },
   searchUnihan (obj) {
     this.searchUnicode(obj, 'Unihan');
   },
-  disableEnts () {
-    this.setBoolChecked('onlyentsyes', false);
+  async disableEnts () {
+    return await this.setBoolChecked('onlyentsyes', false);
   },
   async searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
     charrefunicodeConverter.searchUnicode(obj, table, nochart, strict);
     if (!nochart) {
       const tmp = await getPref('currentStartCharCode');
       this.startset(obj, true); // Could remember last description (?)
-      this.setCurrstartset(tmp); // Set it back as it was before the search
+      // Set it back as it was before the search
+      await this.setCurrstartset(tmp);
     }
     // Doesn't work since name_desc_val is search value, not first
     //  result value (we could remember the last search and whether it
     //  were a search, however); we need to be careful, however, since
     //  some searches run automatically on start-up
     /* if (name_desc === 'Name' || name_desc === 'kDefinition') {
-      this.setCurrstartset(name_desc_val);
+      await this.setCurrstartset(name_desc_val.codePointAt() - 1);
     } */
   },
   moveoutput (movedid) {
@@ -1233,20 +1249,21 @@ const unicodecharref = {
     $('#unicodetabs').selectedIndex = 1;
     $('#toconvert').value = insertText.value;
   },
-  append2htmlflip (e) {
-    this.setprefs(e);
+  async append2htmlflip (e) {
+    await this.setprefs(e);
     registerDTD(); // (in case DTD not also changed, still need to reset)
   },
   /**
+   * @todo Unused
    * Sets the preference for whether to display the chosen character
    * in the middle of the chart (or beginning).
    * @param {boolean} bool Whether to set to true or not
    */
-  startCharInMiddleOfChart (bool) {
+  async startCharInMiddleOfChart (bool) {
     // Commented this out because while it will always change (unlike
     //   now), the value will be misleading
     // $(EXT_BASE + 'startCharInMiddleOfChart').checked = bool;
-    setPref('startCharInMiddleOfChart', bool);
+    return await setPref('startCharInMiddleOfChart', bool);
   },
   /**
    * Sets a value in preferences at which the Unicode chart view will
@@ -1254,13 +1271,14 @@ const unicodecharref = {
    * @param {Integer} value The value to which to set the current
    *   starting value
    */
-  setCurrstartset (value) {
-    setPref('currentStartCharCode', value);
+  async setCurrstartset (value) {
+    return await setPref('currentStartCharCode', value);
   },
+  // Unused?
   // Some of these defaults may become irrelevant due to the
   //  /default/preferences/charrefunicode.js file's settings
-  k (setval) {
-    this.setCurrstartset(setval);
+  async k (setval) {
+    return await this.setCurrstartset(setval);
   },
   insertent () {
     insertIntoOrOverExisting({
@@ -1281,11 +1299,11 @@ const unicodecharref = {
   async multiline (e) {
     const display = $('#displayUnicodeDesc');
     if (await getPref('multiline') === false) {
-      setPref('multiline', true);
+      await setPref('multiline', true);
       display.setAttribute('multiline', true);
       display.setAttribute('rows', 3);
     } else {
-      setPref('multiline', false);
+      await setPref('multiline', false);
       display.setAttribute('multiline', false);
       display.setAttribute('rows', 1);
     }
@@ -1293,7 +1311,7 @@ const unicodecharref = {
   async addToToolbar () {
     const dropdownArr = await getPref('dropdownArr');
     dropdownArr.push($('#insertText').value);
-    setPref('dropdownArr', dropdownArr);
+    await setPref('dropdownArr', dropdownArr);
     if (await this.refreshToolbarDropdown()) {
       alert(_('yourItemAdded'));
     } else {

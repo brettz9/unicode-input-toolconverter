@@ -30,7 +30,7 @@ async function registerDTD () {
   const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/gu;
 
   const text = $('#DTDtextbox').value;
-  setPref('DTDtextbox', text);
+  await setPref('DTDtextbox', text);
 
   let result;
 
