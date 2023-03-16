@@ -5,7 +5,7 @@
 import {$, $$} from '../vendor/jamilih/dist/jml-es.js';
 // Todo: Filed the following to avoid both sync and callbacks:
 //  https://github.com/101arrowz/fflate/issues/70
-import {unzipSync, strFromU8} from '../vendor/fflate/esm/browser.js';
+import {strFromU8} from '../vendor/fflate/esm/browser.js'; // unzipSync,
 import {
   getUnicodeDefaults, getPrefDefaults
 } from './preferences/prefDefaults.js';
@@ -20,8 +20,8 @@ import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {UnihanDatabase} from './unicode/charrefunicodeDb.js';
 import {getCJKTypeFromHexString} from './unicode/unihan.js';
 import unihanDbPopulate from './unicode/unihanDbPopulate.js';
-import parseUnihanFromTextFileStrings from
-  './unicode/parseUnihanFromTextFileStrings.js';
+// import parseUnihanFromTextFileStrings from
+//   './unicode/parseUnihanFromTextFileStrings.js';
 import {registerDTD} from './entityBehaviors.js';
 import {entities, numericCharacterReferences} from './entities.js';
 import {findBridgeForTargetID} from './charrefConverters.js';
@@ -39,7 +39,8 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
 async function getDownloadResults () {
   const receivedInfo = await showProgress({
     // 6747669; // 39.5 MB unzipped;
-    url: '/download/unihan/Unihan.zip',
+    // url: '/download/unihan/Unihan.zip',
+    url: '/download/unihan/unihan.json',
     progressElement: $('#progress_element'),
     progress (percentComplete) {
       return `${_('download_progress')} ${
@@ -49,6 +50,11 @@ async function getDownloadResults () {
   });
   const compressed = joinChunks(receivedInfo);
 
+  return JSON.parse(strFromU8(compressed));
+
+  /*
+  // Works but easier to work with generated file over zip
+
   const decompressedObj = unzipSync(compressed);
   const scriptFileAsStrings = Object.values(decompressedObj).map(
     (decompressed) => {
@@ -57,6 +63,7 @@ async function getDownloadResults () {
   );
 
   return parseUnihanFromTextFileStrings(scriptFileAsStrings);
+  */
 }
 
 const unicodecharref = {
