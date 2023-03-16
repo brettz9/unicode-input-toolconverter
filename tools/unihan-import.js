@@ -32,11 +32,15 @@ if (args.includes('download')) {
   await download(
     'https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip', targetDir
   );
+  // eslint-disable-next-line no-console -- CLI
+  console.log('Completed download portion');
 }
 
 if (args.includes('extract') || args.includes('download')) {
   await extract(unihanZip, {dir: targetDir});
   await fs.unlink(unihanZip);
+  // eslint-disable-next-line no-console -- CLI
+  console.log('Completed extraction');
 }
 
 await addScript(targetDir);
@@ -63,4 +67,6 @@ async function addScript (baseURL) {
   const arr = parseUnihanFromTextFileStrings(scriptFileAsStrings);
 
   await fs.writeFile(targetJSONUnihan, JSON.stringify(arr));
+  // eslint-disable-next-line no-console -- CLI
+  console.log('Wrote file');
 }
