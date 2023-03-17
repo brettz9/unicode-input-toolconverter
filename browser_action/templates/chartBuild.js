@@ -6,8 +6,8 @@ let idgen = 0;
 const chartBuildTemplate = function ({
   _, rows, cols, charrefunicodeConverter, current,
   resetCurrentStartCharCodeIfOutOfBounds, descriptsOrOnlyEnts,
-  q, obj, chars, textReceptacle, entyes, chartBuild, descripts,
-  chartContainer,
+  q, textReceptacle, entyes, chartBuild, descripts,
+  chartContainer, arr,
   setPref, insertText, buttonyes, font, lang, prev,
   rowceil, colsOverRemainder, appliedFormats, displayTypes,
   captionContent
@@ -48,10 +48,10 @@ const chartBuildTemplate = function ({
         // Todo: Document what's going on here
         if (descriptsOrOnlyEnts) {
           q++;
-          if (q >= obj[chars].length) {
+          if (q >= arr.length) {
             q = 0;
           }
-          current.startCharCode = obj[chars][q];
+          current.startCharCode = arr[q];
         } else {
           current.startCharCode++;
         }
@@ -78,9 +78,9 @@ const chartBuildTemplate = function ({
             }
           }
         }, [
-          ...appliedFormats.flatMap((type, idx, arr) => {
+          ...appliedFormats.flatMap((type, idx, array) => {
             const name = type.replace('yes', '');
-            const isMiddle = idx === 1 && arr.length === 2;
+            const isMiddle = idx === 1 && array.length === 2;
             const isFinal = idx === 2;
             const button = [(buttonyes ? 'button' : 'div'), {
               class: buttonyes ? 'buttonyes' : null,

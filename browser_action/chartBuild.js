@@ -67,7 +67,7 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
   }
 
   // Todo: Document (or better name) what's going on here
-  let q, prev, chars, arr, remainder, rowceil, colsOverRemainder;
+  let q, prev, arr, remainder, rowceil, colsOverRemainder;
   const descriptsOrOnlyEnts = onlyentsyes || descripts;
   if (descriptsOrOnlyEnts) {
     arr = descripts
@@ -145,7 +145,7 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
   chartBuildTemplate({
     _, rows, cols, charrefunicodeConverter, current,
     resetCurrentStartCharCodeIfOutOfBounds, descriptsOrOnlyEnts,
-    q, chars, textReceptacle, entyes, chartBuild, descripts,
+    q, arr, textReceptacle, entyes, chartBuild, descripts,
     chartContainer,
     setPref, insertText, buttonyes, font, lang, prev,
     rowceil, colsOverRemainder, appliedFormats, displayTypes,
