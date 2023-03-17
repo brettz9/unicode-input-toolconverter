@@ -131,10 +131,10 @@ button.reconvert {
 #convertFromEncoding {
   margin-bottom: 10px;
 }
-
+/*
 .aboutdescription, .prefdescription, .conversionhbox {
-
 }
+*/
 .indentedradio {
   margin-left: 70px;
 }
@@ -209,9 +209,11 @@ radiogroup {
   min-width: 330px;
 }
 
+/*
 .searchMenu {
-  /* -moz-box-flex: 1; */
+  /* -moz-box-flex: 1; *
 }
+*/
 
 #chart_selectchar_persist_vbox {
   margin-right: 10px;
