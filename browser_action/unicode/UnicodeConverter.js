@@ -789,7 +789,7 @@ export const getUnicodeConverter = () => {
       } catch (e) {
         alert(e);
       } finally {
-        conn.close();
+        // conn.close();
       }
     }
   };
