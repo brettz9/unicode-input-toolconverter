@@ -333,6 +333,7 @@ radiogroup {
 }
 .tab[data-selected]:hover {
   background-color: blue;
+  color: white;
 }
 .tab:not([data-selected]) {
   border-collapse: collapse;
@@ -341,6 +342,7 @@ radiogroup {
 }
 .tab:not([data-selected]):hover {
   background-color: blue;
+  color: white;
 }
 .tabpanel:not([data-selected]) {
   display: none;
