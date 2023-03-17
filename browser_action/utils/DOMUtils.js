@@ -18,7 +18,7 @@ function removeViewChildren (i) {
 function placeItem (sel, item) {
   const firstchld = $(sel).firstChild;
   if (firstchld !== null) {
-    $(sel).replaceChild(item, firstchld);
+    firstchld.replaceWith(item);
   } else {
     $(sel).append(item);
   }
