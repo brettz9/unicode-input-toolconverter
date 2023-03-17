@@ -751,10 +751,12 @@ export const getUnicodeConverter = () => {
           const chars = await conn.getAll();
           const filteredChars = strict
             ? chars.filter((chr) => {
-              return chr[field] === nameDescVal;
+              return chr[field].toLowerCase() === nameDescVal.toLowerCase();
             })
             : chars.filter((chr) => {
-              return chr[field].includes(nameDescVal);
+              return chr[field].toLowerCase().includes(
+                nameDescVal.toLowerCase()
+              );
             });
 
           filteredChars.forEach((filteredChar) => {
