@@ -145,17 +145,17 @@ const CharrefConverterBridges = {
    * @param {string} toconvert The text to convert
    * @param {XULElement} el The button element whose class should be
    *   dynamically changed (and others deactivated)
-   * @returns {string} The converted-to-Unicode value
+   * @returns {Promise<string>} The converted-to-Unicode value
    */
-  charDesc2UnicodeVal (toconvert, el) {
+  async charDesc2UnicodeVal (toconvert, el) {
     classChange(el);
-    const val = charrefunicodeConverter.charDesc2UnicodeVal(toconvert);
+    const val = await charrefunicodeConverter.charDesc2UnicodeVal(toconvert);
     $('#converted').value = val;
     return val;
   },
-  charDesc2Unicode (e) {
+  async charDesc2Unicode (e) {
     const toconvert = $('#toconvert').value;
-    this.charDesc2UnicodeVal(toconvert, e.target);
+    await this.charDesc2UnicodeVal(toconvert, e.target);
     return false;
   },
   async unicode2CharDesc (e) {
@@ -327,7 +327,9 @@ async function findBridgeForTargetID ({toconvert, targetid}) {
     );
     break;
   case 'context-charrefunicode18':
-    out = CharrefConverterBridges.charDesc2UnicodeVal(toconvert, $('#b18'));
+    out = await CharrefConverterBridges.charDesc2UnicodeVal(
+      toconvert, $('#b18')
+    );
     break;
   default:
     throw new Error('Unexpected target ID type');

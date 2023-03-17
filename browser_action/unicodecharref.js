@@ -490,14 +490,14 @@ const unicodecharref = {
       case 'searchName':
         $(targetid).value = unicodeQueryObj.string;
         $(targetid).focus();
-        this.searchUnicode({
+        await this.searchUnicode({
           id: targetid, value: unicodeQueryObj.string
         }); // Assume non-CJK
         break;
       case 'searchkDefinition':
         $(targetid).value = unicodeQueryObj.string;
         $(targetid).focus();
-        this.searchUnihan({id: targetid, value: unicodeQueryObj.string});
+        await this.searchUnihan({id: targetid, value: unicodeQueryObj.string});
         break;
       default:
         out = ''; // Plain launcher with no values sent
@@ -731,7 +731,7 @@ const unicodecharref = {
       for (let i = 15; i <= 91; i++) {
         $('#_detailedCJKView' + i).value = '';
       }
-      for (const prop of this.unihanProperties) {
+      for (const prop of this.Unihan) {
         // May not be generated based on `showComplexWindow`
         if ($('#searchk' + prop)) {
           $('#searchk' + prop).value = '';
@@ -1232,14 +1232,14 @@ const unicodecharref = {
 
     chartBuild(descripts);
   },
-  searchUnihan (obj) {
-    this.searchUnicode(obj, 'Unihan');
+  async searchUnihan (obj) {
+    return await this.searchUnicode(obj, 'Unihan');
   },
   async disableEnts () {
     return await this.setBoolChecked('onlyentsyes', false);
   },
   async searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
-    charrefunicodeConverter.searchUnicode(obj, table, nochart, strict);
+    await charrefunicodeConverter.searchUnicode(obj, table, nochart, strict);
     if (!nochart) {
       const tmp = await getPref('currentStartCharCode');
       this.startset(obj, true); // Could remember last description (?)
@@ -1355,7 +1355,7 @@ const unicodecharref = {
 
   // Build these programmatically? (and in UI?)
   /* Pseudo-constants */
-  unihanProperties: [
+  Unihan: [
     'AccountingNumeric', 'BigFive', 'CCCII', 'CNS1986', 'CNS1992',
     'Cangjie', 'Cantonese', 'CheungBauer', 'CheungBauerIndex',
     'CihaiT', 'CompatibilityVariant', 'Cowles', 'DaeJaweon', 'EACC', 'Fenn',

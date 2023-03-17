@@ -2,6 +2,21 @@
 import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
 import {getHangulName, getHangulFromName} from './hangul.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
+import unicodecharref from '../unicodecharref.js';
+
+/**
+ * @see {@link https://stackoverflow.com/a/2970667/271577}
+ * @param {string} str
+ * @returns {string}
+ */
+function camelize (str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/gu, (match, index) => {
+    if (Number(match) === 0) {
+      return ''; // or if (/\s+/.test(match)) for white spaces
+    }
+    return index === 0 ? match.toLowerCase() : match.toUpperCase();
+  });
+}
 
 /**
 * @typedef {"php"|"css"|"javascript"} UnicodeEscapeMode
@@ -591,13 +606,21 @@ export const getUnicodeConverter = () => {
 
     /**
      * @param {string} toconvert
-     * @returns {string}
+     * @returns {Promise<string>}
      */
-    charDesc2UnicodeVal (toconvert) {
+    async charDesc2UnicodeVal (toconvert) {
+      const promises = [];
+      toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
+        promises.push(this.lookupUnicodeValueByCharName(n1));
+      });
+
+      const unicodeVals = await Promise.all(promises);
+
+      let i = -1;
       return toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
-        const unicodeVal = this.lookupUnicodeValueByCharName(n1);
-        return unicodeVal
-          ? String.fromCodePoint(unicodeVal)
+        ++i;
+        return unicodeVals[i]
+          ? String.fromCodePoint(unicodeVals[i])
           : '\uFFFD'; // Replacement character if not found?
       });
     }
@@ -640,13 +663,15 @@ export const getUnicodeConverter = () => {
      * @param {string} value
      * @returns {Integer}
      */
-    lookupUnicodeValueByCharName (value) {
+    async lookupUnicodeValueByCharName (value) {
       // Fix: Character names for Unihan?
       // Todo: Need to make changeable? If not, remove
       const forceUnicode = true;
-      const table = forceUnicode ? 'Unicode' : 'Unihan';
+      const table = forceUnicode ? 'UnicodeData' : 'Unihan';
       const id = forceUnicode ? 'searchName' : 'searchkDefinition';
-      this.searchUnicode({id, value}, table, 'noChart=true', 'strict=true');
+      await this.searchUnicode(
+        {id, value}, table, 'noChart=true', 'strict=true'
+      );
       if (!this.descripts[0] && value.length <= 7) {
         // Try Hangul (if possible size for Hangul)
         // Fix: Is Hangul allowed in PHP 6 Unicode escape names?
@@ -662,17 +687,17 @@ export const getUnicodeConverter = () => {
      * @param {string} table
      * @param {boolean} nochart
      * @param {boolean} strict
-     * @returns {void}
+     * @returns {Promise<void>}
      */
-    searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
+    async searchUnicode (obj, table, nochart, strict) { // Fix: allow Jamo!
       if (!table) {
-        table = 'Unicode';
+        table = 'UnicodeData';
       }
       // const table = 'Unihan'; // fix: determine by pull-down
       const nameDescVal = obj.value;
       if (
         // Don't query the other databases here
-        (obj.id.startsWith('searchk') && table === 'Unicode') ||
+        (obj.id.startsWith('searchk') && table === 'UnicodeData') ||
         ((/^search[^k]/u).test(obj.id) && table === 'Unihan')
       ) {
         return;
@@ -682,57 +707,35 @@ export const getUnicodeConverter = () => {
       // const nameDesc = (table === 'Unihan') ? 'kDefinition'
       // : 'Name'; // Fix: let Unihan search Mandarin, etc.
 
-      const colindex = 0; // (table === 'Unihan') ? 0 : 0;
-      const cpCol = (table === 'Unihan') ? 'code_pt' : 'Code_Point';
-      const conn = (table === 'Unihan') ? 'dbConnUnihan' : 'dbConn';
-      this.descripts = [];
+      const conn = table === 'Unihan'
+        ? unicodecharref.unihanDatabase.bind(unicodecharref)
+        : charrefunicodeDb;
 
-      if (table === 'Unihan' && !nochart && !charrefunicodeDb[conn]) {
+      if (table === 'Unihan' && !nochart && !conn) {
         alert(this._('need_download_unihan'));
         return;
       }
 
-      /*
-      // Couldn't get to work but probably ok now as changed 'test' to 'search'
-      const regex = {
-        onFunctionCall (regex, value) {
-          regex = regex.getUTF8String(0);
-          return value.search(regex) !== -1;
-        }
-      };
-      */
+      await conn.connect();
+      this.descripts = [];
 
-      let statement;
       try {
-        // charrefunicodeDb[conn].createFunction('regx', 2, regex);
-        let likeBegin = 'LIKE "%';
-        let likeEnd = '%"';
-        if (strict) {
-          likeBegin = '= "';
-          likeEnd = '"';
-        }
-
         if (nameDesc === 'General_Category' && nameDescVal === 'Cn') {
           try {
-            statement = charrefunicodeDb[conn].createStatement(
-              'SELECT `' + cpCol + '`, Name FROM ' + table
-            );
+            const chars = await conn.getAll();
+            let j = 0;
             for (let i = 0; i < 0x10FFFE; i++) {
-              const res = statement.executeStep();
-              if (!res) {
-                break;
-              }
-              const cp = statement.getUTF8String(colindex);
-              const range = statement.getUTF8String(1).endsWith('First>');
+              let {name, codePoint} = chars[j++];
+              const range = name.endsWith('First>');
               if (range) {
-                statement.executeStep();
-                const endRange = statement.getUTF8String(1).endsWith('Last>');
+                ({name, codePoint} = chars[j++]);
+                const endRange = name.endsWith('Last>');
                 if (endRange) {
-                  i = Number.parseInt(statement.getUTF8String(colindex), 16);
+                  i = Number.parseInt(codePoint, 16);
                   continue;
                 }
               }
-              let hex = Number.parseInt(cp, 16);
+              let hex = Number.parseInt(codePoint, 16);
               for (let endHex = hex; i < endHex; i++, hex++) {
                 this.descripts.push(i);
               }
@@ -741,26 +744,35 @@ export const getUnicodeConverter = () => {
             alert(e);
           }
         } else {
-          statement = charrefunicodeDb[conn].createStatement(
-            'SELECT `' + cpCol + '` FROM ' + table + ' WHERE `' + nameDesc +
-            '` ' + likeBegin + nameDescVal + likeEnd
-          );
-          while (statement.executeStep()) {
-            const cp = statement.getUTF8String(colindex);
-            const hex = Number.parseInt(cp, 16);
-            if (table === 'Unicode' &&
+          const field = camelize(nameDesc);
+
+          // Todo: Add indexes for each instead and then query with
+          //       `nameDescVal`, at least for `strict`
+          const chars = await conn.getAll();
+          const filteredChars = strict
+            ? chars.filter((chr) => {
+              return chr[field] === nameDescVal;
+            })
+            : chars.filter((chr) => {
+              return chr[field].includes(nameDescVal);
+            });
+
+          filteredChars.forEach((filteredChar) => {
+            const {codePoint} = filteredChar;
+            const hex = Number.parseInt(codePoint, 16);
+            if (table === 'UnicodeData' &&
               (hex >= 0xF900 && hex < 0xFB00)
             ) { // Don't search for compatibility if searching Unicode
-              continue;
+              return;
             }
             // Fix: inefficient, but fits more easily into current pattern
             this.descripts.push(hex);
-          }
+          });
         }
       } catch (e) {
         alert(e);
       } finally {
-        statement.reset();
+        conn.close();
       }
     }
   };

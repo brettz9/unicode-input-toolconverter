@@ -70,11 +70,11 @@ const indexTemplate = function ({_, fonts}) {
                     id: 'searchName',
                     class: 'searchBox',
                     $on: {
-                      change () {
-                        unicodecharref.searchUnicode(this);
+                      async change () {
+                        await unicodecharref.searchUnicode(this);
                       },
-                      input () {
-                        unicodecharref.searchUnicode(this);
+                      async input () {
+                        await unicodecharref.searchUnicode(this);
                       }
                     }
                   }],
@@ -741,8 +741,8 @@ const indexTemplate = function ({_, fonts}) {
                 }
               }}, [_('unicode2CharDesc_label')]],
               ['button', {id: 'b18', class: 'reconvert', $on: {
-                click (e) {
-                  CharrefConverterBridges.charDesc2Unicode(e);
+                async click (e) {
+                  await CharrefConverterBridges.charDesc2Unicode(e);
                 }
               }}, [_('charDesc2Unicode_label')]]
             ]],

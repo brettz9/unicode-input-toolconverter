@@ -15,6 +15,35 @@ class UnicodeDB {
     this.db = null;
   }
 
+  /**
+  * @returns {void}
+  */
+  close () {
+    this.db.close();
+  }
+
+  /**
+   * @param {string} storeName
+   * @param {string} key
+   * @returns {Promise<object>}
+   */
+  getAll (storeName, key) {
+    const tx = this.db.transaction(storeName, 'readonly');
+    const store = tx.objectStore(storeName);
+
+    const req = store.getAll(key);
+    // eslint-disable-next-line promise/avoid-new -- No API
+    return new Promise((resolve, reject) => {
+      req.addEventListener('success', () => {
+        resolve(req.result);
+      });
+
+      req.addEventListener('error', () => {
+        reject(req.error);
+      });
+    });
+  }
+
   /* eslint-disable class-methods-use-this -- Abstract */
   /**
    * @abstract
@@ -96,10 +125,11 @@ export class UnihanDatabase extends UnicodeDB {
   }
 
   /**
-  * @returns {void}
-  */
-  close () {
-    this.db.close();
+   * @param {string} key
+   * @returns {Promise<object>}
+   */
+  getAll (key) {
+    return super.getAll('Unihan', key);
   }
 
   /**
@@ -135,6 +165,14 @@ export class UnicodeDatabase extends UnicodeDB {
    */
   constructor ({version} = {}) {
     super({name: 'unicode-input-toolconverter', version});
+  }
+
+  /**
+   * @param {string} key
+   * @returns {Promise<object>}
+   */
+  getAll (key) {
+    return super.getAll('UnicodeData', key);
   }
 
   /**
