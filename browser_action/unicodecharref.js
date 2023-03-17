@@ -1230,7 +1230,7 @@ const unicodecharref = {
       : (await getPref('startset') || 'a').codePointAt() - 1;
     await this.setCurrstartset(data);
 
-    chartBuild(descripts);
+    chartBuild({descripts});
   },
   async searchUnihan (obj) {
     return await this.searchUnicode(obj, 'Unihan');

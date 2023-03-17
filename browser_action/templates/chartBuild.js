@@ -147,7 +147,7 @@ const chartBuildTemplate = function ({
                 setPref('currentStartCharCode', prev),
                 setPref('startCharInMiddleOfChart', false)
               ]);
-              chartBuild(descripts);
+              chartBuild({descripts});
             }
           }
         }, [
@@ -163,7 +163,7 @@ const chartBuildTemplate = function ({
                 setPref('currentStartCharCode', current.startCharCode),
                 setPref('startCharInMiddleOfChart', false)
               ]);
-              chartBuild(descripts);
+              chartBuild({descripts});
             }
           }
         }, [
