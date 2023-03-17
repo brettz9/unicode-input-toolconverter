@@ -548,12 +548,15 @@ const indexTemplate = function ({_, fonts}) {
                       'Digit',
                       'Numeric',
                       'Bidi_Mirrored',
+                      'Unicode_1_Name',
                       'ISO_Comment',
-                      // 'Unicode_1_Name',
                       'Simple_Uppercase_Mapping',
                       'Simple_Lowercase_Mapping',
                       'Simple_Titlecase_Mapping'
                     ].map((key, i) => {
+                      if (i === 8) {
+                        return '';
+                      }
                       return ['div', {
                         class: 'detailedView vbox'
                       }, [
