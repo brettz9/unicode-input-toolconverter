@@ -1,5 +1,5 @@
 // Todo: We might consider auto-building these fields in another file and/or
-//   merging with `unihanFieldInfo.js`.
+//   merging with `unicodeFieldInfo.js`.
 /* eslint-disable max-len -- Long */
 const fields = ['code_pt', 'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCCCII', 'kCNS1986', 'kCNS1992', 'kCangjie', 'kCantonese',
   'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon',

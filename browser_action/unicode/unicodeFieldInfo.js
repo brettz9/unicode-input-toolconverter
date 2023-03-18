@@ -1,4 +1,4 @@
-const unihanFieldInfo = [
+export const unihanFieldInfo = [
   ['kCangjie', 6],
   ['kCantonese', 7],
   // ['kDefinition', 3],
@@ -92,4 +92,18 @@ const unihanFieldInfo = [
   ['kStrange', 91]
 ];
 
-export default unihanFieldInfo;
+export const unicodeFieldInfo = [
+  'General_Category',
+  'Canonical_Combining_Class',
+  'Bidi_Class',
+  'Decomposition_Type_and_Mapping',
+  'Decimal',
+  'Digit',
+  'Numeric',
+  'Bidi_Mirrored',
+  'Unicode_1_Name',
+  'ISO_Comment',
+  'Simple_Uppercase_Mapping',
+  'Simple_Lowercase_Mapping',
+  'Simple_Titlecase_Mapping'
+];

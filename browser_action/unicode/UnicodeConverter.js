@@ -3,25 +3,12 @@ import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
 import {getHangulName, getHangulFromName} from './hangul.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
 import unicodecharref from '../unicodecharref.js';
+import {camelize} from '../utils/StringUtils.js';
 
 const unihanFields = [ // Ordered by database array
   // eslint-disable-next-line max-len -- Readability
   'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCangjie', 'kCantonese', 'kCCCII', 'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT', 'kCNS1986', 'kCNS1992', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon', 'kDefinition', 'kEACC', 'kFenn', 'kFennIndex', 'kFourCornerCode', 'kFrequency', 'kGB0', 'kGB1', 'kGB3', 'kGB5', 'kGB7', 'kGB8', 'kGradeLevel', 'kGSR', 'kHangul', 'kHanYu', 'kHanyuPinlu', 'kHanyuPinyin', 'kHDZRadBreak', 'kHKGlyph', 'kHKSCS', 'kIBMJapan', 'kIICore', 'kIRG_GSource', 'kIRG_HSource', 'kIRG_JSource', 'kIRG_KPSource', 'kIRG_KSource', 'kIRG_MSource', 'kIRG_SSource', 'kIRG_TSource', 'kIRG_UKSource', 'kIRG_USource', 'kIRG_VSource', 'kIRGDaeJaweon', 'kIRGDaiKanwaZiten', 'kIRGHanyuDaZidian', 'kIRGKangXi', 'kJa', 'kJapaneseKun', 'kJapaneseOn', 'kJinmeiyoKanji', 'kJis0', 'kJis1', 'kJIS0213', 'kJoyoKanji', 'kKangXi', 'kKarlgren', 'kKorean', 'kKoreanEducationHanja', 'kKoreanName', 'kKPS0', 'kKPS1', 'kKSC0', 'kKSC1', 'kLau', 'kMainlandTelegraph', 'kMandarin', 'kMatthews', 'kMeyerWempe', 'kMorohashi', 'kNelson', 'kOtherNumeric', 'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1', 'kRSAdobe_Japan1_6', 'kRSKangXi', 'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant', 'kSpecializedSemanticVariant', 'kSpoofingVariant', 'kStrange', 'kTaiwanTelegraph', 'kTang', 'kTGH', 'kTGHZ2013', 'kTotalStrokes', 'kTraditionalVariant', 'kUnihanCore2020', 'kVietnamese', 'kXerox', 'kXHC1983', 'kZVariant'
 ];
-
-/**
- * @see {@link https://stackoverflow.com/a/2970667/271577}
- * @param {string} str
- * @returns {string}
- */
-function camelize (str) {
-  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/gu, (match, index) => {
-    if (Number(match) === 0) {
-      return ''; // or if (/\s+/.test(match)) for white spaces
-    }
-    return index === 0 ? match.toLowerCase() : match.toUpperCase();
-  });
-}
 
 /**
 * @typedef {"php"|"css"|"javascript"} UnicodeEscapeMode

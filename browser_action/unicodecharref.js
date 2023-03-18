@@ -10,6 +10,8 @@ import {
   getUnicodeDefaults, getPrefDefaults
 } from './preferences/prefDefaults.js';
 import {chartBuild} from './chartBuild.js';
+
+import {camelize} from './utils/StringUtils.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
 import {joinChunks} from './utils/TypedArrayUtils.js';
 import {
@@ -20,6 +22,9 @@ import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {UnihanDatabase} from './unicode/charrefunicodeDb.js';
 import {getCJKTypeFromHexString} from './unicode/unihan.js';
 import unihanDbPopulate from './unicode/unihanDbPopulate.js';
+import {
+  unicodeFieldInfo
+} from './unicode/unicodeFieldInfo.js';
 // import parseUnihanFromTextFileStrings from
 //   './unicode/parseUnihanFromTextFileStrings.js';
 import {registerDTD} from './entityBehaviors.js';
@@ -742,6 +747,7 @@ const unicodecharref = {
     try {
       await charrefunicodeDb.connect();
       const results = await charrefunicodeDb.getUnicodeFields(searchValue);
+      console.log('results', results);
       if (results) {
         result = cjkText ||
           // We had obtained Jamo from Jamo.txt and showed it in parentheses,
@@ -751,7 +757,9 @@ const unicodecharref = {
           results.name;
         for (let i = 2; i <= 14; i++) {
           // Fix: display data more readably, etc.
-          let temp = results[i - 1];
+          const camelizedField = camelize(unicodeFieldInfo[i - 2]);
+          console.log('camelizedField', camelizedField);
+          let temp = results[camelizedField];
           if (i === 10) {
             if (temp) {
               result += ';\u00A0\u00A0\u00A0\u00A0\n' +

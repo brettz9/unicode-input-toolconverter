@@ -3,7 +3,9 @@ import {fill} from '../templateUtils/fill.js';
 import {safeLink} from '../templateUtils/validation.js';
 import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicodeScripts.js';
-import unihanFieldInfo from '../unicode/unihanFieldInfo.js';
+import {
+  unihanFieldInfo, unicodeFieldInfo
+} from '../unicode/unicodeFieldInfo.js';
 import unicodecharref from '../unicodecharref.js';
 import CharrefConverterBridges from '../charrefConverters.js';
 import {registerDTD} from '../entityBehaviors.js';
@@ -539,21 +541,9 @@ const indexTemplate = function ({_, fonts}) {
                 ]],
                 ['div', {class: 'detailedViewRows vbox'}, [
                   ['div', [
-                    ['div', {class: 'detailedViewContainer vbox'}, [
-                      'General_Category',
-                      'Canonical_Combining_Class',
-                      'Bidi_Class',
-                      'Decomposition_Type_and_Mapping',
-                      'Decimal',
-                      'Digit',
-                      'Numeric',
-                      'Bidi_Mirrored',
-                      'Unicode_1_Name',
-                      'ISO_Comment',
-                      'Simple_Uppercase_Mapping',
-                      'Simple_Lowercase_Mapping',
-                      'Simple_Titlecase_Mapping'
-                    ].map((key, i) => {
+                    ['div', {
+                      class: 'detailedViewContainer vbox'
+                    }, unicodeFieldInfo.map((key, i) => {
                       if (i === 8) {
                         return '';
                       }
