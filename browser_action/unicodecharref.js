@@ -713,7 +713,6 @@ const unicodecharref = {
   async getUnicodeDescription (kent, khextemp) {
     const hideMissing = !(await getPref('showAllDetailedView'));
     const hideMissingUnihan = !(await getPref('showAllDetailedCJKView'));
-
     const {
       unihanType, hangul, cjkText, searchValue
     } = getCJKTypeFromHexString({khextemp, _});
@@ -741,6 +740,7 @@ const unicodecharref = {
 
     let result;
     try {
+      await charrefunicodeDb.connect();
       const results = await charrefunicodeDb.getUnicodeFields(searchValue);
       if (results) {
         result = cjkText ||
@@ -748,7 +748,7 @@ const unicodecharref = {
           //  but it seems this is now included in UnicodData.txt as we
           //  import into our database.
           // if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
-          results[0];
+          results.name;
         for (let i = 2; i <= 14; i++) {
           // Fix: display data more readably, etc.
           let temp = results[i - 1];

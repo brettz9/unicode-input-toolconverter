@@ -111,12 +111,11 @@ export class UnihanDatabase extends UnicodeDB {
     const tx = this.db.transaction(['Unihan'], 'readonly');
     const store = tx.objectStore('Unihan');
 
-    const codePointIndex = store.index('code-point');
-    const request = codePointIndex.get(codePoint);
+    const request = store.get(codePoint);
     // eslint-disable-next-line promise/avoid-new -- No Promise API
     return new Promise((resolve, reject) => {
       request.addEventListener('success', () => {
-        resolve(request.result);
+        resolve(request.result?.columns);
       });
       request.addEventListener('error', (ev) => {
         reject(request.error);
@@ -232,12 +231,15 @@ export class UnicodeDatabase extends UnicodeDB {
     //   currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
     const tx = this.db.transaction(['UnicodeData'], 'readonly');
     const store = tx.objectStore('UnicodeData');
-    const codePointIndex = store.index('code-point');
-    const request = codePointIndex.get(codePoint);
+    const request = store.get(codePoint);
     // eslint-disable-next-line promise/avoid-new -- No Promise API
     return new Promise((resolve, reject) => {
       request.addEventListener('success', () => {
-        resolve(request.result.columns);
+        if (!request.result) {
+          reject(new Error('Unexpected code point'));
+          return;
+        }
+        resolve(request.result);
       });
       request.addEventListener('error', (ev) => {
         reject(request.error);

@@ -60,15 +60,17 @@ const chartBuildTemplate = function ({
         return ['td', {
           class: (hasEntity ? 'entity ' : '') + 'unicodetablecell',
           $on: {
-            mouseover: (function (_entity, _current) {
+            mouseover: (function (_entity, startCharCode) {
               return function () {
                 if (!this.$noGetDescripts) {
                   unicodecharref.getUnicodeDescription(
-                    _entity, _current.startCharCode
+                    _entity,
+                    // Needed to convert this for some reason
+                    startCharCode.toString(16).toUpperCase().padStart(4, '0')
                   );
                 }
               };
-            })(entity, current),
+            })(entity, current.startCharCode),
             // trying dblclick worked but might not be obvious to
             //   user and single clicks still activated; relying on
             //   right button doesn't work
