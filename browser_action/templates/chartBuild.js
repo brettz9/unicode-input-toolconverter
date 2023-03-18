@@ -36,7 +36,8 @@ const chartBuildTemplate = function ({
 
         const charRefIdx = charrefunicodeConverter
           .numericCharacterReferences.indexOf(
-            current.startCharCode
+            // We've now had to add 1 here for some reason
+            current.startCharCode + 1
           );
         const hasEntity = charRefIdx > -1;
         const entity = hasEntity
