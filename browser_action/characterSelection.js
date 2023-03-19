@@ -36,9 +36,18 @@ async function characterSelection ({
 
   await addMillerColumnPlugin(jQuery, {stylesheets: [
     // Per our widget "standard", allow for injecting of others in parallel
-    ['/icons/openWindow24.png', {favicon: true}],
-    '/browser_action/styles/unicode-dialog.css',
-    '/vendor/miller-columns/miller-columns.css'
+    [
+      location.href.includes('index-pages')
+        ? '/unicode-input-toolconverter/icons/openWindow24.png'
+        : '/icons/openWindow24.png',
+      {favicon: true}
+    ],
+    location.href.includes('index-pages')
+      ? '/unicode-input-toolconverter/browser_action/styles/unicode-dialog.css'
+      : '/browser_action/styles/unicode-dialog.css',
+    location.href.includes('index-pages')
+      ? '/unicode-input-toolconverter//vendor/miller-columns/miller-columns.css'
+      : '/vendor/miller-columns/miller-columns.css'
   ]});
 
   jQuery('div.miller-columns').millerColumns({
