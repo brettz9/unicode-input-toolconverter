@@ -1134,12 +1134,14 @@ const unicodecharref = {
   },
   async hexLettersCasing (e) {
     await this.setprefs(e);
-    return await chartBuild();
+    await chartBuild();
+    return await this.resizecells();
   },
   async flip (e) {
     await this.setCurrstartset(lastStartCharCode);
     await this.setprefs(e);
-    return await chartBuild();
+    await chartBuild();
+    return await this.resizecells();
   },
   async onlyentsyesflip (e) {
     return await this.flip(e);
@@ -1204,14 +1206,16 @@ const unicodecharref = {
     if (e.target.value !== null && e.target.value !== '') {
       await setPref('tblrowsset', e.target.value);
     }
-    return await chartBuild();
+    await chartBuild();
+    return await this.resizecells();
   },
   async colsset (e) {
     await this.setCurrstartset(lastStartCharCode);
     if (e.target.value !== null && e.target.value !== '') {
       await setPref('tblcolsset', e.target.value);
     }
-    return await chartBuild();
+    await chartBuild();
+    return await this.resizecells();
   },
   async startset (tbx, descripts) {
     /**
@@ -1238,7 +1242,8 @@ const unicodecharref = {
       : (await getPref('startset') || 'a').codePointAt() - 1;
     await this.setCurrstartset(data);
 
-    return await chartBuild({descripts});
+    await chartBuild({descripts});
+    return await this.resizecells();
   },
   async searchUnihan (obj) {
     return await this.searchUnicode(obj, 'Unihan');
@@ -1253,6 +1258,7 @@ const unicodecharref = {
       this.startset(obj, true); // Could remember last description (?)
       // Set it back as it was before the search
       await this.setCurrstartset(tmp);
+      this.resizecells();
     }
     // Doesn't work since name_desc_val is search value, not first
     //  result value (we could remember the last search and whether it
