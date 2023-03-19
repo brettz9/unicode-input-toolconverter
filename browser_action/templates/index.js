@@ -1253,7 +1253,6 @@ const indexTemplate = function ({_, fonts}) {
 
   // See why intl-dom not apparently keeping event handlers
   $('#donationbutton').addEventListener('click', () => {
-    console.log('1111111open');
     window.open(
       'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=brettz9%40yahoo%2ecom&no_shipping=0&no_note=1&tax=0&currency_code=USD&bn=PP%2dDonationsBF&charset=UTF%2d8',
       'bzamirdonation'
