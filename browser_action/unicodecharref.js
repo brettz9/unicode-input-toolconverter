@@ -9,7 +9,7 @@ import {strFromU8} from '../vendor/fflate/esm/browser.js'; // unzipSync,
 import {
   getUnicodeDefaults, getPrefDefaults
 } from './preferences/prefDefaults.js';
-import {chartBuild} from './chartBuild.js';
+import {chartBuild, lastStartCharCode} from './chartBuild.js';
 
 import {camelize} from './utils/StringUtils.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
@@ -1137,7 +1137,7 @@ const unicodecharref = {
     }
   },
   async flip (e) {
-    await this.setCurrstartset(this.j);
+    await this.setCurrstartset(lastStartCharCode);
     await this.setprefs(e);
     chartBuild();
   },
@@ -1190,7 +1190,7 @@ const unicodecharref = {
     await setPref('cssWhitespace', value);
   },
   /* async xstyleflip () {
-    await this.setCurrstartset(this.j);
+    await this.setCurrstartset(lastStartCharCode);
     const currxstyle = 'x';
     const prevxstyle = await getPref('xstyle');
     if (prevxstyle === 'x') {
@@ -1200,14 +1200,14 @@ const unicodecharref = {
     chartBuild();
   }, */
   async rowsset (e) {
-    await this.setCurrstartset(this.j);
+    await this.setCurrstartset(lastStartCharCode);
     if (e.target.value !== null && e.target.value !== '') {
       await setPref('tblrowsset', e.target.value);
     }
     chartBuild();
   },
   async colsset (e) {
-    await this.setCurrstartset(this.j);
+    await this.setCurrstartset(lastStartCharCode);
     if (e.target.value !== null && e.target.value !== '') {
       await setPref('tblcolsset', e.target.value);
     }

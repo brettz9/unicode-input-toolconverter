@@ -18,7 +18,8 @@ const getChartBuild = async function ({
   return await chartBuild({descripts});
 };
 
-let lastStartCharCode;
+// eslint-disable-next-line import/no-mutable-exports -- Easier
+export let lastStartCharCode;
 
 // Todo:
 // eslint-disable-next-line no-unused-expressions -- Bug in lgtm?
