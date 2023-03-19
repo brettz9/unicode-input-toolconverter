@@ -496,13 +496,17 @@ const indexTemplate = function ({_, fonts}) {
                       }}, [
                         _('copyToClipboard')
                       ]],
-                      nbsp.repeat(2),
-                      ['button', {$on: {
-                        click () {
-                          unicodecharref.addToToolbar();
-                        }
-                      }}, [
-                        _('addToToolbar')
+                      ['div', {
+                        hidden: typeof browser === 'undefined'
+                      }, [
+                        nbsp.repeat(2),
+                        ['button', {$on: {
+                          click () {
+                            unicodecharref.addToToolbar();
+                          }
+                        }}, [
+                          _('addToToolbar')
+                        ]]
                       ]]
                     ]]
                   ]]
