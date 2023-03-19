@@ -1,11 +1,13 @@
 # unicode-input-toolconverter
 
-**Work in progress! (Still restoring from old browser add-on.)**
+**Incomplete! (Still restoring from old browser add-on.)**
 
-A webextensions add-on (Firefox, Chrome) to allow selection of Unicode
-characters by a variety of means and conversion between various
+A web app and webextensions add-on (Firefox, Chrome) to allow selection
+of Unicode characters by a variety of means and conversion between various
 Unicode representations such as HTML/XML entities, numeric
 character references, etc.
+
+See the [Demo](https://brettz9.github.io/unicode-input-toolconverter/browser_action/index-pages.html).
 
 ## Screenshots
 
