@@ -45,7 +45,9 @@ async function getDownloadResults () {
   const receivedInfo = await showProgress({
     // 6747669; // 39.5 MB unzipped;
     // url: '/download/unihan/Unihan.zip',
-    url: '/download/unihan/unihan.json',
+    url: location.href.includes('index-pages')
+      ? '/unicode-input-toolconverter/download/unihan/unihan.json'
+      : '/download/unihan/unihan.json',
     progressElement: $('#progress_element'),
     progress (percentComplete) {
       return `${_('download_progress')} ${
