@@ -13,7 +13,9 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
  */
 function classChange (el) {
   const activeButton = $("*[class='buttonactive']");
-  activeButton.className = 'reconvert';
+  if (activeButton) {
+    activeButton.className = 'reconvert';
+  }
 
   el.className = 'buttonactive';
 }
