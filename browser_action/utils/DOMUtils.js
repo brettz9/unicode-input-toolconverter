@@ -32,7 +32,8 @@ const xulns = 'https://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
 * @returns {Element}
 */
 function createHTMLElement (el) {
-  return document.createElementNS(htmlns, el);
+  // return document.createElementNS(htmlns, el);
+  return document.createElement(el);
 }
 
 /**

@@ -104,8 +104,12 @@ const unicodecharref = {
     $('#closeDownloadProgressBox').hidden = false;
     $('#DownloadProgressBox').hidden = true;
   },
+  /**
+   * Unused.
+   */
+  /*
   makeDropMenuRows (type) {
-    /* const prefix = (type === 'Unihan') ? 'searchk' : 'search';
+    const prefix = (type === 'Unihan') ? 'searchk' : 'search';
     try {
       for (const i=0; i < this[type].length; i++) {
         const row = createXULElement('row');
@@ -130,8 +134,9 @@ const unicodecharref = {
     }
     catch(e) {
       alert(this[type][i])
-    } */
+    }
   },
+  */
   makeRows (type) {
     const prefix = (type === 'Unihan') ? 'searchk' : 'search';
     let i;
@@ -1088,7 +1093,7 @@ const unicodecharref = {
     placeItem('#plane', planeText);
 
     if (await getPref('showImg')) {
-      const img = createXULElement('image');
+      const img = createHTMLElement('img');
       // img.width = '80';
       // img.height = '80';
       img.setAttribute('src', 'https://unicode.org/cgi-bin/refglyph?1-' + Number(kdectemp).toString(16));
