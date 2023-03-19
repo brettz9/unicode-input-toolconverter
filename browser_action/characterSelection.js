@@ -1,6 +1,7 @@
 /* globals jQuery -- No ESM */
 import {$} from '../vendor/jamilih/dist/jml-es.js';
 import {getChartBuild, chartBuild} from './chartBuild.js';
+import unicodecharref from './unicodecharref.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import addMillerColumnPlugin from
@@ -78,6 +79,7 @@ async function characterSelection ({
       );
       // Free to use `chartBuild` now that we have passed set-up
       await chartBuild(); // Todo: descripts?
+      await unicodecharref.resizecells();
     }
   });
   $('div.miller-columns').style.display = 'block';
