@@ -918,7 +918,7 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 async click (e) {
-                  await unicodecharref.setprefs(e);
+                  await unicodecharref.hexLettersCasing(e);
                 }
               }
             }],

@@ -1133,6 +1133,10 @@ const unicodecharref = {
       window.sizeToContent();
     }
   },
+  async hexLettersCasing (e) {
+    await this.setprefs(e);
+    chartBuild();
+  },
   async flip (e) {
     await this.setCurrstartset(lastStartCharCode);
     await this.setprefs(e);
