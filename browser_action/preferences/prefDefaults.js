@@ -24,7 +24,7 @@ export const getPrefDefaults = () => ({
   xhtmlentmode: false,
   showImg: false,
   ampspace: false,
-  showComplexWindow: false,
+  // showComplexWindow: false,
   hexyes: true,
   decyes: true,
   unicodeyes: true,

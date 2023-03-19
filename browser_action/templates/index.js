@@ -985,6 +985,7 @@ const indexTemplate = function ({_, fonts}) {
             _('ampspace_label')
           ]]
         ]],
+        /*
         ['div', {class: 'boxedbottom vbox'}, [
           ['label', [
             ['input', {
@@ -1001,6 +1002,7 @@ const indexTemplate = function ({_, fonts}) {
             _('showComplexWindow_label')
           ]]
         ]],
+        */
         ['div', {class: 'boxedbottom vbox'}, [
           ['label', [
             ['input', {

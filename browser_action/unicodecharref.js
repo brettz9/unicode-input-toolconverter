@@ -615,7 +615,7 @@ const unicodecharref = {
     ], true);
 
     $('#ampspace').checked = false;
-    $('#showComplexWindow').checked = false;
+    // $('#showComplexWindow').checked = false;
     $('#showAllDetailedView').checked = true;
     $('#showAllDetailedCJKView').checked = true;
 
