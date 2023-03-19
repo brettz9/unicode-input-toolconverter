@@ -2,7 +2,7 @@
 
 // See https://unicode.org/Public/UNIDATA/ for data use
 
-import {$, $$} from '../vendor/jamilih/dist/jml-es.js';
+import {$, $$, jml} from '../vendor/jamilih/dist/jml-es.js';
 // Todo: Filed the following to avoid both sync and callbacks:
 //  https://github.com/101arrowz/fflate/issues/70
 import {strFromU8} from '../vendor/fflate/esm/browser.js'; // unzipSync,
@@ -1317,12 +1317,16 @@ const unicodecharref = {
     const display = $('#displayUnicodeDesc');
     if (await getPref('multiline') === false) {
       await setPref('multiline', true);
-      display.setAttribute('multiline', true);
-      display.setAttribute('rows', 3);
+      display.replaceWith(jml('textarea', {
+        id: 'displayUnicodeDesc',
+        rows: 3
+      }));
     } else {
       await setPref('multiline', false);
-      display.setAttribute('multiline', false);
-      display.setAttribute('rows', 1);
+      display.replaceWith(jml('input', {
+        id: 'displayUnicodeDesc',
+        rows: 1
+      }));
     }
   },
   async addToToolbar () {
