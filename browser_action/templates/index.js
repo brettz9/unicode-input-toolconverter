@@ -866,7 +866,7 @@ const indexTemplate = function ({_, fonts}) {
           ['label', [
             _('initialTab_label'), nbsp.repeat(3),
             ['select', {id: 'initialTab', $on: {
-              async click (e) {
+              async change (e) {
                 await unicodecharref.setprefs(e);
               }
             }}, [
@@ -1016,7 +1016,7 @@ const indexTemplate = function ({_, fonts}) {
             ['select', {
               id: 'CSSWhitespace',
               $on: {
-                async click (e) {
+                async change (e) {
                   await unicodecharref.cssWhitespace(e);
                 }
               }

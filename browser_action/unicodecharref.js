@@ -601,7 +601,6 @@ const unicodecharref = {
     return undefined;
   },
   async resetdefaults () {
-    const that = this;
     // Todo: Change to programmatic setting
     // If make changes here, also change the default/preferences
     //  charrefunicode.js file
@@ -622,11 +621,7 @@ const unicodecharref = {
     * @returns {string}
     */
     async function langFont (langOrFont) { // Fix: needs to get default!
-      const Components = 'todo';
-      const Ci = Components.interfaces;
-      const deflt = that.branchDefault.getComplexValue(
-        langOrFont, Ci.nsIPrefLocalizedString
-      ).data;
+      const deflt = await getPref(langOrFont);
       $('#' + langOrFont).value = deflt;
       await setPref(langOrFont, deflt);
       return deflt;
@@ -679,7 +674,7 @@ const unicodecharref = {
     // $('#xstyle').checked = true;
 
     await setPref('initialTab', 'charts');
-    $('#extensions.charrefunicode.initialTab').selectedItem = $('#mi_charttab');
+    $('#initialTab').selectedItem = $('#mi_charttab');
 
     await setPref('tblfontsize', 13);
     this.resizecells();
