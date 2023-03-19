@@ -247,6 +247,7 @@ const unicodecharref = {
 
   // Fix: Should also create the detailedView and detailedCJKView's
   //  content dynamically (and thus fully conditionally rather than hiding)
+  /*
   async testIfComplexWindow () {
     if (await getPref('showComplexWindow')) {
       $('#specializedSearch').hidden = false;
@@ -260,6 +261,7 @@ const unicodecharref = {
       $('#detailedCJKView').collapsed = true;
     }
   },
+  */
   setupBoolChecked (...els) {
     els.forEach(async (el) => {
       $('#' + el).checked = await getPref(el);
@@ -335,7 +337,7 @@ const unicodecharref = {
     //   (window.screen.availWidth*50/100);
     // window.sizeToContent();
 
-    await this.testIfComplexWindow();
+    // await this.testIfComplexWindow();
 
     // These defaults are necessary for the sake of the options URL
     //  (when called from addons menu)

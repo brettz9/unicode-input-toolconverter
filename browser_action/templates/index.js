@@ -116,6 +116,7 @@ const indexTemplate = function ({_, fonts}) {
                 ]]
               ]]
             ]],
+            /*
             // ['splitter'],
             ['div', {id: 'specializedSearch', hidden: true}, [
               ['fieldset', [
@@ -164,6 +165,7 @@ const indexTemplate = function ({_, fonts}) {
                 ]]
               ]]
             ]],
+            */
             // ['splitter'],
             ['div', {id: 'chart_layout_persist'}, [
               ['fieldset', [
