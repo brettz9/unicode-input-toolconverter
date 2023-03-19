@@ -110,8 +110,8 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
     'decyes', 'hexyes', 'unicodeyes'
   ].filter((t) => types[t]);
   const displayTypes = {
-    hexyes: (k) => `&#${k};`,
-    decyes (k) {
+    decyes: (k) => `&#${k};`,
+    hexyes (k) {
       const kto16 = hexLettersUpper
         ? k.toString(16).toUpperCase()
         : k.toString(16);

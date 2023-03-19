@@ -575,19 +575,18 @@ const unicodecharref = {
     gClipboardHelper.copyString(text);
   },
   async setprefs (e) {
-    switch (e.target.nodeName) {
-    case 'textbox':
+    switch (e.target.type) {
+    case 'text':
       return await setPref(
         e.target.id,
         e.target.value
       );
-    case 'menuitem':
+    case 'select':
       return await setPref(
         e.target.parentNode.parentNode.id, e.target.value
       ); // Could use @label or position as default value
     case 'checkbox':
-      // Apparently hasn't changed yet, so use the opposite
-      return await setPref(e.target.id, Boolean(!e.target.checked));
+      return await setPref(e.target.id, Boolean(e.target.checked));
     case 'radio': {
       let radioid;
       const result = e.target.id.match(/^_(\d)+-(.*)$/u);
@@ -1141,26 +1140,26 @@ const unicodecharref = {
     await this.setprefs(e);
     chartBuild();
   },
-  onlyentsyesflip (e) {
-    return this.flip(e);
+  async onlyentsyesflip (e) {
+    return await this.flip(e);
   },
-  hexflip (e) {
-    return this.flip(e);
+  async hexflip (e) {
+    return await this.flip(e);
   },
-  decflip (e) {
-    return this.flip(e);
+  async decflip (e) {
+    return await this.flip(e);
   },
-  unicodeflip (e) {
-    return this.flip(e);
+  async unicodeflip (e) {
+    return await this.flip(e);
   },
-  middleflip (e) {
-    return this.flip(e);
+  async middleflip (e) {
+    return await this.flip(e);
   },
-  buttonflip (e) {
-    return this.flip(e);
+  async buttonflip (e) {
+    return await this.flip(e);
   },
-  entflip (e) {
-    return this.flip(e);
+  async entflip (e) {
+    return await this.flip(e);
   },
   async cssWhitespace (e) {
     let {value} = e.target;

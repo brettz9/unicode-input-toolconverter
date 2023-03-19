@@ -275,10 +275,6 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             async click (e) {
-                              // Needed to add this
-                              await unicodecharref.startCharInMiddleOfChart(
-                                e.target.checked
-                              );
                               await unicodecharref.middleflip(e);
                             }
                           }
