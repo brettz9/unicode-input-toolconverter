@@ -490,8 +490,8 @@ const indexTemplate = function ({_, fonts}) {
                       ]],
                       nbsp.repeat(2),
                       ['button', {$on: {
-                        click () {
-                          unicodecharref.copyToClipboard('insertText');
+                        async click () {
+                          await unicodecharref.copyToClipboard('#insertText');
                         }
                       }}, [
                         _('copyToClipboard')

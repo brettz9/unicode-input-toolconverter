@@ -1091,6 +1091,9 @@
     "copyToClipboard": {
       "message": "Copy to clipboard"
     },
+    "copiedToClipboard": {
+      "message": "Copied to clipboard!"
+    },
     "moveconvertedup_label": {
       "message": "Copy 'converted' to preconverted"
     },

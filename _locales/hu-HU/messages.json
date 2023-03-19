@@ -1091,6 +1091,9 @@
     "copyToClipboard": {
       "message": "Másolás a vágólapra"
     },
+    "copiedToClipboard": {
+      "message": "Copied to clipboard!"
+    },
     "moveconvertedup_label": {
       "message": "&apos;Átalakított&apos; másolása előzetesen átalakított formába"
     },

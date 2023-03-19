@@ -573,15 +573,10 @@ const unicodecharref = {
       window.outerWidth = outerw;
     }
   },
-  copyToClipboard (id) {
+  async copyToClipboard (id) {
     const text = $(id).value;
-    const Components = 'todo';
-    const Cc = Components.classes,
-      Ci = Components.interfaces;
-    const gClipboardHelper = Cc[
-      '@mozilla.org/widget/clipboardhelper;1'
-    ].getService(Ci.nsIClipboardHelper);
-    gClipboardHelper.copyString(text);
+    await navigator.clipboard.writeText(text);
+    alert(_('copiedToClipboard'));
   },
   async setprefs (e) {
     switch (e.target.type) {

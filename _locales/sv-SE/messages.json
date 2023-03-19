@@ -1091,6 +1091,9 @@
     "copyToClipboard": {
       "message": "Kopiera till Urklipp"
     },
+    "copiedToClipboard": {
+      "message": "Copied to clipboard!"
+    },
     "moveconvertedup_label": {
       "message": "Kopiera &quot;Konverterade&quot; till &quot;Förkonverterade&quot;"
     },
