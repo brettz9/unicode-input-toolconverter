@@ -993,10 +993,10 @@
       "message": "Unihan (CJK) database installed"
     },
     "searchName": {
-      "message": "Search by character name: "
+      "message": "Search by character name"
     },
     "searchkDefinition": {
-      "message": "Search by character description (CJK): "
+      "message": "Search by character description (CJK)"
     },
     "Regular_tab_label": {
       "message": "Regular Search (non-CJK)"
@@ -1281,13 +1281,13 @@
       "message": "(will replace &quot;preconverted&quot; text in Conversion tab)"
     },
     "charhexdecchoices": {
-      "message": "Unicode char., hex or dec num.:"
+      "message": "Unicode char., hex or dec num."
     },
     "desc_digits": {
       "message": "(if seeking char. refs. #0-9, use #n)"
     },
     "chooseregion": {
-      "message": "OR Choose by Region:"
+      "message": "OR Choose by Region"
     },
     "label_norows": {
       "message": "# of Rows?"
