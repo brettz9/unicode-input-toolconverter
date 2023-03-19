@@ -444,7 +444,7 @@ const unicodecharref = {
     } */
 
     // Set the size per the prefs (don't increase or decrease the value)
-    this.resizecells();
+    await this.resizecells();
 
     $('#rowsset').value = await getPref('tblrowsset');
     $('#colsset').value = await getPref('tblcolsset');
@@ -494,7 +494,7 @@ const unicodecharref = {
         $('#unicodeTabBox').$selectTab($('#charts'));
         if (toconvert !== '') {
           await this.setCurrstartset(toconvert.codePointAt() - 1);
-          chartBuild();
+          await chartBuild();
         }
         // Fallthrough
       case 'context-launchunicode':
@@ -540,7 +540,7 @@ const unicodecharref = {
       if (toconvert) { // Seemed to become necessarily suddenly
         await this.setCurrstartset(toconvert.codePointAt() - 1);
       }
-      chartBuild();
+      await chartBuild();
     }
     this.tblfontsize(0); // Draw with the preferences value
 
@@ -551,7 +551,7 @@ const unicodecharref = {
         // ).data;
         await that.disableEnts();
         await that.setCurrstartset(e.target.value.codePointAt() - 1);
-        chartBuild();
+        await chartBuild();
         // Set it back as it was before the search
         // await that.setCurrstartset(tmp);
       },
@@ -682,11 +682,13 @@ const unicodecharref = {
     $('#initialTab').value = $('#mi_charts').value;
 
     await setPref('tblfontsize', 13);
-    this.resizecells();
+    await this.resizecells();
 
-    chartBuild();
-    await setPref('outerHeight', 0);
-    await setPref('outerWidth', 0);
+    await chartBuild();
+    await Promise.all([
+      setPref('outerHeight', 0),
+      setPref('outerWidth', 0)
+    ]);
   },
 
   /**
@@ -1116,15 +1118,15 @@ const unicodecharref = {
     const fsize = await getPref('tblfontsize') + size;
     // const tds = createHTMLElement('td');
     await setPref('tblfontsize', fsize);
-    this.resizecells({sizeToContent: size > 0});
+    await this.resizecells({sizeToContent: size > 0});
   },
   async resizecells ({sizeToContent} = {}) {
-    $$(
+    await Promise.all($$(
       "*[name='dec'],*[name='hex'],*[name='unicode']"
-    ).forEach(async (control) => {
+    ).map(async (control) => {
       control.style.fontSize =
         await getPref('tblfontsize') + 'px';
-    });
+    }));
     $('#insertText').style.fontSize =
       await getPref('tblfontsize') + 'px';
     // $('#displayUnicodeDesc').style.fontSize =
@@ -1137,12 +1139,12 @@ const unicodecharref = {
   },
   async hexLettersCasing (e) {
     await this.setprefs(e);
-    chartBuild();
+    return await chartBuild();
   },
   async flip (e) {
     await this.setCurrstartset(lastStartCharCode);
     await this.setprefs(e);
-    chartBuild();
+    return await chartBuild();
   },
   async onlyentsyesflip (e) {
     return await this.flip(e);
@@ -1200,21 +1202,21 @@ const unicodecharref = {
       currxstyle = 'X';
     }
     await setPref('xstyle', currxstyle);
-    chartBuild();
+    return await chartBuild();
   }, */
   async rowsset (e) {
     await this.setCurrstartset(lastStartCharCode);
     if (e.target.value !== null && e.target.value !== '') {
       await setPref('tblrowsset', e.target.value);
     }
-    chartBuild();
+    return await chartBuild();
   },
   async colsset (e) {
     await this.setCurrstartset(lastStartCharCode);
     if (e.target.value !== null && e.target.value !== '') {
       await setPref('tblcolsset', e.target.value);
     }
-    chartBuild();
+    return await chartBuild();
   },
   async startset (tbx, descripts) {
     /**
@@ -1241,7 +1243,7 @@ const unicodecharref = {
       : (await getPref('startset') || 'a').codePointAt() - 1;
     await this.setCurrstartset(data);
 
-    chartBuild({descripts});
+    return await chartBuild({descripts});
   },
   async searchUnihan (obj) {
     return await this.searchUnicode(obj, 'Unihan');

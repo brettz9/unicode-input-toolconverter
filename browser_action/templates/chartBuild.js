@@ -150,7 +150,8 @@ const chartBuildTemplate = function ({
                 setPref('currentStartCharCode', prev),
                 setPref('startCharInMiddleOfChart', false)
               ]);
-              chartBuild({descripts});
+              await chartBuild({descripts});
+              await unicodecharref.resizecells();
             }
           }
         }, [
@@ -166,7 +167,8 @@ const chartBuildTemplate = function ({
                 setPref('currentStartCharCode', current.startCharCode),
                 setPref('startCharInMiddleOfChart', false)
               ]);
-              chartBuild({descripts});
+              await chartBuild({descripts});
+              await unicodecharref.resizecells();
             }
           }
         }, [

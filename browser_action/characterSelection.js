@@ -77,7 +77,7 @@ async function characterSelection ({
         Number.parseInt(title.replace(/-.*$/u, ''), 16)
       );
       // Free to use `chartBuild` now that we have passed set-up
-      chartBuild(); // Todo: descripts?
+      await chartBuild(); // Todo: descripts?
     }
   });
   $('div.miller-columns').style.display = 'block';

@@ -154,7 +154,7 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
   });
 
   // Todo: Restore
-  // this.resizecells({sizeToContent: true});
+  // await this.resizecells({sizeToContent: true});
 };
 
 export {chartBuild, getChartBuild};
