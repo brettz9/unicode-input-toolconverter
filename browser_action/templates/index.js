@@ -354,6 +354,7 @@ const indexTemplate = function ({_, fonts}) {
                           ['option', [
                             _('choose_a_font')
                           ]],
+                          // Todo: Set pref to remember
                           ...fonts.map((font) => {
                             return ['option', [font]];
                           })
@@ -746,6 +747,7 @@ const indexTemplate = function ({_, fonts}) {
                 ['label', [
                   _('Convert_From_Encoding'),
                   nbsp.repeat(2),
+                  // Todo: Set pref to remember
                   ['select', {
                     id: 'encoding_from',
                     class: 'reconvert',
@@ -758,6 +760,7 @@ const indexTemplate = function ({_, fonts}) {
               ['label', [
                 _('Convert_To_Encoding'),
                 nbsp.repeat(2),
+                // Todo: Set pref to remember
                 ['select', {
                   id: 'encoding_to',
                   class: 'reconvert',
@@ -873,22 +876,22 @@ const indexTemplate = function ({_, fonts}) {
               }
             }}, [
               ['option', {
-                id: 'mi_charttab', value: 'charts'
+                id: 'mi_charts', value: 'charts'
               }, [_('Charts_tab_label')]],
               ['option', {
-                id: 'mi_conversiontab', value: 'conversion'
+                id: 'mi_conversion', value: 'conversion'
               }, [_('Conversion_tab_label')]],
               ['option', {
-                id: 'mi_prefstab', value: 'prefs'
+                id: 'mi_prefs', value: 'prefs'
               }, [_('Prefs_tab_label')]],
               ['option', {
-                id: 'mi_dtdtab', value: 'DTDpanel'
+                id: 'mi_DTDpanel', value: 'DTDpanel'
               }, [_('DTD_tab_label')]],
               ['option', {
-                id: 'mi_notestab', value: 'notes'
+                id: 'mi_notes', value: 'notes'
               }, [_('Notes_tab_label')]],
               ['option', {
-                id: 'mi_abouttab', value: 'about'
+                id: 'mi_about', value: 'about'
               }, [_('About_tab_label')]]
             ]]
           ]]

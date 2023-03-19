@@ -523,7 +523,7 @@ const unicodecharref = {
         $('#unicodeTabBox').$selectTab($('#prefs'));
       } else if (cfg.convert) { // Keyboard invocation or button
         // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
-        $('#unicodeTabBox').$selectTab($(await getPref('initialTab')));
+        $('#unicodeTabBox').$selectTab($('#' + await getPref('initialTab')));
       } else if (
         targetid !== 'context-unicodechart' &&
         targetid !== 'tools-charrefunicode'
@@ -532,7 +532,7 @@ const unicodecharref = {
       }
     }
 
-    $('#initialTab').selectedItem = $('#mi_' + await getPref('initialTab'));
+    $('#initialTab').value = $('#mi_' + await getPref('initialTab')).value;
 
     if (targetid !== 'searchName' && targetid !== 'searchkDefinition') {
       if (toconvert) { // Seemed to become necessarily suddenly
@@ -583,15 +583,11 @@ const unicodecharref = {
   },
   async setprefs (e) {
     switch (e.target.type) {
-    case 'text':
+    case 'select-one': case 'text':
       return await setPref(
         e.target.id,
         e.target.value
       );
-    case 'select':
-      return await setPref(
-        e.target.parentNode.parentNode.id, e.target.value
-      ); // Could use @label or position as default value
     case 'checkbox':
       return await setPref(e.target.id, Boolean(e.target.checked));
     case 'radio': {
@@ -681,7 +677,7 @@ const unicodecharref = {
     // $('#xstyle').checked = true;
 
     await setPref('initialTab', 'charts');
-    $('#initialTab').selectedItem = $('#mi_charttab');
+    $('#initialTab').value = $('#mi_charts').value;
 
     await setPref('tblfontsize', 13);
     this.resizecells();

@@ -44,7 +44,7 @@ export const getPrefDefaults = () => ({
   DTDtextbox: '',
   font: '',
   cssWhitespace: ' ',
-  initialTab: 'charttab',
+  initialTab: 'charts',
   defaultStartCharCode: _('startCharCode').codePointAt() - 1, // 'a'
   currentStartCharCode: _('startCharCode').codePointAt() - 1, // 'a'
   lang: _('langCode'), // 'en-US'
