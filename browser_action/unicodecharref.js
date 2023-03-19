@@ -1293,6 +1293,16 @@ const unicodecharref = {
    *   starting value
    */
   async setCurrstartset (value) {
+    if (typeof value !== 'number') {
+      const err = new Error('Bad value');
+      err.value = value;
+      // eslint-disable-next-line no-console -- Debugging
+      console.error(err);
+      alert(
+        'Look at trace to see where setting ' +
+        '`currentStartCharCode` as undefined'
+      );
+    }
     return await setPref('currentStartCharCode', value);
   },
   // Unused?

@@ -1,7 +1,7 @@
 import {jml, body, $, $$, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
 import {safeLink} from '../templateUtils/validation.js';
-import encodings from '../encodings.js';
+// import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicodeScripts.js';
 import {
   unihanFieldInfo, unicodeFieldInfo
@@ -741,7 +741,8 @@ const indexTemplate = function ({_, fonts}) {
                   await CharrefConverterBridges.charDesc2Unicode(e);
                 }
               }}, [_('charDesc2Unicode_label')]]
-            ]],
+            ]]
+            /*
             ['fieldset', {id: 'convertEncoding'}, [
               ['div', {id: 'convertFromEncoding'}, [
                 ['label', [
@@ -770,6 +771,7 @@ const indexTemplate = function ({_, fonts}) {
                 })]
               ]]
             ]]
+            */
           ]],
           // ['splitter'],
           ['div', {id: 'toconvert_persist', class: 'vbox conversionSection'}, [

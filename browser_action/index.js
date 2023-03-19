@@ -21,7 +21,7 @@ import {
   shareVars as shareVarsCharrefConverter
 } from './charrefConverters.js';
 import characterSelection from './characterSelection.js';
-import {setupEncodingEvents} from './encodingBehaviors.js';
+// import {setupEncodingEvents} from './encodingBehaviors.js';
 
 setJSONExtra(jsonExtra);
 
@@ -72,7 +72,7 @@ makeTabBox('.tabbox');
 await characterSelection({
   _, charrefunicodeConverter
 });
-setupEncodingEvents({_});
+// setupEncodingEvents({_});
 setupEntityEvents();
 
 // Todo: Move functionality to relevant files

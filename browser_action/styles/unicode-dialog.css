@@ -385,3 +385,7 @@ code {
 [hidden] {
   display:none;
 }
+
+#insertEntityFile {
+  width: 200px;
+}
