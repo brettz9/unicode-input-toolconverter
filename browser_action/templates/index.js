@@ -481,7 +481,7 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'outputcopybutton',
                           $on: {
                             click () {
-                              unicodecharref.moveoutput('insertText');
+                              unicodecharref.moveoutput('#insertText');
                             }
                           }
                         }, [
@@ -627,23 +627,23 @@ const indexTemplate = function ({_, fonts}) {
               _('Reconvert_dialogheader_title')
             ]],
             ['button', {id: 'b1', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.charref2unicode(e);
+              async click (e) {
+                await CharrefConverterBridges.charref2unicode(e);
               }
             }}, [_('charref2unicode_label')]],
             ['button', {id: 'b2', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.charref2htmlents(e);
+              async click (e) {
+                await CharrefConverterBridges.charref2htmlents(e);
               }
             }}, [_('charref2htmlents_label')]],
             ['button', {id: 'b3', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.unicode2charrefDec(e);
+              async click (e) {
+                await CharrefConverterBridges.unicode2charrefDec(e);
               }
             }}, [_('unicode2charrefDec_label')]],
             ['button', {id: 'b4', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.unicode2charrefHex(e);
+              async click (e) {
+                await CharrefConverterBridges.unicode2charrefHex(e);
               }
             }}, [_('unicode2charrefHex_label')]],
             ['button', {
@@ -667,8 +667,8 @@ const indexTemplate = function ({_, fonts}) {
               }
             }, [_('unicode2charrefHexSurrogate_label')]],
             ['button', {id: 'b5', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.unicode2htmlents(e);
+              async click (e) {
+                await CharrefConverterBridges.unicode2htmlents(e);
               }
             }}, [_('unicode2htmlents_label')]],
             ['div', {class: 'hbox'}, [
@@ -689,28 +689,28 @@ const indexTemplate = function ({_, fonts}) {
               }
             }}, [_('unicode2CSSEscape_label')]],
             ['button', {id: 'b9', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.htmlents2charrefDec(e);
+              async click (e) {
+                await CharrefConverterBridges.htmlents2charrefDec(e);
               }
             }}, [_('htmlents2charrefDec_label')]],
             ['button', {id: 'b10', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.htmlents2charrefHex(e);
+              async click (e) {
+                await CharrefConverterBridges.htmlents2charrefHex(e);
               }
             }}, [_('htmlents2charrefHex_label')]],
             ['button', {id: 'b11', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.htmlents2unicode(e);
+              async click (e) {
+                await CharrefConverterBridges.htmlents2unicode(e);
               }
             }}, [_('htmlents2unicode_label')]],
             ['button', {id: 'b12', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.hex2dec(e);
+              async click (e) {
+                await CharrefConverterBridges.hex2dec(e);
               }
             }}, [_('hex2dec_label')]],
             ['button', {id: 'b13', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.dec2hex(e);
+              async click (e) {
+                await CharrefConverterBridges.dec2hex(e);
               }
             }}, [_('dec2hex_label')]],
             ['div', {class: 'hbox'}, [
@@ -817,7 +817,7 @@ const indexTemplate = function ({_, fonts}) {
               ]],
               nbsp.repeat(7),
               ['button', {$on: {click () {
-                unicodecharref.moveoutput('converted');
+                unicodecharref.moveoutput('#converted');
               }}}, [
                 _('moveconvertedup_label')
               ]]

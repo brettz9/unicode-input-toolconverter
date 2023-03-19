@@ -482,16 +482,16 @@ const unicodecharref = {
     }
 
     // Detect which context menu item was selected:
-    let out; // converttypeid;
+    let out = ''; // converttypeid;
 
-    if (bridgeResult !== false) {
+    if (bridgeResult !== false && bridgeResult !== undefined) {
       out = bridgeResult;
     } else {
       switch (targetid) {
       case 'context-unicodechart':
         await this.disableEnts();
         $('#startset').value = toconvert;
-        $('#unicodeTabBox').$selectTab($('#charts'));
+        $('#unicodeTabBox').$selectTab($('h1.tab:nth-of-type(1)'));
         if (toconvert !== '') {
           await this.setCurrstartset(toconvert.codePointAt() - 1);
           await chartBuild();
@@ -1264,7 +1264,7 @@ const unicodecharref = {
   },
   moveoutput (movedid) {
     const insertText = $(movedid);
-    $('#unicodetabs').selectedIndex = 1;
+    $('#unicodeTabBox').$selectTab($('h1.tab:nth-of-type(2)'));
     $('#toconvert').value = insertText.value;
   },
   async append2htmlflip (e) {
