@@ -1,7 +1,7 @@
 node_modules
 
 download/unihan
-!download/unihan/putUnihanFilesHereForImport.txt
+!download/unihan/unihan.json
 
 download/UCD
 
