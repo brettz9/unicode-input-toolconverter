@@ -1072,6 +1072,7 @@ const indexTemplate = function ({_, fonts}) {
           ['textarea', {id: 'DTDtextbox', $on: {
             async change () {
               await registerDTD();
+              await unicodecharref.chartBuildResize();
             }
           }}, [
             _('DTD_textbox_value')

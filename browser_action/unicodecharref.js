@@ -1245,6 +1245,10 @@ const unicodecharref = {
     await chartBuild({descripts});
     return await this.resizecells();
   },
+  async chartBuildResize () {
+    await chartBuild();
+    return await this.resizecells();
+  },
   async searchUnihan (obj) {
     return await this.searchUnicode(obj, 'Unihan');
   },
