@@ -76,7 +76,7 @@ await characterSelection({
 setupEntityEvents();
 
 // Todo: Move functionality to relevant files
-unicodecharref.initialize({
+await unicodecharref.initialize({
   targetid: 'context-unicodechart'
 });
 
