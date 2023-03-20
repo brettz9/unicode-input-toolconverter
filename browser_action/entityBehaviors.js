@@ -19,7 +19,7 @@ async function insertEntityFile (e) {
   const data = await entFile.text();
 
   $('#DTDtextbox').value += '\n' + data;
-  registerDTD();
+  await registerDTD();
 }
 
 /**
@@ -51,18 +51,18 @@ async function registerDTD () {
   // Start off blank in case items erased
   charrefunicodeConverter.newcharrefs = [...unicodecharref.orignewcharrefs];
 
-  const decreg = /^(&#|#)?(\d\d+);?$/u;
+  const decreg = /^(?:&#|#)?(\d\d+);?$/u;
   // const decreg2 = /^(&#|#)([0-9]);?$/u;
-  const hexreg = /^(&#|#|0|U|u)?([xX+])([\da-fA-F]+);?$/u;
+  const hexreg = /^(?:&#|#|0|U|u)?(?:[xX+])([\da-fA-F]+);?$/u;
 
   while ((result = pattern.exec(text)) !== null) {
     let m = result[3];
     let addreg = true;
     if (decreg.test(m)) { // Dec
-      m = m.replace(decreg, '$2');
+      m = m.replace(decreg, '$1');
       m = Number.parseInt(m);
     } else if (hexreg.test(m)) { // Hex
-      m = m.replace(hexreg, '$2');
+      m = m.replace(hexreg, '$1');
       m = Number.parseInt(m, 16);
     // Todo: Fix this so it can handle surrogate pairs
     // If replacing with Unicode sequence longer than one character, assume

@@ -467,7 +467,7 @@ const unicodecharref = {
     const DTDtxtbxval = await getPref('DTDtextbox');
 
     $('#DTDtextbox').value = DTDtxtbxval;
-    registerDTD();
+    await registerDTD();
 
     let bridgeResult;
     if (toconvert) {
@@ -1275,7 +1275,9 @@ const unicodecharref = {
   },
   async append2htmlflip (e) {
     await this.setprefs(e);
-    registerDTD(); // (in case DTD not also changed, still need to reset)
+    await registerDTD(); // (in case DTD not also changed, still need to reset)
+    await chartBuild();
+    await this.resizecells();
   },
   /**
    * @todo Unused
