@@ -41,15 +41,6 @@
     "Unicode_table_caption_title": {
       "message": "Clique Control + botão esquerdo do mouse sobre um caractere para congelar ou descongelar as descrições abaixo"
     },
-    "caption_format_begin": {
-      "message": ", {value}"
-    },
-    "caption_format_end_two": {
-      "message": " e {value}"
-    },
-    "caption_format_end_three_plus": {
-      "message": ", e {value}"
-    },
     "Next_set": {
       "message": "Próximo conjunto"
     },

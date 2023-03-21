@@ -41,15 +41,6 @@
     "Unicode_table_caption_title": {
       "message": "Control + left-click when over a character to freeze or unfreeze the descriptions below"
     },
-    "caption_format_begin": {
-      "message": ", {value}"
-    },
-    "caption_format_end_two": {
-      "message": " and {value}"
-    },
-    "caption_format_end_three_plus": {
-      "message": ", and {value}"
-    },
     "Next_set": {
       "message": "Next set"
     },

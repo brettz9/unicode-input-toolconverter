@@ -41,15 +41,6 @@
     "Unicode_table_caption_title": {
       "message": "Az alábbi leírások rögzítéséhez/feloldásához Control + kattintás valamely karakter fölött a bal egérgombbal"
     },
-    "caption_format_begin": {
-      "message": ", {value}"
-    },
-    "caption_format_end_two": {
-      "message": " és {value}"
-    },
-    "caption_format_end_three_plus": {
-      "message": " és {value}"
-    },
     "Next_set": {
       "message": "Következő készlet"
     },

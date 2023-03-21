@@ -127,21 +127,13 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
     }
   });
 
-  // Todo: Replace this with a `Intl.PluralRules` type plural awareness?
-  // Make first letter of first word upper case
-  const captionContent = captioncntnt[0].replace(/^[a-z]/u, (s) => s.toUpperCase()) +
-    captioncntnt.slice(1, -1).reduce((s, value) => {
-      return s + _('caption_format_begin', {value});
-    }, '') + (
-    captioncntnt.length === 2
-      ? _('caption_format_end_two', {
-        value: captioncntnt.pop()
-      })
-      : captioncntnt.length > 2
-        ? _('caption_format_end_three_plus', {
-          value: captioncntnt.pop()
-        })
-        : '');
+  const captionContent = _.list([
+    // Make first letter of first word upper case
+    captioncntnt[0].replace(/^./u, (s) => s.toLocaleUpperCase(
+      _.locale
+    )),
+    ...captioncntnt.slice(1)
+  ]);
 
   chartBuildTemplate({
     _, rows, cols, charrefunicodeConverter, current,

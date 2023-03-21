@@ -41,15 +41,6 @@
     "Unicode_table_caption_title": {
       "message": "Ctrl+Vänsterklick medan du hovrar med muspekaren över tabellvyn för att frysa beskrivningarna nedanför"
     },
-    "caption_format_begin": {
-      "message": ", {value}"
-    },
-    "caption_format_end_two": {
-      "message": " och {value}"
-    },
-    "caption_format_end_three_plus": {
-      "message": " och {value}"
-    },
     "Next_set": {
       "message": "Nästa uppsättning"
     },
