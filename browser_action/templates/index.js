@@ -655,8 +655,8 @@ const indexTemplate = function ({_, fonts}) {
               class: 'reconvert',
               title: _('unicode2charrefSurrogate_tooltip'),
               $on: {
-                click (e) {
-                  CharrefConverterBridges.unicode2charrefDecSurrogate(e);
+                async click (e) {
+                  await CharrefConverterBridges.unicode2charrefDecSurrogate(e);
                 }
               }
             }, [_('unicode2charrefDecSurrogate_label')]],
@@ -665,8 +665,8 @@ const indexTemplate = function ({_, fonts}) {
               class: 'reconvert',
               title: _('unicode2charrefSurrogate_tooltip'),
               $on: {
-                click (e) {
-                  CharrefConverterBridges.unicode2charrefHexSurrogate(e);
+                async click (e) {
+                  await CharrefConverterBridges.unicode2charrefHexSurrogate(e);
                 }
               }
             }, [_('unicode2charrefHexSurrogate_label')]],
@@ -677,19 +677,19 @@ const indexTemplate = function ({_, fonts}) {
             }}, [_('unicode2htmlents_label')]],
             ['div', {class: 'hbox'}, [
               ['button', {id: 'b6', class: 'reconvert', $on: {
-                click (e) {
-                  CharrefConverterBridges.unicode2jsescape(e);
+                async click (e) {
+                  await CharrefConverterBridges.unicode2jsescape(e);
                 }
               }}, [_('unicode2JSEscape_label')]],
               ['button', {id: 'b7', class: 'reconvert', $on: {
-                click (e) {
-                  CharrefConverterBridges.unicodeTo6Digit(e);
+                async click (e) {
+                  await CharrefConverterBridges.unicodeTo6Digit(e);
                 }
               }}, [_('unicodeTo6Digit_label')]]
             ]],
             ['button', {id: 'b8', class: 'reconvert', $on: {
-              click (e) {
-                CharrefConverterBridges.unicode2cssescape(e);
+              async click (e) {
+                await CharrefConverterBridges.unicode2cssescape(e);
               }
             }}, [_('unicode2CSSEscape_label')]],
             ['button', {id: 'b9', class: 'reconvert', $on: {

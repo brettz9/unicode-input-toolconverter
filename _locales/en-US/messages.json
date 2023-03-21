@@ -354,7 +354,7 @@
       "message": "\f (form feed)"
     },
     "cssUnambiguous_label": {
-      "message": "Create CSS escape as 6-digit sequences not requiring whitespace (otherwise, will be as long as necessary and be followed by white space"
+      "message": "Create CSS escape as 6-digit sequences not requiring whitespace (otherwise, will be as long as necessary and be followed by white space)"
     },
     "sixDigit2unicode_label": {
       "message": "4 or 6-digit (as in PHP 6) to Unicode"

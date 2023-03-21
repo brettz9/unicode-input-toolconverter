@@ -79,9 +79,9 @@ export const getUnicodeConverter = () => {
      * @param {string} out
      * @returns {string}
      */
-    charref2htmlentsval (out) {
+    async charref2htmlentsval (out) {
       // If true, should allow conversion to &apos;
-      const xhtmlentmode = getPref('xhtmlentmode');
+      const xhtmlentmode = await getPref('xhtmlentmode');
 
       out = out.replace(decim, (match, match1) => {
         const matched = this.numericCharacterReferences.indexOf(
@@ -115,8 +115,9 @@ export const getUnicodeConverter = () => {
      * @param {boolean} leaveSurrogates
      * @returns {string}
      */
-    unicode2charrefDecval (unicodeToConvert, leaveSurrogates) {
+    async unicode2charrefDecval (unicodeToConvert, leaveSurrogates) {
       let out = '';
+      const asciiLt128 = await getPref('asciiLt128');
       for (let i = 0; i < unicodeToConvert.length; i++) {
         let temp = unicodeToConvert.charCodeAt(i);
         // Todo: Redo with `codePointAt`?
@@ -130,7 +131,7 @@ export const getUnicodeConverter = () => {
 
         // Replace this 'if' condition and remove the 'else' if also
         //  want ascii
-        } else if (temp >= 128 || getPref('asciiLt128')) {
+        } else if (temp >= 128 || asciiLt128) {
           out += '&#' + temp + ';';
         } else {
           out += unicodeToConvert.charAt(i);
@@ -145,7 +146,7 @@ export const getUnicodeConverter = () => {
      * @param {UnicodeEscapeMode} type
      * @returns {string}
      */
-    unicode2charrefHexval (unicodeToConvert, leaveSurrogates, type) {
+    async unicode2charrefHexval (unicodeToConvert, leaveSurrogates, type) {
       // alert(unicodeToConvert + '::' + leaveSurrogates + '::' + type);
       let out = '';
       let xstyle, beginEscape, endEscape, cssUnambiguous;
@@ -156,20 +157,25 @@ export const getUnicodeConverter = () => {
         beginEscape = '\\u';
         endEscape = '';
       } else if (type === 'css') {
-        cssUnambiguous = getPref('cssUnambiguous');
+        cssUnambiguous = await getPref('cssUnambiguous');
         xstyle = '';
         beginEscape = '\\';
-        endEscape = cssUnambiguous ? '' : getPref('cssWhitespace');
+        endEscape = cssUnambiguous ? '' : await getPref('cssWhitespace');
       } else {
         xstyle = 'x';
         beginEscape = '&#';
         endEscape = ';';
         /*
-        if (!getPref('hexstyleLwr')) {
+        if (!(await getPref('hexstyleLwr'))) {
           xstyle = 'X';
         }
         */
       }
+
+      const [hexLettersUpper, asciiLt128] = await Promise.all([
+        getPref('hexLettersUpper'),
+        getPref('asciiLt128')
+      ]);
 
       for (let i = 0; i < unicodeToConvert.length; i++) {
         let hexletters;
@@ -180,7 +186,7 @@ export const getUnicodeConverter = () => {
             (unicodeToConvert.charCodeAt(i + 1) - 0xDC00) + 0x10000;
           hexletters = temp.toString(16);
           i++; // Skip the next surrogate
-          if (getPref('hexLettersUpper')) {
+          if (hexLettersUpper) {
             hexletters = hexletters.toUpperCase();
           }
           if ((type === 'php' || cssUnambiguous) && hexletters.length < 6) {
@@ -188,9 +194,9 @@ export const getUnicodeConverter = () => {
           }
           out += beginEscape + xstyle + hexletters + endEscape;
         // Replace this 'if' condition and remove the 'else' if also want ascii
-        } else if (temp >= 128 || getPref('asciiLt128')) {
+        } else if (temp >= 128 || asciiLt128) {
           hexletters = temp.toString(16);
-          if (getPref('hexLettersUpper')) {
+          if (hexLettersUpper) {
             hexletters = hexletters.toUpperCase();
           }
           if (type === 'javascript' && hexletters.length < 4) {
@@ -213,7 +219,7 @@ export const getUnicodeConverter = () => {
      * @param {string} unicodeToConvert
      * @returns {string}
      */
-    unicode2htmlentsval (unicodeToConvert) {
+    async unicode2htmlentsval (unicodeToConvert) {
       /**
        * @param {string} str
        * @returns {string}
@@ -239,9 +245,9 @@ export const getUnicodeConverter = () => {
 
       let out = '';
       // If true, should allow conversion to &apos;
-      const xhtmlentmode = getPref('xhtmlentmode');
+      const xhtmlentmode = await getPref('xhtmlentmode');
       // If true, will not convert '&' to '&amp;'
-      const ampkeep = getPref('ampkeep');
+      const ampkeep = await getPref('ampkeep');
 
       for (const ch of unicodeToConvert) {
         const codePoint = ch.codePointAt();
@@ -262,9 +268,9 @@ export const getUnicodeConverter = () => {
      * @param {string} out
      * @returns {string}
      */
-    htmlents2charrefDecval (out) {
+    async htmlents2charrefDecval (out) {
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
-      const xmlentkeep = getPref('xmlentkeep');
+      const xmlentkeep = await getPref('xmlentkeep');
       return out.replace(htmlOrXmlEnt, (match, match1) => {
         if (!xmlentkeep ||
           (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
@@ -291,13 +297,16 @@ export const getUnicodeConverter = () => {
      * @param {string} out
      * @returns {string}
      */
-    htmlents2charrefHexval (out) {
+    async htmlents2charrefHexval (out) {
       const xstyle = 'x';
-      /* if (!getPref('hexstyleLwr')) {
+      /* if (!(await getPref('hexstyleLwr'))) {
         xstyle = 'X';
       } */
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
-      const xmlentkeep = getPref('xmlentkeep');
+      const [xmlentkeep, hexLettersUpper] = await Promise.all([
+        getPref('xmlentkeep'),
+        getPref('hexLettersUpper')
+      ]);
       return out.replace(htmlOrXmlEnt, (match, match1) => {
         if (
           !xmlentkeep ||
@@ -318,7 +327,7 @@ export const getUnicodeConverter = () => {
           // If recognized single char. ent.
           if (this.entities.includes(match1)) {
             let hexletters = b.toString(16);
-            if (getPref('hexLettersUpper')) {
+            if (hexLettersUpper) {
               hexletters = hexletters.toUpperCase();
             }
             return '&#' + xstyle + hexletters + ';';
@@ -334,9 +343,9 @@ export const getUnicodeConverter = () => {
      * @param {string} out
      * @returns {string}
      */
-    htmlents2unicodeval (out) {
+    async htmlents2unicodeval (out) {
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
-      const xmlentkeep = getPref('xmlentkeep');
+      const xmlentkeep = await getPref('xmlentkeep');
       return out.replace(htmlOrXmlEnt, (match, match1) => {
         if (
           !xmlentkeep ||
@@ -377,14 +386,15 @@ export const getUnicodeConverter = () => {
      * @param {string} out
      * @returns {string}
      */
-    dec2hexval (out) {
+    async dec2hexval (out) {
       const xstyle = 'x';
-      /* if (!getPref('hexstyleLwr')) {
+      /* if (!(await getPref('hexstyleLwr'))) {
         xstyle = 'X';
       } */
+      const hexLettersUpper = await getPref('hexLettersUpper');
       return out.replace(decim, function (match, match1) {
         let hexletters = Number(match1).toString(16);
-        if (getPref('hexLettersUpper')) {
+        if (hexLettersUpper) {
           hexletters = hexletters.toUpperCase();
         }
         return '&#' + xstyle + hexletters + ';';
@@ -549,24 +559,24 @@ export const getUnicodeConverter = () => {
      * @param {string} toconvert
      * @returns {string}
      */
-    unicode2jsescapeval (toconvert) {
-      return this.unicode2charrefHexval(toconvert, true, 'javascript');
+    async unicode2jsescapeval (toconvert) {
+      return await this.unicode2charrefHexval(toconvert, true, 'javascript');
     }
 
     /**
      * @param {string} toconvert
      * @returns {string}
      */
-    unicodeTo6DigitVal (toconvert) {
-      return this.unicode2charrefHexval(toconvert, false, 'php');
+    async unicodeTo6DigitVal (toconvert) {
+      return await this.unicode2charrefHexval(toconvert, false, 'php');
     }
 
     /**
      * @param {string} toconvert
      * @returns {string}
      */
-    unicode2cssescapeval (toconvert) {
-      return this.unicode2charrefHexval(toconvert, false, 'css');
+    async unicode2cssescapeval (toconvert) {
+      return await this.unicode2charrefHexval(toconvert, false, 'css');
     }
 
     /**
@@ -586,7 +596,7 @@ export const getUnicodeConverter = () => {
     async unicode2CharDescVal (toconvert) {
       return (await Promise.all([...toconvert].map(async (ch) => {
         const codePoint = ch.codePointAt();
-        if (codePoint >= 128 || getPref('asciiLt128')) {
+        if (codePoint >= 128 || await getPref('asciiLt128')) {
           const charDesc = await this.getCharDescForCodePoint(codePoint);
           if (charDesc) { // Skip if no description in database
             return '\\C{' + charDesc + '}';

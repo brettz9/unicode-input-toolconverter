@@ -25,54 +25,58 @@ const CharrefConverterBridges = {
     classChange(el);
     return charrefunicodeConverter.charref2unicodeval(out);
   },
-  charref2htmlentsval (out, el) {
+  async charref2htmlentsval (out, el) {
     classChange(el);
-    return charrefunicodeConverter.charref2htmlentsval(out);
+    return await charrefunicodeConverter.charref2htmlentsval(out);
   },
-  unicode2charrefDecval (unicodeToConvert, el, leaveSurrogates) {
+  async unicode2charrefDecval (unicodeToConvert, el, leaveSurrogates) {
     classChange(el);
-    return charrefunicodeConverter.unicode2charrefDecval(
+    return await charrefunicodeConverter.unicode2charrefDecval(
       unicodeToConvert, leaveSurrogates
     );
   },
-  unicode2charrefHexval (unicodeToConvert, el, leaveSurrogates, type) {
+  async unicode2charrefHexval (unicodeToConvert, el, leaveSurrogates, type) {
     classChange(el);
-    return charrefunicodeConverter.unicode2charrefHexval(
+    return await charrefunicodeConverter.unicode2charrefHexval(
       unicodeToConvert, leaveSurrogates, type
     );
   },
-  unicode2htmlentsval (unicodeToConvert, el) {
+  async unicode2htmlentsval (unicodeToConvert, el) {
     classChange(el);
-    return charrefunicodeConverter.unicode2htmlentsval(unicodeToConvert);
+    return await charrefunicodeConverter.unicode2htmlentsval(
+      unicodeToConvert
+    );
   },
-  htmlents2charrefDecval (out, el) {
+  async htmlents2charrefDecval (out, el) {
     classChange(el);
-    return charrefunicodeConverter.htmlents2charrefDecval(out);
+    return await charrefunicodeConverter.htmlents2charrefDecval(out);
   },
-  htmlents2charrefHexval (out, el) {
+  async htmlents2charrefHexval (out, el) {
     classChange(el);
-    return charrefunicodeConverter.htmlents2charrefHexval(out);
+    return await charrefunicodeConverter.htmlents2charrefHexval(out);
   },
-  htmlents2unicodeval (out, el) {
+  async htmlents2unicodeval (out, el) {
     classChange(el);
-    return charrefunicodeConverter.htmlents2unicodeval(out);
+    return await charrefunicodeConverter.htmlents2unicodeval(out);
   },
   hex2decval (out, el) {
     classChange(el);
     return charrefunicodeConverter.hex2decval(out);
   },
-  dec2hexval (out, el) {
+  async dec2hexval (out, el) {
     classChange(el);
-    return charrefunicodeConverter.dec2hexval(out);
+    return await charrefunicodeConverter.dec2hexval(out);
   },
-  unicodeTo6Digit (e) {
+  async unicodeTo6Digit (e) {
     const toconvert = $('#toconvert').value;
-    this.unicodeTo6DigitVal(toconvert, e.target);
+    await this.unicodeTo6DigitVal(toconvert, e.target);
     return false;
   },
-  unicodeTo6DigitVal (toconvert, el) {
+  async unicodeTo6DigitVal (toconvert, el) {
     classChange(el);
-    const val = charrefunicodeConverter.unicodeTo6DigitVal(toconvert);
+    const val = await charrefunicodeConverter.unicodeTo6DigitVal(
+      toconvert
+    );
     $('#converted').value = val;
     return val;
   },
@@ -89,7 +93,7 @@ const CharrefConverterBridges = {
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.charref2htmlentsval(toconvert, e.target);
+    $('#converted').value = await this.charref2htmlentsval(toconvert, e.target);
     return false;
   },
   async unicode2charrefDec (e, leaveSurrogates) {
@@ -97,33 +101,33 @@ const CharrefConverterBridges = {
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.unicode2charrefDecval(
+    $('#converted').value = await this.unicode2charrefDecval(
       toconvert, e.target, leaveSurrogates
     );
     return false;
   },
-  unicode2charrefDecSurrogate (e) {
-    this.unicode2charrefDec(e, true);
+  async unicode2charrefDecSurrogate (e) {
+    return await this.unicode2charrefDec(e, true);
   },
   async unicode2charrefHex (e, leaveSurrogates) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.unicode2charrefHexval(
+    $('#converted').value = await this.unicode2charrefHexval(
       toconvert, e.target, leaveSurrogates
     );
     return false;
   },
-  unicode2charrefHexSurrogate (e) {
-    this.unicode2charrefHex(e, true);
+  async unicode2charrefHexSurrogate (e) {
+    return await this.unicode2charrefHex(e, true);
   },
   async unicode2htmlents (e) {
     let toconvert = $('#toconvert').value;
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.unicode2htmlentsval(toconvert, e.target);
+    $('#converted').value = await this.unicode2htmlentsval(toconvert, e.target);
     return false;
   },
   /**
@@ -165,15 +169,15 @@ const CharrefConverterBridges = {
     await this.unicode2CharDescVal(toconvert, e.target);
     return false;
   },
-  unicode2jsescapeval (toconvert, el) {
+  async unicode2jsescapeval (toconvert, el) {
     classChange(el);
-    const val = charrefunicodeConverter.unicode2jsescapeval(toconvert);
+    const val = await charrefunicodeConverter.unicode2jsescapeval(toconvert);
     $('#converted').value = val;
     return val;
   },
-  unicode2jsescape (e) {
+  async unicode2jsescape (e) {
     const toconvert = $('#toconvert').value;
-    this.unicode2jsescapeval(toconvert, e.target);
+    await this.unicode2jsescapeval(toconvert, e.target);
     return false;
   },
   cssescape2unicode (e) {
@@ -210,15 +214,17 @@ const CharrefConverterBridges = {
     );
     return unicode;
   },
-  unicode2cssescapeval (toconvert, el) {
+  async unicode2cssescapeval (toconvert, el) {
     classChange(el);
-    const val = charrefunicodeConverter.unicode2cssescapeval(toconvert);
+    const val = await charrefunicodeConverter.unicode2cssescapeval(
+      toconvert
+    );
     $('#converted').value = val;
     return val;
   },
-  unicode2cssescape (e) {
+  async unicode2cssescape (e) {
     const toconvert = $('#toconvert').value;
-    this.unicode2cssescapeval(toconvert, e.target);
+    await this.unicode2cssescapeval(toconvert, e.target);
     return false;
   },
   // In this method and others like it, boolpref should be moved instead to
@@ -228,7 +234,9 @@ const CharrefConverterBridges = {
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.htmlents2charrefDecval(toconvert, e.target);
+    $('#converted').value = await this.htmlents2charrefDecval(
+      toconvert, e.target
+    );
     return false;
   },
   async htmlents2charrefHex (e) {
@@ -236,7 +244,9 @@ const CharrefConverterBridges = {
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.htmlents2charrefHexval(toconvert, e.target);
+    $('#converted').value = await this.htmlents2charrefHexval(
+      toconvert, e.target
+    );
     return false;
   },
   async htmlents2unicode (e) {
@@ -244,7 +254,9 @@ const CharrefConverterBridges = {
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.htmlents2unicodeval(toconvert, e.target);
+    $('#converted').value = await this.htmlents2unicodeval(
+      toconvert, e.target
+    );
     return false;
   },
   async hex2dec (e) {
@@ -260,7 +272,7 @@ const CharrefConverterBridges = {
     if (await getPref('ampspace')) {
       toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
     }
-    $('#converted').value = this.dec2hexval(toconvert, e.target);
+    $('#converted').value = await this.dec2hexval(toconvert, e.target);
     return false;
   }
 };
@@ -279,34 +291,52 @@ async function findBridgeForTargetID ({toconvert, targetid}) {
     out = CharrefConverterBridges.charref2unicodeval(toconvert, $('#b1'));
     break;
   case 'context-charrefunicode2':
-    out = CharrefConverterBridges.charref2htmlentsval(toconvert, $('#b2'));
+    out = await CharrefConverterBridges.charref2htmlentsval(
+      toconvert, $('#b2')
+    );
     break;
   case 'context-charrefunicode3':
-    out = CharrefConverterBridges.unicode2charrefDecval(toconvert, $('#b3'));
+    out = await CharrefConverterBridges.unicode2charrefDecval(
+      toconvert, $('#b3')
+    );
     break;
   case 'context-charrefunicode4':
-    out = CharrefConverterBridges.unicode2charrefHexval(toconvert, $('#b4'));
+    out = await CharrefConverterBridges.unicode2charrefHexval(
+      toconvert, $('#b4')
+    );
     break;
   case 'context-charrefunicode5':
-    out = CharrefConverterBridges.unicode2htmlentsval(toconvert, $('#b5'));
+    out = await CharrefConverterBridges.unicode2htmlentsval(
+      toconvert, $('#b5')
+    );
     break;
   case 'context-charrefunicode6':
     out = CharrefConverterBridges.unicode2jsescapeval(toconvert, $('#b6'));
     break;
   case 'context-charrefunicode7':
-    out = CharrefConverterBridges.unicodeTo6DigitVal(toconvert, $('#b7'));
+    out = await CharrefConverterBridges.unicodeTo6DigitVal(
+      toconvert, $('#b7')
+    );
     break;
   case 'context-charrefunicode8':
-    out = CharrefConverterBridges.unicode2cssescapeval(toconvert, $('#b8'));
+    out = await CharrefConverterBridges.unicode2cssescapeval(
+      toconvert, $('#b8')
+    );
     break;
   case 'context-charrefunicode9':
-    out = CharrefConverterBridges.htmlents2charrefDecval(toconvert, $('#b9'));
+    out = await CharrefConverterBridges.htmlents2charrefDecval(
+      toconvert, $('#b9')
+    );
     break;
   case 'context-charrefunicode10':
-    out = CharrefConverterBridges.htmlents2charrefHexval(toconvert, $('#b10'));
+    out = await CharrefConverterBridges.htmlents2charrefHexval(
+      toconvert, $('#b10')
+    );
     break;
   case 'context-charrefunicode11':
-    out = CharrefConverterBridges.htmlents2unicodeval(toconvert, $('#b11'));
+    out = await CharrefConverterBridges.htmlents2unicodeval(
+      toconvert, $('#b11')
+    );
     break;
   case 'context-charrefunicode12':
     out = CharrefConverterBridges.hex2decval(toconvert, $('#b12'));
