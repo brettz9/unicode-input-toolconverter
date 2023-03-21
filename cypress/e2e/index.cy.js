@@ -48,6 +48,9 @@ describe('Main page', function () {
 
   it('Loads with service worker', function () {
     cy.visit('/browser_action/index-instrumented.html?serviceWorker=1');
+    // eslint-disable-next-line max-len -- Long
+    // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading events async
+    cy.wait(500);
 
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.window().then((win) => {
