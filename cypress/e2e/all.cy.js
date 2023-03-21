@@ -1,3 +1,3 @@
 import './about.cy.js';
-import './entities.cy.js';
+import './dtd.cy.js';
 import './index.cy.js';
