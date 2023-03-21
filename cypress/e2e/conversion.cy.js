@@ -115,5 +115,67 @@ describe('Conversion', function () {
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', '&lt; &amp;');
     });
+
+    it('Converts apostrophe to XML entity', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+      ).contains('Prefs').click();
+      cy.get('#xhtmlentmode').uncheck();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type("'");
+      cy.get('#b5').click();
+      cy.get('#converted').invoke('val').should('eq', "'");
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+      ).contains('Prefs').click();
+      cy.get('#xhtmlentmode').check();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type("'");
+      cy.get('#b5').click();
+      cy.get('#converted').invoke('val').should('eq', '&apos;');
+    });
+
+    it('Converts ASCII < 128 to character refs', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+      ).contains('Prefs').click();
+      cy.get('#asciiLt128').uncheck();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('abc');
+      cy.get('#b3').click();
+      cy.get('#converted').invoke('val').should('eq', 'abc');
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+      ).contains('Prefs').click();
+      cy.get('#asciiLt128').check();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('abc');
+      cy.get('#b3').click();
+      cy.get('#converted').invoke('val').should('eq', '&#97;&#98;&#99;');
+    });
+
+
   });
 });

@@ -57,4 +57,21 @@ describe('DTD page', function () {
     cy.get('#startset').clear().type('ꯍ');
     cy.get('.entity > a').contains('&a;');
   });
+
+  it('retains appending/DTD state after reload', function () {
+    visitBrowserAction();
+    cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
+    cy.get('#appendtohtmldtd').check();
+    cy.get('#DTDtextbox').clear().type('<!ENTITY a "&#xabcd;">').blur();
+
+    cy.reload(true);
+    // eslint-disable-next-line cypress/no-unnecessary-waiting -- Load
+    cy.wait(500);
+
+    cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
+    cy.get('#appendtohtmldtd').should('be.checked');
+    cy.get('#DTDtextbox').invoke('val').should(
+      'contain', '<!ENTITY a "&#xabcd;">'
+    );
+  });
 });
