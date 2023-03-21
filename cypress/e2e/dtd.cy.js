@@ -1,6 +1,6 @@
 import {visitBrowserAction} from './utils.js';
 
-describe('Entities page', function () {
+describe('DTD page', function () {
   it('inserts an entity file', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();

@@ -1,3 +1,5 @@
+import {visitBrowserAction} from './utils.js';
+
 describe('Main page', function () {
   beforeEach(() => {
     return cy.clearIndexedDB();
@@ -18,6 +20,22 @@ describe('Main page', function () {
 
   it('Checks accessibility', function () {
     cy.visitURLAndCheckAccessibility('/browser_action/index-instrumented.html');
+  });
+
+  it('Preloads preference-set tab', function () {
+    visitBrowserAction();
+    cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();
+    cy.get('#initialTab').select(1).blur();
+    cy.get('#initialTab').should('have.value', 'conversion');
+    cy.get('h1.tab:nth-of-type(1)').contains('Charts').click();
+    cy.reload(true);
+
+    // eslint-disable-next-line max-len -- Long
+    // eslint-disable-next-line cypress/no-unnecessary-waiting -- Wait until loads
+    cy.wait(500);
+    cy.get('#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)').contains(
+      'Conversion'
+    ).invoke('data', 'selected').should('eq', true);
   });
 
   it.skip('Downloads Unihan', function () {

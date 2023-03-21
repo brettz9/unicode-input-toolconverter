@@ -12,6 +12,13 @@ export const makeTabBox = function (sel) {
         return tabPanel.classList.contains('tabpanel');
       });
     };
+    tabbox.$selectTabForTabPanel = function (tabPanel) {
+      const tabs = tabbox.$getTabs();
+      const tab = tabs.find((tb) => {
+        return tb.dataset.label === tabPanel.dataset.label;
+      });
+      return tabbox.$selectTab(tab);
+    };
     tabbox.$selectTab = function (tab) {
       const tabs = tabbox.$getTabs();
       tabbox.$getTabPanels().forEach((tabPanel, i) => {
@@ -40,7 +47,7 @@ export const makeTabBox = function (sel) {
       return jml('h1', {
         class: 'tab',
         title,
-        dataset: {selected},
+        dataset: {selected, label},
         $on: {
           click () {
             tabbox.$selectTab(this);

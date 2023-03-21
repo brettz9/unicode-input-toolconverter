@@ -10,7 +10,7 @@ export const setPrefDefaultVars = ({_: __}) => {
 
 export const getUnicodeDefaults = () => {
   return new SimplePrefs({
-    namespace: 'unicode-input-toolconverter',
+    namespace: 'unicode-input-toolconverter-',
     defaults: getPrefDefaults()
   }).bind();
 };

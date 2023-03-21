@@ -76,9 +76,7 @@ await characterSelection({
 setupEntityEvents();
 
 // Todo: Move functionality to relevant files
-await unicodecharref.initialize({
-  targetid: 'context-unicodechart'
-});
+await unicodecharref.initialize();
 
 /**
 * The following works, but if used will not allow user to cancel to

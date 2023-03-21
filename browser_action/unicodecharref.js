@@ -409,7 +409,6 @@ const unicodecharref = {
     ) => {
       return typeof value === 'boolean';
     }).map(([key]) => key));
-
     switch (await getPref('cssWhitespace')) {
     case ' ':
       $('#CSSWhitespace').selectedIndex = 0;
@@ -491,7 +490,7 @@ const unicodecharref = {
       case 'context-unicodechart':
         await this.disableEnts();
         $('#startset').value = toconvert;
-        $('#unicodeTabBox').$selectTab($('h1.tab:nth-of-type(1)'));
+        $('#unicodeTabBox').$selectTabForTabPanel($('#charts'));
         if (toconvert !== '') {
           await this.setCurrstartset(toconvert.codePointAt() - 1);
           await chartBuild();
@@ -522,15 +521,17 @@ const unicodecharref = {
 
     if (!customProtocol) {
       if (cfg.options) { // options menu
-        $('#unicodeTabBox').$selectTab($('#prefs'));
+        $('#unicodeTabBox').$selectTabForTabPanel($('#prefs'));
       } else if (cfg.convert) { // Keyboard invocation or button
         // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
-        $('#unicodeTabBox').$selectTab($('#' + await getPref('initialTab')));
+        $('#unicodeTabBox').$selectTabForTabPanel($('#conversion'));
       } else if (
         targetid !== 'context-unicodechart' &&
         targetid !== 'tools-charrefunicode'
       ) {
-        $('#unicodeTabBox').$selectTab($('#conversion'));
+        $('#unicodeTabBox').$selectTabForTabPanel(
+          $('#' + await getPref('initialTab'))
+        );
       }
     }
 
@@ -1274,7 +1275,7 @@ const unicodecharref = {
   },
   moveoutput (movedid) {
     const insertText = $(movedid);
-    $('#unicodeTabBox').$selectTab($('h1.tab:nth-of-type(2)'));
+    $('#unicodeTabBox').$selectTabForTabPanel($('#conversion'));
     $('#toconvert').value = insertText.value;
   },
   async append2htmlflip (e) {
