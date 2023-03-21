@@ -25,11 +25,14 @@ export const makeTabBox = function (sel) {
         }
       });
     };
+    /*
+    // Should work, but unused
     tabbox.$selectedTab = function (tab) {
       return tabbox.$getTabPanels().find(({dataset: {selected}}) => {
         return selected;
       });
     };
+    */
     tabbox.querySelector('.tabs').prepend(...tabbox.$getTabPanels().map(({
       dataset: {title, selected, label}
     }) => {
