@@ -23,7 +23,7 @@
     "cypress:open": "cypress open",
     "test": "npm run cypress:run",
     "start:coverage": "nyc --silent node server",
-    "open:coverage": "open-cli http://localhost:8000/coverage/lcov-report/ && npm start",
+    "open:coverage": "open-cli http://localhost:8000/coverage/ && npm start",
     "report": "nyc report",
     "rollup": "rollup -c",
     "service-worker": "node ./tools/list-locales && find-es-resources --queryModule=\"./tools/findEsResources.js\" --htmlInput=\"./browser_action/index.html\" -o browser_action/service-worker/sw-resources.json --removeBasePath=\"/Users/brett/unicode-input-toolconverter\"",
