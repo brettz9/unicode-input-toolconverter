@@ -1,6 +1,32 @@
 import {visitBrowserAction} from './utils.js';
 
 describe('Conversion', function () {
+  describe('Basic conversions', function () {
+    it('Converts character refs to Unicode', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&#xabcd; &#1234;');
+      cy.get('#b1').click();
+      cy.get('#converted').invoke('val').should('eq', 'ꯍ Ӓ');
+    });
+
+    it('Converts character refs to entities', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&#xE9; &#233;');
+      cy.get('#b2').click();
+      cy.get('#converted').invoke('val').should('eq', '&eacute; &eacute;');
+    });
+  });
+
   describe('Options', function () {
     it('Converts unambiguous CSS escapes', function () {
       visitBrowserAction();
