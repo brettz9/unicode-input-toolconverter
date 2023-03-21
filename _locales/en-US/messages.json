@@ -1098,7 +1098,7 @@
       "message": "Converted text"
     },
     "Ascii_checkbox_label": {
-      "message": "Convert into entities if ASCIIs < 128 (existing entities/char refs. will thus not be immune)?"
+      "message": "Convert into character references/descriptions if ASCIIs < 128 (existing entities/char refs. will thus not be immune)?"
     },
     "Hexletters_checkbox_label": {
       "message": "Output Hexadecimal A-F (upper-case)?"
