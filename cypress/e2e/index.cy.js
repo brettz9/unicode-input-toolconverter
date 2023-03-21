@@ -39,13 +39,17 @@ describe('Main page', function () {
   });
 
   it.skip('Downloads Unihan', function () {
-    cy.visit('/browser_action/index-instrumented.html');
-    cy.get('#unicodeTabBox > .tabs > .tab:nth-child(3)').click();
+    cy.clearIndexedDB();
+    visitBrowserAction();
+    cy.get('#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)').click();
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.get('#UnihanInstalled').then(($el) => {
       return Cypress.dom.isHidden($el);
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
+      cy.on('window:alert', (t) => {
+        expect(t).to.contains('Finished download');
+      });
       return cy.get('#DownloadButtonBox button').click();
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
@@ -54,6 +58,8 @@ describe('Main page', function () {
       }).contains('database installed');
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
+      // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
+      cy.wait(5000);
       return cy.get('#closeDownloadProgressBox').click();
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {

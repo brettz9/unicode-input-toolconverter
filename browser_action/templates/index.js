@@ -870,7 +870,7 @@ const indexTemplate = function ({_, fonts}) {
             }
           }, [_('Close')]]
         ]],
-        ['div', {id: 'UnihanInstalled', class: 'vbox'}, [
+        ['div', {id: 'UnihanInstalled', hidden: true, class: 'vbox'}, [
           _('UnihanInstalled')
         ]],
         ['div', {class: 'boxed vbox'}, [
