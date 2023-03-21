@@ -906,20 +906,6 @@ const indexTemplate = function ({_, fonts}) {
           ['label', [
             ['input', {
               type: 'checkbox',
-              id: 'asciiLt128',
-              $on: {
-                async click (e) {
-                  await unicodecharref.setprefs(e);
-                }
-              }
-            }],
-            _('Ascii_checkbox_label')
-          ]]
-        ]],
-        ['div', {class: 'boxedbottom vbox'}, [
-          ['label', [
-            ['input', {
-              type: 'checkbox',
               id: 'hexLettersUpper',
               class: 'topofpanel',
               $on: {
@@ -929,6 +915,20 @@ const indexTemplate = function ({_, fonts}) {
               }
             }],
             _('Hexletters_checkbox_label')
+          ]]
+        ]],
+        ['div', {class: 'boxedbottom vbox'}, [
+          ['label', [
+            ['input', {
+              type: 'checkbox',
+              id: 'asciiLt128',
+              $on: {
+                async click (e) {
+                  await unicodecharref.setprefs(e);
+                }
+              }
+            }],
+            _('Ascii_checkbox_label')
           ]]
         ]],
         ['div', {class: 'boxedbottom vbox'}, [
