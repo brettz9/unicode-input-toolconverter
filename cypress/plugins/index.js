@@ -13,7 +13,7 @@
 // the project's config changing)
 
 import coverage from '@cypress/code-coverage/task.js';
-// import useBabelRc from '@cypress/code-coverage/use-babelrc';
+// import useBabelRc from '@cypress/code-coverage/use-babelrc.js';
 
 /**
  * @type {Cypress.PluginConfig}

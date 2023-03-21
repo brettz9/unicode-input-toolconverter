@@ -17,11 +17,11 @@ describe('Main page', function () {
   });
 
   it('Checks accessibility', function () {
-    cy.visitURLAndCheckAccessibility('/browser_action/');
+    cy.visitURLAndCheckAccessibility('/browser_action/index-instrumented.html');
   });
 
   it.skip('Downloads Unihan', function () {
-    cy.visit('/browser_action/');
+    cy.visit('/browser_action/index-instrumented.html');
     cy.get('#unicodeTabBox > .tabs > .tab:nth-child(3)').click();
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.get('#UnihanInstalled').then(($el) => {
@@ -47,7 +47,7 @@ describe('Main page', function () {
   });
 
   it('Loads with service worker', function () {
-    cy.visit('/browser_action/?serviceWorker=1');
+    cy.visit('/browser_action/index-instrumented.html?serviceWorker=1');
 
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.window().then((win) => {
@@ -56,14 +56,14 @@ describe('Main page', function () {
   });
 
   it('Loads with custom lang', function () {
-    cy.visit('/browser_action/?lang=hu-HU');
+    cy.visit('/browser_action/index-instrumented.html?lang=hu-HU');
     cy.get('#unicodeTabBox > :nth-child(1) > [data-selected="true"]').contains(
       'Diagramok'
     );
   });
 
   it('Loads fonts conditionally', function () {
-    cy.visit('/browser_action/?fonts=1');
+    cy.visit('/browser_action/index-instrumented.html?fonts=1');
     cy.get('select option', {
       timeout: 20000
     }).contains('Helvetica');

@@ -1,6 +1,7 @@
 import terser from '@rollup/plugin-terser';
 
 import {babel} from '@rollup/plugin-babel';
+import istanbul from 'rollup-plugin-istanbul';
 
 /**
  * @external RollupConfig
@@ -12,17 +13,23 @@ import {babel} from '@rollup/plugin-babel';
  * @param {PlainObject} config
  * @param {string} config.input
  * @param {boolean} [config.minifying=false]
+ * @param {boolean} [config.instrument]
  * @returns {external:RollupConfig}
  */
-function getRollupObject ({input, minifying} = {}) {
+function getRollupObject ({input, minifying, instrument} = {}) {
   const nonMinified = {
     input,
     output: {
       format: 'iife',
       sourcemap: minifying,
-      file: `${input.replace(/\.js$/u, '.iife')}${minifying ? '.min' : ''}.js`
+      file: `${
+        instrument
+          ? input.replace(/\.js$/u, '.iife')
+          : input.replace(/\.js$/u, '.instrumented.iife')
+      }${minifying ? '.min' : ''}.js`
     },
     plugins: [
+      ...(instrument ? [istanbul()] : []),
       babel({
         babelHelpers: 'bundled'
       })
@@ -37,5 +44,8 @@ function getRollupObject ({input, minifying} = {}) {
 export default [
   getRollupObject({
     input: './browser_action/index.js', minifying: true
+  }),
+  getRollupObject({
+    input: './browser_action/index.js', minifying: true, instrument: true
   })
 ];
