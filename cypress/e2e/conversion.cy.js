@@ -1,6 +1,13 @@
 import {visitBrowserAction} from './utils.js';
 
 describe('Conversion', function () {
+  beforeEach(async () => {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    for (const registration of registrations) {
+      registration.unregister();
+    }
+  });
+
   describe('Basic conversions', function () {
     it('Converts character refs to Unicode', function () {
       visitBrowserAction();
@@ -244,48 +251,52 @@ describe('Conversion', function () {
       }
     );
 
-    it(
-      'Converts Unicode to character description escapes',
-      function () {
-        visitBrowserAction(undefined, [
-          ['serviceWorker', 1]
-        ]);
+    describe('Character descriptions', function () {
+      it(
+        'Converts Unicode to character description escapes',
+        function () {
+          visitBrowserAction(undefined, [
+            ['characterDescriptions', 1]
+          ]);
 
-        // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
-        cy.wait(2000);
+          // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
+          cy.wait(3000);
 
-        cy.get(
-          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
-        ).contains('Conversion').click();
-        cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('é');
-        cy.get('#b17').click();
-        cy.get('#converted').invoke('val').should(
-          'eq', '\\C{LATIN SMALL LETTER E WITH ACUTE}'
-        );
-      }
-    );
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+          cy.get('#converted').clear();
+          cy.get('#toconvert').clear().type('é');
+          cy.get('#b17').click();
+          cy.get('#converted').invoke('val').should(
+            'eq', '\\C{LATIN SMALL LETTER E WITH ACUTE}'
+          );
+        }
+      );
 
-    it(
-      'Converts character description escapes to Unicode',
-      function () {
-        visitBrowserAction(undefined, [
-          ['serviceWorker', 1]
-        ]);
+      it(
+        'Converts character description escapes to Unicode',
+        function () {
+          visitBrowserAction(undefined, [
+            ['characterDescriptions', 1]
+          ]);
+          // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
+          cy.wait(3000);
 
-        cy.get(
-          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
-        ).contains('Conversion').click();
-        cy.get('#converted').clear();
-        // Split up typing to avoid being interpreted by Cypress
-        //  as keystroke
-        cy.get('#toconvert').clear().type(
-          '\\C{'
-        ).type('LATIN SMALL LETTER E WITH ACUTE}');
-        cy.get('#b18').click();
-        cy.get('#converted').invoke('val').should('eq', 'é');
-      }
-    );
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+          cy.get('#converted').clear();
+          // Split up typing to avoid being interpreted by Cypress
+          //  as keystroke
+          cy.get('#toconvert').clear().type(
+            '\\C{'
+          ).type('LATIN SMALL LETTER E WITH ACUTE}');
+          cy.get('#b18').click();
+          cy.get('#converted').invoke('val').should('eq', 'é');
+        }
+      );
+    });
   });
 
   describe('Options', function () {
@@ -312,34 +323,312 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', '\\e9\t');
     });
 
-    it('Escapes ampersand followed by space', function () {
-      visitBrowserAction();
+    describe('Ampersand followed by space', function () {
+      it('Escapes ampersand followed by space (Unicode to dec)', function () {
+        visitBrowserAction();
 
-      cy.get(
-        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
-      ).contains('Prefs').click();
-      cy.get('#ampspace').uncheck();
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').uncheck();
 
-      cy.get(
-        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
-      ).contains('Conversion').click();
-      cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('& test');
-      cy.get('#b3').click();
-      cy.get('#converted').invoke('val').should('eq', '& test');
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b3').click();
+        cy.get('#converted').invoke('val').should('eq', '& test');
 
-      cy.get(
-        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
-      ).contains('Prefs').click();
-      cy.get('#ampspace').check();
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').check();
 
-      cy.get(
-        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
-      ).contains('Conversion').click();
-      cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('& test');
-      cy.get('#b3').click();
-      cy.get('#converted').invoke('val').should('eq', '&amp; test');
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b3').click();
+        cy.get('#converted').invoke('val').should('eq', '&amp; test');
+      });
+
+      it(
+        'Escapes ampersand followed by space (Charref to Unicode)',
+        function () {
+          visitBrowserAction();
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+          ).contains('Prefs').click();
+          cy.get('#ampspace').uncheck();
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+          cy.get('#converted').clear();
+          cy.get('#toconvert').clear().type('& test');
+          cy.get('#b1').click();
+          cy.get('#converted').invoke('val').should('eq', '& test');
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+          ).contains('Prefs').click();
+          cy.get('#ampspace').check();
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+          cy.get('#converted').clear();
+          cy.get('#toconvert').clear().type('& test');
+          cy.get('#b1').click();
+          cy.get('#converted').invoke('val').should('eq', '&amp; test');
+        }
+      );
+
+      it('Escapes ampersand followed by space (Charref to ent)', function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').uncheck();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b2').click();
+        cy.get('#converted').invoke('val').should('eq', '& test');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b2').click();
+        cy.get('#converted').invoke('val').should('eq', '&amp; test');
+      });
+
+      it('Escapes ampersand followed by space (Unicode to hex)', function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').uncheck();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b4').click();
+        cy.get('#converted').invoke('val').should('eq', '& test');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b4').click();
+        cy.get('#converted').invoke('val').should('eq', '&amp; test');
+      });
+
+      it('Escapes ampersand followed by space (Unicode to ent)', function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').uncheck();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b5').click();
+        cy.get('#converted').invoke('val').should('eq', '& test');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b5').click();
+        cy.get('#converted').invoke('val').should('eq', '&amp; test');
+      });
+
+      it('Escapes ampersand followed by space (Entity to dec)', function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').uncheck();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b9').click();
+        cy.get('#converted').invoke('val').should('eq', '& test');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b9').click();
+        cy.get('#converted').invoke('val').should('eq', '&amp; test');
+      });
+
+      it('Escapes ampersand followed by space (Entity to hex)', function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').uncheck();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b10').click();
+        cy.get('#converted').invoke('val').should('eq', '& test');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b10').click();
+        cy.get('#converted').invoke('val').should('eq', '&amp; test');
+      });
+
+      it(
+        'Escapes ampersand followed by space (Entity to Unicode)',
+        function () {
+          visitBrowserAction();
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+          ).contains('Prefs').click();
+          cy.get('#ampspace').uncheck();
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+          cy.get('#converted').clear();
+          cy.get('#toconvert').clear().type('& test');
+          cy.get('#b11').click();
+          cy.get('#converted').invoke('val').should('eq', '& test');
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+          ).contains('Prefs').click();
+          cy.get('#ampspace').check();
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+          cy.get('#converted').clear();
+          cy.get('#toconvert').clear().type('& test');
+          cy.get('#b11').click();
+          cy.get('#converted').invoke('val').should('eq', '&amp; test');
+        }
+      );
+
+      it('Escapes ampersand followed by space (Hex to dec)', function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').uncheck();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b12').click();
+        cy.get('#converted').invoke('val').should('eq', '& test');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b12').click();
+        cy.get('#converted').invoke('val').should('eq', '&amp; test');
+      });
+
+      it('Escapes ampersand followed by space (Dec to hex)', function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').uncheck();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b13').click();
+        cy.get('#converted').invoke('val').should('eq', '& test');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#ampspace').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('& test');
+        cy.get('#b13').click();
+        cy.get('#converted').invoke('val').should('eq', '&amp; test');
+      });
     });
 
     it('Keeps ampersand when converting to entities', function () {

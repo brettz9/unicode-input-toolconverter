@@ -1,6 +1,13 @@
 import {visitBrowserAction} from './utils.js';
 
 describe('Main page', function () {
+  beforeEach(async () => {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    for (const registration of registrations) {
+      registration.unregister();
+    }
+  });
+
   beforeEach(() => {
     return cy.clearIndexedDB();
   });

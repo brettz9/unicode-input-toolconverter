@@ -1,6 +1,13 @@
 import {visitBrowserAction} from './utils.js';
 
 describe('DTD page', function () {
+  beforeEach(async () => {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    for (const registration of registrations) {
+      registration.unregister();
+    }
+  });
+
   it('inserts an entity file', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();

@@ -14,6 +14,9 @@ import indexTemplate from './templates/index.js';
 
 import setupServiceWorker from './utils/setupServiceWorker.js';
 
+import activateCallback from
+  './service-worker/sw-activateCallback.js';
+
 import {
   shareVars as shareVarsEntity, setupEntityEvents
 } from './entityBehaviors.js';
@@ -49,6 +52,11 @@ const _ = await i18n({
 if (searchParams.get('serviceWorker')) {
   // Doesn't work in FF as SW using ESM so putting behind switch for now
   await setupServiceWorker();
+} else if (searchParams.get('characterDescriptions')) {
+  const namespace = 'unicode-input-toolconverter-Unihan';
+  await activateCallback({
+    namespace
+  });
 }
 
 setPrefDefaultVars({_});

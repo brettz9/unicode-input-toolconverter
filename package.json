@@ -14,7 +14,8 @@
       "html"
     ],
     "exclude": [
-      "vendor"
+      "vendor/**",
+      "vendor/**/*.js"
     ]
   },
   "type": "module",

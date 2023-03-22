@@ -1,6 +1,13 @@
 import {visitBrowserAction} from './utils.js';
 
 describe('About page', function () {
+  beforeEach(async () => {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    for (const registration of registrations) {
+      registration.unregister();
+    }
+  });
+
   it('Opens donation page', function () {
     visitBrowserAction({
       onBeforeLoad (win) {
