@@ -595,9 +595,10 @@ export const getUnicodeConverter = () => {
      * @returns {string}
      */
     async unicode2CharDescVal (toconvert) {
+      const asciiLt128 = await getPref('asciiLt128');
       return (await Promise.all([...toconvert].map(async (ch) => {
         const codePoint = ch.codePointAt();
-        if (codePoint >= 128 || await getPref('asciiLt128')) {
+        if (codePoint >= 128 || asciiLt128) {
           const charDesc = await this.getCharDescForCodePoint(codePoint);
           if (charDesc) { // Skip if no description in database
             return '\\C{' + charDesc + '}';
@@ -643,6 +644,8 @@ export const getUnicodeConverter = () => {
         }
 
         const hexStr = dec.toString(16).toUpperCase().padStart(4, '0');
+
+        await charrefunicodeDb.connect();
         const {
           name, unicode1Name
         } = await charrefunicodeDb.getUnicodeFields(hexStr);
