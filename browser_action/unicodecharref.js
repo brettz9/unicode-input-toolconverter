@@ -301,8 +301,10 @@ const unicodecharref = {
       $('#DownloadButtonBox').hidden = true;
       $('#UnihanInstalled').hidden = false;
     } catch (e) {
-      // eslint-disable-next-line no-console -- Debug
-      console.error(e);
+      if (!e.message.includes('ransaction')) {
+        // eslint-disable-next-line no-console -- Debug
+        console.error(e);
+      }
       $('#DownloadButtonBox').hidden = false;
       $('#UnihanInstalled').hidden = true;
     }

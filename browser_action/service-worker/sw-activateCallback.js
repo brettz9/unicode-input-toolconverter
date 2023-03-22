@@ -13,9 +13,20 @@ function deleteDatabase (db) {
     req.addEventListener('success', () => {
       resolve();
     });
-    req.addEventListener('error', () => {
-      resolve();
-    });
+    req.addEventListener(
+      'error',
+      /* istanbul ignore next -- Just for protection */
+      () => {
+        resolve();
+      }
+    );
+    req.addEventListener(
+      'blocked',
+      /* istanbul ignore next -- Just for protection */
+      () => {
+        resolve();
+      }
+    );
   });
 }
 
