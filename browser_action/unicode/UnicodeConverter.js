@@ -25,8 +25,9 @@ const hexadec = /&#[xX]([\da-fA-F]*);/gu;
 //   https://unicode.org/reports/tr31/ ;
 // Currently appears to be Tables 3, 3a, and 3b
 //   (besides \u0027 and \u2019 per XML)
-const htmlOrXmlEnt = /[\p{ID_Start}_][\p{ID_Continue}\u0024\u005F\u002D\u002E\u003A\u00B7\u058A\u05F4\u0F0B\u200C\u2010\u2027\u30A0\u30FB\u05F3\u200D]/gui;
+const xmlName = /[\p{ID_Start}_][\p{ID_Continue}\u0024\u005F\u002D\u002E\u003A\u00B7\u058A\u05F4\u0F0B\u200C\u2010\u2027\u30A0\u30FB\u05F3\u200D]*/gui;
 // const htmlOrXmlEnt = /&([a-z\d]+);/gui; // Works for basic HTML entitites
+const htmlOrXmlEnt = new RegExp('&(' + xmlName.source + ');', 'gui');
 
 export const getUnicodeConverter = () => {
   const {getPref} = getUnicodeDefaults();

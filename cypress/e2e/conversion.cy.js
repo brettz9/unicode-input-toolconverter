@@ -130,7 +130,7 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', '\\0000e9 \\01f600');
     });
 
-    it.skip('Converts HTML entities to decimal char. references', function () {
+    it('Converts HTML entities to decimal char. references', function () {
       visitBrowserAction();
 
       cy.get(
@@ -142,7 +142,7 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', '&#233;');
     });
 
-    it.skip(
+    it(
       'Converts HTML entities to hexadecimal char. references',
       function () {
         visitBrowserAction();
@@ -157,7 +157,7 @@ describe('Conversion', function () {
       }
     );
 
-    it.skip('Converts HTML entities to Unicode', function () {
+    it('Converts HTML entities to Unicode', function () {
       visitBrowserAction();
 
       cy.get(
