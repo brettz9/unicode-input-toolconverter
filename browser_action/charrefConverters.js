@@ -134,7 +134,7 @@ const CharrefConverterBridges = {
    * Replace Unicode characters with their escaped description form.
    * @param {string} toconvert The text whose Unicode characters will be
    *   replaced
-   * @param {XULElement} el The (button) element whose class will be changed to
+   * @param {HTMLElement} el The (button) element whose class will be changed to
    *   reflect that the action has been activated
    * @returns {string} The passed-in string with Unicode replaced with
    *   description escape sequences
@@ -149,7 +149,7 @@ const CharrefConverterBridges = {
    * Converts character description escape sequences within a string to
    * Unicode characters.
    * @param {string} toconvert The text to convert
-   * @param {XULElement} el The button element whose class should be
+   * @param {HTMLElement} el The button element whose class should be
    *   dynamically changed (and others deactivated)
    * @returns {Promise<string>} The converted-to-Unicode value
    */
