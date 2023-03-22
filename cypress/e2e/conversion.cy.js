@@ -81,6 +81,123 @@ describe('Conversion', function () {
         cy.get('#converted').invoke('val').should('eq', '&#xd83d;&#xde00;');
       }
     );
+
+    it('Converts Unicode to HTML entities', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('é 😀');
+      cy.get('#b5').click();
+      cy.get('#converted').invoke('val').should('eq', '&eacute; 😀');
+    });
+
+    it('Converts Unicode to JavaScript escape sequences', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('é 😀');
+      cy.get('#b6').click();
+      cy.get('#converted').invoke('val').should('eq', '\\u00e9 \\ud83d\\ude00');
+    });
+
+    it('Converts Unicode to 6-digit sequences (PHP)', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('é 😀');
+      cy.get('#b7').click();
+      cy.get('#converted').invoke('val').should('eq', '\\u0000e9 \\u01f600');
+    });
+
+    it('Converts Unicode to CSS escapes', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('é 😀');
+      cy.get('#b8').click();
+      cy.get('#converted').invoke('val').should('eq', '\\0000e9 \\01f600');
+    });
+
+    it.skip('Converts HTML entities to decimal char. references', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&eacute;');
+      cy.get('#b9').click();
+      cy.get('#converted').invoke('val').should('eq', '&#233;');
+    });
+
+    it.skip(
+      'Converts HTML entities to hexadecimal char. references',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('&eacute;');
+        cy.get('#b10').click();
+        cy.get('#converted').invoke('val').should('eq', '&#xe9;');
+      }
+    );
+
+    it.skip('Converts HTML entities to Unicode', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&eacute;');
+      cy.get('#b11').click();
+      cy.get('#converted').invoke('val').should('eq', 'é');
+    });
+
+    it(
+      'Converts Hexadecimal to decimal character references',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('&#xe9;');
+        cy.get('#b12').click();
+        cy.get('#converted').invoke('val').should('eq', '&#233;');
+      }
+    );
+
+    it(
+      'Converts Decimal to hexadecimal character references',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('&#233;');
+        cy.get('#b13').click();
+        cy.get('#converted').invoke('val').should('eq', '&#xe9;');
+      }
+    );
   });
 
   describe('Options', function () {
