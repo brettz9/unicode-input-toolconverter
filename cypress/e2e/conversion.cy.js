@@ -244,7 +244,7 @@ describe('Conversion', function () {
       }
     );
 
-    it.skip(
+    it.only(
       'Converts Unicode to character description escapes',
       function () {
         visitBrowserAction();
@@ -253,9 +253,11 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\00abcd');
+        cy.get('#toconvert').clear().type('é');
         cy.get('#b17').click();
-        cy.get('#converted').invoke('val').should('eq', 'ꯍ');
+        cy.get('#converted').invoke('val').should(
+          'eq', '\\C{LATIN SMALL LETTER E WITH ACUTE}'
+        );
       }
     );
 
@@ -268,9 +270,11 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\00abcd');
+        cy.get('#toconvert').clear().type(
+          '\\C{LATIN SMALL LETTER E WITH ACUTE}'
+        );
         cy.get('#b18').click();
-        cy.get('#converted').invoke('val').should('eq', 'ꯍ');
+        cy.get('#converted').invoke('val').should('eq', 'é');
       }
     );
   });
