@@ -25,6 +25,62 @@ describe('Conversion', function () {
       cy.get('#b2').click();
       cy.get('#converted').invoke('val').should('eq', '&eacute; &eacute;');
     });
+
+    it('Converts Unicode to decimal character references', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('é');
+      cy.get('#b3').click();
+      cy.get('#converted').invoke('val').should('eq', '&#233;');
+    });
+
+    it('Converts Unicode to hexadecimal character references', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('é 😀');
+      cy.get('#b4').click();
+      cy.get('#converted').invoke('val').should('eq', '&#xe9; &#x1f600;');
+    });
+
+    it(
+      'Converts Unicode to hexadecimal character references ' +
+      '(decimal surrogate pairs)',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('😀');
+        cy.get('#b3b').click();
+        cy.get('#converted').invoke('val').should('eq', '&#55357;&#56832;');
+      }
+    );
+
+    it(
+      'Converts Unicode to hexadecimal character references ' +
+      '(hexadecimal surrogate pairs)',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('😀');
+        cy.get('#b4b').click();
+        cy.get('#converted').invoke('val').should('eq', '&#xd83d;&#xde00;');
+      }
+    );
   });
 
   describe('Options', function () {
