@@ -198,6 +198,81 @@ describe('Conversion', function () {
         cy.get('#converted').invoke('val').should('eq', '&#xe9;');
       }
     );
+
+    it(
+      'Converts JavaScript escape sequences to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\uabcd');
+        cy.get('#b14').click();
+        cy.get('#converted').invoke('val').should('eq', 'ꯍ');
+      }
+    );
+
+    it(
+      'Converts PHP escape sequences to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\uabcd \\u00abcd');
+        cy.get('#b15').click();
+        cy.get('#converted').invoke('val').should('eq', 'ꯍ ꯍ');
+      }
+    );
+
+    it(
+      'Converts PHP escape sequences to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\00abcd');
+        cy.get('#b16').click();
+        cy.get('#converted').invoke('val').should('eq', 'ꯍ');
+      }
+    );
+
+    it.skip(
+      'Converts Unicode to character description escapes',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\00abcd');
+        cy.get('#b17').click();
+        cy.get('#converted').invoke('val').should('eq', 'ꯍ');
+      }
+    );
+
+    it.skip(
+      'Converts character description escapes to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\00abcd');
+        cy.get('#b18').click();
+        cy.get('#converted').invoke('val').should('eq', 'ꯍ');
+      }
+    );
   });
 
   describe('Options', function () {
