@@ -244,10 +244,15 @@ describe('Conversion', function () {
       }
     );
 
-    it.only(
+    it(
       'Converts Unicode to character description escapes',
       function () {
-        visitBrowserAction();
+        visitBrowserAction(undefined, [
+          ['serviceWorker', 1]
+        ]);
+
+        // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
+        cy.wait(2000);
 
         cy.get(
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
@@ -261,18 +266,22 @@ describe('Conversion', function () {
       }
     );
 
-    it.skip(
+    it(
       'Converts character description escapes to Unicode',
       function () {
-        visitBrowserAction();
+        visitBrowserAction(undefined, [
+          ['serviceWorker', 1]
+        ]);
 
         cy.get(
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
+        // Split up typing to avoid being interpreted by Cypress
+        //  as keystroke
         cy.get('#toconvert').clear().type(
-          '\\C{LATIN SMALL LETTER E WITH ACUTE}'
-        );
+          '\\C{'
+        ).type('LATIN SMALL LETTER E WITH ACUTE}');
         cy.get('#b18').click();
         cy.get('#converted').invoke('val').should('eq', 'é');
       }
