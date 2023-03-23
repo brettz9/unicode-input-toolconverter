@@ -983,6 +983,9 @@
     "UnihanInstalled": {
       "message": "Unihan (CJK) database installed"
     },
+    "Register_protocol_handler": {
+      "message": "Register protocol handler"
+    },
     "searchName": {
       "message": "Search by character name"
     },

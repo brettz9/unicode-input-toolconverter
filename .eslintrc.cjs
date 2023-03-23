@@ -26,6 +26,7 @@ module.exports = {
       'Array.from',
       'fetch',
       'navigator.languages',
+      'navigator.registerProtocolHandler',
       'navigator.serviceWorker',
       'Number.parseInt',
       'Object.assign',

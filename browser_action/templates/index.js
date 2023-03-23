@@ -873,6 +873,21 @@ const indexTemplate = function ({_, fonts}) {
         ['div', {id: 'UnihanInstalled', hidden: true, class: 'vbox'}, [
           _('UnihanInstalled')
         ]],
+        ['div', [
+          ['button', {id: 'registerProtocolHandler', $on: {
+            click () {
+              const url = new URL(location.href);
+              navigator.registerProtocolHandler(
+                'web+unicode',
+                url.protocol + '://' + url.host + url.pathname + '?customProtocol=%s',
+                // Deprecated title arg but required for some browsers
+                'Unicode'
+              );
+            }
+          }}, [
+            _('Register_protocol_handler')
+          ]]
+        ]],
         ['div', {class: 'boxed vbox'}, [
           ['label', [
             _('initialTab_label'), nbsp.repeat(3),

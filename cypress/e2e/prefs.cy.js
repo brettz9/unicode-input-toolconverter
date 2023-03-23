@@ -8,6 +8,19 @@ describe('Prefs', function () {
     }
   });
 
+  it('registers protocol handler', function () {
+    visitBrowserAction();
+    cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();
+
+    cy.on('uncaught:exception', (/* err, runnable */) => {
+      return true;
+    });
+
+    cy.get('#registerProtocolHandler').click();
+    // Todo: Request Cypress allow interaction with protocol handlers
+    //        to complete testing
+  });
+
   it('Resets to defaults', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();

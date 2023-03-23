@@ -983,6 +983,9 @@
     "UnihanInstalled": {
       "message": "Az Unihan (CJK) adatbázis telepítve"
     },
+    "Register_protocol_handler": {
+      "message": "Register protocol handler"
+    },
     "searchName": {
       "message": "Keresés karakternév szerint: "
     },
