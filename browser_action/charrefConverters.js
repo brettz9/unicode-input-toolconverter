@@ -364,7 +364,7 @@ async function findBridgeForTargetID ({toconvert, targetid}) {
     );
     break;
   default:
-    throw new Error('Unexpected target ID type');
+    throw new Error(`Unexpected target ID type ${targetid}`);
   }
   return out;
 }

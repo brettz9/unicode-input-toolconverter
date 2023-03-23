@@ -362,7 +362,6 @@ const unicodecharref = {
       const req = new URL(customProtocol);
       const queryType = req.pathname;
       unicodeQueryObj = req.searchParams;
-
       switch (queryType) {
       case 'find':
         toconvert = unicodeQueryObj.get('char');
@@ -475,7 +474,9 @@ const unicodecharref = {
         toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
       }
 
-      bridgeResult = await findBridgeForTargetID({toconvert, targetid});
+      if (targetid !== 'context-unicodechart') {
+        bridgeResult = await findBridgeForTargetID({toconvert, targetid});
+      }
     }
 
     // Detect which context menu item was selected:
