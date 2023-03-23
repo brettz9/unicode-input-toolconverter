@@ -1313,6 +1313,13 @@ const unicodecharref = {
         '`currentStartCharCode` as undefined'
       );
     }
+
+    if (value < 0) {
+      value += 1114112;
+    } else if (value > 1114111) {
+      value = 0;
+    }
+
     return await setPref('currentStartCharCode', value);
   },
   // Unused?

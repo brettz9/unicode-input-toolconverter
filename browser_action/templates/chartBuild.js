@@ -45,7 +45,6 @@ const chartBuildTemplate = function ({
           ? '&' + charrefunicodeConverter.entities[charRefIdx] + ';'
           : '';
 
-        resetCurrentStartCharCodeIfOutOfBounds();
         // Todo: Document what's going on here
         if (descriptsOrOnlyEnts) {
           q++;
@@ -56,6 +55,7 @@ const chartBuildTemplate = function ({
         } else {
           current.startCharCode++;
         }
+        resetCurrentStartCharCodeIfOutOfBounds();
 
         return ['td', {
           class: (hasEntity ? 'entity ' : '') + 'unicodetablecell',

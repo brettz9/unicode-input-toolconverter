@@ -3,7 +3,6 @@ import {$} from '../vendor/jamilih/dist/jml-es.js';
 import {getChartBuild, chartBuild} from './chartBuild.js';
 import unicodecharref from './unicodecharref.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
-import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import addMillerColumnPlugin from
   '../vendor/miller-columns/dist/index-es.min.js';
 
@@ -16,7 +15,6 @@ import addMillerColumnPlugin from
 async function characterSelection ({
   _, charrefunicodeConverter
 }) {
-  const {setPref} = getUnicodeDefaults();
   await getChartBuild({
     _,
     charrefunicodeConverter,
@@ -73,9 +71,11 @@ async function characterSelection ({
       if (!title) {
         return;
       }
-      await setPref(
-        'currentStartCharCode',
-        Number.parseInt(title.replace(/-.*$/u, ''), 16)
+
+      await unicodecharref.disableEnts();
+
+      await unicodecharref.setCurrstartset(
+        Number.parseInt(title.replace(/-.*$/u, ''), 16) - 1
       );
       // Free to use `chartBuild` now that we have passed set-up
       await chartBuild(); // Todo: descripts?

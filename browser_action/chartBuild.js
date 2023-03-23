@@ -65,6 +65,8 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
       current.startCharCode - ((rows * cols) / 2)
     );
     resetCurrentStartCharCodeIfOutOfBounds();
+  } else {
+    resetCurrentStartCharCodeIfOutOfBounds();
   }
 
   // Todo: Document (or better name) what's going on here
@@ -110,14 +112,18 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
     'decyes', 'hexyes', 'unicodeyes'
   ].filter((t) => types[t]);
   const displayTypes = {
-    decyes: (k) => `&#${k};`,
+    decyes (k) {
+      return `&#${k};`;
+    },
     hexyes (k) {
       const kto16 = hexLettersUpper
         ? k.toString(16).toUpperCase()
         : k.toString(16);
       return '&#x' + kto16 + ';';
     },
-    unicodeyes: (k) => String.fromCodePoint(k)
+    unicodeyes (k) {
+      return String.fromCodePoint(k);
+    }
   };
 
   const captioncntnt = [];
