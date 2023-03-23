@@ -37,7 +37,7 @@ function deleteDatabase (db) {
  * @returns {Promise<void>}
  */
 async function activateCallback ({namespace, log}) {
-  await deleteDatabase(namespace);
+  await deleteDatabase(namespace); // Chrome sometimes doesn't complete
   const charrefunicodeDb = new UnicodeDatabase({
     name: namespace,
     // We don't peg to package major version as database version may vary

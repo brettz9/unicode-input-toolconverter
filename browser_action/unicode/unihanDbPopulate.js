@@ -9,7 +9,7 @@ import {UnihanDatabase} from './charrefunicodeDb.js';
  */
 async function unihanDbPopulate (updateUnicodeData) {
   const namespace = 'unicode-input-toolconverter-Unihan';
-  indexedDB.deleteDatabase(namespace);
+  await indexedDB.deleteDatabase(namespace);
   const unihanDatabase = new UnihanDatabase({
     name: namespace,
     // We don't peg to package major version as database version may vary

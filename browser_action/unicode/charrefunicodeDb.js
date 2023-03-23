@@ -60,9 +60,11 @@ class UnicodeDB {
    * @returns {Promise<void>}
    */
   connect ({updateUnicodeData, versionchange} = {}) {
-    const req = indexedDB.open(this.name, this.version);
     /* eslint-disable promise/avoid-new -- No Promise API */
     return new Promise((resolve, reject) => {
+      const req = indexedDB.open(
+        this.name, updateUnicodeData ? this.version : undefined
+      );
       if (updateUnicodeData) {
         req.addEventListener('upgradeneeded', (e) => {
           const {result: db} = e.target;
