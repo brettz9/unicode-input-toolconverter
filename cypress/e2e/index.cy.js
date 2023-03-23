@@ -74,6 +74,15 @@ describe('Main page', function () {
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(($el) => {
       return Cypress.dom.isHidden($el);
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      visitBrowserAction(undefined, [
+        ['customProtocol', 'web+unicode:searchkDefinition?string=woman']
+      ]);
+      return cy.get(
+        'tr:nth-of-type(1) .unicodetablecell:nth-of-type(1) ' +
+        '> div.centered > button'
+      ).invoke('html').should('eq', '𡞰');
     });
   });
 
