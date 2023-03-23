@@ -64,10 +64,8 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
     current.startCharCode = Math.round(
       current.startCharCode - ((rows * cols) / 2)
     );
-    resetCurrentStartCharCodeIfOutOfBounds();
-  } else {
-    resetCurrentStartCharCodeIfOutOfBounds();
   }
+  resetCurrentStartCharCodeIfOutOfBounds();
 
   // Todo: Document (or better name) what's going on here
   let q, prev, arr, remainder, rowceil, colsOverRemainder;
@@ -89,7 +87,7 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
     q = arr.indexOf(current.startCharCode);
     if (q === -1) {
       q = 0;
-      current.startCharCode = arr[q];
+      current.startCharCode = arr[q] - 1;
     }
 
     let newq = q - (cols * rows);

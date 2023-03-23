@@ -500,15 +500,15 @@ const unicodecharref = {
         out = '';
         break;
       case 'searchName':
-        $(targetid).value = unicodeQueryObj.get('string');
-        $(targetid).focus();
+        $('#' + targetid).value = unicodeQueryObj.get('string');
+        $('#' + targetid).focus();
         await this.searchUnicode({
           id: targetid, value: unicodeQueryObj.get('string')
         }); // Assume non-CJK
         break;
       case 'searchkDefinition':
-        $(targetid).value = unicodeQueryObj.get('string');
-        $(targetid).focus();
+        $('#' + targetid).value = unicodeQueryObj.get('string');
+        $('#' + targetid).focus();
         await this.searchUnihan({
           id: targetid, value: unicodeQueryObj.get('string')
         });

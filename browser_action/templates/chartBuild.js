@@ -27,8 +27,8 @@ const chartBuildTemplate = function ({
     }, [
       captionContent
     ]],
-    ...fill(rows).map((row, j) => {
-      return ['tr', fill(cols).map((col, i) => {
+    ...fill(rows).map((_row, j) => {
+      return ['tr', fill(cols).map((_col, i) => {
         // Todo: Document what this check is
         if (j === rowceil && i === colsOverRemainder) {
           return '';
@@ -51,7 +51,7 @@ const chartBuildTemplate = function ({
           if (q >= arr.length) {
             q = 0;
           }
-          current.startCharCode = arr[q];
+          current.startCharCode = arr[q] - 1;
         } else {
           current.startCharCode++;
         }
