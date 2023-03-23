@@ -271,7 +271,7 @@ const unicodecharref = {
   },
   /**
   * @param {PlainObject} cfg
-  * @param {boolean} [cfg.protocol]
+  * @param {boolean} [cfg.customProtocol]
   * @param {boolean} [cfg.options]
   * @param {string} [cfg.convert]
   * @param {string} [cfg.targetid]
@@ -301,6 +301,7 @@ const unicodecharref = {
       $('#DownloadButtonBox').hidden = true;
       $('#UnihanInstalled').hidden = false;
     } catch (e) {
+      /* istanbul ignore if -- Only expected for transactions */
       if (!e.message.includes('ransaction')) {
         // eslint-disable-next-line no-console -- Debug
         console.error(e);
@@ -350,26 +351,21 @@ const unicodecharref = {
     // const targetid = 'context-launchunicode';
 
     // Todo: Check first for our custom protocol
-    const customProtocol = cfg.protocol;
+    const {customProtocol} = cfg;
     // Fix: the initial portion of this handling really should be inside
     //  the protocol handler, but that requires implementing the object to
     //  add arguments
     let unicodeQueryObj;
     // Will be passed a query string if a protocol handler has been triggered
     if (customProtocol) {
-      // We skip over the initial question mark too
-      const req = decodeURIComponent(cfg.protocol.slice(1));
-      unicodeQueryObj = {};
-      const queryTypeEndPos = req.indexOf(';');
-      const queryType = req.slice(0, queryTypeEndPos); // Use
-      const queries = req.slice(queryTypeEndPos + 1).split(';');
-      for (let i = 0, key, val; i < queries.length; i++) {
-        [key, val] = queries[i].split('=');
-        unicodeQueryObj[key] = val; // Use
-      }
+      // Skip over the initial question mark too
+      const req = new URL(customProtocol);
+      const queryType = req.pathname;
+      unicodeQueryObj = req.searchParams;
+
       switch (queryType) {
       case 'find':
-        toconvert = unicodeQueryObj.char;
+        toconvert = unicodeQueryObj.get('char');
         targetid = 'context-unicodechart';
         break;
       case 'searchName':
@@ -503,16 +499,18 @@ const unicodecharref = {
         out = '';
         break;
       case 'searchName':
-        $(targetid).value = unicodeQueryObj.string;
+        $(targetid).value = unicodeQueryObj.get('string');
         $(targetid).focus();
         await this.searchUnicode({
-          id: targetid, value: unicodeQueryObj.string
+          id: targetid, value: unicodeQueryObj.get('string')
         }); // Assume non-CJK
         break;
       case 'searchkDefinition':
-        $(targetid).value = unicodeQueryObj.string;
+        $(targetid).value = unicodeQueryObj.get('string');
         $(targetid).focus();
-        await this.searchUnihan({id: targetid, value: unicodeQueryObj.string});
+        await this.searchUnihan({
+          id: targetid, value: unicodeQueryObj.get('string')
+        });
         break;
       default:
         out = ''; // Plain launcher with no values sent

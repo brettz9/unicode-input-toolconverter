@@ -84,7 +84,9 @@ await characterSelection({
 setupEntityEvents();
 
 // Todo: Move functionality to relevant files
-await unicodecharref.initialize();
+await unicodecharref.initialize({
+  customProtocol: searchParams.get('customProtocol')
+});
 
 /**
 * The following works, but if used will not allow user to cancel to
