@@ -87,9 +87,10 @@ setupEntityEvents();
 await unicodecharref.initialize({
   customProtocol: searchParams.get('customProtocol'),
   options: searchParams.get('options'),
+  // Todo: Add-ons API for conversions
+  // convert: window.getSelection().toString()
   convert: searchParams.get('convert'),
-  targetid: searchParams.get('targetid'),
-  selection: searchParams.get('selection') // window.getSelection().toString()
+  targetid: searchParams.get('targetid')
 });
 
 /**

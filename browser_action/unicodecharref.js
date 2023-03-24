@@ -381,12 +381,6 @@ const unicodecharref = {
     } else if (cfg.convert) {
       toconvert = cfg.convert;
       ({targetid} = cfg);
-    } else if (cfg.selection) {
-      // Todo: Replace with add-on API
-      toconvert = cfg.selection;
-      targetid = toconvert
-        ? 'context-charrefunicode1'
-        : ''; // Fix: replace with preference
     } else {
       ({targetid} = cfg);
     }
