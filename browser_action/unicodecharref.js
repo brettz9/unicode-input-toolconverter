@@ -275,7 +275,7 @@ const unicodecharref = {
   * @param {boolean} [cfg.options]
   * @param {string} [cfg.convert]
   * @param {string} [cfg.targetid]
-  * @param {Window} [cfg.win]
+  * @param {string} [cfg.selection]
   * @returns {Promise<void>}
   */
   async initialize (cfg = {}) {
@@ -380,12 +380,13 @@ const unicodecharref = {
             'for Custom Unicode protocol'
         );
       }
-    } else if (cfg.options) { // Do nothing for options dialog
+    } else if (cfg.options) { // Do nothing here for options dialog
     } else if (cfg.convert) {
       toconvert = cfg.convert;
       ({targetid} = cfg);
-    } else if (cfg.win) {
-      toconvert = cfg.win.getSelection().toString();
+    } else if (cfg.selection) {
+      // Todo: Replace with add-on API
+      toconvert = cfg.selection;
       targetid = toconvert
         ? 'context-charrefunicode1'
         : ''; // Fix: replace with preference
