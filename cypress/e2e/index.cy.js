@@ -45,6 +45,42 @@ describe('Main page', function () {
     ).invoke('data', 'selected').should('eq', true);
   });
 
+  /*
+  // Doesn't work to get at outerHeight/outerWidth; may need
+  //   to implement through `outerWidth=` params passed to
+  //  `window.open` instead, but support appears poor:
+  //  https://developer.mozilla.org/en-US/docs/Web/API/Window/open
+  it.skip('Remembers window sizing if opened in dialog', function () {
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    return cy.window().then((win) => {
+      // eslint-disable-next-line promise/avoid-new -- No API
+      return new Promise((resolve, reject) => {
+        const w = win.open(
+          '/browser_action/index-instrumented.html',
+          'unicode-input-toolconverter',
+          'popup'
+        );
+        w.addEventListener('load', () => {
+          w.resizeTo(350, 350);
+          w.close();
+
+          const w2 = win.open(
+            '/browser_action/index-instrumented.html',
+            'unicode-input-toolconverter',
+            'popup'
+          );
+
+          w2.addEventListener('load', () => {
+            expect(w2.outerWidth).to.equal(350);
+            expect(w2.outerHeight).to.equal(350);
+            w2.close();
+            resolve();
+          });
+        });
+      });
+    });
+  });
+  */
   it.skip('Downloads Unihan', function () {
     cy.clearIndexedDB();
     visitBrowserAction();

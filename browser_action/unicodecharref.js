@@ -344,7 +344,8 @@ const unicodecharref = {
     const [
       lang, font, initialTab, multiline,
       cssWhitespace, tblrowsset, tblcolsset, ampspace,
-      DTDtxtbxval, outerh, outerw
+      DTDtxtbxval
+      // outerh, outerw
     ] = await Promise.all([
       getPref('lang'),
       getPref('font'),
@@ -354,9 +355,9 @@ const unicodecharref = {
       getPref('tblrowsset'),
       getPref('tblcolsset'),
       getPref('ampspace'),
-      getPref('DTDtextbox'),
-      getPref('outerHeight'),
-      getPref('outerWidth')
+      getPref('DTDtextbox')
+      // getPref('outerHeight'),
+      // getPref('outerWidth')
     ]);
 
     if (multiline) {
@@ -556,13 +557,22 @@ const unicodecharref = {
       $(converttypeid).className='buttonactive';
     }
     */
+
+    /*
+    // Disabling for now
     // Set window size to that set last time hit "ok"
     if (outerh > 0) {
-      window.outerHeight = outerh;
+      window.resizeTo(window.outerWidth, outerh);
     }
     if (outerw > 0) {
-      window.outerWidth = outerw;
+      window.resizeTo(outerw, window.outerHeight);
     }
+
+    window.addEventListener('resize', async (e) => {
+      await setPref('outerHeight', window.outerHeight);
+      await setPref('outerWidth', window.outerWidth);
+    });
+    */
   },
   async copyToClipboard (id) {
     const text = $(id).value;

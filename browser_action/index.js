@@ -92,14 +92,4 @@ await unicodecharref.initialize({
   convert: searchParams.get('convert'),
   targetid: searchParams.get('targetid')
 });
-
-/**
-* The following works, but if used will not allow user to cancel to
-* get out of the current window size and will go back to the last
-* window size.
-*/
-// window.addEventListener('resize', async (e) => {
-//   await setPref('outerHeight', window.outerHeight);
-//   await setPref('outerWidth', window.outerWidth);
-// });
 })();

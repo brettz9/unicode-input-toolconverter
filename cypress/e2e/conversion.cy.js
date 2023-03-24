@@ -352,6 +352,15 @@ describe('Conversion', function () {
         cy.get('#toconvert').clear().type('& test');
         cy.get('#b3').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
+
+        visitBrowserAction(undefined, [
+          ['targetid', 'context-charrefunicode1'],
+          ['convert', 'pb & j']
+        ]);
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+        ).should('exist');
+        cy.get('#converted').invoke('val').should('eq', 'pb &amp; j');
       });
 
       it(
