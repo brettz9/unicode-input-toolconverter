@@ -21,4 +21,15 @@ describe('Charts', function () {
       '> div.centered > button'
     ).invoke('html').should('eq', 'Ͳ');
   });
+
+  it('Sets multiline description', function () {
+    visitBrowserAction();
+    cy.get('#displayUnicodeDesc').invoke(
+      'prop', 'nodeName'
+    ).should('eq', 'INPUT');
+    cy.get('#multiline').click();
+    cy.get('#displayUnicodeDesc').invoke(
+      'prop', 'nodeName'
+    ).should('eq', 'TEXTAREA');
+  });
 });
