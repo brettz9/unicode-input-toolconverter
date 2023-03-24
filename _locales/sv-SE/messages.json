@@ -1088,6 +1088,9 @@
     "copiedToClipboard": {
       "message": "Copied to clipboard!"
     },
+    "Unrecognized_query_type": {
+      "message": "Unrecognized query type passed to application for custom Unicode protocol"
+    },
     "moveconvertedup_label": {
       "message": "Kopiera &quot;Konverterade&quot; till &quot;Förkonverterade&quot;"
     },

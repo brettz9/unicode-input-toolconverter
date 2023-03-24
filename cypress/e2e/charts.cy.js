@@ -22,12 +22,26 @@ describe('Charts', function () {
     ).invoke('html').should('eq', 'Ͳ');
   });
 
-  it('Sets multiline description', function () {
+  it('Alerts error upon bad custom protocol type', function () {
+    cy.on('window:alert', (t) => {
+      expect(t).to.contains('Unrecognized query type passed');
+    });
+    visitBrowserAction(undefined, [
+      ['customProtocol', 'web+unicode:badType']
+    ]);
+  });
+
+  it('Sets multiline description including on load', function () {
     visitBrowserAction();
     cy.get('#displayUnicodeDesc').invoke(
       'prop', 'nodeName'
     ).should('eq', 'INPUT');
     cy.get('#multiline').click();
+    cy.get('#displayUnicodeDesc').invoke(
+      'prop', 'nodeName'
+    ).should('eq', 'TEXTAREA');
+
+    visitBrowserAction();
     cy.get('#displayUnicodeDesc').invoke(
       'prop', 'nodeName'
     ).should('eq', 'TEXTAREA');

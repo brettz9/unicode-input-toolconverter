@@ -395,6 +395,7 @@ const unicodecharref = {
       $('#CSSWhitespace').selectedIndex = 3;
       break;
     default:
+      /* istanbul ignore next -- Unexpected value */
       throw new Error('Unexpected whitespace preference value');
     }
 
@@ -466,9 +467,8 @@ const unicodecharref = {
         break;
         // Could also add 'define', 'convert', etc.
       default:
-        throw new Error(
-          'Unrecognized query type passed to application ' +
-            'for Custom Unicode protocol'
+        alert(
+          _('Unrecognized_query_type')
         );
       }
     } else if (!cfg.options) {
