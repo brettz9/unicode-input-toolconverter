@@ -343,7 +343,7 @@ const unicodecharref = {
 
     // These defaults are necessary for the sake of the options URL
     //  (when called from addons menu)
-    let toconvert = '';
+    let toconvert = null;
     let targetid = '';
     // const targetid = 'context-launchunicode';
 
@@ -353,6 +353,7 @@ const unicodecharref = {
     //  the protocol handler, but that requires implementing the object to
     //  add arguments
     let unicodeQueryObj;
+    let chr;
     // Will be passed a query string if a protocol handler has been triggered
     if (customProtocol) {
       // Skip over the initial question mark too
@@ -361,7 +362,7 @@ const unicodecharref = {
       unicodeQueryObj = req.searchParams;
       switch (queryType) {
       case 'find':
-        toconvert = unicodeQueryObj.get('char');
+        chr = unicodeQueryObj.get('char');
         targetid = 'context-unicodechart';
         break;
       case 'searchName':
@@ -378,10 +379,8 @@ const unicodecharref = {
         );
       }
     } else if (cfg.options) { // Do nothing here for options dialog
-    } else if (cfg.convert) {
-      toconvert = cfg.convert;
-      ({targetid} = cfg);
     } else {
+      toconvert = cfg.convert || '';
       ({targetid} = cfg);
     }
 
@@ -458,7 +457,7 @@ const unicodecharref = {
     await registerDTD();
 
     let bridgeResult;
-    if (toconvert) {
+    if (toconvert !== null) {
       //  toconvert = charreftoconvert.replace(/\n/g, ' ');
       $('#toconvert').value = toconvert;
 
@@ -466,7 +465,7 @@ const unicodecharref = {
         toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
       }
 
-      if (targetid !== 'context-unicodechart') {
+      if (targetid) {
         bridgeResult = await findBridgeForTargetID({toconvert, targetid});
       }
     }
@@ -480,10 +479,10 @@ const unicodecharref = {
       switch (targetid) {
       case 'context-unicodechart':
         await this.disableEnts();
-        $('#startset').value = toconvert;
+        $('#startset').value = chr;
         $('#unicodeTabBox').$selectTabForTabPanel($('#charts'));
-        if (toconvert !== '') {
-          await this.setCurrstartset(toconvert.codePointAt() - 1);
+        if (chr !== '') {
+          await this.setCurrstartset(chr.codePointAt() - 1);
           await chartBuild();
         }
         // Fallthrough
@@ -515,7 +514,7 @@ const unicodecharref = {
     if (!customProtocol) {
       if (cfg.options) { // options menu
         $('#unicodeTabBox').$selectTabForTabPanel($('#prefs'));
-      } else if (cfg.convert) { // Keyboard invocation or button
+      } else if (toconvert !== null) { // Keyboard invocation or button
         // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
         $('#unicodeTabBox').$selectTabForTabPanel($('#conversion'));
       } else if (

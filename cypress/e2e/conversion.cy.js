@@ -782,4 +782,31 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', '&#xABCD;');
     });
   });
+
+  describe('Context menu API', function () {
+    it('Performs a conversion', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode1'],
+        ['convert', 'Some text: &#1234;']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: &#1234;');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: Ӓ');
+    });
+
+    it('Opens conversion window', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode1']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', '');
+      cy.get('#converted').invoke('val').should('eq', '');
+    });
+  });
 });
