@@ -547,19 +547,6 @@ const unicodecharref = {
     }
     this.tblfontsize(0); // Draw with the preferences value
 
-    $('#menulists').addEventListener('command',
-      async function (e) {
-        // const tmp = that.branch.getComplexValue(
-        //   'currentStartCharCode', Ci.nsIPrefLocalizedString
-        // ).data;
-        await that.disableEnts();
-        await that.setCurrstartset(e.target.value.codePointAt() - 1);
-        await chartBuild();
-        // Set it back as it was before the search
-        // await that.setCurrstartset(tmp);
-      },
-      true);
-
     $('#converted').value = out;
     /*
     if (converttypeid != 0) {
