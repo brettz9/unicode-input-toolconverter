@@ -36,4 +36,28 @@ describe('Prefs', function () {
     cy.get('#asciiLt128').should('not.be.checked');
     cy.get('#initialTab').should('have.value', 'charts');
   });
+
+  it('Sets CSS whitespace on load', function () {
+    visitBrowserAction();
+
+    cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();
+    cy.get('#CSSWhitespace').select(0);
+    visitBrowserAction();
+    cy.get('#CSSWhitespace').invoke('val').should('eq', 'space');
+
+    cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();
+    cy.get('#CSSWhitespace').select(1);
+    visitBrowserAction();
+    cy.get('#CSSWhitespace').invoke('val').should('eq', 'n');
+
+    cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();
+    cy.get('#CSSWhitespace').select(2);
+    visitBrowserAction();
+    cy.get('#CSSWhitespace').invoke('val').should('eq', 't');
+
+    cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();
+    cy.get('#CSSWhitespace').select(3);
+    visitBrowserAction();
+    cy.get('#CSSWhitespace').invoke('val').should('eq', 'f');
+  });
 });

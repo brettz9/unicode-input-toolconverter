@@ -376,20 +376,23 @@ const unicodecharref = {
     case ' ':
       $('#CSSWhitespace').selectedIndex = 0;
       break;
+    /*
+    // Carriage returns shouldn't survive
     case '\r\n':
       $('#CSSWhitespace').selectedIndex = 1;
       break;
     case '\r':
       $('#CSSWhitespace').selectedIndex = 2;
       break;
+    */
     case '\n':
-      $('#CSSWhitespace').selectedIndex = 3;
+      $('#CSSWhitespace').selectedIndex = 1;
       break;
     case '\t':
-      $('#CSSWhitespace').selectedIndex = 4;
+      $('#CSSWhitespace').selectedIndex = 2;
       break;
     case '\f':
-      $('#CSSWhitespace').selectedIndex = 5;
+      $('#CSSWhitespace').selectedIndex = 3;
       break;
     default:
       throw new Error('Unexpected whitespace preference value');

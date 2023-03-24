@@ -1050,8 +1050,10 @@ const indexTemplate = function ({_, fonts}) {
               }
             }, [
               ['option', {value: 'space'}, [_('CSS_space')]],
+              /*
               ['option', {value: 'rn'}, [_('CSS_rn')]],
               ['option', {value: 'r'}, [_('CSS_r')]],
+              */
               ['option', {value: 'n'}, [_('CSS_n')]],
               ['option', {value: 't'}, [_('CSS_t')]],
               ['option', {value: 'f'}, [_('CSS_f')]]
