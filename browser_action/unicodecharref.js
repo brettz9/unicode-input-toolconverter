@@ -359,12 +359,12 @@ const unicodecharref = {
       getPref('outerWidth')
     ]);
 
-    if (!multiline) {
-      $('#displayUnicodeDesc').setAttribute('multiline', false);
-      $('#displayUnicodeDesc').setAttribute('rows', 1);
-    } else {
-      $('#displayUnicodeDesc').setAttribute('multiline', true);
-      $('#displayUnicodeDesc').setAttribute('rows', 3);
+    if (multiline) {
+      const display = $('#displayUnicodeDesc');
+      display.replaceWith(jml('textarea', {
+        id: 'displayUnicodeDesc',
+        rows: 3
+      }));
     }
 
     this.setupBoolChecked(...Object.entries(getPrefDefaults()).filter((
@@ -525,7 +525,8 @@ const unicodecharref = {
     if (!customProtocol) {
       if (cfg.options) { // options menu
         $('#unicodeTabBox').$selectTabForTabPanel($('#prefs'));
-      } else if (toconvert !== null) { // Keyboard invocation or button
+      } else if (toconvert !== null && targetid) {
+        // Keyboard invocation or button
         // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
         $('#unicodeTabBox').$selectTabForTabPanel($('#conversion'));
       } else if (
@@ -639,9 +640,6 @@ const unicodecharref = {
     );
 
     await this.setCurrstartset(await getPref('startset'));
-
-    $('#displayUnicodeDesc').setAttribute('multiline', false);
-    $('#displayUnicodeDesc').setAttribute('rows', 1);
 
     // These get activated in chartBuild(); below
     await setPref('tblrowsset', 4);
@@ -1327,9 +1325,8 @@ const unicodecharref = {
   /**
    * Display the Unicode description box size (multline or not) according
    * to user preferences.
-   * @param {Event} e The event (not in use)
    */
-  async multiline (e) {
+  async multiline () {
     const display = $('#displayUnicodeDesc');
     if (await getPref('multiline') === false) {
       await setPref('multiline', true);
