@@ -363,6 +363,16 @@ async function findBridgeForTargetID ({toconvert, targetid}) {
       toconvert, $('#b18')
     );
     break;
+  case 'context-charrefunicode3b':
+    out = await CharrefConverterBridges.unicode2charrefDecval(
+      toconvert, $('#b3b'), true
+    );
+    break;
+  case 'context-charrefunicode4b':
+    out = await CharrefConverterBridges.unicode2charrefHexval(
+      toconvert, $('#b4b'), true
+    );
+    break;
   default:
     throw new Error(`Unexpected target ID type ${targetid}`);
   }
