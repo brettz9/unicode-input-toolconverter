@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/no-this-assignment -- Easier here */
-
 // See https://unicode.org/Public/UNIDATA/ for data use
 
 import {$, $$, jml} from '../vendor/jamilih/dist/jml-es.js';
@@ -279,7 +277,6 @@ const unicodecharref = {
   * @returns {Promise<void>}
   */
   async initialize (cfg = {}) {
-    const that = this;
     // this.refreshToolbarDropdown(); // redundant?
 
     this.unihanDb_exists = false;
