@@ -60,4 +60,15 @@ describe('Prefs', function () {
     visitBrowserAction();
     cy.get('#CSSWhitespace').invoke('val').should('eq', 'f');
   });
+
+  describe('Options API', function () {
+    it('Opens to pref page', function () {
+      visitBrowserAction(undefined, [
+        ['options', 1]
+      ]);
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(3)'
+      ).should('exist');
+    });
+  });
 });
