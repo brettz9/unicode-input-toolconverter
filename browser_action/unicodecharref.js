@@ -276,7 +276,7 @@ const unicodecharref = {
   * @param {string} [cfg.selection]
   * @returns {Promise<void>}
   */
-  async initialize (cfg = {}) {
+  async initialize (cfg) {
     // this.refreshToolbarDropdown(); // redundant?
 
     this.unihanDb_exists = false;
@@ -394,6 +394,7 @@ const unicodecharref = {
     case '\f':
       $('#CSSWhitespace').selectedIndex = 3;
       break;
+    /* istanbul ignore next -- Unexpected value */
     default:
       /* istanbul ignore next -- Unexpected value */
       throw new Error('Unexpected whitespace preference value');
