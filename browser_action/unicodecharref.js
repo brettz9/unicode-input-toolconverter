@@ -341,6 +341,95 @@ const unicodecharref = {
 
     // await this.testIfComplexWindow();
 
+    const [
+      lang, font, initialTab, multiline,
+      cssWhitespace, tblrowsset, tblcolsset, ampspace,
+      DTDtxtbxval, outerh, outerw
+    ] = await Promise.all([
+      getPref('lang'),
+      getPref('font'),
+      getPref('initialTab'),
+      getPref('multiline'),
+      getPref('cssWhitespace'),
+      getPref('tblrowsset'),
+      getPref('tblcolsset'),
+      getPref('ampspace'),
+      getPref('DTDtextbox'),
+      getPref('outerHeight'),
+      getPref('outerWidth')
+    ]);
+
+    if (!multiline) {
+      $('#displayUnicodeDesc').setAttribute('multiline', false);
+      $('#displayUnicodeDesc').setAttribute('rows', 1);
+    } else {
+      $('#displayUnicodeDesc').setAttribute('multiline', true);
+      $('#displayUnicodeDesc').setAttribute('rows', 3);
+    }
+
+    this.setupBoolChecked(...Object.entries(getPrefDefaults()).filter((
+      [key, value]
+    ) => {
+      return typeof value === 'boolean';
+    }).map(([key]) => key));
+    switch (cssWhitespace) {
+    case ' ':
+      $('#CSSWhitespace').selectedIndex = 0;
+      break;
+    case '\r\n':
+      $('#CSSWhitespace').selectedIndex = 1;
+      break;
+    case '\r':
+      $('#CSSWhitespace').selectedIndex = 2;
+      break;
+    case '\n':
+      $('#CSSWhitespace').selectedIndex = 3;
+      break;
+    case '\t':
+      $('#CSSWhitespace').selectedIndex = 4;
+      break;
+    case '\f':
+      $('#CSSWhitespace').selectedIndex = 5;
+      break;
+    default:
+      throw new Error('Unexpected whitespace preference value');
+    }
+
+    /* if (await getPref('hexstyleLwr')) {
+      $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
+    }
+    else {
+      $(EXT_BASE + 'hexstyleLwr').selectedIndex = 1;
+    } */
+    /* if ((await getPref('xstyle')) === 'x') {
+      $(EXT_BASE + 'xstyle').checked = true;
+    } */
+
+    // Set the size per the prefs (don't increase or decrease the value)
+    await this.resizecells();
+
+    $('#rowsset').value = tblrowsset;
+    $('#colsset').value = tblcolsset;
+
+    // Save copies in case decide to reset later (i.e., not append to
+    //  HTML entities, then wish to append to them again)
+    this.origents = [];
+    this.origcharrefs = [];
+    this.orignewents = [];
+    this.orignewcharrefs = [];
+
+    this.origents = [...entities];
+    this.origcharrefs = [...numericCharacterReferences];
+    this.orignewents = [...charrefunicodeConverter.newents];
+    this.orignewcharrefs = [...charrefunicodeConverter.newcharrefs];
+
+    $('#lang').value = lang;
+    $('#font').value = font;
+    $('#initialTab').value = $('#mi_' + initialTab).value;
+
+    $('#DTDtextbox').value = DTDtxtbxval;
+    await registerDTD();
+
     // These defaults are necessary for the sake of the options URL
     //  (when called from addons menu)
     let toconvert = null;
@@ -384,84 +473,12 @@ const unicodecharref = {
       ({targetid} = cfg);
     }
 
-    if (!(await getPref('multiline'))) {
-      $('#displayUnicodeDesc').setAttribute('multiline', false);
-      $('#displayUnicodeDesc').setAttribute('rows', 1);
-    } else {
-      $('#displayUnicodeDesc').setAttribute('multiline', true);
-      $('#displayUnicodeDesc').setAttribute('rows', 3);
-    }
-
-    this.setupBoolChecked(...Object.entries(getPrefDefaults()).filter((
-      [key, value]
-    ) => {
-      return typeof value === 'boolean';
-    }).map(([key]) => key));
-    switch (await getPref('cssWhitespace')) {
-    case ' ':
-      $('#CSSWhitespace').selectedIndex = 0;
-      break;
-    case '\r\n':
-      $('#CSSWhitespace').selectedIndex = 1;
-      break;
-    case '\r':
-      $('#CSSWhitespace').selectedIndex = 2;
-      break;
-    case '\n':
-      $('#CSSWhitespace').selectedIndex = 3;
-      break;
-    case '\t':
-      $('#CSSWhitespace').selectedIndex = 4;
-      break;
-    case '\f':
-      $('#CSSWhitespace').selectedIndex = 5;
-      break;
-    default:
-      throw new Error('Unexpected whitespace preference value');
-    }
-
-    /* if (await getPref('hexstyleLwr')) {
-      $(EXT_BASE + 'hexstyleLwr').selectedIndex = 0;
-    }
-    else {
-      $(EXT_BASE + 'hexstyleLwr').selectedIndex = 1;
-    } */
-    /* if ((await getPref('xstyle')) === 'x') {
-      $(EXT_BASE + 'xstyle').checked = true;
-    } */
-
-    // Set the size per the prefs (don't increase or decrease the value)
-    await this.resizecells();
-
-    $('#rowsset').value = await getPref('tblrowsset');
-    $('#colsset').value = await getPref('tblcolsset');
-
-    // Save copies in case decide to reset later (i.e., not append to
-    //  HTML entities, then wish to append to them again)
-    this.origents = [];
-    this.origcharrefs = [];
-    this.orignewents = [];
-    this.orignewcharrefs = [];
-
-    this.origents = [...entities];
-    this.origcharrefs = [...numericCharacterReferences];
-    this.orignewents = [...charrefunicodeConverter.newents];
-    this.orignewcharrefs = [...charrefunicodeConverter.newcharrefs];
-
-    $('#lang').value = await getPref('lang');
-    $('#font').value = await getPref('font');
-
-    const DTDtxtbxval = await getPref('DTDtextbox');
-
-    $('#DTDtextbox').value = DTDtxtbxval;
-    await registerDTD();
-
     let bridgeResult;
     if (toconvert !== null) {
       //  toconvert = charreftoconvert.replace(/\n/g, ' ');
       $('#toconvert').value = toconvert;
 
-      if (await getPref('ampspace')) {
+      if (ampspace) {
         toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
       }
 
@@ -510,6 +527,7 @@ const unicodecharref = {
         break;
       }
     }
+    $('#converted').value = out;
 
     if (!customProtocol) {
       if (cfg.options) { // options menu
@@ -522,12 +540,10 @@ const unicodecharref = {
         targetid !== 'tools-charrefunicode'
       ) {
         $('#unicodeTabBox').$selectTabForTabPanel(
-          $('#' + await getPref('initialTab'))
+          $('#' + initialTab)
         );
       }
     }
-
-    $('#initialTab').value = $('#mi_' + await getPref('initialTab')).value;
 
     if (targetid !== 'searchName' && targetid !== 'searchkDefinition') {
       if (toconvert) { // Seemed to become necessarily suddenly
@@ -537,15 +553,12 @@ const unicodecharref = {
     }
     this.tblfontsize(0); // Draw with the preferences value
 
-    $('#converted').value = out;
     /*
     if (converttypeid != 0) {
       $(converttypeid).className='buttonactive';
     }
     */
     // Set window size to that set last time hit "ok"
-    const outerh = await getPref('outerHeight');
-    const outerw = await getPref('outerWidth');
     if (outerh > 0) {
       window.outerHeight = outerh;
     }
