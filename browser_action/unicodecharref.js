@@ -443,6 +443,7 @@ const unicodecharref = {
     //  add arguments
     let unicodeQueryObj;
     let chr;
+    let bridgeResult;
     // Will be passed a query string if a protocol handler has been triggered
     if (customProtocol) {
       // Skip over the initial question mark too
@@ -467,14 +468,10 @@ const unicodecharref = {
             'for Custom Unicode protocol'
         );
       }
-    } else if (cfg.options) { // Do nothing here for options dialog
-    } else {
+    } else if (!cfg.options) {
+      // Do nothing here for options dialog
       toconvert = cfg.convert || '';
       ({targetid} = cfg);
-    }
-
-    let bridgeResult;
-    if (toconvert !== null) {
       //  toconvert = charreftoconvert.replace(/\n/g, ' ');
       $('#toconvert').value = toconvert;
 
@@ -498,10 +495,6 @@ const unicodecharref = {
         await this.disableEnts();
         $('#startset').value = chr;
         $('#unicodeTabBox').$selectTabForTabPanel($('#charts'));
-        if (chr !== '') {
-          await this.setCurrstartset(chr.codePointAt() - 1);
-          await chartBuild();
-        }
         // Fallthrough
       case 'context-launchunicode':
       case 'tools-charrefunicode':
@@ -546,8 +539,8 @@ const unicodecharref = {
     }
 
     if (targetid !== 'searchName' && targetid !== 'searchkDefinition') {
-      if (toconvert) { // Seemed to become necessarily suddenly
-        await this.setCurrstartset(toconvert.codePointAt() - 1);
+      if (toconvert || chr) { // Seemed to become necessarily suddenly
+        await this.setCurrstartset((toconvert || chr).codePointAt() - 1);
       }
       await chartBuild();
     }
