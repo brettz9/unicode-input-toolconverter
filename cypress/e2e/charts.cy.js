@@ -49,4 +49,24 @@ describe('Charts', function () {
       'prop', 'nodeName'
     ).should('eq', 'TEXTAREA');
   });
+
+  it('Sets "Show image" including on load', function () {
+    visitBrowserAction();
+
+    cy.get('#showImg').invoke('prop', 'checked').should('eq', false);
+
+    cy.get('#showImg').click();
+
+    visitBrowserAction();
+    cy.get('#showImg').invoke('prop', 'checked').should('eq', true);
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).trigger('mouseover');
+
+    cy.get('#unicodeImg img').should('be.visible');
+  });
 });
