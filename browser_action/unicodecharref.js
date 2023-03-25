@@ -485,7 +485,7 @@ const unicodecharref = {
       }
 
       if (targetid) {
-        bridgeResult = await findBridgeForTargetID({toconvert, targetid});
+        bridgeResult = await findBridgeForTargetID({toconvert, targetid, _});
       }
     }
 

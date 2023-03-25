@@ -281,10 +281,11 @@ const CharrefConverterBridges = {
  * @param {PlainObject} cfg
  * @param {string} cfg.toconvert
  * @param {string} cfg.targetid
+ * @param {external:IntlDom} cfg._
  * @throws {Error}
  * @returns {Promise<string>}
  */
-async function findBridgeForTargetID ({toconvert, targetid}) {
+async function findBridgeForTargetID ({_, toconvert, targetid}) {
   let out;
   switch (targetid) {
   case 'context-charrefunicode1':
@@ -374,7 +375,9 @@ async function findBridgeForTargetID ({toconvert, targetid}) {
     );
     break;
   default:
-    throw new Error(`Unexpected target ID type ${targetid}`);
+    alert(_(`Unexpected_target_ID`, {
+      targetid
+    }));
   }
   return out;
 }

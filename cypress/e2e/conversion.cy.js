@@ -1100,5 +1100,28 @@ describe('Conversion', function () {
         );
       }
     );
+
+    it(
+      'Alerts an error with bad targetid in conversion',
+      function () {
+        visitBrowserAction(undefined, [
+          ['targetid', 'context-badID'],
+          ['convert', 'Some text: 😀']
+        ]);
+
+        cy.on('window:alert', (t) => {
+          expect(t).to.contains('Unexpected target ID type context-badID');
+        });
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+        ).should('exist');
+        cy.get('#toconvert').invoke('val').should('eq', 'Some text: 😀');
+        cy.get('#converted').invoke('val').should(
+          'eq',
+          ''
+        );
+      }
+    );
   });
 });
