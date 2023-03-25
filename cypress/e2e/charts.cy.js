@@ -214,4 +214,34 @@ describe('Charts', function () {
 
     cy.get('#toconvert').invoke('val').should('eq', 'é');
   });
+
+  it('chooses the next set', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('a');
+
+    cy.get('#chart_table > tr:last-child a:nth-of-type(2)').contains(
+      'Next set'
+    ).trigger('click');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).contains('m');
+  });
+
+  it('chooses the prev set', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('m');
+
+    cy.get('#chart_table > tr:last-child a:nth-of-type(1)').contains(
+      'Prev set'
+    ).trigger('click');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).contains('a');
+  });
 });
