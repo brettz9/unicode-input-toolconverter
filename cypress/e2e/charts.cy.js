@@ -244,4 +244,19 @@ describe('Charts', function () {
       'td:nth-of-type(1) > .centered > button'
     ).contains('a');
   });
+
+  it('shows only entities (including upon reload)', function () {
+    visitBrowserAction();
+    cy.get('#onlyentsyes').invoke('prop', 'checked').should('eq', false);
+
+    cy.get('#onlyentsyes').click();
+
+    visitBrowserAction();
+    cy.get('#onlyentsyes').invoke('prop', 'checked').should('eq', true);
+    cy.get(
+      // Skip first (nbsp) as can't access as such
+      '#chart_table > tr:nth-of-type(2) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).contains('£');
+  });
 });
