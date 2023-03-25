@@ -69,4 +69,27 @@ describe('Charts', function () {
 
     cy.get('#unicodeImg img').should('be.visible');
   });
+
+  it('shows plane number on character mouseover', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('a');
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).trigger('mouseover');
+    cy.get('#plane').contains('Plane 0:');
+
+    cy.get('#startset').clear().type('𓀀');
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).trigger('mouseover');
+    cy.get('#plane').contains('Plane 1:');
+  });
+
+  // Broken?
+  it.skip('shows PDF link', function () {
+    //
+  });
 });
