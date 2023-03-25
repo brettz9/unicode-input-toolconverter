@@ -88,6 +88,19 @@ describe('Charts', function () {
     cy.get('#plane').contains('Plane 1:');
   });
 
+  it('shows previously selected character on load', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    visitBrowserAction();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).contains('é');
+  });
+
   // Broken?
   it.skip('shows PDF link', function () {
     //
