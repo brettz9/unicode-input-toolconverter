@@ -37,14 +37,17 @@ async function characterSelection ({
     // Per our widget "standard", allow for injecting of others in parallel
     [
       location.href.includes('index-pages')
+        /* istanbul ignore next -- For GitHub Pages only */
         ? '/unicode-input-toolconverter/icons/openWindow24.png'
         : '/icons/openWindow24.png',
       {favicon: true}
     ],
     location.href.includes('index-pages')
+      /* istanbul ignore next -- For GitHub Pages only */
       ? '/unicode-input-toolconverter/browser_action/styles/unicode-dialog.css'
       : '/browser_action/styles/unicode-dialog.css',
     location.href.includes('index-pages')
+      /* istanbul ignore next -- For GitHub Pages only */
       ? '/unicode-input-toolconverter//vendor/miller-columns/miller-columns.css'
       : '/vendor/miller-columns/miller-columns.css'
   ]});
