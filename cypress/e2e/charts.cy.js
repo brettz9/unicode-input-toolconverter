@@ -92,4 +92,42 @@ describe('Charts', function () {
   it.skip('shows PDF link', function () {
     //
   });
+
+  // Needs to test functionality too
+  it.skip('Sets "Show all items" including on load', function () {
+    visitBrowserAction();
+    cy.get('#viewTabs > .tabs > .tab:nth-of-type(2)').click();
+
+    cy.get('#showAllDetailedView').invoke(
+      'prop', 'checked'
+    ).should('eq', true);
+
+    cy.get('#showAllDetailedView').click();
+
+    visitBrowserAction();
+    cy.get('#viewTabs > .tabs > .tab:nth-of-type(2)').click();
+
+    cy.get('#showAllDetailedView').invoke(
+      'prop', 'checked'
+    ).should('eq', false);
+  });
+
+  // Needs to test functionality too
+  it.skip('Sets "Show all items" (CJK) including on load', function () {
+    visitBrowserAction();
+    cy.get('#viewTabs > .tabs > .tab:nth-of-type(3)').click();
+
+    cy.get('#showAllDetailedCJKView').invoke(
+      'prop', 'checked'
+    ).should('eq', true);
+
+    cy.get('#showAllDetailedCJKView').click();
+
+    visitBrowserAction();
+    cy.get('#viewTabs > .tabs > .tab:nth-of-type(3)').click();
+
+    cy.get('#showAllDetailedCJKView').invoke(
+      'prop', 'checked'
+    ).should('eq', false);
+  });
 });
