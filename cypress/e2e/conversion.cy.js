@@ -793,7 +793,19 @@ describe('Conversion', function () {
   });
 
   describe('Context menu API', function () {
-    it('Performs a conversion', function () {
+    it('Opens conversion window', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode1']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', '');
+      cy.get('#converted').invoke('val').should('eq', '');
+    });
+
+    it('Performs a conversion of character refs. to Unicode', function () {
       visitBrowserAction(undefined, [
         ['targetid', 'context-charrefunicode1'],
         ['convert', 'Some text: &#1234;']
@@ -806,16 +818,285 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', 'Some text: Ӓ');
     });
 
-    it('Opens conversion window', function () {
+    it('Performs a conversion of character refs to entities', function () {
       visitBrowserAction(undefined, [
-        ['targetid', 'context-charrefunicode1']
+        ['targetid', 'context-charrefunicode2'],
+        ['convert', 'Some text: &#233;']
       ]);
 
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
       ).should('exist');
-      cy.get('#toconvert').invoke('val').should('eq', '');
-      cy.get('#converted').invoke('val').should('eq', '');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: &#233;');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: &eacute;');
     });
+
+    it('Performs a conversion of Unicode to dec. character ref', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode3'],
+        ['convert', 'Some text: Ӓ']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: Ӓ');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: &#1234;');
+    });
+
+    it('Performs a conversion of Unicode to hex character ref', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode4'],
+        ['convert', 'Some text: Ӓ']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: Ӓ');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: &#x4d2;');
+    });
+
+    it('Performs a conversion of Unicode to entities', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode5'],
+        ['convert', 'Some text: é']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: é');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: &eacute;');
+    });
+
+    it('Performs a conversion of Unicode to JS escapes', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode6'],
+        ['convert', 'Some text: é']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: é');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: \\u00e9');
+    });
+
+    it('Performs a conversion of Unicode to 6 digit', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode7'],
+        ['convert', 'Some text: é']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: é');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: \\u0000e9');
+    });
+
+    it('Performs a conversion of Unicode to CSS escape', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode8'],
+        ['convert', 'Some text: é']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: é');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: \\0000e9');
+    });
+
+    it('Performs a conversion of entities to dec. char. ref.', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode9'],
+        ['convert', 'Some text: &eacute;']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: &eacute;');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: &#233;');
+    });
+
+    it('Performs a conversion of entities to hex char. ref.', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode10'],
+        ['convert', 'Some text: &eacute;']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: &eacute;');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: &#xe9;');
+    });
+
+    it('Performs a conversion of entities to Unicode', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode11'],
+        ['convert', 'Some text: &eacute;']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: &eacute;');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: é');
+    });
+
+    it('Performs a conversion of hex to decimal char. refs', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode12'],
+        ['convert', 'Some text: &#xe9;']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: &#xe9;');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: &#233;');
+    });
+
+    it('Performs a conversion of dec to hex char. refs', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode13'],
+        ['convert', 'Some text: &#233;']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: &#233;');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: &#xe9;');
+    });
+
+    it('Performs a conversion of JS escapes to Unicode', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode14'],
+        ['convert', 'Some text: \\u00e9']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: \\u00e9');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: é');
+    });
+
+    it('Performs a conversion of 6-digit escapes to Unicode', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode15'],
+        ['convert', 'Some text: \\u0000e9']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: \\u0000e9');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: é');
+    });
+
+    it('Performs a conversion of CSS escapes to Unicode', function () {
+      visitBrowserAction(undefined, [
+        ['targetid', 'context-charrefunicode16'],
+        ['convert', 'Some text: \\0000e9']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'Some text: \\0000e9');
+      cy.get('#converted').invoke('val').should('eq', 'Some text: é');
+    });
+
+    // Database problems in testing environment
+    it.skip('Performs a conversion of Unicode to char. desc.', function () {
+      visitBrowserAction(undefined, [
+        ['characterDescriptions', '1'],
+        ['targetid', 'context-charrefunicode17'],
+        ['convert', 'é']
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should('eq', 'é');
+      cy.get('#converted').invoke('val').should(
+        'eq',
+        // Split up typing to avoid being interpreted by Cypress
+        //  as keystroke
+        '\\C{' + 'LATIN SMALL LETTER E WITH ACUTE}'
+      );
+    });
+
+    // Database problems in testing environment
+    it.skip('Performs a conversion of char. desc. to Unicode', function () {
+      visitBrowserAction(undefined, [
+        ['characterDescriptions', '1'],
+        ['targetid', 'context-charrefunicode18'],
+        [
+          'convert',
+          // Split up typing to avoid being interpreted by Cypress
+          //  as keystroke
+          '\\C{' + 'LATIN SMALL LETTER E WITH ACUTE}'
+        ]
+      ]);
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+      ).should('exist');
+      cy.get('#toconvert').invoke('val').should(
+        'eq',
+        // Split up typing to avoid being interpreted by Cypress
+        //  as keystroke
+        '\\C{' + 'LATIN SMALL LETTER E WITH ACUTE}'
+      );
+      cy.get('#converted').invoke('val').should(
+        'eq',
+        'é'
+      );
+    });
+
+    it(
+      'Performs a conversion of Unicode to dec. character ref surrogates',
+      function () {
+        visitBrowserAction(undefined, [
+          ['targetid', 'context-charrefunicode3b'],
+          ['convert', 'Some text: 😀']
+        ]);
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+        ).should('exist');
+        cy.get('#toconvert').invoke('val').should('eq', 'Some text: 😀');
+        cy.get('#converted').invoke('val').should(
+          'eq',
+          'Some text: &#55357;&#56832;'
+        );
+      }
+    );
+
+    it(
+      'Performs a conversion of Unicode to hex character ref surrogates',
+      function () {
+        visitBrowserAction(undefined, [
+          ['targetid', 'context-charrefunicode4b'],
+          ['convert', 'Some text: 😀']
+        ]);
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+        ).should('exist');
+        cy.get('#toconvert').invoke('val').should('eq', 'Some text: 😀');
+        cy.get('#converted').invoke('val').should(
+          'eq',
+          'Some text: &#xd83d;&#xde00;'
+        );
+      }
+    );
   });
 });
