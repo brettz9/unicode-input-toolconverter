@@ -363,4 +363,47 @@ describe('Charts', function () {
       'td:nth-of-type(1) button[name="unicode"]'
     ).should('not.exist');
   });
+
+  it('allows viewing character in middle of chart', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('a');
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) button[name="unicode"]'
+    ).contains('a');
+
+    cy.get('#startCharInMiddleOfChart').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) button[name="unicode"]'
+    ).contains('[');
+    cy.get(
+      '#chart_table > tr:nth-of-type(3) > ' +
+      'td:nth-of-type(1) button[name="unicode"]'
+    ).contains('a');
+  });
+
+  it('allows disabling of button styling', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('a');
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) button[name="unicode"]'
+    ).contains('a');
+
+    cy.get('#buttonyes').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) button[name="unicode"]'
+    ).should('not.exist');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) div[name="unicode"]'
+    ).should('exist');
+  });
 });
