@@ -291,4 +291,76 @@ describe('Charts', function () {
       'td:nth-of-type(6) > .centered > button'
     ).should('exist');
   });
+
+  it('Allows disabling display of entities', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > a'
+    ).should('exist');
+
+    cy.get('#entyes').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > a'
+    ).should('not.exist');
+  });
+
+  it('Allows disabling display of decimal char. refs', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > button[name="dec"]'
+    ).should('exist');
+
+    cy.get('#decyes').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > button[name="dec"]'
+    ).should('not.exist');
+  });
+
+  it('Allows disabling display of hex char. refs', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > button[name="hex"]'
+    ).should('exist');
+
+    cy.get('#hexyes').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > button[name="hex"]'
+    ).should('not.exist');
+  });
+
+  it('Allows disabling display of Unicode', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) button[name="unicode"]'
+    ).should('exist');
+
+    cy.get('#unicodeyes').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) button[name="unicode"]'
+    ).should('not.exist');
+  });
 });
