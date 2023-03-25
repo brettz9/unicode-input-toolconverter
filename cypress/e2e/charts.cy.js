@@ -143,4 +143,75 @@ describe('Charts', function () {
       'prop', 'checked'
     ).should('eq', false);
   });
+
+  it('inputs character on click', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).click();
+
+    cy.get('#insertText').invoke('val').should('eq', 'é');
+  });
+
+  it('clears characters', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).click();
+
+    cy.get('#insertText').invoke('val').should('eq', 'é');
+
+    cy.get('#clearoutput').click();
+
+    cy.get('#insertText').invoke('val').should('eq', '');
+  });
+
+  it('copies characters to clipboard', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).click();
+
+    cy.get('#insertText').invoke('val').should('eq', 'é');
+
+    cy.get('#outputButtons > button').contains(
+      'Copy to clipboard'
+    ).click();
+
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    return cy.window().then(async (win) => {
+      const text = await win.navigator.clipboard.readText();
+      expect(text).to.eq('é');
+      return true;
+    });
+  });
+
+  it('moves characters to conversion tab', function () {
+    visitBrowserAction();
+
+    cy.get('#startset').clear().type('é');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).click();
+
+    cy.get('#insertText').invoke('val').should('eq', 'é');
+
+    cy.get('.outputcopybutton').click();
+
+    cy.get('#toconvert').invoke('val').should('eq', 'é');
+  });
 });
