@@ -259,4 +259,36 @@ describe('Charts', function () {
       'td:nth-of-type(1) > .centered > button'
     ).contains('£');
   });
+
+  it('changes the number of rows', function () {
+    visitBrowserAction();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(6) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).should('not.exist');
+
+    cy.get('#rowsset').clear().type(6).blur();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(6) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).should('exist');
+  });
+
+  it('changes the number of columns', function () {
+    visitBrowserAction();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(6) > .centered > button'
+    ).should('not.exist');
+
+    cy.get('#colsset').clear().type(6).blur();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(6) > .centered > button'
+    ).should('exist');
+  });
 });
