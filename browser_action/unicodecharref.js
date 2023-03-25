@@ -44,6 +44,7 @@ async function getDownloadResults () {
     // 6747669; // 39.5 MB unzipped;
     // url: '/download/unihan/Unihan.zip',
     url: location.href.includes('index-pages')
+      /* istanbul ignore next -- For GitHub Pages only */
       ? '/unicode-input-toolconverter/download/unihan/unihan.json'
       : '/download/unihan/unihan.json',
     progressElement: $('#progress_element'),
@@ -1101,7 +1102,7 @@ const unicodecharref = {
 
     $('#toconvert').style.fontSize = txtbxsize + 'px';
     $('#converted').style.fontSize = txtbxsize + 'px';
-    if (size > 0) {
+    if (size > 0 && window.sizeToContent) {
       // On Mac at least, resizing for reducing font size, causes button to
       // go off screen
       window.sizeToContent();
@@ -1124,7 +1125,7 @@ const unicodecharref = {
       await getPref('tblfontsize') + 'px';
     // $('#displayUnicodeDesc').style.fontSize =
     //   await getPref('tblfontsize') + 'px';
-    if (sizeToContent) {
+    if (sizeToContent && window.sizeToContent) {
       // On Mac at least, resizing for reducing font size, causes button to
       // go off screen
       window.sizeToContent();

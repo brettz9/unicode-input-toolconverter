@@ -406,4 +406,27 @@ describe('Charts', function () {
       'td:nth-of-type(1) div[name="unicode"]'
     ).should('exist');
   });
+
+  it('should allow increase or decrease of font size', function () {
+    visitBrowserAction();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).invoke('css', 'font-size').should('eq', '13px');
+
+    cy.get('.chartLayout button.fontsize:nth-of-type(1)').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).invoke('css', 'font-size').should('eq', '14px');
+
+    cy.get('.chartLayout button.fontsize:nth-of-type(2)').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).invoke('css', 'font-size').should('eq', '13px');
+  });
 });
