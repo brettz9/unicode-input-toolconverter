@@ -252,7 +252,8 @@ describe('Conversion', function () {
     );
 
     describe('Character descriptions', function () {
-      it(
+      // Problem with database
+      it.skip(
         'Converts Unicode to character description escapes',
         function () {
           visitBrowserAction(undefined, [
@@ -274,7 +275,8 @@ describe('Conversion', function () {
         }
       );
 
-      it(
+      // Problem with database
+      it.skip(
         'Converts character description escapes to Unicode',
         function () {
           visitBrowserAction(undefined, [
