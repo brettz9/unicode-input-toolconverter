@@ -4,3 +4,4 @@ import './conversion.cy.js';
 import './dtd.cy.js';
 import './index.cy.js';
 import './prefs.cy.js';
+import './unit-hangul.js';

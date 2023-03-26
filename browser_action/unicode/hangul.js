@@ -33,6 +33,7 @@ const sBase = 0xAC00,
 
 /**
  * Break up a Hangul syllable into its Jamo components.
+ * Currently unused.
  * @param {Integer} syllableCode Decimal code point for Hangul syllable
  *   to decompose
  * @returns {Integer[]|string} An array of the numeric value of each
@@ -136,7 +137,7 @@ function getHangulFromName (name) {
   }
 
   // T (can be 1-2 in name length)
-  tIndex = JAMO_T_TABLE.indexOf(name.substr(ptr, 2));
+  tIndex = JAMO_T_TABLE.indexOf(name.substr(ptr, 2).padStart(2, '0'));
   if (tIndex !== -1) {
     ptr += 2;
   } else {
@@ -153,7 +154,7 @@ function getHangulFromName (name) {
   const l = getJamoForIndex(lIndex, 'l');
   const v = getJamoForIndex(vIndex, 'v');
 
-  // May only be LV (?)
+  // May only be LV
   t = '';
   if (tIndex) {
     t = getJamoForIndex(tIndex, 't');
@@ -205,7 +206,7 @@ function getHangulName (syllableCode) {
   //     components as follows:
   // The operators /” and  “%” are as defined in Table A-3 in Appendix A,
   //    Notational Conventions.
-  if (sIndex < 0 && sIndex >= sCount) {
+  if (sIndex < 0 || sIndex >= sCount) {
     throw new Error('Not a hangul syllable ' + syllableCode);
   }
   /*

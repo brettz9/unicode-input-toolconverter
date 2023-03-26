@@ -275,6 +275,28 @@ describe('Conversion', function () {
         }
       );
 
+      it(
+        'Converts Unicode to character description escapes (Hangul)',
+        function () {
+          visitBrowserAction(undefined, [
+            ['characterDescriptions', 1]
+          ]);
+
+          // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
+          cy.wait(3000);
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+          cy.get('#converted').clear();
+          cy.get('#toconvert').clear().type('가');
+          cy.get('#b17').click();
+          cy.get('#converted').invoke('val').should(
+            'eq', '\\C{GA}'
+          );
+        }
+      );
+
       // Problem with database
       it.skip(
         'Converts character description escapes to Unicode',
@@ -298,6 +320,38 @@ describe('Conversion', function () {
           cy.get('#converted').invoke('val').should('eq', 'é');
         }
       );
+    });
+  });
+
+  describe('Hangul conversions', function () {
+    it('supports Hangul conversion', function () {
+      visitBrowserAction();
+      cy.get('h1.tab:nth-of-type(2)').contains('Conversion').click();
+
+      cy.get('#toconvert').clear().type('\\C{').type('GAG}');
+      cy.get('#b18').click();
+      cy.get('#converted').invoke('val').should('eq', 'ᄀ');
+
+      cy.get('#toconvert').clear().type('\\C{').type('GGEOGG}');
+      cy.get('#b18').click();
+      cy.get('#converted').invoke('val').should('eq', '꺾');
+
+      cy.get('#toconvert').clear().type('\\C{').type('GGWAEGG}');
+      cy.get('#b18').click();
+      cy.get('#converted').invoke('val').should('eq', '꽦');
+    });
+
+    it('gives non-character with bad Hangul syllable check', function () {
+      visitBrowserAction();
+      cy.get('h1.tab:nth-of-type(2)').contains('Conversion').click();
+
+      cy.get('#toconvert').clear().type('\\C{').type('GAGGGGGG}');
+      cy.get('#b18').click();
+      cy.get('#converted').invoke('val').should('eq', '�');
+
+      cy.get('#toconvert').clear().type('\\C{').type('IIIII}');
+      cy.get('#b18').click();
+      cy.get('#converted').invoke('val').should('eq', '�');
     });
   });
 

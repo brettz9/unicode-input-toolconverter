@@ -356,11 +356,6 @@ describe('Charts', function () {
     ).contains('é');
   });
 
-  // Broken?
-  it.skip('shows PDF link', function () {
-    //
-  });
-
   // Needs to test functionality too
   it.skip('Sets "Show all items" including on load', function () {
     visitBrowserAction();
