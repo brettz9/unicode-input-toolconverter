@@ -1074,12 +1074,11 @@ const unicodecharref = {
       $('#viewTabs').$selectTab($('#detailedCJKView'));
     }
 
-    // const alink = createHTMLElement('a');
-    const alink = createXULElement('label');
+    const alink = createHTMLElement('a');
     alink.target = '_blank';
     alink.className = 'text-link';
     alink.href = `https://unicode.org/charts/PDF/U${codePointStart}.pdf`;
-    alink.setAttribute('value', script + ' (PDF)');
+    alink.textContent = script + ' (PDF)';
 
     // Handle PDF link
     placeItem('#pdflink', alink);
