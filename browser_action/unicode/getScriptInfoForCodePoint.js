@@ -229,7 +229,7 @@ export default function getScriptInfoForCodePoint (num, _) {
   } else if (num < 0x2F00) {
     codePointStart = '2E80'; script = _('CJK_Radicals_Supplement');
   } else if (num < 0x2FF0) {
-    codePointStart = '2F00'; script = _('CJK_Radicals___KangXi_Radicals');
+    codePointStart = '2F00'; script = _('CJK_Radicals___Kangxi_Radicals');
   } else if (num < 0x3000) {
     codePointStart = '2FF0'; script = _('Ideographic_Description_Characters');
   } else if (num < 0x3040) {
