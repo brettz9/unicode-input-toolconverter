@@ -348,8 +348,16 @@ const indexTemplate = function ({_, fonts}) {
                         ...fonts.length
                           ? [
                             ['br'],
-                            ['select', {$on: {
-                              change () {
+                            ['select', {id: 'font-list', $on: {
+                              async change () {
+                                $('#font').value = this.value;
+                                await unicodecharref.setprefs({
+                                  target: {
+                                    type: 'select-one',
+                                    id: 'font',
+                                    value: this.value
+                                  }
+                                });
                                 $('#font').$setFontFamily(this.value);
                               }
                             }}, [

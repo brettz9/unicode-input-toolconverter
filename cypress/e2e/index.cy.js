@@ -143,9 +143,21 @@ describe('Main page', function () {
   });
 
   it('Loads fonts conditionally', function () {
-    cy.visit('/browser_action/index-instrumented.html?fonts=1');
-    cy.get('select option', {
+    visitBrowserAction(undefined, [
+      ['fonts', 1]
+    ]);
+
+    // eslint-disable-next-line max-len -- Long
+    // eslint-disable-next-line cypress/no-unnecessary-waiting -- Needs longer with fonts
+    cy.wait(4000);
+
+    cy.get('#font-list', {
       timeout: 20000
-    }).contains('Helvetica');
+    }).select('Helvetica');
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).invoke('css', 'font-family').should('eq', 'Helvetica');
   });
 });
