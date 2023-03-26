@@ -454,4 +454,20 @@ describe('Charts', function () {
       'td:nth-of-type(1) > .centered > button'
     ).invoke('css', 'font-size').should('eq', '13px');
   });
+
+  it('should allow changing of font family', function () {
+    visitBrowserAction();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).invoke('css', 'font-family').should('eq', 'Arial');
+
+    cy.get('#font').clear().type('cursive').blur();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).invoke('css', 'font-family').should('eq', 'cursive');
+  });
 });

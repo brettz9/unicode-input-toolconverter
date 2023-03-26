@@ -345,20 +345,24 @@ const indexTemplate = function ({_, fonts}) {
                             }
                           }
                         }],
-                        ['br'],
-                        ['select', {$on: {
-                          click () {
-                            $('#font').$setFontFamily(this.value);
-                          }
-                        }}, [
-                          ['option', [
-                            _('choose_a_font')
-                          ]],
-                          // Todo: Set pref to remember
-                          ...fonts.map((font) => {
-                            return ['option', [font]];
-                          })
-                        ]]
+                        ...fonts.length
+                          ? [
+                            ['br'],
+                            ['select', {$on: {
+                              change () {
+                                $('#font').$setFontFamily(this.value);
+                              }
+                            }}, [
+                              ['option', [
+                                _('choose_a_font')
+                              ]],
+                              // Todo: Set pref to remember
+                              ...fonts.map((font) => {
+                                return ['option', [font]];
+                              })
+                            ]]
+                          ]
+                          : ['']
                       ]]
                     ]],
                     ['div', {
