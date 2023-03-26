@@ -470,4 +470,16 @@ describe('Charts', function () {
       'td:nth-of-type(1) > .centered > button'
     ).invoke('css', 'font-family').should('eq', 'cursive');
   });
+
+  it('should allow changing of lang attribute', function () {
+    visitBrowserAction();
+
+    cy.get('#chart_table').invoke('prop', 'lang').should('eq', 'en');
+
+    cy.get('#lang').clear().type('zh').blur();
+
+    visitBrowserAction();
+
+    cy.get('#chart_table').invoke('prop', 'lang').should('eq', 'zh');
+  });
 });
