@@ -484,7 +484,7 @@ export default function getScriptInfoForCodePoint (num, _) {
   } else if (num < 0x12480) {
     codePointStart = '12400'; script = _('Cuneiform_Numbers_and_Punctuation');
   } else if (num < 0x12550) {
-    codePointStart = '12480'; script = _('Early Dynastic Cuneiform');
+    codePointStart = '12480'; script = _('Early_Dynastic_Cuneiform');
   } else if (num < 0x13000) {
     codePointStart = '12F90'; script = _('Cypro_Minoan');
   } else if (num < 0x16800) {
