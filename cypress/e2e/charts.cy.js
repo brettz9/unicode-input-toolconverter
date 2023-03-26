@@ -274,6 +274,9 @@ describe('Charts', function () {
       '#chart_table > tr:nth-of-type(6) > ' +
       'td:nth-of-type(1) > .centered > button'
     ).should('exist');
+
+    visitBrowserAction();
+    cy.get('#rowsset').invoke('val').should('eq', '6');
   });
 
   it('changes the number of columns', function () {
@@ -290,6 +293,9 @@ describe('Charts', function () {
       '#chart_table > tr:nth-of-type(1) > ' +
       'td:nth-of-type(6) > .centered > button'
     ).should('exist');
+
+    visitBrowserAction();
+    cy.get('#colsset').invoke('val').should('eq', '6');
   });
 
   it('Allows disabling display of entities', function () {
@@ -303,6 +309,8 @@ describe('Charts', function () {
     ).should('exist');
 
     cy.get('#entyes').click();
+
+    visitBrowserAction();
 
     cy.get(
       '#chart_table > tr:nth-of-type(1) > ' +
@@ -322,6 +330,8 @@ describe('Charts', function () {
 
     cy.get('#decyes').click();
 
+    visitBrowserAction();
+
     cy.get(
       '#chart_table > tr:nth-of-type(1) > ' +
       'td:nth-of-type(1) > button[name="dec"]'
@@ -339,6 +349,8 @@ describe('Charts', function () {
     ).should('exist');
 
     cy.get('#hexyes').click();
+
+    visitBrowserAction();
 
     cy.get(
       '#chart_table > tr:nth-of-type(1) > ' +
@@ -358,6 +370,8 @@ describe('Charts', function () {
 
     cy.get('#unicodeyes').click();
 
+    visitBrowserAction();
+
     cy.get(
       '#chart_table > tr:nth-of-type(1) > ' +
       'td:nth-of-type(1) button[name="unicode"]'
@@ -374,6 +388,8 @@ describe('Charts', function () {
     ).contains('a');
 
     cy.get('#startCharInMiddleOfChart').click();
+
+    visitBrowserAction();
 
     cy.get(
       '#chart_table > tr:nth-of-type(1) > ' +
@@ -396,6 +412,8 @@ describe('Charts', function () {
 
     cy.get('#buttonyes').click();
 
+    visitBrowserAction();
+
     cy.get(
       '#chart_table > tr:nth-of-type(1) > ' +
       'td:nth-of-type(1) button[name="unicode"]'
@@ -416,6 +434,13 @@ describe('Charts', function () {
     ).invoke('css', 'font-size').should('eq', '13px');
 
     cy.get('.chartLayout button.fontsize:nth-of-type(1)').click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(1) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).invoke('css', 'font-size').should('eq', '14px');
+
+    visitBrowserAction();
 
     cy.get(
       '#chart_table > tr:nth-of-type(1) > ' +
