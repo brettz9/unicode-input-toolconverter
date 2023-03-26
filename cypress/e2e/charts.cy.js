@@ -482,4 +482,25 @@ describe('Charts', function () {
 
     cy.get('#chart_table').invoke('prop', 'lang').should('eq', 'zh');
   });
+
+  it('should allow character selection by column browser', function () {
+    visitBrowserAction();
+
+    cy.get(
+      '.miller-columns .miller-column:nth-of-type(1) li:nth-of-type(1)'
+    ).click();
+
+    cy.get(
+      '.miller-columns .miller-column:nth-of-type(2) li:nth-of-type(1)'
+    ).click();
+
+    cy.get(
+      '.miller-columns .miller-column:nth-of-type(4) li:nth-of-type(1)'
+    ).click();
+
+    cy.get(
+      '#chart_table > tr:nth-of-type(2) > ' +
+      'td:nth-of-type(1) > .centered > button'
+    ).contains('Գ');
+  });
 });
