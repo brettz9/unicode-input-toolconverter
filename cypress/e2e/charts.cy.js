@@ -420,6 +420,17 @@ describe('Charts', function () {
         'prop', 'checked'
       ).should('eq', false);
     });
+
+    it('returns to relevant metadata tab for non-CJK/non-Hangul', function () {
+      visitBrowserAction();
+      cy.get('h1[data-label="Detailed view (CJK)"]').click();
+      cy.get('#startset').clear().type('b');
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).trigger('mouseover');
+      cy.get('h1[data-selected][data-label="Detailed view"]').should('exist');
+    });
   });
 
   describe('Typed text manipulation', function () {

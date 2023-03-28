@@ -717,6 +717,13 @@ const unicodecharref = {
       unihanType, hangul, cjkText, searchValue
     } = getCJKTypeFromHexString({khextemp, _});
 
+    if (
+      !unihanType && !hangul &&
+      $('#viewTabs').$selectedTab() === $('#detailedCJKView')
+    ) {
+      $('#viewTabs').$selectTabForTabPanel($('#detailedView'));
+    }
+
     const kdectemp = Number.parseInt(khextemp, 16);
     const {
       codePointStart, script, plane, privateuse, surrogate
@@ -746,7 +753,7 @@ const unicodecharref = {
       if (results) {
         result = cjkText ||
           // We had obtained Jamo from Jamo.txt and showed it in parentheses,
-          //  but it seems this is now included in UnicodData.txt as we
+          //  but it seems this is now included in UnicodeData.txt as we
           //  import into our database.
           // if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
           results.name;
@@ -1069,9 +1076,9 @@ const unicodecharref = {
 
     if (
       this.unihanDb_exists && unihanType &&
-      $('#viewTabs').selectedTab === $('#detailedView')
+      $('#viewTabs').$selectedTab() === $('#detailedView')
     ) {
-      $('#viewTabs').$selectTab($('#detailedCJKView'));
+      $('#viewTabs').$selectTabForTabPanel($('#detailedCJKView'));
     }
 
     const alink = createHTMLElement('a');

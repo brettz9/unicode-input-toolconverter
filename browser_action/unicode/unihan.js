@@ -1,4 +1,3 @@
-import {$} from '../../vendor/jamilih/dist/jml-es.js';
 import {getHangulName} from './hangul.js';
 
 /**
@@ -70,12 +69,6 @@ function getCJKTypeFromHexString ({khextemp, _}) {
   // pattern = new RegExp('^' + khextemp + ';([^;]*);', 'm');
   // file = 'UnicodeData.txt';
 
-  if (
-    !unihanType && !hangul &&
-    $('#viewTabs').selectedTab === $('#detailedCJKView')
-  ) {
-    $('#viewTabs').$selectTab($('#detailedView'));
-  }
   let search = false;
   let cjkText;
 
