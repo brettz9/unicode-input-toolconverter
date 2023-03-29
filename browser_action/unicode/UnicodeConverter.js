@@ -3,7 +3,7 @@ import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
 import {getHangulName, getHangulFromName} from './hangul.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
 import unicodecharref from '../unicodecharref.js';
-// import camelCase from '../../vendor/camelcase/index.js';
+import camelCase from '../../vendor/camelcase/index.js';
 
 /**
 * @typedef {"php"|"css"|"javascript"} UnicodeEscapeMode
@@ -745,18 +745,20 @@ export const getUnicodeConverter = () => {
             alert(e);
           }
         } else {
-          const field = nameDesc; // camelCase(nameDesc);
+          const field = nameDesc;
+          const camelizedField = camelCase(nameDesc);
 
           // Todo: Add indexes for each instead and then query with
           //       `nameDescVal`, at least for `strict`
           const chars = await conn.getAll();
+
           const filteredChars = strict
             ? chars.filter((chr) => {
               const cell = table === 'Unihan'
                 ? chr.columns[
                   unicodecharref.Unihan.indexOf(field)
                 ]
-                : chr[field];
+                : chr[camelizedField];
               return cell.toLowerCase() === nameDescVal.toLowerCase();
             })
             : chars.filter((chr) => {
@@ -764,7 +766,7 @@ export const getUnicodeConverter = () => {
                 ? chr.columns[
                   unicodecharref.Unihan.indexOf(field)
                 ]
-                : chr[field];
+                : chr[camelizedField];
               return cell.toLowerCase().includes(
                 nameDescVal.toLowerCase()
               );
