@@ -794,6 +794,30 @@ const unicodecharref = {
                 ? _('Bidi_MirroredY')
                 : _('Bidi_MirroredN'); // Only two choices
               break;
+            case 'numericType': {
+              const view = $('#_detailedView' + i);
+              removeViewChildren(i);
+              jml('select', [
+                'None',
+                'Decimal',
+                'Digit',
+                'Numeric'
+              // eslint-disable-next-line no-loop-func -- Not an issue
+              ].map((value) => {
+                return [
+                  'option',
+                  temp === value
+                    ? {
+                      selected: true
+                    }
+                    : {},
+                  [
+                    _(value)
+                  ]
+                ];
+              }), view);
+              break;
+            }
             case 'decompositionMapping':
             case 'Simple_Uppercase_Mapping':
             case 'Simple_Lowercase_Mapping':
@@ -1430,7 +1454,14 @@ const unicodecharref = {
     // 'Decomposition_Type_and_Mapping',
     'decompositionMapping',
     'decompositionType',
-    'Decimal', 'Digit', 'Numeric',
+    // We broke this up for more convenient querying/display
+    /*
+    'Decimal',
+    'Digit',
+    'Numeric',
+    */
+    'numericType',
+    'numericValue',
     'Bidi_Mirrored', 'Unicode_1_Name', 'ISO_Comment',
     'Simple_Uppercase_Mapping', 'Simple_Lowercase_Mapping',
     'Simple_Titlecase_Mapping'

@@ -102,9 +102,15 @@ export const unicodeFieldInfo = [
   'decompositionMapping',
   'decompositionType',
 
+  // We broke this up for more convenient querying/display
+  /*
   'Decimal',
   'Digit',
   'Numeric',
+   */
+  'numericType',
+  'numericValue',
+
   'Bidi_Mirrored',
   'Unicode_1_Name',
   'ISO_Comment',

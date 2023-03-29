@@ -572,8 +572,9 @@ const indexTemplate = function ({_, fonts}) {
                           _(key),
                           nbsp.repeat(2),
                           [
-                            i > 10 || // Casings
-                              key === 'decompositionMapping'
+                            key.includes('case_Mapping') ||
+                              key === 'decompositionMapping' ||
+                              key === 'numericType'
                               ? 'span'
                               : 'input',
                             {

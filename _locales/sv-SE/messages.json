@@ -977,6 +977,15 @@
     "Numeric": {
       "message": "Numerisk"
     },
+    "None": {
+      "message": "None"
+    },
+    "numericType": {
+      "message": "Numeric type"
+    },
+    "numericValue": {
+      "message": "Numeric value"
+    },
     "Bidi_Mirrored": {
       "message": "Dubbelriktad, speglad"
     },
