@@ -826,11 +826,17 @@ const unicodecharref = {
               break;
             }
             // Not casing
-            if (i <= 9 && unicodeField !== 'decompositionMapping') {
+            if (
+              !unicodeField.includes('case_Mapping') &&
+              unicodeField !== 'decompositionMapping'
+            ) {
               $('#_detailedView' + i).value = temp;
             }
           // Not casing
-          } else if (i <= 9 && unicodeField !== 'decompositionMapping') {
+          } else if (
+            !unicodeField.includes('case_Mapping') &&
+            unicodeField !== 'decompositionMapping'
+          ) {
             $('#_detailedView' + i).parentNode.hidden = hideMissing;
             $('#_detailedView' + i).value = '';
           } else {
