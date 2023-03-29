@@ -13,7 +13,7 @@ import {camelize} from './utils/StringUtils.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
 import {joinChunks} from './utils/TypedArrayUtils.js';
 import {
-  placeItem, removeViewChildren, createHTMLElement, createXULElement, xulns,
+  placeItem, removeViewChildren, createHTMLElement, xulns,
   showProgress
 } from './utils/DOMUtils.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
@@ -761,12 +761,12 @@ const unicodecharref = {
           //  import into our database.
           // if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
           results.name;
-        for (let i = 2; i <= 14; i++) {
+        for (const [i, unicodeField] of unicodeFieldInfo.entries()) {
           // Fix: display data more readably, etc.
-          const camelizedField = camelize(unicodeFieldInfo[i - 2]);
-          console.log('camelizedField', camelizedField);
+          const camelizedField = camelize(unicodeField);
+          // console.log('camelizedField', camelizedField);
           let temp = results[camelizedField];
-          if (i === 10) {
+          if (unicodeField === 'Unicode_1_Name') {
             if (temp) {
               result += ';\u00A0\u00A0\u00A0\u00A0\n' +
                 _('searchUnicode_1_Name') + _('colon') + ' ' + temp;
@@ -777,35 +777,35 @@ const unicodecharref = {
             if (hideMissing) {
               $('#_detailedView' + i).parentNode.hidden = false;
             }
-            switch (i) {
-            case 2:
+            switch (unicodeField) {
+            case 'General_Category':
               temp = _('General_Category' + temp);
               break;
-            case 3:
+            case 'Canonical_Combining_Class':
               if (temp < 11 || temp > 132) {
                 // 199, 200, 204, 208, 210, 212 do not have members yet and
                 //  others from 11 to 132 do not have name listed
                 temp = _('Canonical_Combining_Class' + temp);
               }
               break;
-            case 4:
+            case 'Bidi_Class':
               temp = _('Bidi_Class' + temp);
               break;
-            case 9:
+            case 'Bidi_Mirrored':
               temp = (temp === 'Y')
                 ? _('Bidi_MirroredY')
                 : _('Bidi_MirroredN'); // Only two choices
               break;
-            case 12:
-            case 13:
-            case 14: {
+            case 'Simple_Uppercase_Mapping':
+            case 'Simple_Lowercase_Mapping':
+            case 'Simple_Titlecase_Mapping': {
               const a = createHTMLElement('a');
               // eslint-disable-next-line no-script-url -- This is controlled
               a.href = 'javascript:void(0)';
 
-              a.addEventListener('click', function (e) {
-                unicodecharref.startset({
-                  value: e.target.innerHTML.codePointAt()
+              a.addEventListener('click', async (e) => {
+                await unicodecharref.startset({
+                  value: e.target.textContent
                 });
                 // Probably want to start checking again since move to new page
                 // that.noGetDescripts = false;
@@ -816,8 +816,7 @@ const unicodecharref = {
               const view = $('#_detailedView' + i);
               removeViewChildren(i);
 
-              // Necessary to avoid CSS wrapping warning
-              const box = createXULElement('description');
+              const box = createHTMLElement('span');
               box.append(a);
               box.append(' (' + temp + ')');
               view.append(box);
@@ -827,10 +826,12 @@ const unicodecharref = {
             } default:
               break;
             }
-            if (i <= 11) {
+            // Not casing
+            if (i <= 9) {
               $('#_detailedView' + i).value = temp;
             }
-          } else if (i <= 11) {
+          // Not casing
+          } else if (i <= 9) {
             $('#_detailedView' + i).parentNode.hidden = hideMissing;
             $('#_detailedView' + i).value = '';
           } else {
@@ -883,8 +884,8 @@ const unicodecharref = {
         const notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
-        for (let j = 2; j <= 14; j++) {
-          if (j === 10) { continue; }
+        for (const [j, unicodeField] of unicodeFieldInfo.entries()) {
+          if (unicodeField === 'Unicode_1_Name') { continue; }
           try {
             $('#_detailedView' + j).value = '';
             $('#_detailedView' + j).parentNode.hidden = hideMissing;
@@ -933,8 +934,8 @@ const unicodecharref = {
         const notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
-        for (let j = 2; j <= 14; j++) {
-          if (j === 10) { continue; }
+        for (const [j, unicodeField] of unicodeFieldInfo.entries()) {
+          if (unicodeField === 'Unicode_1_Name') { continue; }
           try {
             $('#_detailedView' + j).value = '';
             $('#_detailedView' + j).parentNode.hidden = hideMissing;
@@ -1015,8 +1016,8 @@ const unicodecharref = {
             _('Not_found');
 
           if (!cjkText || hangul) {
-            for (let j = 2; j <= 14; j++) {
-              if (j === 10) { continue; }
+            for (const [j, unicodeField] of unicodeFieldInfo.entries()) {
+              if (unicodeField === 'Unicode_1_Name') { continue; }
               try {
                 $('#_detailedView' + j).value = '';
                 $('#_detailedView' + j).parentNode.hidden = hideMissing;
@@ -1209,6 +1210,12 @@ const unicodecharref = {
     await chartBuild();
     return await this.resizecells();
   },
+
+  /**
+   * @param {{value: string}} tbx
+   * @param {boolean} descripts
+   * @returns {Promise<void>}
+   */
   async startset (tbx, descripts) {
     /**
      * @param {string} str

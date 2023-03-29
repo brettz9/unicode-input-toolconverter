@@ -60,11 +60,11 @@ const indexTemplate = function ({_, fonts}) {
                     id: 'startset',
                     class: 'searchBox',
                     $on: {
-                      change () {
-                        unicodecharref.startset(this);
+                      async change () {
+                        await unicodecharref.startset(this);
                       },
-                      input () {
-                        unicodecharref.startset(this);
+                      async input () {
+                        await unicodecharref.startset(this);
                       }
                     }
                   }],
@@ -574,8 +574,8 @@ const indexTemplate = function ({_, fonts}) {
                         }, [
                           _(key),
                           nbsp.repeat(2),
-                          ['input', {
-                            id: `_detailedView${i + 2}`
+                          [i > 8 ? 'span' : 'input', {
+                            id: `_detailedView${i}`
                           }]
                         ]]
                       ]];
