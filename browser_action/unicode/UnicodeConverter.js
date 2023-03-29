@@ -745,7 +745,7 @@ export const getUnicodeConverter = () => {
             alert(e);
           }
         } else {
-          const field = camelize(nameDesc);
+          const field = nameDesc; // camelize(nameDesc);
 
           // Todo: Add indexes for each instead and then query with
           //       `nameDescVal`, at least for `strict`
@@ -754,7 +754,7 @@ export const getUnicodeConverter = () => {
             ? chars.filter((chr) => {
               const cell = table === 'Unihan'
                 ? chr.columns[
-                  unicodecharref.unihanFields.indexOf(field)
+                  unicodecharref.Unihan.indexOf(field)
                 ]
                 : chr[field];
               return cell.toLowerCase() === nameDescVal.toLowerCase();
@@ -762,7 +762,7 @@ export const getUnicodeConverter = () => {
             : chars.filter((chr) => {
               const cell = table === 'Unihan'
                 ? chr.columns[
-                  unicodecharref.unihanFields.indexOf(field)
+                  unicodecharref.Unihan.indexOf(field)
                 ]
                 : chr[field];
               return cell.toLowerCase().includes(

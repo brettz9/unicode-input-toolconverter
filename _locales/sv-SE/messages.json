@@ -212,6 +212,9 @@
     "kIRG_MSource": {
       "message": "IRG MSource"
     },
+    "kIRG_SSource": {
+      "message": "IRG_SSource"
+    },
     "Ethiopic_Extended_A": {
       "message": "Ge'ez, utökad A"
     },
@@ -674,6 +677,9 @@
     "kIRG_TSource": {
       "message": "IRG TKälla"
     },
+    "kIRG_UKSource": {
+      "message": "IRG UKSource"
+    },
     "kMandarin": {
       "message": "Mandarin"
     },
@@ -697,6 +703,9 @@
     },
     "kJIS0213": {
       "message": "JIS0213"
+    },
+    "kJoyoKanji": {
+      "message": "JoyoKanji"
     },
     "kNelson": {
       "message": "Nelson"
@@ -752,11 +761,17 @@
     "kTraditionalVariant": {
       "message": "TraditionellVariant"
     },
+    "kUnihanCore2020": {
+      "message": "UnihanCore2020"
+    },
     "kVietnamese": {
       "message": "Vietnamesiska"
     },
     "kSpecializedSemanticVariant": {
       "message": "SpecialiseradSemantiskVariant"
+    },
+    "kSpoofingVariant": {
+      "message": "SpoofingVariant"
     },
     "kLau": {
       "message": "Lau"
@@ -773,17 +788,29 @@
     "kTang": {
       "message": "Tang"
     },
+    "kTGH": {
+      "message": "TGH"
+    },
+    "kTGHZ2013": {
+      "message": "TGHZ2013"
+    },
     "kZVariant": {
       "message": "ZVariant"
     },
     "kRSKangXi": {
       "message": "RSKanxi"
     },
+    "kJa": {
+      "message": "Ja"
+    },
     "kJapaneseKun": {
       "message": "JapanskaKun"
     },
     "kJapaneseOn": {
       "message": "JapanskaOn"
+    },
+    "kJinmeiyoKanji": {
+      "message": "JinmeiyoKanji"
     },
     "kSimplifiedVariant": {
       "message": "FörenkladVariant"
@@ -854,6 +881,12 @@
     "kKorean": {
       "message": "Koreanska"
     },
+    "kKoreanEducationHanja": {
+      "message": "KoreanEducationHanja"
+    },
+    "kKoreanName": {
+      "message": "KoreanName"
+    },
     "kMainlandTelegraph": {
       "message": "FastlandTelegraf"
     },
@@ -898,6 +931,9 @@
     },
     "kAccountingNumeric": {
       "message": "BokföringNumerisk"
+    },
+    "kAlternateTotalStrokes": {
+      "message": "AlternateTotalStrokes"
     },
     "kRSKorean": {
       "message": "RSKoreanska"

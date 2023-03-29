@@ -182,10 +182,10 @@ radiogroup {
   height: 550px;
 }
 
-.detailedView, .detailedCJKView {
+/* .detailedView, .detailedCJKView {
   overflow: auto;
-  height: 50px;
-}
+  height: 20px;
+} */
 .detailedView > .description.heading, .detailedCJKView > .description.heading  {
   display: block;
 }

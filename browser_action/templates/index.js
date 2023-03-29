@@ -4,7 +4,7 @@ import {safeLink} from '../templateUtils/validation.js';
 // import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicodeScripts.js';
 import {
-  unihanFieldInfo, unicodeFieldInfo
+  unicodeFieldInfo
 } from '../unicode/unicodeFieldInfo.js';
 import unicodecharref from '../unicodecharref.js';
 import CharrefConverterBridges from '../charrefConverters.js';
@@ -610,7 +610,10 @@ const indexTemplate = function ({_, fonts}) {
                     ]]
                   ]],
                   ['div', {class: 'detailedCJKViewRows vbox'}, [
-                    ['div', unihanFieldInfo.map(([key, num]) => {
+                    ['div', unicodecharref.Unihan.map((key, num) => {
+                      if (key === 'kDefinition') {
+                        return '';
+                      }
                       return ['div', {class: 'detailedCJKView vbox'}, [
                         ['label', {class: 'heading'}, [
                           _(key),

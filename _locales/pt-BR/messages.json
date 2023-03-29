@@ -212,6 +212,9 @@
     "kIRG_MSource": {
       "message": "IRG_MSource"
     },
+    "kIRG_SSource": {
+      "message": "IRG_SSource"
+    },
     "Ethiopic_Extended_A": {
       "message": "Etíope estendido A"
     },
@@ -674,6 +677,9 @@
     "kIRG_TSource": {
       "message": "Fonte T IRG"
     },
+    "kIRG_UKSource": {
+      "message": "IRG UKSource"
+    },
     "kMandarin": {
       "message": "Mandarim"
     },
@@ -697,6 +703,9 @@
     },
     "kJIS0213": {
       "message": "JIS0213"
+    },
+    "kJoyoKanji": {
+      "message": "JoyoKanji"
     },
     "kNelson": {
       "message": "Nelson"
@@ -752,11 +761,17 @@
     "kTraditionalVariant": {
       "message": "Variação Tradicional"
     },
+    "kUnihanCore2020": {
+      "message": "UnihanCore2020"
+    },
     "kVietnamese": {
       "message": "Vietnamita"
     },
     "kSpecializedSemanticVariant": {
       "message": "Variação Semântica Especializada"
+    },
+    "kSpoofingVariant": {
+      "message": "SpoofingVariant"
     },
     "kLau": {
       "message": "Lau"
@@ -773,17 +788,29 @@
     "kTang": {
       "message": "Tang"
     },
+    "kTGH": {
+      "message": "TGH"
+    },
+    "kTGHZ2013": {
+      "message": "TGHZ2013"
+    },
     "kZVariant": {
       "message": "Variante Z"
     },
     "kRSKangXi": {
       "message": "RS Kang Xi"
     },
+    "kJa": {
+      "message": "Ja"
+    },
     "kJapaneseKun": {
       "message": "Japonês Kun"
     },
     "kJapaneseOn": {
       "message": "Japonês On"
+    },
+    "kJinmeiyoKanji": {
+      "message": "JinmeiyoKanji"
     },
     "kSimplifiedVariant": {
       "message": "Variante Simplificada"
@@ -854,6 +881,12 @@
     "kKorean": {
       "message": "Coreano"
     },
+    "kKoreanEducationHanja": {
+      "message": "KoreanEducationHanja"
+    },
+    "kKoreanName": {
+      "message": "KoreanName"
+    },
     "kMainlandTelegraph": {
       "message": "Telégrafo continental"
     },
@@ -898,6 +931,9 @@
     },
     "kAccountingNumeric": {
       "message": "Numérico Contabilidade"
+    },
+    "kAlternateTotalStrokes": {
+      "message": "AlternateTotalStrokes"
     },
     "kRSKorean": {
       "message": "RS Coreano"

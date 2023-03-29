@@ -137,7 +137,7 @@ const unicodecharref = {
       alert(this[type][i])
     }
   },
-  */
+
   makeRows (type) {
     const prefix = (type === 'Unihan') ? 'searchk' : 'search';
     let i;
@@ -245,7 +245,7 @@ const unicodecharref = {
       unicodecharref['search' + type](e.target);
     }); // Triggered initially which sets preference to "Lu"
   },
-
+  */
   // Fix: Should also create the detailedView and detailedCJKView's
   //  content dynamically (and thus fully conditionally rather than hiding)
   /*
@@ -731,10 +731,14 @@ const unicodecharref = {
 
     // Todo: Make reactive!
     if (!unihanType) {
-      for (let i = 1; i <= 13; i++) {
-        $('#_detailedCJKView' + i).value = '';
-      }
-      for (let i = 15; i <= 91; i++) {
+      for (
+        let i = 0;
+        i < unicodecharref.Unihan.length;
+        i++
+      ) {
+        if (i === this.kDefinitionIndex) {
+          continue;
+        }
         $('#_detailedCJKView' + i).value = '';
       }
       for (const prop of this.Unihan) {
@@ -951,44 +955,24 @@ const unicodecharref = {
         if (results) {
           // Fix: display data more readably, with heading, etc. (and
           //   conditional)
-          result = results[14];
+          result = results[this.kDefinitionIndex];
           if (result === null && !cjkText) {
             result = _('No_definition');
           }
           // Fix: Display meta-data in table (get to be stable by
           //   right-clicking)
-          // $('#_detailedCJKView' + 3).value = result ? result : '';
-          for (let i = 1; i <= 13; i++) {
-            // Fix: display data more readably, etc.
-            const temp = results[i - 1];
-            if (temp) {
-              if (hideMissingUnihan) {
-                $('#_detailedCJKView' + i).parentNode.hidden = false;
-              }
-              // result += '; ' + temp;
-              /*
-              switch (i) {
-              case 1:
-                // Optional code to transform output into something
-                //   more readable
-                break;
-              case 2:
-                break;
-              default:
-                break;
-              }
-              */
-              $('#_detailedCJKView' + i).value = temp;
-            } else {
-              $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
-              $('#_detailedCJKView' + i).value = '';
+          for (
+            let i = 0;
+            i < unicodecharref.Unihan.length;
+            i++
+          ) {
+            if (i === this.kDefinitionIndex) {
+              continue;
             }
-          }
-          for (let i = 15; i <= 91; i++) {
             let temp;
             try {
               // Fix: display data more readably, etc.
-              temp = results[i - 1];
+              temp = results[i];
             } catch (e) {
               alert(i);
             }
@@ -1041,11 +1025,14 @@ const unicodecharref = {
                 alert('1' + e + j);
               }
             }
-            for (let i = 1; i <= 13; i++) {
-              $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
-              $('#_detailedCJKView' + i).value = '';
-            }
-            for (let i = 15; i <= 91; i++) {
+            for (
+              let i = 0;
+              i < unicodecharref.Unihan.length;
+              i++
+            ) {
+              if (i === this.kDefinitionIndex) {
+                continue;
+              }
               $('#_detailedCJKView' + i).parentNode.hidden = hideMissingUnihan;
               $('#_detailedCJKView' + i).value = '';
             }
@@ -1400,27 +1387,7 @@ const unicodecharref = {
 
   // Build these programmatically? (and in UI?)
   /* Pseudo-constants */
-  Unihan: [
-    'AccountingNumeric', 'BigFive', 'CCCII', 'CNS1986', 'CNS1992',
-    'Cangjie', 'Cantonese', 'CheungBauer', 'CheungBauerIndex',
-    'CihaiT', 'CompatibilityVariant', 'Cowles', 'DaeJaweon', 'EACC', 'Fenn',
-    'FennIndex', 'FourCornerCode', 'Frequency', 'GB0', 'GB1', 'GB3', 'GB5',
-    'GB7', 'GB8', 'GSR', 'GradeLevel', 'HDZRadBreak', 'HKGlyph', 'HKSCS',
-    'HanYu', 'Hangul', 'HanyuPinlu', 'HanyuPinyin', 'IBMJapan', 'IICore',
-    'IRGDaeJaweon', 'IRGDaiKanwaZiten', 'IRGHanyuDaZidian', 'IRGKangXi',
-    'IRG_GSource', 'IRG_HSource', 'IRG_JSource', 'IRG_KPSource',
-    'IRG_KSource', 'IRG_MSource', 'IRG_TSource', 'IRG_USource',
-    'IRG_VSource', 'JIS0213', 'JapaneseKun', 'JapaneseOn', 'Jis0', 'Jis1',
-    'KPS0', 'KPS1', 'KSC0', 'KSC1', 'KangXi', 'Karlgren', 'Korean', 'Lau',
-    'MainlandTelegraph', 'Mandarin', 'Matthews', 'MeyerWempe', 'Morohashi',
-    'Nelson', 'OtherNumeric', 'Phonetic', 'PrimaryNumeric', 'PseudoGB1',
-    'RSAdobe_Japan1_6', 'RSJapanese', 'RSKanWa', 'RSKangXi', 'RSKorean',
-    'RSUnicode', 'SBGY', 'SemanticVariant', 'SimplifiedVariant',
-    'SpecializedSemanticVariant', 'Strange', 'TaiwanTelegraph', 'Tang',
-    'TotalStrokes', 'TraditionalVariant', 'Vietnamese', 'XHC1983',
-    'Xerox', 'ZVariant'
-  ],
-  unihanFields: [ // Ordered by database array; todo: rpplace above `Unihan`?
+  Unihan: [ // Ordered by database array; todo: rpplace above `Unihan`?
     'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCangjie',
     'kCantonese', 'kCCCII', 'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT',
     'kCNS1986', 'kCNS1992', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon',
@@ -1476,4 +1443,7 @@ const unicodecharref = {
   UnicodeMenuDigit: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
   UnicodeMenuDecimal: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 };
+
+unicodecharref.kDefinitionIndex = unicodecharref.Unihan.indexOf('kDefinition');
+
 export default unicodecharref;
