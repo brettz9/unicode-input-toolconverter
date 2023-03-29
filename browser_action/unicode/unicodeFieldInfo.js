@@ -96,7 +96,12 @@ export const unicodeFieldInfo = [
   'General_Category',
   'Canonical_Combining_Class',
   'Bidi_Class',
-  'Decomposition_Type_and_Mapping',
+
+  // We broke it up into two parts for easier viewing
+  // 'Decomposition_Type_and_Mapping',
+  'decompositionMapping',
+  'decompositionType',
+
   'Decimal',
   'Digit',
   'Numeric',

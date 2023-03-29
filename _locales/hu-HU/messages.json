@@ -962,6 +962,12 @@
     "Decomposition_Type_and_Mapping": {
       "message": "Dekompozíciós típus és illesztés"
     },
+    "decompositionMapping": {
+      "message": "Decomposition Mapping"
+    },
+    "decompositionType": {
+      "message": "Decomposition Type"
+    },
     "Decimal": {
       "message": "Decimális"
     },

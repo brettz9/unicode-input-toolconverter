@@ -3,9 +3,6 @@ import {fill} from '../templateUtils/fill.js';
 import {safeLink} from '../templateUtils/validation.js';
 // import encodings from '../encodings.js';
 import unicodeScripts from '../unicode/unicodeScripts.js';
-import {
-  unicodeFieldInfo
-} from '../unicode/unicodeFieldInfo.js';
 import unicodecharref from '../unicodecharref.js';
 import CharrefConverterBridges from '../charrefConverters.js';
 import {registerDTD} from '../entityBehaviors.js';
@@ -562,7 +559,7 @@ const indexTemplate = function ({_, fonts}) {
                   ['div', [
                     ['div', {
                       class: 'detailedViewContainer vbox'
-                    }, unicodeFieldInfo.map((key, i) => {
+                    }, unicodecharref.Unicode.map((key, i) => {
                       if (i === 8) {
                         return '';
                       }

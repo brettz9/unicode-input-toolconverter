@@ -20,9 +20,6 @@ import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {UnihanDatabase} from './unicode/charrefunicodeDb.js';
 import {getCJKTypeFromHexString} from './unicode/unihan.js';
 import unihanDbPopulate from './unicode/unihanDbPopulate.js';
-import {
-  unicodeFieldInfo
-} from './unicode/unicodeFieldInfo.js';
 // import parseUnihanFromTextFileStrings from
 //   './unicode/parseUnihanFromTextFileStrings.js';
 import {registerDTD} from './entityBehaviors.js';
@@ -761,7 +758,7 @@ const unicodecharref = {
           //  import into our database.
           // if (kdectemp >= 0x1100 && kdectemp < 0x1200) {
           results.name;
-        for (const [i, unicodeField] of unicodeFieldInfo.entries()) {
+        for (const [i, unicodeField] of unicodecharref.Unicode.entries()) {
           // Fix: display data more readably, etc.
           const camelizedField = camelCase(unicodeField);
           console.log('camelizedField', camelizedField);
@@ -885,7 +882,7 @@ const unicodecharref = {
         const notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
-        for (const [j, unicodeField] of unicodeFieldInfo.entries()) {
+        for (const [j, unicodeField] of unicodecharref.Unicode.entries()) {
           if (unicodeField === 'Unicode_1_Name') { continue; }
           try {
             $('#_detailedView' + j).value = '';
@@ -935,7 +932,7 @@ const unicodecharref = {
         const notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
-        for (const [j, unicodeField] of unicodeFieldInfo.entries()) {
+        for (const [j, unicodeField] of unicodecharref.Unicode.entries()) {
           if (unicodeField === 'Unicode_1_Name') { continue; }
           try {
             $('#_detailedView' + j).value = '';
@@ -1017,7 +1014,7 @@ const unicodecharref = {
             _('Not_found');
 
           if (!cjkText || hangul) {
-            for (const [j, unicodeField] of unicodeFieldInfo.entries()) {
+            for (const [j, unicodeField] of unicodecharref.Unicode.entries()) {
               if (unicodeField === 'Unicode_1_Name') { continue; }
               try {
                 $('#_detailedView' + j).value = '';

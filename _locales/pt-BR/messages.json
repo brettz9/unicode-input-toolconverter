@@ -962,6 +962,12 @@
     "Decomposition_Type_and_Mapping": {
       "message": "Tipo de decomposição e mapeamento"
     },
+    "decompositionMapping": {
+      "message": "Decomposition Mapping"
+    },
+    "decompositionType": {
+      "message": "Decomposition Type"
+    },
     "Decimal": {
       "message": "Decimal"
     },
