@@ -560,7 +560,7 @@ const indexTemplate = function ({_, fonts}) {
                     ['div', {
                       class: 'detailedViewContainer vbox'
                     }, unicodecharref.Unicode.map((key, i) => {
-                      if (i === 8) {
+                      if (key === 'Unicode_1_Name') {
                         return '';
                       }
                       return ['div', {
@@ -571,9 +571,15 @@ const indexTemplate = function ({_, fonts}) {
                         }, [
                           _(key),
                           nbsp.repeat(2),
-                          [i > 8 ? 'span' : 'input', {
-                            id: `_detailedView${i}`
-                          }]
+                          [
+                            i > 10 || // Casings
+                              key === 'decompositionMapping'
+                              ? 'span'
+                              : 'input',
+                            {
+                              id: `_detailedView${i}`
+                            }
+                          ]
                         ]]
                       ]];
                     })]

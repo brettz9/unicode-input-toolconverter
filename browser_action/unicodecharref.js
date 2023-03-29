@@ -794,6 +794,7 @@ const unicodecharref = {
                 ? _('Bidi_MirroredY')
                 : _('Bidi_MirroredN'); // Only two choices
               break;
+            case 'decompositionMapping':
             case 'Simple_Uppercase_Mapping':
             case 'Simple_Lowercase_Mapping':
             case 'Simple_Titlecase_Mapping': {
@@ -825,11 +826,11 @@ const unicodecharref = {
               break;
             }
             // Not casing
-            if (i <= 9) {
+            if (i <= 9 && unicodeField !== 'decompositionMapping') {
               $('#_detailedView' + i).value = temp;
             }
           // Not casing
-          } else if (i <= 9) {
+          } else if (i <= 9 && unicodeField !== 'decompositionMapping') {
             $('#_detailedView' + i).parentNode.hidden = hideMissing;
             $('#_detailedView' + i).value = '';
           } else {
@@ -1419,7 +1420,11 @@ const unicodecharref = {
   UnihanMenus: [], // Unused
   Unicode: [
     'General_Category', 'Canonical_Combining_Class', 'Bidi_Class',
-    'Decomposition_Type_and_Mapping', 'Decimal', 'Digit', 'Numeric',
+    // We broke it up into two parts for easier viewing
+    // 'Decomposition_Type_and_Mapping',
+    'decompositionMapping',
+    'decompositionType',
+    'Decimal', 'Digit', 'Numeric',
     'Bidi_Mirrored', 'Unicode_1_Name', 'ISO_Comment',
     'Simple_Uppercase_Mapping', 'Simple_Lowercase_Mapping',
     'Simple_Titlecase_Mapping'
