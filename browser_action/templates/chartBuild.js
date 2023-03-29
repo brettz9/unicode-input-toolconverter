@@ -51,7 +51,7 @@ const chartBuildTemplate = function ({
           if (q >= arr.length) {
             q = 0;
           }
-          current.startCharCode = arr[q] - 1;
+          current.startCharCode = arr[q];
         } else {
           current.startCharCode++;
         }

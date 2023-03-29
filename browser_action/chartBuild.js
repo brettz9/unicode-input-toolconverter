@@ -87,7 +87,8 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
     q = arr.indexOf(current.startCharCode);
     if (q === -1) {
       q = 0;
-      current.startCharCode = arr[q] - 1;
+      current.startCharCode = arr[q];
+      q = -1; // Had to add this as will increment
     }
 
     let newq = q - (cols * rows);
