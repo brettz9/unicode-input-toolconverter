@@ -3,7 +3,7 @@ import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
 import {getHangulName, getHangulFromName} from './hangul.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
 import unicodecharref from '../unicodecharref.js';
-import {camelize} from '../utils/StringUtils.js';
+// import camelCase from '../../vendor/camelcase/index.js';
 
 /**
 * @typedef {"php"|"css"|"javascript"} UnicodeEscapeMode
@@ -745,7 +745,7 @@ export const getUnicodeConverter = () => {
             alert(e);
           }
         } else {
-          const field = nameDesc; // camelize(nameDesc);
+          const field = nameDesc; // camelCase(nameDesc);
 
           // Todo: Add indexes for each instead and then query with
           //       `nameDescVal`, at least for `strict`

@@ -163,7 +163,7 @@ var slc = function (v, s, e) {
     if (e == null || e > v.length)
         e = v.length;
     // can't use .constructor in case user-supplied
-    var n = new (v instanceof u16 ? u16 : v instanceof u32 ? u32 : u8)(e - s);
+    var n = new (v.BYTES_PER_ELEMENT == 2 ? u16 : v.BYTES_PER_ELEMENT == 4 ? u32 : u8)(e - s);
     n.set(v.subarray(s, e));
     return n;
 };
@@ -808,7 +808,7 @@ var mrg = function (a, b) {
 var wcln = function (fn, fnStr, td) {
     var dt = fn();
     var st = fn.toString();
-    var ks = st.slice(st.indexOf('[') + 1, st.lastIndexOf(']')).replace(/ /g, '').split(',');
+    var ks = st.slice(st.indexOf('[') + 1, st.lastIndexOf(']')).replace(/\s+/g, '').split(',');
     for (var i = 0; i < dt.length; ++i) {
         var v = dt[i], k = ks[i];
         if (typeof v == 'function') {
@@ -839,8 +839,9 @@ var ch = [];
 var cbfs = function (v) {
     var tl = [];
     for (var k in v) {
-        if (v[k] instanceof u8 || v[k] instanceof u16 || v[k] instanceof u32)
+        if (v[k].buffer) {
             tl.push((v[k] = new v[k].constructor(v[k])).buffer);
+        }
     }
     return tl;
 };
@@ -1516,13 +1517,15 @@ export function decompressSync(data, out) {
 // flatten a directory structure
 var fltn = function (d, p, t, o) {
     for (var k in d) {
-        var val = d[k], n = p + k;
+        var val = d[k], n = p + k, op = o;
+        if (Array.isArray(val))
+            op = mrg(o, val[1]), val = val[0];
         if (val instanceof u8)
-            t[n] = [val, o];
-        else if (Array.isArray(val))
-            t[n] = [val[0], mrg(o, val[1])];
-        else
-            fltn(val, n + '/', t, o);
+            t[n] = [val, op];
+        else {
+            t[n += '/'] = [new u8(0), op];
+            fltn(val, n, t, o);
+        }
     }
 };
 // text encoder
@@ -1732,15 +1735,15 @@ var wzh = function (d, b, f, fn, u, c, ce, co) {
     if (ce != null)
         d[b++] = 20, d[b++] = f.os;
     d[b] = 20, b += 2; // spec compliance? what's that?
-    d[b++] = (f.flag << 1) | (c == null && 8), d[b++] = u && 8;
+    d[b++] = (f.flag << 1) | (c < 0 && 8), d[b++] = u && 8;
     d[b++] = f.compression & 255, d[b++] = f.compression >> 8;
     var dt = new Date(f.mtime == null ? Date.now() : f.mtime), y = dt.getFullYear() - 1980;
     if (y < 0 || y > 119)
         err(10);
     wbytes(d, b, (y << 25) | ((dt.getMonth() + 1) << 21) | (dt.getDate() << 16) | (dt.getHours() << 11) | (dt.getMinutes() << 5) | (dt.getSeconds() >>> 1)), b += 4;
-    if (c != null) {
+    if (c != -1) {
         wbytes(d, b, f.crc);
-        wbytes(d, b + 4, c);
+        wbytes(d, b + 4, c < 0 ? -c - 2 : c);
         wbytes(d, b + 8, f.size);
     }
     wbytes(d, b + 12, fl);
@@ -1926,7 +1929,7 @@ var Zip = /*#__PURE__*/ (function () {
             if (fl_1 > 65535)
                 this.ondata(err(11, 0, 1), null, false);
             var header = new u8(hl_1);
-            wzh(header, 0, file, f, u);
+            wzh(header, 0, file, f, u, -1);
             var chks_1 = [header];
             var pAll_1 = function () {
                 for (var _i = 0, chks_2 = chks_1; _i < chks_2.length; _i++) {
@@ -2020,7 +2023,7 @@ var Zip = /*#__PURE__*/ (function () {
         var out = new u8(tl + 22);
         for (var _b = 0, _c = this.u; _b < _c.length; _b++) {
             var f = _c[_b];
-            wzh(out, bt, f, f.f, f.u, f.c, l, f.o);
+            wzh(out, bt, f, f.f, f.u, -f.c - 2, l, f.o);
             bt += 46 + f.f.length + exfl(f.extra) + (f.o ? f.o.length : 0), l += f.b;
         }
         wzf(out, bt, this.u.length, tl, l);
@@ -2434,15 +2437,14 @@ export function unzip(data, opts, cb) {
     if (lft) {
         var c = lft;
         var o = b4(data, e + 16);
-        var z = o == 4294967295;
+        var z = o == 4294967295 || c == 65535;
         if (z) {
-            e = b4(data, e - 12);
-            if (b4(data, e) != 0x6064B50) {
-                cbd(err(13, 0, 1), null);
-                return tAll;
+            var ze = b4(data, e - 12);
+            z = b4(data, ze) == 0x6064B50;
+            if (z) {
+                c = lft = b4(data, ze + 32);
+                o = b4(data, ze + 48);
             }
-            c = lft = b4(data, e + 32);
-            o = b4(data, e + 48);
         }
         var fltr = opts && opts.filter;
         var _loop_3 = function (i) {
@@ -2514,13 +2516,14 @@ export function unzipSync(data, opts) {
     if (!c)
         return {};
     var o = b4(data, e + 16);
-    var z = o == 4294967295;
+    var z = o == 4294967295 || c == 65535;
     if (z) {
-        e = b4(data, e - 12);
-        if (b4(data, e) != 0x6064B50)
-            err(13);
-        c = b4(data, e + 32);
-        o = b4(data, e + 48);
+        var ze = b4(data, e - 12);
+        z = b4(data, ze) == 0x6064B50;
+        if (z) {
+            c = b4(data, ze + 32);
+            o = b4(data, ze + 48);
+        }
     }
     var fltr = opts && opts.filter;
     for (var i = 0; i < c; ++i) {

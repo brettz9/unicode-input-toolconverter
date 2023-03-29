@@ -9,7 +9,7 @@ import {
 } from './preferences/prefDefaults.js';
 import {chartBuild, lastStartCharCode} from './chartBuild.js';
 
-import {camelize} from './utils/StringUtils.js';
+import camelCase from '../vendor/camelcase/index.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
 import {joinChunks} from './utils/TypedArrayUtils.js';
 import {
@@ -763,7 +763,8 @@ const unicodecharref = {
           results.name;
         for (const [i, unicodeField] of unicodeFieldInfo.entries()) {
           // Fix: display data more readably, etc.
-          const camelizedField = camelize(unicodeField);
+          const camelizedField = camelCase(unicodeField);
+          console.log('camelizedField', camelizedField);
           // console.log('camelizedField', camelizedField);
           let temp = results[camelizedField];
           if (unicodeField === 'Unicode_1_Name') {
