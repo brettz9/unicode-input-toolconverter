@@ -951,7 +951,7 @@ const unicodecharref = {
         if (results) {
           // Fix: display data more readably, with heading, etc. (and
           //   conditional)
-          result = results[13];
+          result = results[14];
           if (result === null && !cjkText) {
             result = _('No_definition');
           }
@@ -1419,6 +1419,30 @@ const unicodecharref = {
     'SpecializedSemanticVariant', 'Strange', 'TaiwanTelegraph', 'Tang',
     'TotalStrokes', 'TraditionalVariant', 'Vietnamese', 'XHC1983',
     'Xerox', 'ZVariant'
+  ],
+  unihanFields: [ // Ordered by database array; todo: rpplace above `Unihan`?
+    'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCangjie',
+    'kCantonese', 'kCCCII', 'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT',
+    'kCNS1986', 'kCNS1992', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon',
+    'kDefinition', 'kEACC', 'kFenn', 'kFennIndex', 'kFourCornerCode',
+    'kFrequency', 'kGB0', 'kGB1', 'kGB3', 'kGB5', 'kGB7', 'kGB8',
+    'kGradeLevel', 'kGSR', 'kHangul', 'kHanYu', 'kHanyuPinlu',
+    'kHanyuPinyin', 'kHDZRadBreak', 'kHKGlyph', 'kHKSCS', 'kIBMJapan',
+    'kIICore', 'kIRG_GSource', 'kIRG_HSource', 'kIRG_JSource',
+    'kIRG_KPSource', 'kIRG_KSource', 'kIRG_MSource', 'kIRG_SSource',
+    'kIRG_TSource', 'kIRG_UKSource', 'kIRG_USource', 'kIRG_VSource',
+    'kIRGDaeJaweon', 'kIRGDaiKanwaZiten', 'kIRGHanyuDaZidian',
+    'kIRGKangXi', 'kJa', 'kJapaneseKun', 'kJapaneseOn', 'kJinmeiyoKanji',
+    'kJis0', 'kJis1', 'kJIS0213', 'kJoyoKanji', 'kKangXi', 'kKarlgren',
+    'kKorean', 'kKoreanEducationHanja', 'kKoreanName', 'kKPS0', 'kKPS1',
+    'kKSC0', 'kKSC1', 'kLau', 'kMainlandTelegraph', 'kMandarin',
+    'kMatthews', 'kMeyerWempe', 'kMorohashi', 'kNelson', 'kOtherNumeric',
+    'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1', 'kRSAdobe_Japan1_6',
+    'kRSKangXi', 'kRSUnicode', 'kSBGY', 'kSemanticVariant',
+    'kSimplifiedVariant', 'kSpecializedSemanticVariant', 'kSpoofingVariant',
+    'kStrange', 'kTaiwanTelegraph', 'kTang', 'kTGH', 'kTGHZ2013',
+    'kTotalStrokes', 'kTraditionalVariant', 'kUnihanCore2020',
+    'kVietnamese', 'kXerox', 'kXHC1983', 'kZVariant'
   ],
   UnihanMenus: [], // Unused
   Unicode: [
