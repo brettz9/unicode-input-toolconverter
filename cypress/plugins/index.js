@@ -22,7 +22,7 @@ const plugins = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   coverage(on, config);
-  on('file:preprocessor', useBabelRc);
+  on('file:preprocessor', useBabelRc); // For unit testing
 
   return config;
 };
