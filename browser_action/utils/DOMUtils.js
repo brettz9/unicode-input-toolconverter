@@ -24,7 +24,7 @@ function placeItem (sel, item) {
   }
 }
 
-const xulns = 'https://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
+const // xulns = 'https://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
   htmlns = 'https://www.w3.org/1999/xhtml';
 
 /**
@@ -40,9 +40,12 @@ function createHTMLElement (el) {
 * @param {string} el
 * @returns {Element}
 */
+
+/*
 function createXULElement (el) {
   return document.createElementNS(xulns, el);
 }
+*/
 
 /**
 * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
@@ -115,5 +118,5 @@ async function showProgress ({url, progressElement, progress}) {
 
 export {
   removeViewChildren, placeItem, createHTMLElement, htmlns,
-  createXULElement, showProgress
+  showProgress
 };
