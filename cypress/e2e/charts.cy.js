@@ -364,6 +364,29 @@ describe('Charts', function () {
           cy.get('#pdflink > a').contains(script);
         });
       });
+
+      // Is the block in unihan.js that this covers necessary, given that
+      //  the results appear to be the same?
+      [
+        // Within range checks
+        [0x3401, 'CJK Ideographs Ext. A'],
+        [0x4DB5, 'CJK Ideographs Ext. A'],
+        [0x4E01, 'CJK Unified Ideographs (Han)'],
+        [0x9FC3, 'CJK Unified Ideographs (Han)'],
+        [0x20000, 'CJK Ideographs Ext. B'],
+        [0x2A6D6, 'CJK Ideographs Ext. B']
+      ].forEach(([chr, script]) => {
+        it(chr + ' ' + script, function () {
+          visitBrowserAction();
+
+          cy.get('#startset').clear().type(String.fromCodePoint(chr));
+          cy.get(
+            '#chart_table > tr:nth-of-type(1) > ' +
+            'td:nth-of-type(1) > .centered > button'
+          ).trigger('mouseover');
+          cy.get('#pdflink > a').contains(script);
+        });
+      });
     });
 
     it('shows plane number on character mouseover', function () {

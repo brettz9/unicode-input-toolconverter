@@ -29,7 +29,7 @@ const chartBuildTemplate = function ({
     ]],
     ...fill(rows).map((_row, j) => {
       return ['tr', fill(cols).map((_col, i) => {
-        // Todo: Document what this check is
+        // If more rows/cols. specified than match
         if (j === rowceil && i === colsOverRemainder) {
           return '';
         }

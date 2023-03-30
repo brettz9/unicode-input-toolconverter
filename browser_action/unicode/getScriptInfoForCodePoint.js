@@ -637,7 +637,7 @@ export default function getScriptInfoForCodePoint (num, _) {
     codePointStart = '10FF80';
     script = _('plane_numNocolon', {number: 16}) + _('slash') +
           _('Supplementary_Private_Use_Area_B'); plane = 16; privateuse = true;
-  } else if (num <= 0x10FFFF) {
+  } else { // if (num <= 0x10FFFF) {
     codePointStart = '10FF80'; script = _('At_End_of_Plane_16') + _('slash') +
           _('Supplementary_Private_Use_Area_B'); plane = 16; privateuse = true;
   }
