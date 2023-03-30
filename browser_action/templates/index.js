@@ -320,12 +320,7 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'font',
                           size: '12',
                           $custom: {
-                            $setFontFamily (value) {
-                              const val = (/\s/u).test(value)
-                                ? ('"' +
-                                value.replace(/^"/gu, '').replace(/"$/gu, '') +
-                                '"')
-                                : value;
+                            $setFontFamily (val) {
                               $('#insertText').style.fontFamily = val;
                               // Form elements don't inherit, so find these
                               //   manually
@@ -504,7 +499,8 @@ const indexTemplate = function ({_, fonts}) {
                         }
                       }}, [
                         _('copyToClipboard')
-                      ]],
+                      ]]
+                      /*
                       ['div', {
                         hidden: typeof browser === 'undefined'
                       }, [
@@ -517,6 +513,7 @@ const indexTemplate = function ({_, fonts}) {
                           _('addToToolbar')
                         ]]
                       ]]
+                      */
                     ]]
                   ]]
                 ]]
@@ -839,7 +836,7 @@ const indexTemplate = function ({_, fonts}) {
                 _('minus')
               ]],
               nbsp.repeat(7),
-              ['button', {$on: {click () {
+              ['button', {id: 'moveconvertedup', $on: {click () {
                 unicodecharref.moveoutput('#converted');
               }}}, [
                 _('moveconvertedup_label')

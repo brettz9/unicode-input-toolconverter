@@ -115,5 +115,5 @@ async function showProgress ({url, progressElement, progress}) {
 
 export {
   removeViewChildren, placeItem, createHTMLElement, htmlns,
-  xulns, createXULElement, showProgress
+  createXULElement, showProgress
 };

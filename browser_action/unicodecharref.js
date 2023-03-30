@@ -13,7 +13,7 @@ import camelCase from '../vendor/camelcase/index.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
 import {joinChunks} from './utils/TypedArrayUtils.js';
 import {
-  placeItem, removeViewChildren, createHTMLElement, xulns,
+  placeItem, removeViewChildren, createHTMLElement,
   showProgress
 } from './utils/DOMUtils.js';
 import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
@@ -1386,6 +1386,7 @@ const unicodecharref = {
       }));
     }
   },
+  /*
   async addToToolbar () {
     const dropdownArr = await getPref('dropdownArr');
     dropdownArr.push($('#insertText').value);
@@ -1411,13 +1412,13 @@ const unicodecharref = {
 
     // ADD NEW CONTENTS
     for (const item of dropdownArr) {
-      const menuitem = document.createElementNS(xulns, 'menuitem');
-      menuitem.setAttribute('label', item);
-      menuitem.setAttribute('value', item);
-      toolbarbuttonPopup.append(menuitem);
+      jml('option', {
+        value: item
+      }, [item], toolbarbuttonPopup);
     }
     return true;
   },
+  */
   idgen: 0,
   prefs: null,
 

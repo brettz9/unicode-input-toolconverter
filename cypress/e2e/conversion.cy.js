@@ -1208,4 +1208,41 @@ describe('Conversion', function () {
       }
     );
   });
+
+  describe('Text manipulation', function () {
+    it('Increases font size', function () {
+      visitBrowserAction();
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+
+      cy.get('#conversion button.fontsize:nth-of-type(1)').click();
+
+      cy.get('#toconvert').invoke('css', 'font-size').should('eq', '14px');
+      cy.get('#converted').invoke('css', 'font-size').should('eq', '14px');
+
+      cy.get('#conversion button.fontsize:nth-of-type(1)').click();
+
+      cy.get('#toconvert').invoke('css', 'font-size').should('eq', '15px');
+      cy.get('#converted').invoke('css', 'font-size').should('eq', '15px');
+
+      cy.get('#conversion button.fontsize:nth-of-type(2)').click();
+
+      cy.get('#toconvert').invoke('css', 'font-size').should('eq', '14px');
+      cy.get('#converted').invoke('css', 'font-size').should('eq', '14px');
+    });
+
+    it('should move converted output up', function () {
+      visitBrowserAction();
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+
+      cy.get('#converted').clear().type('some text');
+
+      cy.get('#moveconvertedup').click();
+
+      cy.get('#toconvert').invoke('val').should('eq', 'some text');
+    });
+  });
 });
