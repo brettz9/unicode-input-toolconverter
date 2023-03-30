@@ -30,20 +30,9 @@ const chartBuildTemplate = function ({
     ...fill(rows).map((_row, j) => {
       return ['tr', fill(cols).map((_col, i) => {
         // If more rows/cols. specified than match
-        if (j === rowceil && i === colsOverRemainder) {
+        if (j === rowceil && i >= colsOverRemainder) {
           return '';
         }
-
-        const charRefIdx = charrefunicodeConverter
-          .numericCharacterReferences.indexOf(
-            // We've now had to add 1 here for some reason
-            current.startCharCode + 1
-          );
-        const hasEntity = charRefIdx > -1;
-        const entity = hasEntity
-          // If recognized multiple char ent. (won't convert these to decimal)
-          ? '&' + charrefunicodeConverter.entities[charRefIdx] + ';'
-          : '';
 
         // Todo: Document what's going on here
         if (descriptsOrOnlyEnts) {
@@ -56,6 +45,17 @@ const chartBuildTemplate = function ({
           current.startCharCode++;
         }
         resetCurrentStartCharCodeIfOutOfBounds();
+
+        const charRefIdx = charrefunicodeConverter
+          .numericCharacterReferences.indexOf(
+            // We've now had to add 1 here for some reason
+            current.startCharCode
+          );
+        const hasEntity = charRefIdx > -1;
+        const entity = hasEntity
+          // If recognized multiple char ent. (won't convert these to decimal)
+          ? '&' + charrefunicodeConverter.entities[charRefIdx] + ';'
+          : '';
 
         return ['td', {
           class: (hasEntity ? 'entity ' : '') + 'unicodetablecell',

@@ -539,8 +539,13 @@ describe('Charts', function () {
 
         // Had to retype part of this to get it to register properly
         cy.get('#searchName').clear().type(
-          'latin small letter a with c'
-        ).blur().type('{backspace}').type('c').blur();
+          'latin small letter a with ca'
+        ).blur();
+
+        // eslint-disable-next-line cypress/no-unnecessary-waiting -- Cypress
+        cy.wait(4000);
+
+        cy.get('#searchName').type('{backspace}').blur();
 
         cy.get(
           '#chart_table > tr:nth-of-type(1) > ' +
