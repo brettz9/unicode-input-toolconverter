@@ -373,7 +373,7 @@ describe('Charts', function () {
         [0x4DB5, 'CJK Ideographs Ext. A'],
         [0x4E01, 'CJK Unified Ideographs (Han)'],
         [0x9FC3, 'CJK Unified Ideographs (Han)'],
-        [0x20000, 'CJK Ideographs Ext. B'],
+        [0x20001, 'CJK Ideographs Ext. B'],
         [0x2A6D6, 'CJK Ideographs Ext. B']
       ].forEach(([chr, script]) => {
         it(chr + ' ' + script, function () {
