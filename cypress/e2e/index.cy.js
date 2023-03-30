@@ -116,9 +116,9 @@ describe('Main page', function () {
         ['customProtocol', 'web+unicode:searchkDefinition?string=woman']
       ]);
       return cy.get(
-        'tr:nth-of-type(1) .unicodetablecell:nth-of-type(1) ' +
+        'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
         '> div.centered > button'
-      ).invoke('html').should('eq', '𡞰');
+      ).invoke('html').should('eq', '㚫');
     });
   });
 
