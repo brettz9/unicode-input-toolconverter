@@ -119,6 +119,21 @@ describe('Main page', function () {
         'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
         '> div.centered > button'
       ).invoke('html').should('eq', '㚫');
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      visitBrowserAction();
+
+      // Had to retype part of this to get it to register properly
+      cy.get('#searchkDefinition').clear().type('woman1').blur();
+      // eslint-disable-next-line cypress/no-unnecessary-waiting -- Cypress
+      cy.wait(4000);
+
+      cy.get('#searchkDefinition').type('{backspace}').blur();
+
+      return cy.get(
+        'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
+        '> div.centered > button'
+      ).invoke('html').should('eq', '㚫');
     });
   });
 
