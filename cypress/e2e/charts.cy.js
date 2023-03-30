@@ -389,6 +389,46 @@ describe('Charts', function () {
       });
     });
 
+    it('holds character display with alt-click', function () {
+      visitBrowserAction(undefined, [
+        ['characterDescriptions', '1']
+      ]);
+
+      cy.get('#startset').clear().type('a').blur();
+
+      // Shows "e" on mouseover
+      cy.get(
+        '#chart_table > tr:nth-of-type(2) > ' +
+        'td:nth-of-type(2) > .centered > button'
+      ).trigger('mouseover');
+
+      // Select "e"
+      cy.get(
+        '#chart_table > tr:nth-of-type(2) > ' +
+        'td:nth-of-type(2) > .centered > button'
+      ).trigger('click', {
+        altKey: true
+      });
+
+      // Shows "e"
+      cy.get('#displayUnicodeDesc').invoke('val').should(
+        'eq',
+        'U+0065: LATIN SMALL LETTER E'
+      );
+
+      // Trigger mouseover on "a"
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).trigger('mouseover');
+
+      // Still shows "e"
+      cy.get('#displayUnicodeDesc').invoke('val').should(
+        'eq',
+        'U+0065: LATIN SMALL LETTER E'
+      );
+    });
+
     it('shows plane number on character mouseover', function () {
       visitBrowserAction();
 
@@ -529,7 +569,7 @@ describe('Charts', function () {
     });
   });
 
-  describe('Table display', function () {
+  describe('Chart table display', function () {
     it(
       'shows display when characters less than specified columns',
       function () {

@@ -53,7 +53,7 @@ if (searchParams.get('serviceWorker')) {
   // Doesn't work in FF as SW using ESM so putting behind switch for now
   await setupServiceWorker();
 } else if (searchParams.get('characterDescriptions')) {
-  const namespace = 'unicode-input-toolconverter-Unihan';
+  const namespace = 'unicode-input-toolconverter';
   await activateCallback({
     namespace
   });
