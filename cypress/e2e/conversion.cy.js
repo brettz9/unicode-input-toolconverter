@@ -253,7 +253,7 @@ describe('Conversion', function () {
 
     describe('Character descriptions', function () {
       // Problem with database
-      it.skip(
+      it(
         'Converts Unicode to character description escapes',
         function () {
           visitBrowserAction(undefined, [
@@ -298,7 +298,7 @@ describe('Conversion', function () {
       );
 
       // Problem with database
-      it.skip(
+      it(
         'Converts character description escapes to Unicode',
         function () {
           visitBrowserAction(undefined, [
@@ -1070,7 +1070,7 @@ describe('Conversion', function () {
     });
 
     // Database problems in testing environment
-    it.skip('Performs a conversion of Unicode to char. desc.', function () {
+    it('Performs a conversion of Unicode to char. desc.', function () {
       visitBrowserAction(undefined, [
         ['characterDescriptions', '1'],
         ['targetid', 'context-charrefunicode17'],
@@ -1090,7 +1090,7 @@ describe('Conversion', function () {
     });
 
     // Database problems in testing environment
-    it.skip('Performs a conversion of char. desc. to Unicode', function () {
+    it('Performs a conversion of char. desc. to Unicode', function () {
       visitBrowserAction(undefined, [
         ['characterDescriptions', '1'],
         ['targetid', 'context-charrefunicode18'],
@@ -1116,6 +1116,36 @@ describe('Conversion', function () {
         'é'
       );
     });
+
+    it(
+      'Performs a bad conversion of Hangul char. desc. to Unicode',
+      function () {
+        visitBrowserAction(undefined, [
+          ['characterDescriptions', '1'],
+          ['targetid', 'context-charrefunicode18'],
+          [
+            'convert',
+            // Split up typing to avoid being interpreted by Cypress
+            //  as keystroke
+            '\\C{' + 'G}'
+          ]
+        ]);
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+        ).should('exist');
+        cy.get('#toconvert').invoke('val').should(
+          'eq',
+          // Split up typing to avoid being interpreted by Cypress
+          //  as keystroke
+          '\\C{' + 'G}'
+        );
+        cy.get('#converted').invoke('val').should(
+          'eq',
+          '�'
+        );
+      }
+    );
 
     it(
       'Performs a conversion of Unicode to dec. character ref surrogates',

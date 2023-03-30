@@ -13,7 +13,7 @@ describe('Charts', function () {
     });
 
     // Problems with database
-    it.skip('Performs name search specified by custom protocol', function () {
+    it('Performs name search specified by custom protocol', function () {
       visitBrowserAction(undefined, [
         ['characterDescriptions', '1'],
         ['customProtocol', 'web+unicode:searchName?string=Greek']
@@ -383,8 +383,8 @@ describe('Charts', function () {
       ).trigger('mouseover');
       cy.get('#plane').contains('Plane 1:');
     });
-    // Needs to test functionality too
-    it.skip('Sets "Show all items" including on load', function () {
+    // Todo: Needs to test functionality too
+    it('Sets "Show all items" including on load', function () {
       visitBrowserAction();
       cy.get('#viewTabs > .tabs > .tab:nth-of-type(2)').click();
 
@@ -402,8 +402,8 @@ describe('Charts', function () {
       ).should('eq', false);
     });
 
-    // Needs to test functionality too
-    it.skip('Sets "Show all items" (CJK) including on load', function () {
+    // Todo: Needs to test functionality too
+    it('Sets "Show all items" (CJK) including on load', function () {
       visitBrowserAction();
       cy.get('#viewTabs > .tabs > .tab:nth-of-type(3)').click();
 

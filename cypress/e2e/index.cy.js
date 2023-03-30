@@ -81,7 +81,7 @@ describe('Main page', function () {
     });
   });
   */
-  it.skip('Downloads Unihan', function () {
+  it('Downloads Unihan', function () {
     cy.clearIndexedDB();
     visitBrowserAction();
     cy.get('#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)').click();
@@ -122,12 +122,11 @@ describe('Main page', function () {
     });
   });
 
-  // Not working for some reason
-  it.skip('Loads with service worker', function () {
-    cy.visit('/browser_action/index-instrumented.html?serviceWorker=1');
-    // eslint-disable-next-line max-len -- Long
-    // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading events async
-    cy.wait(500);
+  // Not consistently working for some reason
+  it('Loads with service worker', function () {
+    visitBrowserAction(undefined, [
+      ['serviceWorker', 1]
+    ]);
 
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.window().then((win) => {
