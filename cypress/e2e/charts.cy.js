@@ -568,6 +568,50 @@ describe('Charts', function () {
         ).should('not.exist');
       }
     );
+
+    it(
+      'shows allow cycling back to original character',
+      function () {
+        visitBrowserAction(undefined, [
+          ['characterDescriptions', '1']
+        ]);
+
+        // Had to retype part of this to get it to register properly
+        cy.get('#searchName').clear().type(
+          'latin small letter a with c'
+        ).blur();
+
+        // eslint-disable-next-line cypress/no-unnecessary-waiting -- Cypress
+        cy.wait(4000);
+
+        cy.get('#searchName').type('{backspace}').blur();
+
+        cy.get(
+          '#chart_table > tr:nth-of-type(1) > ' +
+          'td:nth-of-type(1) > .centered > button'
+        ).contains('à');
+
+        cy.get(
+          '#chart_table > tr > ' +
+          'td.centered > a:nth-of-type(2)'
+        ).click();
+
+        cy.get(
+          '#chart_table > tr > ' +
+          'td.centered > a:nth-of-type(2)'
+        ).click();
+
+        cy.get(
+          '#chart_table > tr > ' +
+          'td.centered > a:nth-of-type(2)'
+        ).click();
+
+        cy.get(
+          '#chart_table > tr:nth-of-type(4) > ' +
+          'td:nth-of-type(1) > .centered > button'
+        ).contains('à');
+      }
+    );
   });
 
   describe('Chart navigation', function () {
