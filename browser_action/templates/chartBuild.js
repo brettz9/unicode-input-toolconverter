@@ -1,4 +1,4 @@
-import {jml, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
+import {jml, nbsp, $} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
 import unicodecharref from '../unicodecharref.js';
 
@@ -61,8 +61,8 @@ const chartBuildTemplate = function ({
           class: (hasEntity ? 'entity ' : '') + 'unicodetablecell',
           $on: {
             mouseover: (function (_entity, startCharCode) {
-              return function () {
-                if (!this.$noGetDescripts) {
+              return function (e) {
+                if (!$('#chart_table').$noGetDescripts) {
                   unicodecharref.getUnicodeDescription(
                     _entity,
                     // Needed to convert this for some reason
@@ -75,8 +75,9 @@ const chartBuildTemplate = function ({
             //   user and single clicks still activated; relying on
             //   right button doesn't work
             click (e) {
-              if (e.ctrlKey) {
-                this.$noGetDescripts = !this.$noGetDescripts;
+              if (e.altKey) {
+                $('#chart_table').$noGetDescripts =
+                  !$('#chart_table').$noGetDescripts;
               }
             }
           }
@@ -93,8 +94,8 @@ const chartBuildTemplate = function ({
                 value: displayTypes[type](current.startCharCode)
               },
               $on: {
-                click ({ctrlKey, target: {dataset: {value}}}) {
-                  if (!ctrlKey) {
+                click ({altKey, target: {dataset: {value}}}) {
+                  if (!altKey) {
                     insertText({textReceptacle, value});
                   }
                 }
@@ -122,7 +123,7 @@ const chartBuildTemplate = function ({
                 $on: {
                   click (e) {
                     e.preventDefault();
-                    if (!e.ctrlKey) {
+                    if (!e.altKey) {
                       insertText({textReceptacle, value: entity});
                     }
                   }
