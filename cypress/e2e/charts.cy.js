@@ -529,6 +529,42 @@ describe('Charts', function () {
     });
   });
 
+  describe('Table display', function () {
+    it(
+      'shows display when characters less than specified columns',
+      function () {
+        visitBrowserAction(undefined, [
+          ['characterDescriptions', '1']
+        ]);
+
+        // Had to retype part of this to get it to register properly
+        cy.get('#searchName').clear().type(
+          'latin small letter a with c'
+        ).blur().type('{backspace}').type('c').blur();
+
+        cy.get(
+          '#chart_table > tr:nth-of-type(1) > ' +
+          'td:nth-of-type(1) > .centered > button'
+        ).contains('â');
+
+        cy.get(
+          '#chart_table > tr:nth-of-type(3) > ' +
+          'td:nth-of-type(1) > .centered > button'
+        ).should('exist');
+
+        cy.get(
+          '#chart_table > tr:nth-of-type(3) > ' +
+          'td:nth-of-type(3) > .centered > button'
+        ).should('not.exist');
+
+        cy.get(
+          '#chart_table > tr:nth-of-type(4) > ' +
+          'td:nth-of-type(1) > .centered > button'
+        ).should('not.exist');
+      }
+    );
+  });
+
   describe('Chart navigation', function () {
     it('chooses the next set', function () {
       visitBrowserAction();
