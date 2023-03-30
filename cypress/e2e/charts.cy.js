@@ -567,6 +567,34 @@ describe('Charts', function () {
 
       cy.get('#toconvert').invoke('val').should('eq', 'é');
     });
+
+    it('can click to input an entity', function () {
+      visitBrowserAction();
+
+      cy.get('#startset').clear().type('é');
+
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > a'
+      ).click();
+
+      cy.get('#insertText').invoke('val').should('eq', '&eacute;');
+    });
+
+    it('altKey will prevent inputting an entity', function () {
+      visitBrowserAction();
+
+      cy.get('#startset').clear().type('é');
+
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > a'
+      ).click({
+        altKey: true
+      });
+
+      cy.get('#insertText').invoke('val').should('eq', '');
+    });
   });
 
   describe('Chart table display', function () {
