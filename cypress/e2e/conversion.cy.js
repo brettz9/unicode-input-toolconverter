@@ -858,7 +858,7 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', '&#97;&#98;&#99;');
     });
 
-    it('Converts ASCII < 128 to character refs', function () {
+    it('Converts Unicode to upper-case hex character refs', function () {
       visitBrowserAction();
 
       cy.get(
@@ -887,6 +887,26 @@ describe('Conversion', function () {
       cy.get('#b4').click();
       cy.get('#converted').invoke('val').should('eq', '&#xABCD;');
     });
+
+    it(
+      'Converts astral Unicode to upper-case hex character reference',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#hexLettersUpper').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('🔂');
+        cy.get('#b4').click();
+        cy.get('#converted').invoke('val').should('eq', '&#x1F502;');
+      }
+    );
   });
 
   describe('Context menu API', function () {
