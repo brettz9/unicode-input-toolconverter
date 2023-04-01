@@ -987,6 +987,23 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', 'Some text: &eacute;');
     });
 
+    it(
+      'Performs a conversion of Unicode entity values to entities',
+      function () {
+        visitBrowserAction();
+        cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
+        cy.get('#DTDtextbox').clear().type('<!ENTITY a "aaa">');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+
+        cy.get('#toconvert').clear().type('Some text: aaa');
+        cy.get('#b5').click();
+        cy.get('#converted').invoke('val').should('eq', 'Some text: &a;');
+      }
+    );
+
     it('Performs a conversion of Unicode to JS escapes', function () {
       visitBrowserAction(undefined, [
         ['targetid', 'context-charrefunicode6'],

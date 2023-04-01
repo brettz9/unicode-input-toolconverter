@@ -216,26 +216,9 @@ export const getUnicodeConverter = () => {
      * @returns {string}
      */
     async unicode2htmlentsval (unicodeToConvert) {
-      /**
-       * @param {string} str
-       * @returns {string}
-       */
-      function pregQuote (str) {
-        // http://kevin.vanzonneveld.net
-        // +   original by: booeyOH
-        // +   improved by: Ates Goral (http://magnetiq.com)
-        // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-        // +   bugfixed by: Onno Marsman
-        // +   improved by: Brett Zamir (http://brett-zamir.me)
-        return str.replace(/[.\\+*?[^\]$(){}=!<>|:-]/gu, '\\$&');
-      }
-
       for (let i = 0; i < this.newents.length; i++) {
-        const regex = new RegExp(
-          pregQuote(this.newcharrefs[i]), 'gum'
-        ); // Escaping necessary for custom entities added via the DTD
-        unicodeToConvert = unicodeToConvert.replace(
-          regex, '&' + this.newents[i] + ';'
+        unicodeToConvert = unicodeToConvert.replaceAll(
+          this.newcharrefs[i], '&' + this.newents[i] + ';'
         );
       }
 
