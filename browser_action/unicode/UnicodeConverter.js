@@ -15,6 +15,8 @@ import camelCase from '../../vendor/camelcase/index.js';
 const decim = /&#(\d*);/gu;
 const hexadec = /&#[xX]([\da-fA-F]*);/gu;
 
+const builtinEntities = new Set(['apos', 'quot', 'lt', 'gt', 'amp']);
+
 // Per https://www.w3.org/TR/xml/#sec-suggested-names
 // Continue also needs: "Characters for Natural Language Identifiers" in
 //   https://unicode.org/reports/tr31/ ;
@@ -251,9 +253,7 @@ export const getUnicodeConverter = () => {
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       const xmlentkeep = await getPref('xmlentkeep');
       return out.replace(htmlOrXmlEnt, (match, match1) => {
-        if (!xmlentkeep ||
-          (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
-            match1 !== 'gt' && match1 !== 'amp')) {
+        if (!xmlentkeep || !builtinEntities.has(match1)) {
           // If recognized multiple char ent. (won't convert these to decimal)
           if (this.newents.includes(match1)) {
             return this.newcharrefs[this.newents.indexOf(match1)];
@@ -287,11 +287,7 @@ export const getUnicodeConverter = () => {
         getPref('hexLettersUpper')
       ]);
       return out.replace(htmlOrXmlEnt, (match, match1) => {
-        if (
-          !xmlentkeep ||
-          (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
-            match1 !== 'gt' && match1 !== 'amp')
-        ) {
+        if (!xmlentkeep || !builtinEntities.has(match1)) {
           const b = this.numericCharacterReferences[
             this.entities.indexOf(match1)
           ];
@@ -326,11 +322,7 @@ export const getUnicodeConverter = () => {
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       const xmlentkeep = await getPref('xmlentkeep');
       return out.replace(htmlOrXmlEnt, (match, match1) => {
-        if (
-          !xmlentkeep ||
-          (match1 !== 'apos' && match1 !== 'quot' && match1 !== 'lt' &&
-            match1 !== 'gt' && match1 !== 'amp')
-        ) {
+        if (!xmlentkeep || !builtinEntities.has(match1)) {
           const b = this.numericCharacterReferences[
             this.entities.indexOf(match1)
           ];
