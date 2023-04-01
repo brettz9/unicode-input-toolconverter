@@ -69,6 +69,18 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', '&#xe9; &#x1f600;');
     });
 
+    it('Converts astral Unicode to decimal character references', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('🔂');
+      cy.get('#b3').click();
+      cy.get('#converted').invoke('val').should('eq', '&#128258;');
+    });
+
     it(
       'Converts Unicode to hexadecimal character references ' +
       '(decimal surrogate pairs)',
