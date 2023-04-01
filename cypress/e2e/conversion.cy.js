@@ -33,6 +33,18 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', '&eacute; &eacute;');
     });
 
+    it('Avoids converting unused character refs to entities', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&#xABCD; &#12345;');
+      cy.get('#b2').click();
+      cy.get('#converted').invoke('val').should('eq', '&#xABCD; &#12345;');
+    });
+
     it('Converts Unicode to decimal character references', function () {
       visitBrowserAction();
 
@@ -785,6 +797,23 @@ describe('Conversion', function () {
       cy.get('#toconvert').clear().type("'");
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', '&apos;');
+    });
+
+    it('Avoids converting unused character refs to entities', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+      ).contains('Prefs').click();
+      cy.get('#xhtmlentmode').check();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&#39; &#x27;');
+      cy.get('#b2').click();
+      cy.get('#converted').invoke('val').should('eq', '&apos; &apos;');
     });
 
     it('Converts ASCII < 128 to character refs', function () {
