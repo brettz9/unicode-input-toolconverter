@@ -74,6 +74,8 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
     arr = descripts
       ? charrefunicodeConverter.descripts
       : charrefunicodeConverter.numericCharacterReferences;
+  }
+  if (arr) { // `descriptsOrOnlyEnts` and if Unihan, it is present
     const chrreflgth = arr.length;
 
     if ((rows * cols) > chrreflgth) {

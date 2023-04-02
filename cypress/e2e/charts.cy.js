@@ -32,6 +32,15 @@ describe('Charts', function () {
         ['customProtocol', 'web+unicode:badType']
       ]);
     });
+
+    it('Alerts error upon undownloaded Unihan', function () {
+      cy.on('window:alert', (t) => {
+        expect(t).to.contains('In order to access CJK');
+      });
+      visitBrowserAction(undefined, [
+        ['customProtocol', 'web+unicode:searchkDefinition?string=woman']
+      ]);
+    });
   });
 
   describe('Sets options', function () {

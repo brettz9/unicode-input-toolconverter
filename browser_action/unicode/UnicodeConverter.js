@@ -688,6 +688,8 @@ export const getUnicodeConverter = () => {
       }
       // const table = 'Unihan'; // fix: determine by pull-down
       const nameDescVal = obj.value;
+
+      /* istanbul ignore next -- Just a guard */
       if (
         // Don't query the other databases here
         (obj.id.startsWith('searchk') && table === 'UnicodeData') ||
@@ -704,7 +706,7 @@ export const getUnicodeConverter = () => {
         ? unicodecharref.unihanDatabase
         : charrefunicodeDb;
 
-      if (table === 'Unihan' && !nochart && !conn) {
+      if (table === 'Unihan' && !nochart && !unicodecharref.unihanDb_exists) {
         alert(this._('need_download_unihan'));
         return;
       }
@@ -713,6 +715,7 @@ export const getUnicodeConverter = () => {
       this.descripts = [];
 
       try {
+        /*
         if (nameDesc === 'General_Category' && nameDescVal === 'Cn') {
           try {
             const chars = await conn.getAll();
@@ -736,46 +739,45 @@ export const getUnicodeConverter = () => {
           } catch (e) {
             alert(e);
           }
-        } else {
-          const field = nameDesc;
-          const camelizedField = camelCase(nameDesc);
+        } else { */
+        const field = nameDesc;
+        const camelizedField = camelCase(nameDesc);
 
-          // Todo: Add indexes for each instead and then query with
-          //       `nameDescVal`, at least for `strict`
-          const chars = await conn.getAll();
+        // Todo: Add indexes for each instead and then query with
+        //       `nameDescVal`, at least for `strict`
+        const chars = await conn.getAll();
 
-          const filteredChars = strict
-            ? chars.filter((chr) => {
-              const cell = table === 'Unihan'
-                ? chr.columns[
-                  unicodecharref.Unihan.indexOf(field)
-                ]
-                : chr[camelizedField];
-              return cell.toLowerCase() === nameDescVal.toLowerCase();
-            })
-            : chars.filter((chr) => {
-              const cell = table === 'Unihan'
-                ? chr.columns[
-                  unicodecharref.Unihan.indexOf(field)
-                ]
-                : chr[camelizedField];
-              return cell.toLowerCase().includes(
-                nameDescVal.toLowerCase()
-              );
-            });
-
-          filteredChars.forEach((filteredChar) => {
-            const {codePoint} = filteredChar;
-            const hex = Number.parseInt(codePoint, 16);
-            if (table === 'UnicodeData' &&
-              (hex >= 0xF900 && hex < 0xFB00)
-            ) { // Don't search for compatibility if searching Unicode
-              return;
-            }
-            // Fix: inefficient, but fits more easily into current pattern
-            this.descripts.push(hex);
+        const filteredChars = strict
+          ? chars.filter((chr) => {
+            const cell = table === 'Unihan'
+              ? chr.columns[
+                unicodecharref.Unihan.indexOf(field)
+              ]
+              : chr[camelizedField];
+            return cell.toLowerCase() === nameDescVal.toLowerCase();
+          })
+          : chars.filter((chr) => {
+            const cell = table === 'Unihan'
+              ? chr.columns[
+                unicodecharref.Unihan.indexOf(field)
+              ]
+              : chr[camelizedField];
+            return cell.toLowerCase().includes(
+              nameDescVal.toLowerCase()
+            );
           });
-        }
+
+        filteredChars.forEach((filteredChar) => {
+          const {codePoint} = filteredChar;
+          const hex = Number.parseInt(codePoint, 16);
+          if (table === 'UnicodeData' &&
+            (hex >= 0xF900 && hex < 0xFB00)
+          ) { // Don't search for compatibility if searching Unicode
+            return;
+          }
+          // Fix: inefficient, but fits more easily into current pattern
+          this.descripts.push(hex);
+        });
       /* istanbul ignore next -- Debugging */
       } catch (e) {
         /* istanbul ignore next -- Debugging */

@@ -35,7 +35,7 @@ const chartBuildTemplate = function ({
         }
 
         // Todo: Document what's going on here
-        if (descriptsOrOnlyEnts) {
+        if (arr) {
           q++;
           if (q >= arr.length) {
             q = 0;
