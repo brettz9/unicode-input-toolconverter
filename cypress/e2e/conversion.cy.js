@@ -463,7 +463,22 @@ describe('Conversion', function () {
     );
 
     it(
-      'Converts PHP escape sequences to Unicode',
+      'Converts PHP escapes to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\\\ \\a');
+        cy.get('#b15').click();
+        cy.get('#converted').invoke('val').should('eq', '\\ \\a');
+      }
+    );
+
+    it(
+      'Converts CSS escape sequences to Unicode',
       function () {
         visitBrowserAction();
 
