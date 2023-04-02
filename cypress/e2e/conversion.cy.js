@@ -253,6 +253,21 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', 'é');
     });
 
+    it('Converts custom entities to Unicode', function () {
+      visitBrowserAction();
+
+      cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
+      cy.get('#DTDtextbox').clear().type('<!ENTITY e "é">');
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&e; &a;');
+      cy.get('#b11').click();
+      cy.get('#converted').invoke('val').should('eq', 'é &a;');
+    });
+
     it(
       'Converts Hexadecimal to decimal character references',
       function () {
@@ -280,6 +295,26 @@ describe('Conversion', function () {
         cy.get('#toconvert').clear().type('&#233;');
         cy.get('#b13').click();
         cy.get('#converted').invoke('val').should('eq', '&#xe9;');
+      }
+    );
+
+    it(
+      'Converts Decimal to upper-case hexadecimal character references',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#hexLettersUpper').check();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('&#233;');
+        cy.get('#b13').click();
+        cy.get('#converted').invoke('val').should('eq', '&#xE9;');
       }
     );
 
