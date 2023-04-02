@@ -74,9 +74,9 @@ const unicodecharref = {
     $('#DownloadButtonBox').hidden = true;
     $('#DownloadProgressBox').hidden = false;
 
-    const parsed = await getDownloadResults();
-
     try {
+      const parsed = await getDownloadResults();
+
       this.unihanDatabase?.close();
       this.unihanDatabase = await unihanDbPopulate(parsed);
 

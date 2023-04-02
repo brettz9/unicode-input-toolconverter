@@ -68,6 +68,24 @@ describe('Main page', function () {
     });
   });
 
+  it('Gets error when attempting to download Unihan', function () {
+    cy.wrap(Cypress.automation('remote:debugger:protocol', {
+      command: 'Network.clearBrowserCache'
+    }));
+
+    visitBrowserAction();
+    cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();
+
+    cy.intercept(
+      'GET', '/download/unihan/unihan.json', {forceNetworkError: true}
+    );
+
+    cy.on('window:alert', (t) => {
+      expect(t).to.contains('There was a problem downloading');
+    });
+    cy.get('#DownloadButtonBox button').click();
+  });
+
   it('Bad request for hidden files', function () {
     cy.visit('/.git/config', {
       failOnStatusCode: false
