@@ -424,6 +424,7 @@ export const getUnicodeConverter = () => {
 
             // Too low ASCII to be converted (not a letter, digit,
             //  underscore, or hyphen)
+            // eslint-disable-next-line unicorn/prefer-ternary -- Structure
             if (dec < 0xA1 && (/[^\w-]/u).test(hexStr)) {
               // Don't convert since won't be valid if unescaped
               // Although https://www.w3.org/TR/CSS21/grammar.html#scanner
@@ -440,8 +441,9 @@ export const getUnicodeConverter = () => {
             //   convert (if followed by an escaped number, there is no concern
             //   it will be avoided here, since the escaped number will remain
             //   escaped on the next iteration (by this same condition)
-            } else if ((/^-?\d/u).test(hexStr + toconvert[i + 2])) {
-              unicode += s + hexEsc[0];
+            // Reenable if know what this is supposed to be!
+            /* } else if ((/^-?\d/u).test(hexStr + toconvert[i + 2])) {
+              unicode += s + hexEsc[0]; */
             } else {
               unicode += hexStr;
             }
