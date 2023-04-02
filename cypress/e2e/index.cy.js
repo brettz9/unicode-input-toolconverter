@@ -11,6 +11,63 @@ describe('Main page', function () {
   beforeEach(() => {
     return cy.clearIndexedDB();
   });
+
+  it('Downloads Unihan', function () {
+    cy.clearIndexedDB();
+    visitBrowserAction();
+    cy.get('#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)').click();
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    return cy.get('#UnihanInstalled').then(($el) => {
+      return Cypress.dom.isHidden($el);
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      cy.on('window:alert', (t) => {
+        expect(t).to.contains('Finished download');
+      });
+      return cy.get('#DownloadButtonBox button').click();
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      return cy.get('#UnihanInstalled', {
+        timeout: 20000
+      }).contains('database installed');
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
+      cy.wait(8000);
+      return cy.get('#closeDownloadProgressBox').click();
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      return cy.get('#DownloadProgressBox');
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(($el) => {
+      return Cypress.dom.isHidden($el);
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      visitBrowserAction(undefined, [
+        ['customProtocol', 'web+unicode:searchkDefinition?string=woman']
+      ]);
+      return cy.get(
+        'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
+        '> div.centered > button'
+      ).invoke('html').should('eq', '㚫');
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      visitBrowserAction();
+
+      // Had to retype part of this to get it to register properly
+      cy.get('#searchkDefinition').clear().type('woman1').blur();
+      // eslint-disable-next-line cypress/no-unnecessary-waiting -- Cypress
+      cy.wait(4000);
+
+      cy.get('#searchkDefinition').type('{backspace}').blur();
+
+      return cy.get(
+        'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
+        '> div.centered > button'
+      ).invoke('html').should('eq', '㚫');
+    });
+  });
+
   it('Bad request for hidden files', function () {
     cy.visit('/.git/config', {
       failOnStatusCode: false
@@ -81,61 +138,6 @@ describe('Main page', function () {
     });
   });
   */
-  it('Downloads Unihan', function () {
-    cy.clearIndexedDB();
-    visitBrowserAction();
-    cy.get('#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)').click();
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
-    return cy.get('#UnihanInstalled').then(($el) => {
-      return Cypress.dom.isHidden($el);
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
-    }).then(() => {
-      cy.on('window:alert', (t) => {
-        expect(t).to.contains('Finished download');
-      });
-      return cy.get('#DownloadButtonBox button').click();
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
-    }).then(() => {
-      return cy.get('#UnihanInstalled', {
-        timeout: 20000
-      }).contains('database installed');
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
-    }).then(() => {
-      // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
-      cy.wait(5000);
-      return cy.get('#closeDownloadProgressBox').click();
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
-    }).then(() => {
-      return cy.get('#DownloadProgressBox');
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
-    }).then(($el) => {
-      return Cypress.dom.isHidden($el);
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
-    }).then(() => {
-      visitBrowserAction(undefined, [
-        ['customProtocol', 'web+unicode:searchkDefinition?string=woman']
-      ]);
-      return cy.get(
-        'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
-        '> div.centered > button'
-      ).invoke('html').should('eq', '㚫');
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
-    }).then(() => {
-      visitBrowserAction();
-
-      // Had to retype part of this to get it to register properly
-      cy.get('#searchkDefinition').clear().type('woman1').blur();
-      // eslint-disable-next-line cypress/no-unnecessary-waiting -- Cypress
-      cy.wait(4000);
-
-      cy.get('#searchkDefinition').type('{backspace}').blur();
-
-      return cy.get(
-        'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
-        '> div.centered > button'
-      ).invoke('html').should('eq', '㚫');
-    });
-  });
 
   // Not consistently working for some reason
   it('Loads with service worker', function () {
