@@ -493,16 +493,12 @@ describe('Conversion', function () {
     );
 
     describe('Character descriptions', function () {
-      // Problem with database
       it(
         'Converts Unicode to character description escapes',
         function () {
           visitBrowserAction(undefined, [
             ['characterDescriptions', 1]
           ]);
-
-          // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
-          cy.wait(3000);
 
           cy.get(
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
@@ -517,14 +513,52 @@ describe('Conversion', function () {
       );
 
       it(
-        'Converts Unicode to character description escapes (Hangul)',
+        'Converts ASCII to character description escapes',
         function () {
           visitBrowserAction(undefined, [
             ['characterDescriptions', 1]
           ]);
 
-          // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
-          cy.wait(3000);
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+          ).contains('Prefs').click();
+          cy.get('#asciiLt128').uncheck();
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+
+          cy.get('#converted').clear();
+          cy.get('#toconvert').clear().type('a');
+          cy.get('#b17').click();
+          cy.get('#converted').invoke('val').should(
+            'eq', 'a'
+          );
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+          ).contains('Prefs').click();
+          cy.get('#asciiLt128').check();
+
+          cy.get(
+            '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+          ).contains('Conversion').click();
+
+          cy.get('#converted').clear();
+          cy.get('#toconvert').clear().type('a');
+          cy.get('#b17').click();
+          cy.get('#converted').invoke('val').should(
+            'eq', '\\C{LATIN SMALL LETTER A}'
+          );
+        }
+      );
+
+      it(
+        'Converts Unicode to character description escapes (Hangul)',
+        function () {
+          visitBrowserAction(undefined, [
+            ['characterDescriptions', 1]
+          ]);
 
           cy.get(
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
@@ -538,15 +572,12 @@ describe('Conversion', function () {
         }
       );
 
-      // Problem with database
       it(
         'Converts character description escapes to Unicode',
         function () {
           visitBrowserAction(undefined, [
             ['characterDescriptions', 1]
           ]);
-          // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
-          cy.wait(3000);
 
           cy.get(
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
@@ -1364,7 +1395,6 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', 'Some text: é');
     });
 
-    // Database problems in testing environment
     it('Performs a conversion of Unicode to char. desc.', function () {
       visitBrowserAction(undefined, [
         ['characterDescriptions', '1'],
@@ -1384,7 +1414,6 @@ describe('Conversion', function () {
       );
     });
 
-    // Database problems in testing environment
     it('Performs a conversion of char. desc. to Unicode', function () {
       visitBrowserAction(undefined, [
         ['characterDescriptions', '1'],
