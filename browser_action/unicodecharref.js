@@ -586,6 +586,8 @@ const unicodecharref = {
       );
     case 'checkbox':
       return await setPref(e.target.id, Boolean(e.target.checked));
+    /*
+    // Should work but not in use
     case 'radio': {
       let radioid;
       const result = e.target.id.match(/^_(\d)+-(.*)$/u);
@@ -594,9 +596,14 @@ const unicodecharref = {
         return await setPref(radioid, result[1] === '1');
       }
       break;
-    } default:
+    }
+    */
+    /* istanbul ignore next -- Just a guard */
+    default:
+      /* istanbul ignore next -- Just a guard */
       break;
     }
+    /* istanbul ignore next -- Just a guard */
     return undefined;
   },
   async resetdefaults () {
