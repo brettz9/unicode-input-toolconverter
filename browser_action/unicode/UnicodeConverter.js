@@ -626,17 +626,23 @@ export const getUnicodeConverter = () => {
           name, unicode1Name
         } = await charrefunicodeDb.getUnicodeFields(hexStr);
 
+        // Todo: Unihan
+        /*
         if (!name) {
-          // Todo: Unihan
         }
+        */
 
         if (unicode1Name && name.includes('<')) {
           return `${unicode1Name} (${name})`;
         }
+
         return name;
+      /* istanbul ignore next -- Debugging */
       } catch (e) {
+        /* istanbul ignore next -- Debugging */
         alert(e);
       }
+      /* istanbul ignore next -- Debugging */
       return undefined;
     }
 
@@ -646,11 +652,16 @@ export const getUnicodeConverter = () => {
      * @returns {Integer}
      */
     async lookupUnicodeValueByCharName (value) {
-      // Fix: Character names for Unihan?
-      // Todo: Need to make changeable? If not, remove
+      // todo: Character names for Unihan
       const forceUnicode = true;
-      const table = forceUnicode ? 'UnicodeData' : 'Unihan';
-      const id = forceUnicode ? 'searchName' : 'searchkDefinition';
+      const table = forceUnicode
+        ? 'UnicodeData'
+        /* istanbul ignore next -- Known todo */
+        : 'Unihan';
+      const id = forceUnicode
+        ? 'searchName'
+        /* istanbul ignore next -- Known todo */
+        : 'searchkDefinition';
       await this.searchUnicode(
         {id, value}, table, 'noChart=true', 'strict=true'
       );
@@ -765,7 +776,9 @@ export const getUnicodeConverter = () => {
             this.descripts.push(hex);
           });
         }
+      /* istanbul ignore next -- Debugging */
       } catch (e) {
+        /* istanbul ignore next -- Debugging */
         alert(e);
       } finally {
         // conn.close();

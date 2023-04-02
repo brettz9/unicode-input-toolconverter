@@ -1414,6 +1414,28 @@ describe('Conversion', function () {
       );
     });
 
+    it(
+      'Performs a conversion of Unicode to char. desc. (with special name)',
+      function () {
+        visitBrowserAction(undefined, [
+          ['characterDescriptions', '1'],
+          ['targetid', 'context-charrefunicode17'],
+          ['convert', '\u009F']
+        ]);
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
+        ).should('exist');
+        cy.get('#toconvert').invoke('val').should('eq', '\u009F');
+        cy.get('#converted').invoke('val').should(
+          'eq',
+          // Split up typing to avoid being interpreted by Cypress
+          //  as keystroke
+          '\\C{' + 'APPLICATION PROGRAM COMMAND (<control>)}'
+        );
+      }
+    );
+
     it('Performs a conversion of char. desc. to Unicode', function () {
       visitBrowserAction(undefined, [
         ['characterDescriptions', '1'],
