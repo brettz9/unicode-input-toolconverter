@@ -746,7 +746,8 @@ const unicodecharref = {
         $('#_detailedCJKView' + i).value = '';
       }
       for (const prop of this.Unihan) {
-        // May not be generated based on `showComplexWindow`
+        // eslint-disable-next-line max-len -- Long
+        /* istanbul ignore next -- May not be generated based on `showComplexWindow` */
         if ($('#searchk' + prop)) {
           $('#searchk' + prop).value = '';
         }

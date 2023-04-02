@@ -459,7 +459,7 @@ describe('Charts', function () {
       ).trigger('mouseover');
       cy.get('#plane').contains('Plane 1:');
     });
-    // Todo: Needs to test functionality too
+
     it('Sets "Show all items" including on load', function () {
       visitBrowserAction();
       cy.get('#viewTabs > .tabs > .tab:nth-of-type(2)').click();
@@ -467,6 +467,15 @@ describe('Charts', function () {
       cy.get('#showAllDetailedView').invoke(
         'prop', 'checked'
       ).should('eq', true);
+
+      cy.get('h1[data-label="Detailed view"]').click();
+      cy.get('#startset').clear().type('b');
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).trigger('mouseover');
+      cy.get('#_detailedView4').should('not.be.hidden');
+      cy.get('#_detailedView4').invoke('val').should('eq', '');
 
       cy.get('#showAllDetailedView').click();
 
@@ -476,6 +485,14 @@ describe('Charts', function () {
       cy.get('#showAllDetailedView').invoke(
         'prop', 'checked'
       ).should('eq', false);
+
+      cy.get('h1[data-label="Detailed view"]').click();
+      cy.get('#startset').clear().type('b');
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).trigger('mouseover');
+      cy.get('#_detailedView4').should('be.hidden');
     });
 
     // Todo: Needs to test functionality too
