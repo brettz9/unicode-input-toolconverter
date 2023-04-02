@@ -493,6 +493,13 @@ describe('Charts', function () {
         'td:nth-of-type(1) > .centered > button'
       ).trigger('mouseover');
       cy.get('#_detailedView4').should('be.hidden');
+
+      cy.get('#_detailedView10 a').click();
+
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).contains('B');
     });
 
     // Todo: Needs to test functionality too
