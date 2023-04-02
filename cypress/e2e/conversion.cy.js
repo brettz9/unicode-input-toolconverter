@@ -426,6 +426,28 @@ describe('Conversion', function () {
     );
 
     it(
+      'Converts JavaScript escapes to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\\\ a \\g \\n \\t \\f \\v \\b');
+        cy.get('#b14').click();
+        cy.get('#converted').invoke('val').should(
+          'eq', '\\ a \\g \n \t \f \v \b'
+        );
+
+        cy.get('#toconvert').clear().type('\\r');
+        cy.get('#b14').click();
+        // \r gets converted
+        cy.get('#converted').invoke('val').should('eq', '\n');
+      }
+    );
+
+    it(
       'Converts PHP escape sequences to Unicode',
       function () {
         visitBrowserAction();
