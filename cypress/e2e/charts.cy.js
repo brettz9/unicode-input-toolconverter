@@ -78,6 +78,10 @@ describe('Charts', function () {
       ).trigger('mouseover');
 
       cy.get('#unicodeImg img').should('be.visible');
+
+      // Check that it will be removed
+      cy.get('#showImg').click();
+      cy.get('#unicodeImg img').should('not.exist');
     });
   });
 
