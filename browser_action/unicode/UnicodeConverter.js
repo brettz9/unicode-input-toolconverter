@@ -405,12 +405,11 @@ export const getUnicodeConverter = () => {
           unicode += s + next;
           break;
         default: {
-          const hexEsc = toconvert.slice(i + 1).match(/^([A-Fa-f\d]{1,5})(([A-Fa-f\d])|(\r\n|[ \t\r\n\f])?)/u); // 1-5 hex and WS, or 6 hex
+          const hexEsc = toconvert.slice(i + 1).match(/^([A-Fa-f\d]{1,5})(?:([A-Fa-f\d])|(\r\n|[ \t\r\n\f])?)/u); // 1-5 hex and WS, or 6 hex
           if (hexEsc) {
             i += hexEsc[0].length - 1; // We want to skip the whole structure
-            const hex = hexEsc[1] + (hexEsc[3] || ''); // [3] only if is 6-digit
+            const hex = hexEsc[1] + (hexEsc[2] || ''); // [2] only if is 6-digit
             const dec = Number.parseInt(hex, 16);
-            const hexStr = String.fromCodePoint(dec);
 
             // \u000 is disallowed in CSS 2.1 (behavior undefined) and above
             //  0x10FFFF is beyond valid Unicode; fix: disallow non-characters
@@ -418,9 +417,14 @@ export const getUnicodeConverter = () => {
             if (dec > 0x10FFFF || dec === 0) {
               // Replacement character since not valid Unicode
               unicode += '\uFFFD';
+              break;
+            }
+
+            const hexStr = String.fromCodePoint(dec);
+
             // Too low ASCII to be converted (not a letter, digit,
             //  underscore, or hyphen)
-            } else if (dec < 0xA1 && (/[^\w-]/u).test(hexStr)) {
+            if (dec < 0xA1 && (/[^\w-]/u).test(hexStr)) {
               // Don't convert since won't be valid if unescaped
               // Although https://www.w3.org/TR/CSS21/grammar.html#scanner
               //  (under "nonascii" which is a possible (indirect) component

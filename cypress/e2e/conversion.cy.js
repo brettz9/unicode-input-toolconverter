@@ -348,6 +348,23 @@ describe('Conversion', function () {
       }
     );
 
+    it('Replaces bad escapes with non-character', function () {
+      visitBrowserAction();
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type(
+        '\\11FFFF \\0'
+      );
+      cy.get('#b16').click();
+      cy.get('#converted').invoke('val').should(
+        'eq',
+        '\uFFFD \uFFFD'
+      );
+    });
+
     it(
       'Converts JavaScript escape sequences to Unicode',
       function () {
