@@ -389,6 +389,7 @@ export const getUnicodeConverter = () => {
         }
         const next = toconvert[i + 1];
         switch (next) {
+        /*
         case '\r':
           if (toconvert[i + 2] === '\n') {
             unicode += s + next + toconvert[i + 2];
@@ -396,6 +397,7 @@ export const getUnicodeConverter = () => {
             break;
           }
           // Fallthrough
+        */
         case '\n':
           // Fallthrough
         case '\f':

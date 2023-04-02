@@ -319,6 +319,36 @@ describe('Conversion', function () {
     );
 
     it(
+      'Performs a conversion of CSS backslash escapes to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\\n \\\f');
+        cy.get('#b16').click();
+        cy.get('#converted').invoke('val').should('eq', '\\\n \\\f');
+      }
+    );
+
+    it(
+      'Performs a conversion of CSS < 6 digit escapes to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\e9 a');
+        cy.get('#b16').click();
+        cy.get('#converted').invoke('val').should('eq', 'éa');
+      }
+    );
+
+    it(
       'Converts JavaScript escape sequences to Unicode',
       function () {
         visitBrowserAction();
