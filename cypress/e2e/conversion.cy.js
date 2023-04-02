@@ -173,6 +173,59 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', '&#233;');
     });
 
+    it('Converts custom entity to decimal char. references', function () {
+      visitBrowserAction();
+
+      cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
+      cy.get('#DTDtextbox').clear().type('<!ENTITY a "aaa">');
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&a; &b;');
+      cy.get('#b9').click();
+      cy.get('#converted').invoke('val').should('eq', 'aaa &b;');
+    });
+
+    it('Converts custom entity to hexadecimal char. references', function () {
+      visitBrowserAction();
+
+      cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
+      cy.get('#DTDtextbox').clear().type('<!ENTITY a "aaa">');
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&a; &b;');
+      cy.get('#b10').click();
+      cy.get('#converted').invoke('val').should('eq', 'aaa &b;');
+    });
+
+    it(
+      'Converts custom entity to hexadecimal upper-case char. references',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)'
+        ).contains('Prefs').click();
+        cy.get('#hexLettersUpper').check();
+
+        cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
+        cy.get('#DTDtextbox').clear().type('<!ENTITY e "é">');
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('&e;');
+        cy.get('#b10').click();
+        cy.get('#converted').invoke('val').should('eq', '&#xE9;');
+      }
+    );
+
     it(
       'Converts HTML entities to hexadecimal char. references',
       function () {
