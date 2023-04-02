@@ -752,6 +752,7 @@ export const getUnicodeConverter = () => {
         const filteredChars = strict
           ? chars.filter((chr) => {
             const cell = table === 'Unihan'
+              /* istanbul ignore next -- Not yet using strict checking */
               ? chr.columns[
                 unicodecharref.Unihan.indexOf(field)
               ]
