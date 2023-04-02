@@ -268,6 +268,21 @@ describe('Conversion', function () {
       cy.get('#converted').invoke('val').should('eq', 'é &a;');
     });
 
+    it('Converts custom multiple-length entities to Unicode', function () {
+      visitBrowserAction();
+
+      cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
+      cy.get('#DTDtextbox').clear().type('<!ENTITY a "aaa">');
+
+      cy.get(
+        '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+      ).contains('Conversion').click();
+      cy.get('#converted').clear();
+      cy.get('#toconvert').clear().type('&a;');
+      cy.get('#b11').click();
+      cy.get('#converted').invoke('val').should('eq', 'aaa');
+    });
+
     it(
       'Converts Hexadecimal to decimal character references',
       function () {
