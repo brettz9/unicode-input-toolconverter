@@ -348,6 +348,51 @@ describe('Conversion', function () {
       }
     );
 
+    it(
+      'Maintains low-ASCII CSS escapes to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\a0 \\1');
+        cy.get('#b16').click();
+        cy.get('#converted').invoke('val').should('eq', '\\a0 \\1');
+      }
+    );
+
+    it(
+      'Maintains non-identifier CSS escapes to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\-123');
+        cy.get('#b16').click();
+        cy.get('#converted').invoke('val').should('eq', '\\-123');
+      }
+    );
+
+    it(
+      'Maintains non-hex CSS escapes to Unicode',
+      function () {
+        visitBrowserAction();
+
+        cy.get(
+          '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
+        ).contains('Conversion').click();
+        cy.get('#converted').clear();
+        cy.get('#toconvert').clear().type('\\\n');
+        cy.get('#b16').click();
+        cy.get('#converted').invoke('val').should('eq', '\\\n');
+      }
+    );
+
     it('Replaces bad escapes with non-character', function () {
       visitBrowserAction();
 
