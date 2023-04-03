@@ -1018,7 +1018,9 @@ const unicodecharref = {
                 $('#_detailedView' + j).value = '';
                 $('#_detailedView' + j).parentNode.hidden = hideMissing;
                 removeViewChildren(j);
+              /* istanbul ignore next -- Debugging */
               } catch (e) {
+                /* istanbul ignore next -- Debugging */
                 alert('1' + e + j);
               }
             }
@@ -1041,10 +1043,10 @@ const unicodecharref = {
             $('#displayUnicodeDesc2').value = notfoundval;
           } else {
             const finalval = kent +
-              'U+' + khextemp + _('colon') + ' ' + cjkText + ' ' +
+              'U+' + khextemp + _('colon') + ' ' + cjkText +
               (hangul
                 ? ''
-                : _('left_parenth') + _('No_definition') +
+                : ' ' + _('left_parenth') + _('No_definition') +
                   _('right_parenth'));
             $('#displayUnicodeDesc').value = finalval;
             $('#displayUnicodeDesc2').value = finalval;
@@ -1052,7 +1054,9 @@ const unicodecharref = {
             // $('#displayUnicodeDesc2').value = notfoundval;
           }
         }
+      /* istanbul ignore next -- Debugging */
       } catch (e) {
+        /* istanbul ignore next -- Debugging */
         alert(e);
       }
       // return;

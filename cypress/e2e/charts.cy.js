@@ -571,7 +571,6 @@ describe('Charts', function () {
       ).contains('B');
     });
 
-    // Todo: Needs to test functionality too
     it('Sets "Show all items" (CJK) including on load', function () {
       visitBrowserAction();
       cy.get('#viewTabs > .tabs > .tab:nth-of-type(3)').click();

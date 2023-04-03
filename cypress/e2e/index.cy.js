@@ -14,7 +14,9 @@ describe('Main page', function () {
 
   it('Downloads Unihan', function () {
     cy.clearIndexedDB();
-    visitBrowserAction();
+    visitBrowserAction(undefined, [
+      ['characterDescriptions', '1']
+    ]);
     cy.get('#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)').click();
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.get('#UnihanInstalled').then(($el) => {
@@ -67,8 +69,37 @@ describe('Main page', function () {
       ).invoke('html').should('eq', '㚫');
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
+      cy.get('#viewTabs > .tabs > .tab:nth-of-type(3)').click();
+
+      cy.get('#showAllDetailedCJKView').check();
+
+      // A character with a definition
+      cy.get('#startset').clear().type('㐀');
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).trigger('mouseover');
+
+      cy.get('#_detailedCJKView2').invoke('val').should('eq', '');
+      cy.get('#_detailedCJKView6').invoke('val').should('eq', 'TM');
+
+      cy.get('#showAllDetailedCJKView').uncheck();
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).trigger('mouseover');
+
+      cy.get('#_detailedCJKView2').should('not.be.visible');
+      cy.get('#_detailedCJKView6').invoke('val').should('eq', 'TM');
+
+      return undefined;
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
       [
-        [0x3400, 'hillock or mound']
+        [0x3400, 'hillock or mound'],
+        [0x3408, '(No definition)'],
+        [0xD78B, 'Hangul Syllable HIGS'],
+        [0x61, 'LATIN SMALL LETTER A']
       ].forEach(([chr, desc]) => {
         cy.get('#startset').clear().type(String.fromCodePoint(chr));
         cy.get(
