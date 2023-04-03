@@ -99,7 +99,8 @@ describe('Main page', function () {
         [0x3400, 'hillock or mound'],
         [0x3408, '(No definition)'],
         [0xD78B, 'Hangul Syllable HIGS'],
-        [0x61, 'LATIN SMALL LETTER A']
+        [0x61, 'LATIN SMALL LETTER A'],
+        [0xE005, 'Undefined or not found']
       ].forEach(([chr, desc]) => {
         cy.get('#startset').clear().type(String.fromCodePoint(chr));
         cy.get(
