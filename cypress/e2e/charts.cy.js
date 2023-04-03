@@ -392,7 +392,7 @@ describe('Charts', function () {
         [0x10FF80, 'Plane 16/Supplementary Private Use Area-B'],
         [0x10FFFF, 'At End of Plane 16/Supplementary Private Use Area-B']
       ].forEach(([chr, script]) => {
-        it(chr + ' ' + script, function () {
+        it(chr.toString(16).toUpperCase() + ' ' + script, function () {
           visitBrowserAction();
 
           cy.get('#startset').clear().type(String.fromCodePoint(chr));
@@ -415,7 +415,7 @@ describe('Charts', function () {
         [0x20001, 'CJK Ideographs Ext. B'],
         [0x2A6D6, 'CJK Ideographs Ext. B']
       ].forEach(([chr, script]) => {
-        it(chr + ' ' + script, function () {
+        it(chr.toString(16).toUpperCase() + ' ' + script, function () {
           visitBrowserAction();
 
           cy.get('#startset').clear().type(String.fromCodePoint(chr));

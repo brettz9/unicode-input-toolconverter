@@ -65,6 +65,19 @@ describe('Main page', function () {
         'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
         '> div.centered > button'
       ).invoke('html').should('eq', '㚫');
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      [
+        [0x3400, 'hillock or mound']
+      ].forEach(([chr, desc]) => {
+        cy.get('#startset').clear().type(String.fromCodePoint(chr));
+        cy.get(
+          '#chart_table > tr:nth-of-type(1) > ' +
+          'td:nth-of-type(1) > .centered > button'
+        ).trigger('mouseover');
+        cy.get('#displayUnicodeDesc').invoke('val').should('contain', desc);
+      });
+      return undefined;
     });
   });
 
