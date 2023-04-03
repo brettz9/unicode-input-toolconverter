@@ -931,9 +931,12 @@ const unicodecharref = {
             $('#_detailedView' + j).value = '';
             $('#_detailedView' + j).parentNode.hidden = hideMissing;
             removeViewChildren(j);
+          /* istanbul ignore next -- Debugging */
           } catch (err) {
-            // eslint-disable-next-line no-console -- Debugging
+            /* eslint-disable no-console -- Debugging */
+            /* istanbul ignore next -- Debugging */
             console.log('3' + err + j);
+            /* eslint-enable no-console -- Debugging */
           }
         }
       }
