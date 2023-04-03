@@ -58,6 +58,10 @@ describe('Charts', function () {
       cy.get('#displayUnicodeDesc').invoke(
         'prop', 'nodeName'
       ).should('eq', 'TEXTAREA');
+      cy.get('#multiline').click();
+      cy.get('#displayUnicodeDesc').invoke(
+        'prop', 'nodeName'
+      ).should('eq', 'INPUT');
     });
 
     it('Sets "Show image" including on load', function () {

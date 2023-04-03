@@ -1133,6 +1133,8 @@ const unicodecharref = {
 
     $('#toconvert').style.fontSize = txtbxsize + 'px';
     $('#converted').style.fontSize = txtbxsize + 'px';
+
+    /* istanbul ignore next -- Firefox only */
     if (size > 0 && window.sizeToContent) {
       // On Mac at least, resizing for reducing font size, causes button to
       // go off screen
@@ -1156,6 +1158,8 @@ const unicodecharref = {
       await getPref('tblfontsize') + 'px';
     // $('#displayUnicodeDesc').style.fontSize =
     //   await getPref('tblfontsize') + 'px';
+
+    /* istanbul ignore next -- Firefox only */
     if (sizeToContent && window.sizeToContent) {
       // On Mac at least, resizing for reducing font size, causes button to
       // go off screen
@@ -1196,17 +1200,19 @@ const unicodecharref = {
   },
   async cssWhitespace (e) {
     let {value} = e.target;
-    // Escape these since some like \r may be lost?
+    // Escape \r since \r may be lost?
     switch (value) {
     case 'space':
       value = ' ';
       break;
+    /*
     case 'rn':
       value = '\r\n';
       break;
     case 'r':
       value = '\r';
       break;
+    */
     case 'n':
       value = '\n';
       break;
@@ -1216,7 +1222,9 @@ const unicodecharref = {
     case 'f':
       value = '\f';
       break;
+    /* istanbul ignore next -- Guard */
     default:
+      /* istanbul ignore next -- Guard */
       throw new Error('Unexpected menu value');
     }
     await setPref('cssWhitespace', value);
@@ -1281,6 +1289,41 @@ const unicodecharref = {
     await chartBuild({descripts});
     return await this.resizecells();
   },
+  /**
+   * Sets a value in preferences at which the Unicode chart view will
+   * begin on next start-up.
+   * @param {Integer} value The value to which to set the current
+   *   starting value
+   */
+  async setCurrstartset (value) {
+    /* istanbul ignore if -- Guard */
+    if (typeof value !== 'number') {
+      const err = new Error('Bad value');
+      err.value = value;
+      // eslint-disable-next-line no-console -- Debugging
+      console.error(err);
+      alert(
+        'Look at trace to see where setting ' +
+        '`currentStartCharCode` as undefined'
+      );
+    }
+
+    if (value < 0) {
+      value += 1114112;
+    } else if (value > 1114111) {
+      value = 0;
+    }
+
+    return await setPref('currentStartCharCode', value);
+  },
+  // Unused
+  // Some of these defaults may become irrelevant due to the
+  //  /default/preferences/charrefunicode.js file's settings
+  /*
+  async k (setval) {
+    return await this.setCurrstartset(setval);
+  },
+  */
   async chartBuildResize () {
     await chartBuild();
     return await this.resizecells();
@@ -1325,44 +1368,14 @@ const unicodecharref = {
    * in the middle of the chart (or beginning).
    * @param {boolean} bool Whether to set to true or not
    */
+  /*
   async startCharInMiddleOfChart (bool) {
     // Commented this out because while it will always change (unlike
     //   now), the value will be misleading
     // $(EXT_BASE + 'startCharInMiddleOfChart').checked = bool;
     return await setPref('startCharInMiddleOfChart', bool);
   },
-  /**
-   * Sets a value in preferences at which the Unicode chart view will
-   * begin on next start-up.
-   * @param {Integer} value The value to which to set the current
-   *   starting value
-   */
-  async setCurrstartset (value) {
-    if (typeof value !== 'number') {
-      const err = new Error('Bad value');
-      err.value = value;
-      // eslint-disable-next-line no-console -- Debugging
-      console.error(err);
-      alert(
-        'Look at trace to see where setting ' +
-        '`currentStartCharCode` as undefined'
-      );
-    }
-
-    if (value < 0) {
-      value += 1114112;
-    } else if (value > 1114111) {
-      value = 0;
-    }
-
-    return await setPref('currentStartCharCode', value);
-  },
-  // Unused?
-  // Some of these defaults may become irrelevant due to the
-  //  /default/preferences/charrefunicode.js file's settings
-  async k (setval) {
-    return await this.setCurrstartset(setval);
-  },
+  */
   insertent () {
     insertIntoOrOverExisting({
       textReceptacle: $('#DTDtextbox'),
