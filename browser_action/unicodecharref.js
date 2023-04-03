@@ -953,9 +953,7 @@ const unicodecharref = {
           // Fix: display data more readably, with heading, etc. (and
           //   conditional)
           result = results[this.kDefinitionIndex];
-          if (result === null && !cjkText) {
-            result = _('No_definition');
-          }
+
           // Fix: Display meta-data in table (get to be stable by
           //   right-clicking)
           for (
@@ -970,7 +968,9 @@ const unicodecharref = {
             try {
               // Fix: display data more readably, etc.
               temp = results[i];
+            /* istanbul ignore next -- Debugging */
             } catch (e) {
+              /* istanbul ignore next -- Debugging */
               alert(i);
             }
             if (temp) {
