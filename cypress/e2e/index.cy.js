@@ -110,6 +110,18 @@ describe('Main page', function () {
         cy.get('#displayUnicodeDesc').invoke('val').should('contain', desc);
       });
       return undefined;
+    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
+    }).then(() => {
+      cy.get('h1[data-label="Detailed view"]').click();
+      cy.get('#startset').clear().type('㐀');
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).trigger('mouseover');
+      cy.get(
+        'h1[data-selected][data-label="Detailed view (CJK)"]'
+      ).should('exist');
+      return undefined;
     });
   });
 
