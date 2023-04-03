@@ -102,6 +102,28 @@ describe('Charts', function () {
         'td:nth-of-type(1) > .centered > button'
       ).contains('é');
     });
+
+    it('can choose decimal character', function () {
+      visitBrowserAction();
+
+      cy.get('#startset').clear().type('#1234');
+
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).contains('Ӓ');
+    });
+
+    it('can choose hexadecimal character', function () {
+      visitBrowserAction();
+
+      cy.get('#startset').clear().type('#xABCD');
+
+      cy.get(
+        '#chart_table > tr:nth-of-type(1) > ' +
+        'td:nth-of-type(1) > .centered > button'
+      ).contains('ꯍ');
+    });
   });
 
   describe('Column browser', function () {

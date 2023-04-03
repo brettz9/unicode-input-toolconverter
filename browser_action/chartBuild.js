@@ -21,10 +21,6 @@ const getChartBuild = async function ({
 // eslint-disable-next-line import/no-mutable-exports -- Easier
 export let lastStartCharCode;
 
-// Todo:
-// eslint-disable-next-line no-unused-expressions -- Bug in lgtm?
-lastStartCharCode; // lgtm [js/useless-expression]
-
 const chartBuild = async function chartBuild ({descripts} = {}) {
   const {getPref, setPref} = getUnicodeDefaults();
   const [
