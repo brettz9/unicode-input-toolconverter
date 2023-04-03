@@ -757,8 +757,10 @@ const unicodecharref = {
     let result;
     try {
       await charrefunicodeDb.connect();
+
       const results = await charrefunicodeDb.getUnicodeFields(searchValue);
-      console.log('results', results);
+
+      /* istanbul ignore else -- Should have thrown if no result */
       if (results) {
         result = cjkText ||
           // We had obtained Jamo from Jamo.txt and showed it in parentheses,
@@ -877,60 +879,12 @@ const unicodecharref = {
           }
         }
       }
-      if (!unihanType && result !== null && result !== undefined) {
+
+      if (!unihanType) {
         $('#displayUnicodeDesc').value = kent +
           'U+' + khextemp + _('colon') + ' ' + result;
         $('#displayUnicodeDesc2').value = kent +
           'U+' + khextemp + _('colon') + ' ' + result;
-      // Fix: remove this duplicate also in catch, etc.
-      } else if (surrogate) {
-        $('#displayUnicodeDesc').value = kent +
-          'U+' + khextemp + _('colon') + ' ' + surrogate;
-        $('#displayUnicodeDesc2').value = kent +
-          'U+' + khextemp + _('colon') + ' ' + surrogate;
-      } else if (privateuse) {
-        $('#displayUnicodeDesc').value = kent +
-          'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
-        $('#displayUnicodeDesc2').value = kent +
-          'U+' + khextemp + _('colon') + ' ' + _('Private_use_character');
-      } else if ( // Catch noncharacters
-        (kdectemp >= 0xFDD0 && kdectemp <= 0xFDEF) ||
-        (kdectemp >= 0xFFFE && kdectemp <= 0xFFFF) ||
-        (kdectemp >= 0x1FFFE && kdectemp <= 0x1FFFF) ||
-        (kdectemp >= 0x2FFFE && kdectemp <= 0x2FFFF) ||
-        (kdectemp >= 0x3FFFE && kdectemp <= 0x3FFFF) ||
-        (kdectemp >= 0x4FFFE && kdectemp <= 0x4FFFF) ||
-        (kdectemp >= 0x5FFFE && kdectemp <= 0x5FFFF) ||
-        (kdectemp >= 0x6FFFE && kdectemp <= 0x6FFFF) ||
-        (kdectemp >= 0x7FFFE && kdectemp <= 0x7FFFF) ||
-        (kdectemp >= 0x8FFFE && kdectemp <= 0x8FFFF) ||
-        (kdectemp >= 0x9FFFE && kdectemp <= 0x9FFFF) ||
-        (kdectemp >= 0xAFFFE && kdectemp <= 0xAFFFF) ||
-        (kdectemp >= 0xBFFFE && kdectemp <= 0xBFFFF) ||
-        (kdectemp >= 0xCFFFE && kdectemp <= 0xCFFFF) ||
-        (kdectemp >= 0xDFFFE && kdectemp <= 0xDFFFF) ||
-        (kdectemp >= 0xEFFFE && kdectemp <= 0xEFFFF) ||
-        (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
-        (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
-      ) {
-        $('#displayUnicodeDesc').value = kent +
-          'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
-        $('#displayUnicodeDesc2').value = kent +
-          'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
-      } else if (!unihanType) {
-        const notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
-        $('#displayUnicodeDesc').value = notfoundval;
-        $('#displayUnicodeDesc2').value = notfoundval;
-        for (const [j, unicodeField] of unicodecharref.Unicode.entries()) {
-          if (unicodeField === 'Unicode_1_Name') { continue; }
-          try {
-            $('#_detailedView' + j).value = '';
-            $('#_detailedView' + j).parentNode.hidden = hideMissing;
-            removeViewChildren(j);
-          } catch (e) {
-            alert('2' + e + j);
-          }
-        }
       }
     } catch (e) {
       if (surrogate) {
