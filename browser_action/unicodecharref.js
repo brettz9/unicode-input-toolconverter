@@ -771,7 +771,6 @@ const unicodecharref = {
         for (const [i, unicodeField] of unicodecharref.Unicode.entries()) {
           // Fix: display data more readably, etc.
           const camelizedField = camelCase(unicodeField);
-          console.log('camelizedField', camelizedField);
           // console.log('camelizedField', camelizedField);
           let temp = results[camelizedField];
           if (unicodeField === 'Unicode_1_Name') {
@@ -913,9 +912,12 @@ const unicodecharref = {
         (kdectemp >= 0xBFFFE && kdectemp <= 0xBFFFF) ||
         (kdectemp >= 0xCFFFE && kdectemp <= 0xCFFFF) ||
         (kdectemp >= 0xDFFFE && kdectemp <= 0xDFFFF) ||
-        (kdectemp >= 0xEFFFE && kdectemp <= 0xEFFFF) ||
+        (kdectemp >= 0xEFFFE && kdectemp <= 0xEFFFF)
+        /*
+        // Also surrogates
         (kdectemp >= 0xFFFFE && kdectemp <= 0xFFFFF) ||
         (kdectemp >= 0x10FFFE && kdectemp <= 0x10FFFF)
+        */
       ) {
         $('#displayUnicodeDesc').value = kent +
           'U+' + khextemp + _('colon') + ' ' + _('Noncharacter');
@@ -925,19 +927,19 @@ const unicodecharref = {
         const notfoundval = 'U+' + khextemp + _('colon') + ' ' + _('Not_found');
         $('#displayUnicodeDesc').value = notfoundval;
         $('#displayUnicodeDesc2').value = notfoundval;
-        for (const [j, unicodeField] of unicodecharref.Unicode.entries()) {
-          if (unicodeField === 'Unicode_1_Name') { continue; }
-          try {
-            $('#_detailedView' + j).value = '';
-            $('#_detailedView' + j).parentNode.hidden = hideMissing;
-            removeViewChildren(j);
+      }
+      for (const [j, unicodeField] of unicodecharref.Unicode.entries()) {
+        if (unicodeField === 'Unicode_1_Name') { continue; }
+        try {
+          $('#_detailedView' + j).value = '';
+          $('#_detailedView' + j).parentNode.hidden = hideMissing;
+          removeViewChildren(j);
+        /* istanbul ignore next -- Debugging */
+        } catch (err) {
+          /* eslint-disable no-console -- Debugging */
           /* istanbul ignore next -- Debugging */
-          } catch (err) {
-            /* eslint-disable no-console -- Debugging */
-            /* istanbul ignore next -- Debugging */
-            console.log('3' + err + j);
-            /* eslint-enable no-console -- Debugging */
-          }
+          console.log('3' + err + j);
+          /* eslint-enable no-console -- Debugging */
         }
       }
     }

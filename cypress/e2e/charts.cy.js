@@ -428,6 +428,49 @@ describe('Charts', function () {
       });
     });
 
+    [
+      // Special characters beyond endpoints of range
+      [0xDB81, 'High Private Use Surrogate'],
+      [0xDC01, 'Low Surrogate'],
+      [0xD801, 'High Surrogate'],
+
+      // Non-characters
+      ...[
+        0xFDD0,
+        0xFFFE,
+        0x1FFFE,
+        0x2FFFE,
+        0x3FFFE,
+        0x4FFFE,
+        0x5FFFE,
+        0x6FFFE,
+        0x7FFFE,
+        0x8FFFE,
+        0x9FFFE,
+        0xAFFFE,
+        0xBFFFE,
+        0xCFFFE,
+        0xDFFFE,
+        0xEFFFE
+        // Private use also
+        // 0xFFFFE,
+        // 0x10FFFE
+      ].map((chr) => {
+        return [chr, 'Reserved noncharacter'];
+      })
+    ].forEach(([chr, desc]) => {
+      it(chr.toString(16).toUpperCase() + ' ' + desc, function () {
+        visitBrowserAction();
+
+        cy.get('#startset').clear().type(String.fromCodePoint(chr));
+        cy.get(
+          '#chart_table > tr:nth-of-type(1) > ' +
+          'td:nth-of-type(1) > .centered > button'
+        ).trigger('mouseover');
+        cy.get('#displayUnicodeDesc').invoke('val').should('contain', desc);
+      });
+    });
+
     it('holds character display with alt-click', function () {
       visitBrowserAction(undefined, [
         ['characterDescriptions', '1']
