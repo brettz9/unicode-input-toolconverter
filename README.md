@@ -7,7 +7,10 @@ of Unicode characters by a variety of means and conversion between various
 Unicode representations such as HTML/XML entities, numeric
 character references, etc.
 
-See the [Demo](https://brettz9.github.io/unicode-input-toolconverter/browser_action/index-pages.html).
+See the [Demo](https://unicode-input-toolconverter-c5ug.vercel.app/browser_action/?serviceWorker=1)
+<!--
+[Demo](https://brettz9.github.io/unicode-input-toolconverter/browser_action/index-pages.html).
+-->
 
 ## Screenshots
 

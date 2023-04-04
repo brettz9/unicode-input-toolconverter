@@ -42,7 +42,7 @@
     "webext-beta": "npm run eslint && web-ext run --browser-console -f beta",
     "webext-nightly": "npm run eslint && web-ext run --browser-console -f nightly",
     "webext-dev": "npm run eslint && web-ext run --browser-console -f firefoxdeveloperedition",
-    "webext-build": "npm run eslint && web-ext build",
+    "webext-build": "npm run eslint && web-ext build --overwrite-dest",
     "eslint": "eslint --ext=js,cjs,md,html .",
     "lint": "npm run eslint",
     "copy": "npm run copy-jquery && npm run copy-miller-columns && npm run copy-jamilih && npm run copy-polyfill && npm run copy-simple-prefs && npm run copy-intl-dom && npm run copy-json-6 && npm run copy-fflate && npm run copy-camelcase",
