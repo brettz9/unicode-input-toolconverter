@@ -8,7 +8,7 @@ import addMillerColumnPlugin from
 
 /**
  * @param {PlainObject} cfg
- * @param {external:IntlDom} cfg._
+ * @param {import('intl-dom').I18NCallback} cfg._
  * @param {charrefunicodeConverter} cfg.charrefunicodeConverter
  * @returns {Promise<void>}
  */

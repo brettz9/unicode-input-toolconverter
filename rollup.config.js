@@ -5,16 +5,16 @@ import istanbul from 'rollup-plugin-istanbul';
 
 /**
  * @external RollupConfig
- * @type {PlainObject}
+ * @type {object}
  * @see {@link https://rollupjs.org/guide/en#big-list-of-options}
  */
 
 /**
  * @param {PlainObject} config
  * @param {string} config.input
- * @param {boolean} [config.minifying=false]
+ * @param {boolean} [config.minifying]
  * @param {boolean} [config.instrument]
- * @returns {external:RollupConfig}
+ * @returns {RollupConfig}
  */
 function getRollupObject ({input, minifying, instrument} = {}) {
   const nonMinified = {

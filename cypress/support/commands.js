@@ -95,11 +95,38 @@ Cypress.Commands.add(
   'visitURLAndCheckAccessibility',
   /**
    * @param {string} url
-   * @param {external:CypressVisitOptions} options
+   * @param {object} options
    * @returns {void}
    */
   (url, options) => {
     cy.visit(url, options);
     checkAccessibility();
+  }
+);
+
+Cypress.Commands.add(
+  'clearAndType',
+  /**
+   * @param {string} sel
+   * @param {string} text
+   * @returns {void}
+   */
+  (sel, text) => {
+    cy.get(sel).clear();
+    cy.get(sel).type(text);
+  }
+);
+
+Cypress.Commands.add(
+  'clearTypeAndBlur',
+  /**
+   * @param {string} sel
+   * @param {string} text
+   * @returns {void}
+   */
+  (sel, text) => {
+    cy.get(sel).clear();
+    cy.get(sel).type(text);
+    cy.get(sel).blur();
   }
 );

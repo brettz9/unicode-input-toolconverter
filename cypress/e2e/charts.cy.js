@@ -74,7 +74,7 @@ describe('Charts', function () {
       visitBrowserAction();
       cy.get('#showImg').invoke('prop', 'checked').should('eq', true);
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -93,7 +93,7 @@ describe('Charts', function () {
     it('shows previously selected character on load', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       visitBrowserAction();
 
@@ -106,7 +106,7 @@ describe('Charts', function () {
     it('can choose decimal character', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('#1234');
+      cy.clearAndType('#startset', '#1234');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -117,7 +117,7 @@ describe('Charts', function () {
     it('can choose hexadecimal character', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('#xABCD');
+      cy.clearAndType('#startset', '#xABCD');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -395,7 +395,7 @@ describe('Charts', function () {
         it(chr.toString(16).toUpperCase() + ' ' + script, function () {
           visitBrowserAction();
 
-          cy.get('#startset').clear().type(String.fromCodePoint(chr));
+          cy.clearAndType('#startset', String.fromCodePoint(chr));
           cy.get(
             '#chart_table > tr:nth-of-type(1) > ' +
             'td:nth-of-type(1) > .centered > button'
@@ -418,7 +418,7 @@ describe('Charts', function () {
         it(chr.toString(16).toUpperCase() + ' ' + script, function () {
           visitBrowserAction();
 
-          cy.get('#startset').clear().type(String.fromCodePoint(chr));
+          cy.clearAndType('#startset', String.fromCodePoint(chr));
           cy.get(
             '#chart_table > tr:nth-of-type(1) > ' +
             'td:nth-of-type(1) > .centered > button'
@@ -462,7 +462,7 @@ describe('Charts', function () {
       it(chr.toString(16).toUpperCase() + ' ' + desc, function () {
         visitBrowserAction();
 
-        cy.get('#startset').clear().type(String.fromCodePoint(chr));
+        cy.clearAndType('#startset', String.fromCodePoint(chr));
         cy.get(
           '#chart_table > tr:nth-of-type(1) > ' +
           'td:nth-of-type(1) > .centered > button'
@@ -476,7 +476,7 @@ describe('Charts', function () {
         ['characterDescriptions', '1']
       ]);
 
-      cy.get('#startset').clear().type('a').blur();
+      cy.clearTypeAndBlur('#startset', 'a');
 
       // Shows "e" on mouseover
       cy.get(
@@ -514,14 +514,14 @@ describe('Charts', function () {
     it('shows plane number on character mouseover', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('a');
+      cy.clearAndType('#startset', 'a');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) > .centered > button'
       ).trigger('mouseover');
       cy.get('#plane').contains('Plane 0:');
 
-      cy.get('#startset').clear().type('𓀀');
+      cy.clearAndType('#startset', '𓀀');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) > .centered > button'
@@ -538,7 +538,7 @@ describe('Charts', function () {
       ).should('eq', true);
 
       cy.get('h1[data-label="Detailed view"]').click();
-      cy.get('#startset').clear().type('b');
+      cy.clearAndType('#startset', 'b');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) > .centered > button'
@@ -556,7 +556,7 @@ describe('Charts', function () {
       ).should('eq', false);
 
       cy.get('h1[data-label="Detailed view"]').click();
-      cy.get('#startset').clear().type('b');
+      cy.clearAndType('#startset', 'b');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) > .centered > button'
@@ -592,7 +592,7 @@ describe('Charts', function () {
     it('returns to relevant metadata tab for non-CJK/non-Hangul', function () {
       visitBrowserAction();
       cy.get('h1[data-label="Detailed view (CJK)"]').click();
-      cy.get('#startset').clear().type('b');
+      cy.clearAndType('#startset', 'b');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) > .centered > button'
@@ -605,7 +605,7 @@ describe('Charts', function () {
     it('inputs character on click', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -618,7 +618,7 @@ describe('Charts', function () {
     it('clears characters', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -635,7 +635,7 @@ describe('Charts', function () {
     it('copies characters to clipboard', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -659,7 +659,7 @@ describe('Charts', function () {
     it('moves characters to conversion tab', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -676,7 +676,7 @@ describe('Charts', function () {
     it('can click to input an entity', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -689,7 +689,7 @@ describe('Charts', function () {
     it('altKey will prevent inputting an entity', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -711,14 +711,16 @@ describe('Charts', function () {
         ]);
 
         // Had to retype part of this to get it to register properly
-        cy.get('#searchName').clear().type(
+        cy.clearTypeAndBlur(
+          '#searchName',
           'latin small letter a with ca'
-        ).blur();
+        );
 
         // eslint-disable-next-line cypress/no-unnecessary-waiting -- Cypress
         cy.wait(4000);
 
-        cy.get('#searchName').type('{backspace}').blur();
+        cy.get('#searchName').type('{backspace}');
+        cy.get('#searchName').blur();
 
         cy.get(
           '#chart_table > tr:nth-of-type(1) > ' +
@@ -750,14 +752,16 @@ describe('Charts', function () {
         ]);
 
         // Had to retype part of this to get it to register properly
-        cy.get('#searchName').clear().type(
+        cy.clearTypeAndBlur(
+          '#searchName',
           'latin small letter a with c'
-        ).blur();
+        );
 
         // eslint-disable-next-line cypress/no-unnecessary-waiting -- Cypress
         cy.wait(4000);
 
-        cy.get('#searchName').type('{backspace}').blur();
+        cy.get('#searchName').type('{backspace}');
+        cy.get('#searchName').blur();
 
         cy.get(
           '#chart_table > tr:nth-of-type(1) > ' +
@@ -791,7 +795,7 @@ describe('Charts', function () {
     it('chooses the next set', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('a');
+      cy.clearAndType('#startset', 'a');
 
       cy.get('#chart_table > tr:last-child a:nth-of-type(2)').contains(
         'Next set'
@@ -806,7 +810,7 @@ describe('Charts', function () {
     it('chooses the prev set', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('m');
+      cy.clearAndType('#startset', 'm');
 
       cy.get('#chart_table > tr:last-child a:nth-of-type(1)').contains(
         'Prev set'
@@ -843,7 +847,7 @@ describe('Charts', function () {
         'td:nth-of-type(1) > .centered > button'
       ).should('not.exist');
 
-      cy.get('#rowsset').clear().type(6).blur();
+      cy.clearTypeAndBlur('#rowsset', 6);
 
       cy.get(
         '#chart_table > tr:nth-of-type(6) > ' +
@@ -862,7 +866,7 @@ describe('Charts', function () {
         'td:nth-of-type(6) > .centered > button'
       ).should('not.exist');
 
-      cy.get('#colsset').clear().type(6).blur();
+      cy.clearTypeAndBlur('#colsset', 6);
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -876,7 +880,7 @@ describe('Charts', function () {
     it('Allows disabling display of entities', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -896,7 +900,7 @@ describe('Charts', function () {
     it('Allows disabling display of decimal char. refs', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -916,7 +920,7 @@ describe('Charts', function () {
     it('Allows disabling display of hex char. refs', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -936,7 +940,7 @@ describe('Charts', function () {
     it('Allows disabling display of Unicode', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('é');
+      cy.clearAndType('#startset', 'é');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -956,7 +960,7 @@ describe('Charts', function () {
     it('allows viewing character in middle of chart', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('a');
+      cy.clearAndType('#startset', 'a');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) button[name="unicode"]'
@@ -979,7 +983,7 @@ describe('Charts', function () {
     it('allows disabling of button styling', function () {
       visitBrowserAction();
 
-      cy.get('#startset').clear().type('a');
+      cy.clearAndType('#startset', 'a');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) button[name="unicode"]'
@@ -1038,7 +1042,7 @@ describe('Charts', function () {
         'td:nth-of-type(1) > .centered > button'
       ).invoke('css', 'font-family').should('eq', 'Arial');
 
-      cy.get('#font').clear().type('cursive').blur();
+      cy.clearTypeAndBlur('#font', 'cursive');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
@@ -1051,7 +1055,7 @@ describe('Charts', function () {
 
       cy.get('#chart_table').invoke('prop', 'lang').should('eq', 'en');
 
-      cy.get('#lang').clear().type('zh').blur();
+      cy.clearTypeAndBlur('#lang', 'zh');
 
       visitBrowserAction();
 

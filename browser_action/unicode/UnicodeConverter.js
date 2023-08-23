@@ -65,9 +65,9 @@ export const getUnicodeConverter = () => {
      * @returns {string}
      */
     charref2unicodeval (out) {
-      out = out.replace(decim, function (match, match1) {
+      out = out.replaceAll(decim, function (match, match1) {
         return String.fromCodePoint(match1);
-      }).replace(hexadec, function (match, match1) {
+      }).replaceAll(hexadec, function (match, match1) {
         return String.fromCodePoint(Number.parseInt(match1, 16));
       });
       return out;
@@ -81,7 +81,7 @@ export const getUnicodeConverter = () => {
       // If true, should allow conversion to &apos;
       const xhtmlentmode = await getPref('xhtmlentmode');
 
-      out = out.replace(decim, (match, match1) => {
+      out = out.replaceAll(decim, (match, match1) => {
         const matched = this.numericCharacterReferences.indexOf(
           Number.parseInt(match1)
         );
@@ -92,7 +92,7 @@ export const getUnicodeConverter = () => {
           return '&' + this.entities[matched] + ';';
         }
         return match;
-      }).replace(hexadec, (match, match1) => {
+      }).replaceAll(hexadec, (match, match1) => {
         const matched = this.numericCharacterReferences.indexOf(
           Number.parseInt('0x' + match1, 16)
         );
@@ -252,7 +252,7 @@ export const getUnicodeConverter = () => {
     async htmlents2charrefDecval (out) {
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       const xmlentkeep = await getPref('xmlentkeep');
-      return out.replace(htmlOrXmlEnt, (match, match1) => {
+      return out.replaceAll(htmlOrXmlEnt, (match, match1) => {
         if (!xmlentkeep || !builtinEntities.has(match1)) {
           // If recognized multiple char ent. (won't convert these to decimal)
           if (this.newents.includes(match1)) {
@@ -286,7 +286,7 @@ export const getUnicodeConverter = () => {
         getPref('xmlentkeep'),
         getPref('hexLettersUpper')
       ]);
-      return out.replace(htmlOrXmlEnt, (match, match1) => {
+      return out.replaceAll(htmlOrXmlEnt, (match, match1) => {
         if (!xmlentkeep || !builtinEntities.has(match1)) {
           const b = this.numericCharacterReferences[
             this.entities.indexOf(match1)
@@ -321,7 +321,7 @@ export const getUnicodeConverter = () => {
     async htmlents2unicodeval (out) {
       // If true, don't convert &apos;, &quot;, &lt;, &gt;, and &amp;
       const xmlentkeep = await getPref('xmlentkeep');
-      return out.replace(htmlOrXmlEnt, (match, match1) => {
+      return out.replaceAll(htmlOrXmlEnt, (match, match1) => {
         if (!xmlentkeep || !builtinEntities.has(match1)) {
           const b = this.numericCharacterReferences[
             this.entities.indexOf(match1)
@@ -348,7 +348,7 @@ export const getUnicodeConverter = () => {
      * @returns {string}
      */
     hex2decval (out) {
-      return out.replace(hexadec, function (match, match1) {
+      return out.replaceAll(hexadec, function (match, match1) {
         return '&#' + Number.parseInt(match1, 16) + ';';
       });
     }
@@ -363,7 +363,7 @@ export const getUnicodeConverter = () => {
         xstyle = 'X';
       } */
       const hexLettersUpper = await getPref('hexLettersUpper');
-      return out.replace(decim, function (match, match1) {
+      return out.replaceAll(decim, function (match, match1) {
         let hexletters = Number(match1).toString(16);
         if (hexLettersUpper) {
           hexletters = hexletters.toUpperCase();
@@ -592,14 +592,14 @@ export const getUnicodeConverter = () => {
      */
     async charDesc2UnicodeVal (toconvert) {
       const promises = [];
-      toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
+      toconvert.replaceAll(/\\C\{([^}]*)\}/gu, (n, n1) => {
         promises.push(this.lookupUnicodeValueByCharName(n1));
       });
 
       const unicodeVals = await Promise.all(promises);
 
       let i = -1;
-      return toconvert.replace(/\\C\{([^}]*)\}/gu, (n, n1) => {
+      return toconvert.replaceAll(/\\C\{([^}]*)\}/gu, (n, n1) => {
         ++i;
         return unicodeVals[i]
           ? String.fromCodePoint(unicodeVals[i])

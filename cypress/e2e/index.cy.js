@@ -57,11 +57,12 @@ describe('Main page', function () {
       visitBrowserAction();
 
       // Had to retype part of this to get it to register properly
-      cy.get('#searchkDefinition').clear().type('woman1').blur();
+      cy.clearTypeAndBlur('#searchkDefinition', 'woman1');
       // eslint-disable-next-line cypress/no-unnecessary-waiting -- Cypress
       cy.wait(4000);
 
-      cy.get('#searchkDefinition').type('{backspace}').blur();
+      cy.get('#searchkDefinition').type('{backspace}');
+      cy.get('#searchkDefinition').blur();
 
       return cy.get(
         'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
@@ -74,7 +75,7 @@ describe('Main page', function () {
       cy.get('#showAllDetailedCJKView').check();
 
       // A character with a definition
-      cy.get('#startset').clear().type('㐀');
+      cy.clearAndType('#startset', '㐀');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) > .centered > button'
@@ -102,7 +103,7 @@ describe('Main page', function () {
         [0x61, 'LATIN SMALL LETTER A'],
         [0xE005, 'Undefined or not found']
       ].forEach(([chr, desc]) => {
-        cy.get('#startset').clear().type(String.fromCodePoint(chr));
+        cy.clearAndType('#startset', String.fromCodePoint(chr));
         cy.get(
           '#chart_table > tr:nth-of-type(1) > ' +
           'td:nth-of-type(1) > .centered > button'
@@ -113,7 +114,7 @@ describe('Main page', function () {
     // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       cy.get('h1[data-label="Detailed view"]').click();
-      cy.get('#startset').clear().type('㐀');
+      cy.clearAndType('#startset', '㐀');
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +
         'td:nth-of-type(1) > .centered > button'
@@ -164,7 +165,8 @@ describe('Main page', function () {
   it('Preloads preference-set tab', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(3)').contains('Prefs').click();
-    cy.get('#initialTab').select(1).blur();
+    cy.get('#initialTab').select(1);
+    cy.get('#initialTab').blur();
     cy.get('#initialTab').should('have.value', 'conversion');
     cy.get('h1.tab:nth-of-type(1)').contains('Charts').click();
     cy.reload(true);

@@ -1,6 +1,6 @@
 /* eslint-disable no-console -- Debugging */
 /**
- * @param {string} [serviceWorkerPath="../sw.js"]
+ * @param {string} [serviceWorkerPath]
  * @returns {Promise<void>}
  */
 async function setupServiceWorker (

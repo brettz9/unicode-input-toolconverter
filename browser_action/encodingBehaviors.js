@@ -49,7 +49,7 @@ export const convertEncoding = (out) => {
 
 /**
 * @param {PlainObject} cfg
-* @param {external:IntlDom} cfg._
+* @param {import('intl-dom').I18NCallback} cfg._
 * @returns {void}
 */
 function setupEncodingEvents ({_}) {

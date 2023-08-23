@@ -3,7 +3,7 @@ import {getHangulName} from './hangul.js';
 /**
  * @param {PlainObject} cfg
  * @param {string} cfg.khextemp
- * @param {external:IntlDom} cfg._
+ * @param {import('intl-dom').I18NCallback} cfg._
  * @returns {{
  *   unihanType: boolean, hangul: boolean, cjkText: string,
  *   searchValue: string

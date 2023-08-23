@@ -1,10 +1,10 @@
 // Todo: Move to own library
 
 /**
- * @param {PlainObject} [cfg={}]
+ * @param {object} [cfg]
  * @param {HTMLTextAreaElement|HTMLInputElement} cfg.textReceptacle
  * @param {string} cfg.value
- * @param {boolean} [cfg.focusIn=true]
+ * @param {boolean} [cfg.focusIn]
  * @returns {void}
  */
 function insertIntoOrOverExisting ({

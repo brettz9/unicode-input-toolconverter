@@ -479,7 +479,7 @@ const unicodecharref = {
       $('#toconvert').value = toconvert;
 
       if (ampspace) {
-        toconvert = toconvert.replace(/&([^;\s]*\s)/gu, '&amp;$1');
+        toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
       }
 
       if (targetid) {

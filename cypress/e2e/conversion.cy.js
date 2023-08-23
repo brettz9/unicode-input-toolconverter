@@ -16,7 +16,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&#xabcd; &#1234;');
+      cy.clearAndType('#toconvert', '&#xabcd; &#1234;');
       cy.get('#b1').click();
       cy.get('#converted').invoke('val').should('eq', 'ꯍ Ӓ');
     });
@@ -28,7 +28,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&#xE9; &#233;');
+      cy.clearAndType('#toconvert', '&#xE9; &#233;');
       cy.get('#b2').click();
       cy.get('#converted').invoke('val').should('eq', '&eacute; &eacute;');
     });
@@ -40,7 +40,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&#xABCD; &#12345;');
+      cy.clearAndType('#toconvert', '&#xABCD; &#12345;');
       cy.get('#b2').click();
       cy.get('#converted').invoke('val').should('eq', '&#xABCD; &#12345;');
     });
@@ -52,7 +52,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('é');
+      cy.clearAndType('#toconvert', 'é');
       cy.get('#b3').click();
       cy.get('#converted').invoke('val').should('eq', '&#233;');
     });
@@ -64,7 +64,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('é 😀');
+      cy.clearAndType('#toconvert', 'é 😀');
       cy.get('#b4').click();
       cy.get('#converted').invoke('val').should('eq', '&#xe9; &#x1f600;');
     });
@@ -76,7 +76,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('🔂');
+      cy.clearAndType('#toconvert', '🔂');
       cy.get('#b3').click();
       cy.get('#converted').invoke('val').should('eq', '&#128258;');
     });
@@ -91,7 +91,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('😀');
+        cy.clearAndType('#toconvert', '😀');
         cy.get('#b3b').click();
         cy.get('#converted').invoke('val').should('eq', '&#55357;&#56832;');
       }
@@ -107,7 +107,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('😀');
+        cy.clearAndType('#toconvert', '😀');
         cy.get('#b4b').click();
         cy.get('#converted').invoke('val').should('eq', '&#xd83d;&#xde00;');
       }
@@ -120,7 +120,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('é 😀');
+      cy.clearAndType('#toconvert', 'é 😀');
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', '&eacute; 😀');
     });
@@ -132,7 +132,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('é 😀');
+      cy.clearAndType('#toconvert', 'é 😀');
       cy.get('#b6').click();
       cy.get('#converted').invoke('val').should('eq', '\\u00e9 \\ud83d\\ude00');
     });
@@ -144,7 +144,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('é 😀');
+      cy.clearAndType('#toconvert', 'é 😀');
       cy.get('#b7').click();
       cy.get('#converted').invoke('val').should('eq', '\\u0000e9 \\u01f600');
     });
@@ -156,7 +156,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('é 😀');
+      cy.clearAndType('#toconvert', 'é 😀');
       cy.get('#b8').click();
       cy.get('#converted').invoke('val').should('eq', '\\0000e9 \\01f600');
     });
@@ -168,7 +168,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&eacute;');
+      cy.clearAndType('#toconvert', '&eacute;');
       cy.get('#b9').click();
       cy.get('#converted').invoke('val').should('eq', '&#233;');
     });
@@ -177,13 +177,13 @@ describe('Conversion', function () {
       visitBrowserAction();
 
       cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-      cy.get('#DTDtextbox').clear().type('<!ENTITY a "aaa">');
+      cy.clearAndType('#DTDtextbox', '<!ENTITY a "aaa">');
 
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&a; &b;');
+      cy.clearAndType('#toconvert', '&a; &b;');
       cy.get('#b9').click();
       cy.get('#converted').invoke('val').should('eq', 'aaa &b;');
     });
@@ -192,13 +192,13 @@ describe('Conversion', function () {
       visitBrowserAction();
 
       cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-      cy.get('#DTDtextbox').clear().type('<!ENTITY a "aaa">');
+      cy.clearAndType('#DTDtextbox', '<!ENTITY a "aaa">');
 
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&a; &b;');
+      cy.clearAndType('#toconvert', '&a; &b;');
       cy.get('#b10').click();
       cy.get('#converted').invoke('val').should('eq', 'aaa &b;');
     });
@@ -214,13 +214,13 @@ describe('Conversion', function () {
         cy.get('#hexLettersUpper').check();
 
         cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-        cy.get('#DTDtextbox').clear().type('<!ENTITY e "é">');
+        cy.clearAndType('#DTDtextbox', '<!ENTITY e "é">');
 
         cy.get(
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('&e;');
+        cy.clearAndType('#toconvert', '&e;');
         cy.get('#b10').click();
         cy.get('#converted').invoke('val').should('eq', '&#xE9;');
       }
@@ -235,7 +235,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('&eacute;');
+        cy.clearAndType('#toconvert', '&eacute;');
         cy.get('#b10').click();
         cy.get('#converted').invoke('val').should('eq', '&#xe9;');
       }
@@ -248,7 +248,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&eacute;');
+      cy.clearAndType('#toconvert', '&eacute;');
       cy.get('#b11').click();
       cy.get('#converted').invoke('val').should('eq', 'é');
     });
@@ -257,13 +257,13 @@ describe('Conversion', function () {
       visitBrowserAction();
 
       cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-      cy.get('#DTDtextbox').clear().type('<!ENTITY e "é">');
+      cy.clearAndType('#DTDtextbox', '<!ENTITY e "é">');
 
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&e; &a;');
+      cy.clearAndType('#toconvert', '&e; &a;');
       cy.get('#b11').click();
       cy.get('#converted').invoke('val').should('eq', 'é &a;');
     });
@@ -272,13 +272,13 @@ describe('Conversion', function () {
       visitBrowserAction();
 
       cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-      cy.get('#DTDtextbox').clear().type('<!ENTITY a "aaa">');
+      cy.clearAndType('#DTDtextbox', '<!ENTITY a "aaa">');
 
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&a;');
+      cy.clearAndType('#toconvert', '&a;');
       cy.get('#b11').click();
       cy.get('#converted').invoke('val').should('eq', 'aaa');
     });
@@ -292,7 +292,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('&#xe9;');
+        cy.clearAndType('#toconvert', '&#xe9;');
         cy.get('#b12').click();
         cy.get('#converted').invoke('val').should('eq', '&#233;');
       }
@@ -307,7 +307,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('&#233;');
+        cy.clearAndType('#toconvert', '&#233;');
         cy.get('#b13').click();
         cy.get('#converted').invoke('val').should('eq', '&#xe9;');
       }
@@ -327,7 +327,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('&#233;');
+        cy.clearAndType('#toconvert', '&#233;');
         cy.get('#b13').click();
         cy.get('#converted').invoke('val').should('eq', '&#xE9;');
       }
@@ -342,7 +342,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\\n \\\f');
+        cy.clearAndType('#toconvert', '\\\n \\\f');
         cy.get('#b16').click();
         cy.get('#converted').invoke('val').should('eq', '\\\n \\\f');
       }
@@ -357,7 +357,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\e9 a');
+        cy.clearAndType('#toconvert', '\\e9 a');
         cy.get('#b16').click();
         cy.get('#converted').invoke('val').should('eq', 'éa');
       }
@@ -372,7 +372,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\a0 \\1');
+        cy.clearAndType('#toconvert', '\\a0 \\1');
         cy.get('#b16').click();
         cy.get('#converted').invoke('val').should('eq', '\\a0 \\1');
       }
@@ -387,7 +387,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\-123');
+        cy.clearAndType('#toconvert', '\\-123');
         cy.get('#b16').click();
         cy.get('#converted').invoke('val').should('eq', '\\-123');
       }
@@ -402,7 +402,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\\n');
+        cy.clearAndType('#toconvert', '\\\n');
         cy.get('#b16').click();
         cy.get('#converted').invoke('val').should('eq', '\\\n');
       }
@@ -415,7 +415,8 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type(
+      cy.clearAndType(
+        '#toconvert',
         '\\11FFFF \\0'
       );
       cy.get('#b16').click();
@@ -434,7 +435,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\uabcd');
+        cy.clearAndType('#toconvert', '\\uabcd');
         cy.get('#b14').click();
         cy.get('#converted').invoke('val').should('eq', 'ꯍ');
       }
@@ -449,13 +450,13 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\\\ a \\g \\n \\t \\f \\v \\b');
+        cy.clearAndType('#toconvert', '\\\\ a \\g \\n \\t \\f \\v \\b');
         cy.get('#b14').click();
         cy.get('#converted').invoke('val').should(
           'eq', '\\ a \\g \n \t \f \v \b'
         );
 
-        cy.get('#toconvert').clear().type('\\r');
+        cy.clearAndType('#toconvert', '\\r');
         cy.get('#b14').click();
         // \r gets converted
         cy.get('#converted').invoke('val').should('eq', '\n');
@@ -471,7 +472,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\uabcd \\u00abcd');
+        cy.clearAndType('#toconvert', '\\uabcd \\u00abcd');
         cy.get('#b15').click();
         cy.get('#converted').invoke('val').should('eq', 'ꯍ ꯍ');
       }
@@ -486,7 +487,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\\\ \\a');
+        cy.clearAndType('#toconvert', '\\\\ \\a');
         cy.get('#b15').click();
         cy.get('#converted').invoke('val').should('eq', '\\ \\a');
       }
@@ -501,7 +502,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('\\00abcd');
+        cy.clearAndType('#toconvert', '\\00abcd');
         cy.get('#b16').click();
         cy.get('#converted').invoke('val').should('eq', 'ꯍ');
       }
@@ -519,7 +520,7 @@ describe('Conversion', function () {
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
           ).contains('Conversion').click();
           cy.get('#converted').clear();
-          cy.get('#toconvert').clear().type('é');
+          cy.clearAndType('#toconvert', 'é');
           cy.get('#b17').click();
           cy.get('#converted').invoke('val').should(
             'eq', '\\C{LATIN SMALL LETTER E WITH ACUTE}'
@@ -544,7 +545,7 @@ describe('Conversion', function () {
           ).contains('Conversion').click();
 
           cy.get('#converted').clear();
-          cy.get('#toconvert').clear().type('a');
+          cy.clearAndType('#toconvert', 'a');
           cy.get('#b17').click();
           cy.get('#converted').invoke('val').should(
             'eq', 'a'
@@ -560,7 +561,7 @@ describe('Conversion', function () {
           ).contains('Conversion').click();
 
           cy.get('#converted').clear();
-          cy.get('#toconvert').clear().type('a');
+          cy.clearAndType('#toconvert', 'a');
           cy.get('#b17').click();
           cy.get('#converted').invoke('val').should(
             'eq', '\\C{LATIN SMALL LETTER A}'
@@ -579,7 +580,7 @@ describe('Conversion', function () {
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
           ).contains('Conversion').click();
           cy.get('#converted').clear();
-          cy.get('#toconvert').clear().type('가');
+          cy.clearAndType('#toconvert', '가');
           cy.get('#b17').click();
           cy.get('#converted').invoke('val').should(
             'eq', '\\C{GA}'
@@ -600,9 +601,11 @@ describe('Conversion', function () {
           cy.get('#converted').clear();
           // Split up typing to avoid being interpreted by Cypress
           //  as keystroke
-          cy.get('#toconvert').clear().type(
+          cy.clearAndType(
+            '#toconvert',
             '\\C{'
-          ).type('LATIN SMALL LETTER E WITH ACUTE}');
+          );
+          cy.get('#toconvert').type('LATIN SMALL LETTER E WITH ACUTE}');
           cy.get('#b18').click();
           cy.get('#converted').invoke('val').should('eq', 'é');
         }
@@ -615,15 +618,21 @@ describe('Conversion', function () {
       visitBrowserAction();
       cy.get('h1.tab:nth-of-type(2)').contains('Conversion').click();
 
-      cy.get('#toconvert').clear().type('\\C{').type('GAG}');
+      cy.clearAndType('#toconvert', '\\C{');
+      cy.get('#toconvert').type('GAG}');
+
       cy.get('#b18').click();
       cy.get('#converted').invoke('val').should('eq', 'ᄀ');
 
-      cy.get('#toconvert').clear().type('\\C{').type('GGEOGG}');
+      cy.clearAndType('#toconvert', '\\C{');
+      cy.get('#toconvert').type('GGEOGG}');
+
       cy.get('#b18').click();
       cy.get('#converted').invoke('val').should('eq', '꺾');
 
-      cy.get('#toconvert').clear().type('\\C{').type('GGWAEGG}');
+      cy.clearAndType('#toconvert', '\\C{');
+      cy.get('#toconvert').type('GGWAEGG}');
+
       cy.get('#b18').click();
       cy.get('#converted').invoke('val').should('eq', '꽦');
     });
@@ -632,11 +641,15 @@ describe('Conversion', function () {
       visitBrowserAction();
       cy.get('h1.tab:nth-of-type(2)').contains('Conversion').click();
 
-      cy.get('#toconvert').clear().type('\\C{').type('GAGGGGGG}');
+      cy.clearAndType('#toconvert', '\\C{');
+      cy.get('#toconvert').type('GAGGGGGG}');
+
       cy.get('#b18').click();
       cy.get('#converted').invoke('val').should('eq', '�');
 
-      cy.get('#toconvert').clear().type('\\C{').type('IIIII}');
+      cy.clearAndType('#toconvert', '\\C{');
+      cy.get('#toconvert').type('IIIII}');
+
       cy.get('#b18').click();
       cy.get('#converted').invoke('val').should('eq', '�');
     });
@@ -649,7 +662,7 @@ describe('Conversion', function () {
       cy.get('#cssUnambiguous').check();
       cy.get('h1.tab:nth-of-type(2)').contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('é');
+      cy.clearAndType('#toconvert', 'é');
       cy.get('#b8').click();
       cy.get('#converted').invoke('val').should('eq', '\\0000e9');
     });
@@ -661,7 +674,7 @@ describe('Conversion', function () {
       cy.get('#CSSWhitespace').select('t');
       cy.get('h1.tab:nth-of-type(2)').contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('é');
+      cy.clearAndType('#toconvert', 'é');
       cy.get('#b8').click();
       cy.get('#converted').invoke('val').should('eq', '\\e9\t');
     });
@@ -679,7 +692,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b3').click();
         cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -692,7 +705,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b3').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
 
@@ -720,7 +733,7 @@ describe('Conversion', function () {
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
           ).contains('Conversion').click();
           cy.get('#converted').clear();
-          cy.get('#toconvert').clear().type('& test');
+          cy.clearAndType('#toconvert', '& test');
           cy.get('#b1').click();
           cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -733,7 +746,7 @@ describe('Conversion', function () {
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
           ).contains('Conversion').click();
           cy.get('#converted').clear();
-          cy.get('#toconvert').clear().type('& test');
+          cy.clearAndType('#toconvert', '& test');
           cy.get('#b1').click();
           cy.get('#converted').invoke('val').should('eq', '&amp; test');
         }
@@ -751,7 +764,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b2').click();
         cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -764,7 +777,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b2').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
       });
@@ -781,7 +794,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b4').click();
         cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -794,7 +807,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b4').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
       });
@@ -811,7 +824,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b5').click();
         cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -824,7 +837,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b5').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
       });
@@ -841,7 +854,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b9').click();
         cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -854,7 +867,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b9').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
       });
@@ -871,7 +884,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b10').click();
         cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -884,7 +897,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b10').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
       });
@@ -903,7 +916,7 @@ describe('Conversion', function () {
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
           ).contains('Conversion').click();
           cy.get('#converted').clear();
-          cy.get('#toconvert').clear().type('& test');
+          cy.clearAndType('#toconvert', '& test');
           cy.get('#b11').click();
           cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -916,7 +929,7 @@ describe('Conversion', function () {
             '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
           ).contains('Conversion').click();
           cy.get('#converted').clear();
-          cy.get('#toconvert').clear().type('& test');
+          cy.clearAndType('#toconvert', '& test');
           cy.get('#b11').click();
           cy.get('#converted').invoke('val').should('eq', '&amp; test');
         }
@@ -934,7 +947,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b12').click();
         cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -947,7 +960,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b12').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
       });
@@ -964,7 +977,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b13').click();
         cy.get('#converted').invoke('val').should('eq', '& test');
 
@@ -977,7 +990,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('& test');
+        cy.clearAndType('#toconvert', '& test');
         cy.get('#b13').click();
         cy.get('#converted').invoke('val').should('eq', '&amp; test');
       });
@@ -995,7 +1008,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('& test');
+      cy.clearAndType('#toconvert', '& test');
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', '&amp; test');
 
@@ -1008,7 +1021,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('& test');
+      cy.clearAndType('#toconvert', '& test');
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', '& test');
     });
@@ -1026,7 +1039,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&lt; &amp;');
+      cy.clearAndType('#toconvert', '&lt; &amp;');
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', '&amp;lt; &amp;amp;');
 
@@ -1039,7 +1052,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&lt; &amp;');
+      cy.clearAndType('#toconvert', '&lt; &amp;');
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', '&lt; &amp;');
     });
@@ -1056,7 +1069,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type("'");
+      cy.clearAndType('#toconvert', "'");
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', "'");
 
@@ -1069,7 +1082,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type("'");
+      cy.clearAndType('#toconvert', "'");
       cy.get('#b5').click();
       cy.get('#converted').invoke('val').should('eq', '&apos;');
     });
@@ -1086,7 +1099,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('&#39; &#x27;');
+      cy.clearAndType('#toconvert', '&#39; &#x27;');
       cy.get('#b2').click();
       cy.get('#converted').invoke('val').should('eq', '&apos; &apos;');
     });
@@ -1103,7 +1116,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('abc');
+      cy.clearAndType('#toconvert', 'abc');
       cy.get('#b3').click();
       cy.get('#converted').invoke('val').should('eq', 'abc');
 
@@ -1116,7 +1129,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('abc');
+      cy.clearAndType('#toconvert', 'abc');
       cy.get('#b3').click();
       cy.get('#converted').invoke('val').should('eq', '&#97;&#98;&#99;');
     });
@@ -1133,7 +1146,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('ꯍ');
+      cy.clearAndType('#toconvert', 'ꯍ');
       cy.get('#b4').click();
       cy.get('#converted').invoke('val').should('eq', '&#xabcd;');
 
@@ -1146,7 +1159,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
       cy.get('#converted').clear();
-      cy.get('#toconvert').clear().type('ꯍ');
+      cy.clearAndType('#toconvert', 'ꯍ');
       cy.get('#b4').click();
       cy.get('#converted').invoke('val').should('eq', '&#xABCD;');
     });
@@ -1165,7 +1178,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.get('#toconvert').clear().type('🔂');
+        cy.clearAndType('#toconvert', '🔂');
         cy.get('#b4').click();
         cy.get('#converted').invoke('val').should('eq', '&#x1F502;');
       }
@@ -1255,13 +1268,13 @@ describe('Conversion', function () {
       function () {
         visitBrowserAction();
         cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-        cy.get('#DTDtextbox').clear().type('<!ENTITY a "aaa">');
+        cy.clearAndType('#DTDtextbox', '<!ENTITY a "aaa">');
 
         cy.get(
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
 
-        cy.get('#toconvert').clear().type('Some text: aaa');
+        cy.clearAndType('#toconvert', 'Some text: aaa');
         cy.get('#b5').click();
         cy.get('#converted').invoke('val').should('eq', 'Some text: &a;');
       }
@@ -1599,7 +1612,7 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
       ).contains('Conversion').click();
 
-      cy.get('#converted').clear().type('some text');
+      cy.clearAndType('#converted', 'some text');
 
       cy.get('#moveconvertedup').click();
 

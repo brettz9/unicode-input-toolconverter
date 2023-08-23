@@ -19,7 +19,7 @@ const minutes = 60 * 1000;
  *   "log"|"error"|"beginInstall"|"finishedInstall"|"beginActivate"|
  *   "finishedActivate"
  * } args.type
- * @param {string} [args.message=type]
+ * @param {string} [args.message]
  * @returns {Promise<void>}
  */
 async function post ({type, message = type}) {
@@ -79,7 +79,7 @@ function logError (error, ...messages) {
  * @param {DelayCallback} cb
  * @param {PositiveInteger} timeout
  * @param {string} errMessage
- * @param {PositiveInteger} [time=0]
+ * @param {PositiveInteger} [time]
  * @returns {Promise<void>}
  */
 async function tryAndRetry (cb, timeout, errMessage, time = 0) {

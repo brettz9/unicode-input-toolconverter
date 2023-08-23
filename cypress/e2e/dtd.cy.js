@@ -27,7 +27,7 @@ describe('DTD page', function () {
   it('supports a 1-length entity', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-    cy.get('#DTDtextbox').clear().type('<!ENTITY a "b">');
+    cy.clearAndType('#DTDtextbox', '<!ENTITY a "b">');
     cy.get('h1.tab:nth-of-type(1)').contains('Charts').click();
     cy.get('#startset').type('b');
     cy.get('.entity > a').contains('&a;');
@@ -36,20 +36,20 @@ describe('DTD page', function () {
   it('supports a decimal entity', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-    cy.get('#DTDtextbox').clear().type('<!ENTITY a "&#1234;">');
+    cy.clearAndType('#DTDtextbox', '<!ENTITY a "&#1234;">');
     cy.get('h1.tab:nth-of-type(1)').contains('Charts').click();
-    cy.get('#startset').clear().type('Ӓ');
+    cy.clearAndType('#startset', 'Ӓ');
     cy.get('.entity > a').contains('&a;');
   });
 
   it('supports appending to existing HTML entities', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
-    cy.get('#DTDtextbox').clear().type('<!ENTITY a "&#xabcd;">').blur();
+    cy.clearTypeAndBlur('#DTDtextbox', '<!ENTITY a "&#xabcd;">');
     cy.get('h1.tab:nth-of-type(1)').contains('Charts').click();
-    cy.get('#startset').clear().type('é').blur();
+    cy.clearTypeAndBlur('#startset', 'é');
     cy.get('.entity > a').should('exist');
-    cy.get('#startset').clear().type('ꯍ').blur();
+    cy.clearTypeAndBlur('#startset', 'ꯍ');
     cy.get('.entity > a').contains('&a;');
   });
 
@@ -57,11 +57,11 @@ describe('DTD page', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
     cy.get('#appendtohtmldtd').click();
-    cy.get('#DTDtextbox').clear().type('<!ENTITY a "&#xabcd;">');
+    cy.clearAndType('#DTDtextbox', '<!ENTITY a "&#xabcd;">');
     cy.get('h1.tab:nth-of-type(1)').contains('Charts').click();
-    cy.get('#startset').clear().type('é');
+    cy.clearAndType('#startset', 'é');
     cy.get('.entity > a').should('not.exist');
-    cy.get('#startset').clear().type('ꯍ');
+    cy.clearAndType('#startset', 'ꯍ');
     cy.get('.entity > a').contains('&a;');
   });
 
@@ -69,7 +69,7 @@ describe('DTD page', function () {
     visitBrowserAction();
     cy.get('h1.tab:nth-of-type(4)').contains('DTD').click();
     cy.get('#appendtohtmldtd').check();
-    cy.get('#DTDtextbox').clear().type('<!ENTITY a "&#xabcd;">').blur();
+    cy.clearTypeAndBlur('#DTDtextbox', '<!ENTITY a "&#xabcd;">');
 
     cy.reload(true);
     // eslint-disable-next-line cypress/no-unnecessary-waiting -- Load

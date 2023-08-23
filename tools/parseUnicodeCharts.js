@@ -16,8 +16,8 @@ const {JSDOM} = jsdom;
  * @returns {string}
  */
 function getChromeSafeLocaleKey (key) {
-  return key.replace(/\\n/gu, '').replace(/\s+/gu, ' ') // Getting some extra WS
-    .replace(/\W/gu, '_');
+  return key.replaceAll('\\n', '').replaceAll(/\s+/gu, ' ') // Getting some extra WS
+    .replaceAll(/\W/gu, '_');
 }
 
 let text;
@@ -236,7 +236,7 @@ function unicodeScripts (_) {
       });
 
       const newScriptNames = [];
-      const ret = JSON.stringify(['ul', jamilih], null, 2).replace(
+      const ret = JSON.stringify(['ul', jamilih], null, 2).replaceAll(
         new RegExp(
           '^(\\s*)"' + uniqueTextPlaceholder + '(.*)"(,)?$',
           'gum'
@@ -347,7 +347,7 @@ privateuse = true;`
 /**
  * @param {PlainObject} cfg
  * @param {string} cfg.directory
- * @param {string} [cfg.basePath="./"]
+ * @param {string} [cfg.basePath]
  * @param {{path, keys}} cfg.results
  * @returns {Promise<{path, keys}|void>}
  */

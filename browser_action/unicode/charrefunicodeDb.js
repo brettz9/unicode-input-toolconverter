@@ -8,7 +8,7 @@ class UnicodeDB {
   /**
    * @param {PlainObject} cfg
    * @param {string} cfg.name
-   * @param {PositiveInteger} [cfg.version=1]
+   * @param {PositiveInteger} [cfg.version]
    */
   constructor ({name = 'unicode', version = 1} = {}) {
     Object.assign(this, {name, version});
@@ -54,7 +54,7 @@ class UnicodeDB {
   /* eslint-enable class-methods-use-this -- Abstract */
 
   /**
-   * @param {PlainObject} [cfg={}]
+   * @param {object} [cfg]
    * @param {JSON} [cfg.updateUnicodeData]
    * @param {GenericFunction} [cfg.versionchange]
    * @returns {Promise<void>}
