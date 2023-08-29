@@ -55,6 +55,8 @@ but XUL support was dropped in Firefox.
 
 ## Lower-priority to-dos
 
+1. Could display scripts on map (or col. browser) of which are RTL, what
+    languages and scripts herald from that region, etc.
 1. When browsing by script, have **option to update script location** when one
     uses next/prev
 1. `unicode` or `utils` modules could be **moved to own npm package**
