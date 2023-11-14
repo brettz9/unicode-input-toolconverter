@@ -99,8 +99,8 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
   }
 
   jml(textReceptacle, {
-    rows: rows * 20 - 10,
-    cols: cols * 20 - 10
+    rows: (rows * 20) - 10,
+    cols: (cols * 20) - 10
   });
   chartContainer.textContent = '';
 

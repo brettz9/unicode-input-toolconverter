@@ -11,14 +11,14 @@ export function visitBrowserAction (options, args) {
         : ''),
     options
   );
-  // eslint-disable-next-line max-len -- Long
+  // eslint-disable-next-line @stylistic/max-len -- Long
   // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading events async
   cy.wait(500);
 
   if (args?.some(([arg]) => {
     return arg === 'characterDescriptions';
   })) {
-    // eslint-disable-next-line max-len -- Long
+    // eslint-disable-next-line @stylistic/max-len -- Long
     // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading database async
     cy.wait(3000);
   }

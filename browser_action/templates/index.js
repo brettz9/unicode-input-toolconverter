@@ -1,3 +1,4 @@
+/* eslint-disable camelcase -- i18n */
 import {jml, body, $, $$, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
 import {fill} from '../templateUtils/fill.js';
 import {safeLink} from '../templateUtils/validation.js';
@@ -324,8 +325,8 @@ const indexTemplate = function ({_, fonts}) {
                               $('#insertText').style.fontFamily = val;
                               // Form elements don't inherit, so find these
                               //   manually
-                              $$('#chart_table button[name="unicode"]')
-                                .forEach((button) => {
+                              $$('#chart_table button[name="unicode"]').
+                                forEach((button) => {
                                   button.style.fontFamily = val;
                                 });
                             }

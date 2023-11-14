@@ -81,10 +81,10 @@ class UnicodeDB {
         }
         resolve(this.db);
       });
-      req.addEventListener('error', (ev) => {
+      req.addEventListener('error', () => {
         reject(req.error);
       });
-      req.addEventListener('blocked', (ev) => {
+      req.addEventListener('blocked', () => {
         reject(new Error('blocked'));
       });
       /* eslint-enable promise/avoid-new -- No Promise API */
@@ -119,7 +119,7 @@ export class UnihanDatabase extends UnicodeDB {
       request.addEventListener('success', () => {
         resolve(request.result?.columns);
       });
-      request.addEventListener('error', (ev) => {
+      request.addEventListener('error', () => {
         reject(request.error);
       });
     });
@@ -243,7 +243,7 @@ export class UnicodeDatabase extends UnicodeDB {
         }
         resolve(request.result);
       });
-      request.addEventListener('error', (ev) => {
+      request.addEventListener('error', () => {
         reject(request.error);
       });
     });

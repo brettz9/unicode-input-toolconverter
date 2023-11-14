@@ -22,8 +22,8 @@ export const convertEncoding = (out) => {
   const os = cnv.convertToInputStream(toconvert);
 
   // Fix: could customize
-  const replacementChar = Ci
-    .nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER;
+  const replacementChar = Ci.
+    nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER;
 
   const is = Cc[
     '@mozilla.org/intl/converter-input-stream;1'
@@ -54,10 +54,9 @@ export const convertEncoding = (out) => {
 */
 function setupEncodingEvents ({_}) {
   /**
-   * @param {Event} e
    * @returns {void}
    */
-  function encodingListener (e) {
+  function encodingListener () {
     charrefClassChange(this);
     try {
       convertEncoding($('#toconvert').value);

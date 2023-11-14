@@ -1,3 +1,4 @@
+/* eslint-disable camelcase -- Temporary */
 // See https://unicode.org/Public/UNIDATA/ for data use
 
 import {$, $$, jml} from '../vendor/jamilih/dist/jml-es.js';
@@ -367,7 +368,7 @@ const unicodecharref = {
     }
 
     this.setupBoolChecked(...Object.entries(getPrefDefaults()).filter((
-      [key, value]
+      [, value]
     ) => {
       return typeof value === 'boolean';
     }).map(([key]) => key));
@@ -746,7 +747,7 @@ const unicodecharref = {
         $('#_detailedCJKView' + i).value = '';
       }
       for (const prop of this.Unihan) {
-        // eslint-disable-next-line max-len -- Long
+        // eslint-disable-next-line @stylistic/max-len -- Long
         /* istanbul ignore next -- May not be generated based on `showComplexWindow` */
         if ($('#searchk' + prop)) {
           $('#searchk' + prop).value = '';
@@ -929,7 +930,9 @@ const unicodecharref = {
         $('#displayUnicodeDesc2').value = notfoundval;
       }
       for (const [j, unicodeField] of unicodecharref.Unicode.entries()) {
-        if (unicodeField === 'Unicode_1_Name') { continue; }
+        if (unicodeField === 'Unicode_1_Name') {
+          continue;
+        }
         try {
           $('#_detailedView' + j).value = '';
           $('#_detailedView' + j).parentNode.hidden = hideMissing;
@@ -1013,7 +1016,9 @@ const unicodecharref = {
 
           if (!cjkText || hangul) {
             for (const [j, unicodeField] of unicodecharref.Unicode.entries()) {
-              if (unicodeField === 'Unicode_1_Name') { continue; }
+              if (unicodeField === 'Unicode_1_Name') {
+                continue;
+              }
               try {
                 $('#_detailedView' + j).value = '';
                 $('#_detailedView' + j).parentNode.hidden = hideMissing;

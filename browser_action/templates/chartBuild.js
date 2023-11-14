@@ -5,7 +5,7 @@ import unicodecharref from '../unicodecharref.js';
 let idgen = 0;
 const chartBuildTemplate = function ({
   _, rows, cols, charrefunicodeConverter, current,
-  resetCurrentStartCharCodeIfOutOfBounds, descriptsOrOnlyEnts,
+  resetCurrentStartCharCodeIfOutOfBounds, // descriptsOrOnlyEnts,
   q, textReceptacle, entyes, chartBuild, descripts,
   chartContainer, arr,
   setPref, insertText, buttonyes, font, lang, prev,
@@ -46,8 +46,8 @@ const chartBuildTemplate = function ({
         }
         resetCurrentStartCharCodeIfOutOfBounds();
 
-        const charRefIdx = charrefunicodeConverter
-          .numericCharacterReferences.indexOf(
+        const charRefIdx = charrefunicodeConverter.
+          numericCharacterReferences.indexOf(
             // We've now had to add 1 here for some reason
             current.startCharCode
           );
@@ -61,7 +61,7 @@ const chartBuildTemplate = function ({
           class: (hasEntity ? 'entity ' : '') + 'unicodetablecell',
           $on: {
             mouseover: (function (_entity, startCharCode) {
-              return function (e) {
+              return function (/* e */) {
                 if (!$('#chart_table').$noGetDescripts) {
                   unicodecharref.getUnicodeDescription(
                     _entity,
@@ -70,7 +70,7 @@ const chartBuildTemplate = function ({
                   );
                 }
               };
-            })(entity, current.startCharCode),
+            }(entity, current.startCharCode)),
             // trying dblclick worked but might not be obvious to
             //   user and single clicks still activated; relying on
             //   right button doesn't work
@@ -104,9 +104,11 @@ const chartBuildTemplate = function ({
               // Todo: Add substitute character if detect is an invisible?
               displayTypes[type](current.startCharCode)
             ]];
-            const container = isFinal ? jml('div', {
-              class: 'centered'
-            }, [button]) : button;
+            const container = isFinal
+              ? jml('div', {
+                class: 'centered'
+              }, [button])
+              : button;
             return [
               isMiddle
                 ? nbsp.repeat(3)

@@ -65,7 +65,7 @@ async function characterSelection ({
       //   this scroll left
       $('#chart_selectchar_persist').scrollLeft = 2000;
     },
-    async current ($item, $cols) {
+    async current ($item /* , $cols */) {
       if (!$item) { // Todo: Is this an error?
         return;
       }

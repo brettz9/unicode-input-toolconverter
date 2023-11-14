@@ -2,7 +2,10 @@ import {$} from '../vendor/jamilih/dist/jml-es.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 
 let charrefunicodeConverter, getPref;
-export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
+export const shareVars = ({
+  // _: l10n,
+  charrefunicodeConverter: _uc
+}) => {
   charrefunicodeConverter = _uc;
   ({getPref} = getUnicodeDefaults());
 };

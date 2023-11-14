@@ -171,7 +171,7 @@ describe('Main page', function () {
     cy.get('h1.tab:nth-of-type(1)').contains('Charts').click();
     cy.reload(true);
 
-    // eslint-disable-next-line max-len -- Long
+    // eslint-disable-next-line @stylistic/max-len -- Long
     // eslint-disable-next-line cypress/no-unnecessary-waiting -- Wait until loads
     cy.wait(500);
     cy.get('#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)').contains(
@@ -240,7 +240,7 @@ describe('Main page', function () {
       ['fonts', 1]
     ]);
 
-    // eslint-disable-next-line max-len -- Long
+    // eslint-disable-next-line @stylistic/max-len -- Long
     // eslint-disable-next-line cypress/no-unnecessary-waiting -- Needs longer with fonts
     cy.wait(4000);
 

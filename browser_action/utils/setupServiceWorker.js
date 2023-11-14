@@ -42,7 +42,7 @@ async function setupServiceWorker (
     registration.update();
   }, hourly);
 
-  registration.addEventListener('updatefound', (e) => {
+  registration.addEventListener('updatefound', (/* e */) => {
     const newWorker = registration.installing;
 
     // statechange won't catch this installing event as already installing

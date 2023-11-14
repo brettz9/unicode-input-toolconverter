@@ -8,7 +8,7 @@ import semicolonSeparatedToArray from '../utils/semicolonSeparatedToArray.js';
  */
 function deleteDatabase (db) {
   // eslint-disable-next-line promise/avoid-new -- No API
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const req = indexedDB.deleteDatabase(db);
     req.addEventListener('success', () => {
       resolve();
@@ -33,10 +33,9 @@ function deleteDatabase (db) {
 /**
  * @param {PlainObject} cfg
  * @param {string} cfg.namespace
- * @param {Logger} cfg.log
  * @returns {Promise<void>}
  */
-async function activateCallback ({namespace, log}) {
+async function activateCallback ({namespace /* , log */}) {
   await deleteDatabase(namespace); // Chrome sometimes doesn't complete
   const charrefunicodeDb = new UnicodeDatabase({
     name: namespace,

@@ -599,7 +599,7 @@ export const getUnicodeConverter = () => {
       const unicodeVals = await Promise.all(promises);
 
       let i = -1;
-      return toconvert.replaceAll(/\\C\{([^}]*)\}/gu, (n, n1) => {
+      return toconvert.replaceAll(/\\C\{([^}]*)\}/gu, () => {
         ++i;
         return unicodeVals[i]
           ? String.fromCodePoint(unicodeVals[i])

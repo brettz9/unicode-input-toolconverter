@@ -48,9 +48,11 @@ function decomposeHangul (syllableCode) {
   const result = [];
   const l = lBase + Math.floor(sIndex / nCount);
   const v = vBase + Math.floor((sIndex % nCount) / tCount);
-  const t = tBase + sIndex % tCount;
+  const t = tBase + (sIndex % tCount);
   result.push(String.fromCodePoint(l), String.fromCodePoint(v));
-  if (t !== tBase) { result.push(String.fromCodePoint(t)); }
+  if (t !== tBase) {
+    result.push(String.fromCodePoint(t));
+  }
   return result;
 }
 /**
@@ -60,7 +62,9 @@ function decomposeHangul (syllableCode) {
  */
 function composeHangul (source) {
   const len = source.length;
-  if (len === 0) { return ''; }
+  if (len === 0) {
+    return '';
+  }
   const result = [];
   const chars = [...source];
 
@@ -77,7 +81,7 @@ function composeHangul (source) {
       if (vIndex > 0 && vIndex < vCount) {
         // make syllable of form LV
         last = String.fromCodePoint(
-          sBase + (lIndex * vCount + vIndex) * tCount
+          sBase + (((lIndex * vCount) + vIndex) * tCount)
         );
         result[result.length - 1] = last; // reset last
         return; // discard ch

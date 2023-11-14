@@ -63,7 +63,7 @@ class AsyncStreamIterable {
   * @returns {void}
   * @yields {Integer}
   */
-  async * [Symbol.asyncIterator] () {
+  async *[Symbol.asyncIterator] () {
     const reader = this._stream.getReader();
     try {
       while (true) {

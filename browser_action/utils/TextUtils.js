@@ -14,7 +14,9 @@ function insertIntoOrOverExisting ({
   const start = textReceptacle.selectionStart;
   const end = textReceptacle.selectionEnd;
 
-  if (focusIn) textReceptacle.focus();
+  if (focusIn) {
+    textReceptacle.focus();
+  }
   const pre = textReceptacle.value.slice(0, Math.max(0, start));
   const post = textReceptacle.value.slice(end, len);
   textReceptacle.value = pre + value + post;

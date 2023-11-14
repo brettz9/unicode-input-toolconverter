@@ -1,6 +1,6 @@
 // Todo: We might consider auto-building these fields in another file and/or
 //   merging with `unicodeFieldInfo.js`.
-/* eslint-disable max-len -- Long */
+/* eslint-disable @stylistic/max-len -- Long */
 const fields = ['code_pt', 'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCCCII', 'kCNS1986', 'kCNS1992', 'kCangjie', 'kCantonese',
   'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon',
   'kDefinition', 'kEACC', 'kFenn', 'kFennIndex', 'kFourCornerCode', 'kFrequency', 'kGB0', 'kGB1', 'kGB3',
@@ -15,7 +15,7 @@ const fields = ['code_pt', 'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBig
   'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant',
   'kUnihanCore2020', 'kIRG_UKSource', 'kIRG_SSource', 'kTGH', 'kKoreanName', 'kJa', 'kJoyoKanji', 'kKoreanEducationHanja',
   'kJinmeiyoKanji', 'kTGHZ2013', 'kSpoofingVariant', 'kStrange'];
-/* eslint-enable max-len -- Long */
+/* eslint-enable @stylistic/max-len -- Long */
 
 /**
 * @param {string[]} scriptFileAsStrings

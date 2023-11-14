@@ -32,7 +32,7 @@ export const makeTabBox = function (sel) {
         }
       });
     };
-    tabbox.$selectedTab = function (tab) {
+    tabbox.$selectedTab = function (/* tab */) {
       return tabbox.$getTabPanels().find(({dataset: {selected}}) => {
         return selected;
       });

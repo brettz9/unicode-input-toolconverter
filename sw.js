@@ -85,7 +85,7 @@ function logError (error, ...messages) {
 async function tryAndRetry (cb, timeout, errMessage, time = 0) {
   time++;
   try {
-    // eslint-disable-next-line max-len -- Long
+    // eslint-disable-next-line @stylistic/max-len -- Long
     // eslint-disable-next-line promise/prefer-await-to-callbacks -- Needed for retries
     await cb(time);
     return undefined;
@@ -93,7 +93,7 @@ async function tryAndRetry (cb, timeout, errMessage, time = 0) {
     console.log('errrr', err);
     logError(err, err.message || errMessage);
     // eslint-disable-next-line promise/avoid-new -- Need timeout
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         resolve(tryAndRetry(cb, timeout, errMessage, time));
       }, timeout);
