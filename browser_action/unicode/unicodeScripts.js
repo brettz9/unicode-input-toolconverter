@@ -2719,6 +2719,20 @@ function unicodeScripts (_) {
                             [
                               "li",
                               {
+                                "title": "2EBF0–2EE5F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("CJK_Extension_I")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
                                 "title": ""
                               },
                               [
