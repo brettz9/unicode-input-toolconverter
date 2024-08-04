@@ -8,6 +8,7 @@ describe('Main page', function () {
     }
   });
 
+  // eslint-disable-next-line mocha/no-sibling-hooks -- One is Cypress-based
   beforeEach(() => {
     return cy.clearIndexedDB();
   });
@@ -18,32 +19,25 @@ describe('Main page', function () {
       ['characterDescriptions', '1']
     ]);
     cy.get('#unicodeTabBox > .tabs > h1.tab:nth-of-type(3)').click();
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.get('#UnihanInstalled').then(($el) => {
       return Cypress.dom.isHidden($el);
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       cy.on('window:alert', (t) => {
         expect(t).to.contains('Finished download');
       });
       return cy.get('#DownloadButtonBox button').click();
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       return cy.get('#UnihanInstalled', {
         timeout: 20000
       }).contains('database installed');
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       // eslint-disable-next-line cypress/no-unnecessary-waiting -- Loading
       cy.wait(8000);
       return cy.get('#closeDownloadProgressBox').click();
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       return cy.get('#DownloadProgressBox');
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(($el) => {
       return Cypress.dom.isHidden($el);
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       visitBrowserAction(undefined, [
         ['customProtocol', 'web+unicode:searchkDefinition?string=woman']
@@ -52,7 +46,6 @@ describe('Main page', function () {
         'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
         '> div.centered > button'
       ).invoke('html').should('eq', '㚫');
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       visitBrowserAction();
 
@@ -68,7 +61,6 @@ describe('Main page', function () {
         'tr:nth-of-type(3) .unicodetablecell:nth-of-type(1) ' +
         '> div.centered > button'
       ).invoke('html').should('eq', '㚫');
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       cy.get('#viewTabs > .tabs > .tab:nth-of-type(3)').click();
 
@@ -94,7 +86,6 @@ describe('Main page', function () {
       cy.get('#_detailedCJKView6').invoke('val').should('eq', 'TM');
 
       return undefined;
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       [
         [0x3400, 'hillock or mound'],
@@ -111,7 +102,6 @@ describe('Main page', function () {
         cy.get('#displayUnicodeDesc').invoke('val').should('contain', desc);
       });
       return undefined;
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     }).then(() => {
       cy.get('h1[data-label="Detailed view"]').click();
       cy.clearAndType('#startset', '㐀');
@@ -185,7 +175,6 @@ describe('Main page', function () {
   //  `window.open` instead, but support appears poor:
   //  https://developer.mozilla.org/en-US/docs/Web/API/Window/open
   it.skip('Remembers window sizing if opened in dialog', function () {
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.window().then((win) => {
       // eslint-disable-next-line promise/avoid-new -- No API
       return new Promise((resolve, reject) => {
@@ -222,7 +211,6 @@ describe('Main page', function () {
       ['serviceWorker', 1]
     ]);
 
-    // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
     return cy.window().then((win) => {
       return expect(win.navigator.serviceWorker.controller).to.not.be.null;
     });

@@ -152,7 +152,7 @@ export const getUnicodeConverter = () => {
       //   depending on if length is desired as 4 or 6)
       if (type === 'javascript' || type === 'php') {
         xstyle = '';
-        beginEscape = '\\u';
+        beginEscape = String.raw`\u`;
         endEscape = '';
       } else if (type === 'css') {
         cssUnambiguous = await getPref('cssUnambiguous');
@@ -579,7 +579,7 @@ export const getUnicodeConverter = () => {
         if (codePoint >= 128 || asciiLt128) {
           const charDesc = await this.getCharDescForCodePoint(codePoint);
           if (charDesc) { // Skip if no description in database
-            return '\\C{' + charDesc + '}';
+            return String.raw`\C{` + charDesc + '}';
           }
         }
         return ch;

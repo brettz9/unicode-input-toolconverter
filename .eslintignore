@@ -1,9 +1,0 @@
-polyfills/browser-polyfill.min.js
-old
-vendor
-lib/misc-to-move
-browser_action/unicode/unicodeScripts.js
-download/UCD
-coverage
-browser_action/index.iife.min.js
-browser_action/index.instrumented.iife.min.js

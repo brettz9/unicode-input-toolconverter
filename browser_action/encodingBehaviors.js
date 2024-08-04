@@ -60,7 +60,7 @@ function setupEncodingEvents ({_}) {
     charrefClassChange(this);
     try {
       convertEncoding($('#toconvert').value);
-    } catch (err) {
+    } catch {
       alert(_('chars_could_not_be_converted'));
     }
   }

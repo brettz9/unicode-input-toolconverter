@@ -16,7 +16,9 @@ const {JSDOM} = jsdom;
  * @returns {string}
  */
 function getChromeSafeLocaleKey (key) {
-  return key.replaceAll('\\n', '').replaceAll(/\s+/gu, ' '). // Getting some extra WS
+  return key.replaceAll(
+    String.raw`\n`, ''
+  ).replaceAll(/\s+/gu, ' '). // Getting some extra WS
     replaceAll(/\W/gu, '_');
 }
 
@@ -244,7 +246,7 @@ function unicodeScripts (_) {
       const newScriptNames = [];
       const ret = JSON.stringify(['ul', jamilih], null, 2).replaceAll(
         new RegExp(
-          '^(\\s*)"' + uniqueTextPlaceholder + '(.*)"(,)?$',
+          String.raw`^(\s*)"` + uniqueTextPlaceholder + '(.*)"(,)?$',
           'gum'
         ),
         (_, initialWS, key, possibleComma = '') => {

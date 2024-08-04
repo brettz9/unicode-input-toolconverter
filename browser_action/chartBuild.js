@@ -18,7 +18,7 @@ const getChartBuild = async function ({
   return await chartBuild({descripts});
 };
 
-// eslint-disable-next-line import/no-mutable-exports -- Easier
+// // eslint-disable-next-line import/no-mutable-exports -- Easier
 export let lastStartCharCode;
 
 const chartBuild = async function chartBuild ({descripts} = {}) {

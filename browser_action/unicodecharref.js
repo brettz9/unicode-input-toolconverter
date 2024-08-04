@@ -886,7 +886,7 @@ const unicodecharref = {
         $('#displayUnicodeDesc2').value = kent +
           'U+' + khextemp + _('colon') + ' ' + result;
       }
-    } catch (e) {
+    } catch {
       if (surrogate) {
         $('#displayUnicodeDesc').value = kent +
           'U+' + khextemp + _('colon') + ' ' + surrogate;
@@ -972,7 +972,7 @@ const unicodecharref = {
               // Fix: display data more readably, etc.
               temp = results[i];
             /* istanbul ignore next -- Debugging */
-            } catch (e) {
+            } catch {
               /* istanbul ignore next -- Debugging */
               alert(i);
             }

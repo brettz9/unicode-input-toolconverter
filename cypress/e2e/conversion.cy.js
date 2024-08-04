@@ -134,7 +134,9 @@ describe('Conversion', function () {
       cy.get('#converted').clear();
       cy.clearAndType('#toconvert', 'é 😀');
       cy.get('#b6').click();
-      cy.get('#converted').invoke('val').should('eq', '\\u00e9 \\ud83d\\ude00');
+      cy.get('#converted').invoke('val').should(
+        'eq', String.raw`\u00e9 \ud83d\ude00`
+      );
     });
 
     it('Converts Unicode to 6-digit sequences (PHP)', function () {
@@ -146,7 +148,9 @@ describe('Conversion', function () {
       cy.get('#converted').clear();
       cy.clearAndType('#toconvert', 'é 😀');
       cy.get('#b7').click();
-      cy.get('#converted').invoke('val').should('eq', '\\u0000e9 \\u01f600');
+      cy.get('#converted').invoke('val').should(
+        'eq', String.raw`\u0000e9 \u01f600`
+      );
     });
 
     it('Converts Unicode to CSS escapes', function () {
@@ -158,7 +162,9 @@ describe('Conversion', function () {
       cy.get('#converted').clear();
       cy.clearAndType('#toconvert', 'é 😀');
       cy.get('#b8').click();
-      cy.get('#converted').invoke('val').should('eq', '\\0000e9 \\01f600');
+      cy.get('#converted').invoke('val').should(
+        'eq', String.raw`\0000e9 \01f600`
+      );
     });
 
     it('Converts HTML entities to decimal char. references', function () {
@@ -357,7 +363,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.clearAndType('#toconvert', '\\e9 a');
+        cy.clearAndType('#toconvert', String.raw`\e9 a`);
         cy.get('#b16').click();
         cy.get('#converted').invoke('val').should('eq', 'éa');
       }
@@ -372,9 +378,9 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.clearAndType('#toconvert', '\\a0 \\1');
+        cy.clearAndType('#toconvert', String.raw`\a0 \1`);
         cy.get('#b16').click();
-        cy.get('#converted').invoke('val').should('eq', '\\a0 \\1');
+        cy.get('#converted').invoke('val').should('eq', String.raw`\a0 \1`);
       }
     );
 
@@ -387,9 +393,9 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.clearAndType('#toconvert', '\\-123');
+        cy.clearAndType('#toconvert', String.raw`\-123`);
         cy.get('#b16').click();
-        cy.get('#converted').invoke('val').should('eq', '\\-123');
+        cy.get('#converted').invoke('val').should('eq', String.raw`\-123`);
       }
     );
 
@@ -417,7 +423,7 @@ describe('Conversion', function () {
       cy.get('#converted').clear();
       cy.clearAndType(
         '#toconvert',
-        '\\11FFFF \\0'
+        String.raw`\11FFFF \0`
       );
       cy.get('#b16').click();
       cy.get('#converted').invoke('val').should(
@@ -435,7 +441,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.clearAndType('#toconvert', '\\uabcd');
+        cy.clearAndType('#toconvert', String.raw`\uabcd`);
         cy.get('#b14').click();
         cy.get('#converted').invoke('val').should('eq', 'ꯍ');
       }
@@ -450,13 +456,13 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.clearAndType('#toconvert', '\\\\ a \\g \\n \\t \\f \\v \\b');
+        cy.clearAndType('#toconvert', String.raw`\\ a \g \n \t \f \v \b`);
         cy.get('#b14').click();
         cy.get('#converted').invoke('val').should(
           'eq', '\\ a \\g \n \t \f \v \b'
         );
 
-        cy.clearAndType('#toconvert', '\\r');
+        cy.clearAndType('#toconvert', String.raw`\r`);
         cy.get('#b14').click();
         // \r gets converted
         cy.get('#converted').invoke('val').should('eq', '\n');
@@ -472,7 +478,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.clearAndType('#toconvert', '\\uabcd \\u00abcd');
+        cy.clearAndType('#toconvert', String.raw`\uabcd \u00abcd`);
         cy.get('#b15').click();
         cy.get('#converted').invoke('val').should('eq', 'ꯍ ꯍ');
       }
@@ -487,9 +493,9 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.clearAndType('#toconvert', '\\\\ \\a');
+        cy.clearAndType('#toconvert', String.raw`\\ \a`);
         cy.get('#b15').click();
-        cy.get('#converted').invoke('val').should('eq', '\\ \\a');
+        cy.get('#converted').invoke('val').should('eq', String.raw`\ \a`);
       }
     );
 
@@ -502,7 +508,7 @@ describe('Conversion', function () {
           '#unicodeTabBox > .tabs > h1.tab:nth-of-type(2)'
         ).contains('Conversion').click();
         cy.get('#converted').clear();
-        cy.clearAndType('#toconvert', '\\00abcd');
+        cy.clearAndType('#toconvert', String.raw`\00abcd`);
         cy.get('#b16').click();
         cy.get('#converted').invoke('val').should('eq', 'ꯍ');
       }
@@ -523,7 +529,7 @@ describe('Conversion', function () {
           cy.clearAndType('#toconvert', 'é');
           cy.get('#b17').click();
           cy.get('#converted').invoke('val').should(
-            'eq', '\\C{LATIN SMALL LETTER E WITH ACUTE}'
+            'eq', String.raw`\C{LATIN SMALL LETTER E WITH ACUTE}`
           );
         }
       );
@@ -564,7 +570,7 @@ describe('Conversion', function () {
           cy.clearAndType('#toconvert', 'a');
           cy.get('#b17').click();
           cy.get('#converted').invoke('val').should(
-            'eq', '\\C{LATIN SMALL LETTER A}'
+            'eq', String.raw`\C{LATIN SMALL LETTER A}`
           );
         }
       );
@@ -583,7 +589,7 @@ describe('Conversion', function () {
           cy.clearAndType('#toconvert', '가');
           cy.get('#b17').click();
           cy.get('#converted').invoke('val').should(
-            'eq', '\\C{GA}'
+            'eq', String.raw`\C{GA}`
           );
         }
       );
@@ -603,7 +609,7 @@ describe('Conversion', function () {
           //  as keystroke
           cy.clearAndType(
             '#toconvert',
-            '\\C{'
+            String.raw`\C{`
           );
           cy.get('#toconvert').type('LATIN SMALL LETTER E WITH ACUTE}');
           cy.get('#b18').click();
@@ -618,19 +624,19 @@ describe('Conversion', function () {
       visitBrowserAction();
       cy.get('h1.tab:nth-of-type(2)').contains('Conversion').click();
 
-      cy.clearAndType('#toconvert', '\\C{');
+      cy.clearAndType('#toconvert', String.raw`\C{`);
       cy.get('#toconvert').type('GAG}');
 
       cy.get('#b18').click();
       cy.get('#converted').invoke('val').should('eq', 'ᄀ');
 
-      cy.clearAndType('#toconvert', '\\C{');
+      cy.clearAndType('#toconvert', String.raw`\C{`);
       cy.get('#toconvert').type('GGEOGG}');
 
       cy.get('#b18').click();
       cy.get('#converted').invoke('val').should('eq', '꺾');
 
-      cy.clearAndType('#toconvert', '\\C{');
+      cy.clearAndType('#toconvert', String.raw`\C{`);
       cy.get('#toconvert').type('GGWAEGG}');
 
       cy.get('#b18').click();
@@ -641,13 +647,13 @@ describe('Conversion', function () {
       visitBrowserAction();
       cy.get('h1.tab:nth-of-type(2)').contains('Conversion').click();
 
-      cy.clearAndType('#toconvert', '\\C{');
+      cy.clearAndType('#toconvert', String.raw`\C{`);
       cy.get('#toconvert').type('GAGGGGGG}');
 
       cy.get('#b18').click();
       cy.get('#converted').invoke('val').should('eq', '�');
 
-      cy.clearAndType('#toconvert', '\\C{');
+      cy.clearAndType('#toconvert', String.raw`\C{`);
       cy.get('#toconvert').type('IIIII}');
 
       cy.get('#b18').click();
@@ -664,7 +670,7 @@ describe('Conversion', function () {
       cy.get('#converted').clear();
       cy.clearAndType('#toconvert', 'é');
       cy.get('#b8').click();
-      cy.get('#converted').invoke('val').should('eq', '\\0000e9');
+      cy.get('#converted').invoke('val').should('eq', String.raw`\0000e9`);
     });
 
     it('Converts whitespace-separated CSS escapes', function () {
@@ -1290,7 +1296,9 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
       ).should('exist');
       cy.get('#toconvert').invoke('val').should('eq', 'Some text: é');
-      cy.get('#converted').invoke('val').should('eq', 'Some text: \\u00e9');
+      cy.get(
+        '#converted'
+      ).invoke('val').should('eq', String.raw`Some text: \u00e9`);
     });
 
     it('Performs a conversion of Unicode to 6 digit', function () {
@@ -1303,7 +1311,9 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
       ).should('exist');
       cy.get('#toconvert').invoke('val').should('eq', 'Some text: é');
-      cy.get('#converted').invoke('val').should('eq', 'Some text: \\u0000e9');
+      cy.get(
+        '#converted'
+      ).invoke('val').should('eq', String.raw`Some text: \u0000e9`);
     });
 
     it('Performs a conversion of Unicode to CSS escape', function () {
@@ -1316,7 +1326,9 @@ describe('Conversion', function () {
         '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
       ).should('exist');
       cy.get('#toconvert').invoke('val').should('eq', 'Some text: é');
-      cy.get('#converted').invoke('val').should('eq', 'Some text: \\0000e9');
+      cy.get(
+        '#converted'
+      ).invoke('val').should('eq', String.raw`Some text: \0000e9`);
     });
 
     it('Performs a conversion of entities to dec. char. ref.', function () {
@@ -1387,39 +1399,45 @@ describe('Conversion', function () {
     it('Performs a conversion of JS escapes to Unicode', function () {
       visitBrowserAction(undefined, [
         ['targetid', 'context-charrefunicode14'],
-        ['convert', 'Some text: \\u00e9']
+        ['convert', String.raw`Some text: \u00e9`]
       ]);
 
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
       ).should('exist');
-      cy.get('#toconvert').invoke('val').should('eq', 'Some text: \\u00e9');
+      cy.get(
+        '#toconvert'
+      ).invoke('val').should('eq', String.raw`Some text: \u00e9`);
       cy.get('#converted').invoke('val').should('eq', 'Some text: é');
     });
 
     it('Performs a conversion of 6-digit escapes to Unicode', function () {
       visitBrowserAction(undefined, [
         ['targetid', 'context-charrefunicode15'],
-        ['convert', 'Some text: \\u0000e9']
+        ['convert', String.raw`Some text: \u0000e9`]
       ]);
 
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
       ).should('exist');
-      cy.get('#toconvert').invoke('val').should('eq', 'Some text: \\u0000e9');
+      cy.get(
+        '#toconvert'
+      ).invoke('val').should('eq', String.raw`Some text: \u0000e9`);
       cy.get('#converted').invoke('val').should('eq', 'Some text: é');
     });
 
     it('Performs a conversion of CSS escapes to Unicode', function () {
       visitBrowserAction(undefined, [
         ['targetid', 'context-charrefunicode16'],
-        ['convert', 'Some text: \\0000e9']
+        ['convert', String.raw`Some text: \0000e9`]
       ]);
 
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
       ).should('exist');
-      cy.get('#toconvert').invoke('val').should('eq', 'Some text: \\0000e9');
+      cy.get(
+        '#toconvert'
+      ).invoke('val').should('eq', String.raw`Some text: \0000e9`);
       cy.get('#converted').invoke('val').should('eq', 'Some text: é');
     });
 
@@ -1438,7 +1456,7 @@ describe('Conversion', function () {
         'eq',
         // Split up typing to avoid being interpreted by Cypress
         //  as keystroke
-        '\\C{' + 'LATIN SMALL LETTER E WITH ACUTE}'
+        String.raw`\C{` + 'LATIN SMALL LETTER E WITH ACUTE}'
       );
     });
 
@@ -1459,7 +1477,7 @@ describe('Conversion', function () {
           'eq',
           // Split up typing to avoid being interpreted by Cypress
           //  as keystroke
-          '\\C{' + 'APPLICATION PROGRAM COMMAND (<control>)}'
+          String.raw`\C{` + 'APPLICATION PROGRAM COMMAND (<control>)}'
         );
       }
     );
@@ -1472,7 +1490,7 @@ describe('Conversion', function () {
           'convert',
           // Split up typing to avoid being interpreted by Cypress
           //  as keystroke
-          '\\C{' + 'LATIN SMALL LETTER E WITH ACUTE}'
+          String.raw`\C{` + 'LATIN SMALL LETTER E WITH ACUTE}'
         ]
       ]);
 
@@ -1483,7 +1501,7 @@ describe('Conversion', function () {
         'eq',
         // Split up typing to avoid being interpreted by Cypress
         //  as keystroke
-        '\\C{' + 'LATIN SMALL LETTER E WITH ACUTE}'
+        String.raw`\C{` + 'LATIN SMALL LETTER E WITH ACUTE}'
       );
       cy.get('#converted').invoke('val').should(
         'eq',
@@ -1501,7 +1519,7 @@ describe('Conversion', function () {
             'convert',
             // Split up typing to avoid being interpreted by Cypress
             //  as keystroke
-            '\\C{' + 'G}'
+            String.raw`\C{` + 'G}'
           ]
         ]);
 
@@ -1512,7 +1530,7 @@ describe('Conversion', function () {
           'eq',
           // Split up typing to avoid being interpreted by Cypress
           //  as keystroke
-          '\\C{' + 'G}'
+          String.raw`\C{` + 'G}'
         );
         cy.get('#converted').invoke('val').should(
           'eq',

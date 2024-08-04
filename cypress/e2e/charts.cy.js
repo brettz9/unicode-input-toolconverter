@@ -648,7 +648,6 @@ describe('Charts', function () {
         'Copy to clipboard'
       ).click();
 
-      // eslint-disable-next-line promise/prefer-await-to-then -- Cypress
       return cy.window().then(async (win) => {
         const text = await win.navigator.clipboard.readText();
         expect(text).to.eq('é');
