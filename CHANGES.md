@@ -1,6 +1,10 @@
 # CHANGES for unicode-input-toolconverter
 
-# 0.2.0
+## 0.2.1
+
+- fix: add missing index file to cached resources
+
+## 0.2.0
 
 - feat: update to Unicode 10.1
 - fix: avoid alert and avoid waiting for install

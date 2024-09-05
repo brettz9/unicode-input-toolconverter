@@ -6,6 +6,7 @@
   "/browser_action/encodings.js",
   "/browser_action/entities.js",
   "/browser_action/entityBehaviors.js",
+  "/browser_action/?serviceWorker=1",
   "/browser_action/index.html",
   "/browser_action/index.iife.min.js",
   "/browser_action/index.js",
