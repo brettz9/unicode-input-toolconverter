@@ -1,13 +1,13 @@
 {
   "name": "unicode-input-toolconverter",
   "description": "Add-on for selecting Unicode characters by variety of means and converting between various representations",
+  "version": "0.2.0",
   "exports": {
     "browser": "./browser_action/index.js"
   },
   "author": "Brett Zamir",
   "contributors": [],
   "license": "MPL-2.0",
-  "version": "0.1.0",
   "nyc": {
     "reporter": [
       "text",

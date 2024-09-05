@@ -55,7 +55,7 @@ async function setupServiceWorker (
         break;
       case 'installed':
         console.log('Installation status', state);
-        alert(
+        /* alert(
           `
   A new version of this offlinable app has been downloaded.
 
@@ -66,7 +66,7 @@ async function setupServiceWorker (
   and any other old tabs for this site in order to be able to
   begin using the new version.
   `
-        );
+        ); */
         break;
       case 'redundant': // discarded. Either failed install, or it's been
         //                replaced by a newer version

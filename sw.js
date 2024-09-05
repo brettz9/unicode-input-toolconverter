@@ -225,7 +225,10 @@ async function activate (time) {
 }
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(tryAndRetry(install, 5 * minutes, 'Error installing'));
+  self.skipWaiting();
+  e.waitUntil(
+    tryAndRetry(install, 5 * minutes, 'Error installing')
+  );
 });
 
 self.addEventListener('activate', (e) => {
