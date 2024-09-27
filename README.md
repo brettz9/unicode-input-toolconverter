@@ -1,6 +1,6 @@
 # unicode-input-toolconverter
 
-**Incomplete! (Still restoring from old browser add-on.)**
+**Not available againa as an add-on currently, but it is as a web app**
 
 A web app and webextensions add-on (Firefox, Chrome) to allow selection
 of Unicode characters by a variety of means and conversion between various
@@ -25,14 +25,7 @@ This project had originally found life as a
 [XUL-based Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/),
 but XUL support was dropped in Firefox.
 
-## High priority to-dos (toward restoring functionality)
-
-1. Move out description code in `UnicodeConverter.js` to `charrefunicodeDb` or
-    other database-aware utility.
-1. Restore starting with `unicodecharref.js` and then `charrefConverters.js`.
-    1. Split up `unicodecharref.js`
-1. Improve slow **font retrieval** so can reenable; need to do equivalent for
-    other OS' or at least disable for them
+## High priority to-dos
 
 ## To-dos - medium priority
 
@@ -52,6 +45,8 @@ but XUL support was dropped in Firefox.
 1. Create (reactive) **Web Components** (hyperHTML?) so that besides internal
     clarity, could reuse as pop-up script browser or character picker
 1. Make **in-place context-menu-activated textbox conversions**
+1. Improve slow **font retrieval**; need to do equivalent for
+    other OS' or at least disable for them
 
 ## Lower-priority to-dos
 
