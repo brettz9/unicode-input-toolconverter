@@ -335,19 +335,19 @@ scriptsAndStartRanges.forEach(({script, startRange}) => {
   } else if (num < 0x${startRange}) {
     codePointStart = '${lastStartRange}';
     script = _('${lastScript}');${
-  // Not in chart:
-  // startRange === 'DB80' ? "surrogate = _('High_Private_Use_Surrogate')" :
-  lastStartRange === 'D800'
-    ? `
-surrogate = _('High_Surrogate');`
-    : lastStartRange === 'DC00'
-      ? `
-surrogate = _('Low_Surrogate');`
-      : ['E000', 'F0000', '100000'].includes(lastStartRange)
+      // Not in chart:
+      // startRange === 'DB80' ? "surrogate = _('High_Private_Use_Surrogate')" :
+      lastStartRange === 'D800'
         ? `
+surrogate = _('High_Surrogate');`
+        : lastStartRange === 'DC00'
+          ? `
+surrogate = _('Low_Surrogate');`
+          : ['E000', 'F0000', '100000'].includes(lastStartRange)
+            ? `
 privateuse = true;`
-        : ''
-}`;
+            : ''
+    }`;
   lastStartRange = startRange;
   lastScript = script;
 });

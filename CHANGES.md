@@ -1,5 +1,9 @@
 # CHANGES for unicode-input-toolconverter
 
+## ?
+
+- chore: update file-fetch, jsdom, devDeps.
+
 ## 0.2.1
 
 - fix: add missing index file to cached resources
