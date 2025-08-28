@@ -51,7 +51,7 @@ const chartBuildTemplate = function ({
             // We've now had to add 1 here for some reason
             current.startCharCode
           );
-        const hasEntity = charRefIdx > -1;
+        const hasEntity = charRefIdx !== -1;
         const entity = hasEntity
           // If recognized multiple char ent. (won't convert these to decimal)
           ? '&' + charrefunicodeConverter.entities[charRefIdx] + ';'

@@ -3121,6 +3121,36 @@
     },
     "CJK_Extension_I": {
       "message": "CJK Extension I"
+    },
+    "Todhri": {
+      "message": "Todhri"
+    },
+    "Egyptian_Hieroglyphs_Extended_A": {
+      "message": "Egyptian Hieroglyphs Extended-A"
+    },
+    "Garay": {
+      "message": "Garay"
+    },
+    "Gurung_Khema": {
+      "message": "Gurung Khema"
+    },
+    "Kirat_Rai": {
+      "message": "Kirat Rai"
+    },
+    "Ol_Onal": {
+      "message": "Ol Onal"
+    },
+    "Sunuwar": {
+      "message": "Sunuwar"
+    },
+    "Tulu_Tigalari": {
+      "message": "Tulu-Tigalari"
+    },
+    "Myanmar_Extended_C": {
+      "message": "Myanmar Extended-C"
+    },
+    "Symbols_for_Legacy_Computing_Supplement": {
+      "message": "Symbols for Legacy Computing Supplement"
     }
   }
 }

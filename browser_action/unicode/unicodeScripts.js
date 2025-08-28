@@ -676,6 +676,15 @@ function unicodeScripts (_) {
                     [
                       "li",
                       {
+                        "title": "105C0-105FF"
+                      },
+                      [
+                        _("Todhri")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "10570–105BF"
                       },
                       [
@@ -986,6 +995,20 @@ function unicodeScripts (_) {
                                   ]
                                 ]
                               ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "13460-1355F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Egyptian_Hieroglyphs_Extended_A")
+                                  ]
+                                ]
+                              ]
                             ]
                           ]
                         ]
@@ -1059,6 +1082,15 @@ function unicodeScripts (_) {
                             ]
                           ]
                         ]
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "10D40-10D8F"
+                      },
+                      [
+                        _("Garay")
                       ]
                     ],
                     [
@@ -1844,6 +1876,15 @@ function unicodeScripts (_) {
                     [
                       "li",
                       {
+                        "title": "16100-1613F"
+                      },
+                      [
+                        _("Gurung_Khema")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "11080-110CF"
                       },
                       [
@@ -1875,6 +1916,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Khojki")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "16D40-16D7F"
+                      },
+                      [
+                        _("Kirat_Rai")
                       ]
                     ],
                     [
@@ -2025,6 +2075,15 @@ function unicodeScripts (_) {
                     [
                       "li",
                       {
+                        "title": "1E5D0-1E5FF"
+                      },
+                      [
+                        _("Ol_Onal")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "0B00-0B7F"
                       },
                       [
@@ -2093,6 +2152,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Sora_Sompeng")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "11BC0-11BFF"
+                      },
+                      [
+                        _("Sunuwar")
                       ]
                     ],
                     [
@@ -2175,6 +2243,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Toto")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "11380–113FF"
+                      },
+                      [
+                        _("Tulu_Tigalari")
                       ]
                     ],
                     [
@@ -2318,6 +2395,20 @@ function unicodeScripts (_) {
                                   "i",
                                   [
                                     _("Myanmar_Extended_B")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "116D0-116FF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Myanmar_Extended_C")
                                   ]
                                 ]
                               ]
@@ -4572,7 +4663,26 @@ function unicodeScripts (_) {
                         "title": "1FB00–1FBFF"
                       },
                       [
-                        _("Symbols_for_Legacy_Computing")
+                        _("Symbols_for_Legacy_Computing"),
+                        [
+                          "ul",
+                          [
+                            [
+                              "li",
+                              {
+                                "title": "1CC00-1CEBF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Symbols_for_Legacy_Computing_Supplement")
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
                       ]
                     ],
                     [

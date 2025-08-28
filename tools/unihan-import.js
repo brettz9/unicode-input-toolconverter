@@ -37,6 +37,7 @@ if (args.includes('download')) {
 }
 
 if (args.includes('extract') || args.includes('download')) {
+  // eslint-disable-next-line sonarjs/no-unsafe-unzip -- Trusted
   await extract(unihanZip, {dir: targetDir});
   await fs.unlink(unihanZip);
   // eslint-disable-next-line no-console -- CLI

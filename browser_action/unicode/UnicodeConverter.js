@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this -- Todo: fix later */
+/* eslint-disable sonarjs/updated-loop-counter -- Needed */
 import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
 import {getHangulName, getHangulFromName} from './hangul.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
@@ -479,6 +480,7 @@ export const getUnicodeConverter = () => {
               unicode += s;
               break;
             case 'u':
+              // eslint-disable-next-line sonarjs/anchor-precedence -- Intended
               hexChrs = (/^[a-fA-F\d]{6}|[a-fA-F\d]{4}/u).exec(toconvert.slice(i + 2));
               if (hexChrs) {
                 unicode += String.fromCodePoint(

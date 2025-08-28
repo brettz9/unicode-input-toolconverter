@@ -19,6 +19,7 @@ if (args.includes('download')) {
 }
 
 if (args.includes('extract') || args.includes('download')) {
+  // eslint-disable-next-line sonarjs/no-unsafe-unzip -- Trusted
   await extract(ucdZip, {dir: targetDir});
   await fs.unlink(ucdZip);
 }

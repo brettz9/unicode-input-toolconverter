@@ -1281,7 +1281,7 @@ const indexTemplate = function ({_, fonts}) {
               About_ial_onetongue_link: jml('a', {
                 class: 'text-link',
                 target: '_blank',
-                href: 'http://onetongue.com'
+                href: 'https://onetongue.com'
               }, [
                 _('About_ial_onetongue_linkText')
               ])
@@ -1296,7 +1296,8 @@ const indexTemplate = function ({_, fonts}) {
   $('#donationbutton').addEventListener('click', () => {
     window.open(
       'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=brettz9%40yahoo%2ecom&no_shipping=0&no_note=1&tax=0&currency_code=USD&bn=PP%2dDonationsBF&charset=UTF%2d8',
-      'bzamirdonation'
+      'bzamirdonation',
+      'noopener'
     );
   });
 };

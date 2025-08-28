@@ -16,7 +16,7 @@ const minutes = 60 * 1000;
 
 /**
  *
- * @param {PlainObject} args
+ * @param {object} args
  * @param {
  *   "log"|"error"|"beginInstall"|"finishedInstall"|"beginActivate"|
  *   "finishedActivate"
@@ -25,7 +25,7 @@ const minutes = 60 * 1000;
  * @returns {Promise<void>}
  */
 async function post ({type, message = type}) {
-  const windowClients = await self.clients.matchAll({
+  const windowClients = await globalThis.clients.matchAll({
     // Are there any uncontrolled within activate anyways?
     includeUncontrolled: true,
     type: 'window'
@@ -227,7 +227,7 @@ async function activate (time) {
 }
 
 self.addEventListener('install', (e) => {
-  self.skipWaiting();
+  globalThis.skipWaiting();
   e.waitUntil(
     tryAndRetry(install, 5 * minutes, 'Error installing')
   );

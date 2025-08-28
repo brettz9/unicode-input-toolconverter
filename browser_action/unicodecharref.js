@@ -502,7 +502,7 @@ const unicodecharref = {
         // Fallthrough
       case 'context-launchunicode':
       case 'tools-charrefunicode':
-        out = '';
+        // out = '';
         break;
       case 'searchName':
         $('#' + targetid).value = unicodeQueryObj.get('string');
@@ -519,7 +519,7 @@ const unicodecharref = {
         });
         break;
       default:
-        out = ''; // Plain launcher with no values sent
+        // out = ''; // Plain launcher with no values sent
         // const prefstab = true;
         break;
       }
@@ -1103,10 +1103,10 @@ const unicodecharref = {
     $('#converted').style.fontSize = txtbxsize + 'px';
 
     /* istanbul ignore next -- Firefox only */
-    if (size > 0 && window.sizeToContent) {
+    if (size > 0 && globalThis.sizeToContent) {
       // On Mac at least, resizing for reducing font size, causes button to
       // go off screen
-      window.sizeToContent();
+      globalThis.sizeToContent();
     }
   },
   async tblfontsize (size) { // Changes font-size of chart table cells
@@ -1128,10 +1128,10 @@ const unicodecharref = {
     //   await getPref('tblfontsize') + 'px';
 
     /* istanbul ignore next -- Firefox only */
-    if (sizeToContent && window.sizeToContent) {
+    if (sizeToContent && globalThis.sizeToContent) {
       // On Mac at least, resizing for reducing font size, causes button to
       // go off screen
-      window.sizeToContent();
+      globalThis.sizeToContent();
     }
   },
   async hexLettersCasing (e) {
