@@ -3,7 +3,12 @@
 
 import {SimplePrefs} from '../../vendor/simple-prefs/dist/index.esm.js';
 
+/** @type {import('intl-dom').I18NCallback<string>} */
 let _;
+
+/**
+ * @param {{_: import('intl-dom').I18NCallback<string>}} cfg
+ */
 export const setPrefDefaultVars = ({_: __}) => {
   _ = __;
 };
@@ -45,8 +50,12 @@ export const getPrefDefaults = () => ({
   font: '',
   cssWhitespace: ' ',
   initialTab: 'charts',
-  defaultStartCharCode: _('startCharCode').codePointAt() - 1, // 'a'
-  currentStartCharCode: _('startCharCode').codePointAt() - 1, // 'a'
+  defaultStartCharCode: /** @type {number} */ (
+    _('startCharCode').codePointAt(0)
+  ) - 1, // 'a'
+  currentStartCharCode: /** @type {number} */ (
+    _('startCharCode').codePointAt(0)
+  ) - 1, // 'a'
   lang: _('langCode'), // 'en-US'
   dropdownArr: []
 });

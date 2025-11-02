@@ -1,5 +1,5 @@
 import http from 'http';
-import statik from '@brettz9/node-static';
+import * as statik from '@node-static/node-static';
 import {systemProfiler} from 'apple-system-profiler';
 
 const file = new statik.Server({
@@ -8,54 +8,67 @@ const file = new statik.Server({
   }
 });
 
-http.createServer(function (req, res) {
-  /* istanbul ignore next */
-  if (globalThis.__coverage__ && req.url.startsWith('/__coverage__')) {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({
-      coverage: globalThis.__coverage__
-    }));
-    return;
-  }
+http.createServer(
+  /**
+   * @param {http.IncomingMessage} req
+   * @param {http.ServerResponse} res
+   * @returns {void}
+   */
+  function (req, res) {
+    /* istanbul ignore next */
+    if (globalThis.__coverage__ &&
+      req.url?.startsWith('/__coverage__')) {
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({
+        coverage: globalThis.__coverage__
+      }));
+      return;
+    }
 
-  if (req.url.startsWith('/.')) {
-    res.writeHead(404, {
-      'Content-Type': 'text/html'
-    });
-    res.end('<b>Bad request</b>');
-    return;
-  }
-  if (req.url === '/fonts') {
-    res.writeHead(200, {
-      'Cache-Control': 'no-cache, must-revalidate',
-      'Content-Type': 'application/json'
-    });
-    (async () => {
-      try {
-        const fontInfo = await systemProfiler({
-          normalize: false,
-          detailLevel: 'full',
-          dataTypes: [
-            'SPFontsDataType'
-          ]
-        });
-        const out = fontInfo[0]._items.flatMap(({typefaces}) => {
-          return typefaces.map((typeface) => typeface.family);
-        });
-        res.end(JSON.stringify([...new Set(out)].sort()));
-      // istanbul ignore next
-      } catch (err) {
-        /* eslint-disable no-console -- CLI */
+    if (req.url?.startsWith('/.')) {
+      res.writeHead(404, {
+        'Content-Type': 'text/html'
+      });
+      res.end('<b>Bad request</b>');
+      return;
+    }
+    if (req.url === '/fonts') {
+      res.writeHead(200, {
+        'Cache-Control': 'no-cache, must-revalidate',
+        'Content-Type': 'application/json'
+      });
+      (async () => {
+        try {
+          const fontInfo = await systemProfiler({
+            normalize: false,
+            detailLevel: 'full',
+            dataTypes: [
+              'SPFontsDataType'
+            ]
+          });
+          const out =
+            /**
+             * @type {{
+             *   _items: {typefaces: {family: string}[]}[]
+             * }[]}
+             */ (fontInfo)[0]._items.flatMap(({typefaces}) => {
+              return typefaces.map((typeface) => typeface.family);
+            });
+          res.end(JSON.stringify([...new Set(out)].toSorted()));
         // istanbul ignore next
-        console.error('Error', err);
-      // istanbul ignore next
-      }
-      /* eslint-enable no-console -- CLI */
-    })();
-    return;
-  }
+        } catch (err) {
+          /* eslint-disable no-console -- CLI */
+          // istanbul ignore next
+          console.error('Error', err);
+        // istanbul ignore next
+        }
+        /* eslint-enable no-console -- CLI */
+      })();
+      return;
+    }
 
-  req.addListener('end', function () {
-    file.serve(req, res);
-  }).resume();
-}).listen(8000);
+    req.addListener('end', function () {
+      file.serve(req, res);
+    }).resume();
+  }
+).listen(8000);

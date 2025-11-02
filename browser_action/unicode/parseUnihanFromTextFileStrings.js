@@ -19,16 +19,23 @@ const fields = ['code_pt', 'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBig
 
 /**
 * @param {string[]} scriptFileAsStrings
-* @returns {Object<string,string[]>}
+* @returns {string[][]}
 */
 function parseUnihanFromTextFileStrings (scriptFileAsStrings) {
   const scriptFileAsStr = scriptFileAsStrings.join('');
+
+  /** @type {Record<string, number>} */
   const notPresent = {};
   let line;
+
+  /** @type {Record<string, string[]>} */
   const obj = {};
-  const lineRegex = /^U\+(?<cdpt>[\da-fA-F]{4,6})\t(?<col>\w+?)\t(?<value>.*)$/gum;
+  const lineRegex = /^U\+(?<cdpt>[\da-fA-F]{4,6})\t(?<col>\w+?)\t(?<value>.*)$/gvm;
   while ((line = (lineRegex).exec(scriptFileAsStr)) !== null) {
-    const {cdpt, col, value} = line.groups;
+    // eslint-disable-next-line @stylistic/max-len -- Long
+    const {cdpt, col, value} = /** @type {{cdpt: string, col: string, value: string}} */ (
+      line.groups
+    );
     if (!obj[cdpt]) {
       obj[cdpt] = [];
       fields.forEach(function (val, idx) {

@@ -1,15 +1,21 @@
 // Todo: Auto-generate this function
 
 /**
+ * @typedef {number} PositiveInteger
+ */
+
+/**
  * @param {PositiveInteger} num
- * @param {IntlDom} _
+ * @param {import('intl-dom').I18NCallback<string>} _
  * @returns {{
  * codePointStart: string, script: string, plane: PositiveInteger,
- * privateuse: boolean, surrogate: boolean|string
+ * privateuse: boolean, surrogate: false|string
  * }}
  */
 export default function getScriptInfoForCodePoint (num, _) {
-  let privateuse = false, surrogate = false;
+  let privateuse = false;
+  /** @type {false|string} */
+  let surrogate = false;
   let plane = num >= 0x10000 && num <= 0x1FFFF ? 1 : 0;
   let script = '', codePointStart = '';
   if (num < 0x0080) {

@@ -1,0 +1,40 @@
+export function i18nServer({ strings, resolvedLocale, messageStyle, allSubstitutions: defaultAllSubstitutionsValue, insertNodes, keyCheckerConverter, defaults: defaultDefaults, substitutions: defaultSubstitutions, maximumLocalNestingDepth, dom: domDefaults, forceNodeReturn: forceNodeReturnDefault, throwOnMissingSuppliedFormatters: throwOnMissingSuppliedFormattersDefault, throwOnExtraSuppliedFormatters: throwOnExtraSuppliedFormattersDefault }: {
+    strings: import('./getMessageForKeyByStyle.js').LocaleObject;
+    resolvedLocale: string;
+    messageStyle?: import("./getMessageForKeyByStyle.js").MessageStyleCallback | "richNested" | "rich" | "plain" | "plainNested" | undefined;
+    allSubstitutions?: import("./defaultAllSubstitutions.js").AllSubstitutionCallback | import("./defaultAllSubstitutions.js").AllSubstitutionCallback[] | null | undefined;
+    insertNodes?: import("./defaultInsertNodes.js").InsertNodesCallback | undefined;
+    keyCheckerConverter?: import("./defaultKeyCheckerConverter.js").KeyCheckerConverterCallback | undefined;
+    defaults?: false | null | undefined | import('./getMessageForKeyByStyle.js').LocaleObject;
+    substitutions?: false | import("./defaultLocaleResolver.js").SubstitutionObject | undefined;
+    maximumLocalNestingDepth?: number | undefined;
+    dom?: boolean | undefined;
+    forceNodeReturn?: boolean | undefined;
+    throwOnMissingSuppliedFormatters?: boolean | undefined;
+    throwOnExtraSuppliedFormatters?: boolean | undefined;
+}): I18NCallback;
+export function i18n({ locales, defaultLocales, localeStringFinder, localesBasePath, localeResolver, localeMatcher, messageStyle, allSubstitutions, insertNodes, keyCheckerConverter, defaults, substitutions, maximumLocalNestingDepth, dom, forceNodeReturn, throwOnMissingSuppliedFormatters, throwOnExtraSuppliedFormatters }?: {
+    locales?: string[] | undefined;
+    defaultLocales?: string[] | undefined;
+    localeStringFinder?: import("./findLocaleStrings.js").LocaleStringFinder | undefined;
+    localesBasePath?: string | undefined;
+    localeResolver?: import("./defaultLocaleResolver.js").LocaleResolver | undefined;
+    localeMatcher?: "lookup" | import("./findLocaleStrings.js").LocaleMatcher | undefined;
+    messageStyle?: import("./getMessageForKeyByStyle.js").MessageStyleCallback | "richNested" | "rich" | "plain" | "plainNested" | undefined;
+    allSubstitutions?: import("./defaultAllSubstitutions.js").AllSubstitutionCallback | import("./defaultAllSubstitutions.js").AllSubstitutionCallback[] | null | undefined;
+    insertNodes?: import("./defaultInsertNodes.js").InsertNodesCallback | undefined;
+    keyCheckerConverter?: import("./defaultKeyCheckerConverter.js").KeyCheckerConverterCallback | undefined;
+    defaults?: false | null | undefined | import('./getMessageForKeyByStyle.js').LocaleObject;
+    substitutions?: false | import("./defaultLocaleResolver.js").SubstitutionObject | undefined;
+    maximumLocalNestingDepth?: number | undefined;
+    dom?: boolean | undefined;
+    forceNodeReturn?: boolean | undefined;
+    throwOnMissingSuppliedFormatters?: boolean | undefined;
+    throwOnExtraSuppliedFormatters?: boolean | undefined;
+} | undefined): Promise<I18NCallback>;
+export type Sort = import('./index.js').Sort;
+export type SortList = import('./index.js').SortList;
+export type List = import('./index.js').List;
+export type I18NCallback = import('./index.js').I18NCallback;
+export type Integer = number;
+//# sourceMappingURL=i18n.d.ts.map

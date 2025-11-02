@@ -87,13 +87,13 @@ describe('Main page', function () {
 
       return undefined;
     }).then(() => {
-      [
+      /** @type {[number, string][]} */ ([
         [0x3400, 'hillock or mound'],
         [0x3408, '(No definition)'],
         [0xD78B, 'Hangul Syllable HIGS'],
         [0x61, 'LATIN SMALL LETTER A'],
         [0xE005, 'Undefined or not found']
-      ].forEach(([chr, desc]) => {
+      ]).forEach(([chr, desc]) => {
         cy.clearAndType('#startset', String.fromCodePoint(chr));
         cy.get(
           '#chart_table > tr:nth-of-type(1) > ' +
@@ -208,7 +208,7 @@ describe('Main page', function () {
   // Not consistently working for some reason
   it('Loads with service worker', function () {
     visitBrowserAction(undefined, [
-      ['serviceWorker', 1]
+      ['serviceWorker', '1']
     ]);
 
     return cy.window().then((win) => {
@@ -225,7 +225,7 @@ describe('Main page', function () {
 
   it('Loads fonts conditionally', function () {
     visitBrowserAction(undefined, [
-      ['fonts', 1]
+      ['fonts', '1']
     ]);
 
     // eslint-disable-next-line @stylistic/max-len -- Long

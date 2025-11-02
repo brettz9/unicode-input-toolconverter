@@ -65,7 +65,7 @@ describe('Prefs', function () {
   describe('Options API', function () {
     it('Opens to pref page', function () {
       visitBrowserAction(undefined, [
-        ['options', 1]
+        ['options', '1']
       ]);
       cy.get(
         '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(3)'

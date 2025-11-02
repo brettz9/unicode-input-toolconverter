@@ -1,6 +1,6 @@
 /**
- * @param {object} options
- * @param {object} args
+ * @param {Partial<Cypress.VisitOptions>} [options]
+ * @param {(string)[][]} [args]
  * @returns {void}
  */
 export function visitBrowserAction (options, args) {

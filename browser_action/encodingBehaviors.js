@@ -1,8 +1,10 @@
+// @ts-nocheck
 import {$} from '../vendor/jamilih/dist/jml-es.js';
 
 import {classChange as charrefClassChange} from './charrefConverters.js';
 
 // UI Bridges
+
 export const convertEncoding = (out) => {
   const from = $('#encoding_from').value,
     to = $('#encoding_to').value,
@@ -48,7 +50,7 @@ export const convertEncoding = (out) => {
 };
 
 /**
-* @param {PlainObject} cfg
+* @param {object} cfg
 * @param {import('intl-dom').I18NCallback} cfg._
 * @returns {void}
 */

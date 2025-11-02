@@ -1,0 +1,3 @@
+export function defaultKeyCheckerConverter(key: string | string[], messageStyle: "plain" | "plainNested" | "rich" | "richNested" | import('./getMessageForKeyByStyle.js').MessageStyleCallback): any;
+export type KeyCheckerConverterCallback = (key: string | string[], messageStyle: "plain" | "plainNested" | "rich" | "richNested" | import('./getMessageForKeyByStyle.js').MessageStyleCallback) => any;
+//# sourceMappingURL=defaultKeyCheckerConverter.d.ts.map

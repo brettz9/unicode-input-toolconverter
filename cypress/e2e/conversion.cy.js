@@ -519,7 +519,7 @@ describe('Conversion', function () {
         'Converts Unicode to character description escapes',
         function () {
           visitBrowserAction(undefined, [
-            ['characterDescriptions', 1]
+            ['characterDescriptions', '1']
           ]);
 
           cy.get(
@@ -538,7 +538,7 @@ describe('Conversion', function () {
         'Converts ASCII to character description escapes',
         function () {
           visitBrowserAction(undefined, [
-            ['characterDescriptions', 1]
+            ['characterDescriptions', '1']
           ]);
 
           cy.get(
@@ -579,7 +579,7 @@ describe('Conversion', function () {
         'Converts Unicode to character description escapes (Hangul)',
         function () {
           visitBrowserAction(undefined, [
-            ['characterDescriptions', 1]
+            ['characterDescriptions', '1']
           ]);
 
           cy.get(
@@ -598,7 +598,7 @@ describe('Conversion', function () {
         'Converts character description escapes to Unicode',
         function () {
           visitBrowserAction(undefined, [
-            ['characterDescriptions', 1]
+            ['characterDescriptions', '1']
           ]);
 
           cy.get(

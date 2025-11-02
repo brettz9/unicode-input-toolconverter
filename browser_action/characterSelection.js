@@ -7,9 +7,10 @@ import addMillerColumnPlugin from
   '../vendor/miller-columns/dist/index-es.min.js';
 
 /**
- * @param {PlainObject} cfg
- * @param {import('intl-dom').I18NCallback} cfg._
- * @param {charrefunicodeConverter} cfg.charrefunicodeConverter
+ * @param {object} cfg
+ * @param {import('intl-dom').I18NCallback<string>} cfg._
+ * @param {InstanceType<ReturnType<import('./unicode/UnicodeConverter.js').
+ *   getUnicodeConverter>>} cfg.charrefunicodeConverter
  * @returns {Promise<void>}
  */
 async function characterSelection ({
@@ -18,8 +19,10 @@ async function characterSelection ({
   await getChartBuild({
     _,
     charrefunicodeConverter,
-    textReceptacle: $('#insertText'),
-    chartContainer: $('#chartContainer'),
+    textReceptacle: /** @type {HTMLTextAreaElement|HTMLInputElement} */ (
+      $('#insertText')
+    ),
+    chartContainer: /** @type {HTMLElement} */ ($('#chartContainer')),
     // Todo: Get working
     insertText ({textReceptacle, value}) {
       insertIntoOrOverExisting({textReceptacle, value});
@@ -63,7 +66,8 @@ async function characterSelection ({
     scroll () {
       // Due to an overflow within an overflow, we have to also force
       //   this scroll left
-      $('#chart_selectchar_persist').scrollLeft = 2000;
+      /** @type {HTMLElement} */
+      ($('#chart_selectchar_persist')).scrollLeft = 2000;
     },
     async current ($item /* , $cols */) {
       if (!$item) { // Todo: Is this an error?
@@ -78,14 +82,16 @@ async function characterSelection ({
       await unicodecharref.disableEnts();
 
       await unicodecharref.setCurrstartset(
-        Number.parseInt(title.replace(/-.*$/u, ''), 16) - 1
+        Number.parseInt(title.replace(/-.*$/v, ''), 16) - 1
       );
       // Free to use `chartBuild` now that we have passed set-up
       await chartBuild(); // Todo: descripts?
       await unicodecharref.resizecells();
     }
   });
-  $('div.miller-columns').style.display = 'block';
+
+  /** @type {HTMLDivElement} */
+  ($('div.miller-columns')).style.display = 'block';
 }
 
 export default characterSelection;

@@ -1,7 +1,11 @@
 /**
-* @param {PlainObject} cfg
+ * @typedef {number} Integer
+ */
+
+/**
+* @param {object} cfg
 * @param {Integer} cfg.receivedLength
-* @param {Integer[]} cfg.chunks
+* @param {Uint8Array[]} cfg.chunks
 * @returns {Uint8Array}
 */
 function joinChunks ({

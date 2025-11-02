@@ -6,6 +6,10 @@
 *   Unihan) database
 */
 
+/**
+ * @typedef {number} Integer
+ */
+
 // Private static
 const JAMO_L_TABLE = [
     'G', 'GG', 'N', 'D', 'DD', 'R', 'M', 'B', 'BB',
@@ -36,7 +40,7 @@ const sBase = 0xAC00,
  * Currently unused.
  * @param {Integer} syllableCode Decimal code point for Hangul syllable
  *   to decompose
- * @returns {Integer[]|string} An array of the numeric value of each
+ * @returns {string[]|string} An array of the numeric value of each
  *   component or string if unchanged
  */
 function decomposeHangul (syllableCode) {
@@ -57,8 +61,8 @@ function decomposeHangul (syllableCode) {
 }
 /**
  *
- * @param {string[]} source
- * @returns {string[]}
+ * @param {string} source
+ * @returns {string|string[]}
  */
 function composeHangul (source) {
   const len = source.length;
@@ -75,9 +79,9 @@ function composeHangul (source) {
 
   chars.slice(1).forEach((ch) => {
     // 1. check to see if two current characters are L and V
-    const lIndex = last.codePointAt() - lBase;
+    const lIndex = /** @type {number} */ (last.codePointAt(0)) - lBase;
     if (lIndex > 0 && lIndex < lCount) {
-      const vIndex = ch.codePointAt() - vBase;
+      const vIndex = /** @type {number} */ (ch.codePointAt(0)) - vBase;
       if (vIndex > 0 && vIndex < vCount) {
         // make syllable of form LV
         last = String.fromCodePoint(
@@ -89,12 +93,14 @@ function composeHangul (source) {
     }
 
     // 2. check to see if two current characters are LV and T
-    const sIndex = last.codePointAt() - sBase;
+    const sIndex = /** @type {number} */ (last.codePointAt(0)) - sBase;
     if (sIndex > 0 && sIndex < sCount && (sIndex % tCount) === 0) {
-      const tIndex = ch.codePointAt() - tBase;
+      const tIndex = /** @type {number} */ (ch.codePointAt(0)) - tBase;
       if (tIndex >= 0 && tIndex < tCount) {
         // make syllable of form LVT
-        last = String.fromCodePoint(last.codePointAt() + tIndex);
+        last = String.fromCodePoint(
+          /** @type {number} */ (last.codePointAt(0)) + tIndex
+        );
         result[result.length - 1] = last; // reset last
         return; // discard ch
       }
@@ -110,7 +116,7 @@ function composeHangul (source) {
  * Gets a Unicode character for the passed-in Hangul syllable name.
  * @param {string} name The name of the syllable to find
  * @author Brett Zamir (others adapted directly from Unicode)
- * @returns {string|boolean} False if invalid, or otherwise the Hangul
+ * @returns {string|false} False if invalid, or otherwise the Hangul
  *   character represented by the supplied name
  */
 function getHangulFromName (name) {
@@ -167,12 +173,12 @@ function getHangulFromName (name) {
   // Join Jamo characters together
   const jamo = l + v + t;
   // Convert Jamo into composite Hangul syllable
-  return composeHangul(jamo).join('');
+  return /** @type {string[]} */ (composeHangul(jamo)).join('');
 }
 
 /**
  * Utility (could be adapted to accept the letter(s)).
- * @param {string} index
+ * @param {number} index
  * @param {'l'|'v'|'t'} type
  * @throws {TypeError}
  * @returns {string}
@@ -189,6 +195,10 @@ function getJamoForIndex (index, type) {
     throw new TypeError('Unexpected type passed to getJamoCodePointForName');
   }
 }
+
+/**
+ * @typedef {number} PositiveInteger
+ */
 
 /**
  * @param {PositiveInteger} syllableCode

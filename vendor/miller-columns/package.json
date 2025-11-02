@@ -1,0 +1,74 @@
+{
+  "name": "miller-columns",
+  "version": "0.10.3",
+  "description": "Miller Columns in ES6 Modules JavaScript",
+  "main": "src/index.js",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "browserslist": [
+    "last 2 chrome versions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brettz9/miller-columns.git"
+  },
+  "keywords": [
+    "miller-columns",
+    "columns",
+    "column",
+    "browser"
+  ],
+  "author": "Brett Zamir",
+  "contributors": [
+    {
+      "name": "White Magic Software",
+      "url": "http://jsfiddle.net/yckart/cbtnemc7/"
+    }
+  ],
+  "engines": {},
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brettz9/miller-columns/issues"
+  },
+  "homepage": "https://github.com/brettz9/miller-columns#readme",
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@node-static/node-static": "^0.8.0",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@testcafe-community/axe": "^3.5.0",
+    "@types/jquery": "^3.5.33",
+    "@types/node": "^24.10.0",
+    "axe-core": "^4.11.0",
+    "babel-core": "6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chokidar-cli": "^3.0.0",
+    "core-js-bundle": "^3.46.0",
+    "eslint": "^9.39.0",
+    "eslint-config-ash-nazg": "^39.6.1",
+    "eslint-plugin-testcafe": "^0.2.1",
+    "jquery": "^3.7.1",
+    "load-stylesheets": "^0.13.0",
+    "open-cli": "^8.0.0",
+    "reload": "^3.4.2",
+    "rollup": "4.52.5",
+    "testcafe": "^3.7.2",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "rollup": "rollup -c && tsc -p tsconfig-prod.json",
+    "eslint": "eslint .",
+    "lint": "npm run eslint",
+    "demo-no-open": "pkill -f \".bin/static -p\" ; npm run eslint && npm run rollup && npm run start",
+    "demo": "npm run eslint && npm run rollup && open-cli http://localhost:8092/demos/ && npm run start",
+    "start": "static -p 8092",
+    "testcafe": "testcafe chrome tests/**/*.js",
+    "test": "npm run eslint && npm run rollup && npm run testcafe",
+    "watch": "chokidar '**/*.js' -c 'npm run demo-no-open' -i 'dist' -i 'node_modules' & npm run demo-no-open",
+    "dontuse-unfinished-watch": "chokidar '**/*.js' -c 'pkill -f \".bin/static -p\" ; npm run eslint && npm run rollup && reload -b -d \"demos\"' -i 'dist'"
+  }
+}

@@ -47,7 +47,7 @@ async function setupServiceWorker (
 
     // statechange won't catch this installing event as already installing
 
-    newWorker.addEventListener('statechange', async () => {
+    newWorker?.addEventListener('statechange', async () => {
       const {state} = newWorker;
       switch (state) {
       case 'installing':
@@ -146,7 +146,7 @@ async function setupServiceWorker (
 
   const worker = registration.installing || registration.waiting ||
     registration.active;
-  switch (worker.state) {
+  switch (worker?.state) {
   case 'installing':
     // If it fails, will instead be `redundant`; but will try again:
     //     1. automatically (?) per https://developers.google.com/web/fundamentals/primers/service-workers/#the_service_worker_life_cycle

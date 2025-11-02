@@ -8,13 +8,21 @@ import unicodecharref from '../unicodecharref.js';
 import CharrefConverterBridges from '../charrefConverters.js';
 import {registerDTD} from '../entityBehaviors.js';
 
+/**
+ * @param {{
+ *   _: import('intl-dom').I18NCallback<string>,
+ *   fonts: string[]
+ * }} cfg
+ */
 const indexTemplate = function ({_, fonts}) {
-  $('html').lang = _.resolvedLocale;
+  /** @type {HTMLHtmlElement} */
+  ($('html')).lang = _.resolvedLocale;
   document.title = _('uresults_title');
   jml('div', {
     role: 'main'
   }, [
-    ['div', {
+    /** @type {import('jamilih').JamilihArray} */
+    (['div', {
       id: 'unicodeTabBox',
       style: 'width: 700px;',
       class: 'tabbox'
@@ -59,10 +67,14 @@ const indexTemplate = function ({_, fonts}) {
                     class: 'searchBox',
                     $on: {
                       async change () {
-                        await unicodecharref.startset(this);
+                        await unicodecharref.startset(
+                          /** @type {HTMLInputElement} */ (this)
+                        );
                       },
                       async input () {
-                        await unicodecharref.startset(this);
+                        await unicodecharref.startset(
+                          /** @type {HTMLInputElement} */ (this)
+                        );
                       }
                     }
                   }],
@@ -71,10 +83,16 @@ const indexTemplate = function ({_, fonts}) {
                     class: 'searchBox',
                     $on: {
                       async change () {
-                        await unicodecharref.searchUnicode(this);
+                        await unicodecharref.searchUnicode(
+                          /** @type {HTMLInputElement} */
+                          (this)
+                        );
                       },
                       async input () {
-                        await unicodecharref.searchUnicode(this);
+                        await unicodecharref.searchUnicode(
+                          /** @type {HTMLInputElement} */
+                          (this)
+                        );
                       }
                     }
                   }],
@@ -83,10 +101,16 @@ const indexTemplate = function ({_, fonts}) {
                     class: 'searchBox',
                     $on: {
                       change () {
-                        unicodecharref.searchUnihan(this);
+                        unicodecharref.searchUnihan(
+                          /** @type {HTMLInputElement} */
+                          (this)
+                        );
                       },
                       input () {
-                        unicodecharref.searchUnihan(this);
+                        unicodecharref.searchUnihan(
+                          /** @type {HTMLInputElement} */
+                          (this)
+                        );
                       }
                     }
                   }]
@@ -177,7 +201,12 @@ const indexTemplate = function ({_, fonts}) {
                         class: 'charthbox',
                         $on: {
                           async click (e) {
-                            await unicodecharref.onlyentsyesflip(e);
+                            await unicodecharref.onlyentsyesflip(
+                              /**
+                               * @type {Event & {target: HTMLInputElement}}
+                               */
+                              (e)
+                            );
                           }
                         }
                       }],
@@ -192,7 +221,12 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'rowsset',
                           $on: {
                             async change (e) {
-                              await unicodecharref.rowsset(e);
+                              await unicodecharref.rowsset(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
                             }
                           }
                         }]
@@ -204,7 +238,12 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'colsset',
                           $on: {
                             async change (e) {
-                              await unicodecharref.colsset(e);
+                              await unicodecharref.colsset(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
                             }
                           }
                         }]
@@ -218,7 +257,12 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             async click (e) {
-                              await unicodecharref.entflip(e);
+                              await unicodecharref.entflip(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
                             }
                           }
                         }],
@@ -232,7 +276,12 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             async click (e) {
-                              await unicodecharref.decflip(e);
+                              await unicodecharref.decflip(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
                             }
                           }
                         }],
@@ -246,7 +295,12 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             async click (e) {
-                              await unicodecharref.hexflip(e);
+                              await unicodecharref.hexflip(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
                             }
                           }
                         }],
@@ -260,7 +314,12 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             async click (e) {
-                              await unicodecharref.unicodeflip(e);
+                              await unicodecharref.unicodeflip(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
                             }
                           }
                         }],
@@ -275,7 +334,12 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             async click (e) {
-                              await unicodecharref.middleflip(e);
+                              await unicodecharref.middleflip(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
                             }
                           }
                         }],
@@ -289,7 +353,12 @@ const indexTemplate = function ({_, fonts}) {
                           class: 'charthbox',
                           $on: {
                             async click (e) {
-                              await unicodecharref.buttonflip(e);
+                              await unicodecharref.buttonflip(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
                             }
                           }
                         }],
@@ -321,8 +390,12 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'font',
                           size: '12',
                           $custom: {
+                            /**
+                             * @param {string} val
+                             */
                             $setFontFamily (val) {
-                              $('#insertText').style.fontFamily = val;
+                              /** @type {HTMLTextAreaElement} */
+                              ($('#insertText')).style.fontFamily = val;
                               // Form elements don't inherit, so find these
                               //   manually
                               $$('#chart_table button[name="unicode"]').
@@ -333,8 +406,21 @@ const indexTemplate = function ({_, fonts}) {
                           },
                           $on: {
                             async change (e) {
-                              await unicodecharref.setprefs(e);
-                              this.$setFontFamily(this.value);
+                              await unicodecharref.setprefs(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
+                              /**
+                               * @type {HTMLInputElement & {
+                               *   $setFontFamily: (val: string) => void
+                               * }}
+                               */
+                              (this).$setFontFamily(
+                                /** @type {HTMLInputElement} */
+                                (this).value
+                              );
                             }
                           }
                         }],
@@ -342,8 +428,20 @@ const indexTemplate = function ({_, fonts}) {
                           ? [
                             ['br'],
                             ['select', {id: 'font-list', $on: {
+                              /**
+                               * @this {HTMLSelectElement}
+                               */
                               async change () {
-                                $('#font').value = this.value;
+                                const font =
+                                  /**
+                                   * @type {HTMLInputElement & {
+                                   *   $setFontFamily: (val: string) => void
+                                   * }}
+                                   */ (
+                                    $('#font')
+                                  );
+                                font.value =
+                                  (this).value;
                                 await unicodecharref.setprefs({
                                   target: {
                                     type: 'select-one',
@@ -351,7 +449,7 @@ const indexTemplate = function ({_, fonts}) {
                                     value: this.value
                                   }
                                 });
-                                $('#font').$setFontFamily(this.value);
+                                font.$setFontFamily(this.value);
                               }
                             }}, [
                               ['option', [
@@ -377,9 +475,19 @@ const indexTemplate = function ({_, fonts}) {
                           id: 'lang',
                           size: '5',
                           $on: {
+                            /**
+                             * @this {HTMLInputElement}
+                             * @param {Event} e
+                             */
                             async change (e) {
-                              await unicodecharref.setprefs(e);
-                              $('#chart_table').lang = this.value;
+                              await unicodecharref.setprefs(
+                                /**
+                                 * @type {Event & {target: HTMLInputElement}}
+                                 */
+                                (e)
+                              );
+                              /** @type {HTMLElement} */
+                              ($('#chart_table')).lang = this.value;
                             }
                           }
                         }]
@@ -436,7 +544,12 @@ const indexTemplate = function ({_, fonts}) {
                         type: 'checkbox',
                         $on: {
                           async click (e) {
-                            await unicodecharref.setImagePref(e);
+                            await unicodecharref.setImagePref(
+                              /**
+                               * @type {Event & {target: HTMLInputElement}}
+                               */
+                              (e)
+                            );
                           }
                         }
                       }],
@@ -472,7 +585,8 @@ const indexTemplate = function ({_, fonts}) {
                       ['div', [
                         ['button', {id: 'clearoutput', $on: {
                           click () {
-                            $('#insertText').value = '';
+                            /** @type {HTMLTextAreaElement} */
+                            ($('#insertText')).value = '';
                           }
                         }}, [
                           _('button_clearoutput')
@@ -533,7 +647,12 @@ const indexTemplate = function ({_, fonts}) {
                       id: 'showAllDetailedView',
                       $on: {
                         async click (e) {
-                          await unicodecharref.setprefs(e);
+                          await unicodecharref.setprefs(
+                            /**
+                             * @type {Event & {target: HTMLInputElement}}
+                             */
+                            (e)
+                          );
                         }
                       }
                     }],
@@ -599,7 +718,12 @@ const indexTemplate = function ({_, fonts}) {
                       id: 'showAllDetailedCJKView',
                       $on: {
                         async click (e) {
-                          await unicodecharref.setprefs(e);
+                          await unicodecharref.setprefs(
+                            /**
+                             * @type {Event & {target: HTMLInputElement}}
+                             */
+                            (e)
+                          );
                         }
                       }
                     }],
@@ -875,7 +999,7 @@ const indexTemplate = function ({_, fonts}) {
           hidden: true
         }, [
           ['label', [
-            ['progressmeter', {id: 'progress_element'}]
+            ['progress', {id: 'progress_element'}]
           ]],
           ['button', {
             id: 'closeDownloadProgressBox',
@@ -896,9 +1020,7 @@ const indexTemplate = function ({_, fonts}) {
               const url = new URL(location.href);
               navigator.registerProtocolHandler(
                 'web+unicode',
-                url.protocol + '://' + url.host + url.pathname + '?customProtocol=%s',
-                // Deprecated title arg but required for some browsers
-                'Unicode'
+                url.protocol + '://' + url.host + url.pathname + '?customProtocol=%s'
               );
             }
           }}, [
@@ -910,7 +1032,12 @@ const indexTemplate = function ({_, fonts}) {
             _('initialTab_label'), nbsp.repeat(3),
             ['select', {id: 'initialTab', $on: {
               async change (e) {
-                await unicodecharref.setprefs(e);
+                await unicodecharref.setprefs(
+                  /**
+                   * @type {Event & {target: HTMLInputElement}}
+                   */
+                  (e)
+                );
               }
             }}, [
               ['option', {
@@ -942,7 +1069,12 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 async click (e) {
-                  await unicodecharref.hexLettersCasing(e);
+                  await unicodecharref.hexLettersCasing(
+                    /**
+                     * @type {Event & {target: HTMLInputElement}}
+                     */
+                    (e)
+                  );
                 }
               }
             }],
@@ -956,7 +1088,12 @@ const indexTemplate = function ({_, fonts}) {
               id: 'asciiLt128',
               $on: {
                 async click (e) {
-                  await unicodecharref.setprefs(e);
+                  await unicodecharref.setprefs(
+                    /**
+                     * @type {Event & {target: HTMLInputElement}}
+                     */
+                    (e)
+                  );
                 }
               }
             }],
@@ -971,7 +1108,12 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 async click (e) {
-                  await unicodecharref.setprefs(e);
+                  await unicodecharref.setprefs(
+                    /**
+                     * @type {Event & {target: HTMLInputElement}}
+                     */
+                    (e)
+                  );
                 }
               }
             }],
@@ -986,7 +1128,12 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 async click (e) {
-                  await unicodecharref.setprefs(e);
+                  await unicodecharref.setprefs(
+                    /**
+                     * @type {Event & {target: HTMLInputElement}}
+                     */
+                    (e)
+                  );
                 }
               }
             }],
@@ -1001,7 +1148,12 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 async click (e) {
-                  await unicodecharref.setprefs(e);
+                  await unicodecharref.setprefs(
+                    /**
+                     * @type {Event & {target: HTMLInputElement}}
+                     */
+                    (e)
+                  );
                 }
               }
             }],
@@ -1016,7 +1168,12 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 async click (e) {
-                  await unicodecharref.setprefs(e);
+                  await unicodecharref.setprefs(
+                    /**
+                     * @type {Event & {target: HTMLInputElement}}
+                     */
+                    (e)
+                  );
                 }
               }
             }],
@@ -1049,7 +1206,12 @@ const indexTemplate = function ({_, fonts}) {
               class: 'topofpanel',
               $on: {
                 async click (e) {
-                  await unicodecharref.setprefs(e);
+                  await unicodecharref.setprefs(
+                    /**
+                     * @type {Event & {target: HTMLInputElement}}
+                     */
+                    (e)
+                  );
                 }
               }
             }],
@@ -1062,7 +1224,12 @@ const indexTemplate = function ({_, fonts}) {
               id: 'CSSWhitespace',
               $on: {
                 async change (e) {
-                  await unicodecharref.cssWhitespace(e);
+                  await unicodecharref.cssWhitespace(
+                    /**
+                     * @type {Event & {target: HTMLInputElement}}
+                     */
+                    (e)
+                  );
                 }
               }
             }, [
@@ -1192,7 +1359,7 @@ const indexTemplate = function ({_, fonts}) {
             ]],
             ['div', {style: 'text-align: center; margin-top: 10px;'}, [
               ['button', {class: 'dtdbutton', $on: {click () {
-                unicodecharref.insertent('DTDtextbox');
+                unicodecharref.insertent();
               }}}, [
                 _('DTD_insertent')
               ]]
@@ -1203,7 +1370,12 @@ const indexTemplate = function ({_, fonts}) {
                 type: 'checkbox',
                 $on: {
                   async click (e) {
-                    await unicodecharref.append2htmlflip(e);
+                    await unicodecharref.append2htmlflip(
+                      /**
+                       * @type {Event & {target: HTMLInputElement}}
+                       */
+                      (e)
+                    );
                   }
                 }
               }],
@@ -1289,11 +1461,12 @@ const indexTemplate = function ({_, fonts}) {
           ]]
         ]]
       ]]
-    ]]
+    ]])
   ], body);
 
   // See why intl-dom not apparently keeping event handlers
-  $('#donationbutton').addEventListener('click', () => {
+  /** @type {HTMLButtonElement} */
+  ($('#donationbutton')).addEventListener('click', () => {
     window.open(
       'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=brettz9%40yahoo%2ecom&no_shipping=0&no_note=1&tax=0&currency_code=USD&bn=PP%2dDonationsBF&charset=UTF%2d8',
       'bzamirdonation',

@@ -13,14 +13,19 @@
 // the project's config changing)
 
 import coverage from '@cypress/code-coverage/task.js';
+// @ts-expect-error Ok
 import useBabelRc from '@cypress/code-coverage/use-babelrc.js';
 
 /**
- * @type {Cypress.PluginConfig}
+ * @type {(
+ *   on: Cypress.PluginEvents,
+ *   config: Cypress.PluginConfigOptions
+ * ) => Cypress.PluginConfigOptions}
  */
 const plugins = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+  // @ts-expect-error Ok
   coverage(on, config);
   on('file:preprocessor', useBabelRc); // For unit testing
 

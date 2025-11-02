@@ -17,8 +17,7 @@ const minutes = 60 * 1000;
 /**
  *
  * @param {object} args
- * @param {
- *   "log"|"error"|"beginInstall"|"finishedInstall"|"beginActivate"|
+ * @param {"log"|"error"|"beginInstall"|"finishedInstall"|"beginActivate"|
  *   "finishedActivate"
  * } args.type
  * @param {string} [args.message]
@@ -43,7 +42,7 @@ async function post ({type, message = type}) {
 
 /**
  * @callback Logger
- * @param {string[]} messages
+ * @param {...string} messages
  * @returns {Promise<void>}
  */
 
@@ -66,9 +65,20 @@ function logError (error, ...messages) {
   const message = messages.join(' ');
   console.error(error, message);
   return post({
-    message, errorType: error.type, name: error.name, type: 'error'
+    message,
+    // errorType: error.type,
+    // name: error.name,
+    type: 'error'
   });
 }
+
+/**
+ * @typedef {number} PositiveInteger
+ */
+
+/**
+ * @typedef {number} Float
+ */
 
 /**
  * @callback DelayCallback
@@ -93,7 +103,9 @@ async function tryAndRetry (cb, timeout, errMessage, time = 0) {
     return undefined;
   } catch (err) {
     console.log('errrr', err);
-    logError(err, err.message || errMessage);
+    logError(/** @type {Error} */ (err), /** @type {Error} */ (
+      err
+    ).message || errMessage);
     // eslint-disable-next-line promise/avoid-new -- Need timeout
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -121,7 +133,9 @@ async function install (time) {
   post({type: 'beginInstall'});
   log(`Install: Trying, attempt ${time}`);
   const now = Date.now();
-  const {version} = await getJSON('./package.json');
+  const {version} = /** @type {{version: string}} */ (
+    await getJSON('./package.json')
+  );
 
   const cacheKey = namespace + CURRENT_CACHES.prefetch + version;
 
@@ -133,9 +147,9 @@ async function install (time) {
     unicodeDataFiles
   ] = await Promise.all([
     caches.open(cacheKey),
-    getJSON(pathToStaticJSON),
-    getJSON(pathToLocaleJSON),
-    getJSON(pathToUnicodeDataJSON)
+    /** @type {Promise<string[]>} */ (getJSON(pathToStaticJSON)),
+    /** @type {Promise<string[]>} */ (getJSON(pathToLocaleJSON)),
+    /** @type {Promise<string[]>} */ (getJSON(pathToUnicodeDataJSON))
   ]);
   log('Install: Retrieved dependency values');
 
@@ -166,14 +180,20 @@ async function install (time) {
         }
         return cache.put(urlToPrefetch, resp);
       } catch (error) {
-        logError(error, 'Not caching ' + urlToPrefetch + ' due to ' + error);
+        logError(
+          /** @type {Error} */ (error),
+          `Not caching ${urlToPrefetch} due to ${error}`
+        );
         throw error;
       }
     });
     await Promise.all(cachePromises);
     log('Install: Pre-fetching complete.');
   } catch (error) {
-    logError(error, `Install: Pre-fetching failed: ${error}`);
+    logError(
+      /** @type {Error} */ (error),
+      `Install: Pre-fetching failed: ${error}`
+    );
     // Failing gives chance for a new client to re-trigger install?
     throw error;
   }
@@ -201,7 +221,7 @@ async function activate (time) {
     {version}
   ] = await Promise.all([
     caches.keys(),
-    getJSON('./package.json')
+    /** @type {Promise<{version: string}>} */ (getJSON('./package.json'))
   ]);
 
   const expectedCacheNames = Object.values(
@@ -216,8 +236,8 @@ async function activate (time) {
 
   // Todo: Use `namespace` in indexedDB db
   await activateCallback({
-    namespace,
-    log
+    namespace
+    // log
   });
   // log('Activate: Database changes completed');
 
@@ -226,21 +246,21 @@ async function activate (time) {
   post({type: 'finishedActivate'});
 }
 
-self.addEventListener('install', (e) => {
+globalThis.addEventListener('install', (e) => {
   globalThis.skipWaiting();
   e.waitUntil(
     tryAndRetry(install, 5 * minutes, 'Error installing')
   );
 });
 
-self.addEventListener('activate', (e) => {
+globalThis.addEventListener('activate', (e) => {
   // Erring is of no present use here:
   //   https://github.com/w3c/ServiceWorker/issues/659#issuecomment-384919053
   e.waitUntil(tryAndRetry(activate, 5 * minutes, 'Error activating'));
 });
 
 // We cannot make this async as `e.respondWith` must be called synchronously
-self.addEventListener('fetch', (e) => {
+globalThis.addEventListener('fetch', (e) => {
   // DevTools opening will trigger these o-i-c requests
   const {request} = e;
   const {cache, mode, url} = request;

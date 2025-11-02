@@ -2,16 +2,27 @@
 //   need modern substitutions
 
 /**
+ * @typedef {number} PositiveInteger
+ */
+
+/* eslint-disable jsdoc/reject-any-type -- Arbitrary */
+/**
+ * @typedef {any} AnyValue
+ */
+/* eslint-enable jsdoc/reject-any-type -- Arbitrary */
+
+/**
  *
  */
 class UnicodeDB {
   /**
-   * @param {PlainObject} cfg
-   * @param {string} cfg.name
+   * @param {object} cfg
+   * @param {string} [cfg.name]
    * @param {PositiveInteger} [cfg.version]
    */
   constructor ({name = 'unicode', version = 1} = {}) {
-    Object.assign(this, {name, version});
+    this.name = name;
+    this.version = version;
     this.db = null;
   }
 
@@ -19,16 +30,20 @@ class UnicodeDB {
   * @returns {void}
   */
   close () {
-    this.db.close();
+    this.db?.close();
   }
 
   /**
    * @param {string} storeName
-   * @param {string} key
-   * @returns {Promise<object>}
+   * @param {string} [key]
+   * @returns {Promise<{
+   *   codePoint: string, columns?: string[], [key: string]: string
+   * }[]>}
    */
   getAll (storeName, key) {
-    const tx = this.db.transaction(storeName, 'readonly');
+    const tx = /** @type {IDBDatabase} */ (
+      this.db
+    ).transaction(storeName, 'readonly');
     const store = tx.objectStore(storeName);
 
     const req = store.getAll(key);
@@ -47,17 +62,21 @@ class UnicodeDB {
   /* eslint-disable class-methods-use-this -- Abstract */
   /**
    * @abstract
+   * @param {AnyValue} cfg
    */
-  upgradeneeded () {
+  upgradeneeded (
+    // eslint-disable-next-line no-unused-vars -- Needed as base method
+    cfg
+  ) {
     throw new Error('`UnicodeDB.upgradeneeded` is an abstract method');
   }
   /* eslint-enable class-methods-use-this -- Abstract */
 
   /**
    * @param {object} [cfg]
-   * @param {JSON} [cfg.updateUnicodeData]
-   * @param {GenericFunction} [cfg.versionchange]
-   * @returns {Promise<void>}
+   * @param {AnyValue} [cfg.updateUnicodeData]
+   * @param {(e: Event) => void} [cfg.versionchange]
+   * @returns {Promise<IDBDatabase>}
    */
   connect ({updateUnicodeData, versionchange} = {}) {
     /* eslint-disable promise/avoid-new -- No Promise API */
@@ -67,13 +86,18 @@ class UnicodeDB {
       );
       if (updateUnicodeData) {
         req.addEventListener('upgradeneeded', (e) => {
-          const {result: db} = e.target;
+          const db = /** @type {EventTarget & {result: IDBDatabase}} */ (
+            e.target
+          )?.result;
           this.db = db;
           this.upgradeneeded({updateUnicodeData});
         });
       }
-      req.addEventListener('success', ({target}) => {
-        this.db = target.result;
+      req.addEventListener('success', (e) => {
+        const db = /** @type {EventTarget & {result: IDBDatabase}} */ (
+          e.target
+        )?.result;
+        this.db = db;
         if (versionchange) {
           this.db.addEventListener('versionchange', (ev) => {
             versionchange(ev);
@@ -97,8 +121,8 @@ class UnicodeDB {
  */
 export class UnihanDatabase extends UnicodeDB {
   /**
-   * @param {PlainObject} cfg
-   * @param {PositiveInteger} cfg.version
+   * @param {object} [cfg]
+   * @param {PositiveInteger} [cfg.version]
    */
   constructor ({version} = {}) {
     // We create a separate database so updates do not clobber both databases
@@ -110,7 +134,9 @@ export class UnihanDatabase extends UnicodeDB {
   * @returns {Promise<string[]>}
   */
   getUnicodeFields (codePoint) {
-    const tx = this.db.transaction(['Unihan'], 'readonly');
+    const tx = /** @type {IDBDatabase} */ (
+      this.db
+    ).transaction(['Unihan'], 'readonly');
     const store = tx.objectStore('Unihan');
 
     const request = store.get(codePoint);
@@ -126,19 +152,30 @@ export class UnihanDatabase extends UnicodeDB {
   }
 
   /**
-   * @param {string} key
-   * @returns {Promise<object>}
+   * @param {string} [key]
+   * @returns {Promise<{
+   *   codePoint: string, columns?: string[], [key: string]: string
+   * }[]>}
    */
   getAll (key) {
     return super.getAll('Unihan', key);
   }
 
   /**
-   * @param {JSON} updateUnicodeData
+   * @param {AnyValue} cfg
    * @returns {void}
    */
-  upgradeneeded ({updateUnicodeData}) {
-    const store = this.db.createObjectStore('Unihan', {
+  upgradeneeded (cfg) {
+    // eslint-disable-next-line prefer-destructuring -- TS
+    const updateUnicodeData =
+      /**
+       * @type {{
+       *   updateUnicodeData: [codePoint: string, ...info: string[]][]
+       * }}
+       */ (cfg).updateUnicodeData;
+    const store = /** @type {IDBDatabase} */ (
+      this.db
+    ).createObjectStore('Unihan', {
       keyPath: 'codePoint'
     });
     store.createIndex('code-point', 'codePoint', {
@@ -161,27 +198,38 @@ export class UnihanDatabase extends UnicodeDB {
  */
 export class UnicodeDatabase extends UnicodeDB {
   /**
-   * @param {PlainObject} cfg
-   * @param {PositiveInteger} cfg.version
+   * @param {object} [cfg]
+   * @param {PositiveInteger} [cfg.version]
    */
   constructor ({version} = {}) {
     super({name: 'unicode-input-toolconverter', version});
   }
 
   /**
-   * @param {string} key
-   * @returns {Promise<object>}
+   * @param {string} [key]
+   * @returns {Promise<{
+   *   codePoint: string, columns?: string[], [key: string]: string
+   * }[]>}
    */
   getAll (key) {
     return super.getAll('UnicodeData', key);
   }
 
   /**
-   * @param {JSON} updateUnicodeData
+   * @param {AnyValue} cfg
    * @returns {void}
    */
-  upgradeneeded ({updateUnicodeData}) {
-    const store = this.db.createObjectStore('UnicodeData', {
+  upgradeneeded (cfg) {
+    // eslint-disable-next-line prefer-destructuring -- TS
+    const updateUnicodeData =
+      /**
+       * @type {{
+       *   updateUnicodeData: [codePoint: string, ...info: string[]][]
+       * }}
+       */ (cfg).updateUnicodeData;
+    const store = /** @type {IDBDatabase} */ (
+      this.db
+    ).createObjectStore('UnicodeData', {
       keyPath: 'codePoint'
     });
     store.createIndex('code-point', 'codePoint', {
@@ -195,14 +243,14 @@ export class UnicodeDatabase extends UnicodeDB {
         bidiMirrored, unicode1Name, isoComment,
         simpleUppercaseMapping, simpleLowercaseMapping, simpleTitlecaseMapping
       ] = codePointInfoRow;
-      const {groups: {
-        decompositionType,
-        decompositionMapping
-      }} = (
-        /<(?<decompositionType>[^>]*)>\s+(?<decompositionMapping>.*)/u
+      const groups = (
+        /<(?<decompositionType>[^>]*)>\s+(?<decompositionMapping>.*)/v
       ).exec(
         decomposition
-      ) ?? {groups: {}};
+      )?.groups ?? {};
+
+      const {decompositionType, decompositionMapping} = groups;
+
       let numericType = 'None';
       if (numeric6) {
         numericType = 'Decimal';
@@ -224,14 +272,18 @@ export class UnicodeDatabase extends UnicodeDB {
 
   /**
   * @param {string} codePoint
-  * @returns {Promise<string[]>}
+  * @returns {Promise<{
+  *   name: string, unicode1Name: string, [key: string]: string
+  * }>}
   */
   getUnicodeFields (codePoint) {
     // const entityInParentheses = '(' + entity + ') ';
     // Todo: Should this not be padded to 6??
     // const currentStartCharCodeUpperCaseHexPadded =
     //   currentStartCharCode.toString(16).toUpperCase().padStart(4, '0');
-    const tx = this.db.transaction(['UnicodeData'], 'readonly');
+    const tx = /** @type {IDBDatabase} */ (
+      this.db
+    ).transaction(['UnicodeData'], 'readonly');
     const store = tx.objectStore('UnicodeData');
     const request = store.get(codePoint);
     // eslint-disable-next-line promise/avoid-new -- No Promise API

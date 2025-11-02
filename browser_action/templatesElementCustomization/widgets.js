@@ -1,31 +1,51 @@
 import {jml, $$} from '../../vendor/jamilih/dist/jml-es.js';
 
+/**
+ * @typedef {HTMLElement & {
+ *   $getTabs: () => HTMLElement[],
+ *   $getTabPanels: () => HTMLElement[],
+ *   $selectTabForTabPanel: (tabPanel: HTMLDivElement) => void
+ *   $selectTab: (tab: Element) => void,
+ *   $selectedTab: () => HTMLElement
+ * }} TabBox
+ */
+
+/**
+ * @param {string} sel The selector
+ */
 export const makeTabBox = function (sel) {
-  $$(sel).forEach(function (tabbox) {
+  /**
+   * @type {TabBox[]}
+   */
+  ($$(sel)).forEach(function (tabbox) {
     tabbox.$getTabs = function () {
-      return [...this.querySelector('.tabs').children].filter((child) => {
+      return /** @type {HTMLElement[]} */ ([...(/** @type {HTMLElement} */ (
+        this.querySelector('.tabs')
+      )).children].filter((child) => {
         return child.classList.contains('tab');
-      });
+      }));
     };
     tabbox.$getTabPanels = function () {
-      return [...this.children].filter((tabPanel) => {
-        return tabPanel.classList.contains('tabpanel');
-      });
+      return /** @type {HTMLElement[]} */ (
+        [...this.children].filter((tabPanel) => {
+          return tabPanel.classList.contains('tabpanel');
+        })
+      );
     };
     tabbox.$selectTabForTabPanel = function (tabPanel) {
       const tabs = tabbox.$getTabs();
       const tab = tabs.find((tb) => {
         return tb.dataset.label === tabPanel.dataset.label;
       });
-      return tabbox.$selectTab(tab);
+      tabbox.$selectTab(/** @type {Element} */ (tab));
     };
     tabbox.$selectTab = function (tab) {
       const tabs = tabbox.$getTabs();
       tabbox.$getTabPanels().forEach((tabPanel, i) => {
         const childTab = tabs[i];
         if (tab === childTab) {
-          childTab.dataset.selected = true;
-          tabPanel.dataset.selected = true;
+          childTab.dataset.selected = 'true';
+          tabPanel.dataset.selected = 'true';
         } else {
           delete childTab.dataset.selected;
           delete tabPanel.dataset.selected;
@@ -33,11 +53,14 @@ export const makeTabBox = function (sel) {
       });
     };
     tabbox.$selectedTab = function (/* tab */) {
-      return tabbox.$getTabPanels().find(({dataset: {selected}}) => {
-        return selected;
-      });
+      return /** @type {HTMLElement} */ (
+        tabbox.$getTabPanels().find(({dataset: {selected}}) => {
+          return selected;
+        })
+      );
     };
-    tabbox.querySelector('.tabs').prepend(...tabbox.$getTabPanels().map(({
+    /** @type {HTMLElement} */
+    (tabbox.querySelector('.tabs')).prepend(...tabbox.$getTabPanels().map(({
       dataset: {title, selected, label}
     }) => {
       // Set to h1 for accessibility, though styles will reduce default size
@@ -50,7 +73,9 @@ export const makeTabBox = function (sel) {
             tabbox.$selectTab(this);
           }
         }
-      }, [label]);
+      }, [
+        /** @type {string} */ (label)
+      ]);
     }), jml('br', {style: 'clear: left;'}));
   });
 };

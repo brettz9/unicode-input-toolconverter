@@ -1,4 +1,7 @@
 const queryModule = {
+  /**
+   * @param {import('estree').Literal} node
+   */
   [
   // Entity files
   'ArrayExpression > Literal[value="optgroup"] + ObjectExpression + ' +
@@ -10,18 +13,23 @@ const queryModule = {
     ];
   },
   // Dynamically imported stylesheets
+  /**
+   * @param {import('estree').Property} node
+   */
   'Property[key.name="stylesheets"]' (node) {
-    return (node.value.elements || []).flatMap((element) => {
-      if (element.type === 'Literal') {
+    return (
+      ('elements' in node.value && node.value.elements) || []
+    ).flatMap((element) => {
+      if (element?.type === 'Literal') {
         return element.value;
       }
-      if (element.type === 'ArrayExpression') {
+      if (element?.type === 'ArrayExpression') {
         return element.elements.flatMap((arrayItem) => {
-          if (arrayItem.type === 'Literal') {
+          if (arrayItem?.type === 'Literal') {
             return arrayItem.value;
           }
           if (
-            arrayItem.type === 'ConditionalExpression' &&
+            arrayItem?.type === 'ConditionalExpression' &&
             arrayItem.alternate.type === 'Literal'
           ) {
             return arrayItem.alternate.value;
@@ -31,7 +39,7 @@ const queryModule = {
         });
       }
       if (
-        element.type === 'ConditionalExpression' &&
+        element?.type === 'ConditionalExpression' &&
         element.alternate.type === 'Literal'
       ) {
         return element.alternate.value;

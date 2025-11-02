@@ -1,6 +1,7 @@
+/* eslint-disable jsdoc/ts-no-empty-object-type -- Ok */
 /**
 * @param {string} path
-* @returns {JSON}
+* @returns {Promise<{}>}
 */
 const getJSON = async (path) => {
   const response = await fetch(path);
@@ -9,7 +10,7 @@ const getJSON = async (path) => {
 
 /**
 * @param {string} path
-* @returns {JSON}
+* @returns {Promise<string>}
 */
 const getText = async (path) => {
   const response = await fetch(path);

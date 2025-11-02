@@ -6,7 +6,7 @@ const json = dirs.filter((dir) => {
   return dir !== '.DS_Store';
 }).map((dir) => {
   return `/_locales/${dir}/messages.json`;
-}).sort();
+}).toSorted();
 
 // eslint-disable-next-line no-console -- CLI
 console.log('json', json);

@@ -1475,9 +1475,6 @@
     "Tifinagh": {
       "message": "Tifinagh"
     },
-    "Middle_Eastern_Scripts": {
-      "message": "Escritas do oriente médio"
-    },
     "Arabic": {
       "message": "Árabe"
     },
@@ -3151,6 +3148,33 @@
     },
     "Symbols_for_Legacy_Computing_Supplement": {
       "message": "Symbols for Legacy Computing Supplement"
+    },
+    "Beria_Erfe": {
+      "message": "Beria Erfe"
+    },
+    "West_Asian_Scripts": {
+      "message": "West Asian Scripts"
+    },
+    "Sidetic": {
+      "message": "Sidetic"
+    },
+    "Sharada_Supplement": {
+      "message": "Sharada Supplement"
+    },
+    "Tolong_Siki": {
+      "message": "Tolong Siki"
+    },
+    "Tai_Yo": {
+      "message": "Tai Yo"
+    },
+    "CJK_Extension_J": {
+      "message": "CJK Extension J"
+    },
+    "Tangut_Components_Supplement": {
+      "message": "Tangut Components Supplement"
+    },
+    "Miscellaneous_Symbols_Supplement": {
+      "message": "Miscellaneous Symbols Supplement"
     }
   }
 }

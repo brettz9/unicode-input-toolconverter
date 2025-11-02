@@ -14,6 +14,9 @@ const args = process.argv.slice(2);
 const targetDir = `${process.cwd()}/download/entities`;
 const entityBasePath = 'https://www.w3.org/2003/entities/2007/';
 
+/**
+ * @param {string} file
+ */
 const getText = async (file) => {
   return await (await fetch(
     file

@@ -1,7 +1,38 @@
-import {$} from '../vendor/jamilih/dist/jml-es.js';
+// import {$} from '../vendor/jamilih/dist/jml-es.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 
-let charrefunicodeConverter, getPref;
+/**
+ * @param {string} sel
+ */
+const $ = (sel) => {
+  return /** @type {HTMLElement} */ (document.querySelector(sel));
+};
+
+/**
+ * @param {string} sel
+ */
+const $i = (sel) => {
+  return /** @type {HTMLInputElement} */ (document.querySelector(sel));
+};
+
+/**
+ * @type {InstanceType<ReturnType<
+ *   import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ * >>}
+ */
+let charrefunicodeConverter;
+
+/** @type {ReturnType<getUnicodeDefaults>['getPref']} */
+let getPref;
+
+/**
+ * @param {{
+ *   charrefunicodeConverter: InstanceType<ReturnType<
+ *     import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ *   >>
+ * }} cfg
+ * @returns {void}
+ */
 export const shareVars = ({
   // _: l10n,
   charrefunicodeConverter: _uc
@@ -24,113 +55,201 @@ function classChange (el) {
 }
 
 const CharrefConverterBridges = {
+  /**
+   * @param {string} out
+   * @param {HTMLElement} el
+   */
   charref2unicodeval (out, el) {
     classChange(el);
     return charrefunicodeConverter.charref2unicodeval(out);
   },
+  /**
+   * @param {string} out
+   * @param {HTMLElement} el
+   */
   async charref2htmlentsval (out, el) {
     classChange(el);
     return await charrefunicodeConverter.charref2htmlentsval(out);
   },
+  /**
+   * @param {string} unicodeToConvert
+   * @param {HTMLElement} el
+   * @param {boolean} [leaveSurrogates]
+   */
   async unicode2charrefDecval (unicodeToConvert, el, leaveSurrogates) {
     classChange(el);
     return await charrefunicodeConverter.unicode2charrefDecval(
       unicodeToConvert, leaveSurrogates
     );
   },
+  /**
+   * @param {string} unicodeToConvert
+   * @param {HTMLElement} el
+   * @param {boolean} [leaveSurrogates]
+   * @param {import('./unicode/UnicodeConverter.js').UnicodeEscapeMode} [type]
+   */
   async unicode2charrefHexval (unicodeToConvert, el, leaveSurrogates, type) {
     classChange(el);
     return await charrefunicodeConverter.unicode2charrefHexval(
       unicodeToConvert, leaveSurrogates, type
     );
   },
+  /**
+   * @param {string} unicodeToConvert
+   * @param {HTMLElement} el
+   */
   async unicode2htmlentsval (unicodeToConvert, el) {
     classChange(el);
     return await charrefunicodeConverter.unicode2htmlentsval(
       unicodeToConvert
     );
   },
+  /**
+   * @param {string} out
+   * @param {HTMLElement} el
+   */
   async htmlents2charrefDecval (out, el) {
     classChange(el);
     return await charrefunicodeConverter.htmlents2charrefDecval(out);
   },
+  /**
+   * @param {string} out
+   * @param {HTMLElement} el
+   */
   async htmlents2charrefHexval (out, el) {
     classChange(el);
     return await charrefunicodeConverter.htmlents2charrefHexval(out);
   },
+  /**
+   * @param {string} out
+   * @param {HTMLElement} el
+   */
   async htmlents2unicodeval (out, el) {
     classChange(el);
     return await charrefunicodeConverter.htmlents2unicodeval(out);
   },
+  /**
+   * @param {string} out
+   * @param {HTMLElement} el
+   */
   hex2decval (out, el) {
     classChange(el);
     return charrefunicodeConverter.hex2decval(out);
   },
+  /**
+   * @param {string} out
+   * @param {HTMLElement} el
+   */
   async dec2hexval (out, el) {
     classChange(el);
     return await charrefunicodeConverter.dec2hexval(out);
   },
+  /**
+   * @param {Event} e
+   */
   async unicodeTo6Digit (e) {
-    const toconvert = $('#toconvert').value;
-    await this.unicodeTo6DigitVal(toconvert, e.target);
+    const toconvert = /** @type {HTMLInputElement} */ ($i('#toconvert')).value;
+    await this.unicodeTo6DigitVal(
+      toconvert,
+      /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
+
+  /**
+   * @param {string} toconvert
+   * @param {HTMLElement} el
+   */
   async unicodeTo6DigitVal (toconvert, el) {
     classChange(el);
     const val = await charrefunicodeConverter.unicodeTo6DigitVal(
       toconvert
     );
-    $('#converted').value = val;
+    $i('#converted').value = val;
     return val;
   },
+  /**
+   * @param {Event} e
+   */
   async charref2unicode (e) {
-    let toconvert = $('#toconvert').value;
+    let toconvert = $i('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
     }
-    $('#converted').value = this.charref2unicodeval(toconvert, e.target);
-    return false;
-  },
-  async charref2htmlents (e) {
-    let toconvert = $('#toconvert').value;
-    if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
-    }
-    $('#converted').value = await this.charref2htmlentsval(toconvert, e.target);
-    return false;
-  },
-  async unicode2charrefDec (e, leaveSurrogates) {
-    let toconvert = $('#toconvert').value;
-    if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
-    }
-    $('#converted').value = await this.unicode2charrefDecval(
-      toconvert, e.target, leaveSurrogates
+    $i('#converted').value = this.charref2unicodeval(
+      toconvert,
+      /** @type {HTMLElement} */
+      (e.target)
     );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
+  async charref2htmlents (e) {
+    let toconvert = $i('#toconvert').value;
+    if (await getPref('ampspace')) {
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
+    }
+    $i('#converted').value = await this.charref2htmlentsval(
+      toconvert,
+      /** @type {HTMLElement} */ (e.target)
+    );
+    return false;
+  },
+  /**
+   * @param {Event} e
+   * @param {boolean} [leaveSurrogates]
+   * @returns {Promise<false>}
+   */
+  async unicode2charrefDec (e, leaveSurrogates) {
+    let toconvert = $i('#toconvert').value;
+    if (await getPref('ampspace')) {
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
+    }
+    $i('#converted').value = await this.unicode2charrefDecval(
+      toconvert, /** @type {HTMLElement} */ (e.target), leaveSurrogates
+    );
+    return false;
+  },
+  /**
+   * @param {Event} e
+   */
   async unicode2charrefDecSurrogate (e) {
     return await this.unicode2charrefDec(e, true);
   },
+  /**
+   * @param {Event} e
+   * @param {boolean} [leaveSurrogates]
+   */
   async unicode2charrefHex (e, leaveSurrogates) {
-    let toconvert = $('#toconvert').value;
+    let toconvert = $i('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/v, '&amp;$1');
     }
-    $('#converted').value = await this.unicode2charrefHexval(
-      toconvert, e.target, leaveSurrogates
+    $i('#converted').value = await this.unicode2charrefHexval(
+      toconvert, /** @type {HTMLElement} */ (e.target), leaveSurrogates
     );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
   async unicode2charrefHexSurrogate (e) {
     return await this.unicode2charrefHex(e, true);
   },
+  /**
+   * @param {Event} e
+   */
   async unicode2htmlents (e) {
-    let toconvert = $('#toconvert').value;
+    let toconvert = $i('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
     }
-    $('#converted').value = await this.unicode2htmlentsval(toconvert, e.target);
+    $i('#converted').value =
+      await this.unicode2htmlentsval(
+        toconvert, /** @type {HTMLElement} */ (e.target)
+      );
     return false;
   },
   /**
@@ -139,13 +258,13 @@ const CharrefConverterBridges = {
    *   replaced
    * @param {HTMLElement} el The (button) element whose class will be changed to
    *   reflect that the action has been activated
-   * @returns {string} The passed-in string with Unicode replaced with
+   * @returns {Promise<string>} The passed-in string with Unicode replaced with
    *   description escape sequences
    */
   async unicode2CharDescVal (toconvert, el) {
     classChange(el);
     const val = await charrefunicodeConverter.unicode2CharDescVal(toconvert);
-    $('#converted').value = val;
+    $i('#converted').value = val;
     return val;
   },
   /**
@@ -159,57 +278,106 @@ const CharrefConverterBridges = {
   async charDesc2UnicodeVal (toconvert, el) {
     classChange(el);
     const val = await charrefunicodeConverter.charDesc2UnicodeVal(toconvert);
-    $('#converted').value = val;
+    $i('#converted').value = val;
     return val;
   },
+  /**
+   * @param {Event} e
+   */
   async charDesc2Unicode (e) {
-    const toconvert = $('#toconvert').value;
-    await this.charDesc2UnicodeVal(toconvert, e.target);
+    const toconvert = $i('#toconvert').value;
+    await this.charDesc2UnicodeVal(
+      toconvert, /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
   async unicode2CharDesc (e) {
-    const toconvert = $('#toconvert').value;
-    await this.unicode2CharDescVal(toconvert, e.target);
+    const toconvert = $i('#toconvert').value;
+    await this.unicode2CharDescVal(
+      toconvert,
+      /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
+  /**
+   * @param {string} toconvert
+   * @param {HTMLElement} el
+   */
   async unicode2jsescapeval (toconvert, el) {
     classChange(el);
     const val = await charrefunicodeConverter.unicode2jsescapeval(toconvert);
-    $('#converted').value = val;
+    $i('#converted').value = val;
     return val;
   },
+  /**
+   * @param {Event} e
+   */
   async unicode2jsescape (e) {
-    const toconvert = $('#toconvert').value;
-    await this.unicode2jsescapeval(toconvert, e.target);
+    const toconvert = $i('#toconvert').value;
+    await this.unicode2jsescapeval(
+      toconvert,
+      /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
   cssescape2unicode (e) {
-    const toconvert = $('#toconvert').value;
-    $('#converted').value = this.cssescape2unicodeval(toconvert, e.target);
+    const toconvert = $i('#toconvert').value;
+    $i('#converted').value = this.cssescape2unicodeval(
+      toconvert, /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
+  /**
+   * @param {string} toconvert
+   * @param {HTMLElement} el
+   */
   sixDigit2UnicodeVal (toconvert, el) {
     classChange(el);
     const val = charrefunicodeConverter.sixDigit2UnicodeVal(toconvert);
-    $('#converted').value = val;
+    $i('#converted').value = val;
     return val;
   },
+  /**
+   * @param {Event} e
+   */
   sixDigit2Unicode (e) {
-    const toconvert = $('#toconvert').value;
-    this.sixDigit2UnicodeVal(toconvert, e.target);
+    const toconvert = $i('#toconvert').value;
+    this.sixDigit2UnicodeVal(
+      toconvert, /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
   jsescape2unicode (e) {
-    const toconvert = $('#toconvert').value;
-    $('#converted').value = this.jsescape2unicodeval(toconvert, e.target);
+    const toconvert = $i('#toconvert').value;
+    $i('#converted').value = this.jsescape2unicodeval(
+      toconvert, /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
+  /**
+   * @param {string} toconvert
+   * @param {HTMLElement} el
+   */
   cssescape2unicodeval (toconvert, el) {
     classChange(el);
     const unicode = charrefunicodeConverter.cssescape2unicodeval(toconvert);
     return unicode;
   },
   // Fix: make option to avoid converting \r, etc. for javascript
+  /**
+   * @param {string} toconvert
+   * @param {HTMLElement} el
+   * @param {import('./unicode/UnicodeConverter.js').UnicodeEscapeMode} [mode]
+   */
   jsescape2unicodeval (toconvert, el, mode) {
     classChange(el);
     const unicode = charrefunicodeConverter.jsescape2unicodeval(
@@ -217,136 +385,175 @@ const CharrefConverterBridges = {
     );
     return unicode;
   },
+  /**
+   * @param {string} toconvert
+   * @param {HTMLElement} el
+   */
   async unicode2cssescapeval (toconvert, el) {
     classChange(el);
     const val = await charrefunicodeConverter.unicode2cssescapeval(
       toconvert
     );
-    $('#converted').value = val;
+    $i('#converted').value = val;
     return val;
   },
+  /**
+   * @param {Event} e
+   */
   async unicode2cssescape (e) {
-    const toconvert = $('#toconvert').value;
-    await this.unicode2cssescapeval(toconvert, e.target);
+    const toconvert = $i('#toconvert').value;
+    await this.unicode2cssescapeval(
+      toconvert, /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
   // In this method and others like it, boolpref should be moved instead to
   //   converter function since it should be consistent across the app
+  /**
+   * @param {Event} e
+   */
   async htmlents2charrefDec (e) {
-    let toconvert = $('#toconvert').value;
+    let toconvert = $i('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
     }
-    $('#converted').value = await this.htmlents2charrefDecval(
-      toconvert, e.target
+    $i('#converted').value = await this.htmlents2charrefDecval(
+      toconvert, /** @type {HTMLElement} */ (e.target)
     );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
   async htmlents2charrefHex (e) {
-    let toconvert = $('#toconvert').value;
+    let toconvert = $i('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
     }
-    $('#converted').value = await this.htmlents2charrefHexval(
-      toconvert, e.target
+    $i('#converted').value = await this.htmlents2charrefHexval(
+      toconvert, /** @type {HTMLElement} */ (e.target)
     );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
   async htmlents2unicode (e) {
-    let toconvert = $('#toconvert').value;
+    let toconvert = $i('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
     }
-    $('#converted').value = await this.htmlents2unicodeval(
-      toconvert, e.target
+    $i('#converted').value = await this.htmlents2unicodeval(
+      toconvert, /** @type {HTMLElement} */ (e.target)
     );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
   async hex2dec (e) {
-    let toconvert = $('#toconvert').value;
+    let toconvert = $i('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
     }
-    $('#converted').value = this.hex2decval(toconvert, e.target);
+    $i('#converted').value = this.hex2decval(
+      toconvert, /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   },
+  /**
+   * @param {Event} e
+   */
   async dec2hex (e) {
-    let toconvert = $('#toconvert').value;
+    let toconvert = $i('#toconvert').value;
     if (await getPref('ampspace')) {
-      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gu, '&amp;$1');
+      toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
     }
-    $('#converted').value = await this.dec2hexval(toconvert, e.target);
+    $i('#converted').value = await this.dec2hexval(
+      toconvert, /** @type {HTMLElement} */ (e.target)
+    );
     return false;
   }
 };
 
 /**
- * @param {PlainObject} cfg
+ * @param {object} cfg
  * @param {string} cfg.toconvert
  * @param {string} cfg.targetid
  * @param {import('intl-dom').I18NCallback} cfg._
  * @throws {Error}
- * @returns {Promise<string>}
+ * @returns {Promise<string|void>}
  */
 async function findBridgeForTargetID ({_, toconvert, targetid}) {
   let out;
   switch (targetid) {
   case 'context-charrefunicode1':
-    out = CharrefConverterBridges.charref2unicodeval(toconvert, $('#b1'));
+    out = CharrefConverterBridges.charref2unicodeval(
+      toconvert,
+      /** @type {HTMLElement} */ ($('#b1'))
+    );
     break;
   case 'context-charrefunicode2':
     out = await CharrefConverterBridges.charref2htmlentsval(
-      toconvert, $('#b2')
+      toconvert, /** @type {HTMLElement} */ ($('#b2'))
     );
     break;
   case 'context-charrefunicode3':
     out = await CharrefConverterBridges.unicode2charrefDecval(
-      toconvert, $('#b3')
+      toconvert, /** @type {HTMLElement} */ ($('#b3'))
     );
     break;
   case 'context-charrefunicode4':
     out = await CharrefConverterBridges.unicode2charrefHexval(
-      toconvert, $('#b4')
+      toconvert, /** @type {HTMLElement} */ ($('#b4'))
     );
     break;
   case 'context-charrefunicode5':
     out = await CharrefConverterBridges.unicode2htmlentsval(
-      toconvert, $('#b5')
+      toconvert, /** @type {HTMLElement} */ ($('#b5'))
     );
     break;
   case 'context-charrefunicode6':
-    out = CharrefConverterBridges.unicode2jsescapeval(toconvert, $('#b6'));
+    out = await CharrefConverterBridges.unicode2jsescapeval(
+      toconvert, $('#b6')
+    );
     break;
   case 'context-charrefunicode7':
     out = await CharrefConverterBridges.unicodeTo6DigitVal(
-      toconvert, $('#b7')
+      toconvert, /** @type {HTMLElement} */ ($('#b7'))
     );
     break;
   case 'context-charrefunicode8':
     out = await CharrefConverterBridges.unicode2cssescapeval(
-      toconvert, $('#b8')
+      toconvert, /** @type {HTMLElement} */ ($('#b8'))
     );
     break;
   case 'context-charrefunicode9':
     out = await CharrefConverterBridges.htmlents2charrefDecval(
-      toconvert, $('#b9')
+      toconvert, /** @type {HTMLElement} */ ($('#b9'))
     );
     break;
   case 'context-charrefunicode10':
     out = await CharrefConverterBridges.htmlents2charrefHexval(
-      toconvert, $('#b10')
+      toconvert, /** @type {HTMLElement} */ ($('#b10'))
     );
     break;
   case 'context-charrefunicode11':
     out = await CharrefConverterBridges.htmlents2unicodeval(
-      toconvert, $('#b11')
+      toconvert, /** @type {HTMLElement} */ ($('#b11'))
     );
     break;
   case 'context-charrefunicode12':
-    out = CharrefConverterBridges.hex2decval(toconvert, $('#b12'));
+    out = CharrefConverterBridges.hex2decval(
+      toconvert,
+      /** @type {HTMLElement} */ ($('#b12'))
+    );
     break;
   case 'context-charrefunicode13':
-    out = CharrefConverterBridges.dec2hexval(toconvert, $('#b13'));
+    out = await CharrefConverterBridges.dec2hexval(
+      toconvert,
+      /** @type {HTMLElement} */ ($('#b13'))
+    );
     break;
   case 'context-charrefunicode14':
     out = CharrefConverterBridges.jsescape2unicodeval(toconvert, $('#b14'));
@@ -359,22 +566,22 @@ async function findBridgeForTargetID ({_, toconvert, targetid}) {
     break;
   case 'context-charrefunicode17':
     out = await CharrefConverterBridges.unicode2CharDescVal(
-      toconvert, $('#b17')
+      toconvert, /** @type {HTMLElement} */ ($('#b17'))
     );
     break;
   case 'context-charrefunicode18':
     out = await CharrefConverterBridges.charDesc2UnicodeVal(
-      toconvert, $('#b18')
+      toconvert, /** @type {HTMLElement} */ ($('#b18'))
     );
     break;
   case 'context-charrefunicode3b':
     out = await CharrefConverterBridges.unicode2charrefDecval(
-      toconvert, $('#b3b'), true
+      toconvert, /** @type {HTMLElement} */ ($('#b3b')), true
     );
     break;
   case 'context-charrefunicode4b':
     out = await CharrefConverterBridges.unicode2charrefHexval(
-      toconvert, $('#b4b'), true
+      toconvert, /** @type {HTMLElement} */ ($('#b4b')), true
     );
     break;
   default:

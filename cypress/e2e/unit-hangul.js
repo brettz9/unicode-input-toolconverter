@@ -12,6 +12,7 @@ describe('Hangul', function () {
   describe('getJamoForIndex', function () {
     it('getJamoForIndex throws with bad type', function () {
       expect(() => {
+        // @ts-expect-error Intentionally bad argument
         getJamoForIndex();
       }).to.throw('Unexpected type passed to getJamoCodePointForName');
     });

@@ -1,7 +1,7 @@
 // Todo: Move to own library
 
 /**
- * @param {object} [cfg]
+ * @param {object} cfg
  * @param {HTMLTextAreaElement|HTMLInputElement} cfg.textReceptacle
  * @param {string} cfg.value
  * @param {boolean} [cfg.focusIn]
@@ -9,7 +9,7 @@
  */
 function insertIntoOrOverExisting ({
   textReceptacle, value, focusIn = true
-} = {}) {
+}) {
   const {length: len} = textReceptacle.value;
   const start = textReceptacle.selectionStart;
   const end = textReceptacle.selectionEnd;
@@ -17,8 +17,8 @@ function insertIntoOrOverExisting ({
   if (focusIn) {
     textReceptacle.focus();
   }
-  const pre = textReceptacle.value.slice(0, Math.max(0, start));
-  const post = textReceptacle.value.slice(end, len);
+  const pre = textReceptacle.value.slice(0, Math.max(0, start ?? 0));
+  const post = textReceptacle.value.slice(end ?? 0, len);
   textReceptacle.value = pre + value + post;
 
   textReceptacle.selectionStart = pre.length + value.length;

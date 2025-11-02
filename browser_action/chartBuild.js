@@ -2,12 +2,58 @@ import {jml} from '../vendor/jamilih/dist/jml-es.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import chartBuildTemplate from './templates/chartBuild.js';
 
-let _, textReceptacle, chartContainer, insertText, charrefunicodeConverter;
+/**
+ * @typedef {{
+ *   decyes: (k: number) => string,
+ *   hexyes: (k: number) => string,
+ *   unicodeyes: (k: number) => string,
+ * }} DisplayTypes
+ */
 
+/**
+ * @typedef {(info: {
+ *   textReceptacle: HTMLTextAreaElement|HTMLInputElement,
+ *   value: string
+ * }) => void} InsertText
+ */
+
+/**
+ * @typedef {InstanceType<ReturnType<
+ *   import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ * >>} CharrefUnicodeConverter
+ */
+
+/** @type {HTMLElement} */
+let chartContainer;
+
+/** @type {InsertText} */
+let insertText;
+
+/** @type {CharrefUnicodeConverter} */
+let charrefunicodeConverter;
+
+/** @type {import('intl-dom').I18NCallback<string>} */
+let _;
+
+/** @type {HTMLTextAreaElement|HTMLInputElement} */
+let textReceptacle;
+
+/**
+ * @param {{
+ *   _: import('intl-dom').I18NCallback<string>,
+ *   charrefunicodeConverter: CharrefUnicodeConverter,
+ *   textReceptacle: HTMLTextAreaElement|HTMLInputElement,
+ *   chartContainer: HTMLElement,
+ *   descripts?: boolean,
+ *   insertText: InsertText
+ * }} cfg
+ */
 const getChartBuild = async function ({
   _: i18n,
   descripts,
-  insertText: it, textReceptacle: tr, chartContainer: cc,
+  insertText: it,
+  textReceptacle: tr,
+  chartContainer: cc,
   charrefunicodeConverter: uc
 }) {
   textReceptacle = tr;
@@ -18,31 +64,44 @@ const getChartBuild = async function ({
   return await chartBuild({descripts});
 };
 
-// // eslint-disable-next-line import/no-mutable-exports -- Easier
+/** @type {number} */
 export let lastStartCharCode;
 
+/**
+ * @param {{
+ *   descripts?: boolean
+ * }} [cfg]
+ */
 const chartBuild = async function chartBuild ({descripts} = {}) {
   const {getPref, setPref} = getUnicodeDefaults();
   const [
     startCharInMiddleOfChart,
-    cols, onlyentsyes,
+    cols,
+    onlyentsyes,
     entyes, buttonyes, decyes, hexyes, unicodeyes,
     hexLettersUpper,
     font, lang,
     tblrowsset, currentStartCharCodeInitial
   ] = await Promise.all([
-    'startCharInMiddleOfChart',
-    'tblcolsset', 'onlyentsyes',
-    'entyes', 'buttonyes', 'decyes', 'hexyes', 'unicodeyes',
-    'hexLettersUpper',
-    'font', 'lang',
-    'tblrowsset', 'currentStartCharCode'
-  ].map((pref) => {
-    return getPref(pref);
-  }));
+    getPref('startCharInMiddleOfChart'),
+    /** @type {Promise<number>} */ (getPref('tblcolsset')),
+    /** @type {Promise<boolean>} */ (getPref('onlyentsyes')),
+    /** @type {Promise<boolean>} */ (getPref('entyes')),
+    /** @type {Promise<boolean>} */ (getPref('buttonyes')),
+    getPref('decyes'),
+    getPref('hexyes'),
+    getPref('unicodeyes'),
+    getPref('hexLettersUpper'),
+    /** @type {Promise<string>} */ (getPref('font')),
+    /** @type {Promise<string>} */ (getPref('lang')),
+    getPref('tblrowsset'),
+    getPref('currentStartCharCode')
+  ]);
 
-  const current = {startCharCode: currentStartCharCodeInitial};
-  let rows = tblrowsset;
+  const current = {
+    startCharCode: /** @type {number} */ (currentStartCharCodeInitial)
+  };
+  let rows = /** @type {number} */ (tblrowsset);
 
   lastStartCharCode = current.startCharCode;
 
@@ -63,9 +122,15 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
   }
   resetCurrentStartCharCodeIfOutOfBounds();
 
-  // Todo: Document (or better name) what's going on here
-  let q, prev, arr, remainder, rowceil, colsOverRemainder;
-  const descriptsOrOnlyEnts = onlyentsyes || descripts;
+  // Todo: Document (or better name) what's going on here with these
+  /** @type {number|undefined} */
+  let q;
+  /** @type {number} */
+  let prev;
+  /** @type {number[]|undefined} */
+  let arr;
+  let remainder, rowceil, colsOverRemainder;
+  const descriptsOrOnlyEnts = onlyentsyes || Boolean(descripts);
   if (descriptsOrOnlyEnts) {
     arr = descripts
       ? charrefunicodeConverter.descripts
@@ -105,9 +170,11 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
   chartContainer.textContent = '';
 
   const types = {hexyes, decyes, unicodeyes, entyes};
-  const appliedFormats = [
+  const appliedFormats = /** @type {const} */ ([
     'decyes', 'hexyes', 'unicodeyes'
-  ].filter((t) => types[t]);
+  ]).filter((t) => types[t]);
+
+  /** @type {DisplayTypes} */
   const displayTypes = {
     decyes (k) {
       return `&#${k};`;
@@ -123,24 +190,25 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
     }
   };
 
+  /** @type {string[]} */
   const captioncntnt = [];
   ['unicode', 'hex', 'dec', 'ent'].forEach((type) => {
-    if (types[type + 'yes']) {
+    if (types[/** @type {keyof types} */ (type + 'yes')]) {
       captioncntnt.push(_(type + '_noun'));
     }
   });
 
   const captionContent = _.list([
     // Make first letter of first word upper case
-    captioncntnt[0].replace(/^./u, (s) => s.toLocaleUpperCase(
-      _.locale
+    captioncntnt[0].replace(/^./v, (s) => s.toLocaleUpperCase(
+      _.resolvedLocale
     )),
     ...captioncntnt.slice(1)
   ]);
 
   chartBuildTemplate({
     _, rows, cols, charrefunicodeConverter, current,
-    resetCurrentStartCharCodeIfOutOfBounds, descriptsOrOnlyEnts,
+    resetCurrentStartCharCodeIfOutOfBounds, // descriptsOrOnlyEnts,
     q, arr, textReceptacle, entyes, chartBuild, descripts,
     chartContainer,
     setPref, insertText, buttonyes, font, lang, prev,

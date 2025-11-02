@@ -31,7 +31,7 @@ setJSONExtra(jsonExtra);
 // SETUP
 
 // Todo: Support hash searchParams / streamline with `pushState`
-const {searchParams} = new URL(location);
+const {searchParams} = new URL(location.href);
 
 const lang = searchParams.get('lang');
 
@@ -44,10 +44,10 @@ const locales = [...new Set([
 
 // eslint-disable-next-line unicorn/prefer-top-level-await -- No iife export
 (async () => {
-const _ = await i18n({
+const _ = /** @type {import('intl-dom').I18NCallback<string>} */ (await i18n({
   locales, defaults: false, localesBasePath: '../',
   substitutions: {code, link}
-});
+}));
 
 if (searchParams.get('serviceWorker')) {
   // Doesn't work in FF as SW using ESM so putting behind switch for now

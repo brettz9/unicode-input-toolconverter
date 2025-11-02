@@ -28,23 +28,28 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('clearIndexedDB', async () => {
-  const databases = await indexedDB.databases();
+Cypress.Commands.add('clearIndexedDB', () => {
+  cy.window().then(async (win) => {
+    const databases = await win.indexedDB.databases();
 
-  return await Promise.all(
-    databases.map(
-      ({name}) => {
-        // eslint-disable-next-line promise/avoid-new -- Not in API
-        return new Promise((resolve, reject) => {
-          const request = indexedDB.deleteDatabase(name);
+    return await Promise.all(
+      databases.map(
+        ({name}) => {
+          // eslint-disable-next-line promise/avoid-new -- Not in API
+          return new Promise((resolve, reject) => {
+            const request = win.indexedDB.deleteDatabase(
+              /** @type {string} */
+              (name)
+            );
 
-          request.addEventListener('success', resolve);
-          request.addEventListener('blocked', resolve);
-          request.addEventListener('error', reject);
-        });
-      }
-    )
-  );
+            request.addEventListener('success', resolve);
+            request.addEventListener('blocked', resolve);
+            request.addEventListener('error', reject);
+          });
+        }
+      )
+    );
+  });
 });
 
 /**
@@ -95,7 +100,7 @@ Cypress.Commands.add(
   'visitURLAndCheckAccessibility',
   /**
    * @param {string} url
-   * @param {object} options
+   * @param {Partial<Cypress.VisitOptions>} [options]
    * @returns {void}
    */
   (url, options) => {

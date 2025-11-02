@@ -1,5 +1,61 @@
-import {$} from '../../vendor/jamilih/dist/jml-es.js';
+/**
+ * @param {string} sel
+ */
+export const $ = (sel) => {
+  return /** @type {HTMLElement} */ (document.querySelector(sel));
+};
 
+/**
+ * @param {string} sel
+ */
+export const $s = (sel) => {
+  return /** @type {HTMLSelectElement} */ ($(sel));
+};
+
+/**
+ * @param {string} sel
+ */
+export const $i = (sel) => {
+  return /** @type {HTMLInputElement} */ ($(sel));
+};
+
+/**
+ * @param {string} sel
+ */
+export const $o = (sel) => {
+  return /** @type {HTMLOptionElement} */ ($(sel));
+};
+
+/**
+ * @param {string} sel
+ */
+export const $t = (sel) => {
+  return /** @type {HTMLTextAreaElement} */ ($(sel));
+};
+
+/**
+ * @param {string} sel
+ */
+export const $tabbox = (sel) => {
+  // eslint-disable-next-line @stylistic/max-len -- Long
+  return /** @type {import('../templatesElementCustomization/widgets.js').TabBox} */ (
+    $(sel)
+  );
+};
+
+/**
+ * @param {string} sel
+ */
+export const $tabpanel = (sel) => {
+  return /** @type {HTMLDivElement} */ ($(sel));
+};
+
+/**
+ * @typedef {number} Integer
+ */
+/**
+ * @typedef {number} Float
+ */
 /**
  * @param {Integer} i
  * @returns {void}
@@ -12,7 +68,7 @@ function removeViewChildren (i) {
 }
 /**
  * @param {string} sel
- * @param {Element} item
+ * @param {Element|string} item
  * @returns {void}
  */
 function placeItem (sel, item) {
@@ -29,11 +85,11 @@ const // xulns = 'https://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul
 
 /**
 * @param {string} el
-* @returns {Element}
+* @returns {HTMLAnchorElement}
 */
 function createHTMLElement (el) {
   // return document.createElementNS(htmlns, el);
-  return document.createElement(el);
+  return /** @type {HTMLAnchorElement} */ (document.createElement(el));
 }
 
 /**
@@ -53,14 +109,14 @@ function createXULElement (el) {
 */
 class AsyncStreamIterable {
   /**
-  * @param {Stream} stream
+  * @param {ReadableStream} stream
   */
   constructor (stream) {
     this._stream = stream;
   }
 
   /**
-  * @returns {void}
+  * @returns {AsyncGenerator}
   * @yields {Integer}
   */
   async *[Symbol.asyncIterator] () {
@@ -87,22 +143,26 @@ class AsyncStreamIterable {
 */
 
 /**
- * @param {PlainObject} cfg
+ * @param {object} cfg
  * @param {string} cfg.url
- * @param {Element} cfg.progressElement
+ * @param {HTMLProgressElement} cfg.progressElement
  * @param {ProgressCallback} cfg.progress
  * @returns {Promise<{
- *  receivedLength: Integer, totalBytes: Integer, chunks: Integer[]
+ *  receivedLength: Integer, totalBytes: Integer, chunks: Uint8Array[]
  * }>}
  */
 async function showProgress ({url, progressElement, progress}) {
   const response = await fetch(url);
-  const totalBytes = response.headers.get('content-length');
+  const totalBytes = Number(response.headers.get('content-length'));
   progressElement.max = totalBytes;
 
+  /** @type {Uint8Array[]} */
   const chunks = [];
   let receivedLength = 0;
-  for await (const value of new AsyncStreamIterable(response.body)) {
+  for await (const value of new AsyncStreamIterable(
+    /** @type {ReadableStream<Uint8Array<ArrayBuffer>>} */
+    (response.body)
+  )) {
     chunks.push(value);
     receivedLength += value.length;
 

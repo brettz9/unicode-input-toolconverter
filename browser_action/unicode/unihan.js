@@ -1,11 +1,11 @@
 import {getHangulName} from './hangul.js';
 
 /**
- * @param {PlainObject} cfg
+ * @param {object} cfg
  * @param {string} cfg.khextemp
- * @param {import('intl-dom').I18NCallback} cfg._
+ * @param {import('intl-dom').I18NCallback<string>} cfg._
  * @returns {{
- *   unihanType: boolean, hangul: boolean, cjkText: string,
+ *   unihanType: boolean, hangul: boolean, cjkText: string|undefined,
  *   searchValue: string
  * }}
  */
@@ -69,6 +69,7 @@ function getCJKTypeFromHexString ({khextemp, _}) {
   // pattern = new RegExp('^' + khextemp + ';([^;]*);', 'm');
   // file = 'UnicodeData.txt';
 
+  /** @type {string|boolean} */
   let search = false;
   let cjkText;
 

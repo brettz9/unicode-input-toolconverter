@@ -151,7 +151,7 @@ describe('Charts', function () {
 
   describe('Character metadata', function () {
     describe('Script on character mouseover', function () {
-      [
+      /** @type {[number, string][]} */ ([
         [0x0100, 'Latin Extended-A'],
         [0x0180, 'Latin Extended-B'],
         [0x0250, 'IPA Extensions'],
@@ -391,7 +391,7 @@ describe('Charts', function () {
         // Also test last character
         [0x10FF80, 'Plane 16/Supplementary Private Use Area-B'],
         [0x10FFFF, 'At End of Plane 16/Supplementary Private Use Area-B']
-      ].forEach(([chr, script]) => {
+      ]).forEach(([chr, script]) => {
         it(chr.toString(16).toUpperCase() + ' ' + script, function () {
           visitBrowserAction();
 
@@ -406,7 +406,7 @@ describe('Charts', function () {
 
       // Is the block in unihan.js that this covers necessary, given that
       //  the results appear to be the same?
-      [
+      /** @type {[number, string][]} */ ([
         // Within range checks
         [0x3401, 'CJK Ideographs Ext. A'],
         [0x4DB5, 'CJK Ideographs Ext. A'],
@@ -414,7 +414,7 @@ describe('Charts', function () {
         [0x9FC3, 'CJK Unified Ideographs (Han)'],
         [0x20001, 'CJK Ideographs Ext. B'],
         [0x2A6D6, 'CJK Ideographs Ext. B']
-      ].forEach(([chr, script]) => {
+      ]).forEach(([chr, script]) => {
         it(chr.toString(16).toUpperCase() + ' ' + script, function () {
           visitBrowserAction();
 
@@ -428,7 +428,7 @@ describe('Charts', function () {
       });
     });
 
-    [
+    /** @type {[number, string][]} */ ([
       // Special characters beyond endpoints of range
       [0xDB81, 'High Private Use Surrogate'],
       [0xDC01, 'Low Surrogate'],
@@ -458,7 +458,7 @@ describe('Charts', function () {
       ].map((chr) => {
         return [chr, 'Reserved noncharacter'];
       })
-    ].forEach(([chr, desc]) => {
+    ]).forEach(([chr, desc]) => {
       it(chr.toString(16).toUpperCase() + ' ' + desc, function () {
         visitBrowserAction();
 
@@ -846,7 +846,7 @@ describe('Charts', function () {
         'td:nth-of-type(1) > .centered > button'
       ).should('not.exist');
 
-      cy.clearTypeAndBlur('#rowsset', 6);
+      cy.clearTypeAndBlur('#rowsset', '6');
 
       cy.get(
         '#chart_table > tr:nth-of-type(6) > ' +
@@ -865,7 +865,7 @@ describe('Charts', function () {
         'td:nth-of-type(6) > .centered > button'
       ).should('not.exist');
 
-      cy.clearTypeAndBlur('#colsset', 6);
+      cy.clearTypeAndBlur('#colsset', '6');
 
       cy.get(
         '#chart_table > tr:nth-of-type(1) > ' +

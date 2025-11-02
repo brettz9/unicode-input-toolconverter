@@ -2,7 +2,26 @@ import {$} from '../vendor/jamilih/dist/jml-es.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import unicodecharref from './unicodecharref.js';
 
-let charrefunicodeConverter, getPref, setPref;
+/**
+ * @type {InstanceType<ReturnType<
+ *   import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ * >>}
+ */
+let charrefunicodeConverter;
+
+/** @type {ReturnType<getUnicodeDefaults>['getPref']} */
+let getPref;
+/** @type {ReturnType<getUnicodeDefaults>['setPref']} */
+let setPref;
+
+/**
+ * @param {{
+ *   charrefunicodeConverter: InstanceType<ReturnType<
+ *     import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ *   >>
+ * }} cfg
+ * @returns {void}
+ */
 export const shareVars = ({charrefunicodeConverter: _uc}) => {
   charrefunicodeConverter = _uc;
   ({getPref, setPref} = getUnicodeDefaults());
@@ -14,22 +33,24 @@ export const shareVars = ({charrefunicodeConverter: _uc}) => {
  */
 async function insertEntityFile (e) {
   const entFile = await fetch(
-    '../download/entities/' + e.target.value + '.ent'
+    '../download/entities/' + /** @type {HTMLSelectElement} */ (
+      e.target
+    ).value + '.ent'
   );
   const data = await entFile.text();
 
-  $('#DTDtextbox').value += '\n' + data;
+  /** @type {HTMLTextAreaElement} */ ($('#DTDtextbox')).value += '\n' + data;
   await registerDTD();
 }
 
 /**
- * @returns {Promise<{void}>}
+ * @returns {Promise<void>}
  */
 async function registerDTD () {
   // Cannot use back-reference inside char. class, so need to do twice
-  const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/gu;
+  const pattern = /<!ENTITY\s+([^'"\s]*)\s+(["'])(.*)\2\s*>/gv;
 
-  const text = $('#DTDtextbox').value;
+  const text = /** @type {HTMLTextAreaElement} */ ($('#DTDtextbox')).value;
   await setPref('DTDtextbox', text);
 
   let result;
@@ -51,11 +72,12 @@ async function registerDTD () {
   // Start off blank in case items erased
   charrefunicodeConverter.newcharrefs = [...unicodecharref.orignewcharrefs];
 
-  const decreg = /^(?:&#|#)?(\d\d+);?$/u;
-  // const decreg2 = /^(&#|#)([0-9]);?$/u;
-  const hexreg = /^(?:&#|#|0|U|u)?(?:[xX+])([\da-fA-F]+);?$/u;
+  const decreg = /^(?:&#|#)?(\d\d+);?$/v;
+  // const decreg2 = /^(&#|#)([0-9]);?$/v;
+  const hexreg = /^(?:&#|#|0|U|u)?(?:[xX+])([\da-fA-F]+);?$/v;
 
   while ((result = pattern.exec(text)) !== null) {
+    /** @type {number|string} */
     let m = result[3];
     let addreg = true;
     if (decreg.test(m)) { // Dec
@@ -70,12 +92,15 @@ async function registerDTD () {
     } else if (m.length > 1) {
       addreg = false;
     } else {
-      m = m.charCodeAt();
+      m = m.charCodeAt(0);
     }
     if (addreg) {
       // Used to ensure apos or amp is detected in same position
       charrefunicodeConverter.entities.unshift(result[1]);
-      charrefunicodeConverter.numericCharacterReferences.unshift(m);
+      charrefunicodeConverter.numericCharacterReferences.unshift(
+        /** @type {number} */
+        (m)
+      );
     // For translating entities into two-char+ Unicode, or hex or dec
     } else {
       charrefunicodeConverter.newents.push(result[1]);
@@ -88,7 +113,8 @@ async function registerDTD () {
 * @returns {void}
 */
 function setupEntityEvents () {
-  $('#insertEntityFile').addEventListener('change', async function (e) {
+  /** @type {HTMLSelectElement} */
+  ($('#insertEntityFile')).addEventListener('change', async function (e) {
     await insertEntityFile(e);
   });
 }
