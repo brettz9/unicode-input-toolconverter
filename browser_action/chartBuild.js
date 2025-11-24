@@ -1,4 +1,4 @@
-import {jml} from '../vendor/jamilih/dist/jml-es.js';
+import {jml} from '../vendor/jamilih/dist/jml.mjs';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import chartBuildTemplate from './templates/chartBuild.js';
 

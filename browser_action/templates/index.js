@@ -1,5 +1,5 @@
 /* eslint-disable camelcase -- i18n */
-import {jml, body, $, $$, nbsp} from '../../vendor/jamilih/dist/jml-es.js';
+import {jml, body, $, $$, nbsp} from '../../vendor/jamilih/dist/jml.mjs';
 import {fill} from '../templateUtils/fill.js';
 import {safeLink} from '../templateUtils/validation.js';
 // import encodings from '../encodings.js';

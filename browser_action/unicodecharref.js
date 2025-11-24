@@ -1,7 +1,7 @@
 /* eslint-disable camelcase -- Temporary */
 // See https://unicode.org/Public/UNIDATA/ for data use
 
-import {$$, jml} from '../vendor/jamilih/dist/jml-es.js';
+import {$$, jml} from '../vendor/jamilih/dist/jml.mjs';
 // Todo: Filed the following to avoid both sync and callbacks:
 //  https://github.com/101arrowz/fflate/issues/70
 import {strFromU8} from '../vendor/fflate/esm/browser.js'; // unzipSync,

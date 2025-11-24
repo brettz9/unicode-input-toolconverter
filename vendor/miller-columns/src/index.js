@@ -34,10 +34,6 @@ function escapeRegex (s) {
 }
 
 /**
-* @external jQuery
-*/
-
-/**
  * @param {jQuery} $
  * @param {object} cfg
  * @param {string} [cfg.namespace]
@@ -74,19 +70,19 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
       const $crumb = $(this);
       $(`<span class="${namespace}-breadcrumb">`).
         text($crumb.text().trim()).
-        click(function () {
-          $crumb.click();
+        on('click', function () {
+          $crumb.trigger('click');
         }).appendTo($breadcrumb);
     });
   }
 
   /**
- * Ensure the viewport shows the entire newly expanded item.
- *
- * @param {JQuery<HTMLElement>|null} $column
- * @param {JQuery<HTMLElement>} $columns
- * @returns {void}
- */
+   * Ensure the viewport shows the entire newly expanded item.
+   *
+   * @param {JQuery<HTMLElement>|null} $column
+   * @param {JQuery<HTMLElement>} $columns
+   * @returns {void}
+   */
   function animation ($column, $columns) {
     let width = 0;
     ($column ? chain().not($column) : chain()).each(function () {
@@ -106,17 +102,18 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
   }
 
   /**
- * Convert nested lists into columns using breadth-first traversal.
- *
- * @param {JQuery<HTMLElement>} $columns
- * @returns {void}
- */
-  function unnest ($columns) {
+   * Convert nested lists into columns using breadth-first traversal.
+   *
+   * @param {JQuery<HTMLElement>} $columns
+   * @param {JQuery<HTMLElement>} [$startNode] - Optional starting node for partial unnesting
+   * @returns {void}
+   */
+  function unnest ($columns, $startNode) {
     const queue = [];
     let $node;
 
     // Push the root unordered list item into the queue.
-    queue.push($columns.children());
+    queue.push($startNode || $columns.children());
 
     while (queue.length) {
       $node = /** @type {JQuery<HTMLElement>} */ (queue.shift());
@@ -127,8 +124,9 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
           $ancestor = $this.parent().parent();
 
         // Retain item hierarchy (because it is lost after flattening).
+        // Only set ancestor if it's actually a list item (not the root container)
         // eslint-disable-next-line eqeqeq, no-eq-null -- Check either without duplication
-        if ($ancestor.length && ($this.data(`${namespace}-ancestor`) == null)) {
+        if ($ancestor.length && $ancestor.is(itemSelector) && ($this.data(`${namespace}-ancestor`) == null)) {
           // Use addBack to reset all selection chains.
           $(this).siblings().addBack().data(`${namespace}-ancestor`, $ancestor);
         }
@@ -178,11 +176,11 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
   }
 
   /**
-  * Hide columns (not the first), remove selections, update breadcrumb.
-  *
-  * @param {JQuery<HTMLElement>} $columns
-  * @returns {void}
-  */
+   * Hide columns (not the first), remove selections, update breadcrumb.
+   *
+   * @param {JQuery<HTMLElement>} $columns
+   * @returns {void}
+   */
   function reset ($columns) {
     collapse();
     chain().removeClass(`${namespace}-selected`);
@@ -200,7 +198,9 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
    * @returns {void}
    */
   function moveU () {
-    current().prev().click();
+    const elem = current().prev();
+    elem[0]?.scrollIntoView({block: 'nearest'});
+    elem.trigger('click');
   }
 
   /**
@@ -208,7 +208,9 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
    * @returns {void}
    */
   function moveD () {
-    current().next().click();
+    const elem = current().next();
+    elem[0]?.scrollIntoView({block: 'nearest'});
+    elem.trigger('click');
   }
 
   /**
@@ -216,10 +218,20 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
    * @returns {void}
    */
   function moveL () {
-    const $ancestor = current().data(`${namespace}-ancestor`);
+    const $current = current();
+    const $ancestor = $current.data(`${namespace}-ancestor`);
+    const $child = $current.data(`${namespace}-child`);
 
+    // If current item has children and they are visible, but we're at root level,
+    // do nothing - we're already on the parent and just expanded it
+    if ($child && !$child.hasClass(`${namespace}-collapse`) && !$ancestor) {
+      return;
+    }
+
+    // Move to ancestor if it exists
     if ($ancestor) {
-      $ancestor.click();
+      $ancestor[0]?.scrollIntoView({block: 'nearest'});
+      $ancestor.trigger('click');
     }
   }
 
@@ -231,17 +243,19 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
     const $child = current().data(`${namespace}-child`);
 
     if ($child) {
-      $child.children(itemSelector).first().click();
+      const elem = $child.children(itemSelector).first();
+      elem[0]?.scrollIntoView({block: 'nearest'});
+      elem.trigger('click');
     } else {
       moveD();
     }
   }
 
   /**
-  * @callback MillerColumnsKeyPress
-  * @param {Event} e
-  * @returns {void}
-  */
+   * @callback MillerColumnsKeyPress
+   * @param {Event} e
+   * @returns {void}
+   */
 
   /**
    * @param {JQuery<HTMLElement>} $columns
@@ -296,7 +310,9 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
           const matching = $columns.find(`${itemSelector}.${namespace}-selected`).last().siblings().filter(function () {
             return new RegExp('^' + escapeRegex(buffer), 'iv').test($(this).text().trim());
           });
-          matching.first().click();
+          const elem = matching.first();
+          elem[0]?.scrollIntoView({block: 'nearest'});
+          elem.trigger('click');
         }
         moved = true;
         break;
@@ -304,7 +320,7 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
 
       // If no item is selected, then jump to the first item.
       if (moved && (current().length === 0)) {
-        $(`.${namespace}-column`).first().children().first().click();
+        $(`.${namespace}-column`).first().children().first().trigger('click');
       }
 
       if (moved) {
@@ -330,14 +346,22 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
 
     settings = $.extend(defaults, options);
 
-    return this.each(function () {
+    const $result = this.each(function () {
       const $columns = $(this);
+
+      // Store original HTML for restoration
+      const originalHTML = $columns.html();
+      $columns.data(`${namespace}-original-html`, originalHTML);
+
       unnest($columns);
       collapse();
 
+      // Store keypress handler for later removal
+      const keypressHandler = getKeyPress($columns);
+
       // Expand the requested child node on click.
-      // eslint-disable-next-line unicorn/no-array-callback-reference -- jQuery
-      $columns.find(itemSelector).on('click', function (ev) {
+      // Use event delegation to handle dynamically added items
+      $columns.on('click', itemSelector, function (ev) {
         const $this = $(this);
         reset($columns);
 
@@ -345,6 +369,7 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
         let $ancestor = $this;
 
         if ($child) {
+          $child[0]?.scrollIntoView({block: 'nearest'});
           $child.removeClass(`${namespace}-collapse`).children().removeClass(`${namespace}-selected`);
         }
 
@@ -376,16 +401,151 @@ async function addMillerColumnPlugin ($, {namespace = 'miller', stylesheets = ['
         ev.stopPropagation();
       });
 
-      $columns.on('keydown', getKeyPress($columns));
+      $columns[0].addEventListener('keydown', keypressHandler);
       $columns.on('click', () => {
         if (settings.resetOnOutsideClick) {
           userReset($columns);
         }
       });
 
+      // Store handler reference for cleanup
+      $columns.data(`${namespace}-keypress-handler`, keypressHandler);
+
       // The last set of columns on the page receives focus.
       // $columns.focus();
     });
+
+    /**
+     * Add a new item dynamically to the miller columns structure.
+     * The item can contain nested lists which will be automatically unnested.
+     *
+     * @param {string|JQuery<HTMLLIElement>} item - HTML string or jQuery element for the new list item
+     * @param {JQuery<HTMLLIElement>} [$parent] - Optional parent item to add this as a child.
+     *                                             If not provided, adds to root level.
+     * @returns {JQuery<HTMLLIElement>} The newly added item
+     */
+    $result.addItem = function (item, $parent) {
+      const $item = /** @type {JQuery<HTMLLIElement>} */ (typeof item === 'string' ? $(item) : item);
+      const $columns = $result;
+
+      if (!$parent) {
+        // Add to root level (first column)
+        const $rootColumn = $columns.find(`.${namespace}-column`).first();
+
+        if ($rootColumn.length) {
+          // Append to existing root column
+          $rootColumn.append($item);
+
+          // If the item has nested children, process them
+          const $child = $item.children(columnSelector);
+          if ($child.length) {
+            // Set up the parent-child relationship
+            $item.data(`${namespace}-child`, $child).addClass(`${namespace}-parent`);
+            // Process the child list to unnest it
+            unnest($columns, $child);
+          }
+        } else {
+          // No columns exist yet, create initial structure
+          const $tempWrapper = $('<ul>').append($item);
+          $columns.append($tempWrapper);
+          unnest($columns, $tempWrapper);
+        }
+      } else {
+        // Add as child of existing parent
+        let $childList = $parent.data(`${namespace}-child`);
+
+        if (!$childList) {
+          // Parent doesn't have children yet, create a new list with the item
+          $childList = $('<ul>').append($item);
+          $parent.append($childList);
+          $parent.data(`${namespace}-child`, $childList).addClass(`${namespace}-parent`);
+
+          // Set the ancestor relationship for the new item
+          $item.data(`${namespace}-ancestor`, $parent);
+
+          // The new list needs to be processed by unnest to become a column
+          unnest($columns, $childList);
+
+          // After unnesting, get the updated reference to the child list
+          $childList = $parent.data(`${namespace}-child`);
+        } else {
+          // Parent already has children - $childList is already a column
+          // Just append the new item directly to it
+          $childList.append($item);
+
+          // Set the ancestor relationship for the new item
+          $item.data(`${namespace}-ancestor`, $parent);
+        }
+
+        // If the new item has nested children, process them
+        const $child = $item.children(columnSelector);
+        if ($child.length) {
+          // Set up the parent-child relationship
+          $item.data(`${namespace}-child`, $child).addClass(`${namespace}-parent`);
+          // Process the child list to unnest it
+          unnest($columns, $child);
+        }
+      }
+
+      return $item;
+    };
+
+    /**
+     * Destroy the miller columns instance and restore original structure.
+     * Removes all event handlers, data attributes, and CSS classes added by the plugin.
+     *
+     * @returns {JQuery<HTMLElement>} The columns element with original structure restored
+     */
+    $result.destroy = function () {
+      const $columns = $result;
+
+      $columns.each(function () {
+        const $col = $(this);
+
+        // Remove keydown event listener
+        const keypressHandler = $col.data(`${namespace}-keypress-handler`);
+        if (keypressHandler) {
+          this.removeEventListener('keydown', keypressHandler);
+        }
+
+        // Remove click event handlers
+        $col.off('click');
+
+        // Remove all miller-columns CSS classes from columns
+        $col.find(`.${namespace}-column`).removeClass(`${namespace}-column ${namespace}-collapse`);
+
+        // Remove all miller-parent classes and miller-selected classes
+        $col.find(`.${namespace}-parent`).removeClass(`${namespace}-parent`);
+        $col.find(`.${namespace}-selected`).removeClass(`${namespace}-selected`);
+
+        // Remove all data attributes
+        $col.find('li').each(function () {
+          const $item = $(this);
+          $item.removeData(`${namespace}-ancestor`);
+          $item.removeData(`${namespace}-child`);
+        });
+
+        // Remove preview columns
+        $col.find(`.${namespace}-preview`).remove();
+
+        // Restore original HTML structure
+        const originalHTML = $col.data(`${namespace}-original-html`);
+        if (originalHTML) {
+          $col.html(originalHTML);
+          $col.removeData(`${namespace}-original-html`);
+        }
+
+        $col.removeData(`${namespace}-keypress-handler`);
+      });
+
+      // Remove the addItem and destroy methods
+      delete $result.addItem;
+      delete $result.destroy;
+
+      return $result;
+    };
+
+    return $result;
   };
   return $;
 }

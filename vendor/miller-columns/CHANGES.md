@@ -1,5 +1,22 @@
 # miller-columns
 
+## 0.12.1
+
+- fix: `scrollIntoView()`
+
+## 0.12.0
+
+- feat `destroy` method
+
+## 0.11.0
+
+- feat: `addItem`
+- fix: prevent left arrow from going up when reaching root
+
+## 0.10.4
+
+- fix(typescript): global import for millerColumns.d.ts
+
 ## 0.10.3
 
 ### User-impacting

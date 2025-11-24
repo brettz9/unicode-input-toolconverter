@@ -65,7 +65,7 @@
   "/vendor/camelcase/index.js",
   "/vendor/fflate/esm/browser.js",
   "/vendor/intl-dom/dist/index.esm.js",
-  "/vendor/jamilih/dist/jml-es.js",
+  "/vendor/jamilih/dist/jml.mjs",
   "/vendor/jquery/dist/jquery.js",
   "/vendor/json-6/dist/index.mjs",
   "/vendor/miller-columns/dist/index-es.min.js",

@@ -1,5 +1,5 @@
 /* globals jQuery -- No ESM */
-import {$} from '../vendor/jamilih/dist/jml-es.js';
+import {$} from '../vendor/jamilih/dist/jml.mjs';
 import {getChartBuild, chartBuild} from './chartBuild.js';
 import unicodecharref from './unicodecharref.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
