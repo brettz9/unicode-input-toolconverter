@@ -1,5 +1,4 @@
 /* eslint-disable no-console -- Debugging */
-/* eslint-env serviceworker -- Service worker */
 
 import {getJSON} from './browser_action/utils/FetchUtils.js';
 import activateCallback from
