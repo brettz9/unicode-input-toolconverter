@@ -46,7 +46,8 @@ but XUL support was dropped in Firefox.
     clarity, could reuse as pop-up script browser or character picker
 1. Make **in-place context-menu-activated textbox conversions**
 1. Improve slow **font retrieval**; need to do equivalent for
-    other OS' or at least disable for them
+    other OS' or at least disable for them; <https://github.com/foliojs/font-manager>,
+    <https://github.com/oldj/node-font-list> (though see <https://github.com/oldj/node-font-list/pull/5>)
 
 ## Lower-priority to-dos
 
