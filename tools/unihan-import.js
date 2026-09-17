@@ -14,7 +14,6 @@
 import fs from 'node:fs/promises';
 
 import download from 'download';
-import extract from 'extract-zip';
 
 // eslint-disable-next-line no-shadow -- Clearer
 import fetch from 'file-fetch';
@@ -25,22 +24,13 @@ import parseUnihanFromTextFileStrings from
 const args = process.argv.slice(2);
 
 const targetDir = `${process.cwd()}/download/unihan`;
-const unihanZip = `${targetDir}/Unihan.zip`;
 const targetJSONUnihan = `${targetDir}/unihan.json`;
-
 if (args.includes('download')) {
   await download(
-    'https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip', targetDir
+    'https://www.unicode.org/Public/UCD/latest/ucd/Unihan.zip', targetDir, {extract: true}
   );
   // eslint-disable-next-line no-console -- CLI
-  console.log('Completed download portion');
-}
-
-if (args.includes('extract') || args.includes('download')) {
-  await extract(unihanZip, {dir: targetDir});
-  await fs.unlink(unihanZip);
-  // eslint-disable-next-line no-console -- CLI
-  console.log('Completed extraction');
+  console.log('Completed download and extraction portion');
 }
 
 await addScript(targetDir);

@@ -134,6 +134,7 @@ const chartBuildTemplate = function ({
               const name = type.replace('yes', '');
               const isMiddle = idx === 1 && array.length === 2;
               const isFinal = idx === 2;
+              // eslint-disable-next-line @stylistic/max-len -- Long
               const button = /** @type {import('jamilih/dist/jml.js').JamilihArray} */ (
                 [(buttonyes ? 'button' : 'div'), {
                   class: buttonyes ? 'buttonyes' : null,

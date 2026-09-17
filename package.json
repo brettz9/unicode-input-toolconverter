@@ -80,7 +80,6 @@
     "apple-system-profiler": "^1.1.0",
     "cheerio": "1.2.0",
     "download": "^8.0.0",
-    "extract-zip": "^2.0.1",
     "file-fetch": "^2.0.1",
     "intl-dom": "^0.22.0",
     "jsdom": "^30.1.0",
