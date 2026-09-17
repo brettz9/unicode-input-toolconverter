@@ -31,7 +31,7 @@
     "open:coverage": "open-cli http://localhost:8000/coverage/ && npm start",
     "report": "nyc report",
     "rollup": "rollup -c",
-    "service-worker": "node ./tools/list-locales && find-es-resources --queryModule=\"./tools/findEsResources.js\" --htmlInput=\"./browser_action/index.html\" -o browser_action/service-worker/sw-resources.json --removeBasePath=\"$(pwd)\"",
+    "service-worker": "node ./tools/list-locales && node ./tools/write-sw-version && find-es-resources --queryModule=\"./tools/findEsResources.js\" --htmlInput=\"./browser_action/index.html\" -o browser_action/service-worker/sw-resources.json --removeBasePath=\"$(pwd)\"",
     "open": "open-cli http://localhost:8000/browser_action/ && npm start",
     "start": "echo 'Starting on http://localhost:8000/browser_action/' && node server",
     "entities-download": "node --trace-uncaught tools/entities-import.js download",

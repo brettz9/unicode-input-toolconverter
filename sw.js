@@ -125,6 +125,8 @@ const pathToStaticJSON = './browser_action/service-worker/sw-resources.json';
 const pathToLocaleJSON = './browser_action/service-worker/sw-locales.json';
 const pathToUnicodeDataJSON =
   './browser_action/service-worker/sw-unicode-data.json';
+const pathToVersionJSON =
+  './browser_action/service-worker/sw-version.json';
 
 console.log('sw info', pathToStaticJSON);
 
@@ -139,7 +141,7 @@ async function install (time) {
   log(`Install: Trying, attempt ${time}`);
   const now = Date.now();
   const {version} = /** @type {{version: string}} */ (
-    await getJSON('./package.json')
+    await getJSON(pathToVersionJSON)
   );
 
   const cacheKey = namespace + CURRENT_CACHES.prefetch + version;
@@ -226,7 +228,7 @@ async function activate (time) {
     {version}
   ] = await Promise.all([
     caches.keys(),
-    /** @type {Promise<{version: string}>} */ (getJSON('./package.json'))
+    /** @type {Promise<{version: string}>} */ (getJSON(pathToVersionJSON))
   ]);
 
   const expectedCacheNames = Object.values(
