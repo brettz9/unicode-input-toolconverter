@@ -1,4 +1,4 @@
-import {jml, $$} from '../../vendor/jamilih/dist/jml.mjs';
+import {jml, $$} from 'jamilih';
 
 /**
  * @typedef {HTMLElement & {

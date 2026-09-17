@@ -1,7 +1,7 @@
 // hexstyleLwr:  return true; // Could use but better not to
 //   change for XML-compatibility
 
-import {SimplePrefs} from '../../vendor/simple-prefs/dist/index.esm.js';
+import {SimplePrefs} from 'simple-prefs';
 
 /** @type {import('intl-dom').I18NCallback<string>} */
 let _;

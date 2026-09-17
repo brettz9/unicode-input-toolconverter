@@ -1,4 +1,4 @@
-import {jml, nbsp, $} from '../../vendor/jamilih/dist/jml.mjs';
+import {jml, nbsp, $} from 'jamilih';
 import {fill} from '../templateUtils/fill.js';
 import unicodecharref from '../unicodecharref.js';
 
@@ -27,7 +27,7 @@ let idgen = 0;
  *   textReceptacle: HTMLTextAreaElement|HTMLInputElement,
  *   chartContainer: HTMLElement,
  *   setPref: ReturnType<
- *     import('../preferences/prefDefaults.js').getUnicodeDefaults
+ *     typeof import('../preferences/prefDefaults.js').getUnicodeDefaults
  *   >['setPref'],
  *   insertText: import('../chartBuild.js').InsertText,
  *   chartBuild: typeof import('../chartBuild.js').chartBuild,
@@ -114,6 +114,9 @@ const chartBuildTemplate = function ({
               // trying dblclick worked but might not be obvious to
               //   user and single clicks still activated; relying on
               //   right button doesn't work
+              /**
+               * @param {Event} e
+               */
               click (e) {
                 if ('altKey' in e && e.altKey) {
                   /** @type {HTMLElement & {$noGetDescripts: boolean}} */

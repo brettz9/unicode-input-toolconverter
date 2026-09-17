@@ -1,16 +1,17 @@
 /* eslint-disable camelcase -- Temporary */
 // See https://unicode.org/Public/UNIDATA/ for data use
 
-import {$$, jml} from '../vendor/jamilih/dist/jml.mjs';
+import {$$, jml} from 'jamilih';
 // Todo: Filed the following to avoid both sync and callbacks:
 //  https://github.com/101arrowz/fflate/issues/70
-import {strFromU8} from '../vendor/fflate/esm/browser.js'; // unzipSync,
+import {strFromU8} from 'fflate'; // unzipSync,
+import camelCase from 'camelcase';
+
 import {
   getUnicodeDefaults, getPrefDefaults
 } from './preferences/prefDefaults.js';
 import {chartBuild, lastStartCharCode} from './chartBuild.js';
 
-import camelCase from '../vendor/camelcase/index.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
 import {joinChunks} from './utils/TypedArrayUtils.js';
 import {
@@ -42,21 +43,21 @@ let _;
 
 /**
  * @type {InstanceType<ReturnType<
- *   import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ *   typeof import('./unicode/UnicodeConverter.js').getUnicodeConverter
  * >>}
  */
 let charrefunicodeConverter;
 
-/** @type {ReturnType<getUnicodeDefaults>['getPref']} */
+/** @type {ReturnType<typeof getUnicodeDefaults>['getPref']} */
 let getPref;
-/** @type {ReturnType<getUnicodeDefaults>['setPref']} */
+/** @type {ReturnType<typeof getUnicodeDefaults>['setPref']} */
 let setPref;
 
 /**
  * @param {{
  *   _: import('intl-dom').I18NCallback<string>
  *   charrefunicodeConverter: InstanceType<ReturnType<
- *     import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ *     typeof import('./unicode/UnicodeConverter.js').getUnicodeConverter
  *   >>
  * }} cfg
  * @returns {void}

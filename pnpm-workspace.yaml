@@ -5,3 +5,4 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - jsdom@30.1.0
+  - '@node-static/node-static@0.10.0'

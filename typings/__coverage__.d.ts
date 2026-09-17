@@ -1,3 +1,5 @@
-declare module globalThis {
+declare global {
   var __coverage__: {};
 }
+
+export {};

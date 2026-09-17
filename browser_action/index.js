@@ -1,6 +1,6 @@
-import {i18n, setJSONExtra} from '../vendor/intl-dom/dist/index.esm.js';
+import {i18n, setJSONExtra} from 'intl-dom';
 // Currently not bundling json-6
-import jsonExtra from '../vendor/json-6/dist/index.mjs';
+import jsonExtra from 'json-6';
 
 import {makeTabBox} from './templatesElementCustomization/widgets.js';
 import {code, link} from './templateUtils/elements.js';

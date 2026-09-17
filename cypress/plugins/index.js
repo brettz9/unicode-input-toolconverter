@@ -12,9 +12,8 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-import coverage from '@cypress/code-coverage/task.js';
-// @ts-expect-error Ok
-import useBabelRc from '@cypress/code-coverage/use-babelrc.js';
+import coverage from '@cypress/code-coverage/task';
+import useBabelRc from '@cypress/code-coverage/use-babelrc';
 
 /**
  * @type {(
@@ -25,7 +24,6 @@ import useBabelRc from '@cypress/code-coverage/use-babelrc.js';
 const plugins = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-  // @ts-expect-error Ok
   coverage(on, config);
   on('file:preprocessor', useBabelRc); // For unit testing
 

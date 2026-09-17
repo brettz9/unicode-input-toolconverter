@@ -1,15 +1,16 @@
 /* globals jQuery -- No ESM */
-import {$} from '../vendor/jamilih/dist/jml.mjs';
+import {$} from 'jamilih';
+import addMillerColumnPlugin from 'miller-columns';
+
 import {getChartBuild, chartBuild} from './chartBuild.js';
 import unicodecharref from './unicodecharref.js';
 import {insertIntoOrOverExisting} from './utils/TextUtils.js';
-import addMillerColumnPlugin from
-  '../vendor/miller-columns/dist/index-es.min.js';
 
 /**
  * @param {object} cfg
  * @param {import('intl-dom').I18NCallback<string>} cfg._
- * @param {InstanceType<ReturnType<import('./unicode/UnicodeConverter.js').
+ * @param {InstanceType<ReturnType<
+ *   typeof import('./unicode/UnicodeConverter.js').
  *   getUnicodeConverter>>} cfg.charrefunicodeConverter
  * @returns {Promise<void>}
  */

@@ -1,10 +1,11 @@
 /* eslint-disable class-methods-use-this -- Todo: fix later */
 
+import camelCase from 'camelcase';
+
 import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
 import {getHangulName, getHangulFromName} from './hangul.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
 import unicodecharref from '../unicodecharref.js';
-import camelCase from '../../vendor/camelcase/index.js';
 
 /**
  * @typedef {"php"|"css"|"javascript"} UnicodeEscapeMode

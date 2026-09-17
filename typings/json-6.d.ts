@@ -1,3 +1,4 @@
 declare module 'json-6' {
-  export default any
+  const val: any;
+  export default val;
 }

@@ -1,4 +1,4 @@
-// import {$} from '../vendor/jamilih/dist/jml.mjs';
+// import {$} from 'jamilih';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 
 /**
@@ -17,18 +17,18 @@ const $i = (sel) => {
 
 /**
  * @type {InstanceType<ReturnType<
- *   import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ *   typeof import('./unicode/UnicodeConverter.js').getUnicodeConverter
  * >>}
  */
 let charrefunicodeConverter;
 
-/** @type {ReturnType<getUnicodeDefaults>['getPref']} */
+/** @type {ReturnType<typeof getUnicodeDefaults>['getPref']} */
 let getPref;
 
 /**
  * @param {{
  *   charrefunicodeConverter: InstanceType<ReturnType<
- *     import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ *     typeof import('./unicode/UnicodeConverter.js').getUnicodeConverter
  *   >>
  * }} cfg
  * @returns {void}

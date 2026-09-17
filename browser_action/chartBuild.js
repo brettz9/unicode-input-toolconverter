@@ -1,4 +1,4 @@
-import {jml} from '../vendor/jamilih/dist/jml.mjs';
+import {jml} from 'jamilih';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import chartBuildTemplate from './templates/chartBuild.js';
 
@@ -19,7 +19,7 @@ import chartBuildTemplate from './templates/chartBuild.js';
 
 /**
  * @typedef {InstanceType<ReturnType<
- *   import('./unicode/UnicodeConverter.js').getUnicodeConverter
+ *   typeof import('./unicode/UnicodeConverter.js').getUnicodeConverter
  * >>} CharrefUnicodeConverter
  */
 

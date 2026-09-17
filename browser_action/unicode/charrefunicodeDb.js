@@ -37,7 +37,7 @@ class UnicodeDB {
    * @param {string} storeName
    * @param {string} [key]
    * @returns {Promise<{
-   *   codePoint: string, columns?: string[], [key: string]: string
+   *   codePoint: string, columns?: string[], [key: string]: unknown
    * }[]>}
    */
   getAll (storeName, key) {
@@ -154,7 +154,7 @@ export class UnihanDatabase extends UnicodeDB {
   /**
    * @param {string} [key]
    * @returns {Promise<{
-   *   codePoint: string, columns?: string[], [key: string]: string
+   *   codePoint: string, columns?: string[], [key: string]: unknown
    * }[]>}
    */
   getAll (key) {
@@ -208,7 +208,7 @@ export class UnicodeDatabase extends UnicodeDB {
   /**
    * @param {string} [key]
    * @returns {Promise<{
-   *   codePoint: string, columns?: string[], [key: string]: string
+   *   codePoint: string, columns?: string[], [key: string]: unknown
    * }[]>}
    */
   getAll (key) {

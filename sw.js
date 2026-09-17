@@ -23,7 +23,9 @@ const minutes = 60 * 1000;
  * @returns {Promise<void>}
  */
 async function post ({type, message = type}) {
-  const windowClients = await globalThis.clients.matchAll({
+  const windowClients = await /** @type {ServiceWorkerGlobalScope} */ (
+    /** @type {unknown} */ (globalThis)
+  ).clients.matchAll({
     // Are there any uncontrolled within activate anyways?
     includeUncontrolled: true,
     type: 'window'
@@ -31,17 +33,21 @@ async function post ({type, message = type}) {
   if (message.includes('Posting finished')) {
     message += ` (count: ${windowClients.length})`;
   }
-  windowClients.forEach((client) => {
+  windowClients.forEach(/**
+                         * @param {WindowClient} client
+                         * @returns {void}
+                         */ (client) => {
     // Although we only need one client to which to send
     //   arguments, we want to signal phase complete to all
     // eslint-disable-next-line unicorn/require-post-message-target-origin -- Rule being reviewed: https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1396
-    client.postMessage({message, type});
-  });
+      client.postMessage({message, type});
+    }
+  );
 }
 
 /**
  * @callback Logger
- * @param {...string} messages
+ * @param {...string[]} messages
  * @returns {Promise<void>}
  */
 
@@ -247,36 +253,49 @@ async function activate (time) {
   post({type: 'finishedActivate'});
 }
 
-addEventListener('install', (e) => {
-  globalThis.skipWaiting();
-  e.waitUntil(
-    tryAndRetry(install, 5 * minutes, 'Error installing')
-  );
-});
+const sw = /** @type {ServiceWorkerGlobalScope} */ (
+  /** @type {unknown} */ (globalThis)
+);
 
-addEventListener('activate', (e) => {
+sw.addEventListener('install', /**
+                                * @param {ExtendableEvent} e
+                                * @returns {void}
+                                */ (e) => {
+    sw.skipWaiting();
+    e.waitUntil(
+      tryAndRetry(install, 5 * minutes, 'Error installing')
+    );
+  });
+
+sw.addEventListener('activate', /**
+                                 * @param {ExtendableEvent} e
+                                 * @returns {void}
+                                 */ (e) => {
   // Erring is of no present use here:
   //   https://github.com/w3c/ServiceWorker/issues/659#issuecomment-384919053
-  e.waitUntil(tryAndRetry(activate, 5 * minutes, 'Error activating'));
-});
+    e.waitUntil(tryAndRetry(activate, 5 * minutes, 'Error activating'));
+  });
 
 // We cannot make this async as `e.respondWith` must be called synchronously
-addEventListener('fetch', (e) => {
+sw.addEventListener('fetch', /**
+                              * @param {FetchEvent} e
+                              * @returns {void}
+                              */ (e) => {
   // DevTools opening will trigger these o-i-c requests
-  const {request} = e;
-  const {cache, mode, url} = request;
-  if (
-    cache === 'only-if-cached' &&
+    const {request} = e;
+    const {cache, mode, url} = request;
+    if (
+      cache === 'only-if-cached' &&
     mode !== 'same-origin'
-  ) {
-    return;
-  }
-  console.log('fetching', url);
-  e.respondWith((async () => {
-    const cached = await caches.match(request);
-    if (!cached) {
-      console.log('no cached found', url);
+    ) {
+      return;
     }
-    return cached || fetch(request);
-  })());
-});
+    console.log('fetching', url);
+    e.respondWith((async () => {
+      const cached = await caches.match(request);
+      if (!cached) {
+        console.log('no cached found', url);
+      }
+      return cached || fetch(request);
+    })());
+  });
