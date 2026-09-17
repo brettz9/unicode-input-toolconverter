@@ -139,7 +139,7 @@ async function install (time) {
   log(`Install: Trying, attempt ${time}`);
   const now = Date.now();
   const {version} = /** @type {{version: string}} */ (
-    await getJSON('./package.json')
+    await getJSON('/package.json')
   );
 
   const cacheKey = namespace + CURRENT_CACHES.prefetch + version;
