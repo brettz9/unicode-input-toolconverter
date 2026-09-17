@@ -125,8 +125,14 @@ const pathToStaticJSON = './browser_action/service-worker/sw-resources.json';
 const pathToLocaleJSON = './browser_action/service-worker/sw-locales.json';
 const pathToUnicodeDataJSON =
   './browser_action/service-worker/sw-unicode-data.json';
-const pathToVersionJSON =
-  './browser_action/service-worker/sw-version.json';
+
+// Auto-updated by `npm run service-worker` (see tools/write-sw-version.js).
+//   Keeping this in sync with `package.json`'s version ensures this file's
+//   own bytes change on every release, so browsers with an already-
+//   installed service worker actually detect the update (the update check
+//   is a byte-for-byte diff of this script) instead of silently continuing
+//   to serve a stale cache indefinitely.
+const BUILD_VERSION = '0.2.2';
 
 console.log('sw info', pathToStaticJSON);
 
@@ -140,11 +146,8 @@ async function install (time) {
   post({type: 'beginInstall'});
   log(`Install: Trying, attempt ${time}`);
   const now = Date.now();
-  const {version} = /** @type {{version: string}} */ (
-    await getJSON(pathToVersionJSON)
-  );
 
-  const cacheKey = namespace + CURRENT_CACHES.prefetch + version;
+  const cacheKey = namespace + CURRENT_CACHES.prefetch + BUILD_VERSION;
 
   console.log('opening cache', cacheKey);
   const [
@@ -223,17 +226,11 @@ async function activate (time) {
   post({type: 'beginActivate'});
   log(`Activate: Trying, attempt ${time}`);
 
-  const [
-    cacheNames,
-    {version}
-  ] = await Promise.all([
-    caches.keys(),
-    /** @type {Promise<{version: string}>} */ (getJSON(pathToVersionJSON))
-  ]);
+  const cacheNames = await caches.keys();
 
   const expectedCacheNames = Object.values(
     CURRENT_CACHES
-  ).map((n) => namespace + n + version);
+  ).map((n) => namespace + n + BUILD_VERSION);
   cacheNames.forEach(async (cacheName) => {
     if (expectedCacheNames.includes(cacheName)) {
       return;

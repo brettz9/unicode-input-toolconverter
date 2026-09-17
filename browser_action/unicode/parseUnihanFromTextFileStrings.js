@@ -14,7 +14,9 @@ const fields = ['code_pt', 'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBig
   'kRSKorean', 'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant', 'kSpecializedSemanticVariant',
   'kTaiwanTelegraph', 'kTang', 'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983', 'kXerox', 'kZVariant',
   'kUnihanCore2020', 'kIRG_UKSource', 'kIRG_SSource', 'kTGH', 'kKoreanName', 'kJa', 'kJoyoKanji', 'kKoreanEducationHanja',
-  'kJinmeiyoKanji', 'kTGHZ2013', 'kSpoofingVariant', 'kStrange'];
+  'kJinmeiyoKanji', 'kTGHZ2013', 'kSpoofingVariant', 'kStrange',
+  'kSMSZD2003Index', 'kMojiJoho', 'kVietnameseNumeric', 'kZhuangNumeric', 'kTayNumeric',
+  'kJapanese', 'kFanqie', 'kSMSZD2003Readings', 'kZhuang', 'kJapaneseOldVariant', 'kJapaneseNewVariant'];
 /* eslint-enable @stylistic/max-len -- Long */
 
 /**

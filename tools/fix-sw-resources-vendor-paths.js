@@ -37,8 +37,9 @@ const fixedResources = [...new Set(resources.flatMap((resource) => {
     return [resource];
   }
   const [, packageName] = nodeModulesMatch;
-  const fullSpecifier = resource.replace(/^\/node_modules\//, '');
-  const vendorPath = vendorPathBySpecifier.get(fullSpecifier) || vendorPathBySpecifier.get(packageName);
+  const fullSpecifier = resource.replace(/^\/node_modules\//v, '');
+  const vendorPath = vendorPathBySpecifier.get(fullSpecifier) ||
+    vendorPathBySpecifier.get(packageName);
   if (!vendorPath) {
     // Only reachable by following a `node_modules` package's own source
     //   (e.g., a sub-dependency); nothing deployed actually imports it

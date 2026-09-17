@@ -1433,6 +1433,12 @@ const unicodecharref = {
         'Look at trace to see where setting ' +
         '`currentStartCharCode` as undefined'
       );
+      // Avoid corrupting the stored pref: `setPref` would otherwise
+      //   persist the literal string "undefined" (via
+      //   `localStorage.setItem` stringifying a JS `undefined`), which
+      //   then makes every future `getPref('currentStartCharCode')`
+      //   throw a JSON parse error indefinitely.
+      return undefined;
     }
 
     return await setPref('currentStartCharCode', value);
@@ -1581,29 +1587,37 @@ const unicodecharref = {
 
   // Build these programmatically? (and in UI?)
   /* Pseudo-constants */
-  Unihan: [ // Ordered by database array; todo: rpplace above `Unihan`?
-    'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCangjie',
-    'kCantonese', 'kCCCII', 'kCheungBauer', 'kCheungBauerIndex', 'kCihaiT',
-    'kCNS1986', 'kCNS1992', 'kCompatibilityVariant', 'kCowles', 'kDaeJaweon',
-    'kDefinition', 'kEACC', 'kFenn', 'kFennIndex', 'kFourCornerCode',
-    'kFrequency', 'kGB0', 'kGB1', 'kGB3', 'kGB5', 'kGB7', 'kGB8',
-    'kGradeLevel', 'kGSR', 'kHangul', 'kHanYu', 'kHanyuPinlu',
-    'kHanyuPinyin', 'kHDZRadBreak', 'kHKGlyph', 'kHKSCS', 'kIBMJapan',
-    'kIICore', 'kIRG_GSource', 'kIRG_HSource', 'kIRG_JSource',
-    'kIRG_KPSource', 'kIRG_KSource', 'kIRG_MSource', 'kIRG_SSource',
-    'kIRG_TSource', 'kIRG_UKSource', 'kIRG_USource', 'kIRG_VSource',
-    'kIRGDaeJaweon', 'kIRGDaiKanwaZiten', 'kIRGHanyuDaZidian',
-    'kIRGKangXi', 'kJa', 'kJapaneseKun', 'kJapaneseOn', 'kJinmeiyoKanji',
-    'kJis0', 'kJis1', 'kJIS0213', 'kJoyoKanji', 'kKangXi', 'kKarlgren',
-    'kKorean', 'kKoreanEducationHanja', 'kKoreanName', 'kKPS0', 'kKPS1',
-    'kKSC0', 'kKSC1', 'kLau', 'kMainlandTelegraph', 'kMandarin',
-    'kMatthews', 'kMeyerWempe', 'kMorohashi', 'kNelson', 'kOtherNumeric',
-    'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1', 'kRSAdobe_Japan1_6',
-    'kRSKangXi', 'kRSUnicode', 'kSBGY', 'kSemanticVariant',
-    'kSimplifiedVariant', 'kSpecializedSemanticVariant', 'kSpoofingVariant',
-    'kStrange', 'kTaiwanTelegraph', 'kTang', 'kTGH', 'kTGHZ2013',
-    'kTotalStrokes', 'kTraditionalVariant', 'kUnihanCore2020',
-    'kVietnamese', 'kXerox', 'kXHC1983', 'kZVariant'
+  // Must exactly match the column order `parseUnihanFromTextFileStrings.js`
+  //   uses to build `download/unihan/unihan.json` (minus its leading
+  //   `code_pt`), since values are looked up by this array's position, not
+  //   by name.
+  Unihan: [
+    'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCCCII',
+    'kCNS1986', 'kCNS1992', 'kCangjie', 'kCantonese', 'kCheungBauer',
+    'kCheungBauerIndex', 'kCihaiT', 'kCompatibilityVariant', 'kCowles',
+    'kDaeJaweon', 'kDefinition', 'kEACC', 'kFenn', 'kFennIndex',
+    'kFourCornerCode', 'kFrequency', 'kGB0', 'kGB1', 'kGB3', 'kGB5', 'kGB7',
+    'kGB8', 'kGSR', 'kGradeLevel', 'kHDZRadBreak', 'kHKGlyph', 'kHKSCS',
+    'kHanYu', 'kHangul', 'kHanyuPinlu', 'kHanyuPinyin', 'kIBMJapan',
+    'kIICore', 'kIRGDaeJaweon', 'kIRGDaiKanwaZiten', 'kIRGHanyuDaZidian',
+    'kIRGKangXi', 'kIRG_GSource', 'kIRG_HSource', 'kIRG_JSource',
+    'kIRG_KPSource', 'kIRG_KSource', 'kIRG_MSource', 'kIRG_TSource',
+    'kIRG_USource', 'kIRG_VSource', 'kJIS0213', 'kJapaneseKun',
+    'kJapaneseOn', 'kJis0', 'kJis1', 'kKPS0', 'kKPS1', 'kKSC0', 'kKSC1',
+    'kKangXi', 'kKarlgren', 'kKorean', 'kLau', 'kMainlandTelegraph',
+    'kMandarin', 'kMatthews', 'kMeyerWempe', 'kMorohashi', 'kNelson',
+    'kOtherNumeric', 'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1',
+    'kRSAdobe_Japan1_6', 'kRSJapanese', 'kRSKanWa', 'kRSKangXi', 'kRSKorean',
+    'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant',
+    'kSpecializedSemanticVariant', 'kTaiwanTelegraph', 'kTang',
+    'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983',
+    'kXerox', 'kZVariant', 'kUnihanCore2020', 'kIRG_UKSource',
+    'kIRG_SSource', 'kTGH', 'kKoreanName', 'kJa', 'kJoyoKanji',
+    'kKoreanEducationHanja', 'kJinmeiyoKanji', 'kTGHZ2013',
+    'kSpoofingVariant', 'kStrange', 'kSMSZD2003Index', 'kMojiJoho',
+    'kVietnameseNumeric', 'kZhuangNumeric', 'kTayNumeric', 'kJapanese',
+    'kFanqie', 'kSMSZD2003Readings', 'kZhuang', 'kJapaneseOldVariant',
+    'kJapaneseNewVariant'
   ],
   UnihanMenus: [], // Unused
   Unicode: [

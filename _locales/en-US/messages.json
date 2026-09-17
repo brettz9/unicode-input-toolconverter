@@ -3175,6 +3175,72 @@
     },
     "Miscellaneous_Symbols_Supplement": {
       "message": "Miscellaneous Symbols Supplement"
+    },
+    "kSMSZD2003Index": {
+      "message": "SMSZD2003Index"
+    },
+    "searchkSMSZD2003Index": {
+      "message": "SMSZD2003Index:"
+    },
+    "kMojiJoho": {
+      "message": "MojiJoho"
+    },
+    "searchkMojiJoho": {
+      "message": "MojiJoho:"
+    },
+    "kVietnameseNumeric": {
+      "message": "VietnameseNumeric"
+    },
+    "searchkVietnameseNumeric": {
+      "message": "VietnameseNumeric:"
+    },
+    "kZhuangNumeric": {
+      "message": "ZhuangNumeric"
+    },
+    "searchkZhuangNumeric": {
+      "message": "ZhuangNumeric:"
+    },
+    "kTayNumeric": {
+      "message": "TayNumeric"
+    },
+    "searchkTayNumeric": {
+      "message": "TayNumeric:"
+    },
+    "kJapanese": {
+      "message": "Japanese"
+    },
+    "searchkJapanese": {
+      "message": "Japanese:"
+    },
+    "kFanqie": {
+      "message": "Fanqie"
+    },
+    "searchkFanqie": {
+      "message": "Fanqie:"
+    },
+    "kSMSZD2003Readings": {
+      "message": "SMSZD2003Readings"
+    },
+    "searchkSMSZD2003Readings": {
+      "message": "SMSZD2003Readings:"
+    },
+    "kZhuang": {
+      "message": "Zhuang"
+    },
+    "searchkZhuang": {
+      "message": "Zhuang:"
+    },
+    "kJapaneseOldVariant": {
+      "message": "JapaneseOldVariant"
+    },
+    "searchkJapaneseOldVariant": {
+      "message": "JapaneseOldVariant:"
+    },
+    "kJapaneseNewVariant": {
+      "message": "JapaneseNewVariant"
+    },
+    "searchkJapaneseNewVariant": {
+      "message": "JapaneseNewVariant:"
     }
   }
 }
