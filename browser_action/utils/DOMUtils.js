@@ -151,8 +151,11 @@ class AsyncStreamIterable {
  */
 async function showProgress ({url, progressElement, progress}) {
   const response = await fetch(url);
-  const totalBytes = Number(response.headers.get('content-length'));
-  progressElement.max = totalBytes;
+  // May be unavailable, e.g., when the server compresses the response
+  //   (some CDNs omit `content-length` for compressed bodies), leaving
+  //   the total size unknown until the download completes.
+  const totalBytes = Number(response.headers.get('content-length')) || 0;
+  progressElement.max = totalBytes || 1;
 
   /** @type {Uint8Array[]} */
   const chunks = [];
@@ -164,11 +167,11 @@ async function showProgress ({url, progressElement, progress}) {
     chunks.push(value);
     receivedLength += value.length;
 
-    const percentComplete = ((
-      receivedLength / totalBytes
-    ) * 100);
+    const percentComplete = totalBytes
+      ? (receivedLength / totalBytes) * 100
+      : 0;
 
-    progressElement.value = percentComplete;
+    progressElement.value = totalBytes ? receivedLength : 0;
     progressElement.textContent = progress(percentComplete);
   }
   return {receivedLength, totalBytes, chunks};
