@@ -1360,6 +1360,20 @@ function unicodeScripts (_) {
                             [
                               "li",
                               {
+                                "title": "12550-1268F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Archaic_Cuneiform_Numbers")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
                                 "title": "12480-1254F"
                               },
                               [
@@ -1768,7 +1782,26 @@ function unicodeScripts (_) {
                         "title": "0980-09FF"
                       },
                       [
-                        _("Bengali_and_Assamese")
+                        _("Bengali_and_Assamese"),
+                        [
+                          "ul",
+                          [
+                            [
+                              "li",
+                              {
+                                "title": "11DF0-11DFF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Bengali_Supplement")
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
                       ]
                     ],
                     [
@@ -2902,7 +2935,35 @@ function unicodeScripts (_) {
                                 [
                                   "i",
                                   [
-                                    _("_see_also_Unihan_Database_")
+                                    _("Full_Radical_Stroke_Index__PDF__35MB_")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": ""
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Full_Radical_Stroke_Index__txt_")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": ""
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("_see_also_Unihan_Database_Lookup_")
                                   ]
                                 ]
                               ]
@@ -3086,6 +3147,34 @@ function unicodeScripts (_) {
                     [
                       "li",
                       {
+                        "title": "18E00-1919F"
+                      },
+                      [
+                        _("Jurchen"),
+                        [
+                          "ul",
+                          [
+                            [
+                              "li",
+                              {
+                                "title": "191A0-191DF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Jurchen_Radicals")
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
                         "title": "1B100–1B12F"
                       },
                       [
@@ -3223,6 +3312,15 @@ function unicodeScripts (_) {
                       },
                       [
                         _("Nushu")
+                      ]
+                    ],
+                    [
+                      "li",
+                      {
+                        "title": "3D000-3FC3F"
+                      },
+                      [
+                        _("Small_Seal")
                       ]
                     ],
                     [
@@ -3473,6 +3571,20 @@ function unicodeScripts (_) {
                         [
                           "ul",
                           [
+                            [
+                              "li",
+                              {
+                                "title": "1D250-1D28F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Musical_Symbols_Supplement")
+                                  ]
+                                ]
+                              ]
+                            ],
                             [
                               "li",
                               {
@@ -4021,7 +4133,26 @@ function unicodeScripts (_) {
                         "title": "12400-1247F"
                       },
                       [
-                        _("Cuneiform_Numbers_and_Punctuation")
+                        _("Cuneiform_Numbers_and_Punctuation"),
+                        [
+                          "ul",
+                          [
+                            [
+                              "li",
+                              {
+                                "title": "12550-1268F"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Archaic_Cuneiform_Numbers")
+                                  ]
+                                ]
+                              ]
+                            ]
+                          ]
+                        ]
                       ]
                     ],
                     [
@@ -4188,6 +4319,20 @@ function unicodeScripts (_) {
                                   "i",
                                   [
                                     _("Miscellaneous_Symbols_and_Arrows")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "1DB00-1DBFF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Miscellaneous_Symbols_and_Arrows_Extended")
                                   ]
                                 ]
                               ]
@@ -4754,6 +4899,20 @@ function unicodeScripts (_) {
                                   "i",
                                   [
                                     _("Miscellaneous_Symbols_Supplement")
+                                  ]
+                                ]
+                              ]
+                            ],
+                            [
+                              "li",
+                              {
+                                "title": "1DB00-1DBFF"
+                              },
+                              [
+                                [
+                                  "i",
+                                  [
+                                    _("Miscellaneous_Symbols_and_Arrows_Extended")
                                   ]
                                 ]
                               ]

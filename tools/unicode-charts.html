@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
-<!-- Source controlled in the charts repo. Manually deployed to production. -->
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Unicode 17.0 Character Code Charts</title>
-
+<meta charset="utf-8">
+<title>Unicode 18.0 Character Code Charts</title>
+<meta name="revision" content="94f005727e6d74f7d232683ff14ccd5341f99f44">
 <link rel="stylesheet" href="https://www.unicode.org/webscripts/standard_styles.css">
 <style>
 table.map {border: 0; border-collapse:collapse; width: 100%; }
@@ -37,7 +34,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 				<tr>
 					<td class="icon"><a href="https://www.unicode.org/">
 					<img height="33" alt="[Unicode]" src="https://www.unicode.org/webscripts/logo60s2.gif" width="34" style="vertical-align:middle;"></a>&nbsp;
-					&nbsp;<a class="bar" href="About.html">Code Charts</a> </td>
+					&nbsp;<a class="bar" href="/versions/Unicode18.0.0/">Unicode 18.0.0</a> </td>
 					<td class="bar">
 					<a class="bar" href="https://www.unicode.org/main.html">Tech Site</a> |
 					<a class="bar" href="https://www.unicode.org/sitemap/">Site Map</a> 
@@ -49,10 +46,11 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 
 
 	<div class="body">
-		<h1>Unicode 17.0 Character Code Charts</h1>
-		<p id="toplinks" class="map"><a href="#scripts">Scripts</a>&nbsp;&nbsp; 
-		|&nbsp;&nbsp; <a href="#symbols">Symbols &amp; Punctuation</a>&nbsp;&nbsp; 
-		|&nbsp;&nbsp; <a href="charindex.html">Name Index</a></p>
+		<h1>Unicode® 18.0 Character Code Charts</h1>
+		<p id="toplinks" class="map"><a href="#symbols">Symbols &amp; Punctuation</a>&nbsp;&nbsp; 
+		|&nbsp;&nbsp; <a href="/charts/charindex.html">Name Index</a>&nbsp;&nbsp;
+		|&nbsp;&nbsp; <a href="nameslist/">Names Lists&nbsp;&nbsp;</a>
+	  |&nbsp;&nbsp; <a href="collation/">Collation &amp; Casing</a></p>
 
 		<p style="padding-bottom: 0; text-align:center;" class="map">Find chart by hex code: <input type="text" name="HexCode" size="8" maxlength="8">&nbsp;<input type="submit" name="submit" value="Go">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="About.html">Help</a>
@@ -190,6 +188,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                     <p class="mb"><a href="PDF/U10FB0.pdf" title="10FB0–10FDF">Chorasmian</a></p>
                     <p class="mb"><a href="PDF/U12000.pdf" title="12000-123FF">Cuneiform</a></p>
                     	<p class="sb"><a href="PDF/U12400.pdf" title="12400-1247F">Cuneiform Numbers and Punctuation</a></p>
+                    	<p class="sb"><a href="PDF/U12550.pdf" title="12550-1268F">Archaic Cuneiform Numbers</a></p>
                     	<p class="sb"><a href="PDF/U12480.pdf" title="12480-1254F">Early Dynastic Cuneiform</a></p>
                     	<p class="sb"><a href="PDF/U103A0.pdf" title="103A0-103DF">Old Persian</a></p>
                     	<p class="sb"><a href="PDF/U10380.pdf" title="10380-1039F">Ugaritic</a></p>
@@ -235,6 +234,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 					<p class="sg">South Asian Scripts</p>
 					<p class="mb"><a href="PDF/U11700.pdf" title="11700-1174F">Ahom</a></p>
 					<p class="mb"><a href="PDF/U0980.pdf" title="0980-09FF">Bengali and Assamese</a></p>
+					<p class="sb"><a href="PDF/U11DF0.pdf" title="11DF0-11DFF">Bengali Supplement</a></p>
 					<p class="mb"><a href="PDF/U11C00.pdf" title="11C00-11C6F">Bhaiksuki</a></p>
 					<p class="mb"><a href="PDF/U11000.pdf" title="11000-1107F">Brahmi</a></p>
                     <p class="mb"><a href="PDF/U11100.pdf" title="11100-1114F">Chakma</a></p>
@@ -349,7 +349,9 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 						<p class="sb"><a href="PDF/U31350.pdf" title="31350–323AF">CJK Extension&nbsp;H</a></p>
 						<p class="sb"><a href="PDF/U2EBF0.pdf" title="2EBF0–2EE5F">CJK Extension&nbsp;I</a></p>
 						<p class="sb"><a href="PDF/U323B0.pdf" title="323B0–3347F">CJK Extension&nbsp;J</a></p>
-						<p class="sb">(see also <a href="unihan.html">Unihan Database</a>)</p>
+						<p class="sb"><a href="RSIndex.pdf">Full Radical-Stroke Index</a> (PDF, 35MB)</p>
+						<p class="sb"><a href="RSIndex.txt">Full Radical-Stroke Index</a> (txt)</p>
+						<p class="sb">(see also <a href="https://www.unicode.org/charts/unihan.html">Unihan Database Lookup</a>)</p>
 					<p class="mb"><a href="PDF/UF900.pdf" title="F900-FAFF">CJK Compatibility Ideographs</a></p>
 						<p class="sb"><a href="PDF/U2F800.pdf" title="2F800-2FA1F">CJK Compatibility Ideographs Supplement</a></p>
 					<p class="mb"><a href="PDF/U2F00.pdf" title="2F00-2FDF"> CJK Radicals / Kangxi Radicals</a></p>
@@ -365,6 +367,8 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                     <p class="mb"><a href="PDF/UAC00.pdf" title="AC00-D7AF">Hangul Syllables</a></p>
                     <!--p class="mb">Japanese</p-->
                     <p class="mb"><a href="PDF/U3040.pdf" title="3040-309F">Hiragana</a></p>
+                    <p class="mb"><a href="PDF/U18E00.pdf" title="18E00-1919F">Jurchen</a></p>
+                    	<p class="sb"><a href="PDF/U191A0.pdf" title="191A0-191DF">Jurchen Radicals</a></p>
                     <p class="mb"><a href="PDF/U1B100.pdf" title="1B100–1B12F">Kana Extended-A</a></p>
                     <p class="mb"><a href="PDF/U1AFF0.pdf" title="1AFF0–1AFFF">Kana Extended-B</a></p>
                     <p class="mb"><a href="PDF/U1B000.pdf" title="1B000-1B0FF">Kana Supplement</a></p>
@@ -378,6 +382,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                     	<p class="sb"><a href="PDF/U11FB0.pdf" title="11FB0–11FBF">Lisu Supplement</a></p>
                     <p class="mb"><a href="PDF/U16F00.pdf" title="16F00-16F9F">Miao</a></p>
                     <p class="mb"><a href="PDF/U1B170.pdf" title="1B170–1B2FF">Nushu</a></p>
+                    <p class="mb"><a href="PDF/U3D000.pdf" title="3D000-3FC3F">Small Seal</a></p>
                     <p class="mb"><a href="PDF/U17000.pdf" title="17000-187FF">Tangut</a></p>
                     	<p class="sb"><a href="PDF/U18800.pdf" title="18800-18AFF">Tangut Components</a></p>
                     	<p class="sb"><a href="PDF/U18D00.pdf" title="18D00–18D7F">Tangut Supplement</a></p>
@@ -409,6 +414,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                     <p class="sg">Notational Systems</p>
                     <p class="mb"><a href="PDF/U2800.pdf" title="2800-28FF">Braille Patterns</a></p>
 				  <p class="mb"><a href="PDF/U1D100.pdf" title="1D100-1D1FF">Musical Symbols</a></p>
+				  <p class="sb"><a href="PDF/U1D250.pdf" title="1D250-1D28F">Musical Symbols Supplement</a></p>
                          <p class="sb"><a href="PDF/U1D200.pdf" title="1D200-1D24F">Ancient Greek Musical Notation</a></p>
                         <p class="sb"><a href="PDF/U1D000.pdf" title="1D000-1D0FF">Byzantine Musical Symbols</a></p>
                         <p class="sb"><a href="PDF/U1CF00.pdf" title="1CF00–1CFCF">Znamenny Musical Notation</a></p>
@@ -463,6 +469,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 					<p class="mb"><a href="PDF/U102E0.pdf" title="102E0-102FF">Coptic Epact Numbers</a></p>
 					<p class="mb"><a href="PDF/U1D360.pdf" title="1D360-1D37F">Counting Rod Numerals</a></p>
 					<p class="mb"><a href="PDF/U12400.pdf" title="12400-1247F">Cuneiform Numbers and Punctuation</a></p>
+                    	<p class="sb"><a href="PDF/U12550.pdf" title="12550-1268F">Archaic Cuneiform Numbers</a></p>
 					<p class="mb"><a href="PDF/U1EC70.pdf" title="1EC70-1ECBF">Indic Siyaq Numbers</a></p>
                     <p class="mb"><a href="PDF/U1D2C0.pdf" title="1D2C0–1D2DF">Kaktovik Numerals</a></p>
                     <p class="mb"><a href="PDF/U1D2E0.pdf" title="1D2E0-1D2FF">Mayan Numerals</a></p>
@@ -480,6 +487,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                             <p class="sb"><a href="PDF/U1F800.pdf" title="1F800-1F8FF">Supplemental Arrows-C</a></p>
                             <p class="pb"><a href="PDF/U2B00.pdf" title="2B00-2BFF">Additional Arrows</a></p>
                             <p class="sb"><a href="PDF/U2B00.pdf" title="2B00-2BFF">Miscellaneous Symbols and Arrows</a></p>
+                    	<p class="sb"><a href="PDF/U1DB00.pdf" title="1DB00-1DBFF">Miscellaneous Symbols and Arrows Extended</a></p>
 					<p class="mb"><a href="PDF/U1D400.pdf" title="1D400-1D7FF">Mathematical Alphanumeric Symbols</a></p>
                     <p class="sb"><a href="PDF/U1EE00.pdf" title="1EE00-1EEFF">Arabic Mathematical Alphabetic Symbols</a></p>
 					<p class="sb"><a href="PDF/U2100.pdf" title="2100-214F">Letterlike Symbols</a></p>
@@ -532,6 +540,7 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
                     <p class="pb"><i><a href="PDF/U2600.pdf" title="2660-2667">Card suits</a></i></p>
 					<p class="mb"><a href="PDF/U2B00.pdf" title="2B00-2BFF">Miscellaneous Symbols and Arrows</a></p>
                     	<p class="sb"><a href="PDF/U1CEC0.pdf" title="1CEC0-1CEFF">Miscellaneous Symbols Supplement</a></p>
+                    	<p class="sb"><a href="PDF/U1DB00.pdf" title="1DB00-1DBFF">Miscellaneous Symbols and Arrows Extended</a></p>
 					<p class="mb"><a href="PDF/U1FB00.pdf" title="1FB00–1FBFF">Symbols for Legacy Computing</a></p>
                     	<p class="sb"><a href="PDF/U1CC00.pdf" title="1CC00-1CEBF">Symbols for Legacy Computing Supplement</a></p>
                     <p class="mb">Yijing Symbols</p>
@@ -597,8 +606,8 @@ table.map p.sg { padding: 5px 1px 5px 1px; }
 				its code in the search box at the top. To access a chart for a given block, click on its 
 				entry in the table. The charts are PDF files, and some of them may be very 
 				large. For frequent access to the same chart, right-click and save the file 
-				to your disk. For an alphabetical index of character and block names, 
-			use the <a href="charindex.html">Unicode Character Names Index</a>.</p>
+				to your disk. For an interactive index of character names, 
+			use the <a href="/charts/charindex.html">Unicode Character Names Index</a>.</p>
 
 	</div>
 	<hr style="width:50%;">

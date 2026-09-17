@@ -1613,9 +1613,6 @@
     "Kanbun": {
       "message": "Kanbun"
     },
-    "_see_also_Unihan_Database_": {
-      "message": "(veja também o banco de dados Unihan)"
-    },
     "CJK_Strokes": {
       "message": "Traços CJK (Chinês-Japonês-Coreano)"
     },
@@ -3241,7 +3238,36 @@
     },
     "searchkJapaneseNewVariant": {
       "message": "JapaneseNewVariant:"
+    },
+    "Archaic_Cuneiform_Numbers": {
+      "message": "Archaic Cuneiform Numbers"
+    },
+    "Bengali_Supplement": {
+      "message": "Bengali Supplement"
+    },
+    "Full_Radical_Stroke_Index__PDF__35MB_": {
+      "message": "Full Radical-Stroke Index (PDF, 35MB)"
+    },
+    "Full_Radical_Stroke_Index__txt_": {
+      "message": "Full Radical-Stroke Index (txt)"
+    },
+    "_see_also_Unihan_Database_Lookup_": {
+      "message": "(see also Unihan Database Lookup)"
+    },
+    "Jurchen": {
+      "message": "Jurchen"
+    },
+    "Jurchen_Radicals": {
+      "message": "Jurchen Radicals"
+    },
+    "Small_Seal": {
+      "message": "Small Seal"
+    },
+    "Musical_Symbols_Supplement": {
+      "message": "Musical Symbols Supplement"
+    },
+    "Miscellaneous_Symbols_and_Arrows_Extended": {
+      "message": "Miscellaneous Symbols and Arrows Extended"
     }
   }
-
 }

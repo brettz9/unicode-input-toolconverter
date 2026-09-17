@@ -72,7 +72,10 @@ const jamilih = scriptMaps.map((scriptMap) => {
   );
   // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
 
-  const scriptGroups = [...scriptMap.querySelectorAll(':scope table td p.sg')];
+  // Note: as of the Unicode 18.0 charts redesign, `p.sg` sits directly in
+  //   `table.map`'s own `td` (no more nested `table`), so this must not
+  //   require an extra `table` ancestor or it silently matches nothing.
+  const scriptGroups = [...scriptMap.querySelectorAll(':scope td p.sg')];
   // sg, mb, pb/sb
 
   /** @type {import('jamilih/dist/jml.js').JamilihChildren|null} */
@@ -122,9 +125,11 @@ const jamilih = scriptMaps.map((scriptMap) => {
               }
             }
             if (cleanedText && title) {
+              // Range separators are inconsistent across entries: some use
+              //   a plain hyphen, others an en dash (U+2013).
               scriptsAndStartRanges.push({
                 script: getChromeSafeLocaleKey(cleanedText),
-                startRange: title.replace(/-.*$/v, '')
+                startRange: title.replace(/[\-–].*$/v, '')
               });
             }
 
@@ -176,6 +181,32 @@ async function deleteUnusedScriptNames (newScriptNames, localeFileContents) {
   const lastScriptNames = /** @type {string[]} */ (JSON.parse(
     await fs.readFile(lastScriptNamesFile, 'utf8')
   ).lastScriptNames);
+
+  // Safety guard: a parsing failure (e.g., unicode.org restructuring the
+  //   charts page, as happened for the Unicode 18.0 redesign, breaking the
+  //   `scriptGroups` selector above) can silently yield few or no
+  //   `newScriptNames`. Without this check, every "missing" script name
+  //   would look "removed from the standard" and get deleted from every
+  //   locale file. Script counts barely change between Unicode versions,
+  //   so a drop this large almost certainly means parsing broke, not that
+  //   the scripts really vanished.
+  const survivingCount = lastScriptNames.filter(
+    (lastScriptName) => newScriptNames.includes(lastScriptName)
+  ).length;
+  const survivalRatio = lastScriptNames.length > 0
+    ? survivingCount / lastScriptNames.length
+    : 1;
+  if (survivalRatio < 0.5) {
+    throw new Error(
+      `Refusing to update: only ${survivingCount} of ` +
+      `${lastScriptNames.length} previously known script names were found ` +
+      `in this run (parsed ${newScriptNames.length} total). This usually ` +
+      'means the unicode.org charts page structure changed and the ' +
+      'scraper needs fixing, not that the scripts were actually removed ' +
+      'from the standard. No files were written.'
+    );
+  }
+
   lastScriptNames.forEach((lastScriptName) => {
     if (!newScriptNames.includes(lastScriptName)) {
       localeFileContents.forEach((lfc) => {
