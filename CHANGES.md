@@ -1,8 +1,10 @@
 # CHANGES for unicode-input-toolconverter
 
-## ?
+## 0.2.2
 
+- fix: Unicode 18
 - chore: update file-fetch, jsdom, devDeps.
+- various fixes
 
 ## 0.2.1
 
