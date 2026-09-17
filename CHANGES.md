@@ -1,5 +1,9 @@
 # CHANGES for unicode-input-toolconverter
 
+## 0.2.3
+
+- chore: update builds
+
 ## 0.2.2
 
 - fix: Unicode 18
