@@ -27,7 +27,9 @@ const vendorPathBySpecifier = new Map(
 );
 
 const swResourcesPath = 'browser_action/service-worker/sw-resources.json';
-const resources = JSON.parse(await fs.readFile(swResourcesPath, 'utf8'));
+const resources = /** @type {string[]} */ (
+  JSON.parse(await fs.readFile(swResourcesPath, 'utf8'))
+);
 
 const nodeModulesPattern = /^\/node_modules\/((?:@[^\/]+\/)?[^\/]+)\//v;
 
