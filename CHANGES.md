@@ -1,5 +1,9 @@
 # CHANGES for unicode-input-toolconverter
 
+## 0.2.4
+
+- fix: issue on Firefox with downloads
+
 ## 0.2.3
 
 - chore: update builds

@@ -132,7 +132,7 @@ const pathToUnicodeDataJSON =
 //   installed service worker actually detect the update (the update check
 //   is a byte-for-byte diff of this script) instead of silently continuing
 //   to serve a stale cache indefinitely.
-const BUILD_VERSION = '0.2.2';
+const BUILD_VERSION = '0.2.3';
 
 console.log('sw info', pathToStaticJSON);
 
@@ -287,6 +287,14 @@ sw.addEventListener('fetch', /**
       cache === 'only-if-cached' &&
     mode !== 'same-origin'
     ) {
+      return;
+    }
+    // Never cached/prefetched (see `sw-unicode-data.json`), and streaming
+    //   this large a download (~40MB+) back through the service worker's
+    //   own relayed `fetch` causes Firefox (though not Chrome) to fail
+    //   with "Error in input stream" once the transfer runs long. Skip
+    //   interception entirely so the browser fetches it directly.
+    if (url.includes('/download/unihan/unihan.json')) {
       return;
     }
     console.log('fetching', url);
