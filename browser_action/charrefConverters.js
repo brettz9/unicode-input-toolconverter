@@ -1,4 +1,4 @@
-// import {$} from 'jamilih';
+// import {$} from 'jamilih/dist/jml.js';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 
 /**

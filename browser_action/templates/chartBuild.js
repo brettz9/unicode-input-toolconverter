@@ -1,4 +1,4 @@
-import {jml, nbsp, $} from 'jamilih';
+import {jml, nbsp, $} from 'jamilih/dist/jml.js';
 import {fill} from '../templateUtils/fill.js';
 import unicodecharref from '../unicodecharref.js';
 
@@ -61,7 +61,7 @@ const chartBuildTemplate = function ({
       captionContent
     ]],
     ...fill(rows).map((_row, j) => {
-      return /** @type {import('jamilih').JamilihArray} */ (
+      return /** @type {import('jamilih/dist/jml.js').JamilihArray} */ (
         ['tr', fill(cols).map((_col, i) => {
           // If more rows/cols. specified than match
           if (j === rowceil && i >= Number(colsOverRemainder)) {
@@ -134,7 +134,7 @@ const chartBuildTemplate = function ({
               const name = type.replace('yes', '');
               const isMiddle = idx === 1 && array.length === 2;
               const isFinal = idx === 2;
-              const button = /** @type {import('jamilih').JamilihArray} */ (
+              const button = /** @type {import('jamilih/dist/jml.js').JamilihArray} */ (
                 [(buttonyes ? 'button' : 'div'), {
                   class: buttonyes ? 'buttonyes' : null,
                   name,

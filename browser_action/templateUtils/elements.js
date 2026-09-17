@@ -1,4 +1,4 @@
-import {jml} from 'jamilih';
+import {jml} from 'jamilih/dist/jml.js';
 
 /**
  * @param {{

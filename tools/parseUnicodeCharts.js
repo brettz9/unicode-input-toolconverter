@@ -75,7 +75,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
   const scriptGroups = [...scriptMap.querySelectorAll(':scope table td p.sg')];
   // sg, mb, pb/sb
 
-  /** @type {import('jamilih').JamilihChildren|null} */
+  /** @type {import('jamilih/dist/jml.js').JamilihChildren|null} */
   let lastChildren;
   return ['li', [
     majorHeading,
@@ -100,7 +100,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
             } else if (scriptGroup.matches('.pb,.sb')) {
               cleanedText = cleanupText(scriptGroup.textContent);
               // eslint-disable-next-line @stylistic/max-len -- Long
-              const children = /** @type {import('jamilih').JamilihChildren} */ ([
+              const children = /** @type {import('jamilih/dist/jml.js').JamilihChildren} */ ([
                 ['i', [
                   uniqueTextPlaceholder + cleanedText
                 ]]
@@ -113,8 +113,8 @@ const jamilih = scriptMaps.map((scriptMap) => {
                 if (!lastChildren[1]) {
                   lastChildren[1] = ['ul', []];
                 }
-                /** @type {import('jamilih').JamilihChildren} */ (
-                  /** @type {import('jamilih').JamilihArray} */
+                /** @type {import('jamilih/dist/jml.js').JamilihChildren} */ (
+                  /** @type {import('jamilih/dist/jml.js').JamilihArray} */
                   (lastChildren[1])[1]
                 ).push(
                   ['li', {title}, children]
