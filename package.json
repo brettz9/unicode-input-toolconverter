@@ -23,6 +23,7 @@
     "last 2 chrome versions"
   ],
   "scripts": {
+    "prepublishOnly": "pnpm tsc && pnpm rollup",
     "tsc": "tsc",
     "cypress:run": "cypress run && npm run report",
     "cypress:open": "cypress open",
