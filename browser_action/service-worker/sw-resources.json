@@ -2,6 +2,8 @@
   "/browser_action/characterSelection.js",
   "/browser_action/charrefConverters.js",
   "/browser_action/chartBuild.js",
+  "/browser_action/encodingBehaviors.js",
+  "/browser_action/encodings.js",
   "/browser_action/entities.js",
   "/browser_action/entityBehaviors.js",
   "/browser_action/index.html",
