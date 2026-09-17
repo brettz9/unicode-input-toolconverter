@@ -370,7 +370,7 @@ const indexTemplate = function ({_, fonts}) {
                       nbsp.repeat(2),
                       ['button', {class: 'fontsize', $on: {
                         click () {
-                          unicodecharref.tblfontsize(+1);
+                          unicodecharref.tblfontsize(1);
                         }
                       }}, [_('plus')]],
                       nbsp,
@@ -689,9 +689,9 @@ const indexTemplate = function ({_, fonts}) {
                           _(key),
                           nbsp.repeat(2),
                           [
-                            key.includes('case_Mapping') ||
-                              key === 'decompositionMapping' ||
-                              key === 'numericType'
+                            key === 'decompositionMapping' ||
+                            key === 'numericType' ||
+                            key.includes('case_Mapping')
                               ? 'span'
                               : 'input',
                             {
@@ -947,7 +947,7 @@ const indexTemplate = function ({_, fonts}) {
               nbsp.repeat(2),
               ['button', {class: 'fontsize', $on: {
                 click () {
-                  unicodecharref.fontsizetextbox(+1);
+                  unicodecharref.fontsizetextbox(1);
                 }
               }}, [
                 _('plus')

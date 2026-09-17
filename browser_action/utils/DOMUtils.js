@@ -62,9 +62,7 @@ export const $tabpanel = (sel) => {
  */
 function removeViewChildren (i) {
   const view = $('#_detailedView' + i);
-  while (view.firstChild) {
-    view.firstChild.remove();
-  }
+  view.replaceChildren();
 }
 /**
  * @param {string} sel
@@ -84,18 +82,18 @@ const // xulns = 'https://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul
   htmlns = 'https://www.w3.org/1999/xhtml';
 
 /**
-* @param {string} el
-* @returns {HTMLAnchorElement}
-*/
+ * @param {string} el
+ * @returns {HTMLAnchorElement}
+ */
 function createHTMLElement (el) {
   // return document.createElementNS(htmlns, el);
   return /** @type {HTMLAnchorElement} */ (document.createElement(el));
 }
 
 /**
-* @param {string} el
-* @returns {Element}
-*/
+ * @param {string} el
+ * @returns {Element}
+ */
 
 /*
 function createXULElement (el) {
@@ -104,21 +102,21 @@ function createXULElement (el) {
 */
 
 /**
-* @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
-* @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator
-*/
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator
+ */
 class AsyncStreamIterable {
   /**
-  * @param {ReadableStream} stream
-  */
+   * @param {ReadableStream} stream
+   */
   constructor (stream) {
     this._stream = stream;
   }
 
   /**
-  * @returns {AsyncGenerator}
-  * @yields {Integer}
-  */
+   * @returns {AsyncGenerator}
+   * @yields {Integer}
+   */
   async *[Symbol.asyncIterator] () {
     const reader = this._stream.getReader();
     try {
@@ -137,10 +135,10 @@ class AsyncStreamIterable {
 }
 
 /**
-* @callback ProgressCallback
-* @param {Float} percentComplete
-* @returns {string}
-*/
+ * @callback ProgressCallback
+ * @param {Float} percentComplete
+ * @returns {string}
+ */
 
 /**
  * @param {object} cfg

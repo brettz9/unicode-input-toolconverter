@@ -58,6 +58,17 @@ export default [
       // Disable for now
       'no-alert': 0,
       'prefer-named-capture-group': 0,
+      'unicorn/no-top-level-assignment-in-function': 0,
+      'sonarjs/assertions-in-tests': 0,
+      'sonarjs/no-fixed-wait-in-tests': 0,
+      'sonarjs/no-empty-test-file': 0,
+      'mocha/no-sibling-hooks': 0,
+      'unicorn/no-this-outside-of-class': 0,
+      'unicorn/no-break-in-nested-loop': 0,
+      'unicorn/prefer-number-coercion': 0,
+      'unicorn/no-undeclared-class-members': 0,
+      // Remove from ash-nazg
+      'unicorn/no-unreadable-for-of-expression': 0,
 
       // May need in some though perhaps not all instances (for surrogates)
       'unicorn/prefer-code-point': 0

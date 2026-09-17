@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this -- Todo: fix later */
-/* eslint-disable sonarjs/updated-loop-counter -- Needed */
+
 import {getUnicodeDefaults} from '../preferences/prefDefaults.js';
 import {getHangulName, getHangulFromName} from './hangul.js';
 import charrefunicodeDb from './charrefunicodeDb.js';
@@ -27,7 +27,7 @@ const builtinEntities = new Set(['apos', 'quot', 'lt', 'gt', 'amp']);
 //   https://unicode.org/reports/tr31/ ;
 // Currently appears to be Tables 3, 3a, and 3b
 //   (besides \u0027 and \u2019 per XML)
-const xmlName = /[\p{ID_Start}_][\p{ID_Continue}\u0024\u005F\u002D\u002E\u003A\u00B7\u058A\u05F4\u0F0B\u200C\u2010\u2027\u30A0\u30FB\u05F3\u200D]*/gvi;
+const xmlName = /[\p{ID_Start}_][\p{ID_Continue}\u{24}\u{5F}\u{2D}\u{2E}\u{3A}\u{B7}\u{58A}\u{5F4}\u{F0B}\u{200C}\u{2010}\u{2027}\u{30A0}\u{30FB}\u{5F3}\u{200D}]*/gvi;
 // const htmlOrXmlEnt = /&([a-z\d]+);/gui; // Works for basic HTML entitites
 const htmlOrXmlEnt = new RegExp('&(' + xmlName.source + ');', 'gvi');
 
@@ -95,11 +95,11 @@ export const getUnicodeConverter = () => {
 
       out = out.replaceAll(decim, (match, match1) => {
         const matched = this.numericCharacterReferences.indexOf(
-          Number.parseInt(match1)
+          Number.parseInt(match1, 10)
         );
         if (
           matched !== -1 &&
-          (matched !== this.getAposPos() || xhtmlentmode)
+          (xhtmlentmode || matched !== this.getAposPos())
         ) {
           return '&' + this.entities[matched] + ';';
         }
@@ -110,7 +110,7 @@ export const getUnicodeConverter = () => {
         );
         if (
           matched !== -1 && (
-            matched !== this.getAposPos() || xhtmlentmode
+            xhtmlentmode || matched !== this.getAposPos()
           )
         ) {
           return '&' + this.entities[matched] + ';';
@@ -141,7 +141,7 @@ export const getUnicodeConverter = () => {
 
         // Replace this 'if' condition and remove the 'else' if also
         //  want ascii
-        } else if (temp >= 128 || asciiLt128) {
+        } else if (asciiLt128 || temp >= 128) {
           out += '&#' + temp + ';';
         } else {
           out += unicodeToConvert.charAt(i);
@@ -204,7 +204,7 @@ export const getUnicodeConverter = () => {
           }
           out += beginEscape + xstyle + hexletters + endEscape;
         // Replace this 'if' condition and remove the 'else' if also want ascii
-        } else if (temp >= 128 || asciiLt128) {
+        } else if (asciiLt128 || temp >= 128) {
           hexletters = temp.toString(16);
           if (hexLettersUpper) {
             hexletters = hexletters.toUpperCase();
@@ -232,6 +232,8 @@ export const getUnicodeConverter = () => {
     async unicode2htmlentsval (unicodeToConvert) {
       for (let i = 0; i < this.newents.length; i++) {
         unicodeToConvert = unicodeToConvert.replaceAll(
+          // eslint-disable-next-line @stylistic/max-len -- Long
+          // eslint-disable-next-line unicorn/no-unsafe-string-replacement -- Safe here
           String(this.newcharrefs[i]), '&' + this.newents[i] + ';'
         );
       }
@@ -426,9 +428,9 @@ export const getUnicodeConverter = () => {
             // \u000 is disallowed in CSS 2.1 (behavior undefined) and above
             //  0x10FFFF is beyond valid Unicode; fix: disallow non-characters
             //  too?
-            if (dec > 0x10FFFF || dec === 0) {
+            if (dec === 0 || dec > 0x10FFFF) {
               // Replacement character since not valid Unicode
-              unicode += '\uFFFD';
+              unicode += '\u{FFFD}';
               break;
             }
 
@@ -511,7 +513,7 @@ export const getUnicodeConverter = () => {
               unicode += s;
               break;
             case 'r':
-              unicode += '\u000D';
+              unicode += '\u{D}';
               break;
             case 'n':
               unicode += '\n';
@@ -589,7 +591,7 @@ export const getUnicodeConverter = () => {
       const asciiLt128 = await getPref('asciiLt128');
       return (await Promise.all([...toconvert].map(async (ch) => {
         const codePoint = /** @type {number} */ (ch.codePointAt(0));
-        if (codePoint >= 128 || asciiLt128) {
+        if (asciiLt128 || codePoint >= 128) {
           const charDesc = await this.getCharDescForCodePoint(codePoint);
           if (charDesc) { // Skip if no description in database
             return String.raw`\C{` + charDesc + '}';
@@ -616,9 +618,9 @@ export const getUnicodeConverter = () => {
       let i = -1;
       return toconvert.replaceAll(/\\C\{([^\}]*)\}/gv, () => {
         ++i;
-        return unicodeVals[i]
+        return Object.hasOwn(unicodeVals, i)
           ? String.fromCodePoint(/** @type {number} */ (unicodeVals[i]))
-          : '\uFFFD'; // Replacement character if not found?
+          : '\u{FFFD}'; // Replacement character if not found?
       });
     }
 
@@ -709,11 +711,16 @@ export const getUnicodeConverter = () => {
       /* istanbul ignore next -- Just a guard */
       if (
         // Don't query the other databases here
-        (obj.id.startsWith('searchk') && table === 'UnicodeData') ||
-        ((/^search[^k]/v).test(obj.id) && table === 'Unihan')
+        (table === 'UnicodeData' && obj.id.startsWith('searchk')) ||
+        (table === 'Unihan' && (/^search[^k]/v).test(obj.id))
       ) {
         return;
       }
+      if (table === 'Unihan' && !nochart && !unicodecharref.unihanDb_exists) {
+        alert(this._('need_download_unihan'));
+        return;
+      }
+
       const nameDesc = obj.id.replace(/^search/v, '');
 
       // const nameDesc = (table === 'Unihan') ? 'kDefinition'
@@ -728,11 +735,6 @@ export const getUnicodeConverter = () => {
             ? unicodecharref.unihanDatabase
             : charrefunicodeDb
         );
-
-      if (table === 'Unihan' && !nochart && !unicodecharref.unihanDb_exists) {
-        alert(this._('need_download_unihan'));
-        return;
-      }
 
       await conn.connect();
 

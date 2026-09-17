@@ -193,7 +193,9 @@ const chartBuild = async function chartBuild ({descripts} = {}) {
   /** @type {string[]} */
   const captioncntnt = [];
   ['unicode', 'hex', 'dec', 'ent'].forEach((type) => {
-    if (types[/** @type {keyof types} */ (type + 'yes')]) {
+    if (Object.hasOwn(
+      types, /** @type {keyof typeof types} */ (type + 'yes')
+    )) {
       captioncntnt.push(_(type + '_noun'));
     }
   });

@@ -8,7 +8,7 @@ describe('Main page', function () {
     }
   });
 
-  // eslint-disable-next-line mocha/no-sibling-hooks -- One is Cypress-based
+  // eslint-disable-next-line mocha/consistent-structure -- Ok
   beforeEach(() => {
     return cy.clearIndexedDB();
   });

@@ -1,6 +1,7 @@
-ignoredBuiltDependencies:
-  - unrs-resolver
+allowBuilds:
+  cypress: true
+  is-hidden-file: true
+  unrs-resolver: true
 
-onlyBuiltDependencies:
-  - cypress
-  - is-hidden-file
+minimumReleaseAgeExclude:
+  - jsdom@30.1.0

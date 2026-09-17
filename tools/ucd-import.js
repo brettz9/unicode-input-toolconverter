@@ -2,7 +2,7 @@
 //  this file for the browser, but we're keeping this file for demonstrating
 //  an approach for live-obtaining the live version.
 
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 
 import download from 'download';
 import extract from 'extract-zip';
@@ -19,7 +19,6 @@ if (args.includes('download')) {
 }
 
 if (args.includes('extract') || args.includes('download')) {
-  // eslint-disable-next-line sonarjs/no-unsafe-unzip -- Trusted
   await extract(ucdZip, {dir: targetDir});
   await fs.unlink(ucdZip);
 }

@@ -18,9 +18,9 @@ const fields = ['code_pt', 'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBig
 /* eslint-enable @stylistic/max-len -- Long */
 
 /**
-* @param {string[]} scriptFileAsStrings
-* @returns {string[][]}
-*/
+ * @param {string[]} scriptFileAsStrings
+ * @returns {string[][]}
+ */
 function parseUnihanFromTextFileStrings (scriptFileAsStrings) {
   const scriptFileAsStr = scriptFileAsStrings.join('');
 
@@ -36,7 +36,7 @@ function parseUnihanFromTextFileStrings (scriptFileAsStrings) {
     const {cdpt, col, value} = /** @type {{cdpt: string, col: string, value: string}} */ (
       line.groups
     );
-    if (!obj[cdpt]) {
+    if (!Object.hasOwn(obj, cdpt)) {
       obj[cdpt] = [];
       fields.forEach(function (val, idx) {
         obj[cdpt][idx] = '';
@@ -47,7 +47,7 @@ function parseUnihanFromTextFileStrings (scriptFileAsStrings) {
     if (pos === -1) {
       // Todo: Even if not inserting, should auto-add locales as in
       //   parseUnicodeCharts.js
-      if (!notPresent[col]) {
+      if (!Object.hasOwn(notPresent, col)) {
         // eslint-disable-next-line no-console -- CLI
         console.error(`Not present: ${col}\n`);
         notPresent[col] = 1;

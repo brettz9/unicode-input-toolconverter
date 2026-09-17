@@ -4,9 +4,9 @@ import istanbul from 'rollup-plugin-istanbul';
 
 // Assert the default export type for smooth JS/TS interop under NodeNext
 const terser = /**
- * @type {(options?: import('@rollup/plugin-terser').Options)
- *   => import('rollup').Plugin}
- */ (
+                * @type {(options?: import('@rollup/plugin-terser').Options)
+                *   => import('rollup').Plugin}
+                */ (
   /** @type {unknown} */ (terserDefault)
   );
 

@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 // eslint-disable-next-line no-shadow -- Remove?
 import fetch from 'node-fetch';
@@ -72,7 +72,7 @@ const jamilih = scriptMaps.map((scriptMap) => {
   );
   // const scriptGroups = [...scriptMap.querySelectorAll('table td p')];
 
-  const scriptGroups = [...scriptMap.querySelectorAll('table td p.sg')];
+  const scriptGroups = [...scriptMap.querySelectorAll(':scope table td p.sg')];
   // sg, mb, pb/sb
 
   /** @type {import('jamilih').JamilihChildren|null} */
@@ -226,16 +226,18 @@ function unicodeScripts (_) {
       dirResults.forEach(({path: pth, keys}) => {
         keys.forEach((key) => {
           localeFileContents.forEach((lfc, i) => {
-            if (!(key in lfc.body)) {
-              if (!keyMap[key]) {
-                keyMap[key] = {paths: [], locales: []};
-              }
-              if (!keyMap[key].paths.includes(pth)) {
-                keyMap[key].paths.push(pth);
-              }
-              if (!keyMap[key].locales.includes(localeFiles[i])) {
-                keyMap[key].locales.push(localeFiles[i]);
-              }
+            if (Object.hasOwn(lfc.body, key)) {
+              return;
+            }
+
+            if (!Object.hasOwn(keyMap, key)) {
+              keyMap[key] = {paths: [], locales: []};
+            }
+            if (!keyMap[key].paths.includes(pth)) {
+              keyMap[key].paths.push(pth);
+            }
+            if (!keyMap[key].locales.includes(localeFiles[i])) {
+              keyMap[key].locales.push(localeFiles[i]);
             }
           });
         });
@@ -256,12 +258,12 @@ function unicodeScripts (_) {
           return;
         }
         Object.keys(lfc.body).forEach((localeKey) => {
-          if (!dirResults.some(({
+          if (dirResults.every(({
             keys
             // path: pth
           }) => {
             // console.log('keys', keys);
-            return keys.includes(localeKey);
+            return !keys.includes(localeKey);
           })) {
             // Working:
             // console.log(`Locale key "${localeKey}" not present in keys
@@ -301,7 +303,7 @@ function unicodeScripts (_) {
             if (lfc.body.langCode.message !== 'hu-HU') {
               // return;
             }
-            if (!(chromeSafeLocaleKey in lfc.body)) {
+            if (!Object.hasOwn(lfc.body, chromeSafeLocaleKey)) {
               lfc.body[chromeSafeLocaleKey] = {
                 message: key
               };

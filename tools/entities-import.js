@@ -2,7 +2,7 @@
 //  this file for the browser, but we're keeping this file for demonstrating
 //  an approach for live-obtaining the live version.
 
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 
 // eslint-disable-next-line no-shadow -- Clearer
 import fetch from 'node-fetch';

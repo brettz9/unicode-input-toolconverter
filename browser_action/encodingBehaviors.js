@@ -7,12 +7,13 @@ import {classChange as charrefClassChange} from './charrefConverters.js';
 
 export const convertEncoding = (out) => {
   const from = $('#encoding_from').value,
-    to = $('#encoding_to').value,
-    toconvert = out;
+    to = $('#encoding_to').value;
 
   if (!from || !to) {
     return;
   }
+
+  const toconvert = out;
 
   const Components = 'todo';
   const Cc = Components.classes,
@@ -50,10 +51,10 @@ export const convertEncoding = (out) => {
 };
 
 /**
-* @param {object} cfg
-* @param {import('intl-dom').I18NCallback} cfg._
-* @returns {void}
-*/
+ * @param {object} cfg
+ * @param {import('intl-dom').I18NCallback} cfg._
+ * @returns {void}
+ */
 function setupEncodingEvents ({_}) {
   /**
    * @returns {void}

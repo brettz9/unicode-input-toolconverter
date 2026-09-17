@@ -27,8 +27,8 @@ class UnicodeDB {
   }
 
   /**
-  * @returns {void}
-  */
+   * @returns {void}
+   */
   close () {
     this.db?.close();
   }
@@ -129,10 +129,10 @@ export class UnihanDatabase extends UnicodeDB {
     super({name: 'unicode-input-toolconverter-Unihan', version});
   }
   /**
-  * @param {string} codePoint
-  * @throws {Error}
-  * @returns {Promise<string[]>}
-  */
+   * @param {string} codePoint
+   * @throws {Error}
+   * @returns {Promise<string[]>}
+   */
   getUnicodeFields (codePoint) {
     const tx = /** @type {IDBDatabase} */ (
       this.db
@@ -236,7 +236,7 @@ export class UnicodeDatabase extends UnicodeDB {
       unique: true
     });
     updateUnicodeData.forEach((codePointInfoRow) => {
-      // http://www.unicode.org/reports/tr44/#UnicodeData.txt
+      // https://www.unicode.org/reports/tr44/#UnicodeData.txt
       const [
         codePoint, name, generalCategory, canonicalCombiningClass, bidiClass,
         decomposition, numeric6, numeric7, numeric8,
@@ -259,7 +259,7 @@ export class UnicodeDatabase extends UnicodeDB {
       } else if (numeric8) {
         numericType = 'Numeric';
       }
-      const numericValue = numericType ? numeric8 : Number.NaN;
+      const numericValue = numericType ? numeric8 : NaN;
 
       store.put({
         codePoint, name, generalCategory, canonicalCombiningClass, bidiClass,
@@ -271,11 +271,11 @@ export class UnicodeDatabase extends UnicodeDB {
   }
 
   /**
-  * @param {string} codePoint
-  * @returns {Promise<{
-  *   name: string, unicode1Name: string, [key: string]: string
-  * }>}
-  */
+   * @param {string} codePoint
+   * @returns {Promise<{
+   *   name: string, unicode1Name: string, [key: string]: string
+   * }>}
+   */
   getUnicodeFields (codePoint) {
     // const entityInParentheses = '(' + entity + ') ';
     // Todo: Should this not be padded to 6??
@@ -303,8 +303,6 @@ export class UnicodeDatabase extends UnicodeDB {
 }
 
 const charrefunicodeDb = new UnicodeDatabase();
-/*
-const unihanDb = new UnihanDatabase();
-*/
+/* const unihanDb = new UnihanDatabase(); */
 
 export default charrefunicodeDb;

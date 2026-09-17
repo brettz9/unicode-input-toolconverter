@@ -1,10 +1,10 @@
 /* eslint-disable unicorn/prefer-string-slice -- Easier */
 // Function can also be used standalone
 /**
-* @namespace This contains methods for translating Korean Hangul/Jamo,
-*   since these are obtained programmatically and not through the Unicode (or
-*   Unihan) database
-*/
+ * @namespace This contains methods for translating Korean Hangul/Jamo,
+ *   since these are obtained programmatically and not through the Unicode (or
+ *   Unihan) database
+ */
 
 /**
  * @typedef {number} Integer
@@ -121,7 +121,7 @@ function composeHangul (source) {
  */
 function getHangulFromName (name) {
   // Turn indices into individual Jamo characters
-  let t, lIndex, vIndex, tIndex;
+  let lIndex, vIndex, tIndex;
   let ptr = 1;
 
   // L (can be 1-2 in name length)
@@ -165,10 +165,7 @@ function getHangulFromName (name) {
   const v = getJamoForIndex(vIndex, 'v');
 
   // May only be LV
-  t = '';
-  if (tIndex) {
-    t = getJamoForIndex(tIndex, 't');
-  }
+  const t = tIndex ? getJamoForIndex(tIndex, 't') : '';
 
   // Join Jamo characters together
   const jamo = l + v + t;

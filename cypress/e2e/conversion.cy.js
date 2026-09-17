@@ -428,7 +428,7 @@ describe('Conversion', function () {
       cy.get('#b16').click();
       cy.get('#converted').invoke('val').should(
         'eq',
-        '\uFFFD \uFFFD'
+        '\u{FFFD} \u{FFFD}'
       );
     });
 
@@ -1466,13 +1466,13 @@ describe('Conversion', function () {
         visitBrowserAction(undefined, [
           ['characterDescriptions', '1'],
           ['targetid', 'context-charrefunicode17'],
-          ['convert', '\u009F']
+          ['convert', '\u{9F}']
         ]);
 
         cy.get(
           '#unicodeTabBox > .tabs > h1.tab[data-selected]:nth-of-type(2)'
         ).should('exist');
-        cy.get('#toconvert').invoke('val').should('eq', '\u009F');
+        cy.get('#toconvert').invoke('val').should('eq', '\u{9F}');
         cy.get('#converted').invoke('val').should(
           'eq',
           // Split up typing to avoid being interpreted by Cypress

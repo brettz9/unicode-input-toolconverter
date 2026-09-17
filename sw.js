@@ -227,10 +227,12 @@ async function activate (time) {
     CURRENT_CACHES
   ).map((n) => namespace + n + version);
   cacheNames.forEach(async (cacheName) => {
-    if (!expectedCacheNames.includes(cacheName)) {
-      log('Activate: Deleting out of date cache:', cacheName);
-      await caches.delete(cacheName);
+    if (expectedCacheNames.includes(cacheName)) {
+      return;
     }
+
+    log('Activate: Deleting out of date cache:', cacheName);
+    await caches.delete(cacheName);
   });
 
   // Todo: Use `namespace` in indexedDB db
@@ -245,21 +247,21 @@ async function activate (time) {
   post({type: 'finishedActivate'});
 }
 
-globalThis.addEventListener('install', (e) => {
+addEventListener('install', (e) => {
   globalThis.skipWaiting();
   e.waitUntil(
     tryAndRetry(install, 5 * minutes, 'Error installing')
   );
 });
 
-globalThis.addEventListener('activate', (e) => {
+addEventListener('activate', (e) => {
   // Erring is of no present use here:
   //   https://github.com/w3c/ServiceWorker/issues/659#issuecomment-384919053
   e.waitUntil(tryAndRetry(activate, 5 * minutes, 'Error activating'));
 });
 
 // We cannot make this async as `e.respondWith` must be called synchronously
-globalThis.addEventListener('fetch', (e) => {
+addEventListener('fetch', (e) => {
   // DevTools opening will trigger these o-i-c requests
   const {request} = e;
   const {cache, mode, url} = request;

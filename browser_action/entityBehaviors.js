@@ -82,7 +82,7 @@ async function registerDTD () {
     let addreg = true;
     if (decreg.test(m)) { // Dec
       m = m.replace(decreg, '$1');
-      m = Number.parseInt(m);
+      m = Number.parseInt(m, 10);
     } else if (hexreg.test(m)) { // Hex
       m = m.replace(hexreg, '$1');
       m = Number.parseInt(m, 16);
@@ -110,8 +110,8 @@ async function registerDTD () {
 }
 
 /**
-* @returns {void}
-*/
+ * @returns {void}
+ */
 function setupEntityEvents () {
   /** @type {HTMLSelectElement} */
   ($('#insertEntityFile')).addEventListener('change', async function (e) {

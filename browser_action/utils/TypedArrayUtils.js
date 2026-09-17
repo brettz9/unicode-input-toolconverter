@@ -3,11 +3,11 @@
  */
 
 /**
-* @param {object} cfg
-* @param {Integer} cfg.receivedLength
-* @param {Uint8Array[]} cfg.chunks
-* @returns {Uint8Array}
-*/
+ * @param {object} cfg
+ * @param {Integer} cfg.receivedLength
+ * @param {Uint8Array[]} cfg.chunks
+ * @returns {Uint8Array}
+ */
 function joinChunks ({
   chunks,
   receivedLength

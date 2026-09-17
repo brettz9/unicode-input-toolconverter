@@ -17,7 +17,10 @@ export default function getScriptInfoForCodePoint (num, _) {
   /** @type {false|string} */
   let surrogate = false;
   let plane = num >= 0x10000 && num <= 0x1FFFF ? 1 : 0;
-  let script = '', codePointStart = '';
+  // eslint-disable-next-line no-useless-assignment -- Ok
+  let script = '';
+  // eslint-disable-next-line no-useless-assignment -- Ok
+  let codePointStart = '';
   if (num < 0x0080) {
     codePointStart = '0000';
     script = _('Basic_Latin'); // + _ ('comma') + ' ' +

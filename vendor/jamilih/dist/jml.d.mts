@@ -1,3 +1,287 @@
+/// <reference path="./jamilih-dialect.d.ts" />
+import { validateJamilih } from './validateJamilih.js';
+export type HTMLWindow = Window & {
+    DocumentFragment: typeof DocumentFragment;
+};
+export type ArbitraryValue = unknown;
+export type StoredValue = unknown;
+export type UserArg = any;
+export type ElementExpando = any;
+export type ExpandoHTMLElement = HTMLElement & {
+    [key: string]: ElementExpando;
+};
+export type Integer = number;
+export type PluginSettings = {
+    element: Document | HTMLElement | DocumentFragment;
+    attribute: {
+        name: string | null;
+        value: JamilihAttValue;
+    };
+    opts: JamilihOptions;
+};
+export type JamilihPlugin = {
+    name: string;
+    set: (opts: PluginSettings) => string | Promise<void>;
+};
+/**
+ * @param {string} sel
+ * @returns {HTMLElement|null}
+ */
+declare const $: (sel: string) => HTMLElement | null;
+/**
+ * @param {string} sel
+ * @returns {HTMLElement[]}
+ */
+declare const $$: (sel: string) => HTMLElement[];
+export type ChildrenToJMLCallback = (childNodeJML: JamilihArray | JamilihChildType | string, i: Integer) => void;
+export type JamilihDialectObject = [keyof JamilihDialectProperties] extends [never] ? never : Partial<JamilihDialectProperties>;
+export type JamilihFirstArg = JamilihDoc | JamilihDoctype | JamilihTextNode | JamilihAttributeNode | JamilihOptions | JamilihDialectObject | ElementName | HTMLElement | JamilihDocumentFragment;
+export type JamilihAppender = (childJML: JamilihArray | JamilihArrayLike | JamilihFirstArg | Node | TextNodeString) => void;
+export type appender = (childJML: JamilihArray | JamilihArrayLike | JamilihFirstArg | Node | TextNodeString) => void;
+export type JamilihReturn = HTMLElement | DocumentFragment | Comment | Attr | Text | Document | DocumentType | ProcessingInstruction | CDATASection;
+export type TemplateJamilihArray = [(JamilihAttributes | JamilihArray | JamilihArray[] | HTMLElement), ...(JamilihArray | JamilihArray[] | HTMLElement)[]];
+export type ShadowRootJamilihArrayContainer = (JamilihArray | HTMLElement)[];
+export type JamilihShadowRootObject = {
+    open?: boolean | ShadowRootJamilihArrayContainer;
+    closed?: boolean | ShadowRootJamilihArrayContainer;
+    template?: string | HTMLTemplateElement | TemplateJamilihArray;
+    content?: ShadowRootJamilihArrayContainer | DocumentFragment;
+};
+export type XmlnsAttributeObject = {
+    [key: string]: string;
+};
+export type XmlnsAttributeValue = null | XmlnsAttributeObject;
+export type DatasetAttributeObject = {
+    [key: string]: string | number | null | undefined | DatasetAttributeObject;
+};
+export type StyleAttributeValue = string | undefined | {
+    [key: string]: string | null;
+};
+export type EventHandler<T extends HTMLElement = HTMLElement> = (this: T, event: Event & {
+    target: T;
+}) => void;
+export type OnAttributeObject<T extends HTMLElement = HTMLElement> = {
+    [key: string]: EventHandler<T> | [EventHandler<T>, boolean];
+};
+export type OnAttribute<T extends HTMLElement = HTMLElement> = {
+    $on?: OnAttributeObject<T> | null;
+};
+export type BooleanAttribute = boolean;
+export type HandlerAttributeValue = ((this: HTMLElement, event?: Event) => void);
+export type OnHandlerObject = {
+    [key: string]: HandlerAttributeValue;
+};
+export type StringifiableNumber = number;
+export type JamilihDocumentType = {
+    name: string;
+    systemId?: string;
+    publicId?: string;
+};
+export type DefineOptions = string | {
+    extends?: string;
+};
+export type DefineMixin = {
+    [key: string]: unknown;
+};
+export type DefineConstructor = {
+    new (): HTMLElement;
+    prototype: HTMLElement;
+};
+export type DefineUserConstructor = (this: HTMLElement) => void;
+export type DefineObjectArray = [DefineConstructor | DefineUserConstructor | DefineMixin, DefineOptions?] | [DefineMixin, DefineConstructor] | [DefineConstructor | DefineUserConstructor, DefineMixin?, DefineOptions?];
+export type DefineObject = DefineObjectArray | DefineConstructor | DefineMixin | DefineUserConstructor;
+export type SymbolObject<T = ArbitraryValue, U extends HTMLElement = HTMLElement> = T & {
+    elem?: U;
+};
+export type SymbolMethod<T extends HTMLElement = HTMLElement> = (this: T, ...args: UserArg[]) => UserArg;
+export type BoundSymbolMethod = (...args: UserArg[]) => UserArg;
+export type SymbolArray<T extends HTMLElement = HTMLElement> = [symbol | string, SymbolMethod<T> | SymbolObject<ArbitraryValue, T>];
+export type SymbolResult = BoundSymbolMethod | SymbolObject | ArbitraryValue;
+export type NullableAttributeValue = null | undefined;
+export type PluginValue = [string, object] | string | object;
+export type JamilihAttValue = (string | NullableAttributeValue | BooleanAttribute | JamilihArray | JamilihShadowRootObject | StringifiableNumber | JamilihDocumentType | JamilihDocument | XmlnsAttributeValue | OnAttributeObject | HandlerAttributeValue | DefineObject | SymbolArray | PluginReference | PluginValue);
+export type DataAttributeObject = {
+    [key: string]: string | number | ((this: HTMLElement, ...args: UserArg[]) => UserArg);
+};
+export type DataAttribute = {
+    $data?: true | string[] | Map<HTMLElement, UserArg> | WeakMap<HTMLElement, UserArg> | DataAttributeObject | [undefined, DataAttributeObject] | [Map<HTMLElement, UserArg> | WeakMap<HTMLElement, UserArg> | undefined, DataAttributeObject];
+};
+export type DatasetAttribute = {
+    dataset?: DatasetAttributeObject;
+};
+export type StyleAttribute = {
+    style?: StyleAttributeValue;
+};
+export type JamilihShadowRootAttribute = {
+    $shadow?: JamilihShadowRootObject;
+};
+export type DefineAttribute = {
+    is?: string | null;
+    $define?: DefineObject;
+};
+export type CustomAttribute = {
+    $custom?: {
+        [key: string]: unknown;
+    };
+};
+export type SymbolAttribute = {
+    $symbol?: SymbolArray;
+};
+export type XmlnsAttribute = {
+    xmlns?: string | null | XmlnsAttributeObject;
+};
+export type JamilihAttributes = DataAttribute & StyleAttribute & JamilihShadowRootAttribute & DefineAttribute & DatasetAttribute & CustomAttribute & SymbolAttribute & OnAttribute & XmlnsAttribute & Partial<JamilihAttributeNode> & Partial<JamilihTextNode> & Partial<JamilihDoc> & Partial<JamilihDoctype> & {
+    [key: string]: JamilihAttValue | HandlerAttributeValue;
+};
+export type JamilihDocument = {
+    title?: string;
+    xmlDeclaration?: {
+        version: string;
+        encoding: string;
+        standalone: boolean;
+    };
+    childNodes?: JamilihChildType[];
+    $DOCTYPE?: JamilihDocumentType;
+    head?: JamilihChildren;
+    body?: JamilihChildren;
+};
+export type JamilihDoc = {
+    $document: JamilihDocument;
+};
+export type JamilihDoctype = {
+    $DOCTYPE: JamilihDocumentType;
+};
+export type JamilihDocumentFragmentContent = JamilihArray | TextNodeString | HTMLElement;
+export type JamilihDocumentFragment = {
+    '#': JamilihDocumentFragmentContent[];
+};
+export type ElementName = string;
+export type TextNodeString = string | number;
+export type PluginReference = {
+    [key: string]: string;
+};
+export type JamilihFirstArgument = Document | ElementName | HTMLElement | DocumentFragment | JamilihDocumentFragment | JamilihDoc | JamilihDoctype | JamilihTextNode | JamilihAttributeNode;
+export type JamilihArrayLike = (JamilihFirstArg | JamilihAttributes | JamilihArrayLike | TextNodeString | ShadowRoot | null)[];
+export type JamilihChildren = (JamilihArray | JamilihArrayLike | TextNodeString | HTMLElement | Comment | ProcessingInstruction | Text | DocumentFragment | JamilihProcessingInstruction | JamilihDocumentFragment | PluginReference | JamilihDialectObject)[];
+export type JamilihArray = [
+    JamilihOptions | JamilihFirstArgument | JamilihDialectObject,
+    (JamilihFirstArgument | JamilihAttributes | JamilihChildren | HTMLElement | ShadowRoot | null)?,
+    (JamilihAttributes | JamilihChildren | HTMLElement | ShadowRoot | ElementName | null)?,
+    ...(JamilihAttributes | JamilihChildren | HTMLElement | ShadowRoot | ElementName | null)[]
+];
+export type JamilihArrayPostOptions = [
+    (string | HTMLElement | ShadowRoot),
+    (JamilihArray[] | JamilihAttributes | HTMLElement | ShadowRoot | null)?,
+    ...(JamilihArray[] | HTMLElement | JamilihAttributes | ShadowRoot | null)[]
+];
+export type MapWithRoot = {
+    root: [Map<HTMLElement, UserArg> | WeakMap<HTMLElement, UserArg>, UserArg];
+    [key: string]: [Map<HTMLElement, UserArg> | WeakMap<HTMLElement, UserArg>, UserArg];
+};
+export type TraversalState = "root" | "attributeValue" | "element" | "fragment" | "children" | "fragmentChildren";
+export type JamilihOptions = {
+    $state?: TraversalState;
+    $plugins?: JamilihPlugin[];
+    $Map?: MapWithRoot | [Map<HTMLElement, UserArg> | WeakMap<HTMLElement, UserArg>, UserArg];
+};
+export type ValueOf<T> = T[keyof T];
+export type RawCustomFromJamilihArray<T extends JamilihArray> = Extract<Extract<T[number], {
+    $custom?: {
+        [key: string]: unknown;
+    };
+}>['$custom'], object>;
+export type SpecificDefineMixin<M> = M extends object ? string extends keyof M ? object : M : object;
+export type DefineMixinFromValue<D> = D extends [infer First, infer Second, ...ArbitraryValue[]] ? (First extends DefineMixin ? SpecificDefineMixin<First> : Second extends DefineMixin ? SpecificDefineMixin<Second> : object) : D extends [infer First] ? First extends DefineMixin ? SpecificDefineMixin<First> : object : D extends DefineMixin ? SpecificDefineMixin<D> : object;
+export type RawDefineMixinFromJamilihArray<T extends JamilihArray> = T[number] extends infer Item ? Item extends {
+    $define: infer D;
+} ? DefineMixinFromValue<D> : never : never;
+export type ElementFromDefineValue<D> = D extends [infer First, infer Second, ...ArbitraryValue[]] ? First extends DefineConstructor ? First['prototype'] : Second extends DefineConstructor ? Second['prototype'] : never : D extends DefineConstructor ? D['prototype'] : never;
+export type ElementFromJamilihDefine<T extends JamilihArray> = T[number] extends infer Item ? Item extends {
+    $define: infer D;
+} ? ElementFromDefineValue<D> : never : never;
+export type HasXmlnsFromJamilihArray<T extends JamilihArray> = Extract<T[number], {
+    xmlns: unknown;
+}> extends never ? false : true;
+export type ElementFromJamilihArray<T extends JamilihArray> = T extends [infer K, ...ArbitraryValue[]] ? (HasXmlnsFromJamilihArray<T> extends true ? Element : ElementFromJamilihDefine<T> extends never ? K extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[K] : HTMLElement : ElementFromJamilihDefine<T>) : Element;
+export type WithCustomThis<A, E extends Element, X> = A extends {
+    $custom: infer C;
+} ? (C extends object ? Omit<A, '$custom'> & {
+    $custom?: C & ThisType<E & C & X>;
+} : A) : A;
+export type WithDefineThisValue<D, E extends Element, X> = D extends [infer First, infer Second, ...infer Rest] ? (First extends DefineMixin ? [First & ThisType<E & First & X>, Second, ...Rest] : Second extends DefineMixin ? [First, Second & ThisType<E & Second & X>, ...Rest] : D) : D extends [infer First] ? First extends DefineMixin ? [First & ThisType<E & First & X>] : D : D extends DefineMixin ? D & ThisType<E & D & X> : D;
+export type WithDefineThis<A, E extends Element, X> = A extends {
+    $define: infer D;
+} ? Omit<A, '$define'> & {
+    $define?: WithDefineThisValue<D, E, X>;
+} : A;
+export type CustomFromJamilihItem<A> = A extends {
+    $custom: infer C;
+} ? C extends object ? C : object : object;
+export type DefineMixinFromJamilihItem<A> = A extends {
+    $define: infer D;
+} ? DefineMixinFromValue<D> : object;
+export type JamilihArrayWithCustomThis<T extends JamilihArray, E extends Element> = {
+    [K in keyof T]: WithCustomThis<WithDefineThis<T[K], E, CustomFromJamilihItem<T[K]>>, E, DefineMixinFromJamilihItem<T[K]>>;
+};
+export type ValidateJamilihArrayLike<A> = A extends (infer Item)[] ? (Extract<Item, JamilihFirstArg> extends never ? never : A) : A;
+export type ValidateJamilihChildContainer<A> = A extends (infer Child)[] ? A & (Child extends unknown[] ? ValidateJamilihArrayLike<Child> : Child)[] : A;
+export type ValidateJamilihArrayLikes<T extends JamilihArray> = {
+    [K in keyof T]: ValidateJamilihChildContainer<T[K]>;
+};
+export type CustomFromJamilihArray<T extends JamilihArray> = (RawCustomFromJamilihArray<T> extends never ? object : RawCustomFromJamilihArray<T>);
+export type DefineMixinFromJamilihArray<T extends JamilihArray> = (RawDefineMixinFromJamilihArray<T> extends never ? object : RawDefineMixinFromJamilihArray<T>);
+export type ResolvedElement<U, W> = U extends void ? (ExpandoHTMLElement & W) : (U & W);
+declare function jml<T extends JamilihArray, U extends T extends [infer K, ...ArbitraryValue[]] ? (HasXmlnsFromJamilihArray<T> extends true ? Element : ElementFromJamilihDefine<T> extends never ? K extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[K] : K extends string ? HTMLElement : void : ElementFromJamilihDefine<T>) : void, E extends ElementFromJamilihArray<T>, W extends CustomFromJamilihArray<T>, D extends DefineMixinFromJamilihArray<T>>(...args: JamilihArrayWithCustomThis<T, E> & ValidateJamilihArrayLikes<T>): U extends void ? JamilihReturn : ResolvedElement<U, W & D>;
+declare namespace jml {
+    export { toJML };
+    export { toJMLString };
+    export { toDOM };
+    export { toHTML };
+    export { toDOMString };
+    export { toXML };
+    export { toXMLDOMString };
+    export { JamilihMap as Map };
+    export { JamilihWeakMap as WeakMap };
+    export var weak: <V>(obj: V, args_0: string | HTMLElement | ShadowRoot, args_1?: JamilihArray[] | HTMLElement | ShadowRoot | JamilihAttributes | null | undefined, ...args: (JamilihArray[] | HTMLElement | ShadowRoot | JamilihAttributes | null)[]) => MapAndElementArray<V>;
+    export var strong: <V>(obj: V, args_0: string | HTMLElement | ShadowRoot, args_1?: JamilihArray[] | HTMLElement | ShadowRoot | JamilihAttributes | null | undefined, ...args: (JamilihArray[] | HTMLElement | ShadowRoot | JamilihAttributes | null)[]) => MapAndElementArray<V>;
+    export var symbol: (element: string | HTMLElement, sym: symbol | string) => SymbolResult;
+    export var sym: (element: string | HTMLElement, sym: symbol | string) => SymbolResult;
+    export var _a: (element: string | HTMLElement, sym: symbol | string) => SymbolResult;
+    export { _a as for };
+    export var command: (elem: (string | HTMLElement) | null, symOrMap: symbol | string | Map<HTMLElement, MapCommand> | WeakMap<HTMLElement, MapCommand>, methodName: string | UserArg, ...args: UserArg[]) => StoredValue;
+    export { setWindow };
+    export { getWindow };
+    export { validateJamilih };
+}
+export type ToJmlConfig = {
+    /**
+     * Whether to output the Jamilih object as a string.
+     */
+    stringOutput?: boolean;
+    /**
+     * If true (the default), will report invalid state errors
+     */
+    reportInvalidState?: boolean;
+    /**
+     * Strip whitespace for text nodes
+     */
+    stripWhitespace?: boolean;
+};
+export type JamilihAttributeNodeValue = [namespace: string | null, name: string, value?: string];
+export type JamilihAttributeNode = {
+    $attribute: JamilihAttributeNodeValue;
+};
+export type JamilihTextNode = {
+    $text: string;
+};
+export type JamilihCDATANode = ['![', string];
+export type JamilihEntityReference = ['&', string];
+export type JamilihProcessingInstruction = [code: '?', target: string, value: string];
+export type JamilihComment = [code: '!', value: string];
+export type Entity = {
+    nodeType: number;
+    nodeName: string;
+};
 /**
  * Configuration object.
  * @typedef {object} ToJmlConfig
@@ -39,436 +323,146 @@
 /**
  * Polyfill for `DOMException`.
  */
-export class DOMException extends Error {
+export declare class DOMException extends Error {
+    code: number;
     /**
      * @param {string} message
      * @param {string} name
      */
     constructor(message: string, name: string);
-    code: number;
 }
-export default jml;
-export type ChildrenToJMLCallback = (childNodeJML: JamilihArray | JamilihChildType | string, i: Integer) => void;
-/**
- * Keep this in sync with `JamilihArray`'s first argument (minus `Document`).
- */
-export type JamilihFirstArg = JamilihDoc | JamilihDoctype | JamilihTextNode | JamilihAttributeNode | JamilihOptions | ElementName | HTMLElement | JamilihDocumentFragment;
-export type JamilihAppender = (childJML: JamilihArray | JamilihFirstArg | Node | TextNodeString) => void;
-export type appender = (childJML: JamilihArray | JamilihFirstArg | Node | TextNodeString) => void;
-export type JamilihReturn = HTMLElement | DocumentFragment | Comment | Attr | Text | Document | DocumentType | ProcessingInstruction | CDATASection;
-/**
- * Can either be an array of:
- * 1. JamilihAttributes followed by an array of JamilihArrays or Elements.
- *     (Cannot be multiple single JamilihArrays despite TS type).
- * 2. Any number of JamilihArrays.
- */
-export type TemplateJamilihArray = [(JamilihAttributes | JamilihArray | JamilihArray[] | HTMLElement), ...(JamilihArray | JamilihArray[] | HTMLElement)[]];
-export type ShadowRootJamilihArrayContainer = (JamilihArray | HTMLElement)[];
-export type JamilihShadowRootObject = {
-    open?: boolean | ShadowRootJamilihArrayContainer;
-    closed?: boolean | ShadowRootJamilihArrayContainer;
-    template?: string | HTMLTemplateElement | TemplateJamilihArray;
-    content?: ShadowRootJamilihArrayContainer | DocumentFragment;
-};
-export type XmlnsAttributeObject = {
-    [key: string]: string;
-};
-export type XmlnsAttributeValue = null | XmlnsAttributeObject;
-export type DatasetAttributeObject = {
-    [key: string]: string | number | null | undefined | DatasetAttributeObject;
-};
-export type StyleAttributeValue = string | undefined | {
-    [key: string]: string | null;
-};
-export type EventHandler = (this: HTMLElement, event: Event & {
-    target: HTMLElement;
-}) => void;
-export type OnAttributeObject = {
-    [key: string]: EventHandler | [EventHandler, boolean];
-};
-export type OnAttribute = {
-    $on?: OnAttributeObject | null;
-};
-export type BooleanAttribute = boolean;
-export type HandlerAttributeValue = ((this: HTMLElement, event?: Event) => void);
-export type OnHandlerObject = {
-    [key: string]: HandlerAttributeValue;
-};
-export type StringifiableNumber = number;
-export type JamilihDocumentType = {
-    name: string;
-    systemId?: string;
-    publicId?: string;
-};
-export type DefineOptions = string | {
-    extends?: string;
-};
-export type DefineMixin = {
-    [key: string]: string | number | boolean | ((this: DefineMixin, ...args: any[]) => any);
-};
-export type DefineConstructor = {
-    new (): HTMLElement;
-    prototype: HTMLElement & {
-        [key: string]: any;
-    };
-};
-export type DefineUserConstructor = (this: HTMLElement) => void;
-export type DefineObjectArray = [DefineConstructor | DefineUserConstructor | DefineMixin, DefineOptions?] | [DefineConstructor | DefineUserConstructor, DefineMixin?, DefineOptions?];
-export type DefineObject = DefineObjectArray | DefineConstructor | DefineMixin | DefineUserConstructor;
-export type SymbolObject = {
-    elem?: HTMLElement;
-    [key: string]: any;
-};
-export type SymbolArray = [symbol | string, ((this: HTMLElement, ...args: any[]) => any) | SymbolObject];
-export type NullableAttributeValue = null | undefined;
-export type PluginValue = [string, object] | string | {
-    [key: string]: any;
-};
-export type JamilihAttValue = (string | NullableAttributeValue | BooleanAttribute | JamilihArray | JamilihShadowRootObject | StringifiableNumber | JamilihDocumentType | JamilihDocument | XmlnsAttributeValue | OnAttributeObject | HandlerAttributeValue | DefineObject | SymbolArray | PluginReference | PluginValue);
-export type DataAttributeObject = {
-    [key: string]: string | number | ((this: HTMLElement, ...args: any[]) => any);
-};
-export type DataAttribute = {
-    $data?: true | string[] | Map<any, any> | WeakMap<any, any> | DataAttributeObject | [undefined, DataAttributeObject] | [Map<any, any> | WeakMap<any, any> | undefined, DataAttributeObject];
-};
-export type DatasetAttribute = {
-    dataset?: DatasetAttributeObject;
-};
-export type StyleAttribute = {
-    style?: StyleAttributeValue;
-};
-export type JamilihShadowRootAttribute = {
-    $shadow?: JamilihShadowRootObject;
-};
-export type DefineAttribute = {
-    is?: string | null;
-    $define?: DefineObject;
-};
-export type CustomAttribute = {
-    $custom?: {
-        [key: string]: any;
-    };
-};
-export type SymbolAttribute = {
-    $symbol?: SymbolArray;
-};
-export type XmlnsAttribute = {
-    xmlns?: string | null | XmlnsAttributeObject;
-};
-/**
- * `OnHandlerObject &` wasn't working, so added `HandlerAttributeValue`.
- */
-export type JamilihAttributes = DataAttribute & StyleAttribute & JamilihShadowRootAttribute & DefineAttribute & DatasetAttribute & CustomAttribute & SymbolAttribute & OnAttribute & XmlnsAttribute & Partial<JamilihAttributeNode> & Partial<JamilihTextNode> & Partial<JamilihDoc> & Partial<JamilihDoctype> & {
-    [key: string]: JamilihAttValue | HandlerAttributeValue;
-};
-export type JamilihDocument = {
-    title?: string;
-    xmlDeclaration?: {
-        version: string;
-        encoding: string;
-        standalone: boolean;
-    };
-    childNodes?: JamilihChildType[];
-    $DOCTYPE?: JamilihDocumentType;
-    head?: JamilihChildren;
-    body?: JamilihChildren;
-};
-export type JamilihDoc = {
-    $document: JamilihDocument;
-};
-export type JamilihDoctype = {
-    $DOCTYPE: JamilihDocumentType;
-};
-export type JamilihDocumentFragmentContent = JamilihArray | TextNodeString | HTMLElement;
-export type JamilihDocumentFragment = {
-    "#": JamilihDocumentFragmentContent[];
-};
-export type ElementName = string;
-export type TextNodeString = string | number;
-export type PluginReference = {
-    [key: string]: string;
-};
-export type JamilihChildren = (JamilihArray | TextNodeString | HTMLElement | Comment | ProcessingInstruction | Text | DocumentFragment | JamilihProcessingInstruction | JamilihDocumentFragment | PluginReference)[];
-export type JamilihFirstArgument = Document | ElementName | HTMLElement | DocumentFragment | JamilihDocumentFragment | JamilihDoc | JamilihDoctype | JamilihTextNode | JamilihAttributeNode;
-/**
- * This would be clearer with overrides, but using as typedef.
- *
- * The optional 0th argument is an Jamilih options object or fragment.
- *
- * The first argument is the element to create (by lower-case name) or DOM element.
- *
- * The second optional argument are attributes to add with the key as the
- *   attribute name and value as the attribute value.
- * The third optional argument are an array of children for this element
- *   (but raw DOM elements are required to be specified within arrays since
- *   could not otherwise be distinguished from siblings being added).
- * The fourth optional argument are a sequence of sibling Elements, represented
- *   as DOM elements, or string/attributes/children sequences.
- * The fifth optional argument is the parent to which to attach the element
- *   (always the last unless followed by null, in which case it is the
- *   second-to-last).
- * The sixth last optional argument is null, used to indicate an array of elements
- *   should be returned.
- */
-export type JamilihArray = [JamilihOptions | JamilihFirstArgument, (JamilihFirstArgument | JamilihAttributes | JamilihChildren | HTMLElement | ShadowRoot | null)?, (JamilihAttributes | JamilihChildren | HTMLElement | ShadowRoot | ElementName | null)?, ...(JamilihAttributes | JamilihChildren | HTMLElement | ShadowRoot | ElementName | null)[]];
-export type JamilihArrayPostOptions = [(string | HTMLElement | ShadowRoot), (JamilihArray[] | JamilihAttributes | HTMLElement | ShadowRoot | null)?, ...(JamilihArray[] | HTMLElement | JamilihAttributes | ShadowRoot | null)[]];
-export type MapWithRoot = {
-    root: [Map<HTMLElement, any> | WeakMap<HTMLElement, any>, any];
-    [key: string]: [Map<HTMLElement, any> | WeakMap<HTMLElement, any>, any];
-};
-export type TraversalState = "root" | "attributeValue" | "element" | "fragment" | "children" | "fragmentChildren";
-export type JamilihOptions = {
-    $state?: TraversalState | undefined;
-    $plugins?: JamilihPlugin[] | undefined;
-    $map?: [Map<HTMLElement, any> | WeakMap<HTMLElement, any>, any] | MapWithRoot | undefined;
-};
-export type HTMLWindow = Window & {
-    DocumentFragment: any;
-};
-export type ArbitraryValue = any;
-export type Integer = number;
-export type PluginSettings = {
-    element: Document | HTMLElement | DocumentFragment;
-    attribute: {
-        name: string | null;
-        value: JamilihAttValue;
-    };
-    opts: JamilihOptions;
-};
-export type JamilihPlugin = {
-    name: string;
-    set: (opts: PluginSettings) => string | Promise<void>;
-};
-export type ValueOf<T> = T[keyof T];
-/**
- * Configuration object.
- */
-export type ToJmlConfig = {
-    /**
-     * Whether to output the Jamilih object as a string.
-     */
-    stringOutput?: boolean | undefined;
-    /**
-     * If true (the default), will report invalid state errors
-     */
-    reportInvalidState?: boolean | undefined;
-    /**
-     * Strip whitespace for text nodes
-     */
-    stripWhitespace?: boolean | undefined;
-};
-export type JamilihAttributeNodeValue = [namespace: string | null, name: string, value?: string];
-export type JamilihAttributeNode = {
-    $attribute: JamilihAttributeNodeValue;
-};
-export type JamilihTextNode = {
-    $text: string;
-};
-export type JamilihCDATANode = ["![", string];
-export type JamilihEntityReference = ["&", string];
-export type JamilihProcessingInstruction = [code: "?", target: string, value: string];
-export type JamilihComment = [code: "!", value: string];
-export type Entity = {
-    nodeType: number;
-    nodeName: string;
-};
 export type JamilihChildType = JamilihArray | JamilihDoctype | JamilihCDATANode | JamilihEntityReference | JamilihProcessingInstruction | JamilihComment | JamilihDocumentFragment;
 export type JamilihType = JamilihDoc | JamilihAttributeNode | JamilihChildType;
-export type MapAndElementArray = [JamilihWeakMap | JamilihMap, HTMLElement];
-export type MapCommand = ((elem: HTMLElement, ...args: any[]) => void) | {
-    [key: string]: (elem: HTMLElement, ...args: any[]) => void;
-};
 /**
- * @template T
- * @typedef {T[keyof T]} ValueOf
+ * @typedef {JamilihArray|JamilihDoctype|
+ *    JamilihCDATANode|JamilihEntityReference|JamilihProcessingInstruction|
+ *    JamilihComment|JamilihDocumentFragment} JamilihChildType
  */
 /**
- * Creates an XHTML or HTML element (XHTML is preferred, but only in browsers
- * that support); any element after element can be omitted, and any subsequent
- * type or types added afterwards.
- * @template {JamilihArray} T
- * @param {T} args
- * @returns {T extends [keyof HTMLElementTagNameMap, any?, any?, any?]
- *   ? HTMLElementTagNameMap[T[0]] : JamilihReturn}
- * The newly created (and possibly already appended)
- *   element or array of elements
+ * @typedef {JamilihDoc|JamilihAttributeNode|JamilihChildType} JamilihType
  */
-export function jml<T extends JamilihArray>(...args: T): T extends [keyof HTMLElementTagNameMap, any?, any?, any?] ? HTMLElementTagNameMap[T[0]] : JamilihReturn;
-export namespace jml {
+/**
+ * Converts a DOM object or a string of HTML into a Jamilih object (or string).
+ * @param {string|HTMLElement|Node|Entity} nde If a string, will parse as document
+ * @param {ToJmlConfig} [config] Configuration object
+ * @throws {TypeError}
+ * @returns {JamilihType|string} Array containing the elements which represent
+ * a Jamilih object, or, if `stringOutput` is true, it will be the stringified
+ * version of such an object
+ */
+export declare const toJML: (nde: string | HTMLElement | Node | Entity, { stringOutput, reportInvalidState, stripWhitespace }?: ToJmlConfig) => JamilihType | string;
+/**
+ * @param {string|HTMLElement} dom
+ * @param {ToJmlConfig} [config]
+ * @returns {string}
+ */
+export declare const toJMLString: (dom: string | HTMLElement, config?: ToJmlConfig) => string;
+/**
+ *
+ * @param {JamilihArray} args
+ * @returns {JamilihReturn}
+ */
+export declare const toDOM: (...args: JamilihArray) => JamilihReturn;
+/**
+ *
+ * @param {JamilihArray} args
+ * @returns {string}
+ */
+export declare const toHTML: (...args: JamilihArray) => string;
+/**
+ *
+ * @param {JamilihArray} args
+ * @returns {string}
+ */
+export declare const toDOMString: (...args: JamilihArray) => string;
+/**
+ *
+ * @param {JamilihArray} args
+ * @returns {string}
+ */
+export declare const toXML: (...args: JamilihArray) => string;
+/**
+ *
+ * @param {JamilihArray} args
+ * @returns {string}
+ */
+export declare const toXMLDOMString: (...args: JamilihArray) => string;
+/**
+ * Element-aware wrapper for `Map`.
+ * @template V
+ */
+declare class JamilihMap<V> extends Map {
     /**
-     * @typedef {JamilihArray|JamilihDoctype|
-    *    JamilihCDATANode|JamilihEntityReference|JamilihProcessingInstruction|
-    *    JamilihComment|JamilihDocumentFragment} JamilihChildType
+     * @param {?(string|HTMLElement)} element
+     * @returns {V}
      */
+    get(element: (string | HTMLElement) | null): V;
     /**
-     * @typedef {JamilihDoc|JamilihAttributeNode|JamilihChildType} JamilihType
+     * @param {string|HTMLElement} element
+     * @param {V} value
+     * @returns {this}
      */
+    set(element: string | HTMLElement, value: V): this;
     /**
-    * Converts a DOM object or a string of HTML into a Jamilih object (or string).
-    * @param {string|HTMLElement|Node|Entity} nde If a string, will parse as document
-    * @param {ToJmlConfig} [config] Configuration object
-    * @throws {TypeError}
-    * @returns {JamilihType|string} Array containing the elements which represent
-    * a Jamilih object, or, if `stringOutput` is true, it will be the stringified
-    * version of such an object
-    */
-    export function toJML(nde: string | HTMLElement | Node | Entity, { stringOutput, reportInvalidState, stripWhitespace }?: ToJmlConfig): JamilihType | string;
-    /**
-     * @param {string|HTMLElement} dom
-     * @param {ToJmlConfig} [config]
-     * @returns {string}
+     * @param {string|HTMLElement} element
+     * @param {string} methodName
+     * @param {...UserArg} args
+     * @returns {StoredValue}
      */
-    export function toJMLString(dom: string | HTMLElement, config?: ToJmlConfig): string;
-    /**
-     *
-     * @param {JamilihArray} args
-     * @returns {JamilihReturn}
-     */
-    export function toDOM(args_0: JamilihOptions | JamilihFirstArgument, args_1?: JamilihAttributes | JamilihChildren | JamilihFirstArgument | ShadowRoot | null | undefined, args_2?: string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null | undefined, ...args: (string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null)[]): JamilihReturn;
-    /**
-     *
-     * @param {JamilihArray} args
-     * @returns {string}
-     */
-    export function toHTML(args_0: JamilihOptions | JamilihFirstArgument, args_1?: JamilihAttributes | JamilihChildren | JamilihFirstArgument | ShadowRoot | null | undefined, args_2?: string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null | undefined, ...args: (string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null)[]): string;
-    /**
-     *
-     * @param {JamilihArray} args
-     * @returns {string}
-     */
-    export function toDOMString(args_0: JamilihOptions | JamilihFirstArgument, args_1?: JamilihAttributes | JamilihChildren | JamilihFirstArgument | ShadowRoot | null | undefined, args_2?: string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null | undefined, ...args: (string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null)[]): string;
-    /**
-     *
-     * @param {JamilihArray} args
-     * @returns {string}
-     */
-    export function toXML(args_0: JamilihOptions | JamilihFirstArgument, args_1?: JamilihAttributes | JamilihChildren | JamilihFirstArgument | ShadowRoot | null | undefined, args_2?: string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null | undefined, ...args: (string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null)[]): string;
-    /**
-     *
-     * @param {JamilihArray} args
-     * @returns {string}
-     */
-    export function toXMLDOMString(args_0: JamilihOptions | JamilihFirstArgument, args_1?: JamilihAttributes | JamilihChildren | JamilihFirstArgument | ShadowRoot | null | undefined, args_2?: string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null | undefined, ...args: (string | HTMLElement | JamilihAttributes | JamilihChildren | ShadowRoot | null)[]): string;
-    export { JamilihMap as Map };
-    export { JamilihWeakMap as WeakMap };
-    /**
-     * @typedef {[JamilihWeakMap|JamilihMap, HTMLElement]} MapAndElementArray
-     */
-    /**
-     * @param {{[key: string]: any}} obj
-     * @param {JamilihArrayPostOptions} args
-     * @returns {MapAndElementArray}
-     */
-    export function weak(obj: {
-        [key: string]: any;
-    }, args_0: string | HTMLElement | ShadowRoot, args_1?: HTMLElement | JamilihAttributes | ShadowRoot | JamilihArray[] | null | undefined, ...args: (HTMLElement | JamilihAttributes | ShadowRoot | JamilihArray[] | null)[]): MapAndElementArray;
-    /**
-     * @param {ArbitraryValue} obj
-     * @param {JamilihArrayPostOptions} args
-     * @returns {MapAndElementArray}
-     */
-    export function strong(obj: ArbitraryValue, args_0: string | HTMLElement | ShadowRoot, args_1?: HTMLElement | JamilihAttributes | ShadowRoot | JamilihArray[] | null | undefined, ...args: (HTMLElement | JamilihAttributes | ShadowRoot | JamilihArray[] | null)[]): MapAndElementArray;
-    export function symbol(element: string | HTMLElement, sym: symbol | string): ArbitraryValue;
-    export function sym(element: string | HTMLElement, sym: symbol | string): ArbitraryValue;
-    function _for(element: string | HTMLElement, sym: symbol | string): ArbitraryValue;
-    export { _for as for };
-    /**
-     * @typedef {((elem: HTMLElement, ...args: any[]) => void)|{[key: string]: (elem: HTMLElement, ...args: any[]) => void}} MapCommand
-     */
-    /**
-     * @param {?(string|HTMLElement)} elem If a string, will be interpreted as a selector
-     * @param {symbol|string|Map<HTMLElement, MapCommand>|WeakMap<HTMLElement, MapCommand>} symOrMap If a string, will be used with `Symbol.for`
-     * @param {string|any} methodName Can be `any` if the symbol or map directly
-     *   points to a function (it is then used as the first argument).
-     * @param {ArbitraryValue[]} args
-     * @returns {ArbitraryValue}
-     */
-    export function command(elem: (string | HTMLElement) | null, symOrMap: symbol | string | Map<HTMLElement, MapCommand> | WeakMap<HTMLElement, MapCommand>, methodName: string | any, ...args: ArbitraryValue[]): ArbitraryValue;
-    /**
-     * Expects properties `document`, `XMLSerializer`, and `DOMParser`.
-     * Also updates `body` with `document.body`.
-     * @param {import('jsdom').DOMWindow|HTMLWindow|typeof globalThis|undefined} wind
-     * @returns {void}
-     */
-    export function setWindow(wind: import("jsdom").DOMWindow | HTMLWindow | typeof globalThis | undefined): void;
-    /**
-     * @returns {import('jsdom').DOMWindow|HTMLWindow|typeof globalThis}
-     */
-    export function getWindow(): import("jsdom").DOMWindow | HTMLWindow | typeof globalThis;
+    invoke(element: string | HTMLElement, methodName: string, ...args: UserArg[]): StoredValue;
 }
 /**
- * @param {string} sel
- * @returns {HTMLElement|null}
+ * Element-aware wrapper for `WeakMap`.
+ * @template V
  */
-export function $(sel: string): HTMLElement | null;
+declare class JamilihWeakMap<V> extends WeakMap {
+    /**
+     * @param {?(string|object|symbol)} element
+     * @returns {V}
+     */
+    get(element: (string | object | symbol) | null): V;
+    /**
+     * @param {?(string|object|symbol)} element
+     * @param {V} value
+     * @returns {this}
+     */
+    set(element: (string | object | symbol) | null, value: V): this;
+    /**
+     * @param {string|HTMLElement} element
+     * @param {string} methodName
+     * @param {...UserArg} args
+     * @returns {StoredValue}
+     */
+    invoke(element: string | HTMLElement, methodName: string, ...args: UserArg[]): StoredValue;
+}
+export type MapAndElementArray<V> = [JamilihWeakMap<V> | JamilihMap<V>, HTMLElement];
+export type MapCommand = ((elem: HTMLElement, ...args: UserArg[]) => void) | {
+    [key: string]: (elem: HTMLElement, ...args: UserArg[]) => void;
+};
 /**
- * @param {string} sel
- * @returns {HTMLElement[]}
+ * Expects properties `document`, `XMLSerializer`, and `DOMParser`.
+ * Also updates `body` with `document.body`.
+ * @param {import('jsdom').DOMWindow|HTMLWindow|typeof globalThis|undefined} wind
+ * @returns {void}
  */
-export function $$(sel: string): HTMLElement[];
-export const nbsp: "\u00A0";
+export declare const setWindow: (wind: import('jsdom').DOMWindow | HTMLWindow | typeof globalThis | undefined) => void;
+/**
+ * @returns {import('jsdom').DOMWindow|HTMLWindow|typeof globalThis}
+ */
+export declare const getWindow: () => import('jsdom').DOMWindow | HTMLWindow | typeof globalThis;
+/**
+ * Does not run Jamilih so can be further processed.
+ * @template T
+ * @param {T[]} array
+ * @param {T} glu
+ * @returns {T[]}
+ */
+declare function glue<T>(array: T[], glu: T): T[];
 /**
  * @type {HTMLBodyElement}
  */
-export let body: HTMLBodyElement;
-/**
- * Does not run Jamilih so can be further processed.
- * @param {ArbitraryValue[]} array
- * @param {ArbitraryValue} glu
- * @returns {ArbitraryValue[]}
- */
-export function glue(array: ArbitraryValue[], glu: ArbitraryValue): ArbitraryValue[];
-/**
- * Element-aware wrapper for `WeakMap`.
- * @extends {WeakMap<any>}
- */
-declare class JamilihWeakMap extends WeakMap<any, any> {
-    constructor(entries?: readonly (readonly [any, any])[] | null | undefined);
-    constructor(iterable: Iterable<readonly [any, any]>);
-    /**
-     * @param {HTMLElement} element
-     * @returns {ArbitraryValue}
-     */
-    get(element: HTMLElement): ArbitraryValue;
-    /**
-     * @param {HTMLElement} element
-     * @param {ArbitraryValue} value
-     * @returns {ArbitraryValue}
-     */
-    set(element: HTMLElement, value: ArbitraryValue): ArbitraryValue;
-    /**
-     * @param {string|HTMLElement} element
-     * @param {string} methodName
-     * @param {...ArbitraryValue} args
-     * @returns {ArbitraryValue}
-     */
-    invoke(element: string | HTMLElement, methodName: string, ...args: ArbitraryValue[]): ArbitraryValue;
-}
-/**
- * Element-aware wrapper for `Map`.
- */
-declare class JamilihMap extends Map<any, any> {
-    constructor();
-    constructor(entries?: readonly (readonly [any, any])[] | null | undefined);
-    constructor();
-    constructor(iterable?: Iterable<readonly [any, any]> | null | undefined);
-    /**
-     * @param {?(string|HTMLElement)} element
-     * @returns {ArbitraryValue}
-     */
-    get(element: (string | HTMLElement) | null): ArbitraryValue;
-    /**
-     * @param {string|HTMLElement} element
-     * @param {ArbitraryValue} value
-     * @returns {ArbitraryValue}
-     */
-    set(element: string | HTMLElement, value: ArbitraryValue): ArbitraryValue;
-    /**
-     * @param {string|HTMLElement} element
-     * @param {string} methodName
-     * @param {...ArbitraryValue} args
-     * @returns {ArbitraryValue}
-     */
-    invoke(element: string | HTMLElement, methodName: string, ...args: ArbitraryValue[]): ArbitraryValue;
-}
+declare let body: HTMLBodyElement;
+declare const nbsp = "\u00A0";
+export { jml, $, $$, nbsp, body, glue, validateJamilih };
+export { isValidJamilih } from './validateJamilih.js';
 //# sourceMappingURL=jml.d.ts.map

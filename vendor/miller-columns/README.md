@@ -123,20 +123,31 @@ been loaded.
     entire newly expanded item. Defaults to an internal method. Passed the
     column item and columns jQuery objects as arguments.
 - `breadcrumb` - Optional callback for adding the breadcrumb path using the
-    chain of selected items. Defaults to an internal method. No arguments.
+    chain of selected items. Defaults to an internal method. Optionally passed
+    the columns jQuery object as an argument.
+- `breadcrumbRoot` - Optional string that defines the text to display as the
+    root link at the start of the breadcrumb path. Clicking this link resets
+    the column browser. Set to an empty string to disable the root link.
+    Defaults to `"Root"`.
 - `current` - Optional callback; defaults to a noop. Called upon selection.
     Passed the column item and columns jQuery object as arguments.
 - `reset` - Optional callback; defaults to a noop. Called upon reset (by
     user hitting escape key or any time clicking an element). Passed the
-    columns jQuery object as argument
+    columns jQuery object and `resetByUser` boolean indicating whether
+    this reset was user-initiated (`true`) or an internally-generated rebuild (`false`) as arguments
 - `preview` - Optional callback; defaults to `null`. Passed the column
     item and columns jQuery object as arguments. The return result should be
     an HTML string which is used to fill the list item which functions as the
-    preview pane when selected a final item (an item without children).
+    preview pane when selecting a final item (an item without children).
+- `onPreview` - Optional callback; defaults to `null`. Passed the event object
+    and the `<ul>` and columns jQuery objects as arguments. Called upon
+    clicking the preview pane.
 - `delay` - Optional integer indicating animation delay. Defaults to 500ms.
-- `resetOnOutsideClick` - Optional boolean to indicate whether to reset the
-    browser to the beginning upon clicking within the columns area where
-    it is not a column. Defaults to `true`.
+- `outsideClickBehavior` - Optionally set to "reset" to have the
+    column browser reset to the beginning upon clicking within the columns
+    area where it is not a column. If set to `select-parent`, will select the
+    parent column where the node was clicked. If set to `none`, will do nothing.
+    Defaults to `"select-parent"`.
 
 ## Dynamic Item Management
 

@@ -1,4 +1,4 @@
-import http from 'http';
+import http from 'node:http';
 import * as statik from '@node-static/node-static';
 import {systemProfiler} from 'apple-system-profiler';
 
@@ -15,7 +15,7 @@ http.createServer(
    * @returns {void}
    */
   function (req, res) {
-    /* istanbul ignore next */
+    /* istanbul ignore next -- Coverage */
     if (globalThis.__coverage__ &&
       req.url?.startsWith('/__coverage__')) {
       res.setHeader('Content-Type', 'application/json');
@@ -54,13 +54,15 @@ http.createServer(
              */ (fontInfo)[0]._items.flatMap(({typefaces}) => {
               return typefaces.map((typeface) => typeface.family);
             });
-          res.end(JSON.stringify([...new Set(out)].toSorted()));
-        // istanbul ignore next
+          res.end(JSON.stringify([...new Set(out)].toSorted(
+            (a, b) => a.localeCompare(b)
+          )));
+        // istanbul ignore next -- Shouldn't err
         } catch (err) {
           /* eslint-disable no-console -- CLI */
-          // istanbul ignore next
+          // istanbul ignore next -- Shouldn't err
           console.error('Error', err);
-        // istanbul ignore next
+        // istanbul ignore next -- Shouldn't err
         }
         /* eslint-enable no-console -- CLI */
       })();

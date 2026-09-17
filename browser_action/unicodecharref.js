@@ -323,14 +323,14 @@ const unicodecharref = {
     });
   },
   /**
-  * @param {object} cfg
-  * @param {string|null} [cfg.customProtocol]
-  * @param {string|null} [cfg.options]
-  * @param {string|null} [cfg.convert]
-  * @param {string|null} [cfg.targetid]
-  * @param {string} [cfg.selection]
-  * @returns {Promise<void>}
-  */
+   * @param {object} cfg
+   * @param {string|null} [cfg.customProtocol]
+   * @param {string|null} [cfg.options]
+   * @param {string|null} [cfg.convert]
+   * @param {string|null} [cfg.targetid]
+   * @param {string} [cfg.selection]
+   * @returns {Promise<void>}
+   */
   async initialize (cfg) {
     // this.refreshToolbarDropdown(); // redundant?
 
@@ -701,9 +701,9 @@ const unicodecharref = {
     $i('#showAllDetailedCJKView').checked = true;
 
     /**
-    * @param {string} langOrFont
-    * @returns {Promise<string>}
-    */
+     * @param {string} langOrFont
+     * @returns {Promise<string>}
+     */
     async function langFont (langOrFont) { // Fix: needs to get default!
       const deflt = /** @type {string} */ (await getPref(langOrFont));
       $i('#' + langOrFont).value = deflt;
@@ -864,7 +864,7 @@ const unicodecharref = {
           let temp = results[camelizedField];
           if (unicodeField === 'Unicode_1_Name') {
             if (temp) {
-              result += ';\u00A0\u00A0\u00A0\u00A0\n' +
+              result += ';\u{A0}\u{A0}\u{A0}\u{A0}\n' +
                 _('searchUnicode_1_Name') + _('colon') + ' ' + temp;
             }
             continue;
@@ -889,9 +889,8 @@ const unicodecharref = {
               temp = _('Bidi_Class' + temp);
               break;
             case 'Bidi_Mirrored':
-              temp = (temp === 'Y')
-                ? _('Bidi_MirroredY')
-                : _('Bidi_MirroredN'); // Only two choices
+              // Only two choices
+              temp = _(temp === 'Y' ? 'Bidi_MirroredY' : 'Bidi_MirroredN');
               break;
             case 'numericType': {
               const view = $('#_detailedView' + i);
@@ -956,15 +955,15 @@ const unicodecharref = {
             }
             // Not casing
             if (
-              !unicodeField.includes('case_Mapping') &&
-              unicodeField !== 'decompositionMapping'
+              unicodeField !== 'decompositionMapping' &&
+              !unicodeField.includes('case_Mapping')
             ) {
               $i('#_detailedView' + i).value = temp;
             }
           // Not casing
           } else if (
-            !unicodeField.includes('case_Mapping') &&
-            unicodeField !== 'decompositionMapping'
+            unicodeField !== 'decompositionMapping' &&
+            !unicodeField.includes('case_Mapping')
           ) {
             /** @type {HTMLElement} */
             ($i('#_detailedView' + i).parentNode).hidden = hideMissing;
@@ -1172,7 +1171,7 @@ const unicodecharref = {
     } // Excised Ajax code...
 
     if (
-      this.unihanDb_exists && unihanType &&
+      unihanType && this.unihanDb_exists &&
       $tabbox('#viewTabs').$selectedTab() === $('#detailedView')
     ) {
       $tabbox('#viewTabs').$selectTabForTabPanel($tabpanel('#detailedCJKView'));
@@ -1188,7 +1187,7 @@ const unicodecharref = {
     placeItem('#pdflink', alink);
 
     // Handle plane #
-    const planeText = _('plane_num', {plane}) + '\u00A0';
+    const planeText = _('plane_num', {plane}) + '\u{A0}';
     placeItem('#plane', planeText);
 
     if (await getPref('showImg')) {
@@ -1395,7 +1394,7 @@ const unicodecharref = {
       }
       const decInit = str.match(/^&?#/v);
       if (decInit) {
-        return Number.parseInt(str.slice(decInit[0].length)) - 1;
+        return Number.parseInt(str.slice(decInit[0].length), 10) - 1;
       }
       return /** @type {number} */ (str.codePointAt(0)) - 1;
     }

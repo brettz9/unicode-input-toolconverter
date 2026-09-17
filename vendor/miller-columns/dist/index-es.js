@@ -152,12 +152,18 @@ function loadStylesheets(stylesheets, {
 /**
  * @typedef {{
  *   delay: JQuery.Duration | string,
- *   resetOnOutsideClick: boolean,
- *   breadcrumb: () => void,
+ *   outsideClickBehavior: "reset"|"select-parent"|"none",
+ *   breadcrumbRoot: string,
+ *   breadcrumb: (this: HTMLElement, $columns?: JQuery<HTMLElement>) => void,
  *   current: (li: JQuery<HTMLLIElement>, $columns: JQuery<HTMLElement>) => void,
  *   preview: null|((li: JQuery<HTMLLIElement>, $columns: JQuery<HTMLElement>) => void),
+ *   onPreview: null|((
+ *     ev: JQuery.ClickEvent<HTMLUListElement, undefined, HTMLUListElement, HTMLUListElement>,
+ *     li: JQuery<HTMLUListElement>,
+ *     $columns: JQuery<HTMLElement>
+ *   ) => void),
  *   animation: (li: JQuery<HTMLLIElement>, $columns: JQuery<HTMLElement>) => void,
- *   reset: ($columns: JQuery<HTMLElement>) => void,
+ *   reset: ($columns: JQuery<HTMLElement>, resetByUser: boolean) => void,
  *   scroll?: ($column: JQuery<HTMLElement>|null, $columns: JQuery<HTMLElement>) => void
  * }} Settings
  */
@@ -203,10 +209,20 @@ async function addMillerColumnPlugin($, {
 
   /**
    * Add the breadcrumb path using the chain of selected items.
+   * @param {JQuery<HTMLElement>} [$columns] - Optional columns element for root link
    * @returns {void}
    */
-  function breadcrumb() {
+  function breadcrumb($columns) {
     const $breadcrumb = $(`.${namespace}-breadcrumbs`).empty();
+
+    // Add root link if breadcrumbRoot option is set
+    if (settings.breadcrumbRoot) {
+      $(`<span class="${namespace}-breadcrumb ${namespace}-breadcrumb-root">`).text(settings.breadcrumbRoot).on('click', function () {
+        if ($columns) {
+          userReset($columns);
+        }
+      }).appendTo($breadcrumb);
+    }
     chain().each(function () {
       const $crumb = $(this);
       $(`<span class="${namespace}-breadcrumb">`).text($crumb.text().trim()).on('click', function () {
@@ -255,13 +271,13 @@ async function addMillerColumnPlugin($, {
     queue.push($startNode || $columns.children());
     while (queue.length) {
       $node = /** @type {JQuery<HTMLElement>} */queue.shift();
-      $node.children(itemSelector).each(function (item, el) {
+      $node.children(itemSelector).each(function () {
         const $this = $(this);
-        const $child = $this.children(columnSelector),
-          $ancestor = $this.parent().parent();
+        const $child = $this.children(columnSelector);
+        const $ancestor = $this.parent().parent();
 
         // Retain item hierarchy (because it is lost after flattening).
-        // Only set ancestor if it's actually a list item (not the root container)
+        // Only set ancestor if it's actually a list item and not already set
         // eslint-disable-next-line eqeqeq, no-eq-null -- Check either without duplication
         if ($ancestor.length && $ancestor.is(itemSelector) && $this.data(`${namespace}-ancestor`) == null) {
           // Use addBack to reset all selection chains.
@@ -307,7 +323,7 @@ async function addMillerColumnPlugin($, {
    * @returns {void}
    */
   function userReset($columns) {
-    reset($columns);
+    reset($columns, true);
     scrollIntoView($columns);
   }
 
@@ -315,15 +331,16 @@ async function addMillerColumnPlugin($, {
    * Hide columns (not the first), remove selections, update breadcrumb.
    *
    * @param {JQuery<HTMLElement>} $columns
+   * @param {boolean} resetByUser
    * @returns {void}
    */
-  function reset($columns) {
+  function reset($columns, resetByUser) {
     collapse();
     chain().removeClass(`${namespace}-selected`);
-    breadcrumb();
+    breadcrumb($columns);
 
     // Upon reset ensure no value is returned to the calling code.
-    settings.reset($columns);
+    settings.reset($columns, resetByUser);
     if (settings.preview) {
       $(`.${namespace}-preview`).remove();
     }
@@ -348,7 +365,8 @@ async function addMillerColumnPlugin($, {
   function moveD() {
     const elem = current().next();
     elem[0]?.scrollIntoView({
-      block: 'nearest'
+      block: 'nearest',
+      inline: 'start'
     });
     elem.trigger('click');
   }
@@ -396,7 +414,7 @@ async function addMillerColumnPlugin($, {
 
   /**
    * @callback MillerColumnsKeyPress
-   * @param {Event} e
+   * @param {KeyboardEvent} e
    * @returns {void}
    */
 
@@ -408,6 +426,7 @@ async function addMillerColumnPlugin($, {
     let buffer = '';
     /** @type {number} */
     let lastTime;
+
     /**
      * @param {string} key
      * @returns {void}
@@ -447,18 +466,20 @@ async function addMillerColumnPlugin($, {
           moved = true;
           break;
         default:
-          if (key.length === 1) {
-            checkLastPressed(key);
-            const matching = $columns.find(`${itemSelector}.${namespace}-selected`).last().siblings().filter(function () {
-              return new RegExp('^' + escapeRegex(buffer), 'iv').test($(this).text().trim());
-            });
-            const elem = matching.first();
-            elem[0]?.scrollIntoView({
-              block: 'nearest'
-            });
-            elem.trigger('click');
+          if (!ev.metaKey && !ev.altKey) {
+            if (key.length === 1) {
+              checkLastPressed(key);
+              const matching = $columns.find(`${itemSelector}.${namespace}-selected`).last().siblings().filter(function () {
+                return new RegExp('^' + escapeRegex(buffer), 'iv').test($(this).text().trim());
+              });
+              const elem = matching.first();
+              elem[0]?.scrollIntoView({
+                block: 'nearest'
+              });
+              elem.trigger('click');
+            }
+            moved = true;
           }
-          moved = true;
           break;
       }
 
@@ -478,13 +499,15 @@ async function addMillerColumnPlugin($, {
   $.fn.millerColumns = function (options) {
     /** @type {Settings} */
     const defaults = {
-      current($item) {/* */},
-      reset($columns) {/* */},
+      current($item) {/* noop */},
+      reset($columns) {/* noop */},
       preview: null,
+      onPreview: null,
+      breadcrumbRoot: 'Root',
       breadcrumb,
       animation,
       delay: 500,
-      resetOnOutsideClick: true
+      outsideClickBehavior: 'select-parent'
     };
     settings = $.extend(defaults, options);
     const $result = this.each(function () {
@@ -495,6 +518,7 @@ async function addMillerColumnPlugin($, {
       $columns.data(`${namespace}-original-html`, originalHTML);
       unnest($columns);
       collapse();
+      breadcrumb($columns); // Initialize breadcrumbs with Root link
 
       // Store keypress handler for later removal
       const keypressHandler = getKeyPress($columns);
@@ -503,7 +527,7 @@ async function addMillerColumnPlugin($, {
       // Use event delegation to handle dynamically added items
       $columns.on('click', itemSelector, function (ev) {
         const $this = $(this);
-        reset($columns);
+        reset($columns, false);
         const $child = $this.data(`${namespace}-child`);
         let $ancestor = $this;
         if ($child) {
@@ -513,21 +537,31 @@ async function addMillerColumnPlugin($, {
           $child.removeClass(`${namespace}-collapse`).children().removeClass(`${namespace}-selected`);
         }
 
-        // Reveal (uncollapse) all ancestors to the clicked item.
+        // Reveal all ancestors
         while ($ancestor) {
           $ancestor.addClass(`${namespace}-selected`).parent().removeClass(`${namespace}-collapse`);
           $ancestor = $ancestor.data(`${namespace}-ancestor`);
         }
         settings.animation.call(this, $this, $columns);
-        settings.breadcrumb.call(this);
+        settings.breadcrumb.call(this, $columns);
         settings.current.call(this, $this, $columns);
         if (settings.preview) {
           const isFinalCol = $this.hasClass(`${namespace}-selected`) && !$this.hasClass(`${namespace}-parent`);
           if (isFinalCol) {
             const content = settings.preview.call(this, $this, $columns);
-            $this.parent().parent().append(`<ul class="${namespace}-column ${namespace}-preview">
-                                <li>${content}</li>
-                            </ul>`);
+            const ul = /** @type {JQuery<HTMLUListElement>} */
+            $(`<ul class="${namespace}-column ${namespace}-preview">
+                <li>${content}</li>
+              </ul>`);
+            $this.parent().parent().append(ul);
+            ul[0].scrollIntoView({
+              block: 'nearest',
+              inline: 'start'
+            });
+            ul.on('click', e => {
+              e.stopPropagation();
+              settings.onPreview?.call(this, e, ul, $columns);
+            });
           }
         }
 
@@ -536,9 +570,25 @@ async function addMillerColumnPlugin($, {
         ev.stopPropagation();
       });
       $columns[0].addEventListener('keydown', keypressHandler);
-      $columns.on('click', () => {
-        if (settings.resetOnOutsideClick) {
-          userReset($columns);
+      $columns.on('click', e => {
+        switch (settings.outsideClickBehavior) {
+          case 'reset':
+            userReset($columns);
+            break;
+          case 'select-parent':
+            {
+              const caretPosition = document.caretPositionFromPoint(e.clientX, e.clientY);
+              const node = caretPosition?.offsetNode;
+              let elem = /** @type {Element|null} */node?.nodeType === 1 ? node : node?.parentElement;
+              while (elem) {
+                if (elem.matches(`ul.${namespace}-column:not(.${namespace}-collapse)`)) {
+                  $(elem).prevAll(`ul.${namespace}-column:not(.${namespace}-collapse)`).first().find(`li.${namespace}-selected`).trigger('click');
+                  break;
+                }
+                elem = elem.parentElement;
+              }
+              break;
+            }
         }
       });
 
@@ -621,16 +671,36 @@ async function addMillerColumnPlugin($, {
     };
 
     /**
-     * Destroy the miller columns instance and restore original structure.
-     * Removes all event handlers, data attributes, and CSS classes added by the plugin.
-     *
-     * @returns {JQuery<HTMLElement>} The columns element with original structure restored
+     * Rebuild children for a parent item after external changes.
+     * @param {JQuery<HTMLLIElement>} $parent
+     * @param {(string|JQuery<HTMLLIElement>)[]} newItems
+     * @returns {JQuery<HTMLLIElement>}
+     */
+    $result.refreshChildren = function ($parent, newItems) {
+      if (!$parent || !$parent.length) {
+        return $parent;
+      }
+      const $existing = $parent.data(`${namespace}-child`);
+      if ($existing && $existing.length) {
+        $existing.remove();
+        $parent.removeData(`${namespace}-child`).removeClass(`${namespace}-parent`);
+      }
+      const $liItems = newItems.map(it => typeof it === 'string' ? $(it) : it);
+      const $newList = $('<ul>').append($liItems);
+      $parent.append($newList);
+      unnest($result, $newList);
+      $parent.trigger('click');
+      return $parent;
+    };
+
+    /**
+     * Destroy and restore original structure.
+     * @returns {JQuery<HTMLElement>}
      */
     $result.destroy = function () {
       const $columns = $result;
       $columns.each(function () {
         const $col = $(this);
-
         // Remove keydown event listener
         const keypressHandler = $col.data(`${namespace}-keypress-handler`);
         if (keypressHandler) {
@@ -665,10 +735,9 @@ async function addMillerColumnPlugin($, {
         }
         $col.removeData(`${namespace}-keypress-handler`);
       });
-
-      // Remove the addItem and destroy methods
       delete $result.addItem;
       delete $result.destroy;
+      delete $result.refreshChildren;
       return $result;
     };
     return $result;
