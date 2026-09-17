@@ -1,5 +1,5 @@
 import terserDefault from '@rollup/plugin-terser';
-import {babel} from '@rollup/plugin-babel';
+// import {babel} from '@rollup/plugin-babel';
 import istanbul from 'rollup-plugin-istanbul';
 
 // Assert the default export type for smooth JS/TS interop under NodeNext
@@ -30,10 +30,10 @@ function getRollupObject ({input, minifying, instrument}) {
       }${minifying ? '.min' : ''}.js`
     },
     plugins: [
-      ...(instrument ? [istanbul()] : []),
-      babel({
-        babelHelpers: 'bundled'
-      })
+      ...(instrument ? [istanbul()] : [])
+      // babel({
+      //   babelHelpers: 'bundled'
+      // })
     ]
   };
   if (minifying) {
