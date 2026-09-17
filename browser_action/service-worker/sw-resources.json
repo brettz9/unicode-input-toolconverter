@@ -23,6 +23,7 @@
   "/browser_action/unicode/unicodeScripts.js",
   "/browser_action/unicode/unihan.js",
   "/browser_action/unicode/unihanDbPopulate.js",
+  "/browser_action/unicode/unihanFields.js",
   "/browser_action/unicodecharref.js",
   "/browser_action/utils/DOMUtils.js",
   "/browser_action/utils/FetchUtils.js",

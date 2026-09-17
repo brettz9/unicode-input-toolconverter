@@ -22,6 +22,7 @@ import getScriptInfoForCodePoint from './unicode/getScriptInfoForCodePoint.js';
 import charrefunicodeDb, {UnihanDatabase} from './unicode/charrefunicodeDb.js';
 import {getCJKTypeFromHexString} from './unicode/unihan.js';
 import unihanDbPopulate from './unicode/unihanDbPopulate.js';
+import unihanFields from './unicode/unihanFields.js';
 // import parseUnihanFromTextFileStrings from
 //   './unicode/parseUnihanFromTextFileStrings.js';
 import {registerDTD} from './entityBehaviors.js';
@@ -1587,38 +1588,11 @@ const unicodecharref = {
 
   // Build these programmatically? (and in UI?)
   /* Pseudo-constants */
-  // Must exactly match the column order `parseUnihanFromTextFileStrings.js`
-  //   uses to build `download/unihan/unihan.json` (minus its leading
-  //   `code_pt`), since values are looked up by this array's position, not
-  //   by name.
-  Unihan: [
-    'kAccountingNumeric', 'kAlternateTotalStrokes', 'kBigFive', 'kCCCII',
-    'kCNS1986', 'kCNS1992', 'kCangjie', 'kCantonese', 'kCheungBauer',
-    'kCheungBauerIndex', 'kCihaiT', 'kCompatibilityVariant', 'kCowles',
-    'kDaeJaweon', 'kDefinition', 'kEACC', 'kFenn', 'kFennIndex',
-    'kFourCornerCode', 'kFrequency', 'kGB0', 'kGB1', 'kGB3', 'kGB5', 'kGB7',
-    'kGB8', 'kGSR', 'kGradeLevel', 'kHDZRadBreak', 'kHKGlyph', 'kHKSCS',
-    'kHanYu', 'kHangul', 'kHanyuPinlu', 'kHanyuPinyin', 'kIBMJapan',
-    'kIICore', 'kIRGDaeJaweon', 'kIRGDaiKanwaZiten', 'kIRGHanyuDaZidian',
-    'kIRGKangXi', 'kIRG_GSource', 'kIRG_HSource', 'kIRG_JSource',
-    'kIRG_KPSource', 'kIRG_KSource', 'kIRG_MSource', 'kIRG_TSource',
-    'kIRG_USource', 'kIRG_VSource', 'kJIS0213', 'kJapaneseKun',
-    'kJapaneseOn', 'kJis0', 'kJis1', 'kKPS0', 'kKPS1', 'kKSC0', 'kKSC1',
-    'kKangXi', 'kKarlgren', 'kKorean', 'kLau', 'kMainlandTelegraph',
-    'kMandarin', 'kMatthews', 'kMeyerWempe', 'kMorohashi', 'kNelson',
-    'kOtherNumeric', 'kPhonetic', 'kPrimaryNumeric', 'kPseudoGB1',
-    'kRSAdobe_Japan1_6', 'kRSJapanese', 'kRSKanWa', 'kRSKangXi', 'kRSKorean',
-    'kRSUnicode', 'kSBGY', 'kSemanticVariant', 'kSimplifiedVariant',
-    'kSpecializedSemanticVariant', 'kTaiwanTelegraph', 'kTang',
-    'kTotalStrokes', 'kTraditionalVariant', 'kVietnamese', 'kXHC1983',
-    'kXerox', 'kZVariant', 'kUnihanCore2020', 'kIRG_UKSource',
-    'kIRG_SSource', 'kTGH', 'kKoreanName', 'kJa', 'kJoyoKanji',
-    'kKoreanEducationHanja', 'kJinmeiyoKanji', 'kTGHZ2013',
-    'kSpoofingVariant', 'kStrange', 'kSMSZD2003Index', 'kMojiJoho',
-    'kVietnameseNumeric', 'kZhuangNumeric', 'kTayNumeric', 'kJapanese',
-    'kFanqie', 'kSMSZD2003Readings', 'kZhuang', 'kJapaneseOldVariant',
-    'kJapaneseNewVariant'
-  ],
+  // Auto-generated (see `browser_action/unicode/unihanFields.js`) from the
+  //   exact column order used to build `download/unihan/unihan.json`;
+  //   values are looked up by this array's position, not by name, so this
+  //   must never be hand-edited independently of that data.
+  Unihan: unihanFields,
   UnihanMenus: [], // Unused
   Unicode: [
     'General_Category', 'Canonical_Combining_Class', 'Bidi_Class',
