@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Unicode Input Tool</title>
+  <style>
+    body {
+      min-width: 200px;
+      margin: 0;
+      padding: 5px 0;
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+    .menu-item {
+      padding: 8px 15px;
+      cursor: pointer;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+    .menu-item:hover {
+      background-color: #f0f0f0;
+    }
+    .header {
+      font-weight: bold;
+      color: #0056b3;
+    }
+    #saved-items {
+      margin-top: 5px;
+    }
+    .empty-msg {
+      padding: 8px 15px;
+      color: #888;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div id="open-app" class="menu-item header">Open Unicode App</div>
+  <div id="saved-items"></div>
+  <script src="index.js" type="module"></script>
+</body>
+</html>

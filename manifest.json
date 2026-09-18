@@ -29,7 +29,7 @@
     "default_area": "navbar",
     "default_icon": "/icons/openWindow24.png",
     "default_title": "__MSG_browser_action_title__",
-    "default_popup": "/browser_action/index.html"
+    "default_popup": "/popup/index.html"
   },
   "browser_specific_settings": {
     "gecko": {
