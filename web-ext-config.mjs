@@ -3,7 +3,8 @@ export default {
   ignoreFiles: [
     // Files beginning with dot, zip/xpi, node_modules, and
     //   web-ext-artifacts auto-ignored
-    'package-lock.json',
+    'pnpm-lock.yaml',
+    'pnpm-workspace.yaml',
     'package.json',
     'screenshots',
     'old' // Remove when deleted
