@@ -45,7 +45,22 @@ const locales = [...new Set([
 // eslint-disable-next-line unicorn/prefer-top-level-await -- No iife export
 (async () => {
 const _ = /** @type {import('intl-dom').I18NCallback<string>} */ (await i18n({
-  locales, defaults: false, localesBasePath: '../',
+  locales, defaults: false,
+  messageStyle (mainObj, key) {
+    if (!mainObj || typeof mainObj !== 'object') {
+      return false;
+    }
+    const desc = Object.getOwnPropertyDescriptor(mainObj, key);
+    const val = desc ? desc.value : undefined;
+    if (val && typeof val === 'object' && 'message' in val) {
+      const messageDesc = Object.getOwnPropertyDescriptor(val, 'message');
+      const message = messageDesc ? messageDesc.value : undefined;
+      if (typeof message === 'string') {
+        return {value: message, info: val};
+      }
+    }
+    return false;
+  }, localesBasePath: '../',
   substitutions: {code, link}
 }));
 

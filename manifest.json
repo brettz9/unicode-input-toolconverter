@@ -15,16 +15,17 @@
     "scripting"
   ],
   "background": {
-    "service_worker": "sw.js",
-    "type": "module"
+    "type": "module",
+    "scripts": [
+      "sw.js"
+    ]
   },
   "icons": {
     "16": "icons/openWindow16.png",
     "24": "icons/openWindow24.png"
   },
-  "default_locale": "en",
+  "default_locale": "en-US",
   "action": {
-    "browser_style": true,
     "default_area": "navbar",
     "default_icon": "/icons/openWindow24.png",
     "default_title": "__MSG_browser_action_title__",
@@ -41,5 +42,8 @@
       "name": "Unicode Input Tool",
       "uriTemplate": "/browser_action/index.html?customProtocol=%s"
     }
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval' 'sha256-7GH1rn0Y+fIhut9XohGvcHk02lcuneUsAfY8Ia6WbUI='; object-src 'self';"
+  }
 }

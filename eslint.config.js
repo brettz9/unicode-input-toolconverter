@@ -6,6 +6,7 @@ export default [
     name: 'unicodeinputtoolconverter/ignores',
     ignores: [
       'polyfills/browser-polyfill.min.js',
+      'tmp-firefox-profile',
       'old',
       '.idea',
       'vendor',

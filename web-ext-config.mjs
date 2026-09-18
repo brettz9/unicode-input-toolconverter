@@ -1,3 +1,6 @@
+import path from 'node:path';
+import os from 'node:os';
+
 export default {
   verbose: true,
   ignoreFiles: [
@@ -8,5 +11,10 @@ export default {
     'package.json',
     'screenshots',
     'old' // Remove when deleted
-  ]
+  ],
+  run: {
+    firefoxProfile: path.join(os.homedir(), '.tmp-firefox-profile-unicode'),
+    keepProfileChanges: true,
+    profileCreateIfMissing: true
+  }
 };
