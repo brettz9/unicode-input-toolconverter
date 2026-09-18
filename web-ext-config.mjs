@@ -8,6 +8,7 @@ export default {
     //   web-ext-artifacts auto-ignored
     'browser_action/index.instrumented.iife.min.js',
     'browser_action/index.instrumented.iife.min.js.map',
+    'coverage',
     'download/unihan/unihan.json', // Downloadable by user
     'pnpm-lock.yaml',
     'pnpm-workspace.yaml',
