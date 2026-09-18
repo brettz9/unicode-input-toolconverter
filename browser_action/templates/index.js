@@ -614,21 +614,20 @@ const indexTemplate = function ({_, fonts}) {
                         }
                       }}, [
                         _('copyToClipboard')
-                      ]]
-                      /*
+                      ]],
                       ['div', {
-                        hidden: typeof browser === 'undefined'
+                        hidden: typeof chrome === 'undefined' ||
+                          !chrome.contextMenus
                       }, [
                         nbsp.repeat(2),
                         ['button', {$on: {
                           click () {
-                            unicodecharref.addToToolbar();
+                            unicodecharref.addToContextMenu();
                           }
                         }}, [
-                          _('addToToolbar')
+                          _('addToContextMenu')
                         ]]
                       ]]
-                      */
                     ]]
                   ]]
                 ]]
@@ -1014,7 +1013,10 @@ const indexTemplate = function ({_, fonts}) {
         ['div', {id: 'UnihanInstalled', hidden: true, class: 'vbox'}, [
           _('UnihanInstalled')
         ]],
-        ['div', [
+        ['div', {
+          hidden: typeof chrome !== 'undefined' && chrome.runtime &&
+            chrome.runtime.id
+        }, [
           ['button', {id: 'registerProtocolHandler', $on: {
             click () {
               const url = new URL(location.href);

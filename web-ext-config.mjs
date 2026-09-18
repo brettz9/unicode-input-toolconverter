@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = {
+export default {
   verbose: true,
   ignoreFiles: [
     // Files beginning with dot, zip/xpi, node_modules, and

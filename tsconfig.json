@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM", "WebWorker"],
-    "types": ["node"],
+    "lib": [
+      "ESNext",
+      "DOM",
+      "WebWorker"
+    ],
+    "types": [
+      "node",
+      "chrome"
+    ],
     "moduleResolution": "NodeNext",
     "module": "NodeNext",
     "allowJs": true,
@@ -19,5 +26,7 @@
     "tools/**/*.js",
     "typings/**/*.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

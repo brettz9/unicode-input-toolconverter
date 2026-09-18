@@ -20,7 +20,8 @@ export default [
   ...ashNazg(['sauron', 'browser']),
   {
     languageOptions: {
-      globals: globals.webextensions
+      globals: globals.webextensions,
+      ecmaVersion: 'latest'
     },
     settings: {
       polyfills: [

@@ -107,6 +107,14 @@ async function getDownloadResults () {
   */
 }
 
+/**
+ * @param {Element|null} el
+ * @returns {el is HTMLTextAreaElement | HTMLInputElement}
+ */
+const isTextInput = (el) => {
+  return Boolean(el && (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT'));
+};
+
 const unicodecharref = {
   /** @type {string[]} */
   origents: [],
@@ -1550,39 +1558,23 @@ const unicodecharref = {
       }));
     }
   },
-  /*
-  async addToToolbar () {
+  async addToContextMenu () {
     const dropdownArr = await getPref('dropdownArr');
-    dropdownArr.push($('#insertText').value);
-    await setPref('dropdownArr', dropdownArr);
-    if (await this.refreshToolbarDropdown()) {
-      alert(_('yourItemAdded'));
-    } else {
-      alert(_('problemAddingToolbarItem'));
-    }
-  },
-  async refreshToolbarDropdown () {
-    // SETUP
-    const dropdownArr = await getPref('dropdownArr');
-    const toolbarbuttonPopup = $('#charrefunicode-toolbar-chars');
-    if (!toolbarbuttonPopup) {
-      return false;
+    const inputEl = $('#insertText');
+    if (Array.isArray(dropdownArr) && isTextInput(inputEl)) {
+      dropdownArr.push(inputEl.value);
+      await setPref('dropdownArr', dropdownArr);
     }
 
-    // EMPTY OLD CONTENTS
-    while (toolbarbuttonPopup.firstChild) {
-      toolbarbuttonPopup.firstChild.remove();
+    // Sync to extension storage for context menus
+    if (typeof chrome !== 'undefined' && chrome.storage) {
+      await chrome.storage.local.set({dropdownArr});
+      chrome.runtime.sendMessage({
+        action: 'updateSavedItems', items: dropdownArr
+      });
     }
-
-    // ADD NEW CONTENTS
-    for (const item of dropdownArr) {
-      jml('option', {
-        value: item
-      }, [item], toolbarbuttonPopup);
-    }
-    return true;
+    alert(_('yourItemAdded'));
   },
-  */
   idgen: 0,
   prefs: null,
 

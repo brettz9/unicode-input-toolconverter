@@ -1,5 +1,7 @@
 /* eslint-disable no-console -- Debugging */
 
+import './lib/background.js';
+
 import {getJSON} from './browser_action/utils/FetchUtils.js';
 import activateCallback from
   './browser_action/service-worker/sw-activateCallback.js';

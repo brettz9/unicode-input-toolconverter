@@ -69,7 +69,7 @@
     "url": "https://github.com/brettz9/unicode-input-toolconverter"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=24.0.0"
   },
   "keywords": [
     "unicode",
@@ -96,6 +96,7 @@
     "@rollup/plugin-babel": "^7.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^1.0.0",
+    "@types/chrome": "^0.3.0",
     "@types/download": "^8.0.5",
     "@types/estree": "^1.0.9",
     "@types/file-fetch": "^1.6.6",

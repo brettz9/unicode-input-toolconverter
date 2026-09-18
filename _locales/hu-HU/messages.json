@@ -3269,5 +3269,11 @@
     "Miscellaneous_Symbols_and_Arrows_Extended": {
       "message": "Miscellaneous Symbols and Arrows Extended"
     }
+  },
+  "saved_characters_label": {
+    "message": "Saved Characters"
+  },
+  "addToContextMenu": {
+    "message": "Save for pasting"
   }
 }
