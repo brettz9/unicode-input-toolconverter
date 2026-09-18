@@ -552,8 +552,12 @@ const unicodecharref = {
         toconvert = toconvert.replaceAll(/&([^;\s]*\s)/gv, '&amp;$1');
       }
 
-      if (targetid && targetid !== 'context-launchunicode' && targetid !== 'context-unicodechart') {
-        bridgeResult = await findBridgeForTargetID({toconvert, targetid, _});
+      if (targetid && targetid !== 'context-launchunicode' &&
+        targetid !== 'context-unicodechart'
+      ) {
+        bridgeResult = await findBridgeForTargetID({
+          toconvert, targetid, _
+        });
       }
     }
 
