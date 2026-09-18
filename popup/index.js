@@ -1,4 +1,3 @@
-
 const openAppBtn = document.querySelector('#open-app');
 const savedItemsContainer = document.querySelector('#saved-items');
 
@@ -15,50 +14,6 @@ if (openAppBtn) {
     }
     window.close();
   });
-}
-
-/**
- * @param {string} text
- * @returns {Promise<void>}
- */
-async function pasteTextToActiveTab (text) {
-  const tabs = await chrome.tabs.query({active: true, currentWindow: true});
-  const tab = tabs[0];
-  if (!tab || !tab.id) {
-    return;
-  }
-
-  try {
-    await chrome.scripting.executeScript({
-      target: {tabId: tab.id},
-      /** @param {string} t */
-      func (t) {
-        const activeEl = document.activeElement;
-        if (
-          activeEl &&
-          (activeEl.tagName === 'TEXTAREA' || activeEl.tagName === 'INPUT')
-        ) {
-          const el = /** @type {HTMLTextAreaElement|HTMLInputElement} */ (
-            activeEl
-          );
-          const start = el.selectionStart || 0;
-          const end = el.selectionEnd || 0;
-          el.value = el.value.slice(0, start) + t + el.value.slice(end);
-          el.selectionStart = start + t.length;
-          el.selectionEnd = start + t.length;
-        } else if (activeEl) {
-          const el = /** @type {HTMLElement} */ (activeEl);
-          if (el.isContentEditable) {
-            document.execCommand('insertText', false, t);
-          }
-        }
-      },
-      args: [text]
-    });
-  } catch (err) {
-    // eslint-disable-next-line no-console -- Debugging
-    console.error(err);
-  }
 }
 
 chrome.storage.local.get(
@@ -83,8 +38,27 @@ chrome.storage.local.get(
       div.className = 'menu-item';
       div.textContent = item;
       div.addEventListener('click', async () => {
-        await pasteTextToActiveTab(item);
-        window.close();
+        try {
+          const tabs = await chrome.tabs.query({active: true});
+          await Promise.all(tabs.map(async (tab) => {
+            if (tab.id) {
+              try {
+                // Send a message directly to the content script we injected!
+                await chrome.tabs.sendMessage(tab.id, {
+                  action: 'pasteText',
+                  text: item
+                });
+              } catch (e) {
+                // Ignore errors for tabs without the content script
+              }
+            }
+          }));
+        } catch (err) {
+          // eslint-disable-next-line no-console -- Debugging
+          console.error(err);
+        }
+
+        setTimeout(() => window.close(), 50);
       });
       savedItemsContainer.append(div);
     });

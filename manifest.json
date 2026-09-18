@@ -11,8 +11,7 @@
     "storage",
     "clipboardWrite",
     "clipboardRead",
-    "activeTab",
-    "scripting"
+    "activeTab"
   ],
   "background": {
     "type": "module",
@@ -45,5 +44,15 @@
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self' 'wasm-unsafe-eval' 'sha256-7GH1rn0Y+fIhut9XohGvcHk02lcuneUsAfY8Ia6WbUI='; object-src 'self';"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/index.js"
+      ]
+    }
+  ]
 }
