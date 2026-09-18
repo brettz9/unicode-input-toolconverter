@@ -30,6 +30,10 @@
     "default_title": "__MSG_browser_action_title__",
     "default_popup": "/popup/index.html"
   },
+  "options_ui": {
+    "page": "browser_action/index.html?options=1",
+    "open_in_tab": true
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "jid1-62FUBLgjzUcDNQ@jetpack"
