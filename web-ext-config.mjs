@@ -6,6 +6,9 @@ export default {
   ignoreFiles: [
     // Files beginning with dot, zip/xpi, node_modules, and
     //   web-ext-artifacts auto-ignored
+    'browser_action/index.instrumented.iife.min.js',
+    'browser_action/index.instrumented.iife.min.js.map',
+    'download/unihan/unihan.json', // Downloadable by user
     'pnpm-lock.yaml',
     'pnpm-workspace.yaml',
     'package.json',

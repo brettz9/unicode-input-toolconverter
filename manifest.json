@@ -36,7 +36,10 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "jid1-62FUBLgjzUcDNQ@jetpack"
+      "id": "jid1-62FUBLgjzUcDNQ@jetpack",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   },
   "protocol_handlers": [
