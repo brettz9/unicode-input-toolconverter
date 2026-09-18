@@ -49,9 +49,6 @@
       "uriTemplate": "/browser_action/index.html?customProtocol=%s"
     }
   ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self' 'wasm-unsafe-eval' 'sha256-7GH1rn0Y+fIhut9XohGvcHk02lcuneUsAfY8Ia6WbUI='; object-src 'self';"
-  },
   "content_scripts": [
     {
       "matches": [
