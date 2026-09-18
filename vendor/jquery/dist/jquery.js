@@ -4422,7 +4422,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 					tmp = tmp.appendChild( context.createElement( wrap[ j ] ) );
 				}
 
-				tmp.innerHTML = jQuery.htmlPrefilter( elem );
+				tmp.textContent = jQuery.htmlPrefilter( elem );
 
 				jQuery.merge( nodes, tmp.childNodes );
 
@@ -5681,10 +5681,10 @@ jQuery.fn.extend( {
 				l = this.length;
 
 			if ( value === undefined && elem.nodeType === 1 ) {
-				return elem.innerHTML;
+				return elem.textContent;
 			}
 
-			// See if we can take a shortcut and just use innerHTML
+			// See if we can take a shortcut and just use textContent
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
@@ -5697,13 +5697,13 @@ jQuery.fn.extend( {
 						// Remove element nodes and prevent memory leaks
 						if ( elem.nodeType === 1 ) {
 							jQuery.cleanData( getAll( elem, false ) );
-							elem.innerHTML = value;
+							elem.textContent = value;
 						}
 					}
 
 					elem = 0;
 
-				// If using innerHTML throws an exception, use the fallback method
+				// If using textContent throws an exception, use the fallback method
 				} catch ( e ) {}
 			}
 

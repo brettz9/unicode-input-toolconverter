@@ -20,5 +20,6 @@ minimumReleaseAgeExclude:
   - '@babel/preset-env@8.0.6'
   - '@babel/traverse@8.0.6'
   - '@babel/types@8.0.6'
-  - miller-columns@0.18.0
+  - miller-columns@0.18.0 || 0.18.1
   - webpack@5.111.1
+  - eslint@10.11.0

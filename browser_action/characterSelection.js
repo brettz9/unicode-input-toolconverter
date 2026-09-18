@@ -52,7 +52,7 @@ async function characterSelection ({
       : '/browser_action/styles/unicode-dialog.css',
     location.href.includes('index-pages')
       /* istanbul ignore next -- For GitHub Pages only */
-      ? '/unicode-input-toolconverter//vendor/miller-columns/miller-columns.css'
+      ? '/unicode-input-toolconverter/vendor/miller-columns/miller-columns.css'
       : '/vendor/miller-columns/miller-columns.css'
   ]});
 
