@@ -1,5 +1,5 @@
 /* eslint-disable camelcase -- i18n */
-import {jml, body, $, $$, nbsp} from 'jamilih/dist/jml.js';
+import {jml, body, $, $$, nbsp} from 'jamilih/dist/jml-noinnerh.mjs';
 import {fill} from '../templateUtils/fill.js';
 import {safeLink} from '../templateUtils/validation.js';
 // import encodings from '../encodings.js';
@@ -21,7 +21,7 @@ const indexTemplate = function ({_, fonts}) {
   jml('div', {
     role: 'main'
   }, [
-    /** @type {import('jamilih/dist/jml.js').JamilihArray} */
+    /** @type {import('jamilih/dist/jml-noinnerh.mjs').JamilihArray} */
     (['div', {
       id: 'unicodeTabBox',
       style: 'width: 700px;',

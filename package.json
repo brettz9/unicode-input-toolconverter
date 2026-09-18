@@ -59,7 +59,7 @@
     "copy-jquery": "cp node_modules/jquery/dist/jquery.js vendor/jquery/dist/jquery.js",
     "copy-miller-columns2": "echo \"\" | cat - node_modules/miller-columns/src/index.js > vendor/miller-columns/src/index.js",
     "copy-miller-columns": "cp -Rf node_modules/miller-columns/* vendor/miller-columns && cp vendor/miller-columns/dist/index.d.ts vendor/miller-columns/dist/index-es.min.d.ts && pnpm copy-miller-columns2",
-    "copy-jamilih": "cp node_modules/jamilih/dist/jml.mjs vendor/jamilih/dist/jml.mjs && cp node_modules/jamilih/dist/src/jml.d.ts vendor/jamilih/dist/jml.d.mts",
+    "copy-jamilih": "cp node_modules/jamilih/dist/jml-noinnerh.mjs vendor/jamilih/dist/jml-noinnerh.mjs && cp node_modules/jamilih/dist/src/jml.d.ts vendor/jamilih/dist/jml.d.mts",
     "copy-polyfill": "cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js polyfills/browser-polyfill.min.js && cp node_modules/webextension-polyfill/dist/browser-polyfill.min.js.map polyfills/browser-polyfill.min.js.map",
     "copy-simple-prefs": "cp node_modules/simple-prefs/dist/index.esm.js vendor/simple-prefs/dist/index.esm.js && cp node_modules/simple-prefs/dist/index.esm.d.ts vendor/simple-prefs/dist/index.esm.d.ts && cp node_modules/simple-prefs/dist/simple-prefs.d.ts vendor/simple-prefs/dist/simple-prefs.d.ts",
     "manifest:chrome": "node tools/manifest-switch.js chrome",

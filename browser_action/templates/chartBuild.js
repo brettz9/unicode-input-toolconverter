@@ -1,4 +1,4 @@
-import {jml, nbsp, $} from 'jamilih/dist/jml.js';
+import {jml, nbsp, $} from 'jamilih/dist/jml-noinnerh.mjs';
 import {fill} from '../templateUtils/fill.js';
 import unicodecharref from '../unicodecharref.js';
 
@@ -61,7 +61,8 @@ const chartBuildTemplate = function ({
       captionContent
     ]],
     ...fill(rows).map((_row, j) => {
-      return /** @type {import('jamilih/dist/jml.js').JamilihArray} */ (
+      // eslint-disable-next-line @stylistic/max-len -- Long
+      return /** @type {import('jamilih/dist/jml-noinnerh.mjs').JamilihArray} */ (
         ['tr', fill(cols).map((_col, i) => {
           // If more rows/cols. specified than match
           if (j === rowceil && i >= Number(colsOverRemainder)) {
@@ -135,7 +136,7 @@ const chartBuildTemplate = function ({
               const isMiddle = idx === 1 && array.length === 2;
               const isFinal = idx === 2;
               // eslint-disable-next-line @stylistic/max-len -- Long
-              const button = /** @type {import('jamilih/dist/jml.js').JamilihArray} */ (
+              const button = /** @type {import('jamilih/dist/jml-noinnerh.mjs').JamilihArray} */ (
                 [(buttonyes ? 'button' : 'div'), {
                   class: buttonyes ? 'buttonyes' : null,
                   name,

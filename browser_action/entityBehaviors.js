@@ -1,4 +1,4 @@
-import {$} from 'jamilih/dist/jml.js';
+import {$} from 'jamilih/dist/jml-noinnerh.mjs';
 import {getUnicodeDefaults} from './preferences/prefDefaults.js';
 import unicodecharref from './unicodecharref.js';
 

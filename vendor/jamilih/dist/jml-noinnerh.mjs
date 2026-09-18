@@ -985,9 +985,9 @@ function _createSafeReference(type, prefix, arg) {
   const elContainer = doc.createElement('div');
   // Todo: No workaround for XML?
   // eslint-disable-next-line no-unsanitized/property
-  elContainer.innerHTML = '&' + prefix + arg + ';';
+  elContainer.textContent = '&' + prefix + arg + ';';
   // eslint-disable-next-line unicorn/prefer-dom-node-html-methods -- No Safari support
-  return doc.createTextNode(elContainer.innerHTML);
+  return doc.createTextNode(elContainer.textContent);
 }
 
 /**
@@ -2245,19 +2245,6 @@ const jml = function jml(...args) {
             recurse(/** @type {DatasetAttributeObject} */attVal, '');
             break;
           }
-        // #if IS_REMOVE
-        // Don't remove this `if` block (for sake of no-innerHTML build)
-        // Security: this assigns `innerHTML` directly, so its value must be
-        //   trusted or sanitized by the caller. The `jamilih` package also
-        //   publishes a `jml-noinnerh` build with this sink removed, and
-        //   `validateJamilih({allowInnerHTML: false})` rejects the key.
-        case 'innerHTML':
-          if (!_isNullish(attVal)) {
-            // eslint-disable-next-line no-unsanitized/property
-            elem.innerHTML = attVal;
-          }
-          break;
-        // #endif
         case 'htmlFor':
         case 'for':
           if (elStr === 'label') {
@@ -2508,8 +2495,8 @@ const jml = function jml(...args) {
                 // Getting NotSupportedError in IE, so we try to imitate a processing instruction with a comment
                 // innerHTML didn't work
                 // var elContainer = doc.createElement('div');
-                // elContainer.innerHTML = '<?' + doc.createTextNode(arg + ' ' + procValue).nodeValue + '?>';
-                // nodes[nodes.length] = elContainer.innerHTML;
+                // elContainer.textContent = '<?' + doc.createTextNode(arg + ' ' + procValue).nodeValue + '?>';
+                // nodes[nodes.length] = elContainer.textContent;
                 // Todo: any other way to resolve? Just use XML?
                 nodes[nodes.length] = doc.createComment('?' + arg + ' ' + procValue + '?');
               }

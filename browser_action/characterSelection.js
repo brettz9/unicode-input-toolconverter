@@ -1,5 +1,5 @@
 /* globals jQuery -- No ESM */
-import {$} from 'jamilih/dist/jml.js';
+import {$} from 'jamilih/dist/jml-noinnerh.mjs';
 import addMillerColumnPlugin from 'miller-columns';
 
 import {getChartBuild, chartBuild} from './chartBuild.js';

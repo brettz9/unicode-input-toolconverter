@@ -1,5 +1,5 @@
 // @ts-nocheck
-import {$} from 'jamilih/dist/jml.js';
+import {$} from 'jamilih/dist/jml-noinnerh.mjs';
 
 import {classChange as charrefClassChange} from './charrefConverters.js';
 
