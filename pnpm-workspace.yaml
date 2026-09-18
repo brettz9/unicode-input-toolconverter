@@ -6,3 +6,19 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - jsdom@30.1.0
   - '@node-static/node-static@0.10.0'
+  - '@babel/code-frame@8.0.6'
+  - '@babel/core@8.0.6'
+  - '@babel/generator@8.0.6'
+  - '@babel/helper-compilation-targets@8.0.6'
+  - '@babel/helper-globals@8.0.6'
+  - '@babel/helper-string-parser@8.0.6'
+  - '@babel/helper-validator-identifier@8.0.6'
+  - '@babel/parser@8.0.6'
+  - '@babel/plugin-bugfix-safari-rest-destructuring-rhs-array@8.0.6'
+  - '@babel/plugin-transform-async-generator-functions@8.0.6'
+  - '@babel/plugin-transform-regenerator@8.0.6'
+  - '@babel/preset-env@8.0.6'
+  - '@babel/traverse@8.0.6'
+  - '@babel/types@8.0.6'
+  - miller-columns@0.18.0
+  - webpack@5.111.1

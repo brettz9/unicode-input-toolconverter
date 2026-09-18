@@ -179,11 +179,11 @@ function escapeRegex(s) {
 }
 
 /**
- * @param {jQuery} $
+ * @param {typeof jQuery} $
  * @param {object} cfg
  * @param {string} [cfg.namespace]
  * @param {Exclude<import('load-stylesheets').Stylesheets, string>} [cfg.stylesheets]
- * @returns {Promise<jQuery>}
+ * @returns {Promise<typeof jQuery>}
  */
 async function addMillerColumnPlugin($, {
   namespace = 'miller',
@@ -249,6 +249,11 @@ async function addMillerColumnPlugin($, {
       // Why isn't this working when we instead use this `last` on the `animate` above?
       const last = $columns.find(`.${namespace}-column:not(.${namespace}-collapse)`).last();
       // last[0].scrollIntoView(); // Scrolls vertically also unfortunately
+      if (!last.length) {
+        // The plugin may have been destroyed (or the columns otherwise
+        // reset) while this animation's timer was still pending.
+        return;
+      }
       last[0].scrollLeft = width;
       if (settings.scroll) {
         settings.scroll.call(this, $column, $columns);
@@ -264,13 +269,9 @@ async function addMillerColumnPlugin($, {
    * @returns {void}
    */
   function unnest($columns, $startNode) {
-    const queue = [];
-    let $node;
-
-    // Push the root unordered list item into the queue.
-    queue.push($startNode || $columns.children());
+    const queue = [$startNode || $columns.children()];
     while (queue.length) {
-      $node = /** @type {JQuery<HTMLElement>} */queue.shift();
+      const $node = /** @type {JQuery<HTMLElement>} */queue.shift();
       $node.children(itemSelector).each(function () {
         const $this = $(this);
         const $child = $this.children(columnSelector);
@@ -382,7 +383,7 @@ async function addMillerColumnPlugin($, {
 
     // If current item has children and they are visible, but we're at root level,
     // do nothing - we're already on the parent and just expanded it
-    if ($child && !$child.hasClass(`${namespace}-collapse`) && !$ancestor) {
+    if ($child && !$ancestor && !$child.hasClass(`${namespace}-collapse`)) {
       return;
     }
 
@@ -513,9 +514,9 @@ async function addMillerColumnPlugin($, {
     const $result = this.each(function () {
       const $columns = $(this);
 
-      // Store original HTML for restoration
-      const originalHTML = $columns.html();
-      $columns.data(`${namespace}-original-html`, originalHTML);
+      // Store original DOM structure for restoration
+      const $originalContents = $columns.contents().clone(true, true);
+      $columns.data(`${namespace}-original-contents`, $originalContents);
       unnest($columns);
       collapse();
       breadcrumb($columns); // Initialize breadcrumbs with Root link
@@ -646,9 +647,6 @@ async function addMillerColumnPlugin($, {
 
           // The new list needs to be processed by unnest to become a column
           unnest($columns, $childList);
-
-          // After unnesting, get the updated reference to the child list
-          $childList = $parent.data(`${namespace}-child`);
         } else {
           // Parent already has children - $childList is already a column
           // Just append the new item directly to it
@@ -701,6 +699,11 @@ async function addMillerColumnPlugin($, {
       const $columns = $result;
       $columns.each(function () {
         const $col = $(this);
+
+        // Cancel any in-flight scroll animation so its completion callback
+        // doesn't fire against the DOM after it has been reset below.
+        $col.stop(true, false);
+
         // Remove keydown event listener
         const keypressHandler = $col.data(`${namespace}-keypress-handler`);
         if (keypressHandler) {
@@ -727,11 +730,11 @@ async function addMillerColumnPlugin($, {
         // Remove preview columns
         $col.find(`.${namespace}-preview`).remove();
 
-        // Restore original HTML structure
-        const originalHTML = $col.data(`${namespace}-original-html`);
-        if (originalHTML) {
-          $col.html(originalHTML);
-          $col.removeData(`${namespace}-original-html`);
+        // Restore original DOM structure
+        const $originalContents = $col.data(`${namespace}-original-contents`);
+        if ($originalContents) {
+          $col.empty().append($originalContents);
+          $col.removeData(`${namespace}-original-contents`);
         }
         $col.removeData(`${namespace}-keypress-handler`);
       });
