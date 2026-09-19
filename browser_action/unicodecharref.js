@@ -70,6 +70,20 @@ export const shareVars = ({_: l10n, charrefunicodeConverter: _uc}) => {
 };
 
 /**
+ * @returns {boolean}
+ */
+function isAddonContext () {
+  // Ensure the browser/chrome WebExtension API exists first
+  return typeof browser !== 'undefined' &&
+    browser.runtime &&
+      typeof browser.tabs !== 'undefined';
+  // This last condition was actually true in at least Firefox
+  //   content script, so it can't be used to distinguish from
+  //   non-content script addon code
+  // && typeof browser.tabs.getCurrent === 'undefined';
+}
+
+/**
  * @returns {Promise<Object<string,string[]>>}
  */
 async function getDownloadResults () {
@@ -79,7 +93,9 @@ async function getDownloadResults () {
     url: location.href.includes('index-pages')
       /* istanbul ignore next -- For GitHub Pages only */
       ? '/unicode-input-toolconverter/download/unihan/unihan.json'
-      : '/download/unihan/unihan.json',
+      : isAddonContext()
+        ? 'https://bahai-library.com/zamir/unihan/unihan.json'
+        : '/download/unihan/unihan.json',
     progressElement: /** @type {HTMLProgressElement} */ (
       $('#progress_element')
     ),
