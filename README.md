@@ -1,7 +1,5 @@
 # unicode-input-toolconverter
 
-**Not available againa as an add-on currently, but it is as a web app**
-
 A web app and webextensions add-on (Firefox, Chrome) to allow selection
 of Unicode characters by a variety of means and conversion between various
 Unicode representations such as HTML/XML entities, numeric
