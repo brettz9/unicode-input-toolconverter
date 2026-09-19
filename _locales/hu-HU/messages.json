@@ -92,7 +92,7 @@
     "message": "kiegészítő világnyelv"
   },
   "About_ial_wikipedia_linkURL": {
-    "message": "http://en.wikipedia.org/wiki/International_auxiliary_language"
+    "message": "https://en.wikipedia.org/wiki/International_auxiliary_language"
   },
   "About_ial_onetongue_linkText": {
     "message": "World Auxiliary Language website"
@@ -275,7 +275,7 @@
     "message": "Ha nem használ gombokat, több helyet szabadít föl a képernyőn. Ilyenkor az eredmény megjelenítéséhez kattintson közvetlenül az adott tételre."
   },
   "usage_notespar6": {
-    "message": "Az unikód táblázatos megjelenítése során egyes karakterek helyett más jelek, például kérdőjel (Firefox 2.0) vagy négyzetben megjelenő számok (Firefox 3.0+) jelenhetnek meg (egyesek pedig egyáltalán nem lesznek láthatók/megjeleníthetők). Ennek oka a Firefox jelenlegi hiányosságára vezethető vissza. Előkeresésükhöz ellátogathat a hivatalos http://www.unicode.org/charts portálra, vagy megtalálja őket magában a kiterjesztésben. Ha fölé viszi az egeret, megjelenik a hozzá tartozó ugrópont, melyre kattintva áttérhet a megfelelő táblázatra és megnézheti a képet. Lehetőség van a képek közvetlen megtekintésére is, de az unikód-szerver kímélése érdekében ez nem része az alapbeállításnak."
+    "message": "Az unikód táblázatos megjelenítése során egyes karakterek helyett más jelek, például kérdőjel (Firefox 2.0) vagy négyzetben megjelenő számok (Firefox 3.0+) jelenhetnek meg (egyesek pedig egyáltalán nem lesznek láthatók/megjeleníthetők). Ennek oka a Firefox jelenlegi hiányosságára vezethető vissza. Előkeresésükhöz ellátogathat a hivatalos https://www.unicode.org/charts portálra, vagy megtalálja őket magában a kiterjesztésben. Ha fölé viszi az egeret, megjelenik a hozzá tartozó ugrópont, melyre kattintva áttérhet a megfelelő táblázatra és megnézheti a képet. Lehetőség van a képek közvetlen megtekintésére is, de az unikód-szerver kímélése érdekében ez nem része az alapbeállításnak."
   },
   "usage_notespar7": {
     "message": "Ha táblázatos nézetben a 'Csak egyedek' lehetőséget választja, akkor a HTML-egyedek a meghatározásuk szerinti sorrendben (és csak abban) jelennek meg. Egyéb üzemmódban az egyedi DTD-ben megadott összes egyed megjelenik, akár a HTML-egyedek kizárásával, amennyiben a DTD-fülön a hozzáfűzés jelölőnégyzete nincs bejelölve."
@@ -293,10 +293,10 @@
     "message": "Az eszköztárikont a Nézet -> Eszköztárak -> Testreszabás... menüpontból és az Unikód ikonnak az eszköztárra húzásával adhatja hozzá. Az ikon része egy lenyíló menü, melyhez az Eredmények táblázat melletti gombbal szöveget adhat hozzá későbbi használatra. A már hozzáadott elemek törléséhez az eszköztár ikonelemeinek megtekintése közben vigye az egeret a törlendő elem fölé és kattintson a jobb egérgombbal."
   },
   "usage_notespar12": {
-    "message": "A kiterjesztés unikód adataira az itt olvasható engedély érvényes: http://unicode.org/copyright.html"
+    "message": "A kiterjesztés unikód adataira az itt olvasható engedély érvényes: https://unicode.org/copyright.html"
   },
   "usage_notespar13": {
-    "message": "Fordítók jelentkezését várjuk a http://tinyurl.com/UnicodeInputToolTranslators címen!"
+    "message": "Fordítók jelentkezését várjuk a https://tinyurl.com/UnicodeInputToolTranslators címen!"
   },
   "note_heading": {
     "message": "Unikóddal kapcsolatos megjegyzések (felhasználói ismertető)"

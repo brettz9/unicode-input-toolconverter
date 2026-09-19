@@ -92,7 +92,7 @@
     "message": "língua auxiliar internacional"
   },
   "About_ial_wikipedia_linkURL": {
-    "message": "http://pt.wikipedia.org/wiki/Língua_auxiliar_internacional"
+    "message": "https://pt.wikipedia.org/wiki/Língua_auxiliar_internacional"
   },
   "About_ial_onetongue_linkText": {
     "message": "World Auxiliary Language website"
@@ -275,7 +275,7 @@
     "message": "Note que você pode obter mais espaço na tela ao não usar botões. Nesse caso, você ainda pode clicar sobre os itens para obter o resultado gráfico."
   },
   "usage_notespar6": {
-    "message": "Por favor, tenha em mente que na visualização gráfica do Unicode, itens como pontos de interrogação (Firefox 2.0) ou números delimitados por quadrado (Firefox 3.0 +) podem aparecer no lugar de um caracter desejado (e alguns caracteres não serão ou não poderão ser exibidos de forma alguma). Isto é devido a limitações do próprio Firefox para a exibição de tais caracteres. Para obtê-los, você pode consultar imagens como as disponíveis em na página oficial http://www.unicode.org/charts, também disponível na extensão. Na extensão, ao passar o mouse sobre um caracter desejado aparecerá um link em que você pode clicar para conduzir ao gráfico adequado e, opcionalmente, ver a imagem. Opcionalmente você pode ativar as imagens para visualização direta, mas isso não deve ser ativado por padrão para evitar a onerar o servidor Unicode."
+    "message": "Por favor, tenha em mente que na visualização gráfica do Unicode, itens como pontos de interrogação (Firefox 2.0) ou números delimitados por quadrado (Firefox 3.0 +) podem aparecer no lugar de um caracter desejado (e alguns caracteres não serão ou não poderão ser exibidos de forma alguma). Isto é devido a limitações do próprio Firefox para a exibição de tais caracteres. Para obtê-los, você pode consultar imagens como as disponíveis em na página oficial https://www.unicode.org/charts, também disponível na extensão. Na extensão, ao passar o mouse sobre um caracter desejado aparecerá um link em que você pode clicar para conduzir ao gráfico adequado e, opcionalmente, ver a imagem. Opcionalmente você pode ativar as imagens para visualização direta, mas isso não deve ser ativado por padrão para evitar a onerar o servidor Unicode."
   },
   "usage_notespar7": {
     "message": "Por favor, note que a seleção da opção &quot;Somente entidades&quot; na visualização gráfica permite ver as entidades HTML na ordem em que estão definidas (e somente elas). Quando não estiver neste modo, você verá todas as entidades definidas no DTD personalizado, opcionalmente excluindo entidades HTML, se a caixa de seleção para anexar entidades DTD (na aba DTD)estiver desmarcada."
@@ -293,10 +293,10 @@
     "message": "O ícone da barra de ferramentas pode ser adicionado indo a Exibir > Barra de Ferramentas > Personalizar e, em seguida, arrastando o ícone 'U' para a posição desejada. Além disso, o ícone tem um menu suspenso a que podem ser adicionados caracteres para posterior reutilização, usando o botão próximo à caixa de geração de caracteres. Para excluir itens já adicionados, enquanto visualiza os itens no ícone da barra de ferramentas, tecle o botão direito do mouse sobre o item a ser excluído. "
   },
   "usage_notespar12": {
-    "message": "Os dados Unicode dentro desta extensão são licenciados como descrito em http://unicode.org/copyright.html"
+    "message": "Os dados Unicode dentro desta extensão são licenciados como descrito em https://unicode.org/copyright.html"
   },
   "usage_notespar13": {
-    "message": "Tradutores são bem-vindos em http://tinyurl.com/UnicodeInputToolTranslators"
+    "message": "Tradutores são bem-vindos em https://tinyurl.com/UnicodeInputToolTranslators"
   },
   "note_heading": {
     "message": "Notas Unicode (algumas informações para o uso)"

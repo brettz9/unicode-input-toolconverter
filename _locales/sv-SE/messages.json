@@ -92,7 +92,7 @@
     "message": "internationellt hjälpspråk"
   },
   "About_ial_wikipedia_linkURL": {
-    "message": "http://sv.wikipedia.org/wiki/International_Auxiliary_Language_Association"
+    "message": "https://sv.wikipedia.org/wiki/International_Auxiliary_Language_Association"
   },
   "About_ial_onetongue_linkText": {
     "message": "World Auxiliary Language website"
@@ -275,13 +275,13 @@
     "message": "Observera att du kan få extra utrymme på skärmen genom att inte använda knappar. Väljer du bort knapparna kan du fortfarande klicka på objekten för att få tabellutdata."
   },
   "usage_notespar6": {
-    "message": "Var medveten om att i Unicode-tabellvyn kan objekt såsom frågetecken (Firefox 2.0) eller inrutade siffror (Firefox 3.0+) visas istället för ett önskat tecken (och vissa tecken kommer inte eller kan inte visas överhuvudtaget). Detta beror på Firefox egna nuvarande begränsningar rörande visning av sådana tecken. För att hitta dessa kan du söka bland bilderna, såsom de på den officiella webbplatsen http://www.unicode.org/charts och bland de som finns tillgängliga inom själva tillägget. I tillägget kan du hovra med muspekaren över ett tecken från önskat intervall och klicka på den länk dyker upp, vilken leder dig till lämplig tabell där du kan granska bilden. Du kan även aktivera direktvisning av bilder, men detta bör vara avstängt som standard för att undvika en alltför stor belastning på Unicode-servern."
+    "message": "Var medveten om att i Unicode-tabellvyn kan objekt såsom frågetecken (Firefox 2.0) eller inrutade siffror (Firefox 3.0+) visas istället för ett önskat tecken (och vissa tecken kommer inte eller kan inte visas överhuvudtaget). Detta beror på Firefox egna nuvarande begränsningar rörande visning av sådana tecken. För att hitta dessa kan du söka bland bilderna, såsom de på den officiella webbplatsen https://www.unicode.org/charts och bland de som finns tillgängliga inom själva tillägget. I tillägget kan du hovra med muspekaren över ett tecken från önskat intervall och klicka på den länk dyker upp, vilken leder dig till lämplig tabell där du kan granska bilden. Du kan även aktivera direktvisning av bilder, men detta bör vara avstängt som standard för att undvika en alltför stor belastning på Unicode-servern."
   },
   "usage_notespar7": {
     "message": "Var vänlig notera att valet av alternativet &quot;Visa endast entiteter&quot; i tabellvyn kommer att visa dig HTML-entiteter i den ordning i vilken HTML-entiteterna definieras (och endast dem). När du inte befinner dig i detta läge, så kommer du att se alla entiteter som finns definierade i den anpassade DTD:n, valfritt utan HTML-entiteter, om kryssrutan om att bifoga DTD-entiteter är avmarkerad på DTD-sidan."
   },
   "usage_notespar8": {
-    "message": "Du bör kunna ladda ner databasen Unihan (medföljer inte tillägget p.g.a. dess storlek) inifrån inställningarna. Om du får problem, ladda ner filen som är ca. 39,5 MB stor från  http://bahai-library.com/zamir/Unihan.sqlite  och placera den i din Firefox-profilmapp."
+    "message": "Du bör kunna ladda ner databasen Unihan (medföljer inte tillägget p.g.a. dess storlek) inifrån inställningarna. Om du får problem, ladda ner filen som är ca. 39,5 MB stor från  https://bahai-library.com/zamir/Unihan.sqlite  och placera den i din Firefox-profilmapp."
   },
   "usage_notespar9": {
     "message": "Tillägget används helst med högre upplösningar, men har nu i viss mån anpassats för att också passa lägre upplösningar. Dra i de olika delningslisterna för att storleksändra undersektioner. Din önskade storlek skall kommas ihåg."
@@ -293,10 +293,10 @@
     "message": "Verktygsfältsikonen kan kan läggas till genom att gå till Visa > Verktygsfält > Anpassa... och sedan dra &quot;U&quot;-ikonen till önskad position i ett verktygsfält. Dessutom har ikonen en rullgardinsmeny i vilken textstycken kan läggas till för senare återanvändning. Textstyckena läggs till m.h.a. knappen nära tabellens utdataruta. För att ta bort redan tillagda objekt, öppna rullgardinsmenyn, hovra över ett objekt (markera utan att klicka) och högerklicka på det för att ta bort det."
   },
   "usage_notespar12": {
-    "message": "Unicode-datan inom detta tillägg är licensierad enligt som beskrivs i &quot;Unicode Terms of Use&quot; (http://unicode.org/copyright.html)"
+    "message": "Unicode-datan inom detta tillägg är licensierad enligt som beskrivs i &quot;Unicode Terms of Use&quot; (https://unicode.org/copyright.html)"
   },
   "usage_notespar13": {
-    "message": "Översättare är välkomna. Gå till http://tinyurl.com/UnicodeInputToolBabelZilla"
+    "message": "Översättare är välkomna. Gå till https://tinyurl.com/UnicodeInputToolBabelZilla"
   },
   "note_heading": {
     "message": "Unicode-information (lite användningsinformation)"
@@ -2606,7 +2606,7 @@
     "message": "Nerladdningen har slutförts"
   },
   "Problem_downloading": {
-    "message": "Ett fel uppstod vid nerladdning av filen. Försök igen. Om det inte fungerar, hämta filen på http://bahai-library.com/zamir/Unihan.sqlite och placera den i din Firefox-profilmapp."
+    "message": "Ett fel uppstod vid nerladdning av filen. Försök igen. Om det inte fungerar, hämta filen på https://bahai-library.com/zamir/Unihan.sqlite och placera den i din Firefox-profilmapp."
   },
   "colon": {
     "message": ":"

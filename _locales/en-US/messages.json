@@ -92,7 +92,7 @@
     "message": "world auxiliary language"
   },
   "About_ial_wikipedia_linkURL": {
-    "message": "http://en.wikipedia.org/wiki/International_auxiliary_language"
+    "message": "https://en.wikipedia.org/wiki/International_auxiliary_language"
   },
   "About_ial_onetongue_linkText": {
     "message": "World Auxiliary Language website"
@@ -275,7 +275,7 @@
     "message": "Note that you can get extra space on the screen by not using buttons. In such a case, you can still click on the items to get chart output."
   },
   "usage_notespar6": {
-    "message": "Please be aware that in the Unicode chart view, items like question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) may appear in place of a desired character (and some characters will not or cannot be displayed at all). This is due to Firefox's own present limitations in displaying such characters. To find these, you could consult the images such as those at the official {link|http://www.unicode.org/charts} site and also available within the extension. While in the extension, you can hover your mouse over a character from the desired range, and a link will appear which you can click to lead to the appropriate chart and optionally view the image. Or you can enable images for direct viewing, but this should not be on by default to avoid taxing the Unicode server."
+    "message": "Please be aware that in the Unicode chart view, items like question marks (Firefox 2.0) or boxed numbers (Firefox 3.0+) may appear in place of a desired character (and some characters will not or cannot be displayed at all). This is due to Firefox's own present limitations in displaying such characters. To find these, you could consult the images such as those at the official {link|https://www.unicode.org/charts} site and also available within the extension. While in the extension, you can hover your mouse over a character from the desired range, and a link will appear which you can click to lead to the appropriate chart and optionally view the image. Or you can enable images for direct viewing, but this should not be on by default to avoid taxing the Unicode server."
   },
   "usage_notespar7": {
     "message": "Please note that selecting the 'Only ents' option in chart view will allow you to see HTML entities in the order in which the HTML entities are defined (and only them). When when you are not in this mode, you will see all entities defined in the custom DTD, optionally excluding HTML entities, if the checkbox on the DTD page to append DTD entities is unchecked."
@@ -293,10 +293,10 @@
     "message": "The toolbar icon can be added by going to {code|View->Toolbars->Customize} and then dragging the 'U' icon to the desired position in a toolbar. In addition, the icon has a pull-down menu to which snippets can be added for later re-use, by using the button near the chart output box. To delete items already added, while viewing the toolbar icon items, use right-click while hovering over the item to delete."
   },
   "usage_notespar12": {
-    "message": "The Unicode data within this extension is licensed as described at {link|http://unicode.org/copyright.html}"
+    "message": "The Unicode data within this extension is licensed as described at {link|https://unicode.org/copyright.html}"
   },
   "usage_notespar13": {
-    "message": "Translators welcome at {link|http://tinyurl.com/UnicodeInputToolTranslators}"
+    "message": "Translators welcome at {link|https://tinyurl.com/UnicodeInputToolTranslators}"
   },
   "note_heading": {
     "message": "Unicode Notes (some usage information)"
