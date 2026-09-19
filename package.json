@@ -48,6 +48,7 @@
     "webext-nightly": "npm run eslint && web-ext run --config web-ext-config.mjs --browser-console -f nightly",
     "webext-dev": "npm run eslint && web-ext run --config web-ext-config.mjs --browser-console -f firefoxdeveloperedition",
     "webext-build": "npm run eslint && web-ext build --config web-ext-config.mjs --overwrite-dest",
+    "webext-sign": "web-ext sign --config web-ext-config.mjs --channel unlisted --api-key --api-secret",
     "webext-lint": "web-ext lint",
     "eslint": "eslint .",
     "lint": "npm run eslint",

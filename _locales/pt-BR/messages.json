@@ -4,7 +4,7 @@
     "description": "The default for the font language code field"
   },
   "extensionName": {
-    "message": "Unicode Input Tool/Converter"
+    "message": "Unicode Input Tool-Converter"
   },
   "extensionShortName": {
     "message": "Unicode Tool"
@@ -13,7 +13,7 @@
     "message": "Converte referências de caracteres em Unicode"
   },
   "browser_action_title": {
-    "message": "Unicode Input Tool/Converter"
+    "message": "Unicode Input Tool-Converter"
   },
   "plus": {
     "message": "+"

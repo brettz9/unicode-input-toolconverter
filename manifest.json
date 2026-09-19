@@ -23,7 +23,7 @@
     "16": "icons/openWindow16.png",
     "24": "icons/openWindow24.png"
   },
-  "default_locale": "en-US",
+  "default_locale": "en",
   "action": {
     "default_area": "navbar",
     "default_icon": "/icons/openWindow24.png",
