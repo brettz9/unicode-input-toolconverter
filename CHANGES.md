@@ -1,5 +1,10 @@
 # CHANGES for unicode-input-toolconverter
 
+## 0.3.0
+
+- feat: Chrome/Firefox Manifest 3 add-on support
+- fix: protocol registration
+
 ## 0.2.4
 
 - fix: issue on Firefox with downloads
