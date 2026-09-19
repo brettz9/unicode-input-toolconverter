@@ -1979,7 +1979,7 @@
     "message": "Your item has been added to the toolbar icon pull-down"
   },
   "need_download_unihan": {
-    "message": "In order to access CJK (Chinese-Korean-Japanese) characters, you must download the approximately 19.3MB Unihan database. See the button at the top of the preferences tab."
+    "message": "In order to access CJK (Chinese-Korean-Japanese) characters, you must download the approximately 48MB Unihan database. See the button at the top of the preferences tab."
   },
   "left_parenth": {
     "message": "("

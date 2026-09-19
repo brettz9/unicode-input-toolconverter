@@ -29,8 +29,9 @@ but XUL support was dropped in Firefox.
 
 ## To-dos - medium priority
 
-1. ONGOING: Get **l10n** completed (only en-US, hu-HU, pt-BR, sv-SE were completed)
+1. ONGOING: Get **l10n** completed (only en, hu-HU, pt-BR, sv-SE were completed)
 1. Cypress tests and coverage
+1. Check `protocol_handlers` working once Chrome has in stable; e.g., use `ext+unicode:find?char=é`
 
 1. **Protocol handler**:
     <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers>

@@ -56,6 +56,6 @@ export const getPrefDefaults = () => ({
   currentStartCharCode: /** @type {number} */ (
     _('startCharCode').codePointAt(0)
   ) - 1, // 'a'
-  lang: _('langCode'), // 'en-US'
+  lang: _('langCode'), // 'en'
   dropdownArr: []
 });

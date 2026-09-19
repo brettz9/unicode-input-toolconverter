@@ -1022,7 +1022,7 @@ const indexTemplate = function ({_, fonts}) {
               const url = new URL(location.href);
               navigator.registerProtocolHandler(
                 'web+unicode',
-                url.protocol + '://' + url.host + url.pathname + '?customProtocol=%s'
+                url.origin + url.pathname + '?customProtocol=%s'
               );
             }
           }}, [

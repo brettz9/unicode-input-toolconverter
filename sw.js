@@ -153,6 +153,19 @@ console.log('sw info', pathToStaticJSON);
 async function install (time) {
   post({type: 'beginInstall'});
   log(`Install: Trying, attempt ${time}`);
+
+  if (typeof chrome !== 'undefined') {
+    // In a browser extension, our own resource files are already bundled
+    //   locally rather than fetched over the network, and the Cache
+    //   Storage API rejects `chrome-extension:`/`moz-extension:` scheme
+    //   requests outright ("Request scheme ... is unsupported"), so this
+    //   prefetch-caching strategy (meant for the plain, installable-
+    //   web-app case) neither applies nor works here.
+    log('Install: Skipping prefetch caching inside a browser extension.');
+    post({type: 'finishedInstall'});
+    return;
+  }
+
   const now = Date.now();
 
   const cacheKey = namespace + CURRENT_CACHES.prefetch + BUILD_VERSION;
@@ -172,6 +185,11 @@ async function install (time) {
   log('Install: Retrieved dependency values');
 
   const urlsToPrefetch = [
+    // Only reached in the plain, non-extension case (see the early return
+    //   above). A real web server resolves this bare directory URL to
+    //   `index.html` (which is also separately listed in
+    //   `staticResourceFiles`, under its own full filename, so both request
+    //   forms get cached).
     '/browser_action/',
     ...staticResourceFiles,
     ...localeFiles,
