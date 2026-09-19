@@ -44,7 +44,7 @@
   },
   "protocol_handlers": [
     {
-      "protocol": "web+unicode",
+      "protocol": "ext+unicode",
       "name": "Unicode Input Tool",
       "uriTemplate": "/browser_action/index.html?customProtocol=%s"
     }
