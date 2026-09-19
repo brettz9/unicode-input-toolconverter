@@ -39,7 +39,7 @@ const lang = searchParams.get('lang');
 const locales = [...new Set([
   // Ensure there is at least one working language!
   ...(lang ? [lang] : [...navigator.languages]),
-  'en-US'
+  'en'
 ])];
 
 // eslint-disable-next-line unicorn/prefer-top-level-await -- No iife export
