@@ -25,6 +25,10 @@ This project had originally found life as a
 [XUL-based Firefox add-on](https://addons.mozilla.org/en-US/firefox/addon/unicode-input-toolconverter/),
 but XUL support was dropped in Firefox.
 
+## Developing
+
+1. To build: `npm run copy && npm run rollup`
+
 ## High priority to-dos
 
 ## To-dos - medium priority
