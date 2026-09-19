@@ -47,7 +47,7 @@
     "webext-beta": "npm run eslint && web-ext run --config web-ext-config.mjs --browser-console -f beta",
     "webext-nightly": "npm run eslint && web-ext run --config web-ext-config.mjs --browser-console -f nightly",
     "webext-dev": "npm run eslint && web-ext run --config web-ext-config.mjs --browser-console -f firefoxdeveloperedition",
-    "webext-build": "npm run eslint && web-ext build --config web-ext-config.mjs --overwrite-dest",
+    "webext-build": "pnpm manifest:firefox && web-ext build --config web-ext-config.mjs --overwrite-dest && pnpm manifest:chrome",
     "webext-sign": "web-ext sign --config web-ext-config.mjs --channel unlisted --api-key --api-secret",
     "webext-lint": "web-ext lint",
     "eslint": "eslint .",
