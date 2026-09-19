@@ -25,6 +25,12 @@ const minutes = 60 * 1000;
  * @returns {Promise<void>}
  */
 async function post ({type, message = type}) {
+  // `clients` is a genuine-ServiceWorker-only global: absent when this
+  //   script runs as a Firefox extension background (event page) rather
+  //   than a real service worker.
+  if (!('clients' in globalThis)) {
+    return;
+  }
   const windowClients = await /** @type {ServiceWorkerGlobalScope} */ (
     /** @type {unknown} */ (globalThis)
   ).clients.matchAll({
@@ -242,16 +248,32 @@ async function activate (time) {
     await caches.delete(cacheName);
   });
 
-  // Todo: Use `namespace` in indexedDB db
-  await activateCallback({
-    namespace
-    // log
-  });
-  // log('Activate: Database changes completed');
+  await provisionDatabase(time);
 
   log(`Activate: Posting finished message to clients`);
   // Signal phase complete to all clients
   post({type: 'finishedActivate'});
+}
+
+/**
+ * Provisions the IndexedDB database. Called both from the ServiceWorker
+ *   `activate` event above (needed for the plain, non-extension page case,
+ *   where this script runs as a genuine page-registered service worker) and
+ *   from `chrome.runtime.onInstalled` below (needed for the Firefox
+ *   extension case, where the background runs as an event page rather than
+ *   a genuine service worker and never dispatches `install`/`activate` at
+ *   all). Running from both in the Chrome-extension case is harmless
+ *   redundancy, not a correctness issue.
+ * @param {PositiveInteger} time
+ * @returns {Promise<void>}
+ */
+async function provisionDatabase (time) {
+  console.log(`Provisioning database, attempt ${time}`);
+  // Todo: Use `namespace` in indexedDB db
+  await activateCallback({
+    namespace
+  });
+  console.log('Database provisioning complete');
 }
 
 const sw = /** @type {ServiceWorkerGlobalScope} */ (
@@ -276,6 +298,18 @@ sw.addEventListener('activate', /**
   //   https://github.com/w3c/ServiceWorker/issues/659#issuecomment-384919053
     e.waitUntil(tryAndRetry(activate, 5 * minutes, 'Error activating'));
   });
+
+// `chrome` (a WebExtension-only global) is absent when this script runs as
+//   a plain, non-extension page-registered service worker, so this only
+//   applies within a browser extension (needed there for Firefox, whose
+//   event-page background never fires ServiceWorker `activate`).
+if (typeof chrome !== 'undefined' && chrome.runtime?.onInstalled) {
+  chrome.runtime.onInstalled.addListener(() => {
+    tryAndRetry(
+      provisionDatabase, 5 * minutes, 'Error provisioning database'
+    );
+  });
+}
 
 // We cannot make this async as `e.respondWith` must be called synchronously
 sw.addEventListener('fetch', /**
