@@ -3,6 +3,7 @@
 ## 0.3.1
 
 - fix: only create saved items menu if has submenus
+- fix: Find in Unicode Chart was opening wrong tab and not populating the selected character
 
 ## 0.3.0
 

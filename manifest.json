@@ -4,7 +4,7 @@
   "short_name": "__MSG_extensionShortName__",
   "description": "__MSG_extensionDescription__",
   "author": "Brett Zamir",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "homepage_url": "https://github.com/brettz9/unicode-input-toolconverter",
   "permissions": [
     "contextMenus",

@@ -589,7 +589,7 @@ const unicodecharref = {
       switch (targetid) {
       case 'context-unicodechart':
         await this.disableEnts();
-        $i('#startset').value = String(chr);
+        $i('#startset').value = String(chr ?? toconvert);
         $tabbox('#unicodeTabBox').$selectTabForTabPanel($tabpanel('#charts'));
         // Fallthrough
       case 'context-launchunicode':
@@ -621,7 +621,10 @@ const unicodecharref = {
     if (!customProtocol) {
       if (cfg.options) { // options menu
         $tabbox('#unicodeTabBox').$selectTabForTabPanel($tabpanel('#prefs'));
-      } else if (toconvert !== null && targetid) {
+      } else if (
+        toconvert !== null && targetid &&
+        targetid !== 'context-unicodechart'
+      ) {
         // Keyboard invocation or button
         // $('#unicodetabs').selectedIndex = 0; // Fix: set by preference
         $tabbox('#unicodeTabBox').$selectTabForTabPanel(
