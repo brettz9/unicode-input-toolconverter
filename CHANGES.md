@@ -1,5 +1,9 @@
 # CHANGES for unicode-input-toolconverter
 
+## 0.3.1
+
+- fix: only create saved items menu if has submenus
+
 ## 0.3.0
 
 - feat: Chrome/Firefox Manifest 3 add-on support
